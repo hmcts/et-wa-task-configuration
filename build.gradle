@@ -136,10 +136,10 @@ jacocoTestReport {
 
 pitest {
   junit5PluginVersion = '0.12'
-  targetClasses = ['uk.gov.hmcts.reform.wataskconfigurationtemplate.*']
+  targetClasses = ['uk.gov.hmcts.et.taskconfiguration.*']
   excludedClasses = [
-    'uk.gov.hmcts.reform.wataskconfigurationtemplate.config.*',
-    'uk.gov.hmcts.reform.wataskconfigurationtemplate.Application'
+    'uk.gov.hmcts.et.taskconfiguration.config.*',
+    'uk.gov.hmcts.et.taskconfiguration.Application'
   ]
   threads = 10
   outputFormats = ['XML', 'HTML']
@@ -154,13 +154,13 @@ project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
 
 sonarqube {
   properties {
-    property "sonar.projectName", "Reform :: wa-task-configuration-template"
-    property "sonar.projectKey", "uk.gov.hmcts.reform:wa-task-configuration-template"
+    property "sonar.projectName", "et-wa-task-configuration"
+    property "sonar.projectKey", "et-wa-task-configuration"
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
     property "sonar.pitest.mode", "reuseReport"
     property "sonar.pitest.reportsDirectory", "build/reports/pitest"
-    property "sonar.exclusions", "src/main/java/uk/gov/hmcts/reform/wataskconfigurationtemplate/config/**," +
-      "src/main/java/uk/gov/hmcts/reform/wataskconfigurationtemplate/Application.java"
+    property "sonar.exclusions", "src/main/java/uk/gov/hmcts/et/taskconfiguration/config/**," +
+      "src/main/java/uk/gov/hmcts/et/taskconfiguration/Application.java"
   }
 }
 
@@ -298,11 +298,11 @@ dependencies {
 
 }
 
-mainClassName = 'uk.gov.hmcts.reform.wataskconfigurationtemplate.Application'
+mainClassName = 'uk.gov.hmcts.et.taskconfiguration.Application'
 
 bootJar {
   getArchiveFileName().set(provider {
-    'wa-task-configuration-template.jar'
+    'et-wa-task-configuration.jar'
   })
 
   manifest {

@@ -13,4 +13,4 @@ management:
 
 spring:
   application:
-    name: wa-task-configuration-template
+    name: et-wa-task-configuration

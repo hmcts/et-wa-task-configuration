@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.wataskconfigurationtemplate.dmn;
+package uk.gov.hmcts.et.taskconfiguration.dmn;
 
 import lombok.Builder;
 import lombok.Value;
@@ -12,7 +12,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.platform.commons.util.StringUtils;
-import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitTest;
+import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
+import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,13 +31,12 @@ import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.WA_TASK_CONFIGURATION_WA_WACASETYPE;
 
 class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_WA_WACASETYPE;
+        CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_CONFIGURATION_WA_WACASETYPE;
     }
 
     @Test

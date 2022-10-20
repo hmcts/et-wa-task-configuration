@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.wataskconfigurationtemplate.controllers;
+package uk.gov.hmcts.et.taskconfiguration.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +8,6 @@ public class RootController {
 
     @GetMapping("/")
     public String welcome() {
-        return "Welcome to spring ia-task-configuration";
+        return "Welcome to spring et-wa-task-configuration";
     }
 }
