@@ -8,8 +8,8 @@
 
 BASEDIR=$(dirname "$0")
 SERVICE_TOKEN=$1
-PRODUCT="wa"
-TENANT_ID="wa"
+PRODUCT="et"
+TENANT_ID="et"
 
 for file in $BASEDIR/src/main/resources/*.bpmn $BASEDIR/src/main/resources/*.dmn; do
   if [ -f "$file" ]; then
