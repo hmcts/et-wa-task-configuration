@@ -4,8 +4,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum DmnDecisionTable {
 
-    WA_TASK_ALLOWED_DAYS_WA_WACASETYPE("wa-task-allowed-days-wa-wacasetype", "wa-task-allowed-days-wa-wacasetype.dmn"),
-    WA_TASK_COMPLETION_WA_WACASETYPE("wa-task-completion-wa-wacasetype", "wa-task-completion-wa-wacasetype.dmn"),
+    WA_TASK_ALLOWED_DAYS_WA_WACASETYPE(
+        "wa-task-allowed-days-wa-wacasetype",
+        "wa-task-allowed-days-wa-wacasetype.dmn"
+    ),
+    WA_TASK_COMPLETION_WA_WACASETYPE(
+        "wa-task-completion-wa-wacasetype",
+        "wa-task-completion-wa-wacasetype.dmn"
+    ),
     WA_TASK_PERMISSIONS_WA_WACASETYPE(
         "wa-task-permissions-wa-wacasetype",
         "wa-task-permissions-wa-wacasetype.dmn"
@@ -25,6 +31,10 @@ public enum DmnDecisionTable {
     WA_TASK_TYPES_WA_WACASETYPE(
         "wa-task-types-wa-wacasetype",
         "wa-task-types-wa-wacasetype.dmn"
+    ),
+    WA_TASK_INITIATION_ET_VETTING(
+        "wa-task-initiation-et-vetting",
+        "wa-task-initiation-et-vetting.dmn"
     );
 
     @JsonValue
