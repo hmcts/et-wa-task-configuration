@@ -72,13 +72,6 @@ tasks.withType(Test) {
 }
 
 test {
-  jvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,address=5005,suspend=y"]
-  /*debugOptions {
-    enabled = true
-    port = 5005
-    server = true
-    suspend = true
-  }*/
   failFast = true
 }
 
