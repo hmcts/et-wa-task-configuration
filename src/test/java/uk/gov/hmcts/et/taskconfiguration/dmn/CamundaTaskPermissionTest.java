@@ -21,7 +21,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
+class CamundaTaskPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
