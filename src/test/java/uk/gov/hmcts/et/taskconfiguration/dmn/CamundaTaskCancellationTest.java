@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class CamundaTaskWaCancellationTest extends DmnDecisionTableBaseUnitTest {
+class CamundaTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
     @BeforeAll
     public static void initialization() {
         CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_CANCELLATION_WA_WACASETYPE;

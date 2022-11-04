@@ -20,7 +20,7 @@ import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
+class CamundaTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {

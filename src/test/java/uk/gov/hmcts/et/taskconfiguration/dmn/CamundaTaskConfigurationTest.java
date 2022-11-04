@@ -32,7 +32,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
+class CamundaTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
@@ -91,10 +91,15 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         String revocationLabel = "Revocation of a protection status";
         List<Map<String, Object>> caseManagementCategories = List.of(
             Map.of(
-                "value",
-                Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"),
-                "list_items",
-                List.of(Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"))
+                "value", Map.of(
+                    "code", "refusalOfHumanRights",
+                    "label", "Refusal of a human rights claim"),
+                "list_items", List.of(
+                    Map.of(
+                        "code", "refusalOfHumanRights",
+                        "label", "Refusal of a human rights claim"
+                    )
+                )
             ),
             Map.of(
                 "value", Map.of("code", "refusalOfEu", "label", "Refusal of application under the EEA regulations"),
