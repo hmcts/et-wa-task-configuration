@@ -49,6 +49,33 @@
           <text>5</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0dppkiz">
+        <description>Routine Work - Administrator</description>
+        <inputEntry id="UnaryTests_0cplrjl">
+          <text>"preAcceptanceCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w3nrdc">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05ege6u">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oecdt4">
+          <text>"ListServeClaim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z5zny9">
+          <text>"List/Serve Claim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0viipgl">
+          <text>"Vetting"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bgkwb2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n06r8y">
+          <text>1</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
