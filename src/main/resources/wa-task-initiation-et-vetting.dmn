@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
-  <decision id="wa-task-initiation-wa-wacasetype" name="Task initiation DMN">
+  <decision id="wa-task-initiation-et-vetting" name="Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -19,10 +19,11 @@
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" />
+      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
       <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" />
-      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
       <rule id="DecisionRule_1fenvxm">
+        <description>Routine Work - Administrator</description>
         <inputEntry id="UnaryTests_09nq8bu">
           <text>"SUBMIT_CASE_DRAFT"</text>
         </inputEntry>
@@ -38,21 +39,21 @@
         <outputEntry id="LiteralExpression_02t95m8">
           <text>"ET1 Vetting"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1m76a0d">
+          <text>"Vetting"</text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_1x6roa1">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1td2bt7">
           <text>5</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1m76a0d">
-          <text></text>
-        </outputEntry>
       </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
-      <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-wa-wacasetype">
+      <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-et-vetting">
         <dc:Bounds height="80" width="180" x="150" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
