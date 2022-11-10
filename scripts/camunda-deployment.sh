@@ -6,12 +6,11 @@
 ##
 ## deploys bpmn/dmn to camunda.
 
-BASEDIR=$(dirname "$0")
-SERVICE_TOKEN=$1
-PRODUCT="et"
-TENANT_ID="et"
+SERVICE_TOKEN="$(sh ./scripts/idam-service-token.sh "wa_camunda_pipeline_upload")"
+PRODUCT="employment"
+TENANT_ID="employment"
 
-for file in $BASEDIR/src/main/resources/*.bpmn $BASEDIR/src/main/resources/*.dmn; do
+for file in ./src/main/resources/*.bpmn ./src/main/resources/*.dmn; do
   if [ -f "$file" ]; then
     curl --silent --show-error ${CAMUNDA_URL}/deployment/create \
       -H 'Content-Type: multipart/form-data' \
