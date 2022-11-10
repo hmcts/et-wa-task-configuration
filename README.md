@@ -16,6 +16,10 @@ run the following command:
 ```bash
   ./scripts/camunda-deployment.sh
 ```
+
+Important: The DMNs file name must match the pattern of wa-task-{initiation/cancellation/configuration}-{juridisctionId}-{caseType} 
+Also note that the tasks can only be started when both the initiation and cancellation DMNs are imported.
+
 When they are successfully imported you should be able to view them in the Camunda Cockpit
 via http://localhost:8999/app/cockpit/default/#/dashboard
 
