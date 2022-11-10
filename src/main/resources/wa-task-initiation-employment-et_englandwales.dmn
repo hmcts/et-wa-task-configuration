@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
+  <decision id="wa-task-initiation-employment-et_englandwales" name="Task initiation DMN">
+    <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
+      <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0gxli97" label="Post event state" biodi:width="268" camunda:inputVariable="postEventState">
+        <inputExpression id="LiteralExpression_0dijl5x" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" />
+      <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
+      <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" />
+      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
+      <rule id="DecisionRule_1fenvxm">
+        <inputEntry id="UnaryTests_09nq8bu">
+          <text>"INITIATE_CASE_DRAFT"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aldx9i">
+          <text>"AWAITING_SUBMISSION_TO_HMCTS"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tbxmk0">
+          <text>"draftCaseCreated"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02t95m8">
+          <text>"Draft Case Created"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x6roa1">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1td2bt7">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m76a0d">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oyxjkv">
+        <inputEntry id="UnaryTests_1k38r8l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jhh3tm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rixhns">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d7489b">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10ml1ca">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j5thye">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wwz0au">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
+      <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_englandwales">
+        <dc:Bounds height="80" width="180" x="150" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
