@@ -5,7 +5,7 @@ name: et-wa-task-configuration
 home: https://github.com/hmcts/et-wa-task-configuration
 version: 0.0.4
 maintainers:
-  - name: HMCTS WA team
+  - name: HMCTS ET team
 dependencies:
   - name: java
     version: 3.7.0
