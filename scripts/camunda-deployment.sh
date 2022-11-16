@@ -8,7 +8,7 @@
 
 SERVICE_TOKEN="$(sh ./scripts/idam-service-token.sh "wa_camunda_pipeline_upload")"
 PRODUCT="et"
-TENANT_ID="EMPLOYMENT"
+TENANT_ID="employment"
 
 for file in ./scripts/local/*.bpmn ./src/main/resources/*.dmn; do
   if [ -f "$file" ]; then
