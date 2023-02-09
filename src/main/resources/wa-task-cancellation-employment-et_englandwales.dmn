@@ -48,7 +48,7 @@
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
-      <dmndi:DMNShape dmnElementRef="wa-task-cancellation-ia-asylum">
+      <dmndi:DMNShape dmnElementRef="wa-task-cancellation-employment-et_englandwales">
         <dc:Bounds height="80" width="180" x="160" y="100" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
