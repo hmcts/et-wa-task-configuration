@@ -7,6 +7,18 @@ public enum DmnDecisionTable {
     WA_TASK_INITIATION_ET_VETTING(
         "wa-task-initiation-et-vetting",
         "wa-task-initiation-et-vetting.dmn"
+    ),
+    WA_TASK_CONFIGURATION_ET_EW(
+        "wa-task-configuration-employment-et_englandwales",
+        "wa-task-configuration-employment-et_englandwales.dmn"
+    ),
+    WA_TASK_INITIATION_ET_EW(
+        "wa-task-initiation-employment-et_englandwales",
+        "wa-task-initiation-employment-et_englandwales.dmn"
+    ),
+    WA_TASK_PERMISSIONS_ET_EW(
+        "wa-task-permissions-employment-et_englandwales",
+        "wa-task-permissions-employment-et_englandwales.dmn"
     );
 
     @JsonValue

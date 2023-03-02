@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions
-    xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
-    xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
-    xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-    xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0"
-    xmlns:camunda="http://camunda.org/schema/1.0/dmn"
-    id="wa-configuration-definition"
-    name="DRD"
-    namespace="http://camunda.org/schema/1.0/dmn"
-    exporter="Camunda Modeler"
-    exporterVersion="5.3.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="Task configuration DMN">
-    <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
+    <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
           <text></text>
@@ -29,10 +19,14 @@
           </text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="307" />
-      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="2175" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="197" />
+      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="966" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
+        <description>
+        1v1 scenario - Concatenates Claimant's forename and surname to create the case name displayed on task lists
+        2v1 scenario - Concatenates both Claimant's forename and surname to create the case name displayed on task lists
+        </description>
         <inputEntry id="UnaryTests_11xjbt2">
           <text></text>
         </inputEntry>
@@ -43,58 +37,36 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>caseData.appellantGivenNames + " " + caseData.appellantFamilyName</text>
+          <text>
+          if (caseData.applicant2 != null)
+          then caseData.applicant1.partyName + "&amp;amp;" + caseData.applicant2.partyName
+          else caseData.applicant1.partyName
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0oagl97">
-        <inputEntry id="UnaryTests_0mkzt2r">
+      <rule id="DecisionRule_01qimdq">
+        <description>Sets the case category that is displayed in the task list UI</description>
+        <inputEntry id="UnaryTests_0iru7nh">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0lk3o8j">
+        <inputEntry id="UnaryTests_0m4bkp8">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0selern">
-          <text>"appealType"</text>
+        <outputEntry id="LiteralExpression_0kihus3">
+          <text>"caseManagementCategory"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0t707ev">
-          <text>
-          if caseData.appealType = "refusalOfHumanRights" then "Human rights"
-          else if caseData.appealType = "refusalOfEu" then "EEA"
-          else if caseData.appealType = "deprivation" then "DoC"
-          else if caseData.appealType = "protection" then "Protection"
-          else if caseData.appealType = "revocationOfProtection" then "Revocation"
-          else ""
-          </text>
+        <outputEntry id="LiteralExpression_18w70uv">
+          <text>"Employment"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1v64bbw">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0r3u9cf">
-        <inputEntry id="UnaryTests_1bqxdqr">
+        <outputEntry id="LiteralExpression_1nzr8nj">
           <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0351ibb">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0etwrk3">
-          <text>"region"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_05korws">
-          <text>
-          if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null)
-          then caseData.caseManagementLocation.region
-          else "1"
-          </text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0u5nl8j">
-          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_06fd9qz">
+        <description>Sets the location ID on a task to allow filtering in the UI - includes default value if none found on case</description>
         <inputEntry id="UnaryTests_0slfog9">
           <text></text>
         </inputEntry>
@@ -116,6 +88,9 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1oirne1">
+        <description>
+        Short name for the location defined in the rules above
+        </description>
         <inputEntry id="UnaryTests_04xtpdu">
           <text></text>
         </inputEntry>
@@ -127,233 +102,602 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0xp4dc7">
           <text>
-          if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null and caseData.staffLocation != null)
+          if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null and
+          caseData.staffLocation != null)
           then caseData.staffLocation
-          else "Taylor House"
+          else ""
           </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19ps3fq">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_03afipt">
-        <inputEntry id="UnaryTests_0aqybrx">
-          <text>-</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_08w4pvq">
+      <rule id="DecisionRule_0mnaaav">
+        <description>Name of the type of work - this is based on the filter. All Judgment tasks will be decision making work.</description>
+        <inputEntry id="UnaryTests_1dq6c8y">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_04r7w97">
-          <text>"caseManagementCategory"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_099dwbs">
+        <inputEntry id="UnaryTests_0rams4n">
           <text>
-          if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.value.code = "refusalOfHumanRights") then "Human rights"
-          else if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.value.code = "refusalOfEu") then "EEA"
-          else if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.value.code = "deprivation") then "DoC"
-          else if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.value.code = "protection") then "Protection"
-          else if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.value.code = "revocationOfProtection") then "Revocation"
-          else if caseData.appealType = "refusalOfHumanRights" then "Human rights"
-          else if caseData.appealType = "refusalOfEu" then "EEA"
-          else if caseData.appealType = "deprivation" then "DoC"
-          else if caseData.appealType = "protection" then "Protection"
-          else if caseData.appealType = "revocationOfProtection" then "Revocation"
-          else ""
+          "draftCaseCreated",
+          "ET1Vetting",
+          "ET1ReferralLegalOps",
+          "ET1Notification",
+          "ListServeClaim",
+          "ET3Processing",
+          "ET3ReferralLegalOps",
+          "ET3Notification",
+          "InitialConsiderationDirections"
           </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cosxhn">
+          <text>"workType"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1xff2m8">
-          <text>true</text>
+        <outputEntry id="LiteralExpression_0zir1k6">
+          <text>"routine_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zejjhx">
+          <text></text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0de2xyi">
-        <inputEntry id="UnaryTests_1ktnxbq">
+      <rule id="DecisionRule_0mvywdi">
+        <description></description>
+        <inputEntry id="UnaryTests_1ig1gni">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1n5nomi">
+        <inputEntry id="UnaryTests_00rjbux">
+          <text>
+          "ET1ReferralJudiciary",
+          "ET3ReferralJudiciary",
+          "Rule21Referral",
+          "InitialConsideration",
+          "DraftAndSignJudgment",
+          "withdrawalReferralJudiciary",
+          "applicationReferralJudiciary"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fxjivg">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y6rl9q">
+          <text>"decision_making_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0491v2t">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j8z2ig">
+        <inputEntry id="UnaryTests_0pjj3hc">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0dc40sk">
+        <inputEntry id="UnaryTests_1fttakc">
+          <text>
+          "PostHearingPromulgation",
+          "JudgmentPromulgation"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vbbzn1">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ehfogy">
+          <text>"hearing_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0paqt6u">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14dxje0">
+        <inputEntry id="UnaryTests_0agofol">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x6ynei">
+          <text>
+          "AmendPartyDetails",
+          "WithdrawAllOrPartOfCase"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wtjvtl">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14pzyve">
+          <text>"Amendments"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rdtjet">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_068i294">
+        <inputEntry id="UnaryTests_0zokb3x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hszd50">
+          <text>
+          "ApplicationSubmission",
+          "ApplicationReferralLegalOps"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zn5l70">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09utoc1">
+          <text>"Applications"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0j0h6u3">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xhxj7y">
+        <inputEntry id="UnaryTests_1i58hah">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mqcb20">
+          <text>
+          "reviewSpecificAccessRequestJudiciary",
+          "reviewSpecificAccessRequestLegalOps",
+          "reviewSpecificAccessRequestAdmin",
+          "reviewSpecificAccessRequestCTSC"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wblnqm">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wi25j5">
+          <text>"access_requests"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19v1c22">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lcd6br">
+        <inputEntry id="UnaryTests_0kf7u1n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jg7vpi">
+          <text>
+          "draftCaseCreated",
+          "reviewSpecificAccessRequestJudiciary",
+          "ET1ReferralJudiciary",
+          "ET3ReferralJudiciary",
+          "InitialConsideration",
+          "DraftAndSignJudgment",
+          "withdrawalReferralJudiciary",
+          "applicationReferralJudiciary"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lnmg1j">
+          <text>"role_Category"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jpxayc">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17me4lg">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e4h101">
+        <inputEntry id="UnaryTests_1qmp7rl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vmsbqm">
+          <text>
+          "reviewSpecificAccessRequestLegalOps",
+          "Rule21Referral",
+          "ET1ReferralLegalOps",
+          "ET3ReferralLegalOps",
+          "ApplicationReferralLegalOps"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uxpxfb">
+          <text>"role_Category"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xeh5x4">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17yr1mw">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0q41xil">
+        <inputEntry id="UnaryTests_0nqsca3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1faq2jo">
+          <text>
+          "reviewSpecificAccessRequestAdmin",
+          "ET1Vetting",
+          "ET1Notification",
+          "ListServeClaim",
+          "ET3Processing",
+          "ET3Notification",
+          "InitialConsiderationDirections",
+          "PostHearingPromulgation",
+          "JudgmentPromulgation",
+          "ApplicationSubmission",
+          "AmendPartyDetails",
+          "WithdrawAllOrPartOfCase"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_158s3ny">
+          <text>"role_Category"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17hp1ca">
+          <text>"ADMINISTRATOR"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pxnir8">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bykddi">
+        <inputEntry id="UnaryTests_0hhlrb9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rar7nm">
+          <text>"reviewSpecificAccessRequestCTSC"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yyjq7r">
+          <text>"role_Category"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ynq9z6">
+          <text>"CTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_029cwaw">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0abku11">
+        <description>A marked up description of what the user should do next on the case to complete this task. This populates the Task Tab on the case to allow a user to link straight to the required action. This will be a URL.</description>
+        <inputEntry id="UnaryTests_0xt95i9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_136m8g2">
+          <text>
+          "draftCaseCreated",
+          "ET1ReferralJudiciary",
+          "ET1ReferralLegalOps",
+          "ET3ReferralJudiciary",
+          "ET3ReferralLegalOps",
+          "withdrawalReferralJudiciary",
+          "applicationReferralJudiciary",
+          "ApplicationReferralLegalOps"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uxjjxf">
           <text>"description"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1wx4v4p">
+        <outputEntry id="LiteralExpression_02zdiu5">
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/referrals)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s7te75">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gl883a">
+        <inputEntry id="UnaryTests_0255mfa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wga4ln">
+          <text>"ET1Vetting"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lttwzc">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h0x8z4">
+          <text>"[Review ET1 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1swlcw1">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02x30bh">
+        <description>RED</description>
+        <inputEntry id="UnaryTests_0il3541">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o80kg9">
+          <text>"ET1Notification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tih9p8">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14eiv65">
+          <text>"[Issue relevant ET1 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nwha68">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0las4xs">
+        <inputEntry id="UnaryTests_11zzeh6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gstj6a">
+          <text>"Rule21Referral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kitfsk">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0492sao">
+          <text>"[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_059enb4">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12bi1xb">
+        <inputEntry id="UnaryTests_1fcfdpc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13yq217">
+          <text>"ListServeClaim"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j5i0d2">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kgtdlv">
+          <text>"[list hearing if required and then upload document for serving](cases/case -details/${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pgzvgx">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12t229f">
+        <inputEntry id="UnaryTests_0mictbe">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o8ubew">
+          <text>"ET3Processing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xz2ew5">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gpq6ty">
+          <text>"[Review ET3 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pc3b2q">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nzfj6h">
+        <description>RED</description>
+        <inputEntry id="UnaryTests_1j9285m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fiqg3g">
+          <text>"ET3Notification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ky7l6o">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06wj7qi">
+          <text>"[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1crtkf8">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ie2zm4">
+        <inputEntry id="UnaryTests_0mrd6md">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1upl2e0">
+          <text>"InitialConsideration"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uttcm7">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08gj3o9">
+          <text>"[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1referrals)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yh9meg">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fwldsf">
+        <inputEntry id="UnaryTests_0kawtsa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xkbkba">
+          <text>"InitialConsiderationDirections"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05oxzex">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rz80bi">
+          <text>"[Review Initial consideration, update case and then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r68eci">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hplv47">
+        <inputEntry id="UnaryTests_0cjyelf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ootl4e">
+          <text>"PostHearingPromulgation"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o7xct1">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04xihwk">
+          <text>"[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17bw4fs">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00jc61t">
+        <inputEntry id="UnaryTests_0lsju6l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_084mxl9">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cakil9">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0trcq8d">
+          <text>"[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0celo90">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_136d3sz">
+        <inputEntry id="UnaryTests_1veneqq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mc2ryf">
+          <text>"JudgmentPromulgation"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15hl68v">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04s7gmq">
+          <text>"[Review Judgment Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13no40g">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hx0oqp">
+        <inputEntry id="UnaryTests_1o7293h">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_102pi1k">
+          <text>"AmendPartyDetails"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0j05fcd">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k9sgy7">
+          <text>"[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)[, as instructed]"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hnp98x">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kc6n4b">
+        <inputEntry id="UnaryTests_0820zvv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yw8dzs">
+          <text>"WithdrawAllOrPartOfCase"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00gnug1">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16xi0q8">
+          <text>"[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0oya7dl">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b3vrdt">
+        <inputEntry id="UnaryTests_1ke6qll">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_135zds6">
+          <text>"ApplicationSubmission"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uuoa56">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0do9vcl">
+          <text>"[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bf0kza">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12zdyry">
+        <inputEntry id="UnaryTests_00oc2a8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q0wlk5">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jw7ylv">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_014gurf">
+          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestJudiciary)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_153t7so">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_058gz9i">
+        <inputEntry id="UnaryTests_1c9pzpf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12cxhjy">
+          <text>"reviewSpecificAccessRequestAdmin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0al5y3y">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ddpuzn">
+          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestAdmin)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12ffhym">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08ey5hm">
+        <inputEntry id="UnaryTests_0daa4ll">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14wwr9j">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f106so">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09hjfxu">
+          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestLegalOps)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12qutk4">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w6su60">
+        <inputEntry id="UnaryTests_1makbgw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dme2kr">
+          <text>"reviewSpecificAccessRequestCTSC"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1sey0yr">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kkslyj">
+          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestCTSC)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yvxhmo">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r3u9cf">
+        <inputEntry id="UnaryTests_1bqxdqr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0351ibb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0etwrk3">
+          <text>"region"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05korws">
           <text>
-          if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "processApplication" or taskType != null and taskType = "processApplication")
-          then "[Decide an application](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewTheAppeal" or taskType != null and taskType = "reviewTheAppeal")
-          then "[Request respondent evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestRespondentEvidence)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "decideOnTimeExtension" or taskType != null and taskType ="decideOnTimeExtension")
-          then "[Change the direction due date](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/changeDirectionDueDate)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewRespondentEvidence" or taskType != null and taskType ="reviewRespondentEvidence")
-          then
-          "[Request case building](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestCaseBuilding)&lt;br /&gt;[Request reasons for appeal](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestReasonsForAppeal)&lt;br /&gt;[Send non-standard direction](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/sendDirection)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAppealSkeletonArgument" or taskType != null and taskType ="reviewAppealSkeletonArgument")
-          then "[Request respondent review](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestRespondentReview)&lt;br /&gt;[Request case edit](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestCaseEdit)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewReasonsForAppeal" or taskType != null and taskType ="reviewReasonsForAppeal")
-          then "[Request respondent review](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestRespondentReview)&lt;br /&gt;[Send direction with questions](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/sendDirectionWithQuestions)&lt;br /&gt;[Request CMA requirements](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestCmaRequirements)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewClarifyingQuestionsAnswers" or taskType != null and taskType ="reviewClarifyingQuestionsAnswers")
-          then "[Request respondent review](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestRespondentReview)&lt;br /&gt;[Send direction with questions](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/sendDirectionWithQuestions)&lt;br /&gt;[Request CMA requirements](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestCmaRequirements)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewCmaRequirements" or taskType != null and taskType = "reviewCmaRequirements")
-          then "[Review CMA Requirements](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/reviewCmaRequirements)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "attendCma" or taskType != null and taskType = "attendCma")
-          then "[Update case details after CMA](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/updateDetailsAfterCma)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewRespondentResponse" or taskType != null and taskType = "reviewRespondentResponse")
-          then "[Review Home Office response](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestResponseReview)&lt;br /&gt;[Amend appeal response](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestResponseAmend)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "createCaseSummary" or taskType != null and taskType = "createCaseSummary")
-          then "[Create case summary](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/createCaseSummary)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "createHearingBundle" or taskType != null and taskType = "createHearingBundle")
-          then "[Generate the hearing bundle](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/generateHearingBundle)&lt;br /&gt;[Customise the hearing bundle](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/customiseHearingBundle)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "startDecisionsAndReasonsDocument" or taskType != null and taskType ="startDecisionsAndReasonsDocument")
-          then "[Start decision and reasons document](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decisionAndReasonsStarted/decisionAndReasonsStartedcaseIntroduction)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewHearingRequirements" or taskType != null and taskType = "reviewHearingRequirements")
-          then "[Review hearing requirements](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/reviewHearingRequirements)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAdditionalEvidence" or taskType != null and taskType ="reviewAdditionalEvidence")
-          then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAdditionalHomeOfficeEvidence" or taskType != null and taskType ="reviewAdditionalHomeOfficeEvidence")
-          then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "arrangeOfflinePayment" or taskType != null and taskType ="arrangeOfflinePayment")
-          then "[Mark the appeal as paid](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markAppealPaid)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "markCaseAsPaid" or taskType != null and taskType ="markCaseAsPaid")
-          then "[Mark the appeal as paid](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markAppealPaid)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "addListingDate" or taskType != null and taskType ="addListingDate")
-          then "[List the case](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/listCase)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "allocateHearingJudge" or taskType != null and taskType ="allocateHearingJudge")
-          then "[Allocate judge](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/recordAllocatedJudge)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "uploadHearingRecording" or taskType != null and taskType = "uploadHearingRecording")
-          then "[Upload the hearing recording](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/uploadHearingRecording)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "generateDraftDecisionAndReasons" or taskType != null and taskType = "generateDraftDecisionAndReasons")
-          then "[Generate the draft decisions and reasons document](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/generateDecisionAndReasons)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumHomeOfficeEvidence" or taskType != null and taskType = "reviewAddendumHomeOfficeEvidence")
-          then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumAppellantEvidence" or taskType != null and taskType = "reviewAddendumAppellantEvidence")
-          then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumEvidence" or taskType != null and taskType = "reviewAddendumEvidence")
-          then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
-
-          else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewSpecificAccessRequestLegalOps" and taskAttributes.taskId != null)
-          then taskAttributes.taskId
-
+          if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null)
+          then caseData.caseManagementLocation.region
           else ""
           </text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1tgrwyy">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_160t0r9">
-        <inputEntry id="UnaryTests_0ex9m7x">
-          <text>-</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_06vutyf">
+        <outputEntry id="LiteralExpression_0u5nl8j">
           <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1h2h14r">
-          <text>"priorityDate"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0nk8jbe">
-          <text>
-          if (caseData != null and caseData.nextHearingDate !=null)
-          then caseData.nextHearingDate
-          else if (taskAttributes != null and taskAttributes.dueDate !=null)
-          then taskAttributes.dueDate
-          else if (taskAttributes != null and taskAttributes.dueDateTime !=null)
-          then taskAttributes.dueDateTime
-          else ""
-          </text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0rkbjrn">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1fl1vhb">
-        <inputEntry id="UnaryTests_06h12s2">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_09acvua">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1w99mbd">
-          <text>"minorPriority"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0iyo4pw">
-          <text>500</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_05pid1p">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1aibsuh">
-        <inputEntry id="UnaryTests_1mdluu0">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_05nmdna">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1qrn2pq">
-          <text>"majorPriority"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0b5ts53">
-          <text>if (caseData.urgent != null and caseData.urgent = "Yes") then 1000 else 5000</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0r59qwr">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1otvcey">
-        <inputEntry id="UnaryTests_0r4yrob">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ne7h4o">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_04rzhpv">
-          <text>"nextHearingId"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0dbj542">
-          <text>if caseData.nextHearingId != null then caseData.nextHearingId else ""</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1kp3g7l">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0k5a5fq">
-        <inputEntry id="UnaryTests_1fypq3p">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_14uq2vt">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1jzoyjj">
-          <text>"nextHearingDate"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1ycw69t">
-          <text>if caseData.nextHearingDate != null then caseData.nextHearingDate else ""</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1oyay8a">
-          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
