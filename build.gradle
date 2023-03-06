@@ -205,7 +205,7 @@ dependencyManagement {
     dependency group: 'org.camunda.connect', name: 'camunda-connect-connectors-all', version: '1.5.2'
     dependency group: 'org.apiguardian', name: 'apiguardian-api', version: '1.1.2'
 
-    dependency group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.0-rc1'
+    dependency group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
 
     //CVE-2021-28170
     dependency group: 'org.glassfish', name: 'jakarta.el', version: '4.0.1'
@@ -233,7 +233,6 @@ def versions = [
   pitest          : '1.7.4',
   sonarPitest     : '0.5',
   tomcat          : '9.0.64'
-
 ]
 
 ext.libraries = [
@@ -295,8 +294,6 @@ dependencies {
   functionalTestImplementation sourceSets.main.runtimeClasspath
 
   smokeTestImplementation sourceSets.main.runtimeClasspath
-
-
 }
 
 mainClassName = 'uk.gov.hmcts.et.taskconfiguration.Application'
