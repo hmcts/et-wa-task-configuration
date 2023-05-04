@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
-  <decision id="wa-task-permissions-employment-et_englandwales" name="Permissions DMN">
+  <decision id="wa-task-permissions-employment-et_englandwales" name="Task Permissions DMN">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_12crj6e" label="Task Type" biodi:width="299" camunda:inputVariable="taskType">
         <inputExpression id="LiteralExpression_11cu08d" typeRef="string" expressionLanguage="feel">
@@ -16,7 +16,7 @@
           <text></text>
         </inputExpression>
       </input>
-      <output id="OutputClause_1q156ce" label="Case Access Category" name="caseAccessCategory" typeRef="string" biodi:width="150" />
+      <output id="OutputClause_1q156ce" label="Case Access Category" name="caseAccessCategory" typeRef="string" biodi:width="208" />
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="208" />
       <output id="OutputClause_1mzxe7i" label="Value" name="value" typeRef="string" biodi:width="249" />
       <output id="OutputClause_05whhwf" label="RoleCategory" name="roleCategory" typeRef="string" biodi:width="168" />
@@ -90,6 +90,7 @@
         <description>Leadership Judge Permissions</description>
         <inputEntry id="UnaryTests_1m23iq2">
           <text>
+          "draftCaseCreated",
           "ET1ReferralJudiciary",
           "ET3ReferralJudiciary",
           "Rule21Referral",
@@ -128,6 +129,7 @@
         <description>Judge Permissions</description>
         <inputEntry id="UnaryTests_0nnb9wq">
           <text>
+          "draftCaseCreated",
           "ET1ReferralJudiciary",
           "ET3ReferralJudiciary",
           "Rule21Referral",
@@ -166,6 +168,7 @@
         <description>Case Role provides minimum access</description>
         <inputEntry id="UnaryTests_1q4opzl">
           <text>
+          "draftCaseCreated",
           "ET1ReferralJudiciary",
           "ET3ReferralJudiciary",
           "Rule21Referral",
@@ -204,6 +207,7 @@
         <description>Access Request for Legal Caseworker</description>
         <inputEntry id="UnaryTests_13ukkz6">
           <text>
+          "draftCaseCreated",
           "reviewSpecificAccessRequestLegalOps"
           </text>
         </inputEntry>
@@ -235,6 +239,7 @@
       <rule id="DecisionRule_0w7thdb">
         <inputEntry id="UnaryTests_1hlftmk">
           <text>
+          "draftCaseCreated",
           "Rule21Referral",
           "ET1ReferralLegalOps",
           "ET3ReferralLegalOps",
@@ -270,6 +275,7 @@
         <description>Case Role provides minimum access</description>
         <inputEntry id="UnaryTests_0m81xlb">
           <text>
+          "draftCaseCreated",
           "Rule21Referral",
           "ET1ReferralLegalOps",
           "ET3ReferralLegalOps",
@@ -305,6 +311,7 @@
         <description>Access Request for Hearing Centre Team Leader</description>
         <inputEntry id="UnaryTests_0tzrow3">
           <text>
+          "draftCaseCreated",
           "reviewSpecificAccessRequestAdmin"
           </text>
         </inputEntry>
@@ -337,6 +344,7 @@
         <description>Access Request for Hearing Centre Team Leader</description>
         <inputEntry id="UnaryTests_1po1s18">
           <text>
+          "draftCaseCreated",
           "ET1Vetting",
           "ET1Notification",
           "ListServeClaim",
@@ -379,6 +387,7 @@
         <description>Case Role provides minimum access</description>
         <inputEntry id="UnaryTests_0vjjcus">
           <text>
+          "draftCaseCreated",
           "ET1Vetting",
           "ET1Notification",
           "ListServeClaim",
@@ -421,6 +430,7 @@
         <description>Access Request for CTSC</description>
         <inputEntry id="UnaryTests_1099gbv">
           <text>
+          "draftCaseCreated",
           "reviewSpecificAccessRequestCTSC"
           </text>
         </inputEntry>
@@ -453,6 +463,7 @@
         <description>Access Request for CTSC</description>
         <inputEntry id="UnaryTests_0x14lhj">
           <text>
+          "draftCaseCreated",
           "ET1Vetting",
           "ET1Notification"
           </text>
@@ -486,6 +497,7 @@
         <description>Access Request for CTSC</description>
         <inputEntry id="UnaryTests_1ghu1eu">
           <text>
+          "draftCaseCreated",
           "ET1Vetting",
           "ET1Notification"
           </text>
