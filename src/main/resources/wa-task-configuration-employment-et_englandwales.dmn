@@ -24,8 +24,7 @@
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
         <description>
-        1v1 scenario - Concatenates Claimant's forename and surname to create the case name displayed on task lists
-        2v1 scenario - Concatenates both Claimant's forename and surname to create the case name displayed on task lists
+        1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists
         </description>
         <inputEntry id="UnaryTests_11xjbt2">
           <text></text>
@@ -38,9 +37,10 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
           <text>
-          if (caseData.applicant2 != null)
-          then caseData.applicant1.partyName + "&amp;amp;" + caseData.applicant2.partyName
-          else caseData.applicant1.partyName
+          if (Array.isArray(caseData.respondentCollection) and caseData.respondentCollection.length)
+          then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
+          + " v " + caseData.respondentCollection.get(0).respondent_name
+          else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
           </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
@@ -63,53 +63,6 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1nzr8nj">
           <text></text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_06fd9qz">
-        <description>Sets the location ID on a task to allow filtering in the UI - includes default value if none found on case</description>
-        <inputEntry id="UnaryTests_0slfog9">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1mdog2b">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0kun6mv">
-          <text>"location"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0jj1wzo">
-          <text>
-          if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null)
-          then caseData.caseManagementLocation.baseLocation
-          else "765324"
-          </text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0hgkay6">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1oirne1">
-        <description>
-        Short name for the location defined in the rules above
-        </description>
-        <inputEntry id="UnaryTests_04xtpdu">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0orcqk7">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1lvlmxm">
-          <text>"locationName"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0xp4dc7">
-          <text>
-          if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null and
-          caseData.staffLocation != null)
-          then caseData.staffLocation
-          else ""
-          </text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_19ps3fq">
-          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0mnaaav">
@@ -149,7 +102,6 @@
           <text>
           "ET1ReferralJudiciary",
           "ET3ReferralJudiciary",
-          "Rule21Referral",
           "InitialConsideration",
           "DraftAndSignJudgment",
           "withdrawalReferralJudiciary",
@@ -676,27 +628,6 @@
           <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestCTSC)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yvxhmo">
-          <text></text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0r3u9cf">
-        <inputEntry id="UnaryTests_1bqxdqr">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0351ibb">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0etwrk3">
-          <text>"region"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_05korws">
-          <text>
-          if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null)
-          then caseData.caseManagementLocation.region
-          else ""
-          </text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0u5nl8j">
           <text></text>
         </outputEntry>
       </rule>

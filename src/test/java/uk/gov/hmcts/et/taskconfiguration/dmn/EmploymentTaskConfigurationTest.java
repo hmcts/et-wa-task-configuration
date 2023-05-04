@@ -30,17 +30,15 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     private static Map<String, Object> getDefaultCaseData() {
         return Map.of(
-            "applicant1", Map.of(
-                "partyName ", "applicant1"
+            "claimantIndType", Map.of(
+                "claimant_first_names ", "George",
+                "claimant_last_name ", "Jetson"
             ),
-            "applicant2", Map.of(
-                "partyName ", "applicant2"
-            ),
-            "caseManagementLocation", Map.of(
-                "region", "some region",
-                "baseLocation", "some location code"
-            ),
-            "staffLocation", "some location name"
+            "respondentCollection", List.of(
+                Map.of(
+                "respondent_name", "Cosmo Spacely"
+                )
+            )
         );
     }
 
@@ -102,7 +100,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ET1ReferralJudiciary", decisionMakingWork),
             Arguments.of("ET3ReferralJudiciary", decisionMakingWork),
-            Arguments.of("Rule21Referral", decisionMakingWork),
             Arguments.of("InitialConsideration", decisionMakingWork),
             Arguments.of("DraftAndSignJudgment", decisionMakingWork),
             Arguments.of("withdrawalReferralJudiciary", decisionMakingWork),
@@ -343,6 +340,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(34));
+        assertThat(logic.getRules().size(), is(31));
     }
 }
