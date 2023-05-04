@@ -134,7 +134,19 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 "draftCaseCreated",
                 List.of(
                     taskSupervisor,
-                    approverJudiciary
+                    approverJudiciary,
+                    leadershipJudge,
+                    judge,
+                    hearingJudge,
+                    approverLegalOps,
+                    seniorTribunalCaseworker,
+                    legalCaseworker,
+                    approverAdmin,
+                    hearingCentreTeamLeader,
+                    adminCaseworker,
+                    approverCTSC,
+                    leaderCTSC,
+                    ctsc
                 )
             ),
             Arguments.of(
