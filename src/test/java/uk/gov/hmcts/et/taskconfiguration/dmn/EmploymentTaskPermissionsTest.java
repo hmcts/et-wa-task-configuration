@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_PERMISSIONS_ET_EW;
@@ -18,15 +17,12 @@ import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableInputImpl;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableOutputImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
@@ -134,19 +130,7 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 "draftCaseCreated",
                 List.of(
                     taskSupervisor,
-                    approverJudiciary,
-                    leadershipJudge,
-                    judge,
-                    hearingJudge,
-                    approverLegalOps,
-                    seniorTribunalCaseworker,
-                    legalCaseworker,
-                    approverAdmin,
-                    hearingCentreTeamLeader,
-                    adminCaseworker,
-                    approverCTSC,
-                    leaderCTSC,
-                    ctsc
+                    judge
                 )
             ),
             Arguments.of(
