@@ -30,92 +30,118 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
     private static final Map<String, Serializable> taskSupervisor = Map.of(
         "autoAssignable", false,
         "name", "task-supervisor",
-        "value", "Read,Assign,Unassign,Manage,Cancel,Complete"
+        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"
     );
 
     private static final Map<String, Serializable> approverJudiciary = Map.of(
-        "autoAssignable", true,
+        "autoAssignable", false,
         "name", "specific-access-approver-judiciary",
         "roleCategory", "JUDICIAL",
-        "value", "Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn"
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"
+    );
+    private static final Map<String, Serializable> hearingJudge = Map.of(
+        "autoAssignable", true,
+        "name", "hearing-judge",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "JUDICIAL"
     );
     private static final Map<String, Serializable> leadershipJudge = Map.of(
         "autoAssignable", false,
         "name", "leadership-judge",
-        "value", "Read,Execute,Own,Claim,Manage,Unassign,Assign,Complete,Cancel",
+        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "JUDICIAL"
     );
     private static final Map<String, Serializable> judge = Map.of(
         "autoAssignable", false,
         "name", "judge",
-        "value", "Read,Execute,Own,Claim,Manage,Unassign,Assign,Complete,Cancel",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
     );
-    private static final Map<String, Serializable> hearingJudge = Map.of(
-        "autoAssignable", true,
-        "name", "hearing-judge",
-        "value", "Read,Own,Claim,CompleteOwn,CancelOwn",
+    private static final Map<String, Serializable> feePaidJudge = Map.of(
+        "autoAssignable", false,
+        "name", "fee-paid-judge",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
     );
 
     private static final Map<String, Serializable> approverLegalOps = Map.of(
         "autoAssignable", false,
         "name", "specific-access-approver-legal-ops",
-        "value", "Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "LEGAL_OPERATIONS"
+    );
+    private static final Map<String, Serializable> allocatedTribunalCaseworker = Map.of(
+        "autoAssignable", true,
+        "name", "allocated-tribunal-caseworker",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "LEGAL_OPERATIONS"
     );
     private static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
         "autoAssignable", false,
         "name", "senior-tribunal-caseworker",
-        "value", "Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "LEGAL_OPERATIONS"
     );
-    private static final Map<String, Serializable> legalCaseworker = Map.of(
-        "autoAssignable", true,
-        "name", "legal-caseworker",
-        "value", "Read,Own,Claim,Unclaim,CompleteOwn,CancelOwn",
+    private static final Map<String, Serializable> tribunalCaseworker = Map.of(
+        "autoAssignable", false,
+        "name", "tribunal-caseworker",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "LEGAL_OPERATIONS"
     );
 
     private static final Map<String, Serializable> approverAdmin = Map.of(
         "autoAssignable", false,
         "name", "specific-access-approver-admin",
-        "value", "Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn",
-        "roleCategory", "ADMINISTRATOR"
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "ADMIN"
+    );
+    private static final Map<String, Serializable> allocatedAdminCaseworker = Map.of(
+        "autoAssignable", true,
+        "assignmentPriority", 2,
+        "name", "allocated-admin-caseworker",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "ADMIN"
     );
     private static final Map<String, Serializable> hearingCentreTeamLeader = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 10,
+        "autoAssignable", false,
+        "assignmentPriority", 6,
         "name", "hearing-centre-team-leader",
-        "value", "Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn",
-        "roleCategory", "ADMINISTRATOR"
+        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
+        "roleCategory", "ADMIN"
     );
-    private static final Map<String, Serializable> adminCaseworker = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 10,
-        "name", "admin-caseworker",
-        "value", "Read,Own,Claim,Unclaim,CompleteOwn,CancelOwn",
-        "roleCategory", "ADMINISTRATOR"
+    private static final Map<String, Serializable> hearingCentreAdmin = Map.of(
+        "autoAssignable", false,
+        "assignmentPriority", 4,
+        "name", "hearing-centre-admin",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "ADMIN"
     );
 
     private static final Map<String, Serializable> approverCTSC = Map.of(
-        "autoAssignable", false,
+        "autoAssignable", true,
         "name", "specific-access-approver-ctsc",
-        "value", "Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "CTSC"
+    );
+    private static final Map<String, Serializable> allocatedCtscCaseworker = Map.of(
+        "autoAssignable", true,
+        "assignmentPriority", 1,
+        "name", "allocated-ctsc-caseworker",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "CTSC"
     );
     private static final Map<String, Serializable> leaderCTSC = Map.of(
         "autoAssignable", false,
-        "assignmentPriority", 100,
+        "assignmentPriority", 5,
         "name", "ctsc-team-leader",
-        "value", "Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "CTSC"
     );
     private static final Map<String, Serializable> ctsc = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 100,
+        "autoAssignable", false,
+        "assignmentPriority", 3,
         "name", "ctsc",
-        "value", "Read,Own,Claim,Unclaim,CompleteOwn,CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "CTSC"
     );
 
@@ -141,68 +167,43 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "ET1ReferralJudiciary",
+                "ReviewReferralJudiciary",
                 List.of(
                     taskSupervisor,
-                    leadershipJudge,
-                    judge,
-                    hearingJudge
-                )
-            ),
-            Arguments.of(
-                "ET3ReferralJudiciary",
-                List.of(
-                    taskSupervisor,
-                    leadershipJudge,
-                    judge,
-                    hearingJudge
-                )
-            ),
-            Arguments.of(
-                "Rule21Referral",
-                List.of(
-                    taskSupervisor,
-                    leadershipJudge,
-                    judge,
                     hearingJudge,
-                    seniorTribunalCaseworker,
-                    legalCaseworker
+                    leadershipJudge,
+                    judge,
+                    feePaidJudge
                 )
             ),
             Arguments.of(
-                "InitialConsideration",
+                "ReviewReferralResponseJudiciary",
                 List.of(
                     taskSupervisor,
+                    hearingJudge,
                     leadershipJudge,
                     judge,
-                    hearingJudge
+                    feePaidJudge
+                )
+            ),
+            Arguments.of(
+                "CompleteInitialConsideration",
+                List.of(
+                    taskSupervisor,
+                    hearingJudge,
+                    leadershipJudge,
+                    judge,
+                    feePaidJudge
                 )
             ),
             Arguments.of(
                 "DraftAndSignJudgment",
                 List.of(
                     taskSupervisor,
+                    hearingJudge,
                     leadershipJudge,
                     judge,
-                    hearingJudge
-                )
-            ),
-            Arguments.of(
-                "withdrawalReferralJudiciary",
-                List.of(
-                    taskSupervisor,
-                    leadershipJudge,
-                    judge,
-                    hearingJudge
-                )
-            ),
-            Arguments.of(
-                "applicationReferralJudiciary",
-                List.of(
-                    taskSupervisor,
-                    leadershipJudge,
-                    judge,
-                    hearingJudge
+                    feePaidJudge
                 )
             ),
 
@@ -214,27 +215,30 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "ET1ReferralLegalOps",
+                "ReviewReferralLegalOps",
                 List.of(
                     taskSupervisor,
+                    allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
-                    legalCaseworker
+                    tribunalCaseworker
                 )
             ),
             Arguments.of(
-                "ET3ReferralLegalOps",
+                "ReviewReferralResponseLegalOps",
                 List.of(
                     taskSupervisor,
+                    allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
-                    legalCaseworker
+                    tribunalCaseworker
                 )
             ),
             Arguments.of(
-                "ApplicationReferralLegalOps",
+                "ReviewRule21Referral",
                 List.of(
                     taskSupervisor,
+                    allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
-                    legalCaseworker
+                    tribunalCaseworker
                 )
             ),
 
@@ -246,21 +250,49 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "ET1Vetting",
+                "Et1Vetting",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker,
+                    hearingCentreAdmin,
+                    allocatedCtscCaseworker,
                     leaderCTSC,
                     ctsc
                 )
             ),
             Arguments.of(
-                "ET1Notification",
+                "ReviewReferralAdmin",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker,
+                    hearingCentreAdmin,
+                    allocatedCtscCaseworker,
+                    leaderCTSC,
+                    ctsc
+                )
+            ),
+            Arguments.of(
+                "ReviewReferralResponseAdmin",
+                List.of(
+                    taskSupervisor,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin,
+                    allocatedCtscCaseworker,
+                    leaderCTSC,
+                    ctsc
+                )
+            ),
+            Arguments.of(
+                "SendET1Notification",
+                List.of(
+                    taskSupervisor,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin,
+                    allocatedCtscCaseworker,
                     leaderCTSC,
                     ctsc
                 )
@@ -269,72 +301,84 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 "ListServeClaim",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker
+                    hearingCentreAdmin,
+                    allocatedCtscCaseworker,
+                    leaderCTSC,
+                    ctsc
                 )
             ),
             Arguments.of(
                 "ET3Processing",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker
+                    hearingCentreAdmin
                 )
             ),
             Arguments.of(
-                "ET3Notification",
+                "SendET3Notification",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker
+                    hearingCentreAdmin
                 )
             ),
             Arguments.of(
-                "InitialConsiderationDirections",
+                "IssueInitialConsiderationDirections",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker
+                    hearingCentreAdmin
                 )
             ),
             Arguments.of(
-                "PostHearingPromulgation",
+                "IssuePostHearingDirections",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker
+                    hearingCentreAdmin
                 )
             ),
             Arguments.of(
-                "JudgmentPromulgation",
+                "IssueJudgment",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker
-                )
-            ),
-            Arguments.of(
-                "ApplicationSubmission",
-                List.of(
-                    taskSupervisor,
-                    hearingCentreTeamLeader,
-                    adminCaseworker
+                    hearingCentreAdmin
                 )
             ),
             Arguments.of(
                 "AmendPartyDetails",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker
+                    hearingCentreAdmin
                 )
             ),
             Arguments.of(
                 "WithdrawAllOrPartOfCase",
                 List.of(
                     taskSupervisor,
+                    allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
-                    adminCaseworker
+                    hearingCentreAdmin
+                )
+            ),
+            Arguments.of(
+                "ContactTribunalWithAnApplication",
+                List.of(
+                    taskSupervisor,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin
                 )
             ),
 
@@ -387,7 +431,7 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
         assertThat(logic.getOutputs().size(), is(7));
         assertThatOutputContainInOrder(outputColumnIds, logic.getOutputs());
         //Rules
-        assertThat(logic.getRules().size(), is(14));
+        assertThat(logic.getRules().size(), is(18));
     }
 
     private void assertThatInputContainInOrder(List<String> inputColumnIds, List<DmnDecisionTableInputImpl> inputs) {

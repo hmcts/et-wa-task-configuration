@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.io.Serializable;
@@ -19,34 +18,40 @@ import java.util.stream.Stream;
 import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CANCELLATION_ET_EW;
 
-class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_ET_EW;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_CANCELLATION_ET_EW;
     }
 
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
+                "nothing",
                 "INITIATE_CASE_DRAFT",
                 "AWAITING_SUBMISSION_TO_HMCTS",
-                "doesn't matter",
                 Map.of(
-                    "taskId", "draftCaseCreated",
-                    "name", "Draft Case Created",
-                    "workingDaysAllowed", 5
+                    "action", "Cancel"
                 )
             ),
             Arguments.of(
-                "SUBMIT_CASE_DRAFT",
+                "Closed",
+                "disposeCase",
                 "Submitted",
-                "doesn't matter",
                 Map.of(
-                    "taskId", "Et1Vetting",
-                    "name", "Et1 Vetting",
-                    "workingDaysAllowed", 5,
+                    "action", "Cancel",
+                    "processCategories", "Vetting"
+                )
+            ),
+            Arguments.of(
+                "Closed",
+                "disposeCase",
+                "Vetted",
+                Map.of(
+                    "action", "Cancel",
                     "processCategories", "Vetting"
                 )
             )
@@ -55,14 +60,14 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     @ParameterizedTest
     @MethodSource("scenarioProvider")
-    void given_input_should_return_outcome_dmn(String eventId,
-                                               String postEventState,
-                                               String appealType,
+    void given_input_should_return_outcome_dmn(String fromState,
+                                               String event,
+                                               String state,
                                                Map<String, ? extends Serializable> expectedDmnOutcome) {
         VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("eventId", eventId);
-        inputVariables.putValue("postEventState", postEventState);
-        inputVariables.putValue("appealType", appealType);
+        inputVariables.putValue("fromState", fromState);
+        inputVariables.putValue("event", event);
+        inputVariables.putValue("state", state);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -73,6 +78,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(2));
+        assertThat(logic.getRules().size(), is(3));
     }
 }
