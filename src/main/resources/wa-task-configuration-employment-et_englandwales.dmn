@@ -73,14 +73,16 @@
         <inputEntry id="UnaryTests_0rams4n">
           <text>
           "draftCaseCreated",
-          "ET1Vetting",
-          "ET1ReferralLegalOps",
-          "ET1Notification",
+          "Et1Vetting",
+          "ReviewReferralLegalOps",
+          "ReviewReferralAdmin",
+          "SendET1Notification",
           "ListServeClaim",
           "ET3Processing",
-          "ET3ReferralLegalOps",
+          "ReviewReferralResponseLegalOps",
+          "ReviewReferralResponseAdmin",
           "ET3Notification",
-          "InitialConsiderationDirections"
+          "IssueInitialConsiderationDirections"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
@@ -100,12 +102,10 @@
         </inputEntry>
         <inputEntry id="UnaryTests_00rjbux">
           <text>
-          "ET1ReferralJudiciary",
-          "ET3ReferralJudiciary",
-          "InitialConsideration",
-          "DraftAndSignJudgment",
-          "withdrawalReferralJudiciary",
-          "applicationReferralJudiciary"
+          "ReviewReferralJudiciary",
+          "ReviewReferralResponseJudiciary",
+          "CompleteInitialConsideration",
+          "DraftAndSignJudgment"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0fxjivg">
@@ -124,8 +124,8 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1fttakc">
           <text>
-          "PostHearingPromulgation",
-          "JudgmentPromulgation"
+          "IssuePostHearingDirections",
+          "IssueJudgment"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1vbbzn1">
@@ -138,34 +138,15 @@
           <text></text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_14dxje0">
-        <inputEntry id="UnaryTests_0agofol">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0x6ynei">
-          <text>
-          "AmendPartyDetails",
-          "WithdrawAllOrPartOfCase"
-          </text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1wtjvtl">
-          <text>"workType"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_14pzyve">
-          <text>"Amendments"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1rdtjet">
-          <text></text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_068i294">
         <inputEntry id="UnaryTests_0zokb3x">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1hszd50">
           <text>
-          "ApplicationSubmission",
-          "ApplicationReferralLegalOps"
+          "ContactTribunalWithAnApplication",
+          "AmendPartyDetails",
+          "WithdrawAllOrPartOfCase"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zn5l70">
@@ -208,12 +189,10 @@
           <text>
           "draftCaseCreated",
           "reviewSpecificAccessRequestJudiciary",
-          "ET1ReferralJudiciary",
-          "ET3ReferralJudiciary",
-          "InitialConsideration",
-          "DraftAndSignJudgment",
-          "withdrawalReferralJudiciary",
-          "applicationReferralJudiciary"
+          "ReviewReferralJudiciary",
+          "ReviewReferralResponseJudiciary",
+          "CompleteInitialConsideration",
+          "DraftAndSignJudgment"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0lnmg1j">
@@ -233,10 +212,10 @@
         <inputEntry id="UnaryTests_0vmsbqm">
           <text>
           "reviewSpecificAccessRequestLegalOps",
-          "Rule21Referral",
-          "ET1ReferralLegalOps",
+          "ReviewRule21Referral",
+          "ReviewReferralLegalOps",
           "ET3ReferralLegalOps",
-          "ApplicationReferralLegalOps"
+          "ReviewReferralResponseLegalOps"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uxpxfb">
@@ -256,24 +235,26 @@
         <inputEntry id="UnaryTests_1faq2jo">
           <text>
           "reviewSpecificAccessRequestAdmin",
-          "ET1Vetting",
-          "ET1Notification",
+          "Et1Vetting",
+          "SendET1Notification",
           "ListServeClaim",
           "ET3Processing",
-          "ET3Notification",
-          "InitialConsiderationDirections",
-          "PostHearingPromulgation",
-          "JudgmentPromulgation",
-          "ApplicationSubmission",
+          "SendET3Notification",
+          "IssueInitialConsiderationDirections",
+          "IssuePostHearingDirections",
+          "IssueJudgment",
+          "ContactTribunalWithAnApplication",
           "AmendPartyDetails",
-          "WithdrawAllOrPartOfCase"
+          "WithdrawAllOrPartOfCase",
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"role_Category"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17hp1ca">
-          <text>"ADMINISTRATOR"</text>
+          <text>"ADMIN"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pxnir8">
           <text></text>
@@ -284,7 +265,13 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1rar7nm">
-          <text>"reviewSpecificAccessRequestCTSC"</text>
+          <text>
+          "reviewSpecificAccessRequestCTSC",
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin",
+          "SendEt1Notification",
+          "ListServeClaim"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0yyjq7r">
           <text>"role_Category"</text>
@@ -304,22 +291,40 @@
         <inputEntry id="UnaryTests_136m8g2">
           <text>
           "draftCaseCreated",
-          "ET1ReferralJudiciary",
-          "ET1ReferralLegalOps",
-          "ET3ReferralJudiciary",
-          "ET3ReferralLegalOps",
-          "withdrawalReferralJudiciary",
-          "applicationReferralJudiciary",
-          "ApplicationReferralLegalOps"
+          "ReviewReferralJudiciary",
+          "ReviewReferralLegalOps",
+          "ReviewReferralAdmin"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uxjjxf">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_02zdiu5">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/referrals)"</text>
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/createReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0s7te75">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0n0lyo2">
+        <description>A marked up description of what the user should do next on the case to complete this task. This populates the Task Tab on the case to allow a user to link straight to the required action. This will be a URL.</description>
+        <inputEntry id="UnaryTests_1q1ukdj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07rgo5f">
+          <text>
+          "ReviewReferralResponseJudiciary",
+          "ReviewReferralResponseLegalOps",
+          "ReviewReferralResponseAdmin"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c6p65o">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b7smpa">
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/replyToReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nnd54t">
           <text></text>
         </outputEntry>
       </rule>
@@ -328,7 +333,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wga4ln">
-          <text>"ET1Vetting"</text>
+          <text>"Et1Vetting"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1lttwzc">
           <text>"description"</text>
@@ -346,7 +351,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1o80kg9">
-          <text>"ET1Notification"</text>
+          <text>"SendET1Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0tih9p8">
           <text>"description"</text>
@@ -386,7 +391,7 @@
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kgtdlv">
-          <text>"[list hearing if required and then upload document for serving](cases/case -details/${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"</text>
+          <text>"[list hearing if required and then upload document for serving](cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pgzvgx">
           <text></text>
@@ -415,7 +420,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fiqg3g">
-          <text>"ET3Notification"</text>
+          <text>"SendET3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ky7l6o">
           <text>"description"</text>
@@ -432,13 +437,13 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1upl2e0">
-          <text>"InitialConsideration"</text>
+          <text>"CompleteInitialConsideration"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uttcm7">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08gj3o9">
-          <text>"[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1referrals)"</text>
+          <text>"[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yh9meg">
           <text></text>
@@ -449,7 +454,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0xkbkba">
-          <text>"InitialConsiderationDirections"</text>
+          <text>"IssueInitialConsiderationDirections"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_05oxzex">
           <text>"description"</text>
@@ -466,7 +471,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ootl4e">
-          <text>"PostHearingPromulgation"</text>
+          <text>"IssuePostHearingDirections"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1o7xct1">
           <text>"description"</text>
@@ -489,7 +494,7 @@
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0trcq8d">
-          <text>"[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+          <text>"[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
           <text></text>
@@ -500,7 +505,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mc2ryf">
-          <text>"JudgmentPromulgation"</text>
+          <text>"IssueJudgment"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15hl68v">
           <text>"description"</text>
@@ -551,7 +556,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_135zds6">
-          <text>"ApplicationSubmission"</text>
+          <text>"ContactTribunalWithanApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uuoa56">
           <text>"description"</text>

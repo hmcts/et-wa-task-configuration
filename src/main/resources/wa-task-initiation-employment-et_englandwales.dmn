@@ -50,6 +50,29 @@
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1sfku1u">
+        <inputEntry id="UnaryTests_1671vji">
+          <text>"SUBMIT_CASE_DRAFT"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ematrk">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1inzx22">
+          <text>"Et1Vetting"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qwsri9">
+          <text>"Et1 Vetting"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cvrhi0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tmof24">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_186e388">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

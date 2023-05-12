@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions
-    xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
-    xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
-    xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-    xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0"
-    id="wa-cancellation-definition"
-    name="DRD"
-    namespace="http://camunda.org/schema/1.0/dmn"
-    exporter="Camunda Modeler"
-    exporterVersion="5.3.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
   <decision id="wa-task-cancellation-employment-et_englandwales" name="Task cancellation DMN">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
@@ -51,6 +42,52 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0l5o17v">
           <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0623eaq">
+        <inputEntry id="UnaryTests_0pawl5b">
+          <text>"Closed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0puirp2">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nrvqbg">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ucqosp">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uyvgku">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1965v3p">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lsdk2d">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s533mm">
+        <inputEntry id="UnaryTests_0f3jaq5">
+          <text>"Closed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0khfkw3">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1twd6dr">
+          <text>"Vetted"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n18377">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pflf7l">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rm2nky">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uadcpe">
+          <text>"Vetting"</text>
         </outputEntry>
       </rule>
     </decisionTable>

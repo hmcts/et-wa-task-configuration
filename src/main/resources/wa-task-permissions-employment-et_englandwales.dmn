@@ -38,7 +38,7 @@
           <text>"task-supervisor"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gda35a">
-          <text>"Read,Assign,Unassign,Manage,Cancel,Complete"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uxj36c">
           <text></text>
@@ -70,7 +70,7 @@
           <text>"specific-access-approver-judiciary"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ekjswr">
-          <text>"Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tlohef">
           <text>"JUDICIAL"</text>
@@ -82,6 +82,41 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1oc4t5p">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10ym4yi">
+        <description>Case Role for Auto Assignment - Hearing Judge Permissions</description>
+        <inputEntry id="UnaryTests_1q4opzl">
+          <text>
+          "ReviewReferralJudiciary",
+          "ReviewReferralResponseJudiciary",
+          "CompleteInitialConsideration",
+          "DraftAndSignJudgment"
+          </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mwebfi">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h697wd">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17mdjmd">
+          <text>"hearing-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jwzwz9">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15bs3yk">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hx095n">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0stu1aw">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02krt2c">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -89,13 +124,10 @@
         <description>Leadership Judge Permissions</description>
         <inputEntry id="UnaryTests_1m23iq2">
           <text>
-          "ET1ReferralJudiciary",
-          "ET3ReferralJudiciary",
-          "Rule21Referral",
-          "InitialConsideration",
-          "DraftAndSignJudgment",
-          "withdrawalReferralJudiciary",
-          "applicationReferralJudiciary"
+          "ReviewReferralJudiciary",
+          "ReviewReferralResponseJudiciary",
+          "CompleteInitialConsideration",
+          "DraftAndSignJudgment"
           </text>
         </inputEntry>
         <inputEntry id="UnaryTests_1dkwh9q">
@@ -108,7 +140,7 @@
           <text>"leadership-judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0lzkacj">
-          <text>"Read,Execute,Own,Claim,Manage,Unassign,Assign,Complete,Cancel"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ultxtd">
           <text>"JUDICIAL"</text>
@@ -128,13 +160,10 @@
         <inputEntry id="UnaryTests_0nnb9wq">
           <text>
           "draftCaseCreated",
-          "ET1ReferralJudiciary",
-          "ET3ReferralJudiciary",
-          "Rule21Referral",
-          "InitialConsideration",
-          "DraftAndSignJudgment",
-          "withdrawalReferralJudiciary",
-          "applicationReferralJudiciary"
+          "ReviewReferralJudiciary",
+          "ReviewReferralResponseJudiciary",
+          "CompleteInitialConsideration",
+          "DraftAndSignJudgment"
           </text>
         </inputEntry>
         <inputEntry id="UnaryTests_180b4cq">
@@ -147,7 +176,7 @@
           <text>"judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04xmr5g">
-          <text>"Read,Execute,Own,Claim,Manage,Unassign,Assign,Complete,Cancel"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zx2tiv">
           <text>"JUDICIAL"</text>
@@ -162,46 +191,43 @@
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_10ym4yi">
-        <description>Case Role provides minimum access</description>
-        <inputEntry id="UnaryTests_1q4opzl">
+      <rule id="DecisionRule_1aggpr7">
+        <description>Fee-Paid Judge  Permissions</description>
+        <inputEntry id="UnaryTests_0dt9jgy">
           <text>
-          "ET1ReferralJudiciary",
-          "ET3ReferralJudiciary",
-          "Rule21Referral",
-          "InitialConsideration",
-          "DraftAndSignJudgment",
-          "withdrawalReferralJudiciary",
-          "applicationReferralJudiciary"
+          "ReviewReferralJudiciary",
+          "ReviewReferralResponseJudiciary",
+          "CompleteInitialConsideration",
+          "DraftAndSignJudgment"
           </text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1mwebfi">
+        <inputEntry id="UnaryTests_1nkl5kf">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1h697wd">
+        <outputEntry id="LiteralExpression_1rhghee">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_17mdjmd">
-          <text>"hearing-judge"</text>
+        <outputEntry id="LiteralExpression_0kuhbz9">
+          <text>"fee-paid-judge"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0jwzwz9">
-          <text>"Read,Own,Claim,CompleteOwn,CancelOwn"</text>
+        <outputEntry id="LiteralExpression_0xsafx0">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_15bs3yk">
+        <outputEntry id="LiteralExpression_1cn38wo">
           <text>"JUDICIAL"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0hx095n">
+        <outputEntry id="LiteralExpression_1upide3">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0stu1aw">
+        <outputEntry id="LiteralExpression_1k3lw5w">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_02krt2c">
-          <text>true</text>
+        <outputEntry id="LiteralExpression_0bh71eh">
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1tvtlre">
-        <description>Access Request for Legal Caseworker</description>
+        <description>Access Request for Legal Caseworker </description>
         <inputEntry id="UnaryTests_13ukkz6">
           <text>
           "reviewSpecificAccessRequestLegalOps"
@@ -217,7 +243,7 @@
           <text>"specific-access-approver-legal-ops"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_151ry1h">
-          <text>"Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1rwokl1">
           <text>"LEGAL_OPERATIONS"</text>
@@ -232,13 +258,46 @@
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1hfueqc">
+        <description>Case Role for Auto Assignment - Allocated Tribunal Caseworker</description>
+        <inputEntry id="UnaryTests_0oqt7zb">
+          <text>
+          "ReviewReferralLegalOps",
+          "ReviewReferralResponseLegalOps",
+          "ReviewRule21Referral"
+          </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04f9yju">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0twt7q6">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a6vept">
+          <text>"allocated-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10qxteh">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_138qnwi">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00imc6x">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rrndti">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zgifed">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0w7thdb">
         <inputEntry id="UnaryTests_1hlftmk">
           <text>
-          "Rule21Referral",
-          "ET1ReferralLegalOps",
-          "ET3ReferralLegalOps",
-          "ApplicationReferralLegalOps"
+          "ReviewReferralLegalOps",
+          "ReviewReferralResponseLegalOps",
+          "ReviewRule21Referral"
           </text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fewwqo">
@@ -251,7 +310,7 @@
           <text>"senior-tribunal-caseworker"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17utvw0">
-          <text>"Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1scsgve">
           <text>"LEGAL_OPERATIONS"</text>
@@ -267,13 +326,12 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1qt2ged">
-        <description>Case Role provides minimum access</description>
+        <description></description>
         <inputEntry id="UnaryTests_0m81xlb">
           <text>
-          "Rule21Referral",
-          "ET1ReferralLegalOps",
-          "ET3ReferralLegalOps",
-          "ApplicationReferralLegalOps"
+          "ReviewReferralLegalOps",
+          "ReviewReferralResponseLegalOps",
+          "ReviewRule21Referral"
           </text>
         </inputEntry>
         <inputEntry id="UnaryTests_0e431c0">
@@ -283,10 +341,10 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rnmuas">
-          <text>"legal-caseworker"	</text>
+          <text>"tribunal-caseworker"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pl4emq">
-          <text>"Read,Own,Claim,Unclaim,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0dbwltl">
           <text>"LEGAL_OPERATIONS"</text>
@@ -298,7 +356,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uuye16">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0hv79lq">
@@ -318,10 +376,10 @@
           <text>"specific-access-approver-admin"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18uxrkl">
-          <text>"Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0fbgbzp">
-          <text>"ADMINISTRATOR"</text>
+          <text>"ADMIN"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_11pjfav">
           <text></text>
@@ -333,21 +391,67 @@
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1yd4c2r">
-        <description>Access Request for Hearing Centre Team Leader</description>
-        <inputEntry id="UnaryTests_1po1s18">
+      <rule id="DecisionRule_1138of4">
+        <description>Case Role for Auto Assignment - Allocated Admin Caseworker</description>
+        <inputEntry id="UnaryTests_1rhpj3h">
           <text>
-          "ET1Vetting",
-          "ET1Notification",
+          "Et1Vetting",
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin",
+          "SendET1Notification",
           "ListServeClaim",
           "ET3Processing",
-          "ET3Notification",
-          "InitialConsiderationDirections",
-          "PostHearingPromulgation",
-          "JudgmentPromulgation",
-          "ApplicationSubmission",
+          "SendET3Notification",
+          "IssueInitialConsiderationDirections",
+          "IssuePostHearingDirections",
+          "IssueJudgment",
           "AmendPartyDetails",
-          "WithdrawAllOrPartOfCase"
+          "WithdrawAllOrPartOfCase",
+          "ContactTribunalWithAnApplication"
+          </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18831um">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1iro1gj">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cvqsp4">
+          <text>"allocated-admin-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14zangn">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_159koxv">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n1njj0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16sva4a">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wyiaf3">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yd4c2r">
+        <description></description>
+        <inputEntry id="UnaryTests_1po1s18">
+          <text>
+          "Et1Vetting",
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin",
+          "SendET1Notification",
+          "ListServeClaim",
+          "ET3Processing",
+          "SendET3Notification",
+          "IssueInitialConsiderationDirections",
+          "IssuePostHearingDirections",
+          "IssueJudgment",
+          "AmendPartyDetails",
+          "WithdrawAllOrPartOfCase",
+          "ContactTribunalWithAnApplication"
           </text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
@@ -360,36 +464,38 @@
           <text>"hearing-centre-team-leader"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0syfl11">
-          <text>"Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rpqixd">
-          <text>"ADMINISTRATOR"</text>
+          <text>"ADMIN"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1h8xfab">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0vwts3f">
-          <text>10</text>
+          <text>6</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kf0qfe">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_19o8m59">
-        <description>Case Role provides minimum access</description>
+        <description></description>
         <inputEntry id="UnaryTests_0vjjcus">
           <text>
-          "ET1Vetting",
-          "ET1Notification",
+          "Et1Vetting",
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin",
+          "SendET1Notification",
           "ListServeClaim",
           "ET3Processing",
-          "ET3Notification",
-          "InitialConsiderationDirections",
-          "PostHearingPromulgation",
-          "JudgmentPromulgation",
-          "ApplicationSubmission",
+          "SendET3Notification",
+          "IssueInitialConsiderationDirections",
+          "IssuePostHearingDirections",
+          "IssueJudgment",
           "AmendPartyDetails",
-          "WithdrawAllOrPartOfCase"
+          "WithdrawAllOrPartOfCase",
+          "ContactTribunalWithAnApplication"
           </text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
@@ -399,22 +505,22 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1crfjwg">
-          <text>"admin-caseworker"	</text>
+          <text>"hearing-centre-admin"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1fytz53">
-          <text>"Read,Own,Claim,Unclaim,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0juaexm">
-          <text>"ADMINISTRATOR"</text>
+          <text>"ADMIN"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1iq9hn7">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16ntwnh">
-          <text>10</text>
+          <text>4</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ua2m4v">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0b91c94">
@@ -434,7 +540,7 @@
           <text>"specific-access-approver-ctsc"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1n6hq4e">
-          <text>"Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pti6xc">
           <text>"CTSC"</text>
@@ -446,15 +552,54 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sy9mkt">
-          <text>false</text>
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0y729xh">
+        <description>Case Role for Auto Assignment - Allocated CTSC Caseworker</description>
+        <inputEntry id="UnaryTests_12owvka">
+          <text>
+          "Et1Vetting",
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin",
+          "SendET1Notification",
+          "ListServeClaim"
+          </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1804tea">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i19rqv">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ln3imx">
+          <text>"allocated-ctsc-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gt85kl">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ko23eb">
+          <text>"CTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1egbsih">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uj7o66">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0b628gc">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0dp6n1a">
-        <description>Access Request for CTSC</description>
+        <description></description>
         <inputEntry id="UnaryTests_0x14lhj">
           <text>
-          "ET1Vetting",
-          "ET1Notification"
+          "Et1Vetting",
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin",
+          "SendET1Notification",
+          "ListServeClaim"
           </text>
         </inputEntry>
         <inputEntry id="UnaryTests_044f519">
@@ -467,7 +612,7 @@
           <text>"ctsc-team-leader"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19yif9o">
-          <text>"Read,Own,Claim,Unclaim,UnclaimAssign,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ej6vgq">
           <text>"CTSC"</text>
@@ -476,7 +621,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kxihw2">
-          <text>100</text>
+          <text>5</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0j0jvfu">
           <text>false</text>
@@ -486,8 +631,11 @@
         <description>Access Request for CTSC</description>
         <inputEntry id="UnaryTests_1ghu1eu">
           <text>
-          "ET1Vetting",
-          "ET1Notification"
+          "Et1Vetting",
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin",
+          "SendET1Notification",
+          "ListServeClaim"
           </text>
         </inputEntry>
         <inputEntry id="UnaryTests_0yh018d">
@@ -500,7 +648,7 @@
           <text>"ctsc"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05f0bbl">
-          <text>"Read,Own,Claim,Unclaim,CompleteOwn,CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c6umfy">
           <text>"CTSC"</text>
@@ -509,10 +657,10 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0x7cqg0">
-          <text>100</text>
+          <text>3</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01ca8qo">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
     </decisionTable>
