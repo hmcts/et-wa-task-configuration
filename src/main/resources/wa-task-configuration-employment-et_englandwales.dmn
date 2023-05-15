@@ -62,7 +62,7 @@
           <text>"Employment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nzr8nj">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0mnaaav">
@@ -92,7 +92,7 @@
           <text>"routine_work"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zejjhx">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0mvywdi">
@@ -115,7 +115,7 @@
           <text>"decision_making_work"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0491v2t">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1j8z2ig">
@@ -135,7 +135,7 @@
           <text>"hearing_work"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0paqt6u">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_068i294">
@@ -156,7 +156,7 @@
           <text>"Applications"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0j0h6u3">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1xhxj7y">
@@ -178,7 +178,7 @@
           <text>"access_requests"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19v1c22">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1lcd6br">
@@ -202,7 +202,7 @@
           <text>"JUDICIAL"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17me4lg">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0e4h101">
@@ -225,7 +225,26 @@
           <text>"LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17yr1mw">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ycb6so">
+        <inputEntry id="UnaryTests_02cbk3r">
           <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rozdca">
+          <text>
+          "Et1Vetting"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01q74h8">
+          <text>"role_Category"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08rgk1j">
+          <text>"ADMIN,CTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tivei7">
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0q41xil">
@@ -235,7 +254,6 @@
         <inputEntry id="UnaryTests_1faq2jo">
           <text>
           "reviewSpecificAccessRequestAdmin",
-          "Et1Vetting",
           "SendET1Notification",
           "ListServeClaim",
           "ET3Processing",
@@ -257,7 +275,7 @@
           <text>"ADMIN"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pxnir8">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bykddi">
@@ -280,7 +298,7 @@
           <text>"CTSC"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_029cwaw">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0abku11">
@@ -303,7 +321,7 @@
           <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/createReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0s7te75">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0n0lyo2">
@@ -325,7 +343,7 @@
           <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/replyToReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nnd54t">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1gl883a">
@@ -342,7 +360,7 @@
           <text>"[Review ET1 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1swlcw1">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_02x30bh">
@@ -360,7 +378,7 @@
           <text>"[Issue relevant ET1 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nwha68">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0las4xs">
@@ -377,7 +395,7 @@
           <text>"[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_059enb4">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12bi1xb">
@@ -394,7 +412,7 @@
           <text>"[list hearing if required and then upload document for serving](cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pgzvgx">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12t229f">
@@ -411,7 +429,7 @@
           <text>"[Review ET3 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pc3b2q">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0nzfj6h">
@@ -429,7 +447,7 @@
           <text>"[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1crtkf8">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1ie2zm4">
@@ -446,7 +464,7 @@
           <text>"[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yh9meg">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1fwldsf">
@@ -463,7 +481,7 @@
           <text>"[Review Initial consideration, update case and then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r68eci">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1hplv47">
@@ -480,7 +498,7 @@
           <text>"[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17bw4fs">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_00jc61t">
@@ -497,7 +515,7 @@
           <text>"[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_136d3sz">
@@ -514,7 +532,7 @@
           <text>"[Review Judgment Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13no40g">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1hx0oqp">
@@ -531,7 +549,7 @@
           <text>"[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)[, as instructed]"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0kc6n4b">
@@ -548,7 +566,7 @@
           <text>"[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0oya7dl">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1b3vrdt">
@@ -565,7 +583,7 @@
           <text>"[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bf0kza">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12zdyry">
@@ -582,7 +600,7 @@
           <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestJudiciary)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_153t7so">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_058gz9i">
@@ -599,7 +617,7 @@
           <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestAdmin)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_12ffhym">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_08ey5hm">
@@ -616,7 +634,7 @@
           <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestLegalOps)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_12qutk4">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1w6su60">
@@ -633,7 +651,7 @@
           <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestCTSC)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yvxhmo">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
     </decisionTable>
