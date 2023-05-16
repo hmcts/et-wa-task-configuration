@@ -234,7 +234,8 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0rozdca">
           <text>
-          "Et1Vetting"
+          "Et1Vetting",
+          "ReviewReferralAdmin"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_01q74h8">
@@ -264,7 +265,6 @@
           "ContactTribunalWithAnApplication",
           "AmendPartyDetails",
           "WithdrawAllOrPartOfCase",
-          "ReviewReferralAdmin",
           "ReviewReferralResponseAdmin"
           </text>
         </inputEntry>
@@ -285,7 +285,6 @@
         <inputEntry id="UnaryTests_1rar7nm">
           <text>
           "reviewSpecificAccessRequestCTSC",
-          "ReviewReferralAdmin",
           "ReviewReferralResponseAdmin",
           "SendEt1Notification",
           "ListServeClaim"

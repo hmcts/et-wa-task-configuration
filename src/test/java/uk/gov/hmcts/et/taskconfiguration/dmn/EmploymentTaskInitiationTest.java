@@ -49,6 +49,17 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "workingDaysAllowed", 5,
                     "processCategories", "Vetting"
                 )
+            ),
+            Arguments.of(
+                "createReferral",
+                "Submitted",
+                "doesn't matter",
+                Map.of(
+                    "taskId", "ReviewReferralAdmin",
+                    "name", "Review Referral - (Referral Subject)",
+                    "workingDaysAllowed", 2,
+                    "processCategories", "Vetting"
+                )
             )
         );
     }
@@ -73,6 +84,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(2));
+        assertThat(logic.getRules().size(), is(3));
     }
 }

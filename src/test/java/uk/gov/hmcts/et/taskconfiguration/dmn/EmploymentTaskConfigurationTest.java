@@ -176,6 +176,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralResponseLegalOps", legalOperations),
 
             Arguments.of("Et1Vetting", adminctsc),
+            Arguments.of("ReviewReferralAdmin", adminctsc),
 
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
             Arguments.of("SendET1Notification", administrator),
@@ -191,7 +192,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("reviewSpecificAccessRequestCTSC", ctsc),
             Arguments.of("SendEt1Notification", ctsc),
 
-            Arguments.of("ReviewReferralAdmin", concatTwoLists(administrator, ctsc)),
             Arguments.of("ReviewReferralResponseAdmin", concatTwoLists(administrator, ctsc)),
             Arguments.of("ListServeClaim", concatTwoLists(administrator, ctsc))
         );
