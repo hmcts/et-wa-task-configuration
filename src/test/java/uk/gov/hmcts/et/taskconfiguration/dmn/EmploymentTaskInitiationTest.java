@@ -51,6 +51,17 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "et3Response",
+                "Accepted",
+                "doesn't matter",
+                Map.of(
+                    "taskId", "ET3Processing",
+                    "name", "ET3 Processing",
+                    "workingDaysAllowed", 3,
+                    "processCategories", "processing"
+                )
+            ),
+            Arguments.of(
                 "createReferral",
                 "Submitted",
                 "doesn't matter",

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-completion-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
-  <decision id="wa-task-completion-employment-et_englandwales" name="Task completion DMN">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-completion-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+  <decision id="wa-task-completion-employment-et_englandwales" name="ET Task completion DMN">
     <decisionTable id="DecisionTable_01re27m" hitPolicy="COLLECT">
       <input id="eventId" label="Event ID" biodi:width="614">
         <inputExpression id="LiteralExpression_1ngg489" typeRef="string">
@@ -17,6 +17,17 @@
           <text>"Et1Vetting"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ap1s9l">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0m15s4f">
+        <inputEntry id="UnaryTests_12rgcau">
+          <text>"et3Response"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x2aji9">
+          <text>"ET3Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07hil2z">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

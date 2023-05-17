@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
-  <decision id="wa-task-cancellation-employment-et_englandwales" name="Task cancellation DMN">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+  <decision id="wa-task-cancellation-employment-et_englandwales" name="ET Task cancellation DMN">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -88,6 +88,29 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1uadcpe">
           <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pgnaox">
+        <inputEntry id="UnaryTests_02udgat">
+          <text>"Closed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1woxl8e">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lt298h">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15v2291">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1acxajd">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0788pov">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p7t7rc">
+          <text>"processing"</text>
         </outputEntry>
       </rule>
     </decisionTable>
