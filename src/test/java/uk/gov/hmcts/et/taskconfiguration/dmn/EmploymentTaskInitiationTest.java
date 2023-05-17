@@ -51,14 +51,14 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "initialConsideration",
+                "et3Response",
                 "Accepted",
                 "doesn't matter",
                 Map.of(
-                    "taskId", "IssueInitialConsiderationDirections",
-                    "name", "Issue Initial Consideration Directions",
-                    "workingDaysAllowed", 5,
-                    "processCategories", "Hearing"
+                    "taskId", "ET3Processing",
+                    "name", "ET3 Processing",
+                    "workingDaysAllowed", 3,
+                    "processCategories", "processing"
                 )
             )
         );

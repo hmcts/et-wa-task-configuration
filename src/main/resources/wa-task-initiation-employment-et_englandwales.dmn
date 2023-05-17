@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.11.0">
-  <decision id="wa-task-initiation-employment-et_englandwales" name="Task initiation DMN">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+  <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -63,27 +63,27 @@
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1l04a8c">
-        <inputEntry id="UnaryTests_0dddjru">
-          <text>"initialConsideration"</text>
+      <rule id="DecisionRule_0ntdndx">
+        <inputEntry id="UnaryTests_0rhsg81">
+          <text>"et3Response"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_11wixx0">
+        <inputEntry id="UnaryTests_1tdixaj">
           <text>"Accepted"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0jxnwtg">
-          <text>"IssueInitialConsiderationDirections"</text>
+        <outputEntry id="LiteralExpression_0z6s9xl">
+          <text>"ET3Processing"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1gg5cu8">
-          <text>"Issue Initial Consideration Directions"</text>
+        <outputEntry id="LiteralExpression_1yk5q9b">
+          <text>"ET3 Processing"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_18x4mxz">
+        <outputEntry id="LiteralExpression_1yfh3jz">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0xoopfk">
-          <text>5</text>
+        <outputEntry id="LiteralExpression_0rdmi77">
+          <text>3</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_16dgdqk">
-          <text>"Hearing"</text>
+        <outputEntry id="LiteralExpression_1bbfki3">
+          <text>"processing"</text>
         </outputEntry>
       </rule>
     </decisionTable>
