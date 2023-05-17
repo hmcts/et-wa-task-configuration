@@ -2,7 +2,6 @@ package uk.gov.hmcts.et.taskconfiguration.dmn;
 
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
-import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableOutputImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,17 +11,15 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
-import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_ET_EW;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
@@ -218,11 +215,11 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
-        List<Map<String, String>> reviewTheReferral_Create = List.of(Map.of(
+        List<Map<String, String>> reviewTheReferralCreate = List.of(Map.of(
             "name", "description",
             "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/createReferral1)"
         ));
-        List<Map<String, String>> reviewTheReferral_Reply = List.of(Map.of(
+        List<Map<String, String>> reviewTheReferralReply = List.of(Map.of(
             "name", "description",
             "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/replyToReferral1)"
         ));
@@ -232,15 +229,18 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, String>> issueET1Notification = List.of(Map.of(
             "name", "description",
-            "value", "[Issue relevant ET1 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+            "value", "[Issue relevant ET1 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "generateCorrespondence/generateCorrespondence1)"
         ));
         List<Map<String, String>> draftJudgment = List.of(Map.of(
             "name", "description",
-            "value", "[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"
+            "value", "[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
+               + "trigger/createReferral/createReferral1)"
         ));
         List<Map<String, String>> listHearingUploadDocument = List.of(Map.of(
             "name", "description",
-            "value", "[list hearing if required and then upload document for serving](cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"
+            "value", "[list hearing if required and then upload document for serving](cases/case-details/"
+               + "${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"
         ));
         List<Map<String, String>> reviewET3Submission = List.of(Map.of(
             "name", "description",
@@ -248,66 +248,80 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, String>> issueET3Notification = List.of(Map.of(
             "name", "description",
-            "value", "[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+            "value", "[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/"
+               + "generateCorrespondence/generateCorrespondence1)"
         ));
         List<Map<String, String>> initialConsideration = List.of(Map.of(
             "name", "description",
-            "value", "[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1)"
+            "value", "[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+               + "initialConsideration/initialConsideration1)"
         ));
         List<Map<String, String>> reviewInitialConsideration = List.of(Map.of(
             "name", "description",
-            "value", "[Review Initial consideration, update case and then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+            "value", "[Review Initial consideration, update case and then issue relevant correspondence](cases/"
+               + "case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
         ));
-        List<Map<String, String>> reviewTheReferral_Correspondence = List.of(Map.of(
+        List<Map<String, String>> reviewTheReferralCorrespondence = List.of(Map.of(
             "name", "description",
-            "value", "[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+            "value", "[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/"
+               + "trigger/generateCorrespondence/generateCorrespondence1)"
         ));
         List<Map<String, String>> reviewJudgmentPromulgation = List.of(Map.of(
             "name", "description",
-            "value", "[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"
+            "value", "[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/"
+               + "trigger/addAmendJudgment/addAmendJudgment1)"
         ));
         List<Map<String, String>> reviewJudgmentReferral = List.of(Map.of(
             "name", "description",
-            "value", "[Review Judgment Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+            "value", "[Review Judgment Referral, then issue relevant correspondence](cases/case-details/"
+               + "${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
         ));
         List<Map<String, String>> updatePartyDetails = List.of(Map.of(
             "name", "description",
-            "value", "[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)[, as instructed]"
+            "value", "[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/"
+               + "amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/"
+               + "amendClaimantDetails/amendClaimantDetails1)[, as instructed]"
         ));
         List<Map<String, String>> withdrawCase = List.of(Map.of(
             "name", "description",
-            "value", "[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"
+            "value", "[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/"
+               + "disposeCase/disposeCase1)"
         ));
         List<Map<String, String>> reviewApplication = List.of(Map.of(
             "name", "description",
-            "value", "[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"
+            "value", "[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
+               + "trigger/createReferral/createReferral1)"
         ));
         List<Map<String, String>> reviewAccessRequestJudiciary = List.of(Map.of(
             "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestJudiciary)"
+            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+               + "reviewSpecificAccessRequestJudiciary)"
         ));
         List<Map<String, String>> reviewAccessRequestAdmin = List.of(Map.of(
             "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestAdmin)"
+            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+               + "reviewSpecificAccessRequestAdmin)"
         ));
         List<Map<String, String>> reviewAccessRequestLegalOps = List.of(Map.of(
             "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestLegalOps)"
+            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+               + "reviewSpecificAccessRequestLegalOps)"
         ));
         List<Map<String, String>> reviewAccessRequestCTSC = List.of(Map.of(
             "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestCTSC)"
+            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+               + "reviewSpecificAccessRequestCTSC)"
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", reviewTheReferral_Create),
-            Arguments.of("ReviewReferralJudiciary", reviewTheReferral_Create),
-            Arguments.of("ReviewReferralLegalOps", reviewTheReferral_Create),
-            Arguments.of("ReviewReferralAdmin", reviewTheReferral_Create),
+            Arguments.of("draftCaseCreated", reviewTheReferralCreate),
+            Arguments.of("ReviewReferralJudiciary", reviewTheReferralCreate),
+            Arguments.of("ReviewReferralLegalOps", reviewTheReferralCreate),
+            Arguments.of("ReviewReferralAdmin", reviewTheReferralCreate),
 
-            Arguments.of("ReviewReferralResponseJudiciary", reviewTheReferral_Reply),
-            Arguments.of("ReviewReferralResponseLegalOps", reviewTheReferral_Reply),
-            Arguments.of("ReviewReferralResponseAdmin", reviewTheReferral_Reply),
+            Arguments.of("ReviewReferralResponseJudiciary", reviewTheReferralReply),
+            Arguments.of("ReviewReferralResponseLegalOps", reviewTheReferralReply),
+            Arguments.of("ReviewReferralResponseAdmin", reviewTheReferralReply),
 
             Arguments.of("Et1Vetting", reviewET1Submission),
 
@@ -325,7 +339,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssueInitialConsiderationDirections", reviewInitialConsideration),
 
-            Arguments.of("IssuePostHearingDirections", reviewTheReferral_Correspondence),
+            Arguments.of("IssuePostHearingDirections", reviewTheReferralCorrespondence),
 
             Arguments.of("DraftAndSignJudgment", reviewJudgmentPromulgation),
 
