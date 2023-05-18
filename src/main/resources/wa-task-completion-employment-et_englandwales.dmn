@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-completion-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-completion-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
   <decision id="wa-task-completion-employment-et_englandwales" name="ET Task completion DMN">
     <decisionTable id="DecisionTable_01re27m" hitPolicy="COLLECT">
       <input id="eventId" label="Event ID" biodi:width="614">
@@ -28,6 +28,28 @@
           <text>"ET3Processing"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07hil2z">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08x5tfq">
+        <inputEntry id="UnaryTests_19ldlow">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sb4ppd">
+          <text>"ReviewReferralAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uvpcyx">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jameda">
+        <inputEntry id="UnaryTests_0q8217i">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ku023r">
+          <text>"ReviewReferralAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15g3yjk">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
