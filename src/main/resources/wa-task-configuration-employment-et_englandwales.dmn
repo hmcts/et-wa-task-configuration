@@ -679,7 +679,9 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_07vjyfi">
-          <text>"ReviewReferralAdmin"</text>
+          <text>
+          "ReviewReferralAdmin"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
@@ -708,7 +710,7 @@
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n3okbi">
-          <text>5000</text>
+          <text>500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1lezcx4">
           <text></text>
