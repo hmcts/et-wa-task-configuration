@@ -653,6 +653,88 @@
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1w3eg4c">
+        <inputEntry id="UnaryTests_1qmffbv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02rmjxe">
+          <text>
+          "draftCaseCreated",
+          "Et1Vetting",
+          "et3Response"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ep1vyf">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_172cu17">
+          <text>5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mzeeq8">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ua5utw">
+        <inputEntry id="UnaryTests_1j8oqn0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07vjyfi">
+          <text>"ReviewReferralAdmin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13nb3yh">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xy9k8p">
+          <text>
+          if (caseData.isUrgent != null and caseData.isUrgent = "Yes") then 1000 else 5000
+          </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uusq1d">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0j1v09c">
+        <inputEntry id="UnaryTests_19jle06">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tyaq8o">
+          <text>
+          "draftCaseCreated",
+          "Et1Vetting",
+          "et3Response"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1liv7yr">
+          <text>"minorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n3okbi">
+          <text>5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lezcx4">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bz90wb">
+        <inputEntry id="UnaryTests_0rgnw6c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vhou0u">
+          <text>
+          "ReviewReferralAdmin"
+          </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08twl7q">
+          <text>"minorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g94d63">
+          <text>
+          if (caseData.isUrgent != null and caseData.isUrgent = "Yes") then 100 else 500
+          </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ry9gq0">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

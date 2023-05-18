@@ -22,9 +22,9 @@
         </inputExpression>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" />
-      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="252" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="247" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
-      <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" />
+      <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" biodi:width="374" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
       <rule id="DecisionRule_1fenvxm">
         <inputEntry id="UnaryTests_09nq8bu">
