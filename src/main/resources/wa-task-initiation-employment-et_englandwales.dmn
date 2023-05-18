@@ -92,7 +92,7 @@
           <text>"ReviewReferralAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16yf2nj">
-          <text>"Review Referral - (Referral Subject)"</text>
+          <text>"Review Referral - " + additionalData.Data.referralSubject</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n9o39e">
           <text></text>
