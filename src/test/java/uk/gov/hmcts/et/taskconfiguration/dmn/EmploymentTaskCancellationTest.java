@@ -16,10 +16,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CANCELLATION_ET_EW;
 
 class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
