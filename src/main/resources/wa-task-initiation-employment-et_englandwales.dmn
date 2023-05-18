@@ -98,7 +98,14 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uxzgxm">
-          <text>2</text>
+          <text>
+          if(additionalData != null
+          and additionalData.Data != null
+          and additionalData.Data.isUrgent != null
+          and additionalData.Data.isUrgent = "Yes")
+          then 1
+          else 2
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c8d2go">
           <text>"Vetting"</text>
