@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -29,17 +30,14 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     private static Map<String, Object> getDefaultCaseData() {
-        return Map.of(
-            "claimantIndType", Map.of(
-                "claimant_first_names ", "George",
-                "claimant_last_name ", "Jetson"
-            ),
-            "respondentCollection", List.of(
-                Map.of(
-                "respondent_name", "Cosmo Spacely"
-                )
-            )
-        );
+        Map<String, Object> claimant = new HashMap<>();
+        claimant.put("claimant_first_names", "George");
+        claimant.put("claimant_last_name", "Jetson");
+
+        Map<String, Object> caseData = new HashMap<>();
+        caseData.put("claimantIndType", claimant);
+
+        return caseData;
     }
 
     @ParameterizedTest
@@ -51,15 +49,15 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        List<Map<String, Object>> workTypeResultList =
+        List<Map<String, Object>> resultList =
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("workType"))
                 .collect(Collectors.toList());
 
-        assertEquals(expected.get(0).get("name"), workTypeResultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value"), workTypeResultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
+        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
     }
 
     public static Stream<Arguments> workType_ScenarioProvider() {
@@ -125,15 +123,15 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        List<Map<String, Object>> workTypeResultList =
+        List<Map<String, Object>> resultList =
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("role_Category"))
                 .collect(Collectors.toList());
 
-        assertEquals(expected.get(0).get("name"), workTypeResultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value"), workTypeResultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
+        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
     }
 
     public static Stream<Arguments> roleCategory_ScenarioProvider() {
@@ -203,15 +201,15 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        List<Map<String, Object>> workTypeResultList =
+        List<Map<String, Object>> resultList =
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("description"))
                 .collect(Collectors.toList());
 
-        assertEquals(expected.get(0).get("name"), workTypeResultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value"), workTypeResultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
+        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
@@ -361,11 +359,73 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("priority_ScenarioProvider")
+    void when_taskId_then_return_priority(String taskType,
+                                          String urgency,
+                                          List<Map<String, String>> expectedMajor,
+                                          List<Map<String, String>> expectedMinor) {
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("isUrgent", urgency);
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> majorPriorityResultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("majorPriority"))
+                .collect(Collectors.toList());
+
+        assertEquals(expectedMajor.get(0).get("name"), majorPriorityResultList.get(0).get("name"));
+        assertEquals(expectedMajor.get(0).get("value"), majorPriorityResultList.get(0).get("value"));
+
+        List<Map<String, Object>> minorPriorityResultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("minorPriority"))
+                .collect(Collectors.toList());
+
+        assertEquals(expectedMinor.get(0).get("name"), minorPriorityResultList.get(0).get("name"));
+        assertEquals(expectedMinor.get(0).get("value"), minorPriorityResultList.get(0).get("value"));
+    }
+
+    public static Stream<Arguments> priority_ScenarioProvider() {
+        List<Map<String, String>> defaultMajorPriority = List.of(Map.of(
+            "name", "majorPriority",
+            "value", "5000"
+        ));
+        List<Map<String, String>> defaultMinorPriority = List.of(Map.of(
+            "name", "minorPriority",
+            "value", "500"
+        ));
+        List<Map<String, String>> urgentMajorPriority = List.of(Map.of(
+            "name", "majorPriority",
+            "value", "1000"
+        ));
+        List<Map<String, String>> urgentMinorPriority = List.of(Map.of(
+            "name", "minorPriority",
+            "value", "100"
+        ));
+
+        return Stream.of(
+            Arguments.of("draftCaseCreated", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("Et1Vetting", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("et3Response", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ReviewReferralAdmin", "Yes", urgentMajorPriority, urgentMinorPriority)
+        );
+    }
+
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(32));
+        assertThat(logic.getRules().size(), is(36));
     }
 
     private static List<Map<String, String>> concatTwoLists(List<Map<String, String>> list1,
