@@ -12,10 +12,19 @@
           <text></text>
         </inputExpression>
       </input>
+      <input id="InputClause_1nkkapg" label="Refer Case To" camunda:inputVariable="referCaseTo">
+        <inputExpression id="LiteralExpression_1h40nek" typeRef="string">
+          <text>
+          if(additionalData != null and additionalData.Data != null and additionalData.Data.referCaseTo != null)
+          then additionalData.Data.referCaseTo
+          else null
+          </text>
+        </inputExpression>
+      </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" />
-      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="247" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
-      <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" />
+      <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" biodi:width="374" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
       <rule id="DecisionRule_1fenvxm">
         <inputEntry id="UnaryTests_09nq8bu">
@@ -23,6 +32,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0aldx9i">
           <text>"AWAITING_SUBMISSION_TO_HMCTS"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l1etcz">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0tbxmk0">
           <text>"draftCaseCreated"</text>
@@ -47,6 +59,9 @@
         <inputEntry id="UnaryTests_1ematrk">
           <text>"Submitted"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0bys6y7">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1inzx22">
           <text>"Et1Vetting"</text>
         </outputEntry>
@@ -63,12 +78,48 @@
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0utzcvo">
+        <inputEntry id="UnaryTests_163041w">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xcs5s3">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xkeuj2">
+          <text>"Admin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1p21nx8">
+          <text>"ReviewReferralAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16yf2nj">
+          <text>"Review Referral - " + additionalData.Data.referralSubject</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n9o39e">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uxzgxm">
+          <text>
+          if(additionalData != null
+          and additionalData.Data != null
+          and additionalData.Data.isUrgent != null
+          and additionalData.Data.isUrgent = "Yes")
+          then 1
+          else 2
+          </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c8d2go">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ntdndx">
         <inputEntry id="UnaryTests_0rhsg81">
           <text>"et3Response"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tdixaj">
           <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vpsvtp">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0z6s9xl">
           <text>"ET3Processing"</text>
@@ -92,6 +143,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1cwpq4d">
           <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bys6y8">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06w4eix">
           <text>"IssueInitialConsiderationDirections"</text>
