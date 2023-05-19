@@ -1,5 +1,7 @@
 package uk.gov.hmcts.et.taskconfiguration.dmn;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -12,7 +14,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -32,7 +36,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "INITIATE_CASE_DRAFT",
                 "AWAITING_SUBMISSION_TO_HMCTS",
-                "doesn't matter",
+                null,
                 Map.of(
                     "taskId", "draftCaseCreated",
                     "name", "Draft Case Created",
@@ -42,7 +46,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "SUBMIT_CASE_DRAFT",
                 "Submitted",
-                "doesn't matter",
+                null,
                 Map.of(
                     "taskId", "Et1Vetting",
                     "name", "Et1 Vetting",
@@ -51,9 +55,26 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "createReferral",
+                "Submitted",
+                mapAdditionalData("{\n"
+                                  + "   \"Data\":{\n"
+                                      + "      \"referCaseTo\":\"" + "Admin" + "\",\n"
+                                      + "      \"referralSubject\":\"" + "(Referral Subject)" + "\",\n"
+                                      + "      \"isUrgent\":\"" + "Yes" + "\"\n"
+                                  + "   }"
+                                  + "}"),
+                Map.of(
+                    "taskId", "ReviewReferralAdmin",
+                    "name", "Review Referral - (Referral Subject)",
+                    "workingDaysAllowed", 1,
+                    "processCategories", "Vetting"
+                )
+            ),
+            Arguments.of(
                 "et3Response",
                 "Accepted",
-                "doesn't matter",
+                null,
                 Map.of(
                     "taskId", "ET3Processing",
                     "name", "ET3 Processing",
@@ -64,7 +85,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                "doesn't matter",
+                null,
                 Map.of(
                     "taskId", "IssueInitialConsiderationDirections",
                     "name", "Issue Initial Consideration Directions",
@@ -75,7 +96,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "preAcceptanceCase",
                 "Accepted",
-                "doesn't matter",
+                null,
                 Map.of(
                     "taskId", "ListServeClaim",
                     "name", "List/ Serve Claim",
@@ -90,12 +111,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     @MethodSource("scenarioProvider")
     void given_input_should_return_outcome_dmn(String eventId,
                                                String postEventState,
-                                               String appealType,
+                                               Map<String, Object> map,
                                                Map<String, ? extends Serializable> expectedDmnOutcome) {
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("eventId", eventId);
         inputVariables.putValue("postEventState", postEventState);
-        inputVariables.putValue("appealType", appealType);
+        inputVariables.putAll(map);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -106,6 +127,16 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(5));
+        assertThat(logic.getRules().size(), is(6));
+    }
+
+    private static Map<String, Object> mapAdditionalData(String additionalData) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            TypeReference<HashMap<String, Object>> typeRef = new TypeReference<>() {};
+            return Map.of("additionalData", mapper.readValue(additionalData, typeRef));
+        } catch (IOException exp) {
+            return null;
+        }
     }
 }

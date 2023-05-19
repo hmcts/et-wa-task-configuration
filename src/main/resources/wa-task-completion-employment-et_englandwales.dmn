@@ -31,6 +31,28 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_08x5tfq">
+        <inputEntry id="UnaryTests_19ldlow">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sb4ppd">
+          <text>"ReviewReferralAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uvpcyx">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jameda">
+        <inputEntry id="UnaryTests_0q8217i">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ku023r">
+          <text>"ReviewReferralAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15g3yjk">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0o1t3oy">
         <inputEntry id="UnaryTests_0i0mhhb">
           <text>"IssueInitialConsiderationDirections"</text>
