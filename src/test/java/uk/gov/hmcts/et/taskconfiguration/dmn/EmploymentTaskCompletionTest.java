@@ -65,6 +65,15 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     )
                 )
+            ),
+            Arguments.of(
+                "IssueInitialConsiderationDirections",
+                asList(
+                    Map.of(
+                        "taskType", "IssueInitialConsiderationDirections",
+                        "completionMode", "Auto"
+                    )
+                )
             )
         );
     }
