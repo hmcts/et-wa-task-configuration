@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.11.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -74,8 +74,8 @@
           <text>
           "draftCaseCreated",
           "Et1Vetting",
-          "ReviewReferralLegalOps",
           "ReviewReferralAdmin",
+          "ReviewReferralLegalOps",
           "SendET1Notification",
           "ListServeClaim",
           "ET3Processing",
@@ -188,8 +188,8 @@
         <inputEntry id="UnaryTests_0jg7vpi">
           <text>
           "draftCaseCreated",
-          "reviewSpecificAccessRequestJudiciary",
           "ReviewReferralJudiciary",
+          "reviewSpecificAccessRequestJudiciary",
           "ReviewReferralResponseJudiciary",
           "CompleteInitialConsideration",
           "DraftAndSignJudgment"
@@ -211,9 +211,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0vmsbqm">
           <text>
+          "ReviewReferralLegalOps",
           "reviewSpecificAccessRequestLegalOps",
           "ReviewRule21Referral",
-          "ReviewReferralLegalOps",
           "ET3ReferralLegalOps",
           "ReviewReferralResponseLegalOps"
           </text>
@@ -308,9 +308,9 @@
         <inputEntry id="UnaryTests_136m8g2">
           <text>
           "draftCaseCreated",
+          "ReviewReferralAdmin",
           "ReviewReferralJudiciary",
-          "ReviewReferralLegalOps",
-          "ReviewReferralAdmin"
+          "ReviewReferralLegalOps"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uxjjxf">
@@ -680,7 +680,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_07vjyfi">
           <text>
-          "ReviewReferralAdmin"
+          "ReviewReferralAdmin",
+          "ReviewReferralJudiciary",
+          "ReviewReferralLegalOps"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
@@ -688,7 +690,7 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0xy9k8p">
           <text>
-          if (caseData!= null and caseData.isUrgent != null and caseData.isUrgent = "Yes") then 1000 else 5000
+          if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes") then 1000 else 5000
           </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1uusq1d">
@@ -722,7 +724,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1vhou0u">
           <text>
-          "ReviewReferralAdmin"
+          "ReviewReferralAdmin",
+          "ReviewReferralJudiciary",
+          "ReviewReferralLegalOps"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">
@@ -730,7 +734,7 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0g94d63">
           <text>
-          if (caseData!= null and caseData.isUrgent != null and caseData.isUrgent = "Yes") then 100 else 500
+          if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes") then 100 else 500
           </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ry9gq0">

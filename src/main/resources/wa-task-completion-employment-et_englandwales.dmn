@@ -2,7 +2,7 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-completion-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.11.0">
   <decision id="wa-task-completion-employment-et_englandwales" name="ET Task completion DMN">
     <decisionTable id="DecisionTable_01re27m" hitPolicy="COLLECT">
-      <input id="eventId" label="Event ID" biodi:width="614">
+      <input id="eventId" label="Event ID" biodi:width="392">
         <inputExpression id="LiteralExpression_1ngg489" typeRef="string">
           <text>eventId</text>
         </inputExpression>
@@ -11,12 +11,45 @@
       <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" />
       <rule id="DecisionRule_12eenty">
         <inputEntry id="UnaryTests_17cg7de">
-          <text>"PreAcceptanceCase"</text>
+          <text>"preAcceptanceCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1lk4wxe">
           <text>"Et1Vetting"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ap1s9l">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jameda">
+        <inputEntry id="UnaryTests_0q8217i">
+          <text>"replyToReferral","closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ku023r">
+          <text>"ReviewReferralAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15g3yjk">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1n1hrr1">
+        <inputEntry id="UnaryTests_0d3nkez">
+          <text>"preAcceptanceCase","replyToReferral","closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m9i08l">
+          <text>"ReviewReferralJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vrbgdt">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rgoz1c">
+        <inputEntry id="UnaryTests_0wfbt17">
+          <text>"preAcceptanceCase","replyToReferral","closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nsl2oy">
+          <text>"ReviewReferralLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zn07yk">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
@@ -28,28 +61,6 @@
           <text>"ET3Processing"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07hil2z">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_08x5tfq">
-        <inputEntry id="UnaryTests_19ldlow">
-          <text>"replyToReferral"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0sb4ppd">
-          <text>"ReviewReferralAdmin"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0uvpcyx">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1jameda">
-        <inputEntry id="UnaryTests_0q8217i">
-          <text>"closeReferral"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1ku023r">
-          <text>"ReviewReferralAdmin"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_15g3yjk">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

@@ -58,14 +58,48 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                  + "   \"Data\":{\n"
+                                      + "   \"Data\":{\n"
                                       + "      \"referCaseTo\":\"" + "Admin" + "\",\n"
                                       + "      \"referralSubject\":\"" + "(Referral Subject)" + "\",\n"
                                       + "      \"isUrgent\":\"" + "Yes" + "\"\n"
-                                  + "   }"
-                                  + "}"),
+                                      + "   }"
+                                      + "}"),
                 Map.of(
                     "taskId", "ReviewReferralAdmin",
+                    "name", "Review Referral - (Referral Subject)",
+                    "workingDaysAllowed", 1,
+                    "processCategories", "Vetting"
+                )
+            ),
+            Arguments.of(
+                "createReferral",
+                "Submitted",
+                mapAdditionalData("{\n"
+                                      + "   \"Data\":{\n"
+                                      + "      \"referCaseTo\":\"" + "Judge" + "\",\n"
+                                      + "      \"referralSubject\":\"" + "(Referral Subject)" + "\",\n"
+                                      + "      \"isUrgent\":\"" + "Yes" + "\"\n"
+                                      + "   }"
+                                      + "}"),
+                Map.of(
+                    "taskId", "ReviewReferralJudiciary",
+                    "name", "Review Referral - (Referral Subject)",
+                    "workingDaysAllowed", 1,
+                    "processCategories", "Vetting"
+                )
+            ),
+            Arguments.of(
+                "createReferral",
+                "Submitted",
+                mapAdditionalData("{\n"
+                                      + "   \"Data\":{\n"
+                                      + "      \"referCaseTo\":\"" + "Legal officer" + "\",\n"
+                                      + "      \"referralSubject\":\"" + "(Referral Subject)" + "\",\n"
+                                      + "      \"isUrgent\":\"" + "Yes" + "\"\n"
+                                      + "   }"
+                                      + "}"),
+                Map.of(
+                    "taskId", "ReviewReferralLegalOps",
                     "name", "Review Referral - (Referral Subject)",
                     "workingDaysAllowed", 1,
                     "processCategories", "Vetting"
@@ -116,7 +150,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(5));
+        assertThat(logic.getRules().size(), is(7));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {
