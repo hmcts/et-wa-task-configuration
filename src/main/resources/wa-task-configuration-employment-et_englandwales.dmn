@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -235,8 +235,8 @@
         <inputEntry id="UnaryTests_0rozdca">
           <text>
           "Et1Vetting",
-          "ReviewReferralAdmin"
-          </text>
+          "ReviewReferralAdmin",
+          "ReviewReferralResponseAdmin"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_01q74h8">
           <text>"role_Category"</text>
@@ -264,8 +264,7 @@
           "IssueJudgment",
           "ContactTribunalWithAnApplication",
           "AmendPartyDetails",
-          "WithdrawAllOrPartOfCase",
-          "ReviewReferralResponseAdmin"
+          "WithdrawAllOrPartOfCase"      
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
@@ -284,8 +283,7 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1rar7nm">
           <text>
-          "reviewSpecificAccessRequestCTSC",
-          "ReviewReferralResponseAdmin",
+          "reviewSpecificAccessRequestCTSC",          
           "SendEt1Notification",
           "ListServeClaim"
           </text>
@@ -679,8 +677,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_07vjyfi">
-          <text>
-          "ReviewReferralAdmin"
+          <text>"ReviewReferralAdmin","ReviewReferralResponseAdmin"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
@@ -721,8 +718,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vhou0u">
-          <text>
-          "ReviewReferralAdmin"
+          <text>"ReviewReferralAdmin","ReviewReferralResponseAdmin"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">

@@ -92,6 +92,23 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "workingDaysAllowed", 5,
                     "processCategories", "Hearing"
                 )
+            ),
+            Arguments.of(
+                "replyToReferral",
+                "Submitted",
+                mapAdditionalData("{\n"
+                                      + "   \"Data\":{\n"
+                                      + "      \"referCaseTo\":\"" + "Admin" + "\",\n"
+                                      + "      \"referralSubject\":\"" + "(Referral Subject)" + "\",\n"
+                                      + "      \"isUrgent\":\"" + "Yes" + "\"\n"
+                                      + "   }"
+                                      + "}"),
+                Map.of(
+                    "taskId", "ReviewReferralResponseAdmin",
+                    "name", "Review Referral Response - (Referral Subject)",
+                    "workingDaysAllowed", 1,
+                    "processCategories", "processing"
+                )
             )
         );
     }
@@ -116,7 +133,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(5));
+        assertThat(logic.getRules().size(), is(6));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {
