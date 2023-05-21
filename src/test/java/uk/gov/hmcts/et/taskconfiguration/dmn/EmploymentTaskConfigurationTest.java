@@ -187,7 +187,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("reviewSpecificAccessRequestCTSC", ctsc),
             Arguments.of("SendEt1Notification", ctsc),
 
-            Arguments.of("ReviewReferralResponseAdmin", concatTwoLists(administrator, ctsc)),
+            Arguments.of("ReviewReferralResponseAdmin",adminctsc),
             Arguments.of("ListServeClaim", concatTwoLists(administrator, ctsc))
         );
     }
@@ -207,7 +207,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 .stream()
                 .filter((r) -> r.containsValue("description"))
                 .collect(Collectors.toList());
-
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
         assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
     }
