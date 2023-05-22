@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.11.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
@@ -21,6 +21,13 @@
           </text>
         </inputExpression>
       </input>
+      <input id="InputClause_1idexf5" label="Referral Subject" camunda:inputVariable="referralSubject">
+        <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
+          <text>if(additionalData != null and additionalData.Data != null and additionalData.Data.referralSubject != null)
+          then additionalData.Data.referralSubject
+          else null</text>
+        </inputExpression>
+      </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="247" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
@@ -34,6 +41,9 @@
           <text>"AWAITING_SUBMISSION_TO_HMCTS"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1l1etcz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ihcbgh">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0tbxmk0">
@@ -62,6 +72,9 @@
         <inputEntry id="UnaryTests_0bys6y7">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1ns71cw">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1inzx22">
           <text>"Et1Vetting"</text>
         </outputEntry>
@@ -87,6 +100,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1xkeuj2">
           <text>"Admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1frkc1e">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1p21nx8">
           <text>"ReviewReferralAdmin"</text>
@@ -121,6 +137,9 @@
         <inputEntry id="UnaryTests_1tsfn84">
           <text>"Judge"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_01db6ha">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_02gq0cv">
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
@@ -153,6 +172,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0tha19k">
           <text>"Legal officer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18oj3hc">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xmtp1n">
           <text>"ReviewReferralLegalOps"</text>
@@ -187,6 +209,9 @@
         <inputEntry id="UnaryTests_0vpsvtp">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0e7g68a">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0z6s9xl">
           <text>"ET3Processing"</text>
         </outputEntry>
@@ -211,6 +236,9 @@
           <text>"Accepted"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0bys6y8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jx29oc">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06w4eix">
@@ -239,6 +267,9 @@
         <inputEntry id="UnaryTests_1k2u9lv">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_14nteit">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1gzs9ju">
           <text>"ListServeClaim"</text>
         </outputEntry>
@@ -264,6 +295,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_09ihz7c">
           <text>"Admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z0rg6v">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15ccyjs">
           <text>"ReviewReferralResponseAdmin"</text>
