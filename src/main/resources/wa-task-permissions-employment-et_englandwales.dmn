@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.11.0">
   <decision id="wa-task-permissions-employment-et_englandwales" name="ET Task Permissions DMN">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_12crj6e" label="Task Type" biodi:width="299" camunda:inputVariable="taskType">
@@ -114,7 +114,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0stu1aw">
-          <text></text>
+          <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_02krt2c">
           <text>true</text>
@@ -140,7 +140,7 @@
           <text>"leadership-judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0lzkacj">
-          <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
+          <text>"Read, Own, Manage, Claim, Assign, Unassign, Complete, Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ultxtd">
           <text>"JUDICIAL"</text>
@@ -149,7 +149,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04a0zeu">
-          <text></text>
+          <text>4</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0s6z0e2">
           <text>false</text>
@@ -185,7 +185,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zoan3h">
-          <text></text>
+          <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0thq4jp">
           <text>false</text>
@@ -220,7 +220,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1k3lw5w">
-          <text></text>
+          <text>3</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bh71eh">
           <text>false</text>
@@ -286,7 +286,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rrndti">
-          <text></text>
+          <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zgifed">
           <text>true</text>
@@ -307,7 +307,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ng21la">
-          <text>"senior-tribunal-caseworker"	</text>
+          <text>"senior-tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17utvw0">
           <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
@@ -319,7 +319,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cfgabn">
-          <text></text>
+          <text>3</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07m3v27">
           <text>false</text>
@@ -341,7 +341,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rnmuas">
-          <text>"tribunal-caseworker"	</text>
+          <text>"tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pl4emq">
           <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
@@ -353,7 +353,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1t942mu">
-          <text></text>
+          <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uuye16">
           <text>false</text>
