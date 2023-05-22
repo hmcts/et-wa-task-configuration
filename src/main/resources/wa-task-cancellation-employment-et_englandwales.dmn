@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.11.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
   <decision id="wa-task-cancellation-employment-et_englandwales" name="ET Task cancellation DMN">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
@@ -157,6 +157,29 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0clhj8i">
           <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15acnvg">
+        <inputEntry id="UnaryTests_1yll6zr">
+          <text>"Closed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p6bl8p">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_012m6gp">
+          <text>"Closed"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14ewlzy">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02aaibn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mei5sk">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_106vff6">
+          <text>"processing"</text>
         </outputEntry>
       </rule>
     </decisionTable>

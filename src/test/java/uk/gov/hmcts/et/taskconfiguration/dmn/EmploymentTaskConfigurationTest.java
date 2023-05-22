@@ -127,7 +127,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("role_Category"))
+                .filter((r) -> r.containsValue("roleCategory"))
                 .collect(Collectors.toList());
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
@@ -136,23 +136,23 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     public static Stream<Arguments> roleCategory_ScenarioProvider() {
         List<Map<String, String>> judicial = List.of(Map.of(
-            "name", "role_Category",
+            "name", "roleCategory",
             "value", "JUDICIAL"
         ));
         List<Map<String, String>> legalOperations = List.of(Map.of(
-            "name", "role_Category",
+            "name", "roleCategory",
             "value", "LEGAL_OPERATIONS"
         ));
         List<Map<String, String>> administrator = List.of(Map.of(
-            "name", "role_Category",
+            "name", "roleCategory",
             "value", "ADMIN"
         ));
         List<Map<String, String>> ctsc = List.of(Map.of(
-            "name", "role_Category",
+            "name", "roleCategory",
             "value", "CTSC"
         ));
         List<Map<String, String>> adminctsc = List.of(Map.of(
-            "name", "role_Category",
+            "name", "roleCategory",
             "value", "ADMIN,CTSC"
         ));
 
@@ -187,7 +187,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("reviewSpecificAccessRequestCTSC", ctsc),
             Arguments.of("SendEt1Notification", ctsc),
 
-            Arguments.of("ReviewReferralResponseAdmin", concatTwoLists(administrator, ctsc)),
+            Arguments.of("ReviewReferralResponseAdmin", adminctsc),
             Arguments.of("ListServeClaim", concatTwoLists(administrator, ctsc))
         );
     }
@@ -233,12 +233,12 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         List<Map<String, String>> draftJudgment = List.of(Map.of(
             "name", "description",
             "value", "[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
-               + "trigger/createReferral/createReferral1)"
+                + "trigger/createReferral/createReferral1)"
         ));
         List<Map<String, String>> listHearingUploadDocument = List.of(Map.of(
             "name", "description",
             "value", "[list hearing if required and then upload document for serving](cases/case-details/"
-               + "${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"
+                + "${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"
         ));
         List<Map<String, String>> reviewET3Submission = List.of(Map.of(
             "name", "description",
@@ -247,68 +247,68 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         List<Map<String, String>> issueET3Notification = List.of(Map.of(
             "name", "description",
             "value", "[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-               + "generateCorrespondence/generateCorrespondence1)"
+                + "generateCorrespondence/generateCorrespondence1)"
         ));
         List<Map<String, String>> initialConsideration = List.of(Map.of(
             "name", "description",
             "value", "[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-               + "initialConsideration/initialConsideration1)"
+                + "initialConsideration/initialConsideration1)"
         ));
         List<Map<String, String>> reviewInitialConsideration = List.of(Map.of(
             "name", "description",
             "value", "[Review Initial consideration, update case and then issue relevant correspondence](cases/"
-               + "case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+                + "case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
         ));
         List<Map<String, String>> reviewTheReferralCorrespondence = List.of(Map.of(
             "name", "description",
             "value", "[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/"
-               + "trigger/generateCorrespondence/generateCorrespondence1)"
+                + "trigger/generateCorrespondence/generateCorrespondence1)"
         ));
         List<Map<String, String>> reviewJudgmentPromulgation = List.of(Map.of(
             "name", "description",
             "value", "[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/"
-               + "trigger/addAmendJudgment/addAmendJudgment1)"
+                + "trigger/addAmendJudgment/addAmendJudgment1)"
         ));
         List<Map<String, String>> reviewJudgmentReferral = List.of(Map.of(
             "name", "description",
             "value", "[Review Judgment Referral, then issue relevant correspondence](cases/case-details/"
-               + "${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+                + "${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
         ));
         List<Map<String, String>> updatePartyDetails = List.of(Map.of(
             "name", "description",
             "value", "[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/"
-               + "amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-               + "amendClaimantDetails/amendClaimantDetails1)[, as instructed]"
+                + "amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "amendClaimantDetails/amendClaimantDetails1)[, as instructed]"
         ));
         List<Map<String, String>> withdrawCase = List.of(Map.of(
             "name", "description",
             "value", "[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-               + "disposeCase/disposeCase1)"
+                + "disposeCase/disposeCase1)"
         ));
         List<Map<String, String>> reviewApplication = List.of(Map.of(
             "name", "description",
             "value", "[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
-               + "trigger/createReferral/createReferral1)"
+                + "trigger/createReferral/createReferral1)"
         ));
         List<Map<String, String>> reviewAccessRequestJudiciary = List.of(Map.of(
             "name", "description",
             "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-               + "reviewSpecificAccessRequestJudiciary)"
+                + "reviewSpecificAccessRequestJudiciary)"
         ));
         List<Map<String, String>> reviewAccessRequestAdmin = List.of(Map.of(
             "name", "description",
             "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-               + "reviewSpecificAccessRequestAdmin)"
+                + "reviewSpecificAccessRequestAdmin)"
         ));
         List<Map<String, String>> reviewAccessRequestLegalOps = List.of(Map.of(
             "name", "description",
             "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-               + "reviewSpecificAccessRequestLegalOps)"
+                + "reviewSpecificAccessRequestLegalOps)"
         ));
         List<Map<String, String>> reviewAccessRequestCTSC = List.of(Map.of(
             "name", "description",
             "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-               + "reviewSpecificAccessRequestCTSC)"
+                + "reviewSpecificAccessRequestCTSC)"
         ));
 
         return Stream.of(
@@ -417,7 +417,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("draftCaseCreated", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("Et1Vetting", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("et3Response", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("ReviewReferralAdmin", "Yes", urgentMajorPriority, urgentMinorPriority)
+            Arguments.of("ReviewReferralAdmin", "Yes", urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralResponseAdmin", "Yes", urgentMajorPriority, urgentMinorPriority)
         );
     }
 
@@ -425,7 +426,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(36));
+        assertThat(logic.getRules().size(), is(37));
     }
 
     private static List<Map<String, String>> concatTwoLists(List<Map<String, String>> list1,
