@@ -31,19 +31,18 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
     static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "PreAcceptanceCase",
+                "preAcceptanceCase",
                 asList(
                     Map.of(
                         "taskType", "Et1Vetting",
                         "completionMode", "Auto"
-                    )
-                )
-            ),
-            Arguments.of(
-                "et3Response",
-                asList(
+                    ),
                     Map.of(
-                        "taskType", "ET3Processing",
+                        "taskType", "ReviewReferralJudiciary",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralLegalOps",
                         "completionMode", "Auto"
                     )
                 )
@@ -54,6 +53,14 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "ReviewReferralAdmin",
                         "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralJudiciary",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralLegalOps",
+                        "completionMode", "Auto"
                     )
                 )
             ),
@@ -62,6 +69,23 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                 asList(
                     Map.of(
                         "taskType", "ReviewReferralAdmin",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralJudiciary",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralLegalOps",
+                        "completionMode", "Auto"
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Response",
+                asList(
+                    Map.of(
+                        "taskType", "ET3Processing",
                         "completionMode", "Auto"
                     )
                 )

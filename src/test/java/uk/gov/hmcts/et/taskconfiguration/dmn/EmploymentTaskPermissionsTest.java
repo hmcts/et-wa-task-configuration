@@ -41,24 +41,28 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
     );
     private static final Map<String, Serializable> hearingJudge = Map.of(
         "autoAssignable", true,
+        "assignmentPriority", 1,
         "name", "hearing-judge",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
     );
     private static final Map<String, Serializable> leadershipJudge = Map.of(
         "autoAssignable", false,
+        "assignmentPriority", 4,
         "name", "leadership-judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
+        "value", "Read, Own, Manage, Claim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "JUDICIAL"
     );
     private static final Map<String, Serializable> judge = Map.of(
         "autoAssignable", false,
+        "assignmentPriority", 2,
         "name", "judge",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
     );
     private static final Map<String, Serializable> feePaidJudge = Map.of(
         "autoAssignable", false,
+        "assignmentPriority", 3,
         "name", "fee-paid-judge",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
@@ -72,18 +76,21 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
     );
     private static final Map<String, Serializable> allocatedTribunalCaseworker = Map.of(
         "autoAssignable", true,
+        "assignmentPriority", 1,
         "name", "allocated-tribunal-caseworker",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "LEGAL_OPERATIONS"
     );
     private static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
         "autoAssignable", false,
+        "assignmentPriority", 3,
         "name", "senior-tribunal-caseworker",
         "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "LEGAL_OPERATIONS"
     );
     private static final Map<String, Serializable> tribunalCaseworker = Map.of(
         "autoAssignable", false,
+        "assignmentPriority", 2,
         "name", "tribunal-caseworker",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "LEGAL_OPERATIONS"

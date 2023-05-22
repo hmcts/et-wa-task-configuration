@@ -111,6 +111,72 @@
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0t3h4yd">
+        <inputEntry id="UnaryTests_0pnlugb">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_059m8ba">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tsfn84">
+          <text>"Judge"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02gq0cv">
+          <text>"ReviewReferralJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16t7tco">
+          <text>"Review Referral - " + additionalData.Data.referralSubject</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zdr7bg">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0guqf5c">
+          <text>
+          if(additionalData != null
+          and additionalData.Data != null
+          and additionalData.Data.isUrgent != null
+          and additionalData.Data.isUrgent = "Yes")
+          then 1
+          else 2
+          </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1flovqn">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xtkppt">
+        <inputEntry id="UnaryTests_13iglg0">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wekibb">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tha19k">
+          <text>"Legal officer"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xmtp1n">
+          <text>"ReviewReferralLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x90otf">
+          <text>"Review Referral - " + additionalData.Data.referralSubject</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iaqh1t">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cup8ul">
+          <text>
+          if(additionalData != null
+          and additionalData.Data != null
+          and additionalData.Data.isUrgent != null
+          and additionalData.Data.isUrgent = "Yes")
+          then 1
+          else 2
+          </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1luz902">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ntdndx">
         <inputEntry id="UnaryTests_0rhsg81">
           <text>"et3Response"</text>
