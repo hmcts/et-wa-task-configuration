@@ -229,6 +229,32 @@
           <text>"Hearing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_14jrmmo">
+        <inputEntry id="UnaryTests_0zl01pz">
+          <text>"preAcceptanceCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02hzxey">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k2u9lv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gzs9ju">
+          <text>"ListServeClaim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pg6wev">
+          <text>"List/ Serve Claim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bm6dgc">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xufxar">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0d5vhd1">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

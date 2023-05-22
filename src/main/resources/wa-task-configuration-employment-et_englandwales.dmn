@@ -286,8 +286,7 @@
           <text>
           "reviewSpecificAccessRequestCTSC",
           "ReviewReferralResponseAdmin",
-          "SendEt1Notification",
-          "ListServeClaim"
+          "SendEt1Notification"
           </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0yyjq7r">

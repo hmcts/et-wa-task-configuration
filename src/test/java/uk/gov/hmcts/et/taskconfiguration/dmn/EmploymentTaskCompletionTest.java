@@ -98,6 +98,15 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     )
                 )
+            ),
+            Arguments.of(
+                "uploadDocumentForServing",
+                asList(
+                    Map.of(
+                        "taskType", "ListServeClaim",
+                        "completionMode", "Auto"
+                    )
+                )
             )
         );
     }

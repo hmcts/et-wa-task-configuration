@@ -136,6 +136,29 @@
           <text>"Hearing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_049g4f2">
+        <inputEntry id="UnaryTests_0tr2rfo">
+          <text>"Closed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qtznob">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_073x14o">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00dhi6p">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ltrve3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0khzfh0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0clhj8i">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

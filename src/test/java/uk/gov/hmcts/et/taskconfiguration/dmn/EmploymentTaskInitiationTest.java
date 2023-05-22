@@ -126,6 +126,17 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "workingDaysAllowed", 5,
                     "processCategories", "Hearing"
                 )
+            ),
+            Arguments.of(
+                "preAcceptanceCase",
+                "Accepted",
+                null,
+                Map.of(
+                    "taskId", "ListServeClaim",
+                    "name", "List/ Serve Claim",
+                    "workingDaysAllowed", 1,
+                    "processCategories", "Vetting"
+                )
             )
         );
     }

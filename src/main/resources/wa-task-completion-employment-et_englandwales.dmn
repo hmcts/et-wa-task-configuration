@@ -75,6 +75,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1e7c3we">
+        <inputEntry id="UnaryTests_1u4doqe">
+          <text>"uploadDocumentForServing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yvpnta">
+          <text>"ListServeClaim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12qcwv6">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
