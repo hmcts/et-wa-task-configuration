@@ -97,6 +97,39 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0kq1fag">
+        <inputEntry id="UnaryTests_1691j39">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1izbwvs">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ci4nwr">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p6namw">
+        <inputEntry id="UnaryTests_01a2lg6">
+          <text>"preAcceptanceCase"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uu65cv">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h0x2xe">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rjxxqc">
+        <inputEntry id="UnaryTests_1ypdw13">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qdzjua">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hjjf0d">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
