@@ -101,8 +101,8 @@
         <inputEntry id="UnaryTests_00rjbux">
           <text>"ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
-"CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"CompleteInitialConsideration"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0fxjivg">
           <text>"workType"</text>
@@ -219,7 +219,7 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0rozdca">
           <text>"Et1Vetting",
-"ReviewReferralAdmin", 
+"ReviewReferralAdmin",
 "ReviewReferralResponseAdmin"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_01q74h8">
@@ -633,7 +633,8 @@
         <inputEntry id="UnaryTests_02rmjxe">
           <text>"draftCaseCreated",
 "Et1Vetting",
-"et3Response"</text>
+"et3Response",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -673,7 +674,8 @@
         <inputEntry id="UnaryTests_1tyaq8o">
           <text>"draftCaseCreated",
 "Et1Vetting",
-"et3Response"          </text>
+"et3Response",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -693,7 +695,7 @@
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin"          </text>
+"ReviewReferralResponseAdmin"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">
           <text>"minorPriority"</text>
