@@ -32,6 +32,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String YES = "Yes";
     public static final String REFERRALSUBJECT = "(Referral Subject)";
     public static final String REFERRALRULE21 = "Rule 21 Referral";
+    public static final String REFERRALHEARING = "Hearing";
 
     @BeforeAll
     public static void initialization() {
@@ -82,12 +83,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
+                    + "   \"Data\":{\n"
+                    + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
+                    + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
+                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + "   }"
+                    + "}"),
                 Map.of(
                     "taskId", "ReviewReferralJudiciary",
                     "name", "Review Referral - (Referral Subject)",
@@ -99,12 +100,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + LEGALOFFICER + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
+                    + "   \"Data\":{\n"
+                    + "      \"referCaseTo\":\"" + LEGALOFFICER + "\",\n"
+                    + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
+                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + "   }"
+                    + "}"),
                 Map.of(
                     "taskId", "ReviewReferralLegalOps",
                     "name", "Review Referral - (Referral Subject)",
@@ -149,12 +150,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "replyToReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
+                    + "   \"Data\":{\n"
+                    + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
+                    + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
+                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + "   }"
+                    + "}"),
                 Map.of(
                     "taskId", "ReviewReferralResponseAdmin",
                     "name", "Review Referral Response - (Referral Subject)",
@@ -177,17 +178,33 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Accepted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALRULE21 + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
+                    + "   \"Data\":{\n"
+                    + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
+                    + "      \"referralSubject\":\"" + REFERRALRULE21 + "\",\n"
+                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + "   }"
+                    + "}"),
                 Map.of(
                     "taskId", "DraftAndSignJudgment",
                     "name", "Draft And Sign Judgment",
                     "workingDaysAllowed", 28,
                     "processCategories", "Judgment"
+                )
+            ),
+            Arguments.of(
+                "createReferral",
+                null,
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
+                    + "      \"referralSubject\":\"" + REFERRALHEARING + "\"\n"
+                    + "   }"
+                    + "}"),
+                Map.of(
+                    "taskId", "IssuePostHearingDirection",
+                    "name", "Issue Post Hearing Direction",
+                    "workingDaysAllowed", 5,
+                    "processCategories", "Hearing"
                 )
             )
         );
@@ -213,7 +230,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(11));
+        assertThat(logic.getRules().size(), is(12));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {

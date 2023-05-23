@@ -372,6 +372,35 @@ else 2</text>
           <text>"Judgment"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1s31bcd">
+        <inputEntry id="UnaryTests_0dupw7d">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mg3cq8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ugxnru">
+          <text>"Admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rppy5k">
+          <text>"Hearing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19aayz9">
+          <text>"IssuePostHearingDirection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14t378q">
+          <text>"Issue Post Hearing Direction"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i1vc8m">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nmdjtg">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sz0vs9">
+          <text>"Hearing"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
