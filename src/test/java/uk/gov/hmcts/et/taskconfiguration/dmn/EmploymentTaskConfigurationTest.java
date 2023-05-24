@@ -418,11 +418,11 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("et3Response", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("DraftAndSignJudgment", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("IssuePostHearingDirection", "No", defaultMajorPriority, defaultMinorPriority),
-
             Arguments.of("ReviewReferralAdmin", "Yes", urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralResponseAdmin", "Yes", urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralResponseJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseAdmin", "Yes", urgentMajorPriority, urgentMinorPriority)
+            Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority)
         );
     }
 
@@ -431,5 +431,10 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getRules().size(), is(36));
+    }
+
+    private static List<Map<String, String>> concatTwoLists(List<Map<String, String>> list1,
+                                                            List<Map<String, String>> list2) {
+        return Stream.concat(list1.stream(), list2.stream()).collect(Collectors.toList());
     }
 }
