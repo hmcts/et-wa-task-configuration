@@ -119,6 +119,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_098q0pb">
+        <inputEntry id="UnaryTests_15bidkx">
+          <text>"generateCorrespondence"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h0we02">
+          <text>"SendEt1Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vbhm39">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0xysxnl">
         <inputEntry id="UnaryTests_12rci1m">
           <text>"replyToReferral"</text>
@@ -149,17 +160,6 @@
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1jo44pt">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>      
-      <rule id="DecisionRule_098q0pb">
-        <inputEntry id="UnaryTests_15bidkx">
-          <text>"generateCorrespondence"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0h0we02">
-          <text>"SendEt1Notification"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0vbhm39">          
           <text>"Auto"</text>
         </outputEntry>
       </rule>

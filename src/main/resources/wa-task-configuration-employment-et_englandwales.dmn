@@ -633,7 +633,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "Et1Vetting",
 "et3Response",
 "DraftAndSignJudgment",
-"IssuePostHearingDirection"
+"IssuePostHearingDirection",
 "SendEt1Notification",
 "ListServeClaim"</text>
         </inputEntry>
