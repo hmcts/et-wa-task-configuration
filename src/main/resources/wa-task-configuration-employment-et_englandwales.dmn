@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.11.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -36,12 +36,10 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>
-          if (Array.isArray(caseData.respondentCollection) and caseData.respondentCollection.length)
-          then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-          + " v " + caseData.respondentCollection.get(0).respondent_name
-          else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-          </text>
+          <text>if (Array.isArray(caseData.respondentCollection) and caseData.respondentCollection.length)
+then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
++ " v " + caseData.respondentCollection.get(0).respondent_name
+else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -101,8 +99,8 @@
         <inputEntry id="UnaryTests_00rjbux">
           <text>"ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
-"CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"CompleteInitialConsideration"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0fxjivg">
           <text>"workType"</text>
@@ -119,7 +117,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fttakc">
-          <text>"IssuePostHearingDirections",
+          <text>"IssuePostHearingDirection",
 "IssueJudgment"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1vbbzn1">
@@ -157,9 +155,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0mqcb20">
           <text>"reviewSpecificAccessRequestJudiciary",
-          "reviewSpecificAccessRequestLegalOps",
-          "reviewSpecificAccessRequestAdmin",
-          "reviewSpecificAccessRequestCTSC"</text>
+"reviewSpecificAccessRequestLegalOps",
+"reviewSpecificAccessRequestAdmin",
+"reviewSpecificAccessRequestCTSC"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1wblnqm">
           <text>"workType"</text>
@@ -244,7 +242,7 @@
 "ET3Processing",
 "SendET3Notification",
 "IssueInitialConsiderationDirections",
-"IssuePostHearingDirections",
+"IssuePostHearingDirection",
 "IssueJudgment",
 "ContactTribunalWithAnApplication",
 "AmendPartyDetails",
@@ -461,7 +459,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ootl4e">
-          <text>"IssuePostHearingDirections"</text>
+          <text>"IssuePostHearingDirection"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1o7xct1">
           <text>"description"</text>
@@ -634,6 +632,8 @@
           <text>"draftCaseCreated",
 "Et1Vetting",
 "et3Response",
+"DraftAndSignJudgment",
+"IssuePostHearingDirection"
 "SendEt1Notification",
 "ListServeClaim"</text>
         </inputEntry>
@@ -655,7 +655,8 @@
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin"</text>
+"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
@@ -676,6 +677,8 @@
           <text>"draftCaseCreated",
 "Et1Vetting",
 "et3Response",
+"DraftAndSignJudgment",
+"IssuePostHearingDirection",
 "SendEt1Notification",
 "ListServeClaim"</text>
         </inputEntry>
@@ -697,7 +700,8 @@
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin"          </text>
+"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">
           <text>"minorPriority"</text>

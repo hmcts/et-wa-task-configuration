@@ -97,6 +97,61 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1ufk5zq">
+        <inputEntry id="UnaryTests_1orgb5e">
+          <text>"addAmendJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xiq9w4">
+          <text>"DraftAndSignJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vjviwy">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tsg2dv">
+        <inputEntry id="UnaryTests_1rp99c7">
+          <text>"generateCorrespondence"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e69sj5">
+          <text>"IssuePostHearingDirection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vnufnp">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xysxnl">
+        <inputEntry id="UnaryTests_12rci1m">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0du4aig">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1idsnct">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12zrnvl">
+        <inputEntry id="UnaryTests_185czjm">
+          <text>"preAcceptanceCase"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_076usvw">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_121a35m">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16ii6xk">
+        <inputEntry id="UnaryTests_1d3wkbk">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ws9y5t">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jo44pt">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>      
       <rule id="DecisionRule_098q0pb">
         <inputEntry id="UnaryTests_15bidkx">
           <text>"generateCorrespondence"</text>
@@ -104,7 +159,7 @@
         <outputEntry id="LiteralExpression_0h0we02">
           <text>"SendEt1Notification"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0vbhm39">
+        <outputEntry id="LiteralExpression_0vbhm39">          
           <text>"Auto"</text>
         </outputEntry>
       </rule>
