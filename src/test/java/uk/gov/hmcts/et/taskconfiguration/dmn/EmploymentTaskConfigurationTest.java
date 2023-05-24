@@ -97,8 +97,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ReviewReferralJudiciary", decisionMakingWork),
             Arguments.of("ReviewReferralResponseJudiciary", decisionMakingWork),
-            Arguments.of("CompleteInitialConsideration", decisionMakingWork),
             Arguments.of("DraftAndSignJudgment", decisionMakingWork),
+            Arguments.of("CompleteInitialConsideration", decisionMakingWork),
 
             Arguments.of("IssuePostHearingDirections", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
@@ -172,9 +172,11 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("Et1Vetting", adminctsc),
             Arguments.of("ReviewReferralAdmin", adminctsc),
+            Arguments.of("ReviewReferralResponseAdmin", adminctsc),
 
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
             Arguments.of("SendET1Notification", administrator),
+            Arguments.of("ListServeClaim", administrator),
             Arguments.of("ET3Processing", administrator),
             Arguments.of("SendET3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
@@ -185,10 +187,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
             Arguments.of("reviewSpecificAccessRequestCTSC", ctsc),
-            Arguments.of("SendEt1Notification", ctsc),
-
-            Arguments.of("ReviewReferralResponseAdmin", adminctsc),
-            Arguments.of("ListServeClaim", concatTwoLists(administrator, ctsc))
+            Arguments.of("SendEt1Notification", ctsc)
         );
     }
 
@@ -426,11 +425,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(37));
-    }
-
-    private static List<Map<String, String>> concatTwoLists(List<Map<String, String>> list1,
-                                                            List<Map<String, String>> list2) {
-        return Stream.concat(list1.stream(), list2.stream()).collect(Collectors.toList());
+        assertThat(logic.getRules().size(), is(36));
     }
 }

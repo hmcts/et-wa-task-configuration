@@ -114,14 +114,12 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uxzgxm">
-          <text>
-          if(additionalData != null
-          and additionalData.Data != null
-          and additionalData.Data.isUrgent != null
-          and additionalData.Data.isUrgent = "Yes")
-          then 1
-          else 2
-          </text>
+          <text>if(additionalData != null
+and additionalData.Data != null
+and additionalData.Data.isUrgent != null
+and additionalData.Data.isUrgent = "Yes")
+then 1
+else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c8d2go">
           <text>"Vetting"</text>
@@ -150,14 +148,12 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0guqf5c">
-          <text>
-          if(additionalData != null
-          and additionalData.Data != null
-          and additionalData.Data.isUrgent != null
-          and additionalData.Data.isUrgent = "Yes")
-          then 1
-          else 2
-          </text>
+          <text>if(additionalData != null
+and additionalData.Data != null
+and additionalData.Data.isUrgent != null
+and additionalData.Data.isUrgent = "Yes")
+then 1
+else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1flovqn">
           <text>"Vetting"</text>
@@ -186,14 +182,12 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cup8ul">
-          <text>
-          if(additionalData != null
-          and additionalData.Data != null
-          and additionalData.Data.isUrgent != null
-          and additionalData.Data.isUrgent = "Yes")
-          then 1
-          else 2
-          </text>
+          <text>if(additionalData != null
+and additionalData.Data != null
+and additionalData.Data.isUrgent != null
+and additionalData.Data.isUrgent = "Yes")
+then 1
+else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1luz902">
           <text>"Vetting"</text>
@@ -309,15 +303,73 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1sgfp98">
-          <text>          if(additionalData != null
-          and additionalData.Data != null
-          and additionalData.Data.isUrgent != null
-          and additionalData.Data.isUrgent = "Yes")
-          then 1
-          else 2</text>
+          <text>if(additionalData != null
+and additionalData.Data != null
+and additionalData.Data.isUrgent != null
+and additionalData.Data.isUrgent = "Yes")
+then 1
+else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1opsd1f">
           <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1088ucx">
+        <inputEntry id="UnaryTests_09wciln">
+          <text>"updateHearing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14q23vc">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kmlbs3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lsqrua">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ir1grh">
+          <text>"DraftAndSignJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zn1b9y">
+          <text>"Draft And Sign Judgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gdbet3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10ihiip">
+          <text>28</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19akwho">
+          <text>"Judgment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0czmplo">
+        <inputEntry id="UnaryTests_171nfwx">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0psy3au">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ar4dx9">
+          <text>"Judge"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_008f6zs">
+          <text>"Rule 21 Referral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zsboti">
+          <text>"DraftAndSignJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1juaks9">
+          <text>"Draft And Sign Judgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17sbt3s">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zd245i">
+          <text>28</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06gpnf8">
+          <text>"Judgment"</text>
         </outputEntry>
       </rule>
     </decisionTable>
