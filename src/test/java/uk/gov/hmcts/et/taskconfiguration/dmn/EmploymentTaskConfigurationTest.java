@@ -87,7 +87,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("Et1Vetting", routineWork),
             Arguments.of("ReviewReferralLegalOps", routineWork),
             Arguments.of("ReviewReferralAdmin", routineWork),
-            Arguments.of("SendET1Notification", routineWork),
+            Arguments.of("SendEt1Notification", routineWork),
             Arguments.of("ListServeClaim", routineWork),
             Arguments.of("ET3Processing", routineWork),
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
@@ -173,10 +173,10 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("Et1Vetting", adminctsc),
             Arguments.of("ReviewReferralAdmin", adminctsc),
             Arguments.of("ReviewReferralResponseAdmin", adminctsc),
-
+            Arguments.of("ListServeClaim", adminctsc),
+            Arguments.of("SendEt1Notification", adminctsc),
+          
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
-            Arguments.of("SendET1Notification", administrator),
-            Arguments.of("ListServeClaim", administrator),
             Arguments.of("ET3Processing", administrator),
             Arguments.of("SendET3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
@@ -186,8 +186,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("AmendPartyDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
-            Arguments.of("reviewSpecificAccessRequestCTSC", ctsc),
-            Arguments.of("SendEt1Notification", ctsc)
+            Arguments.of("reviewSpecificAccessRequestCTSC", ctsc)
         );
     }
 
@@ -322,7 +321,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("Et1Vetting", reviewET1Submission),
 
-            Arguments.of("SendET1Notification", issueET1Notification),
+            Arguments.of("SendEt1Notification", issueET1Notification),
 
             Arguments.of("Rule21Referral", draftJudgment),
 

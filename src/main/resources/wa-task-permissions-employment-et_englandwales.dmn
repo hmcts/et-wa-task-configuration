@@ -398,7 +398,7 @@
           "Et1Vetting",
           "ReviewReferralAdmin",
           "ReviewReferralResponseAdmin",
-          "SendET1Notification",
+          "SendEt1Notification",
           "ListServeClaim",
           "ET3Processing",
           "SendET3Notification",
@@ -442,7 +442,7 @@
           "Et1Vetting",
           "ReviewReferralAdmin",
           "ReviewReferralResponseAdmin",
-          "SendET1Notification",
+          "SendEt1Notification",
           "ListServeClaim",
           "ET3Processing",
           "SendET3Notification",
@@ -486,7 +486,7 @@
           "Et1Vetting",
           "ReviewReferralAdmin",
           "ReviewReferralResponseAdmin",
-          "SendET1Notification",
+          "SendEt1Notification",
           "ListServeClaim",
           "ET3Processing",
           "SendET3Notification",
@@ -562,7 +562,7 @@
           "Et1Vetting",
           "ReviewReferralAdmin",
           "ReviewReferralResponseAdmin",
-          "SendET1Notification",
+          "SendEt1Notification",
           "ListServeClaim"
           </text>
         </inputEntry>
@@ -598,7 +598,7 @@
           "Et1Vetting",
           "ReviewReferralAdmin",
           "ReviewReferralResponseAdmin",
-          "SendET1Notification",
+          "SendEt1Notification",
           "ListServeClaim"
           </text>
         </inputEntry>
@@ -634,7 +634,7 @@
           "Et1Vetting",
           "ReviewReferralAdmin",
           "ReviewReferralResponseAdmin",
-          "SendET1Notification",
+          "SendEt1Notification",
           "ListServeClaim"
           </text>
         </inputEntry>

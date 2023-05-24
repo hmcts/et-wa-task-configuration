@@ -145,6 +145,15 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     )
                 )
+            ),
+            Arguments.of(
+                "generateCorrespondence",
+                asList(
+                    Map.of(
+                        "taskType", "SendEt1Notification",
+                        "completionMode", "Auto"
+                    )
+                )
             )
         );
     }
