@@ -164,7 +164,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         assertThat(dmnDecisionTableResult.getResultList(), is(singletonList(expectedDmnOutcome)));
-    }    public static Stream<Arguments> scenarioProviderAcceptance() {
+    }
+
+    public static Stream<Arguments> scenarioProviderAcceptance() {
         return Stream.of(
             Arguments.of(
                 "preAcceptanceCase",
