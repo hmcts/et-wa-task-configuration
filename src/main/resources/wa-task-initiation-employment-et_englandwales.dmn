@@ -286,6 +286,35 @@
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0el8lh8">
+        <inputEntry id="UnaryTests_1d9nlrk">
+          <text>"preAcceptanceCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xnsic0">
+          <text>"Accepted","Rejected"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0msudrt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rq7isq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ubx349">
+          <text>"SendEt1Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ryat12">
+          <text>"Send ET1 Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p6d30a">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02ro4zg">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z0hbyx">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1579wwj">
         <inputEntry id="UnaryTests_1u2n3i0">
           <text>"replyToReferral"</text>

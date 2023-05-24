@@ -16,7 +16,10 @@ import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -128,17 +131,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "preAcceptanceCase",
-                "Accepted",
-                null,
-                Map.of(
-                    "taskId", "ListServeClaim",
-                    "name", "List/ Serve Claim",
-                    "workingDaysAllowed", 1,
-                    "processCategories", "Vetting"
-                )
-            ),
-            Arguments.of(
                 "replyToReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
@@ -172,13 +164,67 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         assertThat(dmnDecisionTableResult.getResultList(), is(singletonList(expectedDmnOutcome)));
+    }    public static Stream<Arguments> scenarioProviderAcceptance() {
+        return Stream.of(
+            Arguments.of(
+                "preAcceptanceCase",
+                "Accepted",
+                null,
+                List.of(
+                    Map.of(
+                        "taskId", "ListServeClaim",
+                        "name", "List/ Serve Claim",
+                        "workingDaysAllowed", 1,
+                        "processCategories", "Vetting"
+                    ),
+                    Map.of(
+                        "taskId", "SendEt1Notification",
+                        "name", "Send ET1 Notification",
+                        "workingDaysAllowed", 1,
+                        "processCategories", "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
+                "preAcceptanceCase",
+                "Rejected",
+                null,
+                List.of(
+                    Map.of(
+                        "taskId", "SendEt1Notification",
+                        "name", "Send ET1 Notification",
+                        "workingDaysAllowed", 1,
+                        "processCategories", "Vetting"
+                    )
+                )
+            )
+        );
+    }
+
+    @ParameterizedTest(name = "event id: {0} post event state: {1} additional data: {2}")
+    @MethodSource("scenarioProviderAcceptance")
+    void given_multiple_event_ids_should_evaluate_dmn(String eventId,
+                                                      String postEventState,
+                                                      Map<String, Object> map,
+                                                      List<Map<String, String>> expectation) {
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", eventId);
+        inputVariables.putValue("postEventState", postEventState);
+        inputVariables.putValue("now", LocalDateTime.now().minusMinutes(10)
+            .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+        inputVariables.putValue("additionalData", map);
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
     }
 
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(9));
+        assertThat(logic.getRules().size(), is(10));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {

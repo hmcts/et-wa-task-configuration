@@ -75,7 +75,7 @@
 "Et1Vetting",
 "ReviewReferralAdmin",
 "ReviewReferralLegalOps",
-"SendET1Notification",
+"SendEt1Notification",
 "ListServeClaim",
 "ET3Processing",
 "ReviewReferralResponseLegalOps",
@@ -156,9 +156,10 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mqcb20">
-          <text>"reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
-"reviewSpecificAccessRequestAdmin",
-"reviewSpecificAccessRequestCTSC"</text>
+          <text>"reviewSpecificAccessRequestJudiciary",
+          "reviewSpecificAccessRequestLegalOps",
+          "reviewSpecificAccessRequestAdmin",
+          "reviewSpecificAccessRequestCTSC"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1wblnqm">
           <text>"workType"</text>
@@ -219,8 +220,10 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0rozdca">
           <text>"Et1Vetting",
-"ReviewReferralAdmin", 
-"ReviewReferralResponseAdmin"</text>
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_01q74h8">
           <text>"roleCategory"</text>
@@ -238,8 +241,6 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1faq2jo">
           <text>"reviewSpecificAccessRequestAdmin",
-"SendET1Notification",
-"ListServeClaim",
 "ET3Processing",
 "SendET3Notification",
 "IssueInitialConsiderationDirections",
@@ -264,8 +265,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1rar7nm">
-          <text>"reviewSpecificAccessRequestCTSC",
-"SendEt1Notification"</text>
+          <text>"reviewSpecificAccessRequestCTSC"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0yyjq7r">
           <text>"roleCategory"</text>
@@ -341,7 +341,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1o80kg9">
-          <text>"SendET1Notification"</text>
+          <text>"SendEt1Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0tih9p8">
           <text>"description"</text>
@@ -633,7 +633,9 @@
         <inputEntry id="UnaryTests_02rmjxe">
           <text>"draftCaseCreated",
 "Et1Vetting",
-"et3Response"</text>
+"et3Response",
+"SendEt1Notification",
+"ListServeClaim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -653,7 +655,7 @@
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin"          </text>
+"ReviewReferralResponseAdmin"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
@@ -673,7 +675,9 @@
         <inputEntry id="UnaryTests_1tyaq8o">
           <text>"draftCaseCreated",
 "Et1Vetting",
-"et3Response"          </text>
+"et3Response",
+"SendEt1Notification",
+"ListServeClaim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
