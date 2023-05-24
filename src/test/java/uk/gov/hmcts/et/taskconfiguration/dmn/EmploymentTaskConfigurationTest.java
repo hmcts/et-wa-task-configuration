@@ -100,7 +100,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("DraftAndSignJudgment", decisionMakingWork),
             Arguments.of("CompleteInitialConsideration", decisionMakingWork),
 
-            Arguments.of("IssuePostHearingDirections", hearingWork),
+            Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
 
             Arguments.of("ContactTribunalWithAnApplication", applications),
@@ -180,7 +180,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ET3Processing", administrator),
             Arguments.of("SendET3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
-            Arguments.of("IssuePostHearingDirections", administrator),
+            Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
             Arguments.of("ContactTribunalWithAnApplication", administrator),
             Arguments.of("AmendPartyDetails", administrator),
@@ -336,7 +336,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssueInitialConsiderationDirections", reviewInitialConsideration),
 
-            Arguments.of("IssuePostHearingDirections", reviewTheReferralCorrespondence),
+            Arguments.of("IssuePostHearingDirection", reviewTheReferralCorrespondence),
 
             Arguments.of("DraftAndSignJudgment", reviewJudgmentPromulgation),
 
@@ -416,7 +416,12 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("draftCaseCreated", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("Et1Vetting", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("et3Response", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("DraftAndSignJudgment", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("IssuePostHearingDirection", "No", defaultMajorPriority, defaultMinorPriority),
+
             Arguments.of("ReviewReferralAdmin", "Yes", urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralResponseAdmin", "Yes", urgentMajorPriority, urgentMinorPriority)
         );
     }

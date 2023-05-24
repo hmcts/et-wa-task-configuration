@@ -108,6 +108,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0tsg2dv">
+        <inputEntry id="UnaryTests_1rp99c7">
+          <text>"generateCorrespondence"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e69sj5">
+          <text>"IssuePostHearingDirection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vnufnp">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

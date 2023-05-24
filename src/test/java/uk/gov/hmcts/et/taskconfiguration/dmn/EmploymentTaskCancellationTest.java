@@ -31,7 +31,7 @@ class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "nothing",
+                null,
                 "INITIATE_CASE_DRAFT",
                 "AWAITING_SUBMISSION_TO_HMCTS",
                 Map.of(
