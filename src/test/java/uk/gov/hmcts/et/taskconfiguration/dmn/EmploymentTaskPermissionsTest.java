@@ -344,7 +344,7 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "IssuePostHearingDirections",
+                "IssuePostHearingDirection",
                 List.of(
                     taskSupervisor,
                     allocatedAdminCaseworker,

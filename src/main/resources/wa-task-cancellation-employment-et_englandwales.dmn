@@ -182,26 +182,49 @@
           <text>"processing"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1urmmou">
-        <inputEntry id="UnaryTests_0o8ujwn">
+      <rule id="DecisionRule_1j0ikqt">
+        <inputEntry id="UnaryTests_019v0hk">
           <text>"Closed"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_13wrzea">
+        <inputEntry id="UnaryTests_0neewht">
           <text>"disposeCase"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_18smroi">
-          <text>"Submitted"</text>
+        <inputEntry id="UnaryTests_0rsetu2">
+          <text>"Closed"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0jusn3q">
+        <outputEntry id="LiteralExpression_0m544nk">
           <text>"Cancel"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1tz2cma">
+        <outputEntry id="LiteralExpression_1d3nugq">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_01i86lc">
+        <outputEntry id="LiteralExpression_0m7wsvq">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1te00e6">
+        <outputEntry id="LiteralExpression_1m0xz5y">
+          <text>"Judgment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1smt9s1">
+        <inputEntry id="UnaryTests_1o23hjm">
+          <text>"Closed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g2hrwd">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z5nuyh">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18ug1e4">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pme6je">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08es27z">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j18r60">
           <text>"processing"</text>
         </outputEntry>
       </rule>

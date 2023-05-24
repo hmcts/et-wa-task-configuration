@@ -36,12 +36,10 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>
-          if (Array.isArray(caseData.respondentCollection) and caseData.respondentCollection.length)
-          then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-          + " v " + caseData.respondentCollection.get(0).respondent_name
-          else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-          </text>
+          <text>if (Array.isArray(caseData.respondentCollection) and caseData.respondentCollection.length)
+then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
++ " v " + caseData.respondentCollection.get(0).respondent_name
+else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -101,8 +99,8 @@
         <inputEntry id="UnaryTests_00rjbux">
           <text>"ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
-"CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"CompleteInitialConsideration"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0fxjivg">
           <text>"workType"</text>
@@ -119,7 +117,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fttakc">
-          <text>"IssuePostHearingDirections",
+          <text>"IssuePostHearingDirection",
 "IssueJudgment"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1vbbzn1">
@@ -156,7 +154,8 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mqcb20">
-          <text>"reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
+          <text>"reviewSpecificAccessRequestJudiciary",
+"reviewSpecificAccessRequestLegalOps",
 "reviewSpecificAccessRequestAdmin",
 "reviewSpecificAccessRequestCTSC"</text>
         </inputEntry>
@@ -219,7 +218,7 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0rozdca">
           <text>"Et1Vetting",
-"ReviewReferralAdmin", 
+"ReviewReferralAdmin",
 "ReviewReferralResponseAdmin"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_01q74h8">
@@ -243,7 +242,7 @@
 "ET3Processing",
 "SendET3Notification",
 "IssueInitialConsiderationDirections",
-"IssuePostHearingDirections",
+"IssuePostHearingDirection",
 "IssueJudgment",
 "ContactTribunalWithAnApplication",
 "AmendPartyDetails",
@@ -461,7 +460,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ootl4e">
-          <text>"IssuePostHearingDirections"</text>
+          <text>"IssuePostHearingDirection"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1o7xct1">
           <text>"description"</text>
@@ -633,7 +632,9 @@
         <inputEntry id="UnaryTests_02rmjxe">
           <text>"draftCaseCreated",
 "Et1Vetting",
-"et3Response"</text>
+"et3Response",
+"DraftAndSignJudgment",
+"IssuePostHearingDirection"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -674,7 +675,9 @@
         <inputEntry id="UnaryTests_1tyaq8o">
           <text>"draftCaseCreated",
 "Et1Vetting",
-"et3Response"          </text>
+"et3Response",
+"DraftAndSignJudgment",
+"IssuePostHearingDirection"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>

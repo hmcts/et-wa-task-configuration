@@ -97,36 +97,58 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0kq1fag">
-        <inputEntry id="UnaryTests_1691j39">
+      <rule id="DecisionRule_1ufk5zq">
+        <inputEntry id="UnaryTests_1orgb5e">
+          <text>"addAmendJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xiq9w4">
+          <text>"DraftAndSignJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vjviwy">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tsg2dv">
+        <inputEntry id="UnaryTests_1rp99c7">
+          <text>"generateCorrespondence"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e69sj5">
+          <text>"IssuePostHearingDirection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vnufnp">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xysxnl">
+        <inputEntry id="UnaryTests_12rci1m">
           <text>"replyToReferral"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1izbwvs">
+        <outputEntry id="LiteralExpression_0du4aig">
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0ci4nwr">
+        <outputEntry id="LiteralExpression_1idsnct">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1p6namw">
-        <inputEntry id="UnaryTests_01a2lg6">
+      <rule id="DecisionRule_12zrnvl">
+        <inputEntry id="UnaryTests_185czjm">
           <text>"preAcceptanceCase"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1uu65cv">
+        <outputEntry id="LiteralExpression_076usvw">
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0h0x2xe">
+        <outputEntry id="LiteralExpression_121a35m">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1rjxxqc">
-        <inputEntry id="UnaryTests_1ypdw13">
+      <rule id="DecisionRule_16ii6xk">
+        <inputEntry id="UnaryTests_1d3wkbk">
           <text>"closeReferral"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1qdzjua">
+        <outputEntry id="LiteralExpression_0ws9y5t">
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0hjjf0d">
+        <outputEntry id="LiteralExpression_1jo44pt">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

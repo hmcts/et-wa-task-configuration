@@ -97,10 +97,10 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ReviewReferralJudiciary", decisionMakingWork),
             Arguments.of("ReviewReferralResponseJudiciary", decisionMakingWork),
-            Arguments.of("CompleteInitialConsideration", decisionMakingWork),
             Arguments.of("DraftAndSignJudgment", decisionMakingWork),
+            Arguments.of("CompleteInitialConsideration", decisionMakingWork),
 
-            Arguments.of("IssuePostHearingDirections", hearingWork),
+            Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
 
             Arguments.of("ContactTribunalWithAnApplication", applications),
@@ -172,23 +172,22 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("Et1Vetting", adminctsc),
             Arguments.of("ReviewReferralAdmin", adminctsc),
+            Arguments.of("ReviewReferralResponseAdmin", adminctsc),
 
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
             Arguments.of("SendET1Notification", administrator),
+            Arguments.of("ListServeClaim", administrator),
             Arguments.of("ET3Processing", administrator),
             Arguments.of("SendET3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
-            Arguments.of("IssuePostHearingDirections", administrator),
+            Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
             Arguments.of("ContactTribunalWithAnApplication", administrator),
             Arguments.of("AmendPartyDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
             Arguments.of("reviewSpecificAccessRequestCTSC", ctsc),
-            Arguments.of("SendEt1Notification", ctsc),
-
-            Arguments.of("ReviewReferralResponseAdmin", adminctsc),
-            Arguments.of("ListServeClaim", concatTwoLists(administrator, ctsc))
+            Arguments.of("SendEt1Notification", ctsc)
         );
     }
 
@@ -337,7 +336,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssueInitialConsiderationDirections", reviewInitialConsideration),
 
-            Arguments.of("IssuePostHearingDirections", reviewTheReferralCorrespondence),
+            Arguments.of("IssuePostHearingDirection", reviewTheReferralCorrespondence),
 
             Arguments.of("DraftAndSignJudgment", reviewJudgmentPromulgation),
 
@@ -417,9 +416,13 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("draftCaseCreated", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("Et1Vetting", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("et3Response", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("DraftAndSignJudgment", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("IssuePostHearingDirection", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("ReviewReferralAdmin", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralResponseAdmin", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority)
+            Arguments.of("ReviewReferralResponseJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority)
         );
     }
 
