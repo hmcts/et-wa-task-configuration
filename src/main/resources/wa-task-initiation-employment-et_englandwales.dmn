@@ -326,7 +326,7 @@ else 2</text>
           <text>"ReviewReferralResponseAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qcsldu">
-          <text>"Review Referral Response - (Referral Subject)"</text>
+          <text>"Review Referral Response - " + additionalData.Data.referralSubject</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
@@ -453,14 +453,48 @@ else 2</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0i8o415">
-          <text>          if(additionalData != null
-          and additionalData.Data != null
-          and additionalData.Data.isUrgent != null
-          and additionalData.Data.isUrgent = "Yes")
-          then 1
-          else 2</text>
+          <text>if(additionalData != null
+and additionalData.Data != null
+and additionalData.Data.isUrgent != null
+and additionalData.Data.isUrgent = "Yes")
+then 1
+else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gy7tms">
+          <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00vkigv">
+        <inputEntry id="UnaryTests_0qcoftd">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z9zbuk">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cyv80m">
+          <text>"Legal officer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1047la4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0asscuc">
+          <text>"ReviewReferralResponseLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03wz7tv">
+          <text>"Review Referral Response - " + additionalData.Data.referralSubject</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14hvioj">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1l5hc2x">
+          <text>if(additionalData != null
+and additionalData.Data != null
+and additionalData.Data.isUrgent != null
+and additionalData.Data.isUrgent = "Yes")
+then 1
+else 2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ce5c8c">
           <text>"processing"</text>
         </outputEntry>
       </rule>
