@@ -656,7 +656,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
 "ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary"</text>
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
@@ -701,7 +702,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
 "ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary"</text>
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">
           <text>"minorPriority"</text>
