@@ -23,4 +23,6 @@ bin/main/application.yaml
 lombok.config
 
 .DS_Store
-/lib/applicationinsights.json
+
+applicationinsights-agent-*.jar
+*.log
