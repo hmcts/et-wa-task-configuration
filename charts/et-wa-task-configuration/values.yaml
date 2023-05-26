@@ -3,4 +3,9 @@ java:
   image: 'hmctspublic.azurecr.io/et/wa-task-configuration:latest'
   ingressHost: et-wa-task-configuration-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: et
+  keyVaults:
+    et:
+      secrets:
+        - name: app-insights-connection-string
+          alias: app-insights-connection-string
   environment:
