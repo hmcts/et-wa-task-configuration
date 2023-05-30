@@ -152,6 +152,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_12huova">
+        <inputEntry id="UnaryTests_1061un4">
+          <text>"et3Response"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xln4uh">
+          <text>"ReviewRule21Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1s25vmw">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
