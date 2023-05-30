@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1kep5qz" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
   <decision id="wa-task-types-employment-et_englandwales" name="ET Task Types DMN">
-    <decisionTable id="DecisionTable_17knzal" hitPolicy="RULE ORDER">
+    <decisionTable id="DecisionTable_17knzal" hitPolicy="COLLECT">
       <input id="Input_1">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text></text>
@@ -39,7 +39,7 @@
           <text>"ReviewReferralAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18he837">
-          <text>"Review Referral - (Referral Subject)"</text>
+          <text>"Review Referral - " + additionalData.Data.referralSubject</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1piglun">
@@ -50,7 +50,7 @@
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_11ww7x3">
-          <text>"Review Referral - (Referral Subject)"</text>
+          <text>"Review Referral - " + additionalData.Data.referralSubject</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1sfjkmg">
@@ -61,7 +61,7 @@
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kbi9og">
-          <text>"Review Referral - (Referral Subject)"</text>
+          <text>"Review Referral - " + additionalData.Data.referralSubject</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0wtgwhy">
@@ -116,7 +116,7 @@
           <text>"ReviewReferralResponseAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_06op58d">
-          <text>"Review Referral Response - (Referral Subject)"</text>
+          <text>"Review Referral Response - " + additionalData.Data.referralSubject</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0mcsgvn">
@@ -149,7 +149,7 @@
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1mxj48s">
-          <text>"Review Referral Response - (Referral Subject)"</text>
+          <text>"Review Referral Response - " + additionalData.Data.referralSubject</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10nfm8t">
@@ -160,7 +160,7 @@
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kw9h8u">
-          <text>"Review Referral Response - (Referral Subject)"</text>
+          <text>"Review Referral Response - " + additionalData.Data.referralSubject</text>
         </outputEntry>
       </rule>
     </decisionTable>
