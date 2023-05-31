@@ -79,7 +79,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ReviewReferralResponseLegalOps",
 "ReviewReferralResponseAdmin",
 "ET3Notification",
-"IssueInitialConsiderationDirections"</text>
+"IssueInitialConsiderationDirections",
+"ReviewRule21Referral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -200,7 +201,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "reviewSpecificAccessRequestLegalOps",
 "ReviewRule21Referral",
 "ET3ReferralLegalOps",
-"ReviewReferralResponseLegalOps"</text>
+"ReviewReferralResponseLegalOps",
+"ReviewRule21Referral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uxpxfb">
           <text>"roleCategory"</text>
@@ -635,7 +637,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
 "SendEt1Notification",
-"ListServeClaim"</text>
+"ListServeClaim",
+"ReviewRule21Referral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -681,7 +684,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
 "SendEt1Notification",
-"ListServeClaim"</text>
+"ListServeClaim",
+"ReviewRule21Referral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
