@@ -5,6 +5,7 @@
       https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#remoting-httpinvoker
     </notes>
     <cve>CVE-2016-1000027</cve>
+    <cve>CVE-2023-28709</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[

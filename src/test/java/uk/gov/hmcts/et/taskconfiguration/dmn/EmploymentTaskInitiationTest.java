@@ -117,17 +117,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "et3Response",
-                "Accepted",
-                null,
-                Map.of(
-                    "taskId", "ET3Processing",
-                    "name", "ET3 Processing",
-                    "workingDaysAllowed", 3,
-                    "processCategories", "processing"
-                )
-            ),
-            Arguments.of(
                 "initialConsideration",
                 "Accepted",
                 null,
@@ -308,11 +297,54 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
         assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
     }
 
+    public static Stream<Arguments> scenarioProviderEt3Response() {
+        return Stream.of(
+            Arguments.of(
+                "et3Response",
+                "Accepted",
+                null,
+                List.of(
+                    Map.of(
+                        "taskId", "ET3Processing",
+                        "name", "ET3 Processing",
+                        "workingDaysAllowed", 3,
+                        "processCategories", "processing"
+                    ),
+                    Map.of(
+                        "taskId", "ReviewRule21Referral",
+                        "name", "Review Rule 21 Referral",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "processing"
+                    )
+                )
+            )
+        );
+    }
+
+    @ParameterizedTest(name = "event id: {0} post event state: {1} additional data: {2}")
+    @MethodSource("scenarioProviderEt3Response")
+    void given_multiple_event_ids_et3response_should_evaluate_dmn(String eventId,
+                                                      String postEventState,
+                                                      Map<String, Object> map,
+                                                      List<Map<String, String>> expectation) {
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", eventId);
+        inputVariables.putValue("postEventState", postEventState);
+        inputVariables.putValue("now", LocalDateTime.now().minusMinutes(10)
+            .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+        inputVariables.putValue("additionalData", map);
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
+    }
+
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(15));
+        assertThat(logic.getRules().size(), is(16));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {
