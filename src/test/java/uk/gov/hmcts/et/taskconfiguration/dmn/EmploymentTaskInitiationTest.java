@@ -45,16 +45,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "INITIATE_CASE_DRAFT",
-                "AWAITING_SUBMISSION_TO_HMCTS",
-                null,
-                Map.of(
-                    "taskId", "draftCaseCreated",
-                    "name", "Draft Case Created",
-                    "workingDaysAllowed", 5
-                )
-            ),
-            Arguments.of(
                 "SUBMIT_CASE_DRAFT",
                 "Submitted",
                 null,
@@ -344,7 +334,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(16));
+        assertThat(logic.getRules().size(), is(15));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {
