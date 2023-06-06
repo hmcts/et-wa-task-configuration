@@ -634,7 +634,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "IssuePostHearingDirection",
 "SendEt1Notification",
 "ListServeClaim",
-"ReviewRule21Referral"</text>
+"ReviewRule21Referral",
+"IssueJudgment"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -680,7 +681,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "IssuePostHearingDirection",
 "SendEt1Notification",
 "ListServeClaim",
-"ReviewRule21Referral"</text>
+"ReviewRule21Referral",
+"IssueJudgment"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
