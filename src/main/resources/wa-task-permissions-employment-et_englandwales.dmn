@@ -159,7 +159,6 @@
         <description>Judge Permissions</description>
         <inputEntry id="UnaryTests_0nnb9wq">
           <text>
-          "draftCaseCreated",
           "ReviewReferralJudiciary",
           "ReviewReferralResponseJudiciary",
           "CompleteInitialConsideration",

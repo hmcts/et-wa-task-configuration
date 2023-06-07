@@ -40,38 +40,6 @@
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
       <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" biodi:width="374" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
-      <rule id="DecisionRule_1fenvxm">
-        <inputEntry id="UnaryTests_09nq8bu">
-          <text>"INITIATE_CASE_DRAFT"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0aldx9i">
-          <text>"AWAITING_SUBMISSION_TO_HMCTS"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1l1etcz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ihcbgh">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1hs9sif">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0tbxmk0">
-          <text>"draftCaseCreated"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_02t95m8">
-          <text>"Draft Case Created"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1x6roa1">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1td2bt7">
-          <text>5</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1m76a0d">
-          <text></text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
           <text>"SUBMIT_CASE_DRAFT"</text>

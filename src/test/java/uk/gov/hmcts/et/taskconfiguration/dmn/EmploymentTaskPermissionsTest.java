@@ -160,13 +160,6 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> genericScenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "draftCaseCreated",
-                List.of(
-                    taskSupervisor,
-                    judge
-                )
-            ),
-            Arguments.of(
                 "reviewSpecificAccessRequestJudiciary",
                 List.of(
                     taskSupervisor,
