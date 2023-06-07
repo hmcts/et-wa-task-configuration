@@ -418,7 +418,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralResponseLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("IssueJudgment", "No", defaultMajorPriority, defaultMinorPriority)
+            Arguments.of("IssueJudgment", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("CompleteInitialConsideration", "No", defaultMajorPriority, defaultMinorPriority)
         );
     }
 
