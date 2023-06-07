@@ -88,6 +88,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralLegalOps", routineWork),
             Arguments.of("ReviewReferralAdmin", routineWork),
             Arguments.of("SendEt1Notification", routineWork),
+            Arguments.of("SendEt3Notification", routineWork),
             Arguments.of("ListServeClaim", routineWork),
             Arguments.of("ET3Processing", routineWork),
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
@@ -177,7 +178,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
             Arguments.of("ET3Processing", administrator),
-            Arguments.of("SendET3Notification", administrator),
+            Arguments.of("SendEt3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
@@ -328,7 +329,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ET3Processing", reviewET3Submission),
 
-            Arguments.of("SendET3Notification", issueET3Notification),
+            Arguments.of("SendEt3Notification", issueET3Notification),
 
             Arguments.of("CompleteInitialConsideration", initialConsideration),
 
@@ -423,7 +424,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralResponseLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("IssueJudgment", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("CompleteInitialConsideration", "No", defaultMajorPriority, defaultMinorPriority)
+            Arguments.of("CompleteInitialConsideration", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("SendEt3Notification", "No", defaultMajorPriority, defaultMinorPriority)
         );
     }
 

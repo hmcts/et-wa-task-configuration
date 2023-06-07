@@ -326,7 +326,7 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "SendET3Notification",
+                "SendEt3Notification",
                 List.of(
                     taskSupervisor,
                     allocatedAdminCaseworker,

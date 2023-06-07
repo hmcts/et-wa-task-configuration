@@ -80,7 +80,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ReviewReferralResponseAdmin",
 "ET3Notification",
 "IssueInitialConsiderationDirections",
-"ReviewRule21Referral"</text>
+"ReviewRule21Referral",
+"SendEt3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -248,7 +249,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "IssueJudgment",
 "ContactTribunalWithAnApplication",
 "AmendPartyDetails",
-"WithdrawAllOrPartOfCase"</text>
+"WithdrawAllOrPartOfCase",
+"SendEt3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -410,7 +412,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fiqg3g">
-          <text>"SendET3Notification"</text>
+          <text>"SendEt3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ky7l6o">
           <text>"description"</text>
@@ -640,7 +642,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ListServeClaim",
 "ReviewRule21Referral",
 "IssueJudgment",
-"CompleteInitialConsideration"</text>
+"CompleteInitialConsideration",
+"SendEt3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -689,7 +692,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ListServeClaim",
 "ReviewRule21Referral",
 "IssueJudgment",
-"CompleteInitialConsideration"</text>
+"CompleteInitialConsideration",
+"SendEt3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
