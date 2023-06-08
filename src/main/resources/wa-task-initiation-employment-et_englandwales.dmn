@@ -570,8 +570,7 @@ else 2</text>
           <text>"IssueJudgment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ofxqxi">
-          <text>"Issue Judgment"
-</text>
+          <text>"Issue Judgment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0mor5cr">
           <text></text>
@@ -612,6 +611,38 @@ else 2</text>
           <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04ac9ba">
+          <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s7q28n">
+        <inputEntry id="UnaryTests_05jk49f">
+          <text>"et3Vetting"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0trmk2s">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k9vt8o">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r77qlw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lpacxq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l1w4gm">
+          <text>"SendEt3Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1myz3zg">
+          <text>"Send ET3 Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a4lic9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1svsl6d">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zvnpwe">
           <text>"processing"</text>
         </outputEntry>
       </rule>
