@@ -231,7 +231,22 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "tseSubmission(name TBC)",
+                "SUBMIT_CLAIMANT_TSE",
+                "Accepted",
+                mapAdditionalData("{\n"
+                                      + "   \"Data\":{\n"
+                                      + "   \"submissionReason\":\"" + "-" + "\"\n"
+                                      + "   }"
+                                      + "}"),
+                Map.of(
+                    "taskId", "AmendPartyDetails",
+                    "name", "Amend Party Details",
+                    "workingDaysAllowed", 1,
+                    "processCategories", "Amendments"
+                )
+            ),
+            Arguments.of(
+                "CLAIMANT_TSE_RESPOND",
                 "Accepted",
                 mapAdditionalData("{\n"
                                       + "   \"Data\":{\n"
@@ -413,7 +428,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(19));
+        assertThat(logic.getRules().size(), is(20));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {

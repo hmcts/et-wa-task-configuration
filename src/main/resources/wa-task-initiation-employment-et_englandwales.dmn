@@ -707,7 +707,7 @@ else 2</text>
       </rule>
       <rule id="DecisionRule_14mxra8">
         <inputEntry id="UnaryTests_0tx2c65">
-          <text>"tseSubmission(name TBC)"</text>
+          <text>"SUBMIT_CLAIMANT_TSE"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_10shmlp">
           <text>"Accepted"</text>
@@ -737,6 +737,41 @@ else 2</text>
           <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pydv0c">
+          <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gss9cr">
+        <inputEntry id="UnaryTests_0gdqwws">
+          <text>"CLAIMANT_TSE_RESPOND"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gm591h">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sfhjvk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jlo1o1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vpw6w1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_164pg9o">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ujlidy">
+          <text>"AmendPartyDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1erzofl">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m04hv0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t2rwag">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08rdkrq">
           <text>"Amendments"</text>
         </outputEntry>
       </rule>
