@@ -75,7 +75,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, String>> applications = List.of(Map.of(
             "name", "workType",
-            "value", "Applications"
+            "value", "applications"
         ));
         List<Map<String, String>> accessRequests = List.of(Map.of(
             "name", "workType",

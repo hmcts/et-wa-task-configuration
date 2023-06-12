@@ -126,7 +126,7 @@ class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 Map.of(
                     "action", "Cancel",
-                    "processCategories", "amendments"
+                    "processCategories", "Amendments"
                 )
             )
         );
