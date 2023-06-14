@@ -36,7 +36,7 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
+          <text>"Test Name"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -664,7 +664,7 @@
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xy9k8p">
-          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes") then 1000 else 5000
+          <text>1000
           </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1uusq1d">
@@ -713,8 +713,7 @@
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0g94d63">
-          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes") then 100 else 500
-          </text>
+          <text>100</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ry9gq0">
           <text></text>
