@@ -228,7 +228,52 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "workingDaysAllowed", 5,
                     "processCategories", "Hearing"
                 )
+            ),
+            Arguments.of(
+                "SUBMIT_CLAIMANT_TSE",
+                "Accepted",
+                null,
+                Map.of(
+                        "taskId", "ContactTribunalWithanApplication",
+                        "name", "Contact Tribunal With An Application",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "Application"
+                )
+            ),
+            Arguments.of(
+                "CLAIMANT_TSE_RESPOND",
+                "Accepted",
+                null,
+                Map.of(
+                    "taskId", "ContactTribunalWithanApplication",
+                    "name", "Contact Tribunal With An Application",
+                    "workingDaysAllowed", 2,
+                    "processCategories", "Application"
+                )
+            ),
+            Arguments.of(
+                "respondentTSE",
+                "Accepted",
+                null,
+                Map.of(
+                    "taskId", "ContactTribunalWithanApplication",
+                    "name", "Contact Tribunal With An Application",
+                    "workingDaysAllowed", 2,
+                    "processCategories", "Application"
+                )
+            ),
+            Arguments.of(
+                "tseRespond",
+                "Accepted",
+                null,
+                Map.of(
+                    "taskId", "ContactTribunalWithanApplication",
+                    "name", "Contact Tribunal With An Application",
+                    "workingDaysAllowed", 2,
+                    "processCategories", "Application"
+                )
             )
+
         );
     }
 
@@ -397,7 +442,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(18));
+        assertThat(logic.getRules().size(), is(19));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {

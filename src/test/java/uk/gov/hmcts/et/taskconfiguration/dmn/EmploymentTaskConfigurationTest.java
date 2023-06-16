@@ -75,7 +75,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, String>> applications = List.of(Map.of(
             "name", "workType",
-            "value", "Applications"
+            "value", "applications"
         ));
         List<Map<String, String>> accessRequests = List.of(Map.of(
             "name", "workType",
@@ -102,7 +102,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
-            Arguments.of("ContactTribunalWithAnApplication", applications),
+            Arguments.of("ContactTribunalWithanApplication", applications),
             Arguments.of("AmendPartyDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
 
@@ -180,7 +180,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("IssueInitialConsiderationDirections", administrator),
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
-            Arguments.of("ContactTribunalWithAnApplication", administrator),
+            Arguments.of("ContactTribunalWithanApplication", administrator),
             Arguments.of("AmendPartyDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
@@ -421,7 +421,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralResponseLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("IssueJudgment", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("CompleteInitialConsideration", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("SendEt3Notification", "No", defaultMajorPriority, defaultMinorPriority)
+            Arguments.of("SendEt3Notification", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ContactTribunalWithanApplication", "No", defaultMajorPriority, defaultMinorPriority)
         );
     }
 

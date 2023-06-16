@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
-      <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
+      <input id="Input_1" label="Event Id" biodi:width="285.9571838378906" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text></text>
         </inputExpression>
@@ -35,8 +35,8 @@
           else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="217" />
-      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="247" />
+      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255.9906463623047" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284.99803161621094" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
       <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" biodi:width="374" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
@@ -644,6 +644,38 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zvnpwe">
           <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01ceigg">
+        <inputEntry id="UnaryTests_1my06mo">
+          <text>"SUBMIT_CLAIMANT_TSE","CLAIMANT_TSE_RESPOND","respondentTSE","tseRespond"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n6e17i">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oozmiu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11n1tc1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tapbch">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18a0xvf">
+          <text>"ContactTribunalWithanApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gy7thr">
+          <text>"Contact Tribunal With An Application"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m17io6">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rmiws5">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h85dlq">
+          <text>"Application"</text>
         </outputEntry>
       </rule>
     </decisionTable>
