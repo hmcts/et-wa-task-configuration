@@ -133,7 +133,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1hszd50">
-          <text>"ContactTribunalWithAnApplication",
+          <text>"ContactTribunalWithanApplication",
 "AmendPartyDetails",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
@@ -242,7 +242,7 @@
 "IssueInitialConsiderationDirections",
 "IssuePostHearingDirection",
 "IssueJudgment",
-"ContactTribunalWithAnApplication",
+"ContactTribunalWithanApplication",
 "AmendPartyDetails",
 "WithdrawAllOrPartOfCase",
 "SendEt3Notification"</text>
