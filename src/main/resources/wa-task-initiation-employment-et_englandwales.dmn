@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
-      <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
+      <input id="Input_1" label="Event Id" biodi:width="285.9571838378906" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text></text>
         </inputExpression>
@@ -35,43 +35,11 @@
           else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="217" />
-      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="247" />
+      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255.9906463623047" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284.99803161621094" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
       <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" biodi:width="374" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
-      <rule id="DecisionRule_1fenvxm">
-        <inputEntry id="UnaryTests_09nq8bu">
-          <text>"INITIATE_CASE_DRAFT"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0aldx9i">
-          <text>"AWAITING_SUBMISSION_TO_HMCTS"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1l1etcz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ihcbgh">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1hs9sif">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0tbxmk0">
-          <text>"draftCaseCreated"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_02t95m8">
-          <text>"Draft Case Created"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1x6roa1">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1td2bt7">
-          <text>5</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1m76a0d">
-          <text></text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
           <text>"SUBMIT_CASE_DRAFT"</text>
@@ -602,8 +570,7 @@ else 2</text>
           <text>"IssueJudgment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ofxqxi">
-          <text>"Issue Judgment"
-</text>
+          <text>"Issue Judgment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0mor5cr">
           <text></text>
@@ -645,6 +612,70 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04ac9ba">
           <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s7q28n">
+        <inputEntry id="UnaryTests_05jk49f">
+          <text>"et3Vetting"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0trmk2s">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k9vt8o">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r77qlw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lpacxq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l1w4gm">
+          <text>"SendEt3Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1myz3zg">
+          <text>"Send ET3 Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a4lic9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1svsl6d">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zvnpwe">
+          <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01ceigg">
+        <inputEntry id="UnaryTests_1my06mo">
+          <text>"SUBMIT_CLAIMANT_TSE","CLAIMANT_TSE_RESPOND","respondentTSE","tseRespond"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n6e17i">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oozmiu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11n1tc1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tapbch">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18a0xvf">
+          <text>"ContactTribunalWithanApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gy7thr">
+          <text>"Contact Tribunal With An Application"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m17io6">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rmiws5">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h85dlq">
+          <text>"Application"</text>
         </outputEntry>
       </rule>
     </decisionTable>

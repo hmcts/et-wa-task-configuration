@@ -12,6 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.time.LocalDateTime;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -87,7 +89,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, String>> applications = List.of(Map.of(
             "name", "workType",
-            "value", "Applications"
+            "value", "applications"
         ));
         List<Map<String, String>> accessRequests = List.of(Map.of(
             "name", "workType",
@@ -95,11 +97,11 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", routineWork),
             Arguments.of("Et1Vetting", routineWork),
             Arguments.of("ReviewReferralLegalOps", routineWork),
             Arguments.of("ReviewReferralAdmin", routineWork),
             Arguments.of("SendEt1Notification", routineWork),
+            Arguments.of("SendEt3Notification", routineWork),
             Arguments.of("ListServeClaim", routineWork),
             Arguments.of("ET3Processing", routineWork),
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
@@ -114,7 +116,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
-            Arguments.of("ContactTribunalWithAnApplication", applications),
+            Arguments.of("ContactTribunalWithanApplication", applications),
             Arguments.of("AmendPartyDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
 
@@ -168,7 +170,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", judicial),
             Arguments.of("reviewSpecificAccessRequestJudiciary", judicial),
             Arguments.of("ReviewReferralJudiciary", judicial),
             Arguments.of("ReviewReferralResponseJudiciary", judicial),
@@ -189,11 +190,11 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
             Arguments.of("ET3Processing", administrator),
-            Arguments.of("SendET3Notification", administrator),
+            Arguments.of("SendEt3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
-            Arguments.of("ContactTribunalWithAnApplication", administrator),
+            Arguments.of("ContactTribunalWithanApplication", administrator),
             Arguments.of("AmendPartyDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
@@ -205,8 +206,12 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     @MethodSource("description_ScenarioProvider")
     void when_taskId_then_return_description(String taskType, List<Map<String, String>> expected) {
         VariableMap inputVariables = new VariableMapImpl();
+        String roleAssignmentId = UUID.randomUUID().toString();
+        String taskId = UUID.randomUUID().toString();
         inputVariables.putValue("caseData", getDefaultCaseData());
-        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType,
+                                                         "roleAssignmentId", roleAssignmentId,
+                                                         "taskId", taskId));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -218,7 +223,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 .collect(Collectors.toList());
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("value").replace("${[roleAssignmentId]}", roleAssignmentId)
+                         .replace("${[taskId]}", taskId), resultList.get(0).get("value"));
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
@@ -299,29 +305,12 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
                 + "trigger/createReferral/createReferral1)"
         ));
-        List<Map<String, String>> reviewAccessRequestJudiciary = List.of(Map.of(
+        List<Map<String, String>> reviewAccessRequest = List.of(Map.of(
             "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "reviewSpecificAccessRequestJudiciary)"
-        ));
-        List<Map<String, String>> reviewAccessRequestAdmin = List.of(Map.of(
-            "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "reviewSpecificAccessRequestAdmin)"
-        ));
-        List<Map<String, String>> reviewAccessRequestLegalOps = List.of(Map.of(
-            "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "reviewSpecificAccessRequestLegalOps)"
-        ));
-        List<Map<String, String>> reviewAccessRequestCTSC = List.of(Map.of(
-            "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "reviewSpecificAccessRequestCTSC)"
+            "value","[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/specific-access)"
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", reviewTheReferralCreate),
             Arguments.of("ReviewReferralJudiciary", reviewTheReferralCreate),
             Arguments.of("ReviewReferralLegalOps", reviewTheReferralCreate),
             Arguments.of("ReviewReferralAdmin", reviewTheReferralCreate),
@@ -340,7 +329,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ET3Processing", reviewET3Submission),
 
-            Arguments.of("SendET3Notification", issueET3Notification),
+            Arguments.of("SendEt3Notification", issueET3Notification),
 
             Arguments.of("CompleteInitialConsideration", initialConsideration),
 
@@ -358,13 +347,13 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ContactTribunalWithanApplication", reviewApplication),
 
-            Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequestJudiciary),
+            Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
 
-            Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequestAdmin),
+            Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
 
-            Arguments.of("reviewSpecificAccessRequestLegalOps", reviewAccessRequestLegalOps),
+            Arguments.of("reviewSpecificAccessRequestLegalOps", reviewAccessRequest),
 
-            Arguments.of("reviewSpecificAccessRequestCTSC", reviewAccessRequestCTSC)
+            Arguments.of("reviewSpecificAccessRequestCTSC", reviewAccessRequest)
         );
     }
 
@@ -429,7 +418,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("Et1Vetting", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("et3Response", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("DraftAndSignJudgment", "No", defaultMajorPriority, defaultMinorPriority),
@@ -441,8 +429,40 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralResponseLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("IssueJudgment", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("CompleteInitialConsideration", "No", defaultMajorPriority, defaultMinorPriority)
+            Arguments.of("CompleteInitialConsideration", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("SendEt3Notification", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ContactTribunalWithanApplication", "No", defaultMajorPriority, defaultMinorPriority)
         );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
+        "reviewSpecificAccessRequestAdmin","reviewSpecificAccessRequestCTSC"
+    })
+    void should_return_request_value_when_role_assignment_id_exists_in_task_attributes(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+        String roleAssignmentId = UUID.randomUUID().toString();
+        String taskId = UUID.randomUUID().toString();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType,
+                                                         "roleAssignmentId", roleAssignmentId,
+                                                         "taskId", taskId));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+                .collect(Collectors.toList());
+
+        assertTrue(resultList.contains(Map.of(
+            "name", "additionalProperties_roleAssignmentId",
+            "value", roleAssignmentId,
+            "canReconfigure", false
+        )));
     }
 
     @ParameterizedTest
@@ -592,11 +612,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(44));
-    }
 
-    private static List<Map<String, String>> concatTwoLists(List<Map<String, String>> list1,
-                                                            List<Map<String, String>> list2) {
-        return Stream.concat(list1.stream(), list2.stream()).collect(Collectors.toList());
+        assertThat(logic.getRules().size(), is(42));
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.0">
   <decision id="wa-task-cancellation-employment-et_englandwales" name="ET Task cancellation DMN">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
@@ -21,29 +21,6 @@
       <output id="OutputClause_0tu8bqp" label="Warning Code" name="warningCode" typeRef="string" />
       <output id="OutputClause_1kfc3jv" label="Warning Text" name="warningText" typeRef="string" />
       <output id="OutputClause_0dqzted" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="277" />
-      <rule id="DecisionRule_06wxp4x">
-        <inputEntry id="UnaryTests_1o8pvk5">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_13kp4ad">
-          <text>"INITIATE_CASE_DRAFT"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1arbjd8">
-          <text>"AWAITING_SUBMISSION_TO_HMCTS"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0kz1oes">
-          <text>"Cancel"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1tcnfsu">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1dsgvps">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0l5o17v">
-          <text></text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0623eaq">
         <inputEntry id="UnaryTests_0pawl5b">
           <text>"Closed"</text>
@@ -272,6 +249,29 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1kqa1mh">
           <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1dtax7b">
+        <inputEntry id="UnaryTests_0ta9m1v">
+          <text>"Closed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1343btr">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rfdad7">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_044nj4n">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bptiw2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03p0j5j">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j5pbe7">
+          <text>"Application"</text>
         </outputEntry>
       </rule>
     </decisionTable>

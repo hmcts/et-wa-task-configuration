@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -36,10 +36,7 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>if (Array.isArray(caseData.respondentCollection) and caseData.respondentCollection.length)
-then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-+ " v " + caseData.respondentCollection.get(0).respondent_name
-else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
+          <text>caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -69,8 +66,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rams4n">
-          <text>"draftCaseCreated",
-"Et1Vetting",
+          <text>"Et1Vetting",
 "ReviewReferralAdmin",
 "ReviewReferralLegalOps",
 "SendEt1Notification",
@@ -80,7 +76,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ReviewReferralResponseAdmin",
 "ET3Notification",
 "IssueInitialConsiderationDirections",
-"ReviewRule21Referral"</text>
+"ReviewRule21Referral",
+"SendEt3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -136,7 +133,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1hszd50">
-          <text>"ContactTribunalWithAnApplication",
+          <text>"ContactTribunalWithanApplication",
 "AmendPartyDetails",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
@@ -144,7 +141,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"workType"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_09utoc1">
-          <text>"Applications"</text>
+          <text>"applications"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0j0h6u3">
           <text>false</text>
@@ -175,8 +172,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0jg7vpi">
-          <text>"draftCaseCreated",
-"ReviewReferralJudiciary",
+          <text>"ReviewReferralJudiciary",
 "reviewSpecificAccessRequestJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
@@ -246,9 +242,10 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "IssueInitialConsiderationDirections",
 "IssuePostHearingDirection",
 "IssueJudgment",
-"ContactTribunalWithAnApplication",
+"ContactTribunalWithanApplication",
 "AmendPartyDetails",
-"WithdrawAllOrPartOfCase"</text>
+"WithdrawAllOrPartOfCase",
+"SendEt3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -277,14 +274,34 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_15urme4">
+        <inputEntry id="UnaryTests_1p92igs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19mj5q6">
+          <text>"reviewSpecificAccessRequestJudiciary",
+"reviewSpecificAccessRequestLegalOps",
+"reviewSpecificAccessRequestAdmin",
+"reviewSpecificAccessRequestCTSC"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fhhbni">
+          <text>"additionalProperties_roleAssignmentId"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i6sunx">
+          <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null) then taskAttributes.roleAssignmentId
+else "1234"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cxkqq3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0abku11">
         <description>A marked up description of what the user should do next on the case to complete this task. This populates the Task Tab on the case to allow a user to link straight to the required action. This will be a URL.</description>
         <inputEntry id="UnaryTests_0xt95i9">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_136m8g2">
-          <text>"draftCaseCreated",
-"ReviewReferralAdmin",
+          <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps"</text>
         </inputEntry>
@@ -410,7 +427,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fiqg3g">
-          <text>"SendET3Notification"</text>
+          <text>"SendEt3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ky7l6o">
           <text>"description"</text>
@@ -563,66 +580,19 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1q0wlk5">
-          <text>"reviewSpecificAccessRequestJudiciary"</text>
+          <text>"reviewSpecificAccessRequestJudiciary",
+"reviewSpecificAccessRequestLegalOps",
+"reviewSpecificAccessRequestAdmin",
+"reviewSpecificAccessRequestCTSC"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1jw7ylv">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_014gurf">
-          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestJudiciary)"</text>
+          <text>if (taskAttributes != null and taskAttributes.taskId != null and taskAttributes.roleAssignmentId != null) then "[Review Access Request](/role-access/" + taskAttributes.taskId + "/assignment/" + taskAttributes.roleAssignmentId + "/specific-access)"
+else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_153t7so">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_058gz9i">
-        <inputEntry id="UnaryTests_1c9pzpf">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_12cxhjy">
-          <text>"reviewSpecificAccessRequestAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0al5y3y">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0ddpuzn">
-          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestAdmin)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_12ffhym">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_08ey5hm">
-        <inputEntry id="UnaryTests_0daa4ll">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_14wwr9j">
-          <text>"reviewSpecificAccessRequestLegalOps"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0f106so">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_09hjfxu">
-          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestLegalOps)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_12qutk4">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1w6su60">
-        <inputEntry id="UnaryTests_1makbgw">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0dme2kr">
-          <text>"reviewSpecificAccessRequestCTSC"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1sey0yr">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1kkslyj">
-          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestCTSC)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0yvxhmo">
           <text>false</text>
         </outputEntry>
       </rule>
@@ -631,8 +601,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_02rmjxe">
-          <text>"draftCaseCreated",
-"Et1Vetting",
+          <text>"Et1Vetting",
 "et3Response",
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
@@ -640,7 +609,9 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ListServeClaim",
 "ReviewRule21Referral",
 "IssueJudgment",
-"CompleteInitialConsideration"</text>
+"CompleteInitialConsideration",
+"SendEt3Notification",
+"ContactTribunalWithanApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -657,19 +628,15 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_07vjyfi">
-          <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+          <text>"ReviewReferralAdmin","ReviewReferralJudiciary","ReviewReferralLegalOps","ReviewReferralResponseAdmin","ReviewReferralResponseJudiciary","ReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xy9k8p">
-          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes") then 1000 else 5000
-          </text>
+          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes")
+then 1000
+else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1uusq1d">
           <text>false</text>
@@ -680,8 +647,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tyaq8o">
-          <text>"draftCaseCreated",
-"Et1Vetting",
+          <text>"Et1Vetting",
 "et3Response",
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
@@ -689,7 +655,9 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ListServeClaim",
 "ReviewRule21Referral",
 "IssueJudgment",
-"CompleteInitialConsideration"</text>
+"CompleteInitialConsideration",
+"SendEt3Notification",
+"ContactTribunalWithanApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -717,8 +685,9 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0g94d63">
-          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes") then 100 else 500
-          </text>
+          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes")
+then 100
+else 500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ry9gq0">
           <text>false</text>
