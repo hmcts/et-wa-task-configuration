@@ -36,7 +36,10 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
+          <text>if (Array.isArray(caseData.respondentCollection) and caseData.respondentCollection.length)
+          then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
+          + " v " + caseData.respondentCollection.get(0).respondent_name
+          else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
