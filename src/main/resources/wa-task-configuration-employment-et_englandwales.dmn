@@ -39,7 +39,7 @@
           <text>caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01qimdq">
