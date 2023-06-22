@@ -274,6 +274,27 @@
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_15urme4">
+        <inputEntry id="UnaryTests_1p92igs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19mj5q6">
+          <text>"reviewSpecificAccessRequestJudiciary",
+"reviewSpecificAccessRequestLegalOps",
+"reviewSpecificAccessRequestAdmin",
+"reviewSpecificAccessRequestCTSC"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fhhbni">
+          <text>"additionalProperties_roleAssignmentId"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i6sunx">
+          <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null) then taskAttributes.roleAssignmentId
+else "1234"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cxkqq3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0abku11">
         <description>A marked up description of what the user should do next on the case to complete this task. This populates the Task Tab on the case to allow a user to link straight to the required action. This will be a URL.</description>
         <inputEntry id="UnaryTests_0xt95i9">
@@ -559,66 +580,19 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1q0wlk5">
-          <text>"reviewSpecificAccessRequestJudiciary"</text>
+          <text>"reviewSpecificAccessRequestJudiciary",
+"reviewSpecificAccessRequestLegalOps",
+"reviewSpecificAccessRequestAdmin",
+"reviewSpecificAccessRequestCTSC"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1jw7ylv">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_014gurf">
-          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestJudiciary)"</text>
+          <text>if (taskAttributes != null and taskAttributes.taskId != null and taskAttributes.roleAssignmentId != null) then "[Review Access Request](/role-access/" + taskAttributes.taskId + "/assignment/" + taskAttributes.roleAssignmentId + "/specific-access)"
+else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_153t7so">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_058gz9i">
-        <inputEntry id="UnaryTests_1c9pzpf">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_12cxhjy">
-          <text>"reviewSpecificAccessRequestAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0al5y3y">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0ddpuzn">
-          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestAdmin)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_12ffhym">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_08ey5hm">
-        <inputEntry id="UnaryTests_0daa4ll">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_14wwr9j">
-          <text>"reviewSpecificAccessRequestLegalOps"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0f106so">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_09hjfxu">
-          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestLegalOps)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_12qutk4">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1w6su60">
-        <inputEntry id="UnaryTests_1makbgw">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0dme2kr">
-          <text>"reviewSpecificAccessRequestCTSC"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1sey0yr">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1kkslyj">
-          <text>"[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/reviewSpecificAccessRequestCTSC)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0yvxhmo">
           <text>false</text>
         </outputEntry>
       </rule>
