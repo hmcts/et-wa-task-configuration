@@ -1,5 +1,7 @@
 package uk.gov.hmcts.et.taskconfiguration.dmn;
 
+import lombok.Builder;
+import lombok.Value;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -8,10 +10,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +33,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_ET_EW;
 
 class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
+
+    private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
+    private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
+        + "ia-task-configuration/master/src/test/resources/extra-non-working-day-calendar.json";
 
     @BeforeAll
     public static void initialization() {
@@ -383,6 +394,12 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     public static Stream<Arguments> priority_ScenarioProvider() {
+
+        List<Map<String, String>> defaultDatePriority = List.of(Map.of(
+            "name", "priorityDateOriginRef",
+            "value", "dueDate"
+        ));
+
         List<Map<String, String>> defaultMajorPriority = List.of(Map.of(
             "name", "majorPriority",
             "value", "5000"
@@ -448,10 +465,154 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
     }
 
+    @ParameterizedTest
+    @MethodSource("nameAndValueScenarioProvider")
+    void when_caseData_and_taskType_then_return_expected_name_and_value_rows(Scenario scenario) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", scenario.caseData);
+        inputVariables.putValue("taskAttributes", scenario.getTaskAttributes());
+
+        List<Map<String, Object>> expected = getExpectedValues(scenario);
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertThat(dmnDecisionTableResult.getResultList().size(), is(expected.size()));
+    }
+
+    @Value
+    @Builder
+    private static class Scenario {
+        Map<String, Object> caseData;
+        Map<String, Object> taskAttributes;
+        String expectedCaseNameValue;
+        String expectedAppealTypeValue;
+        String expectedRegionValue;
+        String expectedLocationValue;
+        String expectedLocationNameValue;
+        String expectedCaseManagementCategoryValue;
+        String expectedWorkType;
+        String expectedRoleCategory;
+        String expectedDescriptionValue;
+        String expectedReconfigureValue;
+        String expectedDueDateOrigin;
+        String expectedDueDateTime;
+        String expectedDueDateIntervalDays;
+    }
+
+    private static Stream<Scenario> nameAndValueScenarioProvider() {
+        String dateOrigin = ZonedDateTime.now(ZoneId.of("UTC")).toString();
+        Scenario givenSomeCaseDataAndTaskTypeIsEmptyThenExpectNoWorkTypeRuleScenario =
+            Scenario.builder()
+                .caseData(Map.of(
+                    "appellantGivenNames", "some appellant given names",
+                    "appellantFamilyName", "some appellant family name",
+                    "caseManagementCategory","Employment"
+                    )
+                )
+                .expectedCaseNameValue("some appellant given names some appellant family name")
+                .expectedCaseManagementCategoryValue("Employment")
+                .expectedDueDateOrigin(dateOrigin)
+                .build();
+
+        return Stream.of(
+            givenSomeCaseDataAndTaskTypeIsEmptyThenExpectNoWorkTypeRuleScenario
+        );
+    }
+
+    private List<Map<String, Object>> getExpectedValues(Scenario scenario) {
+        List<Map<String, Object>> rules = new ArrayList<>();
+        getExpectedValueWithReconfigure(
+            rules,
+            "caseName",
+            scenario.getExpectedCaseNameValue(),
+            scenario.getExpectedReconfigureValue()
+        );
+        getExpectedValue(rules, "caseManagementCategory", "Employment");
+        getExpectedValue(rules, "dueDateOrigin", scenario.getExpectedDueDateOrigin());
+        getExpectedValue(rules, "dueDateTime", scenario.getExpectedDueDateTime());
+        getExpectedValue(rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR);
+        getExpectedValue(rules, "priorityDateOriginRef", "dueDate");
+        getExpectedValue(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY");
+        getExpectedValue(rules, "dueDateSkipNonWorkingDays", "false");
+        getExpectedValue(rules, "dueDateMustBeWorkingDay", "No");
+        getExpectedValue(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate");
+        return rules;
+    }
+
+    private void getExpectedValue(List<Map<String, Object>> rules, String name, String value) {
+        Map<String, Object> rule = new HashMap<>();
+        rule.put("name", name);
+        rule.put("value", value);
+        rule.put("canReconfigure", false);
+        rules.add(rule);
+    }
+
+    private void getExpectedValueWithReconfigure(List<Map<String, Object>> rules, String name, String value,
+                                                 String reconfigure) {
+        Map<String, Object> rule = new HashMap<>();
+        rule.put("name", name);
+        rule.put("value", value);
+        rule.put("canReconfigure", Boolean.valueOf(reconfigure));
+        rules.add(rule);
+    }
+
+    private boolean validNow(ZonedDateTime expected, ZonedDateTime actual) {
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
+        return actual != null
+            && (expected.isEqual(actual) || expected.isBefore(actual))
+            && (now.isEqual(actual) || now.isAfter(actual));
+    }
+
+    @Test
+    void when_any_task_then_return_expected_non_working_days_of_week_config() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "draftCaseCreated"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "dueDateNonWorkingDaysOfWeek",
+            "value", "SATURDAY,SUNDAY",
+            "canReconfigure", false
+        )));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "draftCaseCreated"
+    })
+    void when_taskId_then_return_due_date_skip_non_working_days_false(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dueDateSkipNonWorkingDaysResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("dueDateSkipNonWorkingDays"))
+            .collect(Collectors.toList());
+
+        assertEquals(1, dueDateSkipNonWorkingDaysResultList.size());
+
+        assertEquals(Map.of(
+            "name", "dueDateSkipNonWorkingDays",
+            "value", "false",
+            "canReconfigure", false
+        ), dueDateSkipNonWorkingDaysResultList.get(0));
+    }
+
+    private ZonedDateTime parseCamundaTimestamp(String datetime) {
+        String[] parts = datetime.split("[Z+]");
+        String zone = datetime.substring(datetime.indexOf("[") + 1, datetime.lastIndexOf("]"));
+        return ZonedDateTime.of(LocalDateTime.parse(parts[0]), ZoneId.of(zone));
+    }
+
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(34));
+
+        assertThat(logic.getRules().size(), is(42));
     }
 }
