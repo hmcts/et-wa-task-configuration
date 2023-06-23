@@ -7,7 +7,7 @@
           <text>fromState</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0ain215" label="Event">
+      <input id="InputClause_0ain215" label="Event" biodi:width="209.9906463623047">
         <inputExpression id="LiteralExpression_0h2l2zj" typeRef="string">
           <text>event</text>
         </inputExpression>
@@ -272,6 +272,75 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1j5pbe7">
           <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15ptch9">
+        <inputEntry id="UnaryTests_0o3w5oy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_021m3kj">
+          <text>"addAmendHearing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01nw966">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09g170p">
+          <text>"Reconfigure"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1f0kbvz">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u0739h">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00d8rfc">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r1v2pd">
+        <inputEntry id="UnaryTests_0vx9yge">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1omgmrt">
+          <text>"addAmendJurisdiction"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a2hf54">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ersk6s">
+          <text>"Reconfigure"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sf0qjz">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f0zsep">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07gjwl0">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w12dsa">
+        <inputEntry id="UnaryTests_02s0k8s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02di4az">
+          <text>"caseTransferDifferentCountry"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k4mtov">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12g8lgi">
+          <text>"Reconfigure"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1v708d0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00hbhep">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ewt01p">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
