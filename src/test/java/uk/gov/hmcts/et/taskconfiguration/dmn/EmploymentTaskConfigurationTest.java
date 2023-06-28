@@ -334,7 +334,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
             "name", "description",
-            "value","[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/specific-access)",
+            "value","[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
+                + "specific-access)",
             "canReconfigure", true
         ));
 
