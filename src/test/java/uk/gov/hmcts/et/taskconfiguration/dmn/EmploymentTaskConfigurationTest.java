@@ -86,6 +86,37 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     @Test
+    void testCaseNameWithMultipleRespondentCollection() {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+
+        String rawRespondentCollection = "{\"respondentCollection\":["
+            + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }},"
+            + "{ \"value\":{ \"respondent_name\":\"Coswell Cogs\" }}"
+            + "]}";
+        Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
+
+        caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("caseName"))
+                .collect(Collectors.toList());
+
+        // Then
+        assertEquals("George Jetson v Cosmo Spacely", resultList.get(0).get("value"));
+    }
+
+    @Test
     void testCaseNameWithoutRespondentCollection() {
         // Given
         Map<String, Object> caseData = getDefaultCaseData();
