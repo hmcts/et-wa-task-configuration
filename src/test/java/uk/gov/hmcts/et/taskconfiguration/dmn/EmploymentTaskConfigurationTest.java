@@ -57,16 +57,17 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         return caseData;
     }
 
-    @Test
-    void testCaseNameWithRespondentCollection() {
+    @ParameterizedTest
+    @MethodSource("scenarioProviderRespondentCollections")
+    void testCaseNameWithRespondentCollection(String rawRespondentCollection, String expectedCaseName) {
         // Given
         Map<String, Object> caseData = getDefaultCaseData();
 
-        String rawRespondentCollection =
-            "{\"respondentCollection\":[{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }}]}";
-        Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
-
-        caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
+        if (!rawRespondentCollection.isBlank())
+        {
+            Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
+            caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
+        }
 
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("caseData", caseData);
@@ -83,61 +84,37 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 .collect(Collectors.toList());
 
         // Then
-        assertEquals("George Jetson v Cosmo Spacely", resultList.get(0).get("value"));
+        assertEquals(expectedCaseName, resultList.get(0).get("value"));
     }
 
-    @Test
-    void testCaseNameWithMultipleRespondentCollection() {
-        // Given
-        Map<String, Object> caseData = getDefaultCaseData();
-
-        String rawRespondentCollection = "{\"respondentCollection\":["
-            + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }},"
-            + "{ \"value\":{ \"respondent_name\":\"Coswell Cogs\" }}"
-            + "]}";
-        Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
-
-        caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
-
-        VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("caseData", caseData);
-        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
-
-        // When
-        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
-        List<Map<String, Object>> resultList =
-            dmnDecisionTableResult
-                .getResultList()
-                .stream()
-                .filter((r) -> r.containsValue("caseName"))
-                .collect(Collectors.toList());
-
-        // Then
-        assertEquals("George Jetson v Cosmo Spacely", resultList.get(0).get("value"));
-    }
-
-    @Test
-    void testCaseNameWithoutRespondentCollection() {
-        // Given
-        Map<String, Object> caseData = getDefaultCaseData();
-
-        VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("caseData", caseData);
-        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
-
-        // When
-        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
-        List<Map<String, Object>> resultList =
-            dmnDecisionTableResult
-                .getResultList()
-                .stream()
-                .filter((r) -> r.containsValue("caseName"))
-                .collect(Collectors.toList());
-
-        // Then
-        assertEquals("George Jetson", resultList.get(0).get("value"));
+    public static Stream<Arguments> scenarioProviderRespondentCollections() {
+        return Stream.of(
+            // No respondentCollection
+            Arguments.of(
+                "",
+                "George Jetson"
+            ),
+            // empty respondentCollection
+            Arguments.of(
+                "{\"respondentCollection\":[]}",
+                "George Jetson"
+            ),
+            // respondentCollection with one Respondent
+            Arguments.of(
+                "{\"respondentCollection\":["
+                    + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }}"
+                    + "]}",
+                "George Jetson v Cosmo Spacely"
+            ),
+            // respondentCollection with 2+
+            Arguments.of(
+                "{\"respondentCollection\":["
+                    + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }},"
+                    + "{ \"value\":{ \"respondent_name\":\"Coswell Cogs\" }}"
+                    + "]}",
+                "George Jetson v Cosmo Spacely"
+            )
+        );
     }
 
     @ParameterizedTest
@@ -523,8 +500,10 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-        "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
-        "reviewSpecificAccessRequestAdmin","reviewSpecificAccessRequestCTSC"
+        "reviewSpecificAccessRequestJudiciary",
+        "reviewSpecificAccessRequestLegalOps",
+        "reviewSpecificAccessRequestAdmin",
+        "reviewSpecificAccessRequestCTSC"
     })
     void should_return_request_value_when_role_assignment_id_exists_in_task_attributes(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
