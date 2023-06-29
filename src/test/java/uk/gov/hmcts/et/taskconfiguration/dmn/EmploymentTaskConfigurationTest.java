@@ -62,7 +62,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         // Given
         Map<String, Object> caseData = getDefaultCaseData();
 
-        String rawRespondentCollection = "{\"respondentCollection\":[{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }}]}";
+        String rawRespondentCollection =
+            "{\"respondentCollection\":[{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }}]}";
         Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
 
         caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
