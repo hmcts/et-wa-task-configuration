@@ -35,7 +35,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String YES = "Yes";
     public static final String REFERRALSUBJECT = "(Referral Subject)";
     public static final String REFERRALRULE21 = "Rule 21 Referral";
-    public static final String REFERRALHEARING = "Hearing";
+    public static final String REFERRALHEARING = "Hearings";
     public static final String JUDGMENT = "Judgment";
 
     @BeforeAll
