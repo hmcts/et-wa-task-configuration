@@ -737,7 +737,7 @@ else 2</text>
           <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pydv0c">
-          <text>"Amendments"</text>
+          <text>"Amendment"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1gss9cr">
@@ -772,7 +772,77 @@ else 2</text>
           <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08rdkrq">
-          <text>"Amendments"</text>
+          <text>"Amendment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1k6yw2m">
+        <inputEntry id="UnaryTests_1gj6sg7">
+          <text>"respondentTSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_134qoy3">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uandyx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yq9ooc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y9npnq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05pkrso">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mw20pd">
+          <text>"AmendPartyDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t8ht16">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cepxjy">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h35e7r">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wgxw39">
+          <text>"Amendment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s8fzf0">
+        <inputEntry id="UnaryTests_1fbw1g6">
+          <text>"tseRespond"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00r7klv">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00syxdk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gg29tk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vsrf2j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bk0ox6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ypfopg">
+          <text>"AmendPartyDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rigml1">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hgfrtc">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16ywu3v">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09xmklu">
+          <text>"Amendment"</text>
         </outputEntry>
       </rule>
     </decisionTable>
