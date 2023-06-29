@@ -1,5 +1,7 @@
 package uk.gov.hmcts.et.taskconfiguration.dmn;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.Value;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
@@ -15,6 +17,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -52,6 +55,57 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         caseData.put("claimantIndType", claimant);
 
         return caseData;
+    }
+
+    @Test
+    void testCaseNameWithRespondentCollection() {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+
+        String rawRespondentCollection = "{\"respondentCollection\":[{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }}]}";
+        Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
+
+        caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("caseName"))
+                .collect(Collectors.toList());
+
+        // Then
+        assertEquals("George Jetson v Cosmo Spacely", resultList.get(0).get("value"));
+    }
+
+    @Test
+    void testCaseNameWithoutRespondentCollection() {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("caseName"))
+                .collect(Collectors.toList());
+
+        // Then
+        assertEquals("George Jetson", resultList.get(0).get("value"));
     }
 
     @ParameterizedTest
@@ -597,7 +651,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(Map.of(
             "name", "dueDateSkipNonWorkingDays",
-            "value", "false",
+            "value", "true",
             "canReconfigure", false
         ), dueDateSkipNonWorkingDaysResultList.get(0));
     }
@@ -613,6 +667,15 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(42));
+        assertThat(logic.getRules().size(), is(43));
+    }
+
+    private static Map<String, Object> mapData(String source) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(source, new TypeReference<>() {});
+        } catch (IOException exp) {
+            return null;
+        }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.12.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -19,7 +19,7 @@
           </text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="197" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="249" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="966" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
@@ -36,7 +36,10 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
+          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection.count) &gt; 0)
+then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
++ " v " + (caseData.respondentCollection[1]).value.respondent_name
+else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -789,7 +792,7 @@ else 500</text>
           <text>"dueDateSkipNonWorkingDays"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0mc8otd">
-          <text>"false"</text>
+          <text>"true"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10c00lk">
           <text>false</text>
@@ -806,10 +809,27 @@ else 500</text>
           <text>"dueDateMustBeWorkingDay"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_11thm6q">
-          <text>"No"</text>
+          <text>"Yes"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1027th9">
           <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b5p3rx">
+        <inputEntry id="UnaryTests_0eadlqa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jwglsj">
+          <text>"Et1Vetting"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0igzsz3">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yq6u5q">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i7buw9">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0xrz5gi">
