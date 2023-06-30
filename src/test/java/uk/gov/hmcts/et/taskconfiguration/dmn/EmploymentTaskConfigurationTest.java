@@ -211,6 +211,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
         assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
     }
 
     public static Stream<Arguments> roleCategory_ScenarioProvider() {
@@ -294,8 +295,10 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 .collect(Collectors.toList());
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value").replace("${[roleAssignmentId]}", roleAssignmentId)
+        assertEquals(expected.get(0).get("value")
+                         .replace("${[roleAssignmentId]}", roleAssignmentId)
                          .replace("${[taskId]}", taskId), resultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
@@ -437,11 +440,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ContactTribunalWithanApplication", reviewApplication),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
-
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
-
             Arguments.of("reviewSpecificAccessRequestLegalOps", reviewAccessRequest),
-
             Arguments.of("reviewSpecificAccessRequestCTSC", reviewAccessRequest)
         );
     }
@@ -474,7 +474,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(resultList.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
             "value", roleAssignmentId,
-            "canReconfigure", false
+            "canReconfigure", true
         )));
     }
 
@@ -570,13 +570,13 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertEquals(Map.of(
             "name", "calculatedDates",
             "value", "nextHearingDate,dueDate,priorityDate",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(2));
 
         assertEquals(Map.of(
             "name", "dueDateTime",
             "value", "16:00",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(4));
 
         assertEquals(Map.of(
@@ -584,31 +584,31 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "https://www.gov.uk/bank-holidays/england-and-wales.json, "
                 + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
                 + "master/src/main/resources/privilege-calendar.json",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(5));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingDaysOfWeek",
             "value", "SATURDAY,SUNDAY",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(6));
 
         assertEquals(Map.of(
             "name", "dueDateSkipNonWorkingDays",
             "value", "true",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(7));
 
         assertEquals(Map.of(
             "name", "dueDateMustBeWorkingDay",
             "value", "Yes",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(8));
 
         assertEquals(Map.of(
             "name", "priorityDateOriginRef",
             "value", "dueDate",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(9));
     }
 

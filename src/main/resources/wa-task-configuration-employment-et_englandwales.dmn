@@ -20,7 +20,7 @@
         </inputExpression>
       </input>
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="249" />
-      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="966" />
+      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="286" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
         <description>
@@ -845,7 +845,7 @@ then 1
 else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ctz44f">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_181hurj">
@@ -864,7 +864,7 @@ else 2</text>
           <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0lumtph">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1j13ges">
@@ -883,7 +883,7 @@ else 2</text>
           <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05zdiue">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0e24s73">
@@ -900,7 +900,7 @@ else 2</text>
           <text>3</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1rkdgbw">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0b5p3rx">
@@ -920,7 +920,7 @@ else 2</text>
           <text>5</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1i7buw9">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0tqb9qt">
@@ -937,7 +937,7 @@ else 2</text>
           <text>28</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ln2d99">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0xrz5gi">
