@@ -593,7 +593,10 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_014gurf">
-          <text>if (taskAttributes != null and taskAttributes.taskId != null and taskAttributes.roleAssignmentId != null) then "[Review Access Request](/role-access/" + taskAttributes.taskId + "/assignment/" + taskAttributes.roleAssignmentId + "/specific-access)"
+          <text>if (taskAttributes != null and taskAttributes.taskId != null
+and taskAttributes.roleAssignmentId != null)
+then "[Review Access Request](/role-access/" + taskAttributes.taskId + "/assignment/"
++ taskAttributes.roleAssignmentId + "/specific-access)"
 else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_153t7so">
