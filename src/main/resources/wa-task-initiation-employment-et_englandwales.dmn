@@ -38,7 +38,6 @@
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
-      <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" biodi:width="374" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
@@ -64,9 +63,6 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1cvrhi0">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1tmof24">
-          <text>5</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_186e388">
           <text>"Vetting"</text>
@@ -97,14 +93,6 @@
         <outputEntry id="LiteralExpression_0n9o39e">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0uxzgxm">
-          <text>if(additionalData != null
-and additionalData.Data != null
-and additionalData.Data.isUrgent != null
-and additionalData.Data.isUrgent = "Yes")
-then 1
-else 2</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_0c8d2go">
           <text>"Vetting"</text>
         </outputEntry>
@@ -133,14 +121,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zdr7bg">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0guqf5c">
-          <text>if(additionalData != null
-and additionalData.Data != null
-and additionalData.Data.isUrgent != null
-and additionalData.Data.isUrgent = "Yes")
-then 1
-else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1flovqn">
           <text>"Vetting"</text>
@@ -171,14 +151,6 @@ else 2</text>
         <outputEntry id="LiteralExpression_0iaqh1t">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1cup8ul">
-          <text>if(additionalData != null
-and additionalData.Data != null
-and additionalData.Data.isUrgent != null
-and additionalData.Data.isUrgent = "Yes")
-then 1
-else 2</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_1luz902">
           <text>"Vetting"</text>
         </outputEntry>
@@ -207,9 +179,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1yfh3jz">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0rdmi77">
-          <text>3</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1bbfki3">
           <text>"processing"</text>
@@ -240,9 +209,6 @@ else 2</text>
         <outputEntry id="LiteralExpression_0q4un0e">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0kriumh">
-          <text>5</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_0w8zpej">
           <text>"Hearing"</text>
         </outputEntry>
@@ -271,9 +237,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1bm6dgc">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1xufxar">
-          <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0d5vhd1">
           <text>"Vetting"</text>
@@ -304,9 +267,6 @@ else 2</text>
         <outputEntry id="LiteralExpression_1p6d30a">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_02ro4zg">
-          <text>1</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_0z0hbyx">
           <text>"Vetting"</text>
         </outputEntry>
@@ -335,14 +295,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1sgfp98">
-          <text>if(additionalData != null
-and additionalData.Data != null
-and additionalData.Data.isUrgent != null
-and additionalData.Data.isUrgent = "Yes")
-then 1
-else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1opsd1f">
           <text>"processing"</text>
@@ -373,9 +325,6 @@ else 2</text>
         <outputEntry id="LiteralExpression_0gdbet3">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_10ihiip">
-          <text>28</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_19akwho">
           <text>"Judgment"</text>
         </outputEntry>
@@ -404,9 +353,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17sbt3s">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0zd245i">
-          <text>28</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_06gpnf8">
           <text>"Judgment"</text>
@@ -437,9 +383,6 @@ else 2</text>
         <outputEntry id="LiteralExpression_0i1vc8m">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1nmdjtg">
-          <text>5</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_0sz0vs9">
           <text>"Hearing"</text>
         </outputEntry>
@@ -468,14 +411,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zcsqzi">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0i8o415">
-          <text>if(additionalData != null
-and additionalData.Data != null
-and additionalData.Data.isUrgent != null
-and additionalData.Data.isUrgent = "Yes")
-then 1
-else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gy7tms">
           <text>"processing"</text>
@@ -506,14 +441,6 @@ else 2</text>
         <outputEntry id="LiteralExpression_14hvioj">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1l5hc2x">
-          <text>if(additionalData != null
-and additionalData.Data != null
-and additionalData.Data.isUrgent != null
-and additionalData.Data.isUrgent = "Yes")
-then 1
-else 2</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_0ce5c8c">
           <text>"processing"</text>
         </outputEntry>
@@ -542,9 +469,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uhsinc">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1rowxst">
-          <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vy4nwa">
           <text>"processing"</text>
@@ -575,9 +499,6 @@ else 2</text>
         <outputEntry id="LiteralExpression_0mor5cr">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1x8vxol">
-          <text>5</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_1k3l7jy">
           <text>"Hearing"</text>
         </outputEntry>
@@ -606,9 +527,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1iv0oe0">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_09w9ffg">
-          <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04ac9ba">
           <text>"processing"</text>
@@ -639,9 +557,6 @@ else 2</text>
         <outputEntry id="LiteralExpression_0a4lic9">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1svsl6d">
-          <text>1</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_0zvnpwe">
           <text>"processing"</text>
         </outputEntry>
@@ -670,9 +585,6 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1m17io6">
           <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1rmiws5">
-          <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1h85dlq">
           <text>"Application"</text>
