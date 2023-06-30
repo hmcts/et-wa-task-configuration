@@ -34,7 +34,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String LEGALOFFICER = "Legal officer";
     public static final String YES = "Yes";
     public static final String REFERRALSUBJECT = "(Referral Subject)";
-    public static final String REFERRALRULE21 = "Rule 21 Referral";
+    public static final String REFERRALRULE21 = "Rule 21";
     public static final String REFERRALHEARING = "Hearings";
     public static final String JUDGMENT = "Judgment";
 
@@ -191,7 +191,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                                       + "}"),
                 Map.of(
                     "taskId", "ReviewReferralResponseJudiciary",
-                    "name", "Review Referral Response - Rule 21 Referral",
+                    "name", "Review Referral Response - Rule 21",
                     "workingDaysAllowed", 1,
                     "processCategories", "processing"
                 )
