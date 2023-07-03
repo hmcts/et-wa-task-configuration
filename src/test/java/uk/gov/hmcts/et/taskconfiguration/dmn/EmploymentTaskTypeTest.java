@@ -33,22 +33,22 @@ public class EmploymentTaskTypeTest extends DmnDecisionTableBaseUnitTest {
         List<Map<String, String>> taskTypes = List.of(
             Map.of("taskTypeId", "draftCaseCreated", "taskTypeName", "Draft Case Created"),
             Map.of("taskTypeId", "Et1Vetting", "taskTypeName", "Et1 Vetting"),
-            Map.of("taskTypeId", "ReviewReferralAdmin", "taskTypeName", "Review Referral - (Referral Subject)"),
-            Map.of("taskTypeId", "ReviewReferralJudiciary", "taskTypeName", "Review Referral - (Referral Subject)"),
-            Map.of("taskTypeId", "ReviewReferralLegalOps", "taskTypeName", "Review Referral - (Referral Subject)"),
+            Map.of("taskTypeId", "ReviewReferralAdmin", "taskTypeName", "Review Referral - Admin"),
+            Map.of("taskTypeId", "ReviewReferralJudiciary", "taskTypeName", "Review Referral - Judicial"),
+            Map.of("taskTypeId", "ReviewReferralLegalOps", "taskTypeName", "Review Referral - Legal Ops"),
             Map.of("taskTypeId", "ET3Processing", "taskTypeName", "ET3 Processing"),
             Map.of("taskTypeId", "IssueInitialConsiderationDirections", "taskTypeName",
                    "Issue Initial Consideration Directions"),
             Map.of("taskTypeId", "ListServeClaim", "taskTypeName", "List/ Serve Claim"),
             Map.of("taskTypeId", "SendEt1Notification", "taskTypeName", "SendEt1Notification"),
             Map.of("taskTypeId", "ReviewReferralResponseAdmin",
-                   "taskTypeName", "Review Referral Response - (Referral Subject)"),
+                   "taskTypeName", "Review Referral Response - Admin"),
             Map.of("taskTypeId", "DraftAndSignJudgment", "taskTypeName", "Draft And Sign Judgment"),
             Map.of("taskTypeId", "IssuePostHearingDirection", "taskTypeName", "Issue Post Hearing Direction"),
             Map.of("taskTypeId", "ReviewReferralResponseJudiciary",
-                   "taskTypeName", "Review Referral Response - Rule 21 Referral"),
+                   "taskTypeName", "Review Referral Response - Judicial"),
             Map.of("taskTypeId", "ReviewReferralResponseLegalOps",
-                   "taskTypeName","Review Referral Response - (Referral Subject)")
+                   "taskTypeName","Review Referral Response - Legal Ops")
         );
         return Stream.of(
             Arguments.of(

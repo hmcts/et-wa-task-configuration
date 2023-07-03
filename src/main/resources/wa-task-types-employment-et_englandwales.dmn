@@ -39,7 +39,7 @@
           <text>"ReviewReferralAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18he837">
-          <text>if (caseData != null and caseData.referralSubject != null)  then "Review Referral - " +caseData.referralSubject else null</text>
+          <text>"Review Referral - Admin"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1piglun">
@@ -50,7 +50,7 @@
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_11ww7x3">
-          <text>if (caseData != null and caseData.referralSubject != null)  then "Review Referral - " +caseData.referralSubject else null</text>
+          <text>"Review Referral - Judicial" </text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1sfjkmg">
@@ -61,7 +61,7 @@
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kbi9og">
-          <text>if (caseData != null and caseData.referralSubject != null)  then "Review Referral - " +caseData.referralSubject else null</text>
+          <text>"Review Referral - Legal Ops"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0wtgwhy">
@@ -116,7 +116,7 @@
           <text>"ReviewReferralResponseAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_06op58d">
-          <text>if (caseData != null and caseData.referralSubject != null) then "Review Referral Response - " +caseData.referralSubject else null</text>
+          <text>"Review Referral Response - Admin" </text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0mcsgvn">
@@ -149,7 +149,7 @@
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1mxj48s">
-          <text>if (caseData != null and caseData.referralSubject != null) then "Review Referral Response - " +caseData.referralSubject else null</text>
+          <text>"Review Referral Response - Judicial" </text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10nfm8t">
@@ -160,7 +160,7 @@
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kw9h8u">
-          <text>if (caseData != null and caseData.referralSubject != null) then "Review Referral Response - " +caseData.referralSubject else null</text>
+          <text>"Review Referral Response - Legal Ops"</text>
         </outputEntry>
       </rule>
     </decisionTable>
