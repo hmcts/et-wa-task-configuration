@@ -1,5 +1,9 @@
 package uk.gov.hmcts.et.taskconfiguration.dmn;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Builder;
+import lombok.Value;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -9,20 +13,31 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
+import java.io.IOException;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_ET_EW;
 
 class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
+
+    private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
+    private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
+        + "civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json";
 
     @BeforeAll
     public static void initialization() {
@@ -38,6 +53,65 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         caseData.put("claimantIndType", claimant);
 
         return caseData;
+    }
+
+    @ParameterizedTest
+    @MethodSource("respondentCollection_ScenarioProvider")
+    void testCaseNameWithRespondentCollection(String rawRespondentCollection, String expectedCaseName) {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+
+        if (!rawRespondentCollection.isBlank()) {
+            Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
+            caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
+        }
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("caseName"))
+                .collect(Collectors.toList());
+
+        // Then
+        assertEquals(expectedCaseName, resultList.get(0).get("value"));
+    }
+
+    public static Stream<Arguments> respondentCollection_ScenarioProvider() {
+        return Stream.of(
+            // No respondentCollection
+            Arguments.of(
+                "",
+                "George Jetson"
+            ),
+            // empty respondentCollection
+            Arguments.of(
+                "{\"respondentCollection\":[]}",
+                "George Jetson"
+            ),
+            // respondentCollection with one Respondent
+            Arguments.of(
+                "{\"respondentCollection\":["
+                    + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }}"
+                    + "]}",
+                "George Jetson v Cosmo Spacely"
+            ),
+            // respondentCollection with 2+
+            Arguments.of(
+                "{\"respondentCollection\":["
+                    + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }},"
+                    + "{ \"value\":{ \"respondent_name\":\"Coswell Cogs\" }}"
+                    + "]}",
+                "George Jetson v Cosmo Spacely"
+            )
+        );
     }
 
     @ParameterizedTest
@@ -75,7 +149,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, String>> applications = List.of(Map.of(
             "name", "workType",
-            "value", "Applications"
+            "value", "applications"
         ));
         List<Map<String, String>> accessRequests = List.of(Map.of(
             "name", "workType",
@@ -83,11 +157,11 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", routineWork),
             Arguments.of("Et1Vetting", routineWork),
             Arguments.of("ReviewReferralLegalOps", routineWork),
             Arguments.of("ReviewReferralAdmin", routineWork),
             Arguments.of("SendEt1Notification", routineWork),
+            Arguments.of("SendEt3Notification", routineWork),
             Arguments.of("ListServeClaim", routineWork),
             Arguments.of("ET3Processing", routineWork),
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
@@ -102,8 +176,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
-
-            Arguments.of("ContactTribunalWithAnApplication", applications),
+            Arguments.of("ContactTribunalWithanApplication", applications),
             Arguments.of("AmendPartyDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
 
@@ -157,7 +230,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", judicial),
             Arguments.of("reviewSpecificAccessRequestJudiciary", judicial),
             Arguments.of("ReviewReferralJudiciary", judicial),
             Arguments.of("ReviewReferralResponseJudiciary", judicial),
@@ -178,11 +250,11 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
             Arguments.of("ET3Processing", administrator),
-            Arguments.of("SendET3Notification", administrator),
+            Arguments.of("SendEt3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
-            Arguments.of("ContactTribunalWithAnApplication", administrator),
+            Arguments.of("ContactTribunalWithanApplication", administrator),
             Arguments.of("AmendPartyDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
@@ -194,8 +266,12 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     @MethodSource("description_ScenarioProvider")
     void when_taskId_then_return_description(String taskType, List<Map<String, String>> expected) {
         VariableMap inputVariables = new VariableMapImpl();
+        String roleAssignmentId = UUID.randomUUID().toString();
+        String taskId = UUID.randomUUID().toString();
         inputVariables.putValue("caseData", getDefaultCaseData());
-        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType,
+                                                         "roleAssignmentId", roleAssignmentId,
+                                                         "taskId", taskId));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -207,7 +283,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 .collect(Collectors.toList());
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("value").replace("${[roleAssignmentId]}", roleAssignmentId)
+                         .replace("${[taskId]}", taskId), resultList.get(0).get("value"));
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
@@ -288,29 +365,12 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
                 + "trigger/createReferral/createReferral1)"
         ));
-        List<Map<String, String>> reviewAccessRequestJudiciary = List.of(Map.of(
+        List<Map<String, String>> reviewAccessRequest = List.of(Map.of(
             "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "reviewSpecificAccessRequestJudiciary)"
-        ));
-        List<Map<String, String>> reviewAccessRequestAdmin = List.of(Map.of(
-            "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "reviewSpecificAccessRequestAdmin)"
-        ));
-        List<Map<String, String>> reviewAccessRequestLegalOps = List.of(Map.of(
-            "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "reviewSpecificAccessRequestLegalOps)"
-        ));
-        List<Map<String, String>> reviewAccessRequestCTSC = List.of(Map.of(
-            "name", "description",
-            "value", "[Review Access Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "reviewSpecificAccessRequestCTSC)"
+            "value","[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/specific-access)"
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", reviewTheReferralCreate),
             Arguments.of("ReviewReferralJudiciary", reviewTheReferralCreate),
             Arguments.of("ReviewReferralLegalOps", reviewTheReferralCreate),
             Arguments.of("ReviewReferralAdmin", reviewTheReferralCreate),
@@ -329,7 +389,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ET3Processing", reviewET3Submission),
 
-            Arguments.of("SendET3Notification", issueET3Notification),
+            Arguments.of("SendEt3Notification", issueET3Notification),
 
             Arguments.of("CompleteInitialConsideration", initialConsideration),
 
@@ -347,14 +407,46 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ContactTribunalWithanApplication", reviewApplication),
 
-            Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequestJudiciary),
+            Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
 
-            Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequestAdmin),
+            Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
 
-            Arguments.of("reviewSpecificAccessRequestLegalOps", reviewAccessRequestLegalOps),
+            Arguments.of("reviewSpecificAccessRequestLegalOps", reviewAccessRequest),
 
-            Arguments.of("reviewSpecificAccessRequestCTSC", reviewAccessRequestCTSC)
+            Arguments.of("reviewSpecificAccessRequestCTSC", reviewAccessRequest)
         );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "reviewSpecificAccessRequestJudiciary",
+        "reviewSpecificAccessRequestLegalOps",
+        "reviewSpecificAccessRequestAdmin",
+        "reviewSpecificAccessRequestCTSC"
+    })
+    void should_return_request_value_when_role_assignment_id_exists_in_task_attributes(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+        String roleAssignmentId = UUID.randomUUID().toString();
+        String taskId = UUID.randomUUID().toString();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType,
+                                                         "roleAssignmentId", roleAssignmentId,
+                                                         "taskId", taskId));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+                .collect(Collectors.toList());
+
+        assertTrue(resultList.contains(Map.of(
+            "name", "additionalProperties_roleAssignmentId",
+            "value", roleAssignmentId,
+            "canReconfigure", false
+        )));
     }
 
     @ParameterizedTest
@@ -412,7 +504,6 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
 
         return Stream.of(
-            Arguments.of("draftCaseCreated", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("Et1Vetting", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("et3Response", "No", defaultMajorPriority, defaultMinorPriority),
             Arguments.of("DraftAndSignJudgment", "No", defaultMajorPriority, defaultMinorPriority),
@@ -422,19 +513,173 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralResponseJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority)
+            Arguments.of("ReviewReferralResponseLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("IssueJudgment", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("CompleteInitialConsideration", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("SendEt3Notification", "No", defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ContactTribunalWithanApplication", "No", defaultMajorPriority, defaultMinorPriority)
         );
+    }
+
+    @Test
+    void when_any_taskId_then_return_due_date_variables() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "someTaskType"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult.getResultList().stream().collect(Collectors.toList());
+        assertEquals(10, resultList.size());
+
+        assertEquals(Map.of(
+            "name", "calculatedDates",
+            "value", "nextHearingDate,dueDate,priorityDate",
+            "canReconfigure", false
+        ), resultList.get(2));
+
+        assertEquals(Map.of(
+            "name", "dueDateTime",
+            "value", "16:00",
+            "canReconfigure", false
+        ), resultList.get(4));
+
+        assertEquals(Map.of(
+            "name", "dueDateNonWorkingCalendar",
+            "value", "https://www.gov.uk/bank-holidays/england-and-wales.json, "
+                + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
+                + "master/src/main/resources/privilege-calendar.json",
+            "canReconfigure", false
+        ), resultList.get(5));
+
+        assertEquals(Map.of(
+            "name", "dueDateNonWorkingDaysOfWeek",
+            "value", "SATURDAY,SUNDAY",
+            "canReconfigure", false
+        ), resultList.get(6));
+
+        assertEquals(Map.of(
+            "name", "dueDateSkipNonWorkingDays",
+            "value", "true",
+            "canReconfigure", false
+        ), resultList.get(7));
+
+        assertEquals(Map.of(
+            "name", "dueDateMustBeWorkingDay",
+            "value", "Yes",
+            "canReconfigure", false
+        ), resultList.get(8));
+
+        assertEquals(Map.of(
+            "name", "priorityDateOriginRef",
+            "value", "dueDate",
+            "canReconfigure", false
+        ), resultList.get(9));
+    }
+
+    @Test
+    void when_caseData_and_taskType_then_return_expected_name_and_value_rows() {
+        Map<String, Object> caseData = getDefaultCaseData();
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "someTask"));
+
+        List<Map<String, Object>> expectedResults = getExpectedValues();
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+        List<Map<String, Object>> actualResults = dmnDecisionTableResult.getResultList();
+
+        assertEquals(actualResults.size(), expectedResults.size());
+
+        for (int idx = 0; idx < actualResults.size(); idx++) {
+            assertEquals(
+                actualResults.get(idx).get("name"),
+                expectedResults.get(idx).get("name")
+            );
+            if (!actualResults.get(idx).get("name").equals("dueDateOrigin")) {
+                assertEquals(
+                    actualResults.get(idx).get("value"),
+                    expectedResults.get(idx).get("value")
+                );
+            }
+        }
     }
 
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(36));
+
+        assertThat(logic.getRules().size(), is(48));
     }
 
-    private static List<Map<String, String>> concatTwoLists(List<Map<String, String>> list1,
-                                                            List<Map<String, String>> list2) {
-        return Stream.concat(list1.stream(), list2.stream()).collect(Collectors.toList());
+    private static Map<String, Object> mapData(String source) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(source, new TypeReference<>() {});
+        } catch (IOException exp) {
+            return null;
+        }
+    }
+
+    @Value
+    @Builder
+    private static class Scenario {
+        Map<String, Object> caseData;
+        Map<String, Object> taskAttributes;
+        String expectedCaseNameValue;
+        String expectedAppealTypeValue;
+        String expectedRegionValue;
+        String expectedLocationValue;
+        String expectedLocationNameValue;
+        String expectedCaseManagementCategoryValue;
+        String expectedWorkType;
+        String expectedRoleCategory;
+        String expectedDescriptionValue;
+        String expectedReconfigureValue;
+        String expectedDueDateOrigin;
+        String expectedDueDateTime;
+        String expectedDueDateIntervalDays;
+    }
+
+    private List<Map<String, Object>> getExpectedValues() {
+        List<Map<String, Object>> rules = new ArrayList<>();
+        getExpectedValue(rules, "caseName", "George Jetson");
+        getExpectedValue(rules, "caseManagementCategory", "Employment");
+        getExpectedValue(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate");
+        getExpectedValue(rules, "dueDateOrigin", null);
+        getExpectedValue(rules, "dueDateTime", "16:00");
+        getExpectedValue(rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR);
+        getExpectedValue(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY");
+        getExpectedValue(rules, "dueDateSkipNonWorkingDays", "true");
+        getExpectedValue(rules, "dueDateMustBeWorkingDay", "Yes");
+        getExpectedValue(rules, "priorityDateOriginRef", "dueDate");
+        return rules;
+    }
+
+    private void getExpectedValue(List<Map<String, Object>> rules, String name, String value) {
+        Map<String, Object> rule = new HashMap<>();
+        rule.put("name", name);
+        rule.put("value", value);
+        rule.put("canReconfigure", false);
+        rules.add(rule);
+    }
+
+    private void getExpectedValueWithReconfigure(List<Map<String, Object>> rules, String name, String value,
+                                                 String reconfigure) {
+        Map<String, Object> rule = new HashMap<>();
+        rule.put("name", name);
+        rule.put("value", value);
+        rule.put("canReconfigure", Boolean.valueOf(reconfigure));
+        rules.add(rule);
+    }
+
+    private boolean validNow(ZonedDateTime expected, ZonedDateTime actual) {
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
+        return actual != null
+            && (expected.isEqual(actual) || expected.isBefore(actual))
+            && (now.isEqual(actual) || now.isAfter(actual));
     }
 }

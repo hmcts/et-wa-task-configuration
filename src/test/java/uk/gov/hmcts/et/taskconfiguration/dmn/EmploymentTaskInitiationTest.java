@@ -34,8 +34,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String LEGALOFFICER = "Legal officer";
     public static final String YES = "Yes";
     public static final String REFERRALSUBJECT = "(Referral Subject)";
-    public static final String REFERRALRULE21 = "Rule 21 Referral";
-    public static final String REFERRALHEARING = "Hearing";
+    public static final String REFERRALRULE21 = "Rule 21";
+    public static final String REFERRALHEARING = "Hearings";
+    public static final String JUDGMENT = "Judgment";
 
     @BeforeAll
     public static void initialization() {
@@ -45,23 +46,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "INITIATE_CASE_DRAFT",
-                "AWAITING_SUBMISSION_TO_HMCTS",
-                null,
-                Map.of(
-                    "taskId", "draftCaseCreated",
-                    "name", "Draft Case Created",
-                    "workingDaysAllowed", 5
-                )
-            ),
-            Arguments.of(
                 "SUBMIT_CASE_DRAFT",
                 "Submitted",
                 null,
                 Map.of(
                     "taskId", "Et1Vetting",
                     "name", "Et1 Vetting",
-                    "workingDaysAllowed", 5,
                     "processCategories", "Vetting"
                 )
             ),
@@ -78,7 +68,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "ReviewReferralAdmin",
                     "name", "Review Referral - (Referral Subject)",
-                    "workingDaysAllowed", 1,
                     "processCategories", "Vetting"
                 )
             ),
@@ -95,7 +84,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "ReviewReferralJudiciary",
                     "name", "Review Referral - (Referral Subject)",
-                    "workingDaysAllowed", 1,
                     "processCategories", "Vetting"
                 )
             ),
@@ -112,7 +100,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "ReviewReferralLegalOps",
                     "name", "Review Referral - (Referral Subject)",
-                    "workingDaysAllowed", 1,
                     "processCategories", "Vetting"
                 )
             ),
@@ -123,7 +110,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "IssueInitialConsiderationDirections",
                     "name", "Issue Initial Consideration Directions",
-                    "workingDaysAllowed", 5,
                     "processCategories", "Hearing"
                 )
             ),
@@ -140,7 +126,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "ReviewReferralResponseAdmin",
                     "name", "Review Referral Response - (Referral Subject)",
-                    "workingDaysAllowed", 1,
                     "processCategories", "processing"
                 )
             ),
@@ -151,7 +136,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "DraftAndSignJudgment",
                     "name", "Draft And Sign Judgment",
-                    "workingDaysAllowed", 28,
                     "processCategories", "Judgment"
                 )
             ),
@@ -168,7 +152,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "DraftAndSignJudgment",
                     "name", "Draft And Sign Judgment",
-                    "workingDaysAllowed", 28,
                     "processCategories", "Judgment"
                 )
             ),
@@ -184,7 +167,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "IssuePostHearingDirection",
                     "name", "Issue Post Hearing Direction",
-                    "workingDaysAllowed", 5,
                     "processCategories", "Hearing"
                 )
             ),
@@ -200,8 +182,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                                       + "}"),
                 Map.of(
                     "taskId", "ReviewReferralResponseJudiciary",
-                    "name", "Review Referral Response - Rule 21 Referral",
-                    "workingDaysAllowed", 1,
+                    "name", "Review Referral Response - Rule 21",
                     "processCategories", "processing"
                 )
             ),
@@ -218,8 +199,62 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 Map.of(
                     "taskId", "ReviewReferralResponseLegalOps",
                     "name", "Review Referral Response - (Referral Subject)",
-                    "workingDaysAllowed", 1,
                     "processCategories", "processing"
+                )
+            ),
+            Arguments.of(
+                "createReferral",
+                "Accepted",
+                mapAdditionalData("{\n"
+                                      + "   \"Data\":{\n"
+                                      + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
+                                      + "      \"referralSubject\":\"" + JUDGMENT + "\"\n"
+                                      + "   }"
+                                      + "}"),
+                Map.of(
+                    "taskId", "IssueJudgment",
+                    "name", "Issue Judgment",
+                    "processCategories", "Hearing"
+                )
+            ),
+            Arguments.of(
+                "SUBMIT_CLAIMANT_TSE",
+                "Accepted",
+                null,
+                Map.of(
+                    "taskId", "ContactTribunalWithanApplication",
+                    "name", "Contact Tribunal With An Application",
+                    "processCategories", "Application"
+                )
+            ),
+            Arguments.of(
+                "CLAIMANT_TSE_RESPOND",
+                "Accepted",
+                null,
+                Map.of(
+                    "taskId", "ContactTribunalWithanApplication",
+                    "name", "Contact Tribunal With An Application",
+                    "processCategories", "Application"
+                )
+            ),
+            Arguments.of(
+                "respondentTSE",
+                "Accepted",
+                null,
+                Map.of(
+                    "taskId", "ContactTribunalWithanApplication",
+                    "name", "Contact Tribunal With An Application",
+                    "processCategories", "Application"
+                )
+            ),
+            Arguments.of(
+                "tseRespond",
+                "Accepted",
+                null,
+                Map.of(
+                    "taskId", "ContactTribunalWithanApplication",
+                    "name", "Contact Tribunal With An Application",
+                    "processCategories", "Application"
                 )
             )
         );
@@ -251,13 +286,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskId", "ListServeClaim",
                         "name", "List/ Serve Claim",
-                        "workingDaysAllowed", 1,
                         "processCategories", "Vetting"
                     ),
                     Map.of(
                         "taskId", "SendEt1Notification",
                         "name", "Send ET1 Notification",
-                        "workingDaysAllowed", 1,
                         "processCategories", "Vetting"
                     )
                 )
@@ -270,7 +303,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskId", "SendEt1Notification",
                         "name", "Send ET1 Notification",
-                        "workingDaysAllowed", 1,
                         "processCategories", "Vetting"
                     )
                 )
@@ -307,13 +339,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskId", "ET3Processing",
                         "name", "ET3 Processing",
-                        "workingDaysAllowed", 3,
                         "processCategories", "processing"
                     ),
                     Map.of(
                         "taskId", "ReviewRule21Referral",
                         "name", "Review Rule 21 Referral",
-                        "workingDaysAllowed", 2,
                         "processCategories", "processing"
                     )
                 )
@@ -324,9 +354,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     @ParameterizedTest(name = "event id: {0} post event state: {1} additional data: {2}")
     @MethodSource("scenarioProviderEt3Response")
     void given_multiple_event_ids_et3response_should_evaluate_dmn(String eventId,
-                                                      String postEventState,
-                                                      Map<String, Object> map,
-                                                      List<Map<String, String>> expectation) {
+                                                                  String postEventState,
+                                                                  Map<String, Object> map,
+                                                                  List<Map<String, String>> expectation) {
 
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("eventId", eventId);
@@ -340,11 +370,55 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
         assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
     }
 
+    public static Stream<Arguments> scenarioProvideret3Vetting() {
+        return Stream.of(
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                mapAdditionalData("{\n"
+                                      + "   \"Data\":{\n"
+                                      + "    \"et3Rule26\":\"" + "Yes" + "\"\n"
+                                      + "   }"
+                                      + "}"),
+                List.of(
+                    Map.of(
+                        "taskId", "CompleteInitialConsideration",
+                        "name", "Complete Initial Consideration",
+                        "processCategories", "processing"
+                    ),
+                    Map.of(
+                        "taskId", "SendEt3Notification",
+                        "name", "Send ET3 Notification",
+                        "processCategories", "processing"
+                    )
+                )
+            )
+        );
+    }
+
+    @ParameterizedTest(name = "event id: {0} post event state: {1} additional data: {2}")
+    @MethodSource("scenarioProvideret3Vetting")
+    void given_multiple_event_ids_et3vetting_should_evaluate_dmn(String eventId,
+                                                      String postEventState,
+                                                      Map<String, Object> map,
+                                                      List<Map<String, Object>> expectation) {
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", eventId);
+        inputVariables.putValue("postEventState", postEventState);
+        inputVariables.putValue("now", LocalDateTime.now().minusMinutes(10)
+            .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+        inputVariables.putAll(map);
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
+    }
+
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(16));
+        assertThat(logic.getRules().size(), is(19));
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {
