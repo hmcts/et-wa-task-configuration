@@ -609,7 +609,8 @@ else ""</text>
         </inputEntry>
         <inputEntry id="UnaryTests_02rmjxe">
           <text>"Et1Vetting",
-"et3Response",
+"ET3Processing",
+"IssueInitialConsiderationDirections",
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
 "SendEt1Notification",
@@ -646,7 +647,7 @@ else ""</text>
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xy9k8p">
-          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes")
+          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection.count) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 1000
 else 5000</text>
         </outputEntry>
@@ -660,7 +661,8 @@ else 5000</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tyaq8o">
           <text>"Et1Vetting",
-"et3Response",
+"ET3Processing",
+"IssueInitialConsiderationDirections",
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
 "SendEt1Notification",
@@ -697,7 +699,7 @@ else 5000</text>
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0g94d63">
-          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes")
+          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection.count) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 100
 else 500</text>
         </outputEntry>
@@ -840,7 +842,7 @@ else 500</text>
           <text>"dueDateIntervalDays"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ibou11">
-          <text>if (caseData != null and caseData.isUrgent != null and caseData.isUrgent = "Yes")
+          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection.count) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 1
 else 2</text>
         </outputEntry>
