@@ -36,7 +36,7 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection.count) &gt; 0)
+          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection) &gt; 0)
 then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
 + " v " + (caseData.respondentCollection[1]).value.respondent_name
 else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
@@ -647,7 +647,7 @@ else ""</text>
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xy9k8p">
-          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection.count) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
+          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 1000
 else 5000</text>
         </outputEntry>
@@ -699,7 +699,7 @@ else 5000</text>
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0g94d63">
-          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection.count) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
+          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 100
 else 500</text>
         </outputEntry>
@@ -842,7 +842,7 @@ else 500</text>
           <text>"dueDateIntervalDays"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ibou11">
-          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection.count) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
+          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 1
 else 2</text>
         </outputEntry>
