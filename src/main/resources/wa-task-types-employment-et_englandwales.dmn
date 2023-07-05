@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1kep5qz" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+  <decision id="wa-task-types-employment-et_englandwales" name="ET Task Types DMN">
+    <decisionTable id="DecisionTable_17knzal" hitPolicy="COLLECT">
+      <input id="Input_1">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="taskTypeId" typeRef="string" biodi:width="281" />
+      <output id="OutputClause_0aeuwfu" name="taskTypeName" typeRef="string" biodi:width="452" />
+      <rule id="DecisionRule_1jx56am">
+        <inputEntry id="UnaryTests_0o8appk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vykv86">
+          <text>"draftCaseCreated"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kwwr8y">
+          <text>"Draft Case Created"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1e5tdx2">
+        <inputEntry id="UnaryTests_1k15hh5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0luw6md">
+          <text>"Et1Vetting"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g22utn">
+          <text>"Et1 Vetting"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0aenrnf">
+        <inputEntry id="UnaryTests_0m29qlf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09gw2nd">
+          <text>"ReviewReferralAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18he837">
+          <text>"Review Referral - Admin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1piglun">
+        <inputEntry id="UnaryTests_1541sx9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1asqdcg">
+          <text>"ReviewReferralJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11ww7x3">
+          <text>"Review Referral - Judicial" </text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sfjkmg">
+        <inputEntry id="UnaryTests_044zyt9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ektm0h">
+          <text>"ReviewReferralLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kbi9og">
+          <text>"Review Referral - Legal Ops"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wtgwhy">
+        <inputEntry id="UnaryTests_0ywhbm9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vu2yvj">
+          <text>"ET3Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_020lzuj">
+          <text>"ET3 Processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ncy7b1">
+        <inputEntry id="UnaryTests_1g3egse">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g6sl8k">
+          <text>"IssueInitialConsiderationDirections"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1l6m7qe">
+          <text>"Issue Initial Consideration Directions"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lfe0ed">
+        <inputEntry id="UnaryTests_1vce6t1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eusmft">
+          <text>"ListServeClaim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06fqtuj">
+          <text>"List/ Serve Claim"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gnw3c1">
+        <inputEntry id="UnaryTests_0yldzt6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sssflo">
+          <text>"SendEt1Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o5deah">
+          <text>"SendEt1Notification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tgwoxx">
+        <inputEntry id="UnaryTests_04m0bw3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vjyb8w">
+          <text>"ReviewReferralResponseAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06op58d">
+          <text>"Review Referral Response - Admin" </text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mcsgvn">
+        <inputEntry id="UnaryTests_04d0atk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ynaxuw">
+          <text>"DraftAndSignJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ei3f22">
+          <text>"Draft And Sign Judgment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fcz28z">
+        <inputEntry id="UnaryTests_1au32gp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vkepww">
+          <text>"IssuePostHearingDirection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kdpozv">
+          <text>"Issue Post Hearing Direction"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gwyuxg">
+        <inputEntry id="UnaryTests_10kl24v">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sych6x">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mxj48s">
+          <text>"Review Referral Response - Judicial" </text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10nfm8t">
+        <inputEntry id="UnaryTests_002o2ob">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k383rz">
+          <text>"ReviewReferralResponseLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kw9h8u">
+          <text>"Review Referral Response - Legal Ops"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_0j0r28f">
+      <dmndi:DMNShape id="DMNShape_0524hsr" dmnElementRef="wa-task-types-employment-et_englandwales">
+        <dc:Bounds height="80" width="180" x="150" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

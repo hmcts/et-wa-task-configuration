@@ -251,6 +251,29 @@
           <text>"processing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1dtax7b">
+        <inputEntry id="UnaryTests_0ta9m1v">
+          <text>"Closed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1343btr">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rfdad7">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_044nj4n">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bptiw2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03p0j5j">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j5pbe7">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_16ex8sw">
         <inputEntry id="UnaryTests_059p3eg">
           <text>"Closed"</text>

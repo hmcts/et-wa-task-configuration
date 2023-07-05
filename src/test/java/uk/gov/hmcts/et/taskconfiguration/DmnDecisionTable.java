@@ -23,6 +23,10 @@ public enum DmnDecisionTable {
     WA_TASK_PERMISSIONS_ET_EW(
         "wa-task-permissions-employment-et_englandwales",
         "wa-task-permissions-employment-et_englandwales.dmn"
+    ),
+    WA_TASK_TYPE_ET_EW(
+        "wa-task-types-employment-et_englandwales",
+        "wa-task-types-employment-et_englandwales.dmn"
     );
 
     @JsonValue

@@ -176,6 +176,10 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "IssueJudgment",
                         "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ContactTribunalWithanApplication",
+                        "completionMode", "Auto"
                     )
                 )
             ),

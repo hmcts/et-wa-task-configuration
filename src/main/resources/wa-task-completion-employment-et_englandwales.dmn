@@ -196,6 +196,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0u1o0z1">
+        <inputEntry id="UnaryTests_0e11rgz">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19nqhth">
+          <text>"ContactTribunalWithanApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hyc3y5">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0842grb">
         <inputEntry id="UnaryTests_0dc2iyv">
           <text>"SUBMIT_CLAIMANT_TSE","CLAIMANT_TSE_RESPOND","respondentTSE","tseRespond"</text>
