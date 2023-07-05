@@ -611,14 +611,15 @@ else ""</text>
           <text>"Et1Vetting",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
+"ListServeClaim",
+"SendEt1Notification",
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
-"SendEt1Notification",
-"ListServeClaim",
 "ReviewRule21Referral",
 "IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
+"AmendPartyDetails",
 "ContactTribunalWithanApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
@@ -671,6 +672,7 @@ else 5000</text>
 "IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
+"AmendPartyDetails",
 "ContactTribunalWithanApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
@@ -857,7 +859,8 @@ else 2</text>
         <inputEntry id="UnaryTests_01m98in">
           <text>"ListServeClaim",
 "SendEt1Notification",
-"SendEt3Notification"</text>
+"SendEt3Notification",
+"AmendPartyDetails"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10rjqai">
           <text>"dueDateIntervalDays"</text>

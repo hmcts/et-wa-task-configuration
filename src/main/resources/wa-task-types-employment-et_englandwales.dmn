@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1kep5qz" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1kep5qz" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
   <decision id="wa-task-types-employment-et_englandwales" name="ET Task Types DMN">
     <decisionTable id="DecisionTable_17knzal" hitPolicy="COLLECT">
       <input id="Input_1">
@@ -9,17 +9,6 @@
       </input>
       <output id="Output_1" name="taskTypeId" typeRef="string" biodi:width="281" />
       <output id="OutputClause_0aeuwfu" name="taskTypeName" typeRef="string" biodi:width="452" />
-      <rule id="DecisionRule_1jx56am">
-        <inputEntry id="UnaryTests_0o8appk">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0vykv86">
-          <text>"draftCaseCreated"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0kwwr8y">
-          <text>"Draft Case Created"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1e5tdx2">
         <inputEntry id="UnaryTests_1k15hh5">
           <text></text>
@@ -161,6 +150,72 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1kw9h8u">
           <text>"Review Referral Response - Legal Ops"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01ieogh">
+        <inputEntry id="UnaryTests_0646v26">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01ij04q">
+          <text>"ReviewRule21Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15pfgyl">
+          <text>"Review Rule 21 Referral"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ql1mxd">
+        <inputEntry id="UnaryTests_1elfp6n">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09rn3aw">
+          <text>"IssueJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04du8yb">
+          <text>"Issue Judgment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1y8sbr1">
+        <inputEntry id="UnaryTests_0enbcfo">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_084mxkg">
+          <text>"CompleteInitialConsideration"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ftunx0">
+          <text>"Complete Initial Consideration"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00kf0tb">
+        <inputEntry id="UnaryTests_1kk77rm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y3uqvg">
+          <text>"SendEt3Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10bmaq1">
+          <text>"Send ET3 Notification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ezgc70">
+        <inputEntry id="UnaryTests_0yh1pto">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uc1uxa">
+          <text>"ContactTribunalWithanApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1po49ki">
+          <text>"Contact Tribunal With An Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1h596w0">
+        <inputEntry id="UnaryTests_0fpzi87">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cv7y1d">
+          <text>"AmendPartyDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00vtfbs">
+          <text>"Amend Party Details"</text>
         </outputEntry>
       </rule>
     </decisionTable>
