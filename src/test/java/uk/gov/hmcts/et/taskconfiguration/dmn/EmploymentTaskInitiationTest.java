@@ -310,7 +310,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 null,
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithanApplication",
+                        "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
                     ),
@@ -327,7 +327,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 null,
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithanApplication",
+                        "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
                     ),
@@ -344,7 +344,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 null,
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithanApplication",
+                        "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
                     ),
@@ -361,7 +361,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 null,
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithanApplication",
+                        "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
                     ),
@@ -382,7 +382,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     + "}"),
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithanApplication",
+                        "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
                     ),
@@ -403,7 +403,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     + "}"),
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithanApplication",
+                        "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
                     ),
@@ -424,7 +424,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     + "}"),
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithanApplication",
+                        "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
                     ),
@@ -445,7 +445,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     + "}"),
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithanApplication",
+                        "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
                     ),

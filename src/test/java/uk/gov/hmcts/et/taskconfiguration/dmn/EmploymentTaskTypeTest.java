@@ -74,7 +74,7 @@ public class EmploymentTaskTypeTest extends DmnDecisionTableBaseUnitTest {
                     Map.of("taskTypeId", "SendEt3Notification",
                            "taskTypeName","Send ET3 Notification"),
 
-                    Map.of("taskTypeId", "ContactTribunalWithanApplication",
+                    Map.of("taskTypeId", "ContactTribunalWithAnApplication",
                            "taskTypeName","Contact Tribunal With An Application"),
 
                     Map.of("taskTypeId", "AmendPartyDetails",
