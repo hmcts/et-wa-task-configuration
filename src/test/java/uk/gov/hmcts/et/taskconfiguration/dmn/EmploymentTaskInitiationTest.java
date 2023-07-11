@@ -25,14 +25,27 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
-    public static final String ADMIN = "Admin";
-    public static final String JUDGE = "Judge";
-    public static final String LEGALOFFICER = "Legal officer";
-    public static final String YES = "Yes";
-    public static final String REFERRALSUBJECT = "(Referral Subject)";
-    public static final String REFERRALRULE21 = "Rule 21";
-    public static final String REFERRALHEARING = "Hearings";
-    public static final String JUDGMENT = "Judgment";
+    public static final String REFERCASETO_ADMIN = "\"referCaseTo\":\"Admin\"";
+    public static final String REFERCASETO_JUDGE = "\"referCaseTo\":\"Judge\"";
+    public static final String REFERCASETO_LEGALOFFICER = "\"referCaseTo\":\"Legal officer\"";
+
+    public static final String REFERRAL_SUBJECT = "\"referralSubject\":\"(Referral Subject)\"";
+    public static final String REFERRAL_RULE21 = "\"referralSubject\":\"Rule 21\"";
+    public static final String REFERRAL_HEARINGS = "\"referralSubject\":\"Hearings\"";
+    public static final String REFERRAL_JUDGMENT = "\"referralSubject\":\"Judgment\"";
+
+    public static final String ISURGENT_YES = "\"isUrgent\":\"Yes\"";
+    public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
+
+    public static final String CLAIMANT_REASON_AMEND =
+        "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Amend my claim\"}}]";
+    public static final String CLAIMANT_REASON_PERSONALDETAILS =
+        "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Change my personal details\"}}]";
+
+    public static final String RESPONDENT_REASON_AMEND =
+        "\"resTseSelectApplication\": \"Amend response\"";
+    public static final String RESPONDENT_REASON_PERSONALDETAILS =
+        "\"resTseSelectApplication\": \"Change personal details\"";
 
     @BeforeAll
     public static void initialization() {
@@ -58,9 +71,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                    + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + REFERCASETO_ADMIN + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
                     + "   }"
                     + "}"),
                 List.of(
@@ -76,9 +89,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
-                    + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + REFERCASETO_JUDGE + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
                     + "   }"
                     + "}"),
                 List.of(
@@ -94,9 +107,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + LEGALOFFICER + "\",\n"
-                    + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + REFERCASETO_LEGALOFFICER + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
                     + "   }"
                     + "}"),
                 List.of(
@@ -170,9 +183,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                    + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + REFERCASETO_ADMIN + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
                     + "   }"
                     + "}"),
                 List.of(
@@ -200,9 +213,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
-                    + "      \"referralSubject\":\"" + REFERRALRULE21 + "\",\n"
-                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + REFERCASETO_JUDGE + ","
+                    + REFERRAL_RULE21 + ","
+                    + ISURGENT_YES
                     + "   }"
                     + "}"),
                 List.of(
@@ -218,8 +231,8 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 null,
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                    + "      \"referralSubject\":\"" + REFERRALHEARING + "\"\n"
+                    + REFERCASETO_ADMIN + ","
+                    + REFERRAL_HEARINGS
                     + "   }"
                     + "}"),
                 List.of(
@@ -235,9 +248,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
-                    + "      \"referralSubject\":\"" + REFERRALRULE21 + "\",\n"
-                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + REFERCASETO_JUDGE + ","
+                    + REFERRAL_RULE21 + ","
+                    + ISURGENT_YES
                     + "   }"
                     + "}"),
                 List.of(
@@ -253,9 +266,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + LEGALOFFICER + "\",\n"
-                    + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                    + "      \"isUrgent\":\"" + YES + "\"\n"
+                    + REFERCASETO_LEGALOFFICER + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
                     + "   }"
                     + "}"),
                 List.of(
@@ -271,8 +284,8 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                    + "      \"referralSubject\":\"" + JUDGMENT + "\"\n"
+                    + REFERCASETO_ADMIN + ","
+                    + REFERRAL_JUDGMENT
                     + "   }"
                     + "}"),
                 List.of(
@@ -288,7 +301,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "    \"et3Rule26\":\"" + YES + "\"\n"
+                    + RULE26_YES
                     + "   }"
                     + "}"),
                 List.of(
@@ -307,17 +320,16 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 "Accepted",
-                null,
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + CLAIMANT_REASON_AMEND
+                    + "   }"
+                    + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
-                    ),
-                    mapExpectedOutput(
-                        "AmendPartyDetails",
-                        "Amend Party Details",
-                        "Amendments"
                     )
                 )
             ),
@@ -341,17 +353,16 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "respondentTSE",
                 "Accepted",
-                null,
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + RESPONDENT_REASON_AMEND
+                    + "   }"
+                    + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
-                    ),
-                    mapExpectedOutput(
-                        "AmendPartyDetails",
-                        "Amend Party Details",
-                        "Amendments"
                     )
                 )
             ),
@@ -377,7 +388,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "   \"submissionReason\":\"" + "-" + "\"\n"
+                    + CLAIMANT_REASON_PERSONALDETAILS
                     + "   }"
                     + "}"),
                 List.of(
@@ -396,11 +407,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
                 "Accepted",
-                mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"submissionReason\":\"" + "-" + "\"\n"
-                    + "   }"
-                    + "}"),
+                null,
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -418,10 +425,10 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "respondentTSE",
                 "Accepted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"submissionReason\":\"" + "-" + "\"\n"
-                    + "   }"
-                    + "}"),
+                                      + "   \"Data\":{\n"
+                                      + RESPONDENT_REASON_PERSONALDETAILS
+                                      + "   }"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -438,11 +445,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 "Accepted",
-                mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"submissionReason\":\"" + "-" + "\"\n"
-                    + "   }"
-                    + "}"),
+                null,
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
