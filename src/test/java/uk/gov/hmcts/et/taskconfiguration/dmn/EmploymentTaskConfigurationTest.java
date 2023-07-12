@@ -179,7 +179,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
-            Arguments.of("ContactTribunalWithanApplication", applications),
+            Arguments.of("ContactTribunalWithAnApplication", applications),
             Arguments.of("AmendPartyDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
 
@@ -257,7 +257,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("IssueInitialConsiderationDirections", administrator),
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
-            Arguments.of("ContactTribunalWithanApplication", administrator),
+            Arguments.of("ContactTribunalWithAnApplication", administrator),
             Arguments.of("AmendPartyDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
@@ -408,7 +408,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("WithdrawAllOrPartOfCase", withdrawCase),
 
-            Arguments.of("ContactTribunalWithanApplication", reviewApplication),
+            Arguments.of("ContactTribunalWithAnApplication", reviewApplication),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -546,12 +546,14 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
             Arguments.of("SendEt3Notification", NOT_URGENT,
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("AmendPartyDetails", NOT_URGENT,
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
 
             Arguments.of("ReviewRule21Referral", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
             Arguments.of("CompleteInitialConsideration", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("ContactTribunalWithanApplication", NOT_URGENT,
+            Arguments.of("ContactTribunalWithAnApplication", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
 
             Arguments.of("ET3Processing", NOT_URGENT,

@@ -19,7 +19,7 @@
           </text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="249" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="197" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="966" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
@@ -136,7 +136,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1hszd50">
-          <text>"ContactTribunalWithanApplication",
+          <text>"ContactTribunalWithAnApplication",
 "AmendPartyDetails",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
@@ -245,7 +245,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "IssueInitialConsiderationDirections",
 "IssuePostHearingDirection",
 "IssueJudgment",
-"ContactTribunalWithanApplication",
+"ContactTribunalWithAnApplication",
 "AmendPartyDetails",
 "WithdrawAllOrPartOfCase",
 "SendEt3Notification"</text>
@@ -567,7 +567,7 @@ else "1234"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_135zds6">
-          <text>"ContactTribunalWithanApplication"</text>
+          <text>"ContactTribunalWithAnApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uuoa56">
           <text>"description"</text>
@@ -611,15 +611,16 @@ else ""</text>
           <text>"Et1Vetting",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
+"ListServeClaim",
+"SendEt1Notification",
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
-"SendEt1Notification",
-"ListServeClaim",
 "ReviewRule21Referral",
 "IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
-"ContactTribunalWithanApplication"</text>
+"AmendPartyDetails",
+"ContactTribunalWithAnApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -671,7 +672,8 @@ else 5000</text>
 "IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
-"ContactTribunalWithanApplication"</text>
+"AmendPartyDetails",
+"ContactTribunalWithAnApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -857,7 +859,8 @@ else 2</text>
         <inputEntry id="UnaryTests_01m98in">
           <text>"ListServeClaim",
 "SendEt1Notification",
-"SendEt3Notification"</text>
+"SendEt3Notification",
+"AmendPartyDetails"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10rjqai">
           <text>"dueDateIntervalDays"</text>
@@ -876,7 +879,7 @@ else 2</text>
         <inputEntry id="UnaryTests_10e0xlu">
           <text>"ReviewRule21Referral",
 "CompleteInitialConsideration",
-"ContactTribunalWithanApplication"</text>
+"ContactTribunalWithAnApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1w0lhdh">
           <text>"dueDateIntervalDays"</text>
