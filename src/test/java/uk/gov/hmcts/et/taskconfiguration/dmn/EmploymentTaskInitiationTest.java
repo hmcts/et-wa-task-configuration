@@ -37,20 +37,22 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String ISURGENT_YES = "\"isUrgent\":\"Yes\"";
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
 
-    public static final String CLAIMANT_REASON_AMEND =
+    public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
         "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Amend my claim\"}}]";
-    public static final String CLAIMANT_REASON_PERSONALDETAILS =
+    public static final String SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS =
         "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Change my personal details\"}}]";
 
-    public static final String RESPONDENT_REASON_AMEND =
+    public static final String SUBMISSION_REASON_RESPONDENT_AMEND =
         "\"resTseSelectApplication\": \"Amend response\"";
-    public static final String RESPONDENT_REASON_PERSONALDETAILS =
+    public static final String SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS =
         "\"resTseSelectApplication\": \"Change personal details\"";
 
-    public static final String RESPONDENT_RESPONSE_REASON_AMEND =
+    public static final String RESPONSE_REASON_RESPONDENT_AMEND =
         "\"tseRespondSelectApplication\": {\"value\": {\"label\": \"3 Amend my claim\"}}";
-    public static final String RESPONDENT_RESPONSE_REASON_PERSONALDETAILS =
-        "\"tseRespondSelectApplication\": {\"value\": {\"label\": \"23 Change personal details\"}}";
+    public static final String RESPONSE_REASON_CLAIMANT_PERSONALDETAILS =
+        "\"tseRespondSelectApplication\": {\"value\": {\"label\": \"23 Change my personal details\"}}";
+    public static final String RESPONSE_REASON_RESPONDENT_PERSONALDETAILS =
+        "\"tseRespondSelectApplication\": {\"value\": {\"label\": \"34 Change personal details\"}}";
 
     @BeforeAll
     public static void initialization() {
@@ -327,7 +329,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + CLAIMANT_REASON_AMEND
+                    + SUBMISSION_REASON_CLAIMANT_AMEND
                     + "   }"
                     + "}"),
                 List.of(
@@ -360,7 +362,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + RESPONDENT_REASON_AMEND
+                    + SUBMISSION_REASON_RESPONDENT_AMEND
                     + "   }"
                     + "}"),
                 List.of(
@@ -376,7 +378,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + RESPONDENT_RESPONSE_REASON_AMEND
+                    + RESPONSE_REASON_RESPONDENT_AMEND
                     + "   }"
                     + "}"),
                 List.of(
@@ -392,7 +394,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + CLAIMANT_REASON_PERSONALDETAILS
+                    + SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS
                     + "   }"
                     + "}"),
                 List.of(
@@ -430,7 +432,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + RESPONDENT_REASON_PERSONALDETAILS
+                    + SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS
                     + "   }"
                     + "}"),
                 List.of(
@@ -451,7 +453,28 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + RESPONDENT_RESPONSE_REASON_PERSONALDETAILS
+                    + RESPONSE_REASON_CLAIMANT_PERSONALDETAILS
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    ),
+                    mapExpectedOutput(
+                        "AmendPartyDetails",
+                        "Amend Party Details",
+                        "Amendments"
+                    )
+                )
+            ),
+            Arguments.of(
+                "tseRespond",
+                "Accepted",
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + RESPONSE_REASON_RESPONDENT_PERSONALDETAILS
                     + "   }"
                     + "}"),
                 List.of(

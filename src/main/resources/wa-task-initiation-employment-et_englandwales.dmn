@@ -37,7 +37,7 @@
       </input>
       <input id="InputClause_0z98r1i" label="Submission Reason (Claimant)" biodi:width="212">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
-          <text>if(additionalData!=null and additionalData.Data!=null and additionalData.Data.genericTseApplicationCollection!=null and 
+          <text>if(additionalData!=null and additionalData.Data!=null and additionalData.Data.genericTseApplicationCollection!=null and
 count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
 then (reverse(additionalData.Data.genericTseApplicationCollection)[1]).value.type
 else null</text>
@@ -50,7 +50,7 @@ then additionalData.Data.resTseSelectApplication
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_155ejn9" label="Response Reason (Respondent)">
+      <input id="InputClause_155ejn9" label="Response Reason (Respondent)" biodi:width="200">
         <inputExpression id="LiteralExpression_1fcs60n" typeRef="string">
           <text>if(additionalData != null and additionalData.Data != null and additionalData.Data.tseRespondSelectApplication != null and additionalData.Data.tseRespondSelectApplication.value != null and additionalData.Data.tseRespondSelectApplication.value.label != null)
 then substring after(additionalData.Data.tseRespondSelectApplication.value.label, " ")
@@ -923,7 +923,8 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_192p7ci">
-          <text>"Change personal details"</text>
+          <text>"Change my personal details",
+"Change personal details"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1l73b7e">
           <text>"AmendPartyDetails"</text>
