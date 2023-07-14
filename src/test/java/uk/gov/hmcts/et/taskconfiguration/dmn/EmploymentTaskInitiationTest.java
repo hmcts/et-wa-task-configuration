@@ -47,6 +47,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String RESPONDENT_REASON_PERSONALDETAILS =
         "\"resTseSelectApplication\": \"Change personal details\"";
 
+    public static final String RESPONDENT_RESPONSE_REASON_AMEND =
+        "\"tseRespondSelectApplication\": {\"value\": {\"label\": \"3 Amend my claim\"}}";
+    public static final String RESPONDENT_RESPONSE_REASON_PERSONALDETAILS =
+        "\"tseRespondSelectApplication\": {\"value\": {\"label\": \"23 Change personal details\"}}";
+
     @BeforeAll
     public static void initialization() {
         CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_ET_EW;
@@ -369,17 +374,16 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 "Accepted",
-                null,
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + RESPONDENT_RESPONSE_REASON_AMEND
+                    + "   }"
+                    + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
-                    ),
-                    mapExpectedOutput(
-                        "AmendPartyDetails",
-                        "Amend Party Details",
-                        "Amendments"
                     )
                 )
             ),
@@ -425,10 +429,10 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "respondentTSE",
                 "Accepted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + RESPONDENT_REASON_PERSONALDETAILS
-                                      + "   }"
-                                      + "}"),
+                    + "   \"Data\":{\n"
+                    + RESPONDENT_REASON_PERSONALDETAILS
+                    + "   }"
+                    + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -445,7 +449,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 "Accepted",
-                null,
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + RESPONDENT_RESPONSE_REASON_PERSONALDETAILS
+                    + "   }"
+                    + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
