@@ -373,7 +373,7 @@ class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "ContactTribunalWithanApplication",
+                "ContactTribunalWithAnApplication",
                 List.of(
                     taskSupervisor,
                     allocatedAdminCaseworker,

@@ -178,7 +178,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     ),
                     Map.of(
-                        "taskType", "ContactTribunalWithanApplication",
+                        "taskType", "ContactTribunalWithAnApplication",
                         "completionMode", "Auto"
                     )
                 )
@@ -188,6 +188,42 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                 asList(
                     Map.of(
                         "taskType", "CompleteInitialConsideration",
+                        "completionMode", "Auto"
+                    )
+                )
+            ),
+            Arguments.of(
+                "SUBMIT_CLAIMANT_TSE",
+                asList(
+                    Map.of(
+                        "taskType", "AmendPartyDetails",
+                        "completionMode", "Auto"
+                    )
+                )
+            ),
+            Arguments.of(
+                "CLAIMANT_TSE_RESPOND",
+                asList(
+                    Map.of(
+                        "taskType", "AmendPartyDetails",
+                        "completionMode", "Auto"
+                    )
+                )
+            ),
+            Arguments.of(
+                "respondentTSE",
+                asList(
+                    Map.of(
+                        "taskType", "AmendPartyDetails",
+                        "completionMode", "Auto"
+                    )
+                )
+            ),
+            Arguments.of(
+                "tseRespond",
+                asList(
+                    Map.of(
+                        "taskType", "AmendPartyDetails",
                         "completionMode", "Auto"
                     )
                 )
@@ -209,6 +245,6 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(18));
+        assertThat(logic.getRules().size(), is(19));
     }
 }

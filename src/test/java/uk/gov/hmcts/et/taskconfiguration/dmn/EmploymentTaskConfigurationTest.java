@@ -39,6 +39,9 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
         + "civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json";
 
+    public static final String IS_URGENT = "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"Yes\"}}]}";
+    public static final String NOT_URGENT = "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"No\"}}]}";
+
     @BeforeAll
     public static void initialization() {
         CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_ET_EW;
@@ -182,7 +185,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
-            Arguments.of("ContactTribunalWithanApplication", applications),
+            Arguments.of("ContactTribunalWithAnApplication", applications),
             Arguments.of("AmendPartyDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
 
@@ -266,7 +269,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of("IssueInitialConsiderationDirections", administrator),
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
-            Arguments.of("ContactTribunalWithanApplication", administrator),
+            Arguments.of("ContactTribunalWithAnApplication", administrator),
             Arguments.of("AmendPartyDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
@@ -437,7 +440,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("WithdrawAllOrPartOfCase", withdrawCase),
 
-            Arguments.of("ContactTribunalWithanApplication", reviewApplication),
+            Arguments.of("ContactTribunalWithAnApplication", reviewApplication),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -481,17 +484,32 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     @ParameterizedTest
     @MethodSource("priority_ScenarioProvider")
     void when_taskId_then_return_priority(String taskType,
-                                          String urgency,
+                                          String rawReferralCollection,
+                                          List<Map<String, String>> expectedIntervalDays,
                                           List<Map<String, String>> expectedMajor,
                                           List<Map<String, String>> expectedMinor) {
         Map<String, Object> caseData = getDefaultCaseData();
-        caseData.put("isUrgent", urgency);
+
+        if (!rawReferralCollection.isBlank()) {
+            Map<String, Object> parsedReferralCollection = mapData(rawReferralCollection);
+            caseData.put("referralCollection", parsedReferralCollection.get("referralCollection"));
+        }
 
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("caseData", caseData);
         inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> intervalDaysResultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("dueDateIntervalDays"))
+                .collect(Collectors.toList());
+
+        assertEquals(expectedIntervalDays.get(0).get("name"), intervalDaysResultList.get(0).get("name"));
+        assertEquals(expectedIntervalDays.get(0).get("value"), intervalDaysResultList.get(0).get("value"));
 
         List<Map<String, Object>> majorPriorityResultList =
             dmnDecisionTableResult
@@ -516,6 +534,33 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     public static Stream<Arguments> priority_ScenarioProvider() {
+
+        List<Map<String, Object>> dueDateIntervalDays1 = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "1",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> dueDateIntervalDays2 = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "2",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> dueDateIntervalDays3 = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "3",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> dueDateIntervalDays5 = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "5",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> dueDateIntervalDays28 = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "28",
+            "canReconfigure", true
+        ));
+
         List<Map<String, Object>> defaultMajorPriority = List.of(Map.of(
             "name", "majorPriority",
             "value", "5000",
@@ -538,20 +583,62 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         ));
 
         return Stream.of(
-            Arguments.of("Et1Vetting", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("et3Response", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("DraftAndSignJudgment", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("IssuePostHearingDirection", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("ReviewReferralAdmin", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseAdmin", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralJudiciary", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseLegalOps", "Yes", urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("IssueJudgment", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("CompleteInitialConsideration", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("SendEt3Notification", "No", defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("ContactTribunalWithanApplication", "No", defaultMajorPriority, defaultMinorPriority)
+            Arguments.of("ListServeClaim", NOT_URGENT,
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("SendEt1Notification", NOT_URGENT,
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("SendEt3Notification", NOT_URGENT,
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("AmendPartyDetails", NOT_URGENT,
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+
+            Arguments.of("ReviewRule21Referral", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("CompleteInitialConsideration", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ContactTribunalWithAnApplication", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+
+            Arguments.of("ET3Processing", NOT_URGENT,
+                         dueDateIntervalDays3, defaultMajorPriority, defaultMinorPriority),
+
+            Arguments.of("Et1Vetting", NOT_URGENT,
+                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("IssueInitialConsiderationDirections", NOT_URGENT,
+                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("IssuePostHearingDirection", NOT_URGENT,
+                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("IssueJudgment", NOT_URGENT,
+                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority),
+
+            Arguments.of("DraftAndSignJudgment", NOT_URGENT,
+                         dueDateIntervalDays28, defaultMajorPriority, defaultMinorPriority),
+
+            Arguments.of("ReviewReferralAdmin", IS_URGENT,
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralResponseAdmin", IS_URGENT,
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralJudiciary", IS_URGENT,
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralResponseJudiciary", IS_URGENT,
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralLegalOps", IS_URGENT,
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+            Arguments.of("ReviewReferralResponseLegalOps", IS_URGENT,
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+
+            Arguments.of("ReviewReferralAdmin", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ReviewReferralResponseAdmin", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ReviewReferralJudiciary", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ReviewReferralResponseJudiciary", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ReviewReferralLegalOps", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("ReviewReferralResponseLegalOps", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority)
         );
     }
 

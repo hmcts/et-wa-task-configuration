@@ -15,28 +15,37 @@ import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
-    public static final String ADMIN = "Admin";
-    public static final String JUDGE = "Judge";
-    public static final String LEGALOFFICER = "Legal officer";
-    public static final String YES = "Yes";
-    public static final String REFERRALSUBJECT = "(Referral Subject)";
-    public static final String REFERRALRULE21 = "Rule 21";
-    public static final String REFERRALHEARING = "Hearings";
-    public static final String JUDGMENT = "Judgment";
+    public static final String REFERCASETO_ADMIN = "\"referCaseTo\":\"Admin\"";
+    public static final String REFERCASETO_JUDGE = "\"referCaseTo\":\"Judge\"";
+    public static final String REFERCASETO_LEGALOFFICER = "\"referCaseTo\":\"Legal officer\"";
+
+    public static final String REFERRAL_SUBJECT = "\"referralSubject\":\"(Referral Subject)\"";
+    public static final String REFERRAL_RULE21 = "\"referralSubject\":\"Rule 21\"";
+    public static final String REFERRAL_HEARINGS = "\"referralSubject\":\"Hearings\"";
+    public static final String REFERRAL_JUDGMENT = "\"referralSubject\":\"Judgment\"";
+
+    public static final String ISURGENT_YES = "\"isUrgent\":\"Yes\"";
+    public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
+
+    public static final String CLAIMANT_REASON_AMEND =
+        "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Amend my claim\"}}]";
+    public static final String CLAIMANT_REASON_PERSONALDETAILS =
+        "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Change my personal details\"}}]";
+
+    public static final String RESPONDENT_REASON_AMEND =
+        "\"resTseSelectApplication\": \"Amend response\"";
+    public static final String RESPONDENT_REASON_PERSONALDETAILS =
+        "\"resTseSelectApplication\": \"Change personal details\"";
 
     @BeforeAll
     public static void initialization() {
@@ -49,212 +58,405 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "SUBMIT_CASE_DRAFT",
                 "Submitted",
                 null,
-                Map.of(
-                    "taskId", "Et1Vetting",
-                    "name", "Et1 Vetting",
-                    "processCategories", "Vetting"
+                List.of(
+                    mapExpectedOutput(
+                        "Et1Vetting",
+                        "Et1 Vetting",
+                        "Vetting"
+                    )
                 )
             ),
             Arguments.of(
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "ReviewReferralAdmin",
-                    "name", "Review Referral - (Referral Subject)",
-                    "processCategories", "Vetting"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_ADMIN + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralAdmin",
+                        "Review Referral - (Referral Subject)",
+                        "Vetting"
+                    )
                 )
             ),
             Arguments.of(
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "ReviewReferralJudiciary",
-                    "name", "Review Referral - (Referral Subject)",
-                    "processCategories", "Vetting"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_JUDGE + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralJudiciary",
+                        "Review Referral - (Referral Subject)",
+                        "Vetting"
+                    )
                 )
             ),
             Arguments.of(
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + LEGALOFFICER + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "ReviewReferralLegalOps",
-                    "name", "Review Referral - (Referral Subject)",
-                    "processCategories", "Vetting"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_LEGALOFFICER + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralLegalOps",
+                        "Review Referral - (Referral Subject)",
+                        "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Response",
+                "Accepted",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "ET3Processing",
+                        "ET3 Processing",
+                        "processing"
+                    ),
+                    mapExpectedOutput(
+                        "ReviewRule21Referral",
+                        "Review Rule 21 Referral",
+                        "processing"
+                    )
                 )
             ),
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
                 null,
-                Map.of(
-                    "taskId", "IssueInitialConsiderationDirections",
-                    "name", "Issue Initial Consideration Directions",
-                    "processCategories", "Hearing"
+                List.of(
+                    mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "preAcceptanceCase",
+                "Accepted",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "ListServeClaim",
+                        "List/ Serve Claim",
+                        "Vetting"
+                    ),
+                    mapExpectedOutput(
+                        "SendEt1Notification",
+                        "Send ET1 Notification",
+                        "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
+                "preAcceptanceCase",
+                "Rejected",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "SendEt1Notification",
+                        "Send ET1 Notification",
+                        "Vetting"
+                    )
                 )
             ),
             Arguments.of(
                 "replyToReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "ReviewReferralResponseAdmin",
-                    "name", "Review Referral Response - (Referral Subject)",
-                    "processCategories", "processing"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_ADMIN + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralResponseAdmin",
+                        "Review Referral Response - (Referral Subject)",
+                        "processing"
+                    )
                 )
             ),
             Arguments.of(
                 "updateHearing",
                 "Accepted",
                 null,
-                Map.of(
-                    "taskId", "DraftAndSignJudgment",
-                    "name", "Draft And Sign Judgment",
-                    "processCategories", "Judgment"
+                List.of(
+                    mapExpectedOutput(
+                        "DraftAndSignJudgment",
+                        "Draft And Sign Judgment",
+                        "Judgment"
+                    )
                 )
             ),
             Arguments.of(
                 "createReferral",
                 "Accepted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALRULE21 + "\",\n"
-                                      + "      \"isUrgent\":\"" + YES + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "DraftAndSignJudgment",
-                    "name", "Draft And Sign Judgment",
-                    "processCategories", "Judgment"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_JUDGE + ","
+                    + REFERRAL_RULE21 + ","
+                    + ISURGENT_YES
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "DraftAndSignJudgment",
+                        "Draft And Sign Judgment",
+                        "Judgment"
+                    )
                 )
             ),
             Arguments.of(
                 "createReferral",
                 null,
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALHEARING + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "IssuePostHearingDirection",
-                    "name", "Issue Post Hearing Direction",
-                    "processCategories", "Hearing"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_ADMIN + ","
+                    + REFERRAL_HEARINGS
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "IssuePostHearingDirection",
+                        "Issue Post Hearing Direction",
+                        "Hearing"
+                    )
                 )
             ),
             Arguments.of(
                 "replyToReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + JUDGE + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALRULE21 + "\",\n"
-                                      + "      \"isUrgent\":\"" + "Yes" + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "ReviewReferralResponseJudiciary",
-                    "name", "Review Referral Response - Rule 21",
-                    "processCategories", "processing"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_JUDGE + ","
+                    + REFERRAL_RULE21 + ","
+                    + ISURGENT_YES
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralResponseJudiciary",
+                        "Review Referral Response - Rule 21",
+                        "processing"
+                    )
                 )
             ),
             Arguments.of(
                 "replyToReferral",
                 "Accepted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + LEGALOFFICER + "\",\n"
-                                      + "      \"referralSubject\":\"" + REFERRALSUBJECT + "\",\n"
-                                      + "      \"isUrgent\":\"" + "Yes" + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "ReviewReferralResponseLegalOps",
-                    "name", "Review Referral Response - (Referral Subject)",
-                    "processCategories", "processing"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_LEGALOFFICER + ","
+                    + REFERRAL_SUBJECT + ","
+                    + ISURGENT_YES
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralResponseLegalOps",
+                        "Review Referral Response - (Referral Subject)",
+                        "processing"
+                    )
                 )
             ),
             Arguments.of(
                 "createReferral",
                 "Accepted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "      \"referCaseTo\":\"" + ADMIN + "\",\n"
-                                      + "      \"referralSubject\":\"" + JUDGMENT + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                Map.of(
-                    "taskId", "IssueJudgment",
-                    "name", "Issue Judgment",
-                    "processCategories", "Hearing"
+                    + "   \"Data\":{\n"
+                    + REFERCASETO_ADMIN + ","
+                    + REFERRAL_JUDGMENT
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "IssueJudgment",
+                        "Issue Judgment",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + RULE26_YES
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "processing"
+                    ),
+                    mapExpectedOutput(
+                        "SendEt3Notification",
+                        "Send ET3 Notification",
+                        "processing"
+                    )
                 )
             ),
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 "Accepted",
-                null,
-                Map.of(
-                    "taskId", "ContactTribunalWithanApplication",
-                    "name", "Contact Tribunal With An Application",
-                    "processCategories", "Application"
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + CLAIMANT_REASON_AMEND
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    )
                 )
             ),
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
                 "Accepted",
                 null,
-                Map.of(
-                    "taskId", "ContactTribunalWithanApplication",
-                    "name", "Contact Tribunal With An Application",
-                    "processCategories", "Application"
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    ),
+                    mapExpectedOutput(
+                        "AmendPartyDetails",
+                        "Amend Party Details",
+                        "Amendments"
+                    )
                 )
             ),
             Arguments.of(
                 "respondentTSE",
                 "Accepted",
-                null,
-                Map.of(
-                    "taskId", "ContactTribunalWithanApplication",
-                    "name", "Contact Tribunal With An Application",
-                    "processCategories", "Application"
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + RESPONDENT_REASON_AMEND
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    )
                 )
             ),
             Arguments.of(
                 "tseRespond",
                 "Accepted",
                 null,
-                Map.of(
-                    "taskId", "ContactTribunalWithanApplication",
-                    "name", "Contact Tribunal With An Application",
-                    "processCategories", "Application"
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    ),
+                    mapExpectedOutput(
+                        "AmendPartyDetails",
+                        "Amend Party Details",
+                        "Amendments"
+                    )
+                )
+            ),
+            Arguments.of(
+                "SUBMIT_CLAIMANT_TSE",
+                "Accepted",
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + CLAIMANT_REASON_PERSONALDETAILS
+                    + "   }"
+                    + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    ),
+                    mapExpectedOutput(
+                        "AmendPartyDetails",
+                        "Amend Party Details",
+                        "Amendments"
+                    )
+                )
+            ),
+            Arguments.of(
+                "CLAIMANT_TSE_RESPOND",
+                "Accepted",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    ),
+                    mapExpectedOutput(
+                        "AmendPartyDetails",
+                        "Amend Party Details",
+                        "Amendments"
+                    )
+                )
+            ),
+            Arguments.of(
+                "respondentTSE",
+                "Accepted",
+                mapAdditionalData("{\n"
+                                      + "   \"Data\":{\n"
+                                      + RESPONDENT_REASON_PERSONALDETAILS
+                                      + "   }"
+                                      + "}"),
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    ),
+                    mapExpectedOutput(
+                        "AmendPartyDetails",
+                        "Amend Party Details",
+                        "Amendments"
+                    )
+                )
+            ),
+            Arguments.of(
+                "tseRespond",
+                "Accepted",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    ),
+                    mapExpectedOutput(
+                        "AmendPartyDetails",
+                        "Amend Party Details",
+                        "Amendments"
+                    )
                 )
             )
         );
@@ -265,150 +467,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void given_input_should_return_outcome_dmn(String eventId,
                                                String postEventState,
                                                Map<String, Object> map,
-                                               Map<String, ? extends Serializable> expectedDmnOutcome) {
+                                               List<Map<String, String>> expectation) {
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("eventId", eventId);
         inputVariables.putValue("postEventState", postEventState);
         inputVariables.putAll(map);
 
-        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
-        assertThat(dmnDecisionTableResult.getResultList(), is(singletonList(expectedDmnOutcome)));
-    }
-
-    public static Stream<Arguments> scenarioProviderAcceptance() {
-        return Stream.of(
-            Arguments.of(
-                "preAcceptanceCase",
-                "Accepted",
-                null,
-                List.of(
-                    Map.of(
-                        "taskId", "ListServeClaim",
-                        "name", "List/ Serve Claim",
-                        "processCategories", "Vetting"
-                    ),
-                    Map.of(
-                        "taskId", "SendEt1Notification",
-                        "name", "Send ET1 Notification",
-                        "processCategories", "Vetting"
-                    )
-                )
-            ),
-            Arguments.of(
-                "preAcceptanceCase",
-                "Rejected",
-                null,
-                List.of(
-                    Map.of(
-                        "taskId", "SendEt1Notification",
-                        "name", "Send ET1 Notification",
-                        "processCategories", "Vetting"
-                    )
-                )
-            )
-        );
-    }
-
-    @ParameterizedTest(name = "event id: {0} post event state: {1} additional data: {2}")
-    @MethodSource("scenarioProviderAcceptance")
-    void given_multiple_event_ids_should_evaluate_dmn(String eventId,
-                                                      String postEventState,
-                                                      Map<String, Object> map,
-                                                      List<Map<String, String>> expectation) {
-
-        VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("eventId", eventId);
-        inputVariables.putValue("postEventState", postEventState);
-        inputVariables.putValue("now", LocalDateTime.now().minusMinutes(10)
-            .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-        inputVariables.putValue("additionalData", map);
-
-        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
-        assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
-    }
-
-    public static Stream<Arguments> scenarioProviderEt3Response() {
-        return Stream.of(
-            Arguments.of(
-                "et3Response",
-                "Accepted",
-                null,
-                List.of(
-                    Map.of(
-                        "taskId", "ET3Processing",
-                        "name", "ET3 Processing",
-                        "processCategories", "processing"
-                    ),
-                    Map.of(
-                        "taskId", "ReviewRule21Referral",
-                        "name", "Review Rule 21 Referral",
-                        "processCategories", "processing"
-                    )
-                )
-            )
-        );
-    }
-
-    @ParameterizedTest(name = "event id: {0} post event state: {1} additional data: {2}")
-    @MethodSource("scenarioProviderEt3Response")
-    void given_multiple_event_ids_et3response_should_evaluate_dmn(String eventId,
-                                                                  String postEventState,
-                                                                  Map<String, Object> map,
-                                                                  List<Map<String, String>> expectation) {
-
-        VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("eventId", eventId);
-        inputVariables.putValue("postEventState", postEventState);
-        inputVariables.putValue("now", LocalDateTime.now().minusMinutes(10)
-            .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-        inputVariables.putValue("additionalData", map);
-
-        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
-        assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
-    }
-
-    public static Stream<Arguments> scenarioProvideret3Vetting() {
-        return Stream.of(
-            Arguments.of(
-                "et3Vetting",
-                "Accepted",
-                mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + "    \"et3Rule26\":\"" + "Yes" + "\"\n"
-                                      + "   }"
-                                      + "}"),
-                List.of(
-                    Map.of(
-                        "taskId", "CompleteInitialConsideration",
-                        "name", "Complete Initial Consideration",
-                        "processCategories", "processing"
-                    ),
-                    Map.of(
-                        "taskId", "SendEt3Notification",
-                        "name", "Send ET3 Notification",
-                        "processCategories", "processing"
-                    )
-                )
-            )
-        );
-    }
-
-    @ParameterizedTest(name = "event id: {0} post event state: {1} additional data: {2}")
-    @MethodSource("scenarioProvideret3Vetting")
-    void given_multiple_event_ids_et3vetting_should_evaluate_dmn(String eventId,
-                                                      String postEventState,
-                                                      Map<String, Object> map,
-                                                      List<Map<String, Object>> expectation) {
-
-        VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("eventId", eventId);
-        inputVariables.putValue("postEventState", postEventState);
-        inputVariables.putValue("now", LocalDateTime.now().minusMinutes(10)
-            .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-        inputVariables.putAll(map);
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
@@ -418,7 +482,15 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(19));
+        assertThat(logic.getRules().size(), is(23));
+    }
+
+    private static Map<String, String> mapExpectedOutput(String taskId, String name, String processCategories) {
+        return Map.of(
+            "taskId", taskId,
+            "name", name,
+            "processCategories", processCategories
+        );
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalData) {
