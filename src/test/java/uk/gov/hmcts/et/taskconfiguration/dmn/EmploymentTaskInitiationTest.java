@@ -345,7 +345,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + CLAIMANT_REASON_AMEND
+                    + SUBMISSION_REASON_CLAIMANT_AMEND
                     + "   }"
                     + "}"),
                 List.of(
@@ -382,7 +382,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + RESPONSE_REASON_RESPONDENT_AMEND
+                    + SUBMISSION_REASON_RESPONDENT_AMEND
                     + "   }"
                     + "}"),
                 List.of(
