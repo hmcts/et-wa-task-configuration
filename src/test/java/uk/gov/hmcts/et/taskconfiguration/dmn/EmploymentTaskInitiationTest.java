@@ -39,11 +39,17 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     public static final String CLAIMANT_REASON_AMEND =
         "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Amend my claim\"}}]";
+    public static final String CLAIMANT_REASON_PERSONALDETAILS =
+        "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Change my personal details\"}}]";
 
     public static final String RESPONDENT_REASON_AMEND =
         "\"resTseSelectApplication\": \"Amend response\"";
     public static final String RESPONDENT_REASON_PERSONALDETAILS =
         "\"resTseSelectApplication\": \"Change personal details\"";
+    public static final String RESPONDENT_WITHDRAW_ALL_OR_PART_OF_CASE =
+        "\"resTseSelectApplication\": \"Withdraw All or part of my Case\"";
+    public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
+            "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Withdraw All or part of my Case\"}}]";
 
     @BeforeAll
     public static void initialization() {
@@ -334,7 +340,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
                 "Accepted",
-                null,
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + CLAIMANT_REASON_AMEND
+                    + "   }"
+                    + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -367,7 +377,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 "Accepted",
-                null,
+                mapAdditionalData("{\n"
+                    + "   \"Data\":{\n"
+                    + RESPONDENT_REASON_AMEND
+                    + "   }"
+                    + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -386,15 +400,10 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
-                    + "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Change my personal details\"}}]"
+                    + CLAIMANT_REASON_PERSONALDETAILS
                     + "   }"
                     + "}"),
                 List.of(
-                    mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
-                        "Contact Tribunal With An Application",
-                        "Application"
-                    ),
                     mapExpectedOutput(
                         "AmendPartyDetails",
                         "Amend Party Details",
@@ -408,11 +417,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 null,
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
-                        "Contact Tribunal With An Application",
-                        "Application"
-                    ),
-                    mapExpectedOutput(
                         "AmendPartyDetails",
                         "Amend Party Details",
                         "Amendments"
@@ -423,16 +427,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "respondentTSE",
                 "Accepted",
                 mapAdditionalData("{\n"
-                                      + "   \"Data\":{\n"
-                                      + RESPONDENT_REASON_PERSONALDETAILS
-                                      + "   }"
-                                      + "}"),
+                    + "   \"Data\":{\n"
+                    + RESPONDENT_REASON_PERSONALDETAILS
+                    + "   }"
+                    + "}"),
                 List.of(
-                    mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
-                        "Contact Tribunal With An Application",
-                        "Application"
-                    ),
                     mapExpectedOutput(
                         "AmendPartyDetails",
                         "Amend Party Details",
@@ -446,11 +445,6 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 null,
                 List.of(
                     mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
-                        "Contact Tribunal With An Application",
-                        "Application"
-                    ),
-                    mapExpectedOutput(
                         "AmendPartyDetails",
                         "Amend Party Details",
                         "Amendments"
@@ -462,7 +456,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "Accepted",
                     mapAdditionalData("{\n"
                             + "   \"Data\":{\n"
-                            + "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"Withdraw All or part of my Case\"}}]"
+                            + CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE
                             + "   }"
                             + "}"),
                     List.of(
@@ -478,7 +472,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "Accepted",
                     mapAdditionalData("{\n"
                             + "   \"Data\":{\n"
-                            + "\"resTseSelectApplication\":[{\"value\": {\"type\": \"Withdraw All or part of my Case\"}}]"
+                            + RESPONDENT_WITHDRAW_ALL_OR_PART_OF_CASE
                             + "   }"
                             + "}"),
                     List.of(
@@ -512,7 +506,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(25));
+        assertThat(logic.getRules().size(), is(26));
     }
 
     private static Map<String, String> mapExpectedOutput(String taskId, String name, String processCategories) {

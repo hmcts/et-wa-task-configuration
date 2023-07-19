@@ -33,15 +33,15 @@
           else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0z98r1i" label="Submission Reason (Claimant)" biodi:width="334">
+      <input id="InputClause_0z98r1i" label="Submission Reason (Claimant)" biodi:width="212">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
-          <text>if(additionalData!=null and additionalData.Data!=null and additionalData.Data.genericTseApplicationCollection!=null and 
+          <text>if(additionalData!=null and additionalData.Data!=null and additionalData.Data.genericTseApplicationCollection!=null and
 count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
 then (reverse(additionalData.Data.genericTseApplicationCollection)[1]).value.type
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0dv06vc" label="Submission Reason (Respondent)" biodi:width="310">
+      <input id="InputClause_0dv06vc" label="Submission Reason (Respondent)">
         <inputExpression id="LiteralExpression_0muqt7g" typeRef="string">
           <text>if(additionalData != null and additionalData.Data != null and additionalData.Data.resTseSelectApplication != null)
 then additionalData.Data.resTseSelectApplication
@@ -685,9 +685,7 @@ else null</text>
       <rule id="DecisionRule_01ceigg">
         <inputEntry id="UnaryTests_1my06mo">
           <text>"SUBMIT_CLAIMANT_TSE",
-"CLAIMANT_TSE_RESPOND",
-"respondentTSE",
-"tseRespond"</text>
+"CLAIMANT_TSE_RESPOND"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0n6e17i">
           <text>"Accepted"</text>
@@ -702,7 +700,18 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_070tybt">
-          <text></text>
+          <text>"Withdraw all/part of claim",
+"Postpone a hearing",
+"Vary/revoke an order",
+"Consider a decision afresh",
+"Amend my claim",
+"Order respondent to do something",
+"Order a witness to attend",
+"Tell tribunal respondent not complied",
+"Restrict publicity",
+"Strike out all/part of response",
+"Reconsider judgement",
+"Contact about something else"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lpacxp">
           <text></text>
@@ -717,6 +726,52 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1h85dlq">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13kxwo2">
+        <inputEntry id="UnaryTests_102z0ce">
+          <text>"respondentTSE",
+"tseRespond"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aggoos">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xrr6wt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kq2anx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_092b3dg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_057bwbn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p5id4s">
+          <text>"Amend response",
+"Claimant not complied",
+"Consider a decision afresh",
+"Contact the tribunal",
+"Order other party",
+"Order a witness to attend to give evidence",
+"Postpone a hearing",
+"Reconsider judgement",
+"Restrict publicity",
+"Strike out all or part of a claim",
+"Vary or revoke an order"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rzxzd9">
+          <text>"ContactTribunalWithAnApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w8pyhw">
+          <text>"Contact Tribunal With An Application"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_091hz5k">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p5w9w2">
           <text>"Application"</text>
         </outputEntry>
       </rule>
@@ -928,41 +983,6 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ia8acd">
           <text>"Amendments"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1yw9239">
-        <inputEntry id="UnaryTests_18qogt0">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_07i4kxz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1qdi3ds">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ngpu8n">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1adohec">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0uiia8l">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_19r4fgx">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0xw9kxx">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0mqf4dl">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1jy7qf2">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_12n52u1">
-          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
