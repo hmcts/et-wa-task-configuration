@@ -69,7 +69,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(
-            Arguments.of(
+                Arguments.of(
                 "SUBMIT_CASE_DRAFT",
                 "Submitted",
                 null,
@@ -86,10 +86,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_ADMIN + ","
                     + REFERRAL_SUBJECT + ","
                     + ISURGENT_YES
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
@@ -104,10 +106,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_JUDGE + ","
                     + REFERRAL_SUBJECT + ","
                     + ISURGENT_YES
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
@@ -122,10 +126,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_LEGALOFFICER + ","
                     + REFERRAL_SUBJECT + ","
                     + ISURGENT_YES
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
@@ -198,10 +204,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_ADMIN + ","
                     + REFERRAL_SUBJECT + ","
                     + ISURGENT_YES
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
@@ -228,10 +236,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_JUDGE + ","
                     + REFERRAL_RULE21 + ","
                     + ISURGENT_YES
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
@@ -246,9 +256,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 null,
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_ADMIN + ","
                     + REFERRAL_HEARINGS
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
@@ -263,10 +275,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_JUDGE + ","
                     + REFERRAL_RULE21 + ","
                     + ISURGENT_YES
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
@@ -281,10 +295,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_LEGALOFFICER + ","
                     + REFERRAL_SUBJECT + ","
                     + ISURGENT_YES
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
@@ -299,9 +315,11 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData("{\n"
                     + "   \"Data\":{\n"
+                    + "   \"referralCollection\":[{\n"
+                    + "   \"value\":{\n"
                     + REFERCASETO_ADMIN + ","
                     + REFERRAL_JUDGMENT
-                    + "   }"
+                    + "   }}]}"
                     + "}"),
                 List.of(
                     mapExpectedOutput(
