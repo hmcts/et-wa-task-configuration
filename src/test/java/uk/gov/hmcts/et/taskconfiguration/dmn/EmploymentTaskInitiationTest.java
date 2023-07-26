@@ -26,15 +26,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     public static final String REFERCASETO_ADMIN = "\"referCaseTo\":\"Admin\"";
+    public static final String DIRECTIONTO_ADMIN = "\"directionTo\":\"Admin\"";
     public static final String REFERCASETO_JUDGE = "\"referCaseTo\":\"Judge\"";
+    public static final String DIRECTIONTO_JUDGE = "\"directionTo\":\"Judge\"";
     public static final String REFERCASETO_LEGALOFFICER = "\"referCaseTo\":\"Legal officer\"";
-
+    public static final String DIRECTIONTO_LEGALOFFICER = "\"directionTo\":\"Legal officer\"";
     public static final String REFERRAL_SUBJECT = "\"referralSubject\":\"(Referral Subject)\"";
     public static final String REFERRAL_RULE21 = "\"referralSubject\":\"Rule 21\"";
     public static final String REFERRAL_HEARINGS = "\"referralSubject\":\"Hearings\"";
     public static final String REFERRAL_JUDGMENT = "\"referralSubject\":\"Judgment\"";
 
     public static final String ISURGENT_YES = "\"isUrgent\":\"Yes\"";
+    public static final String ISURGENT_REPLY_YES = "\"isUrgentReply\":\"Yes\"";
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
 
     public static final String APPLICATION_COLLECTION =
@@ -208,7 +211,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                     + "   \"value\":{\n"
                     + REFERCASETO_ADMIN + ","
                     + REFERRAL_SUBJECT + ","
-                    + ISURGENT_YES
+                    + ISURGENT_YES + ","
+                    + "   \"referralReplyCollection\":[{\n"
+                    + "   \"value\":{\n"
+                    + DIRECTIONTO_ADMIN + ","
+                    + ISURGENT_REPLY_YES
+                    + "     }}]"
                     + "   }}]}"
                     + "}"),
                 List.of(
@@ -274,14 +282,19 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "replyToReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_JUDGE + ","
-                    + REFERRAL_RULE21 + ","
-                    + ISURGENT_YES
-                    + "   }}]}"
-                    + "}"),
+                  + "   \"Data\":{\n"
+                  + "   \"referralCollection\":[{\n"
+                  + "   \"value\":{\n"
+                  + REFERCASETO_JUDGE + ","
+                  + REFERRAL_RULE21 + ","
+                  + ISURGENT_YES + ","
+                  + "    \"referralReplyCollection\":[{\n"
+                  + "    \"value\":{\n"
+                  + DIRECTIONTO_JUDGE + ","
+                  + ISURGENT_REPLY_YES
+                  + "       }}]"
+                  + "   }}]}"
+                  + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
@@ -294,14 +307,19 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "replyToReferral",
                 "Accepted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_LEGALOFFICER + ","
-                    + REFERRAL_SUBJECT + ","
-                    + ISURGENT_YES
-                    + "   }}]}"
-                    + "}"),
+                  + "   \"Data\":{\n"
+                  + "   \"referralCollection\":[{\n"
+                  + "   \"value\":{\n"
+                  + REFERCASETO_LEGALOFFICER + ","
+                  + REFERRAL_SUBJECT + ","
+                  + ISURGENT_YES + ","
+                  + "    \"referralReplyCollection\":[{\n"
+                  + "    \"value\":{\n"
+                  + DIRECTIONTO_LEGALOFFICER + ","
+                  + ISURGENT_REPLY_YES
+                  + "            }}]"
+                  + "   }}]}"
+                  + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
