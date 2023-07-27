@@ -26,18 +26,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     public static final String REFERCASETO_ADMIN = "\"referCaseTo\":\"Admin\"";
-    public static final String DIRECTIONTO_ADMIN = "\"directionTo\":\"Admin\"";
     public static final String REFERCASETO_JUDGE = "\"referCaseTo\":\"Judge\"";
-    public static final String DIRECTIONTO_JUDGE = "\"directionTo\":\"Judge\"";
     public static final String REFERCASETO_LEGALOFFICER = "\"referCaseTo\":\"Legal officer\"";
-    public static final String DIRECTIONTO_LEGALOFFICER = "\"directionTo\":\"Legal officer\"";
+
     public static final String REFERRAL_SUBJECT = "\"referralSubject\":\"(Referral Subject)\"";
     public static final String REFERRAL_RULE21 = "\"referralSubject\":\"Rule 21\"";
     public static final String REFERRAL_HEARINGS = "\"referralSubject\":\"Hearings\"";
     public static final String REFERRAL_JUDGMENT = "\"referralSubject\":\"Judgment\"";
 
     public static final String ISURGENT_YES = "\"isUrgent\":\"Yes\"";
-    public static final String ISURGENT_REPLY_YES = "\"isUrgentReply\":\"Yes\"";
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
 
     public static final String APPLICATION_COLLECTION =
@@ -66,7 +63,10 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             createApplications("Change personal details", "Claimant");
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
             createApplications("Strike out all/part of response", "Claimant");
-
+    public static final String DIRECTIONTO_ADMIN = "\"directionTo\":\"Admin\"";
+    public static final String DIRECTIONTO_JUDGE = "\"directionTo\":\"Judge\"";
+    public static final String DIRECTIONTO_LEGALOFFICER = "\"directionTo\":\"Legal officer\"";
+    public static final String ISURGENT_REPLY_YES = "\"isUrgentReply\":\"Yes\"";
     @BeforeAll
     public static void initialization() {
         CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_ET_EW;
@@ -74,7 +74,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(
-                Arguments.of(
+            Arguments.of(
                 "SUBMIT_CASE_DRAFT",
                 "Submitted",
                 null,
@@ -90,14 +90,14 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_ADMIN + ","
-                    + REFERRAL_SUBJECT + ","
-                    + ISURGENT_YES
-                    + "   }}]}"
-                    + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_ADMIN + ","
+                                      + REFERRAL_SUBJECT + ","
+                                      + ISURGENT_YES
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralAdmin",
@@ -110,14 +110,14 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_JUDGE + ","
-                    + REFERRAL_SUBJECT + ","
-                    + ISURGENT_YES
-                    + "   }}]}"
-                    + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_JUDGE + ","
+                                      + REFERRAL_SUBJECT + ","
+                                      + ISURGENT_YES
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralJudiciary",
@@ -130,14 +130,14 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_LEGALOFFICER + ","
-                    + REFERRAL_SUBJECT + ","
-                    + ISURGENT_YES
-                    + "   }}]}"
-                    + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_LEGALOFFICER + ","
+                                      + REFERRAL_SUBJECT + ","
+                                      + ISURGENT_YES
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralLegalOps",
@@ -208,19 +208,19 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "replyToReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_ADMIN + ","
-                    + REFERRAL_SUBJECT + ","
-                    + ISURGENT_YES + ","
-                    + "   \"referralReplyCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + DIRECTIONTO_ADMIN + ","
-                    + ISURGENT_REPLY_YES
-                    + "     }}]"
-                    + "   }}]}"
-                    + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_ADMIN + ","
+                                      + REFERRAL_SUBJECT + ","
+                                      + ISURGENT_YES + ","
+                                      + "   \"referralReplyCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + DIRECTIONTO_ADMIN + ","
+                                      + ISURGENT_REPLY_YES
+                                      + "     }}]"
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
@@ -245,14 +245,14 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Accepted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_JUDGE + ","
-                    + REFERRAL_RULE21 + ","
-                    + ISURGENT_YES
-                    + "   }}]}"
-                    + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_JUDGE + ","
+                                      + REFERRAL_RULE21 + ","
+                                      + ISURGENT_YES
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "DraftAndSignJudgment",
@@ -265,13 +265,13 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 null,
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_ADMIN + ","
-                    + REFERRAL_HEARINGS
-                    + "   }}]}"
-                    + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_ADMIN + ","
+                                      + REFERRAL_HEARINGS
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "IssuePostHearingDirection",
@@ -284,19 +284,19 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "replyToReferral",
                 "Submitted",
                 mapAdditionalData("{\n"
-                  + "   \"Data\":{\n"
-                  + "   \"referralCollection\":[{\n"
-                  + "   \"value\":{\n"
-                  + REFERCASETO_JUDGE + ","
-                  + REFERRAL_RULE21 + ","
-                  + ISURGENT_YES + ","
-                  + "    \"referralReplyCollection\":[{\n"
-                  + "    \"value\":{\n"
-                  + DIRECTIONTO_JUDGE + ","
-                  + ISURGENT_REPLY_YES
-                  + "       }}]"
-                  + "   }}]}"
-                  + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_JUDGE + ","
+                                      + REFERRAL_RULE21 + ","
+                                      + ISURGENT_YES + ","
+                                      + "   \"referralReplyCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + DIRECTIONTO_JUDGE + ","
+                                      + ISURGENT_REPLY_YES
+                                      + "     }}]"
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
@@ -309,19 +309,19 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "replyToReferral",
                 "Accepted",
                 mapAdditionalData("{\n"
-                  + "   \"Data\":{\n"
-                  + "   \"referralCollection\":[{\n"
-                  + "   \"value\":{\n"
-                  + REFERCASETO_LEGALOFFICER + ","
-                  + REFERRAL_SUBJECT + ","
-                  + ISURGENT_YES + ","
-                  + "    \"referralReplyCollection\":[{\n"
-                  + "    \"value\":{\n"
-                  + DIRECTIONTO_LEGALOFFICER + ","
-                  + ISURGENT_REPLY_YES
-                  + "            }}]"
-                  + "   }}]}"
-                  + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_LEGALOFFICER + ","
+                                      + REFERRAL_SUBJECT + ","
+                                      + ISURGENT_YES + ","
+                                      + "   \"referralReplyCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + DIRECTIONTO_LEGALOFFICER + ","
+                                      + ISURGENT_REPLY_YES
+                                      + "     }}]"
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
@@ -334,13 +334,13 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 "Accepted",
                 mapAdditionalData("{\n"
-                    + "   \"Data\":{\n"
-                    + "   \"referralCollection\":[{\n"
-                    + "   \"value\":{\n"
-                    + REFERCASETO_ADMIN + ","
-                    + REFERRAL_JUDGMENT
-                    + "   }}]}"
-                    + "}"),
+                                      + "   \"Data\":{\n"
+                                      + "   \"referralCollection\":[{\n"
+                                      + "   \"value\":{\n"
+                                      + REFERCASETO_ADMIN + ","
+                                      + REFERRAL_JUDGMENT
+                                      + "   }}]}"
+                                      + "}"),
                 List.of(
                     mapExpectedOutput(
                         "IssueJudgment",
