@@ -67,6 +67,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String DIRECTIONTO_JUDGE = "\"directionTo\":\"Judge\"";
     public static final String DIRECTIONTO_LEGALOFFICER = "\"directionTo\":\"Legal officer\"";
     public static final String ISURGENT_REPLY_YES = "\"isUrgentReply\":\"Yes\"";
+
     @BeforeAll
     public static void initialization() {
         CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_ET_EW;
