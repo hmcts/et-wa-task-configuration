@@ -553,6 +553,8 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
             Arguments.of("AmendPartyDetails", NOT_URGENT,
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("WithdrawAllOrPartOfCase", NOT_URGENT,
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
 
             Arguments.of("ReviewRule21Referral", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
