@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.13.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" biodi:width="201" camunda:inputVariable="eventId">
@@ -12,68 +12,74 @@
           <text></text>
         </inputExpression>
       </input>
-      <input id="InputClause_1gia5s6" label="Direction To" camunda:inputVariable="directionTo">
-        <inputExpression id="LiteralExpression_1tb9c3z" typeRef="string">
-          <text>if(additionalData!=null and additionalData.Data!=null and additionalData.Data.referralCollection!=null and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then (reverse((reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.directionTo
-else null</text>
-        </inputExpression>
-      </input>
       <input id="InputClause_1nkkapg" label="Refer Case To" biodi:width="150" camunda:inputVariable="referCaseTo">
         <inputExpression id="LiteralExpression_1h40nek" typeRef="string">
-          <text>if(additionalData!=null and additionalData.Data!=null and additionalData.Data.referralCollection!=null and
-count(additionalData.Data.referralCollection) &gt; 0)
-then (reverse(additionalData.Data.referralCollection)[1]).value.referCaseTo
-else null          </text>
+          <text>if(additionalData!=null
+          and additionalData.Data!=null
+          and additionalData.Data.referralCollection!=null
+          and count(additionalData.Data.referralCollection) &gt; 0)
+          then (reverse(additionalData.Data.referralCollection)[1]).value.referCaseTo
+          else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
-          <text>if(additionalData!=null and additionalData.Data!=null and additionalData.Data.referralCollection!=null and
-count(additionalData.Data.referralCollection) &gt; 0)
-then (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject
-else null</text>
+          <text>if(additionalData!=null
+          and additionalData.Data!=null
+          and additionalData.Data.referralCollection!=null
+          and count(additionalData.Data.referralCollection) &gt; 0)
+          then (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject
+          else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1gia5s6" label="Direction To" biodi:width="150" camunda:inputVariable="directionTo">
+        <inputExpression id="LiteralExpression_1tb9c3z" typeRef="string">
+          <text>if(additionalData!=null
+          and additionalData.Data!=null
+          and additionalData.Data.referralCollection!=null
+          and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+          then (reverse((reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.directionTo
+          else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_0gqbing" label="ET3 Rule26" biodi:width="150" camunda:inputVariable="et3Rule26">
         <inputExpression id="LiteralExpression_1iv0wje" typeRef="string">
-          <text> if(additionalData != null and additionalData.Data != null and additionalData.Data.et3Rule26 != null)
+          <text>if(additionalData != null
+          and additionalData.Data != null
+          and additionalData.Data.et3Rule26 != null)
           then additionalData.Data.et3Rule26
           else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="212">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
-          <text>if(additionalData!=null and additionalData.Data!=null and additionalData.Data.genericTseApplicationCollection!=null and
-count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
-then (reverse(additionalData.Data.genericTseApplicationCollection)[1]).value.type
-else null</text>
+          <text>if(additionalData!=null
+          and additionalData.Data!=null
+          and additionalData.Data.genericTseApplicationCollection!=null
+          and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
+          then (reverse(additionalData.Data.genericTseApplicationCollection)[1]).value.type
+          else null
+          </text>
         </inputExpression>
       </input>
       <input id="InputClause_155ejn9" label="Claimant Responding To Change Personal Details" biodi:width="200">
         <inputExpression id="LiteralExpression_1fcs60n" typeRef="string">
           <text>if (additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.genericTseApplicationCollection!=null
-and count(additionalData.Data.genericTseApplicationCollection[
-	  value.type="Change personal details"
-	  and (reverse(value.respondCollection)[1]).value.from = "Claimant"
-	  ]) &gt; 0)
-then "Change personal details"
-else "Other"</text>
+          and additionalData.Data!=null
+          and additionalData.Data.genericTseApplicationCollection!=null
+          and count(additionalData.Data.genericTseApplicationCollection[value.type="Change personal details" and (reverse(value.respondCollection)[1]).value.from = "Claimant"]) &gt; 0)
+          then "Change personal details"
+          else "Other"</text>
         </inputExpression>
       </input>
       <input id="InputClause_1a3sb2l" label="Respondent Responding To Change My Personal Details" biodi:width="220">
         <inputExpression id="LiteralExpression_1leb85s" typeRef="string">
           <text>if (additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.genericTseApplicationCollection!=null
-and count(additionalData.Data.genericTseApplicationCollection[
-	  value.type="Change my personal details"
-	  and (reverse(value.respondCollection)[1]).value.from = "Respondent"
-	  ]) &gt; 0)
-then "Change my personal details"
-else "Other"</text>
+          and additionalData.Data!=null
+          and additionalData.Data.genericTseApplicationCollection!=null
+          and count(additionalData.Data.genericTseApplicationCollection[value.type="Change my personal details" and (reverse(value.respondCollection)[1]).value.from = "Respondent"]) &gt; 0)
+          then "Change my personal details"
+          else "Other"</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
@@ -87,13 +93,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1ematrk">
           <text>"Submitted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1ko29uf">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0bys6y7">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ns71cw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ko29uf">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05hhzvk">
@@ -128,13 +134,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0xcs5s3">
           <text>"Submitted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0s5w63e">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_1xkeuj2">
           <text>"Admin"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1frkc1e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s5w63e">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1i6d0qb">
@@ -162,6 +168,88 @@ else "Other"</text>
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1s31bcd">
+        <inputEntry id="UnaryTests_0dupw7d">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mg3cq8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ugxnru">
+          <text>"Admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rppy5k">
+          <text>"Hearings"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0twhjtj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f379iz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f4qu93">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_031ma1j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_087br5y">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19aayz9">
+          <text>"IssuePostHearingDirection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14t378q">
+          <text>"Issue Post Hearing Direction"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i1vc8m">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sz0vs9">
+          <text>"Hearing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1frp6cd">
+        <inputEntry id="UnaryTests_0e2foso">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hzh7bt">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00kyvcf">
+          <text>"Admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_140oicd">
+          <text>"Judgment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k99nx6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v9as5r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0de3w0g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07ckksy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f5x1t6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n64ej0">
+          <text>"IssueJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ofxqxi">
+          <text>"Issue Judgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mor5cr">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k3l7jy">
+          <text>"Hearing"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0t3h4yd">
         <inputEntry id="UnaryTests_0pnlugb">
           <text>"createReferral"</text>
@@ -169,13 +257,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_059m8ba">
           <text>"Submitted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1mxz5ig">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_1tsfn84">
           <text>"Judge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_01db6ha">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0gi5cux">
@@ -203,6 +291,47 @@ else "Other"</text>
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0czmplo">
+        <inputEntry id="UnaryTests_171nfwx">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0psy3au">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ar4dx9">
+          <text>"Judge"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_008f6zs">
+          <text>"Rule 21"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cbz43f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hdfase">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1io07dz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nllfdj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ora6vq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zsboti">
+          <text>"DraftAndSignJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1juaks9">
+          <text>"Draft And Sign Judgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17sbt3s">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06gpnf8">
+          <text>"Judgment"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1xtkppt">
         <inputEntry id="UnaryTests_13iglg0">
           <text>"createReferral"</text>
@@ -210,13 +339,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0wekibb">
           <text>"Submitted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_18nyph2">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0tha19k">
           <text>"Legal officer"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18oj3hc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18nyph2">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rwn59q">
@@ -244,6 +373,129 @@ else "Other"</text>
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1579wwj">
+        <inputEntry id="UnaryTests_1u2n3i0">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ae1nhd">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09ihz7c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z0rg6v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_016z8gq">
+          <text>"Admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gvpl5x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14g20yz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cfem71">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_015jzof">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15ccyjs">
+          <text>"ReviewReferralResponseAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qcsldu">
+          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kmxycv">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1opsd1f">
+          <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hm05l9">
+        <inputEntry id="UnaryTests_1i53pq9">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bthnb0">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dsvpj5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rjl985">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_066p0jd">
+          <text>"Judge"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_197f9ze">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xhiqxw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ehw49i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k0m20s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0viokea">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08j7d7p">
+          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zcsqzi">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gy7tms">
+          <text>"processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00vkigv">
+        <inputEntry id="UnaryTests_0qcoftd">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z9zbuk">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cyv80m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1047la4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fohd96">
+          <text>"Legal officer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rwzte1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p59qoe">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05xjb5g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mnf125">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0asscuc">
+          <text>"ReviewReferralResponseLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03wz7tv">
+          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14hvioj">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ce5c8c">
+          <text>"processing"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ntdndx">
         <inputEntry id="UnaryTests_0rhsg81">
           <text>"et3Response"</text>
@@ -251,13 +503,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1tdixaj">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0yak1o6">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0vpsvtp">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0e7g68a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yak1o6">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_16x4b6z">
@@ -292,13 +544,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1cwpq4d">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1nvcc8n">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0bys6y8">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jx29oc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nvcc8n">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1myv8bd">
@@ -333,13 +585,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_02hzxey">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0gzl8je">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_1k2u9lv">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_14nteit">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gzl8je">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05c6m5l">
@@ -374,13 +626,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1xnsic0">
           <text>"Accepted","Rejected"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0dx3x9i">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0msudrt">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rq7isq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dx3x9i">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1d1vj84">
@@ -408,47 +660,6 @@ else "Other"</text>
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1579wwj">
-        <inputEntry id="UnaryTests_1u2n3i0">
-          <text>"replyToReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ae1nhd">
-          <text>"Submitted"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_016z8gq">
-          <text>"Admin"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_09ihz7c">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0z0rg6v">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0gvpl5x">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_14g20yz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0cfem71">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_015jzof">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_15ccyjs">
-          <text>"ReviewReferralResponseAdmin"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0qcsldu">
-          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0kmxycv">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1opsd1f">
-          <text>"processing"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1088ucx">
         <inputEntry id="UnaryTests_09wciln">
           <text>"updateHearing"</text>
@@ -456,13 +667,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_14q23vc">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1alb0hn">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0kmlbs3">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lsqrua">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1alb0hn">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_09ywq3i">
@@ -490,170 +701,6 @@ else "Other"</text>
           <text>"Judgment"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0czmplo">
-        <inputEntry id="UnaryTests_171nfwx">
-          <text>"createReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0psy3au">
-          <text>"Accepted"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0cbz43f">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ar4dx9">
-          <text>"Judge"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_008f6zs">
-          <text>"Rule 21"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1hdfase">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1io07dz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1nllfdj">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ora6vq">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0zsboti">
-          <text>"DraftAndSignJudgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1juaks9">
-          <text>"Draft And Sign Judgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_17sbt3s">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_06gpnf8">
-          <text>"Judgment"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1s31bcd">
-        <inputEntry id="UnaryTests_0dupw7d">
-          <text>"createReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0mg3cq8">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0twhjtj">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1ugxnru">
-          <text>"Admin"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1rppy5k">
-          <text>"Hearings"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0f379iz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0f4qu93">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_031ma1j">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_087br5y">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_19aayz9">
-          <text>"IssuePostHearingDirection"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_14t378q">
-          <text>"Issue Post Hearing Direction"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0i1vc8m">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0sz0vs9">
-          <text>"Hearing"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0hm05l9">
-        <inputEntry id="UnaryTests_1i53pq9">
-          <text>"replyToReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0bthnb0">
-          <text>"Submitted"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_066p0jd">
-          <text>"Judge"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0dsvpj5">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0rjl985">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_197f9ze">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1xhiqxw">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1ehw49i">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0k0m20s">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0viokea">
-          <text>"ReviewReferralResponseJudiciary"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_08j7d7p">
-          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0zcsqzi">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0gy7tms">
-          <text>"processing"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_00vkigv">
-        <inputEntry id="UnaryTests_0qcoftd">
-          <text>"replyToReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0z9zbuk">
-          <text>"Accepted"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0fohd96">
-          <text>"Legal officer"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1cyv80m">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1047la4">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1rwzte1">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1p59qoe">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_05xjb5g">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0mnf125">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0asscuc">
-          <text>"ReviewReferralResponseLegalOps"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_03wz7tv">
-          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_14hvioj">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0ce5c8c">
-          <text>"processing"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1cvmo3m">
         <inputEntry id="UnaryTests_1if2ltu">
           <text>"et3Response"</text>
@@ -661,13 +708,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1d64dbm">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0htl5u7">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_19zrr2q">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0h75cox">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0htl5u7">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_00tl7fh">
@@ -695,47 +742,6 @@ else "Other"</text>
           <text>"processing"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1frp6cd">
-        <inputEntry id="UnaryTests_0e2foso">
-          <text>"createReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1hzh7bt">
-          <text>"Accepted"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1k99nx6">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_00kyvcf">
-          <text>"Admin"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_140oicd">
-          <text>"Judgment"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1v9as5r">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0de3w0g">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_07ckksy">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0f5x1t6">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1n64ej0">
-          <text>"IssueJudgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0ofxqxi">
-          <text>"Issue Judgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0mor5cr">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1k3l7jy">
-          <text>"Hearing"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0edeiu4">
         <inputEntry id="UnaryTests_0kmldps">
           <text>"et3Vetting"</text>
@@ -743,13 +749,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0jv4d1m">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1493fyz">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_1wlwrd5">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_02k7jv2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1493fyz">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0jperqz">
@@ -784,13 +790,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0trmk2s">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0g17av6">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_1k9vt8o">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1r77qlw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g17av6">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lpacxr">
@@ -825,13 +831,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0n6e17i">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1admda4">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_1oozmiu">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_11n1tc1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1admda4">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0tapbch">
@@ -876,13 +882,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0rt3sje">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_028hyp7">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_173gkw8">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0f2l74l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_028hyp7">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ywg97i">
@@ -917,13 +923,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0aggoos">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1754qga">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0xrr6wt">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1kq2anx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1754qga">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_092b3dg">
@@ -968,13 +974,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1y4emgd">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0bdchai">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_02a8bsm">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mgm94o">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bdchai">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ss99gg">
@@ -1009,13 +1015,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1syn1yj">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0hhferk">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_1ml9qty">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1umtate">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hhferk">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1dngnaj">
@@ -1050,13 +1056,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1kao45i">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_06i6p5e">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0ktumlv">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lkfk4u">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06i6p5e">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0xmz891">
@@ -1091,13 +1097,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1l9gj0l">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_048rr3p">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0mnk1y0">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_012g5h9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_048rr3p">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0d04m82">
@@ -1132,13 +1138,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0496y6a">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1530xzd">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_0mf1adh">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_165nkd8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1530xzd">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1o9yn92">
@@ -1173,13 +1179,13 @@ else "Other"</text>
         <inputEntry id="UnaryTests_169unrn">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1btn8d7">
-          <text></text>
-        </inputEntry>
         <inputEntry id="UnaryTests_18luura">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_07y33pu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1btn8d7">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_189z75k">
