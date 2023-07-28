@@ -53,12 +53,13 @@
       </input>
       <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="212">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
-          <text>if(additionalData!=null
-          and additionalData.Data!=null
-          and additionalData.Data.genericTseApplicationCollection!=null
-          and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
-          then (reverse(additionalData.Data.genericTseApplicationCollection)[1]).value.type
-          else null
+          <text>
+          if(additionalData=null
+          or additionalData.Data=null
+          or additionalData.Data.genericTseApplicationCollection=null
+          or count(additionalData.Data.genericTseApplicationCollection) &lt; 1)
+          then null
+          else sort(list: additionalData.Data.genericTseApplicationCollection.value, precedes: function(x,y) number(x.number) > number(y.number)).type[1]
           </text>
         </inputExpression>
       </input>
