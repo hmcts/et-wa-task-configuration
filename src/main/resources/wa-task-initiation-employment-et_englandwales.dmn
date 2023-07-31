@@ -1081,7 +1081,10 @@ precedes: function(x,y) number(x.number) &gt; number(y.number)).type[1]</text>
           <text>"AmendPartyDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0930lzb">
-          <text>"Amend Party Details"</text>
+          <text>"Amend Party Details"
+          + "-"
+          + (additionalData.Data.genericTseApplicationCollection[count(value.respondCollection[id=(sort(list:flatten(additionalData.Data.genericTseApplicationCollection.value.respondCollection),precedes:function(x,y)date and time(x.value.dateTime) > date and time(y.value.dateTime)).id[1])])>0]).value.type[1]
+          + "-"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1roo1pj">
           <text></text>
