@@ -15,71 +15,70 @@
       <input id="InputClause_1nkkapg" label="Refer Case To" biodi:width="150" camunda:inputVariable="referCaseTo">
         <inputExpression id="LiteralExpression_1h40nek" typeRef="string">
           <text>if(additionalData!=null
-          and additionalData.Data!=null
-          and additionalData.Data.referralCollection!=null
-          and count(additionalData.Data.referralCollection) &gt; 0)
-          then (reverse(additionalData.Data.referralCollection)[1]).value.referCaseTo
-          else null</text>
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0)
+then (reverse(additionalData.Data.referralCollection)[1]).value.referCaseTo
+else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
           <text>if(additionalData!=null
-          and additionalData.Data!=null
-          and additionalData.Data.referralCollection!=null
-          and count(additionalData.Data.referralCollection) &gt; 0)
-          then (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject
-          else null</text>
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0)
+then (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject
+else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_1gia5s6" label="Direction To" biodi:width="150" camunda:inputVariable="directionTo">
         <inputExpression id="LiteralExpression_1tb9c3z" typeRef="string">
           <text>if(additionalData!=null
-          and additionalData.Data!=null
-          and additionalData.Data.referralCollection!=null
-          and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-          then (reverse((reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.directionTo
-          else null</text>
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then (reverse((reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.directionTo
+else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_0gqbing" label="ET3 Rule26" biodi:width="150" camunda:inputVariable="et3Rule26">
         <inputExpression id="LiteralExpression_1iv0wje" typeRef="string">
           <text>if(additionalData != null
-          and additionalData.Data != null
-          and additionalData.Data.et3Rule26 != null)
-          then additionalData.Data.et3Rule26
-          else null</text>
+and additionalData.Data != null
+and additionalData.Data.et3Rule26 != null)
+then additionalData.Data.et3Rule26
+else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="212">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
           <text>if(additionalData!=null
-          and additionalData.Data!=null
-          and additionalData.Data.genericTseApplicationCollection!=null
-          and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
-          then (reverse(additionalData.Data.genericTseApplicationCollection)[1]).value.type
-          else null
-          </text>
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
+then (reverse(additionalData.Data.genericTseApplicationCollection)[1]).value.type
+else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_155ejn9" label="Claimant Responding To Change Personal Details" biodi:width="200">
         <inputExpression id="LiteralExpression_1fcs60n" typeRef="string">
           <text>if (additionalData!=null
-          and additionalData.Data!=null
-          and additionalData.Data.genericTseApplicationCollection!=null
-          and count(additionalData.Data.genericTseApplicationCollection[value.type="Change personal details" and (reverse(value.respondCollection)[1]).value.from = "Claimant"]) &gt; 0)
-          then "Change personal details"
-          else "Other"</text>
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection[value.type="Change personal details" and (reverse(value.respondCollection)[1]).value.from = "Claimant"]) &gt; 0)
+then "Change personal details"
+else "Other"</text>
         </inputExpression>
       </input>
       <input id="InputClause_1a3sb2l" label="Respondent Responding To Change My Personal Details" biodi:width="220">
         <inputExpression id="LiteralExpression_1leb85s" typeRef="string">
           <text>if (additionalData!=null
-          and additionalData.Data!=null
-          and additionalData.Data.genericTseApplicationCollection!=null
-          and count(additionalData.Data.genericTseApplicationCollection[value.type="Change my personal details" and (reverse(value.respondCollection)[1]).value.from = "Respondent"]) &gt; 0)
-          then "Change my personal details"
-          else "Other"</text>
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection[value.type="Change my personal details" and (reverse(value.respondCollection)[1]).value.from = "Respondent"]) &gt; 0)
+then "Change my personal details"
+else "Other"</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
@@ -159,7 +158,8 @@
           <text>"ReviewReferralAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16yf2nj">
-          <text>"Review Referral - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+          <text>"Review Referral - "
++ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n9o39e">
           <text></text>
@@ -282,7 +282,8 @@
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16t7tco">
-          <text>"Review Referral - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+          <text>"Review Referral - "
++ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zdr7bg">
           <text></text>
@@ -364,7 +365,8 @@
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1x90otf">
-          <text>"Review Referral - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+          <text>"Review Referral - "
++ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0iaqh1t">
           <text></text>
@@ -405,7 +407,9 @@
           <text>"ReviewReferralResponseAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qcsldu">
-          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+          <text>"Review Referral Response - "
++ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
@@ -446,7 +450,9 @@
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08j7d7p">
-          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+          <text>"Review Referral Response - "
++ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zcsqzi">
           <text></text>
@@ -487,7 +493,9 @@
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03wz7tv">
-          <text>"Review Referral Response - " + (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject </text>
+          <text>"Review Referral Response - "
++ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14hvioj">
           <text></text>

@@ -39,13 +39,17 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
         + "civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json";
 
-    public static final String IS_URGENT = "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"Yes\"}}]}";
+    public static final String IS_URGENT =
+        "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"Yes\"}}]}";
+    public static final String NOT_URGENT =
+        "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"No\"}}]}";
 
-    public static final String NOT_URGENT = "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"No\"}}]}";
-    public static final String ISURGENT_REPLY_YES = "{\"referralCollection\":[{\"value\": {\"referralReplyCollection\":"
-        + "[{\"value\": {\"isUrgentReply\": \"Yes\"}}]}}]}";
-    public static final String ISURGENT_REPLY_NO = "{\"referralCollection\":[{\"value\": {\"referralReplyCollection\":"
-        + "[{\"value\": {\"isUrgentReply\": \"No\"}}]}}]}";
+    public static final String ISURGENT_REPLY_YES =
+        "{\"referralCollection\":[{\"value\": {\"referralReplyCollection\":"
+            + "[{\"value\": {\"isUrgentReply\": \"Yes\"}}]}}]}";
+    public static final String ISURGENT_REPLY_NO =
+        "{\"referralCollection\":[{\"value\": {\"referralReplyCollection\":"
+            + "[{\"value\": {\"isUrgentReply\": \"No\"}}]}}]}";
 
     @BeforeAll
     public static void initialization() {
@@ -184,6 +188,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
+
             Arguments.of("ContactTribunalWithAnApplication", applications),
             Arguments.of("AmendPartyDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
