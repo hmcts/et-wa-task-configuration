@@ -144,28 +144,34 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
         assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
     }
 
     public static Stream<Arguments> workType_ScenarioProvider() {
-        List<Map<String, String>> routineWork = List.of(Map.of(
+        List<Map<String, Object>> routineWork = List.of(Map.of(
             "name", "workType",
-            "value", "routine_work"
+            "value", "routine_work",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> decisionMakingWork = List.of(Map.of(
+        List<Map<String, Object>> decisionMakingWork = List.of(Map.of(
             "name", "workType",
-            "value", "decision_making_work"
+            "value", "decision_making_work",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> hearingWork = List.of(Map.of(
+        List<Map<String, Object>> hearingWork = List.of(Map.of(
             "name", "workType",
-            "value", "hearing_work"
+            "value", "hearing_work",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> applications = List.of(Map.of(
+        List<Map<String, Object>> applications = List.of(Map.of(
             "name", "workType",
-            "value", "applications"
+            "value", "applications",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> accessRequests = List.of(Map.of(
+        List<Map<String, Object>> accessRequests = List.of(Map.of(
             "name", "workType",
-            "value", "access_requests"
+            "value", "access_requests",
+            "canReconfigure", true
         ));
 
         return Stream.of(
@@ -218,28 +224,34 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
         assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
     }
 
     public static Stream<Arguments> roleCategory_ScenarioProvider() {
-        List<Map<String, String>> judicial = List.of(Map.of(
+        List<Map<String, Object>> judicial = List.of(Map.of(
             "name", "roleCategory",
-            "value", "JUDICIAL"
+            "value", "JUDICIAL",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> legalOperations = List.of(Map.of(
+        List<Map<String, Object>> legalOperations = List.of(Map.of(
             "name", "roleCategory",
-            "value", "LEGAL_OPERATIONS"
+            "value", "LEGAL_OPERATIONS",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> administrator = List.of(Map.of(
+        List<Map<String, Object>> administrator = List.of(Map.of(
             "name", "roleCategory",
-            "value", "ADMIN"
+            "value", "ADMIN",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> ctsc = List.of(Map.of(
+        List<Map<String, Object>> ctsc = List.of(Map.of(
             "name", "roleCategory",
-            "value", "CTSC"
+            "value", "CTSC",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> adminctsc = List.of(Map.of(
+        List<Map<String, Object>> adminctsc = List.of(Map.of(
             "name", "roleCategory",
-            "value", "ADMIN,CTSC"
+            "value", "ADMIN,CTSC",
+            "canReconfigure", true
         ));
 
         return Stream.of(
@@ -296,91 +308,111 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 .collect(Collectors.toList());
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value").replace("${[roleAssignmentId]}", roleAssignmentId)
+        assertEquals(expected.get(0).get("value")
+                         .replace("${[roleAssignmentId]}", roleAssignmentId)
                          .replace("${[taskId]}", taskId), resultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
-        List<Map<String, String>> reviewTheReferralCreate = List.of(Map.of(
+        List<Map<String, Object>> reviewTheReferralCreate = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/createReferral1)"
+            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/createReferral1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewTheReferralReply = List.of(Map.of(
+        List<Map<String, Object>> reviewTheReferralReply = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/replyToReferral1)"
+            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/replyToReferral1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewET1Submission = List.of(Map.of(
+        List<Map<String, Object>> reviewET1Submission = List.of(Map.of(
             "name", "description",
-            "value", "[Review ET1 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)"
+            "value", "[Review ET1 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> issueET1Notification = List.of(Map.of(
+        List<Map<String, Object>> issueET1Notification = List.of(Map.of(
             "name", "description",
             "value", "[Issue relevant ET1 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "generateCorrespondence/generateCorrespondence1)"
+                + "generateCorrespondence/generateCorrespondence1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> draftJudgment = List.of(Map.of(
+        List<Map<String, Object>> draftJudgment = List.of(Map.of(
             "name", "description",
             "value", "[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/createReferral/createReferral1)"
+                + "trigger/createReferral/createReferral1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> listHearingUploadDocument = List.of(Map.of(
+        List<Map<String, Object>> listHearingUploadDocument = List.of(Map.of(
             "name", "description",
             "value", "[list hearing if required and then upload document for serving](cases/case-details/"
-                + "${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"
+                + "${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewET3Submission = List.of(Map.of(
+        List<Map<String, Object>> reviewET3Submission = List.of(Map.of(
             "name", "description",
-            "value", "[Review ET3 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)"
+            "value", "[Review ET3 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> issueET3Notification = List.of(Map.of(
+        List<Map<String, Object>> issueET3Notification = List.of(Map.of(
             "name", "description",
             "value", "[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "generateCorrespondence/generateCorrespondence1)"
+                + "generateCorrespondence/generateCorrespondence1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> initialConsideration = List.of(Map.of(
+        List<Map<String, Object>> initialConsideration = List.of(Map.of(
             "name", "description",
             "value", "[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "initialConsideration/initialConsideration1)"
+                + "initialConsideration/initialConsideration1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewInitialConsideration = List.of(Map.of(
+        List<Map<String, Object>> reviewInitialConsideration = List.of(Map.of(
             "name", "description",
             "value", "[Review Initial consideration, update case and then issue relevant correspondence](cases/"
-                + "case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+                + "case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewTheReferralCorrespondence = List.of(Map.of(
+        List<Map<String, Object>> reviewTheReferralCorrespondence = List.of(Map.of(
             "name", "description",
             "value", "[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/generateCorrespondence/generateCorrespondence1)"
+                + "trigger/generateCorrespondence/generateCorrespondence1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewJudgmentPromulgation = List.of(Map.of(
+        List<Map<String, Object>> reviewJudgmentPromulgation = List.of(Map.of(
             "name", "description",
             "value", "[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/addAmendJudgment/addAmendJudgment1)"
+                + "trigger/addAmendJudgment/addAmendJudgment1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewJudgmentReferral = List.of(Map.of(
+        List<Map<String, Object>> reviewJudgmentReferral = List.of(Map.of(
             "name", "description",
             "value", "[Review Judgment Referral, then issue relevant correspondence](cases/case-details/"
-                + "${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+                + "${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> updatePartyDetails = List.of(Map.of(
+        List<Map<String, Object>> updatePartyDetails = List.of(Map.of(
             "name", "description",
             "value", "[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/"
                 + "amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "amendClaimantDetails/amendClaimantDetails1)[, as instructed]"
+                + "amendClaimantDetails/amendClaimantDetails1)[, as instructed]",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> withdrawCase = List.of(Map.of(
+        List<Map<String, Object>> withdrawCase = List.of(Map.of(
             "name", "description",
             "value", "[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "disposeCase/disposeCase1)"
+                + "disposeCase/disposeCase1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewApplication = List.of(Map.of(
+        List<Map<String, Object>> reviewApplication = List.of(Map.of(
             "name", "description",
             "value", "[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/createReferral/createReferral1)"
+                + "trigger/createReferral/createReferral1)",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> reviewAccessRequest = List.of(Map.of(
+        List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
             "name", "description",
-            "value","[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/specific-access)"
+            "value","[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
+                + "specific-access)",
+            "canReconfigure", true
         ));
 
         return Stream.of(
@@ -455,7 +487,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(resultList.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
             "value", roleAssignmentId,
-            "canReconfigure", false
+            "canReconfigure", true
         )));
     }
 
@@ -508,45 +540,56 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expectedMinor.get(0).get("name"), minorPriorityResultList.get(0).get("name"));
         assertEquals(expectedMinor.get(0).get("value"), minorPriorityResultList.get(0).get("value"));
+        assertEquals(expectedMinor.get(0).get("canReconfigure"), minorPriorityResultList.get(0).get("canReconfigure"));
     }
 
     public static Stream<Arguments> priority_ScenarioProvider() {
-        List<Map<String, String>> dueDateIntervalDays1 = List.of(Map.of(
+
+        List<Map<String, Object>> dueDateIntervalDays1 = List.of(Map.of(
             "name", "dueDateIntervalDays",
-            "value", "1"
+            "value", "1",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> dueDateIntervalDays2 = List.of(Map.of(
+        List<Map<String, Object>> dueDateIntervalDays2 = List.of(Map.of(
             "name", "dueDateIntervalDays",
-            "value", "2"
+            "value", "2",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> dueDateIntervalDays3 = List.of(Map.of(
+        List<Map<String, Object>> dueDateIntervalDays3 = List.of(Map.of(
             "name", "dueDateIntervalDays",
-            "value", "3"
+            "value", "3",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> dueDateIntervalDays5 = List.of(Map.of(
+        List<Map<String, Object>> dueDateIntervalDays5 = List.of(Map.of(
             "name", "dueDateIntervalDays",
-            "value", "5"
+            "value", "5",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> dueDateIntervalDays28 = List.of(Map.of(
+        List<Map<String, Object>> dueDateIntervalDays28 = List.of(Map.of(
             "name", "dueDateIntervalDays",
-            "value", "28"
+            "value", "28",
+            "canReconfigure", true
         ));
 
-        List<Map<String, String>> defaultMajorPriority = List.of(Map.of(
+        List<Map<String, Object>> defaultMajorPriority = List.of(Map.of(
             "name", "majorPriority",
-            "value", "5000"
+            "value", "5000",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> defaultMinorPriority = List.of(Map.of(
+        List<Map<String, Object>> defaultMinorPriority = List.of(Map.of(
             "name", "minorPriority",
-            "value", "500"
+            "value", "500",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> urgentMajorPriority = List.of(Map.of(
+        List<Map<String, Object>> urgentMajorPriority = List.of(Map.of(
             "name", "majorPriority",
-            "value", "1000"
+            "value", "1000",
+            "canReconfigure", true
         ));
-        List<Map<String, String>> urgentMinorPriority = List.of(Map.of(
+        List<Map<String, Object>> urgentMinorPriority = List.of(Map.of(
             "name", "minorPriority",
-            "value", "100"
+            "value", "100",
+            "canReconfigure", true
         ));
 
         return Stream.of(
@@ -626,13 +669,13 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertEquals(Map.of(
             "name", "calculatedDates",
             "value", "nextHearingDate,dueDate,priorityDate",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(2));
 
         assertEquals(Map.of(
             "name", "dueDateTime",
             "value", "16:00",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(4));
 
         assertEquals(Map.of(
@@ -640,31 +683,31 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "https://www.gov.uk/bank-holidays/england-and-wales.json, "
                 + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
                 + "master/src/main/resources/privilege-calendar.json",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(5));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingDaysOfWeek",
             "value", "SATURDAY,SUNDAY",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(6));
 
         assertEquals(Map.of(
             "name", "dueDateSkipNonWorkingDays",
             "value", "true",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(7));
 
         assertEquals(Map.of(
             "name", "dueDateMustBeWorkingDay",
             "value", "Yes",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(8));
 
         assertEquals(Map.of(
             "name", "priorityDateOriginRef",
             "value", "dueDate",
-            "canReconfigure", false
+            "canReconfigure", true
         ), resultList.get(9));
     }
 
@@ -753,7 +796,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> rule = new HashMap<>();
         rule.put("name", name);
         rule.put("value", value);
-        rule.put("canReconfigure", false);
+        rule.put("canReconfigure", true);
         rules.add(rule);
     }
 

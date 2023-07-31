@@ -87,7 +87,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"routine_work"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zejjhx">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0mvywdi">
@@ -108,7 +108,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"decision_making_work"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0491v2t">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1j8z2ig">
@@ -126,7 +126,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"hearing_work"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0paqt6u">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_068i294">
@@ -145,7 +145,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"applications"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0j0h6u3">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1xhxj7y">
@@ -165,7 +165,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"access_requests"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19v1c22">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1lcd6br">
@@ -186,7 +186,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"JUDICIAL"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17me4lg">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0e4h101">
@@ -208,7 +208,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17yr1mw">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0ycb6so">
@@ -229,7 +229,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"ADMIN,CTSC"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tivei7">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0q41xil">
@@ -255,7 +255,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"ADMIN"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pxnir8">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bykddi">
@@ -272,7 +272,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"CTSC"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_029cwaw">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_15urme4">
@@ -294,7 +294,7 @@ then taskAttributes.roleAssignmentId
 else "1234"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cxkqq3">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0abku11">
@@ -314,7 +314,7 @@ else "1234"</text>
           <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/createReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0s7te75">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0n0lyo2">
@@ -334,7 +334,7 @@ else "1234"</text>
           <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/replyToReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nnd54t">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1gl883a">
@@ -351,7 +351,7 @@ else "1234"</text>
           <text>"[Review ET1 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1swlcw1">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_02x30bh">
@@ -369,7 +369,7 @@ else "1234"</text>
           <text>"[Issue relevant ET1 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nwha68">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0las4xs">
@@ -386,7 +386,7 @@ else "1234"</text>
           <text>"[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_059enb4">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12bi1xb">
@@ -403,7 +403,7 @@ else "1234"</text>
           <text>"[list hearing if required and then upload document for serving](cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pgzvgx">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12t229f">
@@ -420,7 +420,7 @@ else "1234"</text>
           <text>"[Review ET3 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pc3b2q">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0nzfj6h">
@@ -438,7 +438,7 @@ else "1234"</text>
           <text>"[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1crtkf8">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1ie2zm4">
@@ -455,7 +455,7 @@ else "1234"</text>
           <text>"[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yh9meg">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1fwldsf">
@@ -472,7 +472,7 @@ else "1234"</text>
           <text>"[Review Initial consideration, update case and then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r68eci">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1hplv47">
@@ -489,7 +489,7 @@ else "1234"</text>
           <text>"[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17bw4fs">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_00jc61t">
@@ -506,7 +506,7 @@ else "1234"</text>
           <text>"[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_136d3sz">
@@ -523,7 +523,7 @@ else "1234"</text>
           <text>"[Review Judgment Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13no40g">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1hx0oqp">
@@ -540,7 +540,7 @@ else "1234"</text>
           <text>"[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)[, as instructed]"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0kc6n4b">
@@ -557,7 +557,7 @@ else "1234"</text>
           <text>"[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0oya7dl">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1b3vrdt">
@@ -574,7 +574,7 @@ else "1234"</text>
           <text>"[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bf0kza">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12zdyry">
@@ -598,7 +598,7 @@ then "[Review Access Request](/role-access/" + taskAttributes.taskId + "/assignm
 else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_153t7so">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1w3eg4c">
@@ -628,7 +628,7 @@ else ""</text>
           <text>5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1mzeeq8">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1ua5utw">
@@ -652,7 +652,7 @@ then 1000
 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1uusq1d">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1sk2v2n">
@@ -706,7 +706,7 @@ else 5000</text>
           <text>500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1lezcx4">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bz90wb">
@@ -730,7 +730,7 @@ then 100
 else 500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ry9gq0">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0buxxfp">
@@ -771,7 +771,7 @@ else 500</text>
           <text>"nextHearingDate,dueDate,priorityDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13crvik">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_108ksv2">
@@ -788,7 +788,7 @@ else 500</text>
           <text>now()</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cg2n4r">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0h2yrh9">
@@ -805,7 +805,7 @@ else 500</text>
           <text>time("16:00")</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1t5kkwb">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1026abf">
@@ -822,7 +822,7 @@ else 500</text>
           <text>"https://www.gov.uk/bank-holidays/england-and-wales.json, https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gnav2w">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0er605q">
@@ -839,7 +839,7 @@ else 500</text>
           <text>"SATURDAY,SUNDAY"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0npgbuk">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_02liz3k">
@@ -856,7 +856,7 @@ else 500</text>
           <text>"true"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10c00lk">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0urorrj">
@@ -873,7 +873,7 @@ else 500</text>
           <text>"Yes"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1027th9">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_18n4ois">
@@ -897,7 +897,7 @@ then 1
 else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ctz44f">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0caeq0x">
@@ -942,7 +942,7 @@ else 2</text>
           <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0lumtph">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1j13ges">
@@ -961,7 +961,7 @@ else 2</text>
           <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05zdiue">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0e24s73">
@@ -978,7 +978,7 @@ else 2</text>
           <text>3</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1rkdgbw">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0b5p3rx">
@@ -998,7 +998,7 @@ else 2</text>
           <text>5</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1i7buw9">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0tqb9qt">
@@ -1015,7 +1015,7 @@ else 2</text>
           <text>28</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ln2d99">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0xrz5gi">
@@ -1032,7 +1032,7 @@ else 2</text>
           <text>"dueDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tt1zjs">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
