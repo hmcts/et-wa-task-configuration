@@ -55,7 +55,9 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             createApplications("Strike out all/part of response", "Claimant");
 
     public static final String REFERRAL_COLLECTION =
-        "\"referralCollection\":[{\"value\": {\"referralSubject\": \"%s\",\"referCaseTo\": \"%s\",\"isUrgent\": \"%s\"%s}}]";
+        "\"referralCollection\":[{\"value\": "
+            + "{\"referralSubject\": \"%s\",\"referCaseTo\": \"%s\",\"isUrgent\": \"%s\"%s}"
+            + "}]";
     public static final String REFERRALREPLY_COLLECTION =
         ",\"referralReplyCollection\": [{\"value\": {\"directionTo\": \"%s\",\"isUrgentReply\": \"%s\"}}]";
 
