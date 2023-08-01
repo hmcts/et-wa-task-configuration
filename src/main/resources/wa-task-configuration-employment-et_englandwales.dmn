@@ -676,7 +676,7 @@ then 1000
 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0lpz9am">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0j1v09c">
@@ -754,7 +754,7 @@ then 100
 else 500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1f3xh1h">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1rmrxfm">
