@@ -39,8 +39,17 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
         + "civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json";
 
-    public static final String IS_URGENT = "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"Yes\"}}]}";
-    public static final String NOT_URGENT = "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"No\"}}]}";
+    public static final String IS_URGENT =
+        "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"Yes\"}}]}";
+    public static final String NOT_URGENT =
+        "{\"referralCollection\":[{\"value\": {\"isUrgent\": \"No\"}}]}";
+
+    public static final String ISURGENT_REPLY_YES =
+        "{\"referralCollection\":[{\"value\": {\"referralReplyCollection\":"
+            + "[{\"value\": {\"isUrgentReply\": \"Yes\"}}]}}]}";
+    public static final String ISURGENT_REPLY_NO =
+        "{\"referralCollection\":[{\"value\": {\"referralReplyCollection\":"
+            + "[{\"value\": {\"isUrgentReply\": \"No\"}}]}}]}";
 
     @BeforeAll
     public static void initialization() {
@@ -185,6 +194,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
+
             Arguments.of("ContactTribunalWithAnApplication", applications),
             Arguments.of("AmendPartyDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
@@ -618,28 +628,28 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ReviewReferralAdmin", IS_URGENT,
                          dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseAdmin", IS_URGENT,
+            Arguments.of("ReviewReferralResponseAdmin", ISURGENT_REPLY_YES,
                          dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralJudiciary", IS_URGENT,
                          dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseJudiciary", IS_URGENT,
+            Arguments.of("ReviewReferralResponseJudiciary", ISURGENT_REPLY_YES,
                          dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
             Arguments.of("ReviewReferralLegalOps", IS_URGENT,
                          dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
-            Arguments.of("ReviewReferralResponseLegalOps", IS_URGENT,
+            Arguments.of("ReviewReferralResponseLegalOps", ISURGENT_REPLY_YES,
                          dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
 
             Arguments.of("ReviewReferralAdmin", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("ReviewReferralResponseAdmin", NOT_URGENT,
+            Arguments.of("ReviewReferralResponseAdmin", ISURGENT_REPLY_NO,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
             Arguments.of("ReviewReferralJudiciary", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("ReviewReferralResponseJudiciary", NOT_URGENT,
+            Arguments.of("ReviewReferralResponseJudiciary", ISURGENT_REPLY_NO,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
             Arguments.of("ReviewReferralLegalOps", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("ReviewReferralResponseLegalOps", NOT_URGENT,
+            Arguments.of("ReviewReferralResponseLegalOps", ISURGENT_REPLY_NO,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority)
         );
     }
@@ -735,7 +745,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(48));
+        assertThat(logic.getRules().size(), is(51));
     }
 
     private static Map<String, Object> mapData(String source) {

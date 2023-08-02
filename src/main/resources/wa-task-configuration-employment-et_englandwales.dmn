@@ -14,9 +14,7 @@
           then taskAttributes.taskType
           else if(taskType != null)
           then taskType
-          else
-          null
-          </text>
+          else null</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="197" />
@@ -640,20 +638,44 @@ else ""</text>
         <inputEntry id="UnaryTests_07vjyfi">
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
-"ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+"ReviewReferralLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xy9k8p">
-          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
+          <text>if caseData != null
+and caseData.referralCollection != null
+and count(caseData.referralCollection) &gt; 0
+and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 1000
 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1uusq1d">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sk2v2n">
+        <inputEntry id="UnaryTests_091eqgn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yo7ns6">
+          <text>"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uk8k9m">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jezlcp">
+          <text>if caseData!=null
+and caseData.referralCollection!=null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and (reverse((reverse(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.isUrgentReply= "Yes"
+then 1000
+else 5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lpz9am">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -694,20 +716,44 @@ else 5000</text>
         <inputEntry id="UnaryTests_1vhou0u">
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
-"ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+"ReviewReferralLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0g94d63">
-          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
+          <text>if caseData != null
+and caseData.referralCollection != null
+and count(caseData.referralCollection) &gt; 0
+and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 100
 else 500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ry9gq0">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0buxxfp">
+        <inputEntry id="UnaryTests_00180bd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12ojc4i">
+          <text>"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0clz1i9">
+          <text>"minorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_092v0u4">
+          <text>if caseData!=null
+and caseData.referralCollection!=null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and (reverse((reverse(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.isUrgentReply= "Yes"
+then 100
+else 500</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1f3xh1h">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -837,21 +883,45 @@ else 500</text>
         <inputEntry id="UnaryTests_1pk6nbg">
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
-"ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+"ReviewReferralLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06yvz5i">
           <text>"dueDateIntervalDays"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ibou11">
-          <text>if caseData != null and caseData.referralCollection != null and count(caseData.referralCollection) &gt; 0 and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
+          <text>if caseData != null
+and caseData.referralCollection != null
+and count(caseData.referralCollection) &gt; 0
+and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes"
 then 1
 else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ctz44f">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0caeq0x">
+        <inputEntry id="UnaryTests_1n0fai9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0trmtnk">
+          <text>"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1d17e4j">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j1w3oe">
+          <text>if caseData!=null
+and caseData.referralCollection!=null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and (reverse((reverse(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.isUrgentReply= "Yes"
+then 1
+else 2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10bfxc4">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_181hurj">
