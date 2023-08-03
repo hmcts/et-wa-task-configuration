@@ -102,8 +102,8 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "createReferral",
-                "Submitted",
-                mapAdditionalData("{\"Data\":{" + REFERRAL_ADMIN + "}}"),
+                null,
+                mapAdditionalData(REFERRAL_ADMIN),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralAdmin",
@@ -115,8 +115,13 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "createReferral",
                 null,
-                mapAdditionalData("{\"Data\":{" + REFERRAL_ADMIN_HEARING + "}}"),
+                mapAdditionalData(REFERRAL_ADMIN_HEARING),
                 List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralAdmin",
+                        "Review Referral - Hearings",
+                        "Vetting"
+                    ),
                     mapExpectedOutput(
                         "IssuePostHearingDirection",
                         "Issue Post Hearing Direction",
@@ -126,9 +131,14 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "createReferral",
-                "Accepted",
-                mapAdditionalData("{\"Data\":{" + REFERRAL_ADMIN_JUDGMENT + "}}"),
+                null,
+                mapAdditionalData(REFERRAL_ADMIN_JUDGMENT),
                 List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralAdmin",
+                        "Review Referral - Judgment",
+                        "Vetting"
+                    ),
                     mapExpectedOutput(
                         "IssueJudgment",
                         "Issue Judgment",
@@ -138,8 +148,8 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "createReferral",
-                "Submitted",
-                mapAdditionalData("{\"Data\":{" + REFERRAL_JUDGE + "}}"),
+                null,
+                mapAdditionalData(REFERRAL_JUDGE),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralJudiciary",
@@ -150,9 +160,14 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "createReferral",
-                "Accepted",
-                mapAdditionalData("{\"Data\":{" + REFERRAL_JUDGE_RULE21 + "}}"),
+                null,
+                mapAdditionalData(REFERRAL_JUDGE_RULE21),
                 List.of(
+                    mapExpectedOutput(
+                        "ReviewReferralJudiciary",
+                        "Review Referral - Rule 21",
+                        "Vetting"
+                    ),
                     mapExpectedOutput(
                         "DraftAndSignJudgment",
                         "Draft And Sign Judgment",
@@ -162,8 +177,8 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "createReferral",
-                "Submitted",
-                mapAdditionalData("{\"Data\":{" + REFERRAL_LEGALOFFICER + "}}"),
+                null,
+                mapAdditionalData(REFERRAL_LEGALOFFICER),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralLegalOps",
@@ -174,8 +189,8 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "replyToReferral",
-                "Submitted",
-                mapAdditionalData("{\"Data\":{" + REFERRAL_REPLY_ADMIN + "}}"),
+                null,
+                mapAdditionalData(REFERRAL_REPLY_ADMIN),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
@@ -186,8 +201,8 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "replyToReferral",
-                "Submitted",
-                mapAdditionalData("{\"Data\":{" + REFERRAL_REPLY_JUDGE + "}}"),
+                null,
+                mapAdditionalData(REFERRAL_REPLY_JUDGE),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
@@ -198,8 +213,8 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "replyToReferral",
-                "Accepted",
-                mapAdditionalData("{\"Data\":{" + REFERRAL_REPLY_LEGALOFFICER + "}}"),
+                null,
+                mapAdditionalData(REFERRAL_REPLY_LEGALOFFICER),
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
@@ -281,7 +296,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "et3Vetting",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + RULE26_YES + "}}"),
+                mapAdditionalData(RULE26_YES),
                 List.of(
                     mapExpectedOutput(
                         "CompleteInitialConsideration",
@@ -298,7 +313,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + SUBMISSION_REASON_CLAIMANT_AMEND + "}}"),
+                mapAdditionalData(SUBMISSION_REASON_CLAIMANT_AMEND),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -310,7 +325,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND + "}}"),
+                mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -322,7 +337,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "respondentTSE",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + SUBMISSION_REASON_RESPONDENT_AMEND + "}}"),
+                mapAdditionalData(SUBMISSION_REASON_RESPONDENT_AMEND),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -334,7 +349,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND + "}}"),
+                mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND),
                 List.of(
                     mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
@@ -346,7 +361,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS + "}}"),
+                mapAdditionalData(SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
                         "AmendPartyDetails",
@@ -358,7 +373,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS + "}}"),
+                mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
                         "AmendPartyDetails",
@@ -370,7 +385,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "respondentTSE",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS + "}}"),
+                mapAdditionalData(SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
                         "AmendPartyDetails",
@@ -382,7 +397,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS + "}}"),
+                mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
                         "AmendPartyDetails",
@@ -394,7 +409,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 "Accepted",
-                mapAdditionalData("{\"Data\":{" + CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE + "}}"),
+                mapAdditionalData(CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE),
                 List.of(
                     mapExpectedOutput(
                         "WithdrawAllOrPartOfCase",
@@ -465,12 +480,13 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
                              replyCollection);
     }
 
-    private static Map<String, Object> mapAdditionalData(String additionalData) {
+    private static Map<String, Object> mapAdditionalData(String additionalDataContent) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             TypeReference<HashMap<String, Object>> typeRef = new TypeReference<>() {
             };
-            return Map.of("additionalData", mapper.readValue(additionalData, typeRef));
+            String addedDataProperty = "{\"Data\":{" + additionalDataContent + "}}";
+            return Map.of("additionalData", mapper.readValue(addedDataProperty, typeRef));
         } catch (IOException exp) {
             return null;
         }

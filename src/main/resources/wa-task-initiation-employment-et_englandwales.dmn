@@ -131,7 +131,7 @@ else "Other"</text>
           <text>"createReferral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0xcs5s3">
-          <text>"Submitted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1xkeuj2">
           <text>"Admin"</text>
@@ -214,7 +214,7 @@ else "Other"</text>
           <text>"createReferral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1hzh7bt">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_00kyvcf">
           <text>"Admin"</text>
@@ -255,7 +255,7 @@ else "Other"</text>
           <text>"createReferral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_059m8ba">
-          <text>"Submitted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tsfn84">
           <text>"Judge"</text>
@@ -297,7 +297,7 @@ else "Other"</text>
           <text>"createReferral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0psy3au">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ar4dx9">
           <text>"Judge"</text>
@@ -338,7 +338,7 @@ else "Other"</text>
           <text>"createReferral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wekibb">
-          <text>"Submitted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0tha19k">
           <text>"Legal officer"</text>
@@ -380,7 +380,7 @@ else "Other"</text>
           <text>"replyToReferral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ae1nhd">
-          <text>"Submitted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_09ihz7c">
           <text></text>
@@ -423,7 +423,7 @@ else "Other"</text>
           <text>"replyToReferral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0bthnb0">
-          <text>"Submitted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0dsvpj5">
           <text></text>
@@ -466,7 +466,7 @@ else "Other"</text>
           <text>"replyToReferral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0z9zbuk">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1cyv80m">
           <text></text>
