@@ -24,12 +24,12 @@ else null</text>
       </input>
       <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
-          <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection) &gt; 0)
-then (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject
-else null</text>
+          <text>if(additionalData=null
+or additionalData.Data=null
+or additionalData.Data.referralCollection=null
+or count(additionalData.Data.referralCollection)=0)
+then null
+else sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
         </inputExpression>
       </input>
       <input id="InputClause_1gia5s6" label="Direction To" biodi:width="150" camunda:inputVariable="directionTo">
@@ -160,7 +160,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16yf2nj">
           <text>"Review Referral - "
-+ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
++ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n9o39e">
           <text></text>
@@ -1090,10 +1090,7 @@ else "Other"</text>
           <text>"AmendPartyDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0930lzb">
-          <text>"Amend Party Details"
-          + "-"
-          + (additionalData.Data.genericTseApplicationCollection[count(value.respondCollection[id=(sort(list:flatten(additionalData.Data.genericTseApplicationCollection.value.respondCollection),precedes:function(x,y)date and time(x.value.dateTime) > date and time(y.value.dateTime)).id[1])])>0]).value.type[1]
-          + "-"</text>
+          <text>"Amend Party Details"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1roo1pj">
           <text></text>
