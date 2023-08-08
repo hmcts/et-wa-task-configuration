@@ -14,12 +14,12 @@
       </input>
       <input id="InputClause_1nkkapg" label="Refer Case To" biodi:width="150" camunda:inputVariable="referCaseTo">
         <inputExpression id="LiteralExpression_1h40nek" typeRef="string">
-          <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection) &gt; 0)
-then (reverse(additionalData.Data.referralCollection)[1]).value.referCaseTo
-else null</text>
+          <text>if(additionalData=null
+or additionalData.Data=null
+or additionalData.Data.referralCollection=null
+or count(additionalData.Data.referralCollection)=0)
+then null
+else sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referCaseTo[1]</text>
         </inputExpression>
       </input>
       <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
