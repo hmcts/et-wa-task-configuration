@@ -284,7 +284,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16t7tco">
           <text>"Review Referral - "
-+ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
++ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zdr7bg">
           <text></text>
@@ -367,7 +367,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1x90otf">
           <text>"Review Referral - "
-+ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
++ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0iaqh1t">
           <text></text>
