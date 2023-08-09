@@ -59,8 +59,7 @@ or additionalData.Data=null
 or additionalData.Data.genericTseApplicationCollection=null
 or count(additionalData.Data.genericTseApplicationCollection) &lt; 1)
 then null
-else sort(list: additionalData.Data.genericTseApplicationCollection.value,
-precedes: function(x,y) number(x.number) &gt; number(y.number)).type[1]</text>
+else sort(additionalData.Data.genericTseApplicationCollection.value,function(x,y) number(x.number) &gt; number(y.number)).type[1]</text>
         </inputExpression>
       </input>
       <input id="InputClause_155ejn9" label="Claimant Responding To Change Personal Details" biodi:width="200">
