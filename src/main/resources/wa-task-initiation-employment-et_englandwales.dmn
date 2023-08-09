@@ -34,12 +34,12 @@ else sort(additionalData.Data.referralCollection, function(x,y) number(x.value.r
       </input>
       <input id="InputClause_1gia5s6" label="Direction To" biodi:width="150" camunda:inputVariable="directionTo">
         <inputExpression id="LiteralExpression_1tb9c3z" typeRef="string">
-          <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then (reverse((reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.directionTo
-else null</text>
+          <text>if(additionalData=null
+or additionalData.Data=null
+or additionalData.Data.referralCollection=null
+or count(additionalData.Data.referralCollection[count(value.referralReplyCollection)>0])=0)
+then null
+else sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) > date and time(y.value.replyDateTime)).value.directionTo[1]</text>
         </inputExpression>
       </input>
       <input id="InputClause_0gqbing" label="ET3 Rule26" biodi:width="150" camunda:inputVariable="et3Rule26">
