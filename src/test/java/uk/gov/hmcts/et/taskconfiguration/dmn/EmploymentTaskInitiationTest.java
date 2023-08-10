@@ -54,12 +54,12 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
             createApplications("Strike out all/part of response", "Claimant");
 
-    public static final String REFERRAL_COLLECTION =
-        "\"referralCollection\":[{\"value\": "
-            + "{\"referralNumber\": \"1\",\"referralSubject\": \"%s\",\"referCaseTo\": \"%s\",\"isUrgent\": \"%s\"%s}"
-            + "}]";
-    public static final String REFERRALREPLY_COLLECTION =
-        ",\"referralReplyCollection\": [{\"value\": {\"directionTo\": \"%s\",\"isUrgentReply\": \"%s\"}}]";
+    public static final String REFERRAL_COLLECTION = "\"referralCollection\":[{\"value\": "
+        + "{\"referralNumber\": \"1\",\"referralSubject\": \"%s\",\"referCaseTo\": \"%s\",\"isUrgent\": \"%s\"%s}"
+        + "}]";
+    public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": ["
+        + "{\"value\": {\"referralSubject\": \"%s\",\"directionTo\": \"%s\",\"isUrgentReply\": \"%s\"}"
+        + "}]";
 
     public static final String REFERRAL_ADMIN =
         createReferrals("(Referral Subject)", "Admin", "Yes", "", "");
@@ -470,7 +470,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
 
         String replyCollection = "";
         if (referralDirectionTo != "") {
-            replyCollection = String.format(REFERRALREPLY_COLLECTION, referralDirectionTo, referralReplyUrgency);
+            replyCollection = String.format(REFERRALREPLY_COLLECTION, referralSubject, referralDirectionTo, referralReplyUrgency);
         }
 
         return String.format(REFERRAL_COLLECTION,
