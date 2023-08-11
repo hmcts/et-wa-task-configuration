@@ -30,7 +30,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static final String APPLICATION_COLLECTION =
             "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"%s\"%s}}]";
     public static final String RESPOND_COLLECTION =
-            ",\"respondCollection\": [{\"value\": {\"from\": \"%s\"}}]";
+            ",\"respondCollection\": [{\"value\": {\"applicationType\": \"%s\",\"from\": \"%s\"}}]";
 
     public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
             createApplications("Amend my claim", "");
@@ -452,13 +452,13 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
         );
     }
 
-    private static String createApplications(String appliciationType, String respondFrom) {
+    private static String createApplications(String applicationType, String respondFrom) {
         String respondCollection = "";
         if (respondFrom != "") {
-            respondCollection = String.format(RESPOND_COLLECTION, respondFrom);
+            respondCollection = String.format(RESPOND_COLLECTION, applicationType, respondFrom);
         }
 
-        return String.format(APPLICATION_COLLECTION, appliciationType, respondCollection);
+        return String.format(APPLICATION_COLLECTION, applicationType, respondCollection);
     }
 
     private static String createReferrals(
