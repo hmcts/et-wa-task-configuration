@@ -30,9 +30,9 @@ class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "Closed",
+                null,
                 "disposeCase",
-                "Submitted",
+                null,
                 List.of(
                     Map.of(
                         "action", "Cancel",
@@ -40,30 +40,8 @@ class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
                     ),
                     Map.of(
                         "action", "Cancel",
-                        "processCategories", "processing"
-                    )
-               )
-            ),
-            Arguments.of(
-                "Closed",
-                "disposeCase",
-                "Vetted",
-                List.of(
-                    Map.of(
-                        "action", "Cancel",
                         "processCategories", "Vetting"
                     ),
-                    Map.of(
-                        "action", "Cancel",
-                        "processCategories", "processing"
-                    )
-                )
-            ),
-            Arguments.of(
-                "Closed",
-                "disposeCase",
-                "Accepted",
-                List.of(
                     Map.of(
                         "action", "Cancel",
                         "processCategories", "processing"
@@ -78,37 +56,31 @@ class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
                     ),
                     Map.of(
                         "action", "Cancel",
-                        "processCategories", "Application"
+                        "processCategories", "processing"
                     ),
                     Map.of(
                         "action", "Cancel",
-                        "processCategories", "Amendments"
-                    )
-                )
-            ),
-            Arguments.of(
-                "Closed",
-                "disposeCase",
-                "Closed",
-                List.of(
+                        "processCategories", "Judgment"
+                    ),
                     Map.of(
                         "action", "Cancel",
                         "processCategories", "processing"
                     ),
                     Map.of(
                         "action", "Cancel",
-                        "processCategories", "Judgment"
-                    )
-                )
-            ),
-            Arguments.of(
-                "Closed",
-                "disposeCase",
-                "Rejected",
-                List.of(
+                        "processCategories", "Vetting"
+                    ),
                     Map.of(
                         "action", "Cancel",
-                        "processCategories", "Vetting"
+                        "processCategories", "processing"
+                    ),
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Application"
+                    ),
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Amendments"
                     )
                 )
             ),

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.12.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.0">
   <decision id="wa-task-cancellation-employment-et_englandwales" name="ET Task cancellation DMN">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
@@ -7,7 +7,7 @@
           <text>fromState</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0ain215" label="Event" biodi:width="209.9906463623047">
+      <input id="InputClause_0ain215" label="Event" biodi:width="209">
         <inputExpression id="LiteralExpression_0h2l2zj" typeRef="string">
           <text>event</text>
         </inputExpression>
@@ -23,13 +23,13 @@
       <output id="OutputClause_0dqzted" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="277" />
       <rule id="DecisionRule_0623eaq">
         <inputEntry id="UnaryTests_0pawl5b">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0puirp2">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1nrvqbg">
-          <text>"Submitted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ucqosp">
           <text>"Cancel"</text>
@@ -46,13 +46,13 @@
       </rule>
       <rule id="DecisionRule_0s533mm">
         <inputEntry id="UnaryTests_0f3jaq5">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0khfkw3">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1twd6dr">
-          <text>"Vetted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1n18377">
           <text>"Cancel"</text>
@@ -69,13 +69,13 @@
       </rule>
       <rule id="DecisionRule_1pgnaox">
         <inputEntry id="UnaryTests_02udgat">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1woxl8e">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lt298h">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15v2291">
           <text>"Cancel"</text>
@@ -92,13 +92,13 @@
       </rule>
       <rule id="DecisionRule_0w0vpl4">
         <inputEntry id="UnaryTests_11rsnao">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_179f1yj">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qf1qt9">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1r5jmrq">
           <text>"Cancel"</text>
@@ -115,13 +115,13 @@
       </rule>
       <rule id="DecisionRule_049g4f2">
         <inputEntry id="UnaryTests_0tr2rfo">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qtznob">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_073x14o">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_00dhi6p">
           <text>"Cancel"</text>
@@ -138,13 +138,13 @@
       </rule>
       <rule id="DecisionRule_15acnvg">
         <inputEntry id="UnaryTests_1yll6zr">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0p6bl8p">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_012m6gp">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_14ewlzy">
           <text>"Cancel"</text>
@@ -161,13 +161,13 @@
       </rule>
       <rule id="DecisionRule_1j0ikqt">
         <inputEntry id="UnaryTests_019v0hk">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0neewht">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rsetu2">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0m544nk">
           <text>"Cancel"</text>
@@ -184,13 +184,13 @@
       </rule>
       <rule id="DecisionRule_1smt9s1">
         <inputEntry id="UnaryTests_1o23hjm">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1g2hrwd">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0z5nuyh">
-          <text>"Submitted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_18ug1e4">
           <text>"Cancel"</text>
@@ -207,13 +207,13 @@
       </rule>
       <rule id="DecisionRule_1ex3axy">
         <inputEntry id="UnaryTests_1ob1ix1">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_04ih3hb">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_05qx2pl">
-          <text>"Rejected"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0s50nse">
           <text>"Cancel"</text>
@@ -230,13 +230,13 @@
       </rule>
       <rule id="DecisionRule_1ojf5nj">
         <inputEntry id="UnaryTests_0qbyzme">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_045zzrg">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1xow481">
-          <text>"Vetted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_07jgdbg">
           <text>"Cancel"</text>
@@ -253,13 +253,13 @@
       </rule>
       <rule id="DecisionRule_1dtax7b">
         <inputEntry id="UnaryTests_0ta9m1v">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1343btr">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1rfdad7">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_044nj4n">
           <text>"Cancel"</text>
@@ -276,13 +276,13 @@
       </rule>
       <rule id="DecisionRule_16ex8sw">
         <inputEntry id="UnaryTests_059p3eg">
-          <text>"Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wy94bd">
           <text>"disposeCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_19r12pr">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0koep8p">
           <text>"Cancel"</text>
@@ -364,7 +364,7 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1ewt01p">
           <text></text>
-		</outputEntry>
+        </outputEntry>
       </rule>
     </decisionTable>
   </decision>
