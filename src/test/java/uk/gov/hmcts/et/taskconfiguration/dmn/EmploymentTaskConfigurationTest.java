@@ -317,14 +317,14 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> description_ScenarioProvider() {
         List<Map<String, Object>> reviewTheReferralCreate = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/" +
-                "createReferral/createReferral1)",
+            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "createReferral/createReferral1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewTheReferralReply = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/" +
-                "replyToReferral/replyToReferral1)",
+            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "replyToReferral/replyToReferral1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewET1Submission = List.of(Map.of(
