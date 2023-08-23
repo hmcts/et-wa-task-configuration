@@ -82,7 +82,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         createReferrals("(Referral Subject)", "", "", "Legal officer", "Yes");
 
     @BeforeAll
-    public static void initialization() { CURRENT_DMN_DECISION_TABLE = WA_TASK_INITIATION_ET_SCOTLAND; }
+    public static void initialization() {
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_INITIATION_ET_SCOTLAND;
+    }
 
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(

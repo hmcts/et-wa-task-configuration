@@ -24,7 +24,9 @@ import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_COMPLET
 class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
-    public static void initialization() { CURRENT_DMN_DECISION_TABLE = WA_TASK_COMPLETION_ET_SCOTLAND; }
+    public static void initialization() {
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_COMPLETION_ET_SCOTLAND;
+    }
 
     static Stream<Arguments> scenarioProvider() {
         return Stream.of(
