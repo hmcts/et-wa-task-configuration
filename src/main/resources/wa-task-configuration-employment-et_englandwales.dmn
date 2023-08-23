@@ -311,7 +311,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_02zdiu5">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0s7te75">
           <text>true</text>
