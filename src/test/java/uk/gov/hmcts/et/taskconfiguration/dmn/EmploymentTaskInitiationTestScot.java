@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.io.IOException;
@@ -22,8 +21,9 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_INITIATION_ET_SCOTLAND;
 
-class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
 
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
 
@@ -82,9 +82,7 @@ class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
         createReferrals("(Referral Subject)", "", "", "Legal officer", "Yes");
 
     @BeforeAll
-    public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_ET_EW;
-    }
+    public static void initialization() { CURRENT_DMN_DECISION_TABLE = WA_TASK_INITIATION_ET_SCOTLAND; }
 
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(

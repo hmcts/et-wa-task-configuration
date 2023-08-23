@@ -19,11 +19,7 @@ import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 import java.io.IOException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -31,11 +27,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_ET_EW;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_ET_SCOTLAND;
 
-class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
-    private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
+    private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/scotland.json";
     private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
         + "civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json";
 
@@ -53,7 +49,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_ET_EW;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_ET_SCOTLAND;
     }
 
     private static Map<String, Object> getDefaultCaseData() {
@@ -680,7 +676,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingCalendar",
-            "value", "https://www.gov.uk/bank-holidays/england-and-wales.json, "
+            "value", "https://www.gov.uk/bank-holidays/scotland.json, "
                 + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
                 + "master/src/main/resources/privilege-calendar.json",
             "canReconfigure", true
