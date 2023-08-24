@@ -18,13 +18,13 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CANCELLATION_ET_EW;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CANCELLATION_ET_SCOTLAND;
 
-class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskCancellationTestScot extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_CANCELLATION_ET_EW;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_CANCELLATION_ET_SCOTLAND;
     }
 
     public static Stream<Arguments> scenarioProvider() {

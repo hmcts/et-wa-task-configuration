@@ -21,7 +21,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_COMPLETION_ET_EW;
 
-class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {

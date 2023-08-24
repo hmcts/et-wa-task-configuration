@@ -25,7 +25,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_PERMISSIONS_ET_EW;
 
-class EmploymentTaskPermissionsTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
 
     private static final Map<String, Serializable> taskSupervisor = Map.of(
         "autoAssignable", false,
