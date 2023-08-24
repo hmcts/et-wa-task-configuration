@@ -17,16 +17,15 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_COMPLETION_ET_EW;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_COMPLETION_ET_SCOTLAND;
 
-class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_COMPLETION_ET_EW;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_COMPLETION_ET_SCOTLAND;
     }
 
     static Stream<Arguments> scenarioProvider() {
@@ -53,8 +52,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "ReviewReferralResponseLegalOps",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -83,8 +81,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "ReviewReferralResponseLegalOps",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -113,8 +110,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "ReviewReferralResponseLegalOps",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -127,8 +123,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "ReviewRule21Referral",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -137,8 +132,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "IssueInitialConsiderationDirections",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -147,8 +141,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "ListServeClaim",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -157,8 +150,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "DraftAndSignJudgment",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -175,27 +167,25 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "SendEt3Notification",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
                     "createReferral",
-                asList(
-                    Map.of(
-                            "taskType", "IssueJudgment",
-                            "completionMode", "Auto"
-                    ),
-                    Map.of(
-                            "taskType", "ContactTribunalWithAnApplication",
-                            "completionMode", "Auto"
-                    ),
-                    Map.of(
-                            "taskType", "WithdrawAllOrPartOfCase",
-                            "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
+                    asList(
+                            Map.of(
+                                    "taskType", "IssueJudgment",
+                                    "completionMode", "Auto"
+                            ),
+                            Map.of(
+                                    "taskType", "ContactTribunalWithAnApplication",
+                                    "completionMode", "Auto"
+                            ),
+                            Map.of(
+                                    "taskType", "WithdrawAllOrPartOfCase",
+                                    "completionMode", "Auto"
+                            )
+                    )
             ),
             Arguments.of(
                 "et3Vetting",
@@ -203,8 +193,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "CompleteInitialConsideration",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -213,8 +202,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "AmendPartyDetails",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -223,8 +211,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "AmendPartyDetails",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -233,8 +220,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "AmendPartyDetails",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             ),
             Arguments.of(
@@ -243,8 +229,7 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "AmendPartyDetails",
                         "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    )
                 )
             )
         );
@@ -264,6 +249,6 @@ class EmploymentTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(21));
+        assertThat(logic.getRules().size(), is(20));
     }
 }
