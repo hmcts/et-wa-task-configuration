@@ -311,7 +311,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_02zdiu5">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/createReferral1)"</text>
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0s7te75">
           <text>true</text>
@@ -331,7 +331,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1b7smpa">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/replyToReferral1)"</text>
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nnd54t">
           <text>true</text>
@@ -537,7 +537,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)[, as instructed]"</text>
+          <text>"[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)[, as instructed]"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
           <text>true</text>
