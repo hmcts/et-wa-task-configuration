@@ -132,16 +132,6 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "IssueInitialConsiderationDirections",
-                asList(
-                    Map.of(
-                        "taskType", "IssueInitialConsiderationDirections",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
                 "uploadDocumentForServing",
                 asList(
                     Map.of(
@@ -164,6 +154,10 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "generateCorrespondence",
                 asList(
+                    Map.of(
+                        "taskType", "IssueInitialConsiderationDirections",
+                        "completionMode", "Auto"
+                    ),
                     Map.of(
                         "taskType", "IssuePostHearingDirection",
                         "completionMode", "Auto"

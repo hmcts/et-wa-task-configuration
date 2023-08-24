@@ -66,7 +66,7 @@
       </rule>
       <rule id="DecisionRule_0o1t3oy">
         <inputEntry id="UnaryTests_0i0mhhb">
-          <text>"IssueInitialConsiderationDirections"</text>
+          <text>"generateCorrespondence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_12lsf0x">
           <text>"IssueInitialConsiderationDirections"</text>
@@ -230,6 +230,31 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_19ls3bl">
           <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0torhiv">
+        <description>Left empty so event can be triggered without a task</description>
+        <inputEntry id="UnaryTests_1oec0ex">
+          <text>"preAcceptanceCase",
+"replyToReferral",
+"closeReferral",
+"et3Response",
+"generateCorrespondence",
+"uploadDocumentForServing",
+"addAmendJudgment",
+"createReferral",
+"et3Vetting",
+"SUBMIT_CLAIMANT_TSE",
+"CLAIMANT_TSE_RESPOND",
+"respondentTSE",
+"tseRespond",
+"disposeCase"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bwibe1">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sccgl1">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
