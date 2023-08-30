@@ -174,19 +174,19 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                    "createReferral",
+                "createReferral",
                 asList(
                     Map.of(
-                            "taskType", "IssueJudgment",
-                            "completionMode", "Auto"
+                        "taskType", "IssueJudgment",
+                        "completionMode", "Auto"
                     ),
                     Map.of(
-                            "taskType", "ContactTribunalWithAnApplication",
-                            "completionMode", "Auto"
+                        "taskType", "ContactTribunalWithAnApplication",
+                        "completionMode", "Auto"
                     ),
                     Map.of(
-                            "taskType", "WithdrawAllOrPartOfCase",
-                            "completionMode", "Auto"
+                        "taskType", "WithdrawAllOrPartOfCase",
+                        "completionMode", "Auto"
                     ),
                     emptyMap()
                 )
