@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.14.0">
-  <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN">
+  <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" biodi:width="201" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -14,33 +14,32 @@
       </input>
       <input id="InputClause_1nkkapg" label="Refer Case To" biodi:width="150" camunda:inputVariable="referCaseTo">
         <inputExpression id="LiteralExpression_1h40nek" typeRef="string">
-          <text>if(additionalData=null
-or additionalData.Data=null
-or additionalData.Data.referralCollection=null
-or count(additionalData.Data.referralCollection)=0)
-then null
-else sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referCaseTo[1]</text>
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0)
+then (reverse(additionalData.Data.referralCollection)[1]).value.referCaseTo
+else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
-          <text>if(additionalData=null
-or additionalData.Data=null
-or additionalData.Data.referralCollection=null
-or count(additionalData.Data.referralCollection)=0)
-then null
-else sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0)
+then (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject
+else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_1gia5s6" label="Direction To" biodi:width="150" camunda:inputVariable="directionTo">
         <inputExpression id="LiteralExpression_1tb9c3z" typeRef="string">
-          <text>if(additionalData=null
-or additionalData.Data=null
-or additionalData.Data.referralCollection=null
-or count(additionalData.Data.referralCollection[value.referralReplyCollection!=null])=0
-or count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])=0)
-then null
-else sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.directionTo[1]</text>
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then (reverse((reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.directionTo
+else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_0gqbing" label="ET3 Rule26" biodi:width="150" camunda:inputVariable="et3Rule26">
@@ -54,34 +53,32 @@ else null</text>
       </input>
       <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="212">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
-          <text>if(additionalData=null
-or additionalData.Data=null
-or additionalData.Data.genericTseApplicationCollection=null
-or count(additionalData.Data.genericTseApplicationCollection) &lt; 1)
-then null
-else sort(additionalData.Data.genericTseApplicationCollection.value,function(x,y) number(x.number) &gt; number(y.number)).type[1]</text>
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
+then (reverse(additionalData.Data.genericTseApplicationCollection)[1]).value.type
+else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_155ejn9" label="Application Response From" biodi:width="200">
+      <input id="InputClause_155ejn9" label="Claimant Responding To Change Personal Details" biodi:width="200">
         <inputExpression id="LiteralExpression_1fcs60n" typeRef="string">
-          <text>if(additionalData=null
-or additionalData.Data=null
-or additionalData.Data.genericTseApplicationCollection=null
-or count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])=0
-or count(additionalData.Data.genericTseApplicationCollection[count(value.respondCollection)&gt;0])=0)
-then null
-else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.respondCollection), function(x,y) date and time(x.value.dateTime) &gt; date and time(y.value.dateTime)).value.from[1]</text>
+          <text>if (additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection[value.type="Change personal details" and (reverse(value.respondCollection)[1]).value.from = "Claimant"]) &gt; 0)
+then "Change personal details"
+else "Other"</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1a3sb2l" label="Response to Application Type" biodi:width="220">
+      <input id="InputClause_1a3sb2l" label="Respondent Responding To Change My Personal Details" biodi:width="220">
         <inputExpression id="LiteralExpression_1leb85s" typeRef="string">
-          <text>if(additionalData=null
-or additionalData.Data=null
-or additionalData.Data.genericTseApplicationCollection=null
-or count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])=0
-or count(additionalData.Data.genericTseApplicationCollection[count(value.respondCollection)&gt;0])=0)
-then null
-else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.respondCollection), function(x,y) date and time(x.value.dateTime) &gt; date and time(y.value.dateTime)).value.applicationType[1]</text>
+          <text>if (additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection[value.type="Change my personal details" and (reverse(value.respondCollection)[1]).value.from = "Respondent"]) &gt; 0)
+then "Change my personal details"
+else "Other"</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
@@ -162,7 +159,7 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
         </outputEntry>
         <outputEntry id="LiteralExpression_16yf2nj">
           <text>"Review Referral - "
-+ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
++ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n9o39e">
           <text></text>
@@ -286,7 +283,7 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
         </outputEntry>
         <outputEntry id="LiteralExpression_16t7tco">
           <text>"Review Referral - "
-+ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
++ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zdr7bg">
           <text></text>
@@ -369,7 +366,7 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
         </outputEntry>
         <outputEntry id="LiteralExpression_1x90otf">
           <text>"Review Referral - "
-+ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
++ (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0iaqh1t">
           <text></text>
@@ -411,7 +408,8 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
         </outputEntry>
         <outputEntry id="LiteralExpression_0qcsldu">
           <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
++ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
@@ -453,7 +451,8 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
         </outputEntry>
         <outputEntry id="LiteralExpression_08j7d7p">
           <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
++ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zcsqzi">
           <text></text>
@@ -495,7 +494,8 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
         </outputEntry>
         <outputEntry id="LiteralExpression_03wz7tv">
           <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
++ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14hvioj">
           <text></text>
@@ -906,28 +906,10 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_041chy5">
-          <text>"Claimant"</text>
+          <text>"Other"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_16r0vtl">
-          <text>"Amend my claim",
-"Amend response",
-"Claimant not complied",
-"Consider a decision afresh",
-"Contact about something else",
-"Contact the tribunal",
-"Order a witness to attend to give evidence",
-"Order a witness to attend",
-"Order other party",
-"Order respondent to do something",
-"Postpone a hearing",
-"Reconsider judgement",
-"Restrict publicity",
-"Strike out all or part of a claim",
-"Strike out all/part of response",
-"Tell tribunal respondent not complied",
-"Vary or revoke an order",
-"Vary/revoke an order",
-"Withdraw all/part of claim"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1o0hceo">
           <text>"ContactTribunalWithAnApplication"</text>
@@ -966,8 +948,8 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
 "Claimant not complied",
 "Consider a decision afresh",
 "Contact the tribunal",
-"Order a witness to attend to give evidence",
 "Order other party",
+"Order a witness to attend to give evidence",
 "Postpone a hearing",
 "Reconsider judgement",
 "Restrict publicity",
@@ -1016,28 +998,10 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_01zxn4p">
-          <text>"Respondent"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1yqzjj5">
-          <text>"Amend my claim",
-"Amend response",
-"Claimant not complied",
-"Consider a decision afresh",
-"Contact about something else",
-"Contact the tribunal",
-"Order a witness to attend to give evidence",
-"Order a witness to attend",
-"Order other party",
-"Order respondent to do something",
-"Postpone a hearing",
-"Reconsider judgement",
-"Restrict publicity",
-"Strike out all or part of a claim",
-"Strike out all/part of response",
-"Tell tribunal respondent not complied",
-"Vary or revoke an order",
-"Vary/revoke an order",
-"Withdraw all/part of claim"</text>
+          <text>"Other"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ir7dto">
           <text>"ContactTribunalWithAnApplication"</text>
@@ -1116,10 +1080,10 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1h1bpfq">
-          <text>"Claimant"</text>
+          <text>"Change personal details"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ipr1g0">
-          <text>"Change personal details"</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0iwj30e">
           <text>"AmendPartyDetails"</text>
@@ -1198,7 +1162,7 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_192p7ci">
-          <text>"Respondent"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rcef50">
           <text>"Change my personal details"</text>
@@ -1261,7 +1225,7 @@ else sort(flatten(additionalData.Data.genericTseApplicationCollection.value.resp
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
-      <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_englandwales">
+      <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_scotland">
         <dc:Bounds height="80" width="180" x="150" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>

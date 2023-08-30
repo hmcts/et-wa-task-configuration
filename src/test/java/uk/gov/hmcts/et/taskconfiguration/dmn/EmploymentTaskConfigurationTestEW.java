@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_ET_EW;
 
-class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
     private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
     private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
@@ -317,12 +317,13 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> description_ScenarioProvider() {
         List<Map<String, Object>> reviewTheReferralCreate = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/createReferral1)",
+            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewTheReferralReply = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/replyToReferral1)",
+            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "replyToReferral/replyToReferral1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewET1Submission = List.of(Map.of(
@@ -393,7 +394,7 @@ class EmploymentTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value", "[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/"
                 + "amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "amendClaimantDetails/amendClaimantDetails1)[, as instructed]",
+                + "amendRespondentDetails/amendRespondentDetails1)[, as instructed]",
             "canReconfigure", true
         ));
         List<Map<String, Object>> withdrawCase = List.of(Map.of(

@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class EmploymentTaskInitiationTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
 
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
 

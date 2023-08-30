@@ -18,53 +18,27 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CANCELLATION_ET_EW;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CANCELLATION_ET_SCOTLAND;
 
-class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskCancellationTestScot extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_CANCELLATION_ET_EW;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_CANCELLATION_ET_SCOTLAND;
     }
 
     public static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "Closed",
+                null,
                 "disposeCase",
-                "Submitted",
+                null,
                 List.of(
                     Map.of(
                         "action", "Cancel",
                         "processCategories", "Vetting"
                     ),
-                    Map.of(
-                        "action", "Cancel",
-                        "processCategories", "processing"
-                    )
-               )
-            ),
-            Arguments.of(
-                "Closed",
-                "disposeCase",
-                "Vetted",
-                List.of(
-                    Map.of(
-                        "action", "Cancel",
-                        "processCategories", "Vetting"
-                    ),
-                    Map.of(
-                        "action", "Cancel",
-                        "processCategories", "processing"
-                    )
-                )
-            ),
-            Arguments.of(
-                "Closed",
-                "disposeCase",
-                "Accepted",
-                List.of(
-                    Map.of(
+                   Map.of(
                         "action", "Cancel",
                         "processCategories", "processing"
                     ),
@@ -74,7 +48,7 @@ class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
                     ),
                     Map.of(
                         "action", "Cancel",
-                        "processCategories", "Vetting"
+                        "processCategories", "Judgment"
                     ),
                     Map.of(
                         "action", "Cancel",
@@ -83,32 +57,6 @@ class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "action", "Cancel",
                         "processCategories", "Amendments"
-                    )
-                )
-            ),
-            Arguments.of(
-                "Closed",
-                "disposeCase",
-                "Closed",
-                List.of(
-                    Map.of(
-                        "action", "Cancel",
-                        "processCategories", "processing"
-                    ),
-                    Map.of(
-                        "action", "Cancel",
-                        "processCategories", "Judgment"
-                    )
-                )
-            ),
-            Arguments.of(
-                "Closed",
-                "disposeCase",
-                "Rejected",
-                List.of(
-                    Map.of(
-                        "action", "Cancel",
-                        "processCategories", "Vetting"
                     )
                 )
             ),
@@ -164,6 +112,6 @@ class EmploymentTaskCancellationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(15));
+        assertThat(logic.getRules().size(), is(9));
     }
 }

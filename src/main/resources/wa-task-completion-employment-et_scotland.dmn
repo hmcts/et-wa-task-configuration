@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-completion-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.14.0">
-  <decision id="wa-task-completion-employment-et_englandwales" name="ET Task completion DMN">
+  <decision id="wa-task-completion-employment-et_scotland" name="ET Task completion DMN">
     <decisionTable id="DecisionTable_01re27m" hitPolicy="COLLECT">
       <input id="eventId" label="Event ID" biodi:width="392">
         <inputExpression id="LiteralExpression_1ngg489" typeRef="string">
@@ -232,9 +232,9 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0rmnuh1">
+      <rule id="DecisionRule_0torhiv">
         <description>Left empty so event can be triggered without a task</description>
-        <inputEntry id="UnaryTests_0iocquq">
+        <inputEntry id="UnaryTests_1oec0ex">
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral",
@@ -250,10 +250,10 @@
 "tseRespond",
 "disposeCase"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_067qoh4">
+        <outputEntry id="LiteralExpression_0bwibe1">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_11ndvk8">
+        <outputEntry id="LiteralExpression_0sccgl1">
           <text></text>
         </outputEntry>
       </rule>
@@ -261,7 +261,7 @@
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
-      <dmndi:DMNShape dmnElementRef="wa-task-completion-employment-et_englandwales">
+      <dmndi:DMNShape dmnElementRef="wa-task-completion-employment-et_scotland">
         <dc:Bounds height="80" width="180" x="160" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
