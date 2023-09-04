@@ -165,7 +165,7 @@
       </rule>
       <rule id="DecisionRule_0w6li7w">
         <inputEntry id="UnaryTests_10o0695">
-          <text>"createReferral"</text>
+          <text>"disposeCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0mysecs">
           <text>"IssueJudgment"</text>

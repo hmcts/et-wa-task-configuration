@@ -174,19 +174,29 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "disposeCase",
+                asList(
+                    Map.of(
+                        "taskType", "IssueJudgment",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "WithdrawAllOrPartOfCase",
+                        "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
                 "createReferral",
                 asList(
                     Map.of(
-                            "taskType", "IssueJudgment",
-                            "completionMode", "Auto"
+                        "taskType", "ContactTribunalWithAnApplication",
+                        "completionMode", "Auto"
                     ),
                     Map.of(
-                            "taskType", "ContactTribunalWithAnApplication",
-                            "completionMode", "Auto"
-                    ),
-                    Map.of(
-                            "taskType", "WithdrawAllOrPartOfCase",
-                            "completionMode", "Auto"
+                        "taskType", "WithdrawAllOrPartOfCase",
+                        "completionMode", "Auto"
                     ),
                     emptyMap()
                 )
