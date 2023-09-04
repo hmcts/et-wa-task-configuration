@@ -124,10 +124,6 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                         "taskType", "ET3Processing",
                         "completionMode", "Auto"
                     ),
-                    Map.of(
-                        "taskType", "ReviewRule21Referral",
-                        "completionMode", "Auto"
-                    ),
                     emptyMap()
                 )
             ),
@@ -190,6 +186,10 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "createReferral",
                 asList(
+                    Map.of(
+                        "taskType", "ReviewRule21Referral",
+                        "completionMode", "Auto"
+                    ),
                     Map.of(
                         "taskType", "ContactTribunalWithAnApplication",
                         "completionMode", "Auto"

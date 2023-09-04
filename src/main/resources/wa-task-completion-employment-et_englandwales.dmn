@@ -154,7 +154,7 @@
       </rule>
       <rule id="DecisionRule_12huova">
         <inputEntry id="UnaryTests_1061un4">
-          <text>"et3Response"</text>
+          <text>"createReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xln4uh">
           <text>"ReviewRule21Referral"</text>
