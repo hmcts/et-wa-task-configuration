@@ -176,7 +176,7 @@
       </rule>
       <rule id="DecisionRule_17wj6dr">
         <inputEntry id="UnaryTests_1d95t1o">
-          <text>"et3Vetting"</text>
+          <text>"initialConsideration"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_16ob96j">
           <text>"CompleteInitialConsideration"</text>
@@ -247,6 +247,7 @@
 "CLAIMANT_TSE_RESPOND",
 "respondentTSE",
 "tseRespond",
+"initialConsideration",
 "disposeCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0bwibe1">

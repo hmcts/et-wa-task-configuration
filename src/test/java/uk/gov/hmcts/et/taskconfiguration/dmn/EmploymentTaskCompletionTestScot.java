@@ -198,6 +198,12 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                         "taskType", "ET3Processing",
                         "completionMode", "Auto"
                     ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                asList(
                     Map.of(
                         "taskType", "CompleteInitialConsideration",
                         "completionMode", "Auto"
