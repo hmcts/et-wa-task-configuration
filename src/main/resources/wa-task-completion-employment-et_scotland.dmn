@@ -55,7 +55,7 @@
       </rule>
       <rule id="DecisionRule_0m15s4f">
         <inputEntry id="UnaryTests_12rgcau">
-          <text>"et3Response"</text>
+          <text>"et3Vetting"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1x2aji9">
           <text>"ET3Processing"</text>
@@ -238,7 +238,6 @@
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral",
-"et3Response",
 "generateCorrespondence",
 "uploadDocumentForServing",
 "addAmendJudgment",

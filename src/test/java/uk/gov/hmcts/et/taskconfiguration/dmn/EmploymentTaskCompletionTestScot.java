@@ -118,16 +118,6 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "et3Response",
-                asList(
-                    Map.of(
-                        "taskType", "ET3Processing",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
                 "uploadDocumentForServing",
                 asList(
                     Map.of(
@@ -204,6 +194,10 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "et3Vetting",
                 asList(
+                    Map.of(
+                        "taskType", "ET3Processing",
+                        "completionMode", "Auto"
+                    ),
                     Map.of(
                         "taskType", "CompleteInitialConsideration",
                         "completionMode", "Auto"
