@@ -209,10 +209,8 @@
       </rule>
       <rule id="DecisionRule_0842grb">
         <inputEntry id="UnaryTests_0dc2iyv">
-          <text>"SUBMIT_CLAIMANT_TSE",
-"CLAIMANT_TSE_RESPOND",
-"respondentTSE",
-"tseRespond"</text>
+          <text>"amendClaimantDetails",
+"amendRespondentDetails"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1n9c9z0">
           <text>"AmendPartyDetails"</text>
@@ -243,10 +241,8 @@
 "addAmendJudgment",
 "createReferral",
 "et3Vetting",
-"SUBMIT_CLAIMANT_TSE",
-"CLAIMANT_TSE_RESPOND",
-"respondentTSE",
-"tseRespond",
+"amendClaimantDetails",
+"amendRespondentDetails",
 "initialConsideration",
 "disposeCase"</text>
         </inputEntry>

@@ -212,7 +212,7 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "SUBMIT_CLAIMANT_TSE",
+                "amendClaimantDetails",
                 asList(
                     Map.of(
                         "taskType", "AmendPartyDetails",
@@ -222,27 +222,7 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "CLAIMANT_TSE_RESPOND",
-                asList(
-                    Map.of(
-                        "taskType", "AmendPartyDetails",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
-                "respondentTSE",
-                asList(
-                    Map.of(
-                        "taskType", "AmendPartyDetails",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
-                "tseRespond",
+                "amendRespondentDetails",
                 asList(
                     Map.of(
                         "taskType", "AmendPartyDetails",
