@@ -429,7 +429,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("SendEt1Notification", issueET1Notification),
 
-            Arguments.of("Rule21Referral", draftJudgment),
+            Arguments.of("ReviewRule21Referral", draftJudgment),
 
             Arguments.of("ListServeClaim", listHearingUploadDocument),
 
