@@ -346,7 +346,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> listHearingUploadDocument = List.of(Map.of(
             "name", "description",
             "value", "[list hearing if required and then upload document for serving](cases/case-details/"
-                + "${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)",
+                + "${[CASE_REFERENCE]}/trigger/uploadDocumentForServing/uploadDocumentForServing1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewET3Submission = List.of(Map.of(

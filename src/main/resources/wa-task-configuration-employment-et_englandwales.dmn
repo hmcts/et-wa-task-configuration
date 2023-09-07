@@ -400,7 +400,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kgtdlv">
-          <text>"[list hearing if required and then upload document for serving](cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocument/uploadDocument1)"</text>
+          <text>"[list hearing if required and then upload document for serving](cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocumentForServing/uploadDocumentForServing1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pgzvgx">
           <text>true</text>
