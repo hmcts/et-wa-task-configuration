@@ -30,7 +30,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
     private static final Map<String, Serializable> taskSupervisor = Map.of(
         "autoAssignable", false,
         "name", "task-supervisor",
-        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"
+        "value", "Read, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"
     );
 
     private static final Map<String, Serializable> approverJudiciary = Map.of(
