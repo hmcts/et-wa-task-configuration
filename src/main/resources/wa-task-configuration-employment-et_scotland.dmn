@@ -211,33 +211,17 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0ycb6so">
-        <inputEntry id="UnaryTests_02cbk3r">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0rozdca">
-          <text>"Et1Vetting",
-"ReviewReferralAdmin",
-"ReviewReferralResponseAdmin",
-"SendEt1Notification",
-"ListServeClaim"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_01q74h8">
-          <text>"roleCategory"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_08rgk1j">
-          <text>"ADMIN,CTSC"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1tivei7">
-          <text>true</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0q41xil">
         <inputEntry id="UnaryTests_0nqsca3">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1faq2jo">
           <text>"reviewSpecificAccessRequestAdmin",
+"Et1Vetting",
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
 "IssuePostHearingDirection",
