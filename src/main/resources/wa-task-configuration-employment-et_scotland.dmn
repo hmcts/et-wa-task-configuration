@@ -239,7 +239,6 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
         <inputEntry id="UnaryTests_1faq2jo">
           <text>"reviewSpecificAccessRequestAdmin",
 "ET3Processing",
-"SendET3Notification",
 "IssueInitialConsiderationDirections",
 "IssuePostHearingDirection",
 "IssueJudgment",
