@@ -267,11 +267,17 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ET3ReferralLegalOps", legalOperations),
             Arguments.of("ReviewReferralResponseLegalOps", legalOperations),
 
-            Arguments.of("Et1Vetting", adminctsc),
+            /*Arguments.of("Et1Vetting", adminctsc),
             Arguments.of("ReviewReferralAdmin", adminctsc),
             Arguments.of("ReviewReferralResponseAdmin", adminctsc),
             Arguments.of("ListServeClaim", adminctsc),
-            Arguments.of("SendEt1Notification", adminctsc),
+            Arguments.of("SendEt1Notification", adminctsc),*/
+
+            Arguments.of("Et1Vetting", administrator),
+            Arguments.of("ReviewReferralAdmin", administrator),
+            Arguments.of("ReviewReferralResponseAdmin", administrator),
+            Arguments.of("ListServeClaim", administrator),
+            Arguments.of("SendEt1Notification", administrator),
 
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
             Arguments.of("ET3Processing", administrator),
@@ -746,7 +752,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(51));
+        assertThat(logic.getRules().size(), is(50));
     }
 
     private static Map<String, Object> mapData(String source) {
