@@ -43,6 +43,40 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0w78ygd">
+        <inputEntry id="UnaryTests_080l3co">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0od99fb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pw07id">
+          <text>"region"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xbryov">
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null) then caseData.caseManagementLocation.region else "1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nvk3fu">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lfg1w3">
+        <inputEntry id="UnaryTests_04c0ujh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mmiotq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00l1dqr">
+          <text>"location"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hc9gk2">
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null) then caseData.caseManagementLocation.baseLocation else "765324"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05mxklt">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_01qimdq">
         <description>Sets the case category that is displayed in the task list UI</description>
         <inputEntry id="UnaryTests_0iru7nh">
@@ -55,7 +89,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"caseManagementCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18w70uv">
-          <text>"Employment"</text>
+          <text>if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.selectedLabel !=null) then caseData.caseManagementCategory.selectedLabel else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nzr8nj">
           <text>false</text>
