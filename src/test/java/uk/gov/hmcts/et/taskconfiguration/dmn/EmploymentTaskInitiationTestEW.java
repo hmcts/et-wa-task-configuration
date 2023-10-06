@@ -470,7 +470,10 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
 
         String replyCollection = "";
         if (referralDirectionTo != "") {
-            replyCollection = String.format(REFERRALREPLY_COLLECTION, referralSubject, referralDirectionTo, referralReplyUrgency);
+            replyCollection = String.format(REFERRALREPLY_COLLECTION,
+                                            referralSubject,
+                                            referralDirectionTo,
+                                            referralReplyUrgency);
         }
 
         return String.format(REFERRAL_COLLECTION,
