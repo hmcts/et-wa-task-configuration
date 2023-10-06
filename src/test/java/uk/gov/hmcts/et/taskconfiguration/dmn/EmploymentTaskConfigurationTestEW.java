@@ -61,17 +61,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         claimant.put("claimant_first_names", "George");
         claimant.put("claimant_last_name", "Jetson");
 
-        Map<String, Object> caseManagementCategory = new HashMap<>();
-        caseManagementCategory.put("selectedLabel", "Employment");
-
-        Map<String, Object> caseManagementLocation = new HashMap<>();
-        caseManagementLocation.put("region", "3");
-        caseManagementLocation.put("baseLocation", "36313");
-
         Map<String, Object> caseData = new HashMap<>();
         caseData.put("claimantIndType", claimant);
-        caseData.put("caseManagementCategory", caseManagementCategory);
-        caseData.put("caseManagementLocation", caseManagementLocation);
 
         return caseData;
     }
@@ -132,6 +123,80 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                     + "]}",
                 "George Jetson v Cosmo Spacely"
             )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("cMlAndCMC_ScenarioProvider")
+    void testCMLandCMC(String regionId,
+                       String baseLocation,
+                       String cmCategory,
+                       String expectedRegion,
+                       String expectedLocation,
+                       String expectedCMC) {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+
+
+        Map<String, Object> caseManagementLocation = new HashMap<>();
+        if (!regionId.isBlank()) {
+            caseManagementLocation.put("region", regionId);
+        }
+        if (!baseLocation.isBlank()) {
+            caseManagementLocation.put("baseLocation", baseLocation);
+        }
+        if (!caseManagementLocation.isEmpty()) {
+            caseData.put("caseManagementLocation", caseManagementLocation);
+        }
+
+        Map<String, Object> caseManagementCategory = new HashMap<>();
+        if (!cmCategory.isBlank()) {
+            caseManagementCategory.put("selectedLabel", cmCategory);
+        }
+        if (!caseManagementCategory.isEmpty()) {
+            caseData.put("caseManagementCategory", caseManagementCategory);
+        }
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultRegion =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("region"))
+                .toList();
+
+        List<Map<String, Object>> resultLocation =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("location"))
+                .toList();
+
+        List<Map<String, Object>> resultCMC =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("caseManagementCategory"))
+                .toList();
+
+        // Then
+        assertEquals(expectedRegion, resultRegion.get(0).get("value"));
+        assertEquals(expectedLocation, resultLocation.get(0).get("value"));
+        assertEquals(expectedCMC, resultCMC.get(0).get("value"));
+    }
+
+    public static Stream<Arguments> cMlAndCMC_ScenarioProvider() {
+        return Stream.of(
+            Arguments.of("","","","1","765324","Employment"),
+            Arguments.of("3","","Employment","3","765324","Employment"),
+            Arguments.of("","36313","Test","1","36313","Test"),
+            Arguments.of("3","36313","Test","3","36313","Test")
         );
     }
 
@@ -790,8 +855,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     private List<Map<String, Object>> getExpectedValues() {
         List<Map<String, Object>> rules = new ArrayList<>();
         getExpectedValue(rules, "caseName", "George Jetson");
-        getExpectedValue(rules, "region", "3");
-        getExpectedValue(rules, "location", "36313");
+        getExpectedValue(rules, "region", "1");
+        getExpectedValue(rules, "location", "765324");
         getExpectedValue(rules, "caseManagementCategory", "Employment");
         getExpectedValue(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate");
         getExpectedValue(rules, "dueDateOrigin", null);

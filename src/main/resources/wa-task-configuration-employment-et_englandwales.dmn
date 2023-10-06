@@ -89,7 +89,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"caseManagementCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18w70uv">
-          <text>if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.selectedLabel !=null) then caseData.caseManagementCategory.selectedLabel else ""</text>
+          <text>if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.selectedLabel !=null) then caseData.caseManagementCategory.selectedLabel else "Employment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nzr8nj">
           <text>false</text>
