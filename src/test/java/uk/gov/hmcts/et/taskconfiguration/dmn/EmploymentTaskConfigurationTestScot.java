@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -90,7 +89,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("caseName"))
-                .collect(Collectors.toList());
+                .toList();
 
         // Then
         assertEquals(expectedCaseName, resultList.get(0).get("value"));
@@ -127,6 +126,65 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     }
 
     @ParameterizedTest
+    @MethodSource("cmlAndCmc_ScenarioProvider")
+    void testCMLandCMC(String regionId,
+                       String baseLocation,
+                       String cmCategory,
+                       String expectedRegion,
+                       String expectedLocation,
+                       String expectedCMC) {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+
+
+        Map<String, Object> caseManagementLocation = new HashMap<>();
+        if (!regionId.isBlank()) {
+            caseManagementLocation.put("region", regionId);
+        }
+        if (!baseLocation.isBlank()) {
+            caseManagementLocation.put("baseLocation", baseLocation);
+        }
+        if (!caseManagementLocation.isEmpty()) {
+            caseData.put("caseManagementLocation", caseManagementLocation);
+        }
+
+        Map<String, Object> caseManagementCategory = new HashMap<>();
+        if (!cmCategory.isBlank()) {
+            caseManagementCategory.put("selectedLabel", cmCategory);
+        }
+        if (!caseManagementCategory.isEmpty()) {
+            caseData.put("caseManagementCategory", caseManagementCategory);
+        }
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .toList();
+
+        // Then
+        assertEquals(expectedRegion, resultList.get(1).get("value"));
+        assertEquals(expectedLocation, resultList.get(2).get("value"));
+        assertEquals(expectedCMC, resultList.get(3).get("value"));
+    }
+
+    public static Stream<Arguments> cmlAndCmc_ScenarioProvider() {
+        return Stream.of(
+            Arguments.of("","","","1","765324","Employment"),
+            Arguments.of("11","","Employment","11","765324","Employment"),
+            Arguments.of("","366559","Test","1","366559","Test"),
+            Arguments.of("11","366559","Test","11","366559","Test")
+        );
+    }
+
+    @ParameterizedTest
     @MethodSource("workType_ScenarioProvider")
     void when_taskId_then_return_workType(String taskType, List<Map<String, String>> expected) {
         VariableMap inputVariables = new VariableMapImpl();
@@ -140,7 +198,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("workType"))
-                .collect(Collectors.toList());
+                .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
         assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
@@ -220,7 +278,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("roleCategory"))
-                .collect(Collectors.toList());
+                .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
         assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
@@ -305,7 +363,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("description"))
-                .collect(Collectors.toList());
+                .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
         assertEquals(expected.get(0).get("value")
@@ -483,7 +541,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-                .collect(Collectors.toList());
+                .toList();
 
         assertTrue(resultList.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
@@ -517,7 +575,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("dueDateIntervalDays"))
-                .collect(Collectors.toList());
+                .toList();
 
         assertEquals(expectedIntervalDays.get(0).get("name"), intervalDaysResultList.get(0).get("name"));
         assertEquals(expectedIntervalDays.get(0).get("value"), intervalDaysResultList.get(0).get("value"));
@@ -527,7 +585,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("majorPriority"))
-                .collect(Collectors.toList());
+                .toList();
 
         assertEquals(expectedMajor.get(0).get("name"), majorPriorityResultList.get(0).get("name"));
         assertEquals(expectedMajor.get(0).get("value"), majorPriorityResultList.get(0).get("value"));
@@ -537,7 +595,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .getResultList()
                 .stream()
                 .filter((r) -> r.containsValue("minorPriority"))
-                .collect(Collectors.toList());
+                .toList();
 
         assertEquals(expectedMinor.get(0).get("name"), minorPriorityResultList.get(0).get("name"));
         assertEquals(expectedMinor.get(0).get("value"), minorPriorityResultList.get(0).get("value"));
@@ -664,20 +722,20 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> resultList =
-            dmnDecisionTableResult.getResultList().stream().collect(Collectors.toList());
-        assertEquals(10, resultList.size());
+            dmnDecisionTableResult.getResultList().stream().toList();
+        assertEquals(12, resultList.size());
 
         assertEquals(Map.of(
             "name", "calculatedDates",
             "value", "nextHearingDate,dueDate,priorityDate",
             "canReconfigure", true
-        ), resultList.get(2));
+        ), resultList.get(4));
 
         assertEquals(Map.of(
             "name", "dueDateTime",
             "value", "16:00",
             "canReconfigure", true
-        ), resultList.get(4));
+        ), resultList.get(6));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingCalendar",
@@ -685,31 +743,31 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
                 + "master/src/main/resources/privilege-calendar.json",
             "canReconfigure", true
-        ), resultList.get(5));
+        ), resultList.get(7));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingDaysOfWeek",
             "value", "SATURDAY,SUNDAY",
             "canReconfigure", true
-        ), resultList.get(6));
+        ), resultList.get(8));
 
         assertEquals(Map.of(
             "name", "dueDateSkipNonWorkingDays",
             "value", "true",
             "canReconfigure", true
-        ), resultList.get(7));
+        ), resultList.get(9));
 
         assertEquals(Map.of(
             "name", "dueDateMustBeWorkingDay",
             "value", "Yes",
             "canReconfigure", true
-        ), resultList.get(8));
+        ), resultList.get(10));
 
         assertEquals(Map.of(
             "name", "priorityDateOriginRef",
             "value", "dueDate",
             "canReconfigure", true
-        ), resultList.get(9));
+        ), resultList.get(11));
     }
 
     @Test
@@ -746,7 +804,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(51));
+        assertThat(logic.getRules().size(), is(53));
     }
 
     private static Map<String, Object> mapData(String source) {
@@ -781,6 +839,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     private List<Map<String, Object>> getExpectedValues() {
         List<Map<String, Object>> rules = new ArrayList<>();
         getExpectedValue(rules, "caseName", "George Jetson");
+        getExpectedValue(rules, "region", "1");
+        getExpectedValue(rules, "location", "765324");
         getExpectedValue(rules, "caseManagementCategory", "Employment");
         getExpectedValue(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate");
         getExpectedValue(rules, "dueDateOrigin", null);

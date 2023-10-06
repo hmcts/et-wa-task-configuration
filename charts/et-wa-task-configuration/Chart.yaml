@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for et-wa-task-configuration
 name: et-wa-task-configuration
 home: https://github.com/hmcts/et-wa-task-configuration
-version: 0.0.4
+version: 0.0.5
 maintainers:
   - name: HMCTS ET team
 dependencies:
