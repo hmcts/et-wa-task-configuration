@@ -126,7 +126,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     }
 
     @ParameterizedTest
-    @MethodSource("cMlAndCMC_ScenarioProvider")
+    @MethodSource("cmlAndCmc_ScenarioProvider")
     void testCMLandCMC(String regionId,
                        String baseLocation,
                        String cmCategory,
@@ -163,34 +163,19 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         // When
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        List<Map<String, Object>> resultRegion =
+        List<Map<String, Object>> resultList =
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("region"))
-                .toList();
-
-        List<Map<String, Object>> resultLocation =
-            dmnDecisionTableResult
-                .getResultList()
-                .stream()
-                .filter((r) -> r.containsValue("location"))
-                .toList();
-
-        List<Map<String, Object>> resultCMC =
-            dmnDecisionTableResult
-                .getResultList()
-                .stream()
-                .filter((r) -> r.containsValue("caseManagementCategory"))
                 .toList();
 
         // Then
-        assertEquals(expectedRegion, resultRegion.get(0).get("value"));
-        assertEquals(expectedLocation, resultLocation.get(0).get("value"));
-        assertEquals(expectedCMC, resultCMC.get(0).get("value"));
+        assertEquals(expectedRegion, resultList.get(1).get("value"));
+        assertEquals(expectedLocation, resultList.get(2).get("value"));
+        assertEquals(expectedCMC, resultList.get(3).get("value"));
     }
 
-    public static Stream<Arguments> cMlAndCMC_ScenarioProvider() {
+    public static Stream<Arguments> cmlAndCmc_ScenarioProvider() {
         return Stream.of(
             Arguments.of("","","","1","765324","Employment"),
             Arguments.of("11","","Employment","11","765324","Employment"),
