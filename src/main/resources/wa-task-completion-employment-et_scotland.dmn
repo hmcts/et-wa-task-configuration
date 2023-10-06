@@ -55,7 +55,7 @@
       </rule>
       <rule id="DecisionRule_0m15s4f">
         <inputEntry id="UnaryTests_12rgcau">
-          <text>"et3Response"</text>
+          <text>"et3Vetting"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1x2aji9">
           <text>"ET3Processing"</text>
@@ -154,7 +154,7 @@
       </rule>
       <rule id="DecisionRule_12huova">
         <inputEntry id="UnaryTests_1061un4">
-          <text>"et3Response"</text>
+          <text>"createReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xln4uh">
           <text>"ReviewRule21Referral"</text>
@@ -165,7 +165,7 @@
       </rule>
       <rule id="DecisionRule_0w6li7w">
         <inputEntry id="UnaryTests_10o0695">
-          <text>"createReferral"</text>
+          <text>"disposeCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0mysecs">
           <text>"IssueJudgment"</text>
@@ -176,7 +176,7 @@
       </rule>
       <rule id="DecisionRule_17wj6dr">
         <inputEntry id="UnaryTests_1d95t1o">
-          <text>"et3Vetting"</text>
+          <text>"initialConsideration"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_16ob96j">
           <text>"CompleteInitialConsideration"</text>
@@ -209,10 +209,8 @@
       </rule>
       <rule id="DecisionRule_0842grb">
         <inputEntry id="UnaryTests_0dc2iyv">
-          <text>"SUBMIT_CLAIMANT_TSE",
-"CLAIMANT_TSE_RESPOND",
-"respondentTSE",
-"tseRespond"</text>
+          <text>"amendClaimantDetails",
+"amendRespondentDetails"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1n9c9z0">
           <text>"AmendPartyDetails"</text>
@@ -238,16 +236,14 @@
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral",
-"et3Response",
 "generateCorrespondence",
 "uploadDocumentForServing",
 "addAmendJudgment",
 "createReferral",
 "et3Vetting",
-"SUBMIT_CLAIMANT_TSE",
-"CLAIMANT_TSE_RESPOND",
-"respondentTSE",
-"tseRespond",
+"amendClaimantDetails",
+"amendRespondentDetails",
+"initialConsideration",
 "disposeCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0bwibe1">

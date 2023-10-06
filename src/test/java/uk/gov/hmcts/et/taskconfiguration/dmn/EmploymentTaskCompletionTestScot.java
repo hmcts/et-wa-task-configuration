@@ -118,20 +118,6 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "et3Response",
-                asList(
-                    Map.of(
-                        "taskType", "ET3Processing",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewRule21Referral",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
                 "uploadDocumentForServing",
                 asList(
                     Map.of(
@@ -174,25 +160,49 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "disposeCase",
+                asList(
+                    Map.of(
+                        "taskType", "IssueJudgment",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "WithdrawAllOrPartOfCase",
+                        "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
                 "createReferral",
                 asList(
                     Map.of(
-                            "taskType", "IssueJudgment",
-                            "completionMode", "Auto"
+                        "taskType", "ReviewRule21Referral",
+                        "completionMode", "Auto"
                     ),
                     Map.of(
-                            "taskType", "ContactTribunalWithAnApplication",
-                            "completionMode", "Auto"
+                        "taskType", "ContactTribunalWithAnApplication",
+                        "completionMode", "Auto"
                     ),
                     Map.of(
-                            "taskType", "WithdrawAllOrPartOfCase",
-                            "completionMode", "Auto"
+                        "taskType", "WithdrawAllOrPartOfCase",
+                        "completionMode", "Auto"
                     ),
                     emptyMap()
                 )
             ),
             Arguments.of(
                 "et3Vetting",
+                asList(
+                    Map.of(
+                        "taskType", "ET3Processing",
+                        "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "initialConsideration",
                 asList(
                     Map.of(
                         "taskType", "CompleteInitialConsideration",
@@ -202,7 +212,7 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "SUBMIT_CLAIMANT_TSE",
+                "amendClaimantDetails",
                 asList(
                     Map.of(
                         "taskType", "AmendPartyDetails",
@@ -212,27 +222,7 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "CLAIMANT_TSE_RESPOND",
-                asList(
-                    Map.of(
-                        "taskType", "AmendPartyDetails",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
-                "respondentTSE",
-                asList(
-                    Map.of(
-                        "taskType", "AmendPartyDetails",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
-                "tseRespond",
+                "amendRespondentDetails",
                 asList(
                     Map.of(
                         "taskType", "AmendPartyDetails",
