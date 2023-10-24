@@ -54,32 +54,33 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
             createApplications("Strike out all/part of response", "Claimant");
 
-    public static final String REFERRAL_COLLECTION = "\"referralCollection\":[{\"value\": "
-        + "{\"referralNumber\": \"1\",\"referralSubject\": \"%s\",\"referCaseTo\": \"%s\",\"isUrgent\": \"%s\"%s}"
-        + "}]";
+    public static final String REFERRAL_COLLECTION = "\"referralCollection\":[%s]";
+    public static final String REFERRAL = "{\"value\": "
+        + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"referCaseTo\":\"%s\",\"isUrgent\":\"%s\"%s}"
+        + "}";
     public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": ["
         + "{\"value\": {\"referralSubject\": \"%s\",\"directionTo\": \"%s\",\"isUrgentReply\": \"%s\"}"
         + "}]";
 
     public static final String REFERRAL_ADMIN =
-        createReferrals("(Referral Subject)", "Admin", "Yes", "", "");
+        createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "Yes", "", "");
     public static final String REFERRAL_ADMIN_HEARING =
-        createReferrals("Hearings", "Admin", "Yes", "", "");
+        createReferrals("Referral Subject 1","Hearings", "Admin", "Yes", "", "");
     public static final String REFERRAL_ADMIN_JUDGMENT =
-        createReferrals("Judgment", "Admin", "Yes", "", "");
+        createReferrals("Referral Subject 1","Judgment", "Admin", "Yes", "", "");
     public static final String REFERRAL_JUDGE =
-        createReferrals("(Referral Subject)", "Judge", "Yes", "", "");
+        createReferrals("Referral Subject 1","Referral Subject 2", "Judge", "Yes", "", "");
     public static final String REFERRAL_JUDGE_RULE21 =
-        createReferrals("Rule 21", "Judge", "Yes", "", "");
+        createReferrals("Referral Subject 1","Rule 21", "Judge", "Yes", "", "");
     public static final String REFERRAL_LEGALOFFICER =
-        createReferrals("(Referral Subject)", "Legal officer", "Yes", "", "");
+        createReferrals("Referral Subject 1","Referral Subject 2", "Legal officer", "Yes", "", "");
 
     public static final String REFERRAL_REPLY_ADMIN =
-        createReferrals("(Referral Subject)", "", "", "Admin", "Yes");
+        createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Admin", "Yes");
     public static final String REFERRAL_REPLY_JUDGE =
-        createReferrals("Rule 21", "", "", "Judge", "Yes");
+        createReferrals("Referral Subject 1","Rule 21", "", "", "Judge", "Yes");
     public static final String REFERRAL_REPLY_LEGALOFFICER =
-        createReferrals("(Referral Subject)", "", "", "Legal officer", "Yes");
+        createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
 
     @BeforeAll
     public static void initialization() {
@@ -107,7 +108,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral - (Referral Subject)",
+                        "Review Referral - Referral Subject 2",
                         "Vetting"
                     )
                 )
@@ -153,7 +154,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralJudiciary",
-                        "Review Referral - (Referral Subject)",
+                        "Review Referral - Referral Subject 2",
                         "Vetting"
                     )
                 )
@@ -182,7 +183,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralLegalOps",
-                        "Review Referral - (Referral Subject)",
+                        "Review Referral - Referral Subject 2",
                         "Vetting"
                     )
                 )
@@ -194,7 +195,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
-                        "Review Referral Response - (Referral Subject)",
+                        "Review Referral Response - Referral Subject 2",
                         "processing"
                     )
                 )
@@ -218,7 +219,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
-                        "Review Referral Response - (Referral Subject)",
+                        "Review Referral Response - Referral Subject 2",
                         "processing"
                     )
                 )
@@ -462,7 +463,8 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     }
 
     private static String createReferrals(
-        String referralSubject,
+        String referralSubject1,
+        String referralSubject2,
         String referralReferCaseTo,
         String referralUrgency,
         String referralDirectionTo,
@@ -471,16 +473,17 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         String replyCollection = "";
         if (referralDirectionTo != "") {
             replyCollection = String.format(REFERRALREPLY_COLLECTION,
-                                            referralSubject,
+                                            referralSubject2,
                                             referralDirectionTo,
                                             referralReplyUrgency);
         }
 
-        return String.format(REFERRAL_COLLECTION,
-                             referralSubject,
-                             referralReferCaseTo,
-                             referralUrgency,
-                             replyCollection);
+        String referralCollection =
+            String.format(REFERRAL,"1",referralSubject1,referralReferCaseTo,referralUrgency,replyCollection)
+                + ","
+                + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection);
+
+        return String.format(REFERRAL_COLLECTION, referralCollection);
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalDataContent) {
