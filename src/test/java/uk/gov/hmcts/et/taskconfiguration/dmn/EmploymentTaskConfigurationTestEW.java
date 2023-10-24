@@ -51,11 +51,23 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             + "]}";
 
     public static final String ISURGENT_REPLY_YES =
-        "{\"referralCollection\":[{\"value\": {\"referralReplyCollection\":"
-            + "[{\"value\": {\"isUrgentReply\": \"Yes\"}}]}}]}";
+        "{\"referralCollection\":["
+            + "{\"value\":{\"referralReplyCollection\":["
+            + "{\"value\":{\"isUrgentReply\":\"No\",\"replyDateTime\":\"2023-10-01T12:00:00.00\"}},"
+            + "{\"value\":{\"isUrgentReply\":\"Yes\",\"replyDateTime\":\"2023-10-01T14:00:00.00\"}}"
+            + "]}},"
+            + "{\"value\":{\"referralReplyCollection\":["
+            + "{\"value\":{\"isUrgentReply\":\"No\",\"replyDateTime\":\"2023-10-01T13:00:00.00\"}}"
+            + "]}}]}";
     public static final String ISURGENT_REPLY_NO =
-        "{\"referralCollection\":[{\"value\": {\"referralReplyCollection\":"
-            + "[{\"value\": {\"isUrgentReply\": \"No\"}}]}}]}";
+        "{\"referralCollection\":["
+            + "{\"value\":{\"referralReplyCollection\":["
+            + "{\"value\":{\"isUrgentReply\":\"Yes\",\"replyDateTime\":\"2023-10-01T12:00:00.00\"}},"
+            + "{\"value\":{\"isUrgentReply\":\"No\",\"replyDateTime\":\"2023-10-01T14:00:00.00\"}}"
+            + "]}},"
+            + "{\"value\":{\"referralReplyCollection\":["
+            + "{\"value\":{\"isUrgentReply\":\"Yes\",\"replyDateTime\":\"2023-10-01T13:00:00.00\"}}"
+            + "]}}]}";
 
     @BeforeAll
     public static void initialization() {
