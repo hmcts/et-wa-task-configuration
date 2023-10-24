@@ -679,8 +679,8 @@ else ""</text>
         <outputEntry id="LiteralExpression_0xy9k8p">
           <text>if (caseData != null
 and caseData.referralCollection != null
-and count(caseData.referralCollection) &gt; 0
-and (reverse(caseData.referralCollection)[1]).value.isUrgent = "Yes")
+and count(caseData.referralCollection) > 0
+and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) > number(y.value.referralNumber))[1].value.isUrgent = "Yes")
 then 1000
 else 5000</text>
         </outputEntry>
