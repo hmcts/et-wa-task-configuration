@@ -18,7 +18,7 @@
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection) &gt; 0)
-then (reverse(additionalData.Data.referralCollection)[1]).value.referCaseTo
+then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referCaseTo[1]
 else null</text>
         </inputExpression>
       </input>
@@ -28,7 +28,7 @@ else null</text>
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection) &gt; 0)
-then (reverse(additionalData.Data.referralCollection)[1]).value.referralSubject
+then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]
 else null</text>
         </inputExpression>
       </input>
@@ -38,7 +38,7 @@ else null</text>
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then (reverse((reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralReplyCollection)[1]).value.directionTo
+then sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.directionTo[1]
 else null</text>
         </inputExpression>
       </input>
