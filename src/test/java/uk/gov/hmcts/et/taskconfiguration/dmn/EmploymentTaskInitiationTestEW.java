@@ -28,9 +28,9 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
 
     public static final String APPLICATION_COLLECTION =
-            "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"%s\"%s}}]";
+        "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"%s\"%s}}]";
     public static final String RESPOND_COLLECTION =
-            ",\"respondCollection\": [{\"value\": {\"from\": \"%s\"}}]";
+        ",\"respondCollection\": [{\"value\": {\"applicationType\": \"%s\",\"from\": \"%s\"}}]";
 
     public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
             createApplications("Amend my claim", "");
@@ -54,12 +54,12 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
             createApplications("Strike out all/part of response", "Claimant");
 
-    public static final String REFERRAL_COLLECTION =
-        "\"referralCollection\":[{\"value\": "
-            + "{\"referralSubject\": \"%s\",\"referCaseTo\": \"%s\",\"isUrgent\": \"%s\"%s}"
-            + "}]";
-    public static final String REFERRALREPLY_COLLECTION =
-        ",\"referralReplyCollection\": [{\"value\": {\"directionTo\": \"%s\",\"isUrgentReply\": \"%s\"}}]";
+    public static final String REFERRAL_COLLECTION = "\"referralCollection\":[{\"value\": "
+        + "{\"referralNumber\": \"1\",\"referralSubject\": \"%s\",\"referCaseTo\": \"%s\",\"isUrgent\": \"%s\"%s}"
+        + "}]";
+    public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": ["
+        + "{\"value\": {\"referralSubject\": \"%s\",\"directionTo\": \"%s\",\"isUrgentReply\": \"%s\"}"
+        + "}]";
 
     public static final String REFERRAL_ADMIN =
         createReferrals("(Referral Subject)", "Admin", "Yes", "", "");
@@ -452,13 +452,13 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
         );
     }
 
-    private static String createApplications(String appliciationType, String respondFrom) {
+    private static String createApplications(String applicationType, String respondFrom) {
         String respondCollection = "";
         if (respondFrom != "") {
-            respondCollection = String.format(RESPOND_COLLECTION, respondFrom);
+            respondCollection = String.format(RESPOND_COLLECTION, applicationType, respondFrom);
         }
 
-        return String.format(APPLICATION_COLLECTION, appliciationType, respondCollection);
+        return String.format(APPLICATION_COLLECTION, applicationType, respondCollection);
     }
 
     private static String createReferrals(
@@ -470,7 +470,10 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
 
         String replyCollection = "";
         if (referralDirectionTo != "") {
-            replyCollection = String.format(REFERRALREPLY_COLLECTION, referralDirectionTo, referralReplyUrgency);
+            replyCollection = String.format(REFERRALREPLY_COLLECTION,
+                                            referralSubject,
+                                            referralDirectionTo,
+                                            referralReplyUrgency);
         }
 
         return String.format(REFERRAL_COLLECTION,
