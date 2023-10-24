@@ -408,8 +408,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qcsldu">
           <text>"Review Referral Response - "
-+ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
-          </text>
++ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
@@ -451,8 +450,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08j7d7p">
           <text>"Review Referral Response - "
-+ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
-          </text>
++ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zcsqzi">
           <text></text>
@@ -494,8 +492,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03wz7tv">
           <text>"Review Referral Response - "
-+ (reverse(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])[1]).value.referralSubject
-          </text>
++ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14hvioj">
           <text></text>

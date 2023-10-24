@@ -14,6 +14,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +26,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_INITIATION_ET_SCOTLAND;
 
 class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
+
+    public static final DateTimeFormatter OLD_DATE_TIME_PATTERN=
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
 
@@ -58,9 +63,10 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String REFERRAL = "{\"value\": "
         + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"referCaseTo\":\"%s\",\"isUrgent\":\"%s\"%s}"
         + "}";
-    public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": ["
-        + "{\"value\": {\"referralSubject\": \"%s\",\"directionTo\": \"%s\",\"isUrgentReply\": \"%s\"}"
-        + "}]";
+    public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": [%s]";
+    public static final String REFERRALREPLY = "{\"value\":"
+        + "{\"referralSubject\":\"%s\",\"directionTo\":\"%s\",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
+        + "}";
 
     public static final String REFERRAL_ADMIN =
         createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "Yes", "", "");
@@ -78,7 +84,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String REFERRAL_REPLY_ADMIN =
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Admin", "Yes");
     public static final String REFERRAL_REPLY_JUDGE =
-        createReferrals("Referral Subject 1","Rule 21", "", "", "Judge", "Yes");
+        createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
     public static final String REFERRAL_REPLY_LEGALOFFICER =
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
 
@@ -195,7 +201,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
-                        "Review Referral Response - Referral Subject 2",
+                        "Review Referral Response - Referral Subject 1",
                         "processing"
                     )
                 )
@@ -207,7 +213,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
-                        "Review Referral Response - Rule 21",
+                        "Review Referral Response - Referral Subject 1",
                         "processing"
                     )
                 )
@@ -219,7 +225,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
-                        "Review Referral Response - Referral Subject 2",
+                        "Review Referral Response - Referral Subject 1",
                         "processing"
                     )
                 )
@@ -455,7 +461,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
 
     private static String createApplications(String applicationType, String respondFrom) {
         String respondCollection = "";
-        if (respondFrom != "") {
+        if (!"".equals(respondFrom)) {
             respondCollection = String.format(RESPOND_COLLECTION, applicationType, respondFrom);
         }
 
@@ -470,18 +476,34 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         String referralDirectionTo,
         String referralReplyUrgency) {
 
-        String replyCollection = "";
-        if (referralDirectionTo != "") {
-            replyCollection = String.format(REFERRALREPLY_COLLECTION,
-                                            referralSubject2,
-                                            referralDirectionTo,
-                                            referralReplyUrgency);
+        String replyCollection1 = "";
+        String replyCollection2 = "";
+        if (!"".equals(referralDirectionTo)) {
+            LocalDateTime now = LocalDateTime.now();
+            String reply1 = String.format(REFERRALREPLY,
+                                          referralSubject1,
+                                          referralDirectionTo,
+                                          referralReplyUrgency,
+                                          now.plusHours(1).format(OLD_DATE_TIME_PATTERN));
+            String reply2 = String.format(REFERRALREPLY,
+                                          referralSubject2,
+                                          referralDirectionTo,
+                                          referralReplyUrgency,
+                                          now.plusHours(2).format(OLD_DATE_TIME_PATTERN));
+            String reply3 = String.format(REFERRALREPLY,
+                                          referralSubject1,
+                                          referralDirectionTo,
+                                          referralReplyUrgency,
+                                          now.plusHours(3).format(OLD_DATE_TIME_PATTERN));
+
+            replyCollection1 = String.format(REFERRALREPLY_COLLECTION, reply1 + "," + reply3);
+            replyCollection2 = String.format(REFERRALREPLY_COLLECTION, reply2);
         }
 
         String referralCollection =
-            String.format(REFERRAL,"1",referralSubject1,referralReferCaseTo,referralUrgency,replyCollection)
+            String.format(REFERRAL,"1",referralSubject1,referralReferCaseTo,referralUrgency,replyCollection1)
                 + ","
-                + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection);
+                + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection2);
 
         return String.format(REFERRAL_COLLECTION, referralCollection);
     }
