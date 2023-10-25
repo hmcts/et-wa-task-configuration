@@ -196,7 +196,7 @@ dependencyManagement {
 
     dependency group: 'commons-io', name: 'commons-io', version: '2.8.0'
     dependency group: 'org.mybatis', name: 'mybatis', version: '3.5.9'
-    dependency group: 'org.camunda.connect', name: 'camunda-connect-connectors-all', version: '1.5.2'
+    dependency group: 'org.camunda.connect', name: 'camunda-connect-connectors-all', version: '1.5.6'
     dependency group: 'org.apiguardian', name: 'apiguardian-api', version: '1.1.2'
 
     //CVE-2023-35116
@@ -223,10 +223,10 @@ def versions = [
   junitPlatform   : '1.7.2',
   reformLogging   : '5.1.9',
   springDoc       : '1.6.6',
-  camunda         : '7.14.0',
+  camunda         : '7.19.0',
   pitest          : '1.7.4',
   sonarPitest     : '0.5',
-  tomcat          : '10.1.13'
+  tomcat          : '10.1.15'
 ]
 
 ext.libraries = [
@@ -259,7 +259,7 @@ dependencies {
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcat
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: versions.tomcat
 
-  implementation 'org.camunda.bpm:camunda-external-task-client:7.16.0'
+  implementation 'org.camunda.bpm:camunda-external-task-client:7.19.0'
 
   annotationProcessor 'org.projectlombok:lombok'
   compileOnly 'org.projectlombok:lombok'
@@ -276,8 +276,8 @@ dependencies {
   }
 
   testImplementation group: 'org.camunda.bpm.dmn', name: 'camunda-engine-dmn', version: "${versions.camunda}"
-  testImplementation group: 'org.camunda.bpm.assert', name: 'camunda-bpm-assert', version: '8.0.0'
-  testImplementation group: 'org.camunda.bpm', name: 'camunda-engine', version: '7.14.0'
+  testImplementation group: 'org.camunda.bpm.assert', name: 'camunda-bpm-assert', version: '15.0.0'
+  testImplementation group: 'org.camunda.bpm', name: 'camunda-engine', version: "${versions.camunda}"
   testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
 
   integrationTestImplementation sourceSets.main.runtimeClasspath
