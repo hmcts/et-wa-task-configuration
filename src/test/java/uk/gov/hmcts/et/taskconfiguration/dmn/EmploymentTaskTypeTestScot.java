@@ -77,7 +77,9 @@ public class EmploymentTaskTypeTestScot extends DmnDecisionTableBaseUnitTest {
                     Map.of("taskTypeId", "ContactTribunalWithAnApplication",
                            "taskTypeName","Contact Tribunal With An Application"),
 
-                    Map.of("taskTypeId", "AmendPartyDetails",
+                    Map.of("taskTypeId", "AmendClaimantDetails",
+                           "taskTypeName","Amend Party Details"),
+                    Map.of("taskTypeId", "AmendRespondentDetails",
                            "taskTypeName","Amend Party Details"),
 
                     Map.of("taskTypeId", "WithdrawAllOrPartOfCase",
@@ -102,6 +104,6 @@ public class EmploymentTaskTypeTestScot extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(20));
+        assertThat(logic.getRules().size(), is(21));
     }
 }

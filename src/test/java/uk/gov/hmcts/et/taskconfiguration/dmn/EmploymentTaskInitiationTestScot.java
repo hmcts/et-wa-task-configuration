@@ -364,7 +364,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 mapAdditionalData(SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
-                        "AmendPartyDetails",
+                        "AmendClaimantDetails",
                         "Amend Party Details",
                         "Amendments"
                     )
@@ -376,7 +376,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
-                        "AmendPartyDetails",
+                        "AmendRespondentDetails",
                         "Amend Party Details",
                         "Amendments"
                     )
@@ -388,7 +388,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 mapAdditionalData(SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
-                        "AmendPartyDetails",
+                        "AmendRespondentDetails",
                         "Amend Party Details",
                         "Amendments"
                     )
@@ -400,7 +400,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
-                        "AmendPartyDetails",
+                        "AmendClaimantDetails",
                         "Amend Party Details",
                         "Amendments"
                     )

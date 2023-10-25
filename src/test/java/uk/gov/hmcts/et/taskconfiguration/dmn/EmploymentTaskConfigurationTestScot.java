@@ -254,7 +254,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("IssueJudgment", hearingWork),
 
             Arguments.of("ContactTribunalWithAnApplication", applications),
-            Arguments.of("AmendPartyDetails", applications),
+            Arguments.of("AmendClaimantDetails", applications),
+            Arguments.of("AmendRespondentDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", accessRequests),
@@ -338,7 +339,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
             Arguments.of("ContactTribunalWithAnApplication", administrator),
-            Arguments.of("AmendPartyDetails", administrator),
+            Arguments.of("AmendClaimantDetails", administrator),
+            Arguments.of("AmendRespondentDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
 
             Arguments.of("reviewSpecificAccessRequestCTSC", ctsc)
@@ -448,10 +450,15 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> updatePartyDetails = List.of(Map.of(
+        List<Map<String, Object>> updateClaimantDetails = List.of(Map.of(
             "name", "description",
             "value", "[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/"
-                + "amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "amendClaimantDetails1)[, as instructed]",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> updateRespondentDetails = List.of(Map.of(
+            "name", "description",
+            "value", "[Update Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/"
                 + "amendRespondentDetails/amendRespondentDetails1)[, as instructed]",
             "canReconfigure", true
         ));
@@ -505,7 +512,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssueJudgment", reviewJudgmentReferral),
 
-            Arguments.of("AmendPartyDetails", updatePartyDetails),
+            Arguments.of("AmendClaimantDetails", updateClaimantDetails),
+            Arguments.of("AmendRespondentDetails", updateRespondentDetails),
 
             Arguments.of("WithdrawAllOrPartOfCase", withdrawCase),
 
@@ -658,7 +666,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
             Arguments.of("SendEt3Notification", NOT_URGENT,
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
-            Arguments.of("AmendPartyDetails", NOT_URGENT,
+            Arguments.of("AmendClaimantDetails", NOT_URGENT,
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+            Arguments.of("AmendRespondentDetails", NOT_URGENT,
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
             Arguments.of("WithdrawAllOrPartOfCase", NOT_URGENT,
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
@@ -804,7 +814,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(53));
+        assertThat(logic.getRules().size(), is(54));
     }
 
     private static Map<String, Object> mapData(String source) {

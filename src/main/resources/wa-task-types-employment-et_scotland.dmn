@@ -212,9 +212,20 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cv7y1d">
-          <text>"AmendPartyDetails"</text>
+          <text>"AmendClaimantDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00vtfbs">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02kema5">
+        <inputEntry id="UnaryTests_11inmxa">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17klyvp">
+          <text>"AmendRespondentDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ib80ny">
           <text>"Amend Party Details"</text>
         </outputEntry>
       </rule>
