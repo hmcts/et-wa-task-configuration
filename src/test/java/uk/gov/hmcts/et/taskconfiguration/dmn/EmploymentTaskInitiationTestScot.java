@@ -27,7 +27,7 @@ import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_INITIAT
 
 class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
 
-    public static final DateTimeFormatter OLD_DATE_TIME_PATTERN=
+    public static final DateTimeFormatter OLD_DATE_TIME_PATTERN =
         DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
