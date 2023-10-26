@@ -38,7 +38,7 @@ else null</text>
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.directionTo[1]
+then sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.directionTo[1]
 else null</text>
         </inputExpression>
       </input>
@@ -57,28 +57,28 @@ else null</text>
 and additionalData.Data!=null
 and additionalData.Data.genericTseApplicationCollection!=null
 and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
-then sort(additionalData.Data.genericTseApplicationCollection.value,function(x,y) number(x.number) &gt; number(y.number)).type[1]
+then sort(additionalData.Data.genericTseApplicationCollection,function(x,y) number(x.value.number) &gt; number(y.value.number)).value.type[1]
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_155ejn9" label="Claimant Responding To Change Personal Details" biodi:width="200">
-        <inputExpression id="LiteralExpression_1fcs60n" typeRef="string">
-          <text>if (additionalData!=null
+      <input id="InputClause_0w8d76g" label="Application Response From">
+        <inputExpression id="LiteralExpression_1ks5p0n" typeRef="string">
+          <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.genericTseApplicationCollection!=null
-and sort(flatten(additionalData.Data.genericTseApplicationCollection.value.respondCollection), function(x,y) date and time(x.value.dateTime) > date and time(y.value.dateTime))[1].value.from = "Claimant")
-then if (sort(flatten(additionalData.Data.genericTseApplicationCollection.value.respondCollection), function(x,y) date and time(x.value.dateTime) > date and time(y.value.dateTime))[1].value.applicationType = "Change personal details") then "Change personal details" else "Other"
-else "Other"</text>
+and count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])&gt;0)
+then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null].value.respondCollection), function(x,y) date and time(x.value.dateTime) &gt; date and time(y.value.dateTime))[1].value.from
+else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1a3sb2l" label="Respondent Responding To Change My Personal Details" biodi:width="220">
-        <inputExpression id="LiteralExpression_1leb85s" typeRef="string">
-          <text>if (additionalData!=null
+      <input id="InputClause_1ki9c2f" label="Response to Application Type" biodi:width="390">
+        <inputExpression id="LiteralExpression_0egdmqz" typeRef="string">
+          <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.genericTseApplicationCollection!=null
-and sort(flatten(additionalData.Data.genericTseApplicationCollection.value.respondCollection), function(x,y) date and time(x.value.dateTime) > date and time(y.value.dateTime))[1].value.from = "Respondent")
-then if (sort(flatten(additionalData.Data.genericTseApplicationCollection.value.respondCollection), function(x,y) date and time(x.value.dateTime) > date and time(y.value.dateTime))[1].value.applicationType = "Change my personal details") then "Change my personal details" else "Other"
-else "Other"</text>
+and count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])&gt;0)
+then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null].value.respondCollection), function(x,y) date and time(x.value.dateTime) &gt; date and time(y.value.dateTime))[1].value.applicationType
+else null</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
@@ -107,10 +107,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0zqmf3j">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0fn15jl">
+        <inputEntry id="UnaryTests_1wm91lu">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0txa4sz">
+        <inputEntry id="UnaryTests_1epxvut">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1inzx22">
@@ -148,10 +148,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_06cbbp7">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1ulzsll">
+        <inputEntry id="UnaryTests_0anug3j">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1imv838">
+        <inputEntry id="UnaryTests_09e5orx">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1p21nx8">
@@ -190,10 +190,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0f4qu93">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_031ma1j">
+        <inputEntry id="UnaryTests_1gek5hw">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_087br5y">
+        <inputEntry id="UnaryTests_0megl45">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_19aayz9">
@@ -231,10 +231,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0de3w0g">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_07ckksy">
+        <inputEntry id="UnaryTests_1ga7pwr">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0f5x1t6">
+        <inputEntry id="UnaryTests_1m78s72">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1n64ej0">
@@ -272,10 +272,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0czshzh">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_17ofxg6">
+        <inputEntry id="UnaryTests_0cdx7xq">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_13kda0y">
+        <inputEntry id="UnaryTests_0fdptfn">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_02gq0cv">
@@ -314,10 +314,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1io07dz">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1nllfdj">
+        <inputEntry id="UnaryTests_072j9rn">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0ora6vq">
+        <inputEntry id="UnaryTests_064u943">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zsboti">
@@ -355,10 +355,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0xzcpr4">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_14u0r0k">
+        <inputEntry id="UnaryTests_1bweivh">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1ibrski">
+        <inputEntry id="UnaryTests_01rplt1">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xmtp1n">
@@ -397,10 +397,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_14g20yz">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0cfem71">
+        <inputEntry id="UnaryTests_0fv2cdw">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_015jzof">
+        <inputEntry id="UnaryTests_0yx804m">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15ccyjs">
@@ -408,7 +408,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qcsldu">
           <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
++ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
@@ -439,10 +439,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1xhiqxw">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1ehw49i">
+        <inputEntry id="UnaryTests_1el9u9c">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0k0m20s">
+        <inputEntry id="UnaryTests_03on46t">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0viokea">
@@ -450,7 +450,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08j7d7p">
           <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
++ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zcsqzi">
           <text></text>
@@ -481,10 +481,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1p59qoe">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_05xjb5g">
+        <inputEntry id="UnaryTests_0jn3w1o">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0mnf125">
+        <inputEntry id="UnaryTests_1g3zu9z">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0asscuc">
@@ -492,7 +492,7 @@ else "Other"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03wz7tv">
           <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
++ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime)).value.referralSubject[1]</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14hvioj">
           <text></text>
@@ -523,10 +523,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0g82jor">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_11cd032">
+        <inputEntry id="UnaryTests_1xlo4z5">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1t2d17k">
+        <inputEntry id="UnaryTests_0kgetix">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0z6s9xl">
@@ -564,10 +564,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1vbj3t7">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0etixa7">
+        <inputEntry id="UnaryTests_08smemz">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_05z3xvl">
+        <inputEntry id="UnaryTests_1vuhaot">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06w4eix">
@@ -605,10 +605,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0iz4z7m">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_09rerka">
+        <inputEntry id="UnaryTests_035qdpd">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1wmde58">
+        <inputEntry id="UnaryTests_15pczdj">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1gzs9ju">
@@ -646,10 +646,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0e8f22s">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0xykkjh">
+        <inputEntry id="UnaryTests_1wl8woo">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0okixi4">
+        <inputEntry id="UnaryTests_0286jeh">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ubx349">
@@ -687,10 +687,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0a9q200">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0o6x1qe">
+        <inputEntry id="UnaryTests_0234hi1">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0o69acp">
+        <inputEntry id="UnaryTests_1trc3u9">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ir1grh">
@@ -728,10 +728,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1bxti2c">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0xql0us">
+        <inputEntry id="UnaryTests_1i2o0ww">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0mmtmji">
+        <inputEntry id="UnaryTests_0g333wg">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ytrqr1">
@@ -769,10 +769,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0pazggx">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1clg7o5">
+        <inputEntry id="UnaryTests_02yvnb1">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_08375mv">
+        <inputEntry id="UnaryTests_1l4q0cy">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1fuv81y">
@@ -810,10 +810,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0x3nihs">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0jd1ahg">
+        <inputEntry id="UnaryTests_0bng3r8">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1qxb8hi">
+        <inputEntry id="UnaryTests_0w54zw1">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1l1w4gm">
@@ -861,10 +861,10 @@ else "Other"</text>
 "Vary/revoke an order",
 "Withdraw all/part of claim"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0ipipwk">
+        <inputEntry id="UnaryTests_12woi1y">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0cs13k0">
+        <inputEntry id="UnaryTests_1t8djnm">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_18a0xvf">
@@ -902,11 +902,29 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0n5d6gx">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_041chy5">
-          <text>"Other"</text>
+        <inputEntry id="UnaryTests_1lbizkr">
+          <text>"Claimant"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_16r0vtl">
-          <text></text>
+        <inputEntry id="UnaryTests_0gc1fxr">
+          <text>"Amend my claim",
+"Amend response",
+"Claimant not complied",
+"Consider a decision afresh",
+"Contact about something else",
+"Contact the tribunal",
+"Order a witness to attend to give evidence",
+"Order a witness to attend",
+"Order other party",
+"Order respondent to do something",
+"Postpone a hearing",
+"Reconsider judgement",
+"Restrict publicity",
+"Strike out all or part of a claim",
+"Strike out all/part of response",
+"Tell tribunal respondent not complied",
+"Vary or revoke an order",
+"Vary/revoke an order",
+"Withdraw all/part of claim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1o0hceo">
           <text>"ContactTribunalWithAnApplication"</text>
@@ -953,10 +971,10 @@ else "Other"</text>
 "Strike out all or part of a claim",
 "Vary or revoke an order"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_057bwbm">
+        <inputEntry id="UnaryTests_195v9nm">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1p32hfv">
+        <inputEntry id="UnaryTests_1pd5kie">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1rzxzd9">
@@ -994,11 +1012,29 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1ioj040">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_01zxn4p">
-          <text></text>
+        <inputEntry id="UnaryTests_1krl6er">
+          <text>"Respondent"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1yqzjj5">
-          <text>"Other"</text>
+        <inputEntry id="UnaryTests_1guctiu">
+          <text>"Amend my claim",
+"Amend response",
+"Claimant not complied",
+"Consider a decision afresh",
+"Contact about something else",
+"Contact the tribunal",
+"Order a witness to attend to give evidence",
+"Order a witness to attend",
+"Order other party",
+"Order respondent to do something",
+"Postpone a hearing",
+"Reconsider judgement",
+"Restrict publicity",
+"Strike out all or part of a claim",
+"Strike out all/part of response",
+"Tell tribunal respondent not complied",
+"Vary or revoke an order",
+"Vary/revoke an order",
+"Withdraw all/part of claim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ir7dto">
           <text>"ContactTribunalWithAnApplication"</text>
@@ -1035,10 +1071,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_168e6cq">
           <text>"Change my personal details"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0egvbog">
+        <inputEntry id="UnaryTests_1xy7rit">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0r4ynp0">
+        <inputEntry id="UnaryTests_0u44yrx">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15tl4dh">
@@ -1076,11 +1112,11 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1gulgic">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1h1bpfq">
-          <text>"Change personal details"</text>
+        <inputEntry id="UnaryTests_1nfzeoa">
+          <text>"Claimant"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1ipr1g0">
-          <text></text>
+        <inputEntry id="UnaryTests_0amzmpw">
+          <text>"Change personal details"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0iwj30e">
           <text>"AmendPartyDetails"</text>
@@ -1117,10 +1153,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_1j14gmm">
           <text>"Change personal details"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1q1tkzn">
+        <inputEntry id="UnaryTests_1sb8d5s">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0e6wsfn">
+        <inputEntry id="UnaryTests_057bce2">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_07u0vk8">
@@ -1158,10 +1194,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0camw01">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_192p7ci">
-          <text></text>
+        <inputEntry id="UnaryTests_1qs8q24">
+          <text>"Respondent"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0rcef50">
+        <inputEntry id="UnaryTests_1xknhnu">
           <text>"Change my personal details"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1l73b7e">
@@ -1199,10 +1235,10 @@ else "Other"</text>
         <inputEntry id="UnaryTests_0wz2erx">
           <text>"Strike out all/part of response"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0q7sab4">
+        <inputEntry id="UnaryTests_1xnwr0b">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1x8tu9q">
+        <inputEntry id="UnaryTests_0oj504f">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0q2t52j">

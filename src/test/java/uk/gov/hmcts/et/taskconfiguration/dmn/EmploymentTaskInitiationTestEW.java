@@ -33,7 +33,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
 
     public static final String APPLICATION_COLLECTION =
-        "\"genericTseApplicationCollection\":[{\"value\": {\"type\": \"%s\"%s}}]";
+        "\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]";
     public static final String RESPOND_COLLECTION =
         ",\"respondCollection\": [{\"value\": {\"applicationType\": \"%s\",\"from\": \"%s\"}}]";
 
