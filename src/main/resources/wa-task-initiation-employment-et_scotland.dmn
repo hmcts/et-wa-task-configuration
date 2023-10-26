@@ -1078,7 +1078,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15tl4dh">
-          <text>"AmendPartyDetails"</text>
+          <text>"AmendClaimantDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0et77ag">
           <text>"Amend Party Details"</text>
@@ -1119,7 +1119,7 @@ else null</text>
           <text>"Change personal details"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0iwj30e">
-          <text>"AmendPartyDetails"</text>
+          <text>"AmendRespondentDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0930lzb">
           <text>"Amend Party Details"</text>
@@ -1160,7 +1160,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_07u0vk8">
-          <text>"AmendPartyDetails"</text>
+          <text>"AmendRespondentDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04hjowa">
           <text>"Amend Party Details"</text>
@@ -1201,7 +1201,7 @@ else null</text>
           <text>"Change my personal details"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1l73b7e">
-          <text>"AmendPartyDetails"</text>
+          <text>"AmendClaimantDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00ouzpz">
           <text>"Amend Party Details"</text>

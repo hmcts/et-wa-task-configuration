@@ -169,7 +169,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
         </inputEntry>
         <inputEntry id="UnaryTests_1hszd50">
           <text>"ContactTribunalWithAnApplication",
-"AmendPartyDetails",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zn5l70">
@@ -277,7 +278,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "IssuePostHearingDirection",
 "IssueJudgment",
 "ContactTribunalWithAnApplication",
-"AmendPartyDetails",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "SendEt3Notification"</text>
         </inputEntry>
@@ -564,15 +566,32 @@ else "1234"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_102pi1k">
-          <text>"AmendPartyDetails"</text>
+          <text>"AmendClaimantDetails"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0j05fcd">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1) [OR Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)[, as instructed]"</text>
+          <text>"[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)[, as instructed]"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1uik1j4">
+        <inputEntry id="UnaryTests_0f4x4tl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lpzzn0">
+          <text>"AmendRespondentDetails"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zhywdp">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1au44ex">
+          <text>"[Update Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)[, as instructed]"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00s5pc2">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -650,7 +669,8 @@ else ""</text>
 "IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
-"AmendPartyDetails",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
@@ -679,8 +699,8 @@ else ""</text>
         <outputEntry id="LiteralExpression_0xy9k8p">
           <text>if (caseData != null
 and caseData.referralCollection != null
-and count(caseData.referralCollection) > 0
-and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) > number(y.value.referralNumber))[1].value.isUrgent = "Yes")
+and count(caseData.referralCollection) &gt; 0
+and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.isUrgent = "Yes")
 then 1000
 else 5000</text>
         </outputEntry>
@@ -728,7 +748,8 @@ else 5000</text>
 "IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
-"AmendPartyDetails",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
@@ -965,7 +986,8 @@ else 2</text>
           <text>"ListServeClaim",
 "SendEt1Notification",
 "SendEt3Notification",
-"AmendPartyDetails",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10rjqai">
