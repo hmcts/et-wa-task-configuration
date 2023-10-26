@@ -355,7 +355,16 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "AmendPartyDetails",
+                "AmendClaimantDetails",
+                List.of(
+                    taskSupervisor,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin
+                )
+            ),
+            Arguments.of(
+                "AmendRespondentDetails",
                 List.of(
                     taskSupervisor,
                     allocatedAdminCaseworker,

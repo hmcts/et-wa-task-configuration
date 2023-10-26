@@ -56,9 +56,7 @@
       <rule id="DecisionRule_0ivpl63">
         <description>Judge Access Request Permissions</description>
         <inputEntry id="UnaryTests_155q736">
-          <text>
-          "reviewSpecificAccessRequestJudiciary"
-          </text>
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0buofva">
           <text></text>
@@ -88,12 +86,10 @@
       <rule id="DecisionRule_10ym4yi">
         <description>Case Role for Auto Assignment - Hearing Judge Permissions</description>
         <inputEntry id="UnaryTests_1q4opzl">
-          <text>
-          "ReviewReferralJudiciary",
-          "ReviewReferralResponseJudiciary",
-          "CompleteInitialConsideration",
-          "DraftAndSignJudgment"
-          </text>
+          <text>"ReviewReferralJudiciary",
+"ReviewReferralResponseJudiciary",
+"CompleteInitialConsideration",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mwebfi">
           <text></text>
@@ -123,12 +119,10 @@
       <rule id="DecisionRule_0rcls0x">
         <description>Leadership Judge Permissions</description>
         <inputEntry id="UnaryTests_1m23iq2">
-          <text>
-          "ReviewReferralJudiciary",
-          "ReviewReferralResponseJudiciary",
-          "CompleteInitialConsideration",
-          "DraftAndSignJudgment"
-          </text>
+          <text>"ReviewReferralJudiciary",
+"ReviewReferralResponseJudiciary",
+"CompleteInitialConsideration",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1dkwh9q">
           <text></text>
@@ -158,12 +152,10 @@
       <rule id="DecisionRule_03zmrwj">
         <description>Judge Permissions</description>
         <inputEntry id="UnaryTests_0nnb9wq">
-          <text>
-          "ReviewReferralJudiciary",
-          "ReviewReferralResponseJudiciary",
-          "CompleteInitialConsideration",
-          "DraftAndSignJudgment"
-          </text>
+          <text>"ReviewReferralJudiciary",
+"ReviewReferralResponseJudiciary",
+"CompleteInitialConsideration",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_180b4cq">
           <text></text>
@@ -193,12 +185,10 @@
       <rule id="DecisionRule_1aggpr7">
         <description>Fee-Paid Judge  Permissions</description>
         <inputEntry id="UnaryTests_0dt9jgy">
-          <text>
-          "ReviewReferralJudiciary",
-          "ReviewReferralResponseJudiciary",
-          "CompleteInitialConsideration",
-          "DraftAndSignJudgment"
-          </text>
+          <text>"ReviewReferralJudiciary",
+"ReviewReferralResponseJudiciary",
+"CompleteInitialConsideration",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1nkl5kf">
           <text></text>
@@ -226,11 +216,9 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1tvtlre">
-        <description>Access Request for Legal Caseworker </description>
+        <description>Access Request for Legal Caseworker</description>
         <inputEntry id="UnaryTests_13ukkz6">
-          <text>
-          "reviewSpecificAccessRequestLegalOps"
-          </text>
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_10s330p">
           <text></text>
@@ -260,11 +248,9 @@
       <rule id="DecisionRule_1hfueqc">
         <description>Case Role for Auto Assignment - Allocated Tribunal Caseworker</description>
         <inputEntry id="UnaryTests_0oqt7zb">
-          <text>
-          "ReviewReferralLegalOps",
-          "ReviewReferralResponseLegalOps",
-          "ReviewRule21Referral"
-          </text>
+          <text>"ReviewReferralLegalOps",
+"ReviewReferralResponseLegalOps",
+"ReviewRule21Referral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_04f9yju">
           <text></text>
@@ -293,11 +279,9 @@
       </rule>
       <rule id="DecisionRule_0w7thdb">
         <inputEntry id="UnaryTests_1hlftmk">
-          <text>
-          "ReviewReferralLegalOps",
-          "ReviewReferralResponseLegalOps",
-          "ReviewRule21Referral"
-          </text>
+          <text>"ReviewReferralLegalOps",
+"ReviewReferralResponseLegalOps",
+"ReviewRule21Referral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fewwqo">
           <text></text>
@@ -327,11 +311,9 @@
       <rule id="DecisionRule_1qt2ged">
         <description></description>
         <inputEntry id="UnaryTests_0m81xlb">
-          <text>
-          "ReviewReferralLegalOps",
-          "ReviewReferralResponseLegalOps",
-          "ReviewRule21Referral"
-          </text>
+          <text>"ReviewReferralLegalOps",
+"ReviewReferralResponseLegalOps",
+"ReviewRule21Referral"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0e431c0">
           <text></text>
@@ -361,9 +343,7 @@
       <rule id="DecisionRule_0hv79lq">
         <description>Access Request for Hearing Centre Team Leader</description>
         <inputEntry id="UnaryTests_0tzrow3">
-          <text>
-          "reviewSpecificAccessRequestAdmin"
-          </text>
+          <text>"reviewSpecificAccessRequestAdmin"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1sw9xpj">
           <text></text>
@@ -393,21 +373,20 @@
       <rule id="DecisionRule_1138of4">
         <description>Case Role for Auto Assignment - Allocated Admin Caseworker</description>
         <inputEntry id="UnaryTests_1rhpj3h">
-          <text>
-          "Et1Vetting",
-          "ReviewReferralAdmin",
-          "ReviewReferralResponseAdmin",
-          "SendEt1Notification",
-          "ListServeClaim",
-          "ET3Processing",
-          "SendEt3Notification",
-          "IssueInitialConsiderationDirections",
-          "IssuePostHearingDirection",
-          "IssueJudgment",
-          "AmendPartyDetails",
-          "WithdrawAllOrPartOfCase",
-          "ContactTribunalWithAnApplication"
-          </text>
+          <text>"Et1Vetting",
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim",
+"ET3Processing",
+"SendEt3Notification",
+"IssueInitialConsiderationDirections",
+"IssuePostHearingDirection",
+"IssueJudgment",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
+"WithdrawAllOrPartOfCase",
+"ContactTribunalWithAnApplication"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
           <text></text>
@@ -437,21 +416,20 @@
       <rule id="DecisionRule_1yd4c2r">
         <description></description>
         <inputEntry id="UnaryTests_1po1s18">
-          <text>
-          "Et1Vetting",
-          "ReviewReferralAdmin",
-          "ReviewReferralResponseAdmin",
-          "SendEt1Notification",
-          "ListServeClaim",
-          "ET3Processing",
-          "SendEt3Notification",
-          "IssueInitialConsiderationDirections",
-          "IssuePostHearingDirection",
-          "IssueJudgment",
-          "AmendPartyDetails",
-          "WithdrawAllOrPartOfCase",
-          "ContactTribunalWithAnApplication"
-          </text>
+          <text>"Et1Vetting",
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim",
+"ET3Processing",
+"SendEt3Notification",
+"IssueInitialConsiderationDirections",
+"IssuePostHearingDirection",
+"IssueJudgment",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
+"WithdrawAllOrPartOfCase",
+"ContactTribunalWithAnApplication"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
           <text></text>
@@ -481,21 +459,20 @@
       <rule id="DecisionRule_19o8m59">
         <description></description>
         <inputEntry id="UnaryTests_0vjjcus">
-          <text>
-          "Et1Vetting",
-          "ReviewReferralAdmin",
-          "ReviewReferralResponseAdmin",
-          "SendEt1Notification",
-          "ListServeClaim",
-          "ET3Processing",
-          "SendEt3Notification",
-          "IssueInitialConsiderationDirections",
-          "IssuePostHearingDirection",
-          "IssueJudgment",
-          "AmendPartyDetails",
-          "WithdrawAllOrPartOfCase",
-          "ContactTribunalWithAnApplication"
-          </text>
+          <text>"Et1Vetting",
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim",
+"ET3Processing",
+"SendEt3Notification",
+"IssueInitialConsiderationDirections",
+"IssuePostHearingDirection",
+"IssueJudgment",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
+"WithdrawAllOrPartOfCase",
+"ContactTribunalWithAnApplication"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
           <text></text>
@@ -525,9 +502,7 @@
       <rule id="DecisionRule_0b91c94">
         <description>Access Request for CTSC</description>
         <inputEntry id="UnaryTests_1099gbv">
-          <text>
-          "reviewSpecificAccessRequestCTSC"
-          </text>
+          <text>"reviewSpecificAccessRequestCTSC"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1sgyxq7">
           <text></text>
@@ -557,13 +532,11 @@
       <rule id="DecisionRule_0y729xh">
         <description>Case Role for Auto Assignment - Allocated CTSC Caseworker</description>
         <inputEntry id="UnaryTests_12owvka">
-          <text>
-          "Et1Vetting",
-          "ReviewReferralAdmin",
-          "ReviewReferralResponseAdmin",
-          "SendEt1Notification",
-          "ListServeClaim"
-          </text>
+          <text>"Et1Vetting",
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1804tea">
           <text></text>
@@ -593,13 +566,11 @@
       <rule id="DecisionRule_0dp6n1a">
         <description></description>
         <inputEntry id="UnaryTests_0x14lhj">
-          <text>
-          "Et1Vetting",
-          "ReviewReferralAdmin",
-          "ReviewReferralResponseAdmin",
-          "SendEt1Notification",
-          "ListServeClaim"
-          </text>
+          <text>"Et1Vetting",
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_044f519">
           <text></text>
@@ -629,13 +600,11 @@
       <rule id="DecisionRule_1fh0jk4">
         <description>Access Request for CTSC</description>
         <inputEntry id="UnaryTests_1ghu1eu">
-          <text>
-          "Et1Vetting",
-          "ReviewReferralAdmin",
-          "ReviewReferralResponseAdmin",
-          "SendEt1Notification",
-          "ListServeClaim"
-          </text>
+          <text>"Et1Vetting",
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0yh018d">
           <text></text>
