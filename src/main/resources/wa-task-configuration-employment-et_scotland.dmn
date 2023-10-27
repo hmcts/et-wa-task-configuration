@@ -332,46 +332,6 @@ else "1234"</text>
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0abku11">
-        <description>A marked up description of what the user should do next on the case to complete this task. This populates the Task Tab on the case to allow a user to link straight to the required action. This will be a URL.</description>
-        <inputEntry id="UnaryTests_0xt95i9">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_136m8g2">
-          <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0uxjjxf">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_02zdiu5">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0s7te75">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0n0lyo2">
-        <description>A marked up description of what the user should do next on the case to complete this task. This populates the Task Tab on the case to allow a user to link straight to the required action. This will be a URL.</description>
-        <inputEntry id="UnaryTests_1q1ukdj">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_07rgo5f">
-          <text>"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps",
-"ReviewReferralResponseAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0c6p65o">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1b7smpa">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0nnd54t">
-          <text>true</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1gl883a">
         <inputEntry id="UnaryTests_0255mfa">
           <text></text>
@@ -383,45 +343,49 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1h0x8z4">
-          <text>"[Review ET1 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)"</text>
+          <text>"[ET1 Vetting](/cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1swlcw1">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_02x30bh">
-        <description>RED</description>
-        <inputEntry id="UnaryTests_0il3541">
+      <rule id="DecisionRule_0abku11">
+        <description></description>
+        <inputEntry id="UnaryTests_0xt95i9">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1o80kg9">
-          <text>"SendEt1Notification"</text>
+        <inputEntry id="UnaryTests_136m8g2">
+          <text>"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0tih9p8">
+        <outputEntry id="LiteralExpression_0uxjjxf">
           <text>"description"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_14eiv65">
-          <text>"[Issue relevant ET1 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+        <outputEntry id="LiteralExpression_02zdiu5">
+          <text>"[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0nwha68">
+        <outputEntry id="LiteralExpression_0s7te75">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0las4xs">
-        <inputEntry id="UnaryTests_11zzeh6">
+      <rule id="DecisionRule_02k4psa">
+        <inputEntry id="UnaryTests_1v1y792">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0gstj6a">
-          <text>"ReviewRule21Referral"</text>
+        <inputEntry id="UnaryTests_1rwubnw">
+          <text>"ReviewReferralJudiciary",
+"ReviewReferralLegalOps",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0kitfsk">
+        <outputEntry id="LiteralExpression_071sio5">
           <text>"description"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0492sao">
-          <text>"[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        <outputEntry id="LiteralExpression_14vawv2">
+          <text>"[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1) or [Accept/Reject Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/preAcceptanceCase/preAcceptanceCase1)"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_059enb4">
-          <text>true</text>
+        <outputEntry id="LiteralExpression_1gw6v67">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12bi1xb">
@@ -435,44 +399,28 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kgtdlv">
-          <text>"[list hearing if required and then upload document for serving](cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocumentForServing/uploadDocumentForServing1)"</text>
+          <text>"[Upload Document For Serving](/cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocumentForServing/uploadDocumentForServing1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pgzvgx">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_12t229f">
-        <inputEntry id="UnaryTests_0mictbe">
+      <rule id="DecisionRule_02x30bh">
+        <inputEntry id="UnaryTests_0il3541">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1o8ubew">
-          <text>"ET3Processing"</text>
+        <inputEntry id="UnaryTests_1o80kg9">
+          <text>"SendEt1Notification",
+"IssuePostHearingDirection",
+"IssueInitialConsiderationDirections"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1xz2ew5">
+        <outputEntry id="LiteralExpression_0tih9p8">
           <text>"description"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0gpq6ty">
-          <text>"[Review ET3 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)"</text>
+        <outputEntry id="LiteralExpression_14eiv65">
+          <text>"[Issue Directions](/cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0pc3b2q">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0nzfj6h">
-        <description>RED</description>
-        <inputEntry id="UnaryTests_1j9285m">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1fiqg3g">
-          <text>"SendEt3Notification"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0ky7l6o">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_06wj7qi">
-          <text>"[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1crtkf8">
+        <outputEntry id="LiteralExpression_0nwha68">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -487,43 +435,62 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08gj3o9">
-          <text>"[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1)"</text>
+          <text>"[Initial Consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yh9meg">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1fwldsf">
-        <inputEntry id="UnaryTests_0kawtsa">
+      <rule id="DecisionRule_0nzfj6h">
+        <description></description>
+        <inputEntry id="UnaryTests_1j9285m">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0xkbkba">
-          <text>"IssueInitialConsiderationDirections"</text>
+        <inputEntry id="UnaryTests_1fiqg3g">
+          <text>"SendEt3Notification"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_05oxzex">
+        <outputEntry id="LiteralExpression_0ky7l6o">
           <text>"description"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0rz80bi">
-          <text>"[Review Initial consideration, update case and then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+        <outputEntry id="LiteralExpression_06wj7qi">
+          <text>"[Issue ET3 Notification](/cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0r68eci">
+        <outputEntry id="LiteralExpression_1crtkf8">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1hplv47">
-        <inputEntry id="UnaryTests_0cjyelf">
+      <rule id="DecisionRule_12t229f">
+        <inputEntry id="UnaryTests_0mictbe">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1ootl4e">
-          <text>"IssuePostHearingDirection"</text>
+        <inputEntry id="UnaryTests_1o8ubew">
+          <text>"ET3Processing"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1o7xct1">
+        <outputEntry id="LiteralExpression_1xz2ew5">
           <text>"description"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_04xihwk">
-          <text>"[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+        <outputEntry id="LiteralExpression_0gpq6ty">
+          <text>"[ET3 Processing](/cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_17bw4fs">
+        <outputEntry id="LiteralExpression_0pc3b2q">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0las4xs">
+        <inputEntry id="UnaryTests_11zzeh6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gstj6a">
+          <text>"ReviewRule21Referral",
+"ContactTribunalWithAnApplication"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kitfsk">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0492sao">
+          <text>"[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_059enb4">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -538,26 +505,9 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0trcq8d">
-          <text>"[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
+          <text>"[Add or Amend a Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_136d3sz">
-        <inputEntry id="UnaryTests_1veneqq">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0mc2ryf">
-          <text>"IssueJudgment"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_15hl68v">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_04s7gmq">
-          <text>"[Review Judgment Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_13no40g">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -572,7 +522,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)[, as instructed]"</text>
+          <text>"[Update Claimant Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
           <text>true</text>
@@ -589,9 +539,26 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1au44ex">
-          <text>"[Update Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)[, as instructed]"</text>
+          <text>"[Update Respondent Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00s5pc2">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_136d3sz">
+        <inputEntry id="UnaryTests_1veneqq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mc2ryf">
+          <text>"IssueJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15hl68v">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04s7gmq">
+          <text>"[Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13no40g">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -606,26 +573,9 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16xi0q8">
-          <text>"[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
+          <text>"[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1) or [Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0oya7dl">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1b3vrdt">
-        <inputEntry id="UnaryTests_1ke6qll">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_135zds6">
-          <text>"ContactTribunalWithAnApplication"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0uuoa56">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0do9vcl">
-          <text>"[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0bf0kza">
           <text>true</text>
         </outputEntry>
       </rule>
