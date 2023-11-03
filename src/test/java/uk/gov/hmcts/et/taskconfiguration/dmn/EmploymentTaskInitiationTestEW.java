@@ -60,7 +60,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             createApplications("Strike out all/part of response", "Claimant");
 
     public static final String REFERRAL_COLLECTION = "\"referralCollection\":[%s]";
-    public static final String RESPONDENT_COLLECTION = "\"respondentCollection\":[%s]";
     public static final String REFERRAL = "{\"value\": "
         + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"referCaseTo\":\"%s\",\"isUrgent\":\"%s\"%s}"
         + "}";
@@ -88,12 +87,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
     public static final String REFERRAL_REPLY_LEGALOFFICER =
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
-
-    public static final String RULE26_YES1 =
-        et3Vetting(" ", " ", " ", "", "Yes");
-
-    public static final String RULE26_YES2 =
-        et3Vetting2("Yes");
 
     @BeforeAll
     public static void initialization() {
@@ -310,7 +303,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "et3Vetting",
                 "Accepted",
-                mapAdditionalData(RULE26_YES2),
+                mapAdditionalData(RULE26_YES),
                 List.of(
                     mapExpectedOutput(
                         "CompleteInitialConsideration",
@@ -516,31 +509,10 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
 
         String referralCollection =
             String.format(REFERRAL,"1",referralSubject1,referralReferCaseTo,referralUrgency,replyCollection1)
-                + ","
-                + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection2);
+            + ","
+            + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection2);
 
         return String.format(REFERRAL_COLLECTION, referralCollection);
-    }
-
-    private static String et3Vetting(String referralSubject2,
-                                     String referralReferCaseTo,
-                                     String referralUrgency,
-                                     String referralDirectionTo,String et3Rule26) {
-
-        String respondentCollection =
-            String.format(" "," "," "," ",RULE26_YES);
-
-        return String.format(RESPONDENT_COLLECTION, respondentCollection);
-
-    }
-
-    private static String et3Vetting2(String et3Rule26) {
-
-        String respondentCollection =
-            String.format(" "," "," "," ",RULE26_YES);
-
-        return String.format(RESPONDENT_COLLECTION, respondentCollection);
-
     }
 
     private static Map<String, Object> mapAdditionalData(String additionalDataContent) {

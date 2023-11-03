@@ -309,7 +309,14 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "CompleteInitialConsideration",
                         "Complete Initial Consideration",
                         "processing"
-                    ),
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                null,
+                List.of(
                     mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
