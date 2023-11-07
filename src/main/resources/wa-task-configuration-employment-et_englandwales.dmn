@@ -343,7 +343,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1h0x8z4">
-          <text>"[ET1 case vetting](cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)"</text>
+          <text>"[ET1 Vetting](/cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1swlcw1">
           <text>true</text>
@@ -452,7 +452,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gpq6ty">
-          <text>"[Issue ET3 Notification](/cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+          <text>"[Issue ET3 Notification](/cases/case-details/${[CASE_REFERENCE]}/trigger/et3Notification/et3Notification1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pc3b2q">
           <text>true</text>
@@ -925,7 +925,7 @@ then 1
 else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10bfxc4">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_181hurj">

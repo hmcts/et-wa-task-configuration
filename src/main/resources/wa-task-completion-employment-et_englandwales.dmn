@@ -246,14 +246,15 @@
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral",
-"generateCorrespondence",
 "uploadDocumentForServing",
-"addAmendJudgment",
-"createReferral",
+"generateCorrespondence",
+"initialConsideration",
+"et3Notification",
 "et3Vetting",
+"createReferral",
+"addAmendJudgment",
 "amendClaimantDetails",
 "amendRespondentDetails",
-"initialConsideration",
 "disposeCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_067qoh4">
