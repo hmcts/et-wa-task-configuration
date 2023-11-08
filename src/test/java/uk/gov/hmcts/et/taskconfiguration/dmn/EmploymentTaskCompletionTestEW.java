@@ -65,15 +65,15 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     ),
                     Map.of(
+                        "taskType", "ReviewReferralResponseAdmin",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
                         "taskType", "ReviewReferralJudiciary",
                         "completionMode", "Auto"
                     ),
                     Map.of(
                         "taskType", "ReviewReferralLegalOps",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseAdmin",
                         "completionMode", "Auto"
                     ),
                     Map.of(
@@ -95,15 +95,15 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     ),
                     Map.of(
+                        "taskType", "ReviewReferralResponseAdmin",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
                         "taskType", "ReviewReferralJudiciary",
                         "completionMode", "Auto"
                     ),
                     Map.of(
                         "taskType", "ReviewReferralLegalOps",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseAdmin",
                         "completionMode", "Auto"
                     ),
                     Map.of(
@@ -128,20 +128,10 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "addAmendJudgment",
-                asList(
-                    Map.of(
-                        "taskType", "DraftAndSignJudgment",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
                 "generateCorrespondence",
                 asList(
                     Map.of(
-                        "taskType", "IssueInitialConsiderationDirections",
+                        "taskType", "SendEt1Notification",
                         "completionMode", "Auto"
                     ),
                     Map.of(
@@ -149,9 +139,25 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     ),
                     Map.of(
-                        "taskType", "SendEt1Notification",
+                        "taskType", "IssueInitialConsiderationDirections",
                         "completionMode", "Auto"
                     ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                asList(
+                    Map.of(
+                        "taskType", "CompleteInitialConsideration",
+                        "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "et3Notification",
+                asList(
                     Map.of(
                         "taskType", "SendEt3Notification",
                         "completionMode", "Auto"
@@ -160,14 +166,10 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "disposeCase",
+                "et3Vetting",
                 asList(
                     Map.of(
-                        "taskType", "IssueJudgment",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "WithdrawAllOrPartOfCase",
+                        "taskType", "ET3Processing",
                         "completionMode", "Auto"
                     ),
                     emptyMap()
@@ -192,20 +194,10 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "et3Vetting",
+                "addAmendJudgment",
                 asList(
                     Map.of(
-                        "taskType", "ET3Processing",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
-                )
-            ),
-            Arguments.of(
-                "initialConsideration",
-                asList(
-                    Map.of(
-                        "taskType", "CompleteInitialConsideration",
+                        "taskType", "DraftAndSignJudgment",
                         "completionMode", "Auto"
                     ),
                     emptyMap()
@@ -226,6 +218,20 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 asList(
                     Map.of(
                         "taskType", "AmendRespondentDetails",
+                        "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "disposeCase",
+                asList(
+                    Map.of(
+                        "taskType", "IssueJudgment",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "WithdrawAllOrPartOfCase",
                         "completionMode", "Auto"
                     ),
                     emptyMap()
