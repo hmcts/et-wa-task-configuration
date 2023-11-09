@@ -109,7 +109,6 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ET3Processing",
 "ReviewReferralResponseLegalOps",
 "ReviewReferralResponseAdmin",
-"ET3Notification",
 "IssueInitialConsiderationDirections",
 "ReviewRule21Referral",
 "SendEt3Notification"</text>
@@ -674,7 +673,7 @@ else 5000</text>
           <text>if (caseData != null
 and caseData.referralCollection != null
 and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
-and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime))[1].value.isUrgentReply = "Yes")
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
 then 1000
 else 5000</text>
         </outputEntry>
@@ -753,7 +752,7 @@ else 500</text>
           <text>if (caseData!=null
 and caseData.referralCollection != null
 and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
-and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime))[1].value.isUrgentReply = "Yes")
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
 then 100
 else 500</text>
         </outputEntry>
@@ -920,7 +919,7 @@ else 2</text>
           <text>if (caseData!=null
 and caseData.referralCollection != null
 and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
-and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime))[1].value.isUrgentReply = "Yes")
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
 then 1
 else 2</text>
         </outputEntry>
