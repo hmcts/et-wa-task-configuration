@@ -71,7 +71,7 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1ki9c2f" label="Response to Application Type" biodi:width="390">
+      <input id="InputClause_1ki9c2f" label="Response to Application Type" biodi:width="294">
         <inputExpression id="LiteralExpression_0egdmqz" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -580,6 +580,47 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0w8zpej">
+          <text>"Hearing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0to8dg1">
+        <inputEntry id="UnaryTests_04ssd5z">
+          <text>"initialConsideration"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ecb7z5">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nip926">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1io1ney">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kj1gv8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17hhe3m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tokhnl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01padxc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07dj3c1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04t27c3">
+          <text>"ListAHearing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10ljn92">
+          <text>"List A Hearing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jpj3jh">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00i4psd">
           <text>"Hearing"</text>
         </outputEntry>
       </rule>

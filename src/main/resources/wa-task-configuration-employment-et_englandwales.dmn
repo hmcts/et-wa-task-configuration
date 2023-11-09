@@ -17,13 +17,11 @@
           else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="197" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="236" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="1014" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
-        <description>
-        1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists
-        </description>
+        <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
         <inputEntry id="UnaryTests_11xjbt2">
           <text></text>
         </inputEntry>
@@ -71,10 +69,27 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"location"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kvxbku">
-          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null) then caseData.caseManagementLocation.baseLocation else "765324"</text>
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null) then caseData.caseManagementLocation.baseLocation else "21153"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19bsupg">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j5crnn">
+        <inputEntry id="UnaryTests_0c3kr4t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n30lqj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1js4gea">
+          <text>"locationName"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19z5b7j">
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null and caseData.managingOffice != null) then caseData.managingOffice else "London Central"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05hj3ii">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01qimdq">
@@ -110,6 +125,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ReviewReferralResponseLegalOps",
 "ReviewReferralResponseAdmin",
 "IssueInitialConsiderationDirections",
+"ListAHearing",
 "ReviewRule21Referral",
 "SendEt3Notification"</text>
         </inputEntry>
@@ -245,35 +261,20 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0ycb6so">
-        <inputEntry id="UnaryTests_02cbk3r">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0rozdca">
-          <text>"Et1Vetting",
-"ReviewReferralAdmin",
-"ReviewReferralResponseAdmin",
-"SendEt1Notification",
-"ListServeClaim"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_01q74h8">
-          <text>"roleCategory"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_08rgk1j">
-          <text>"ADMIN,CTSC"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1tivei7">
-          <text>true</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0q41xil">
         <inputEntry id="UnaryTests_0nqsca3">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1faq2jo">
-          <text>"reviewSpecificAccessRequestAdmin",
+          <text>"Et1Vetting",
+"ReviewReferralAdmin",
+"ReviewReferralResponseAdmin",
+"SendEt1Notification",
+"ListServeClaim",
+"reviewSpecificAccessRequestAdmin",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
+"ListAHearing",
 "IssuePostHearingDirection",
 "IssueJudgment",
 "ContactTribunalWithAnApplication",
@@ -420,6 +421,23 @@ else "1234"</text>
           <text>"[Issue Directions](/cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_059enb4">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gui5ae">
+        <inputEntry id="UnaryTests_1o6g6l4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14wiafy">
+          <text>"ListAHearing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n539p0">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gqaqfz">
+          <text>"[List Hearing](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendHearing/addAmendHearing1) or [TODO](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendHearing/addAmendHearing1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sb04tj">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -610,6 +628,7 @@ else ""</text>
           <text>"Et1Vetting",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
+"ListAHearing",
 "ListServeClaim",
 "SendEt1Notification",
 "DraftAndSignJudgment",
@@ -689,6 +708,7 @@ else 5000</text>
           <text>"Et1Vetting",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
+"ListAHearing",
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
 "SendEt1Notification",
@@ -1003,6 +1023,23 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1i7buw9">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1uizdq2">
+        <inputEntry id="UnaryTests_0an0b5j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_117acy6">
+          <text>"ListAHearing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0y5wyot">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hoqsxy">
+          <text>10</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ej03d9">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0tqb9qt">
