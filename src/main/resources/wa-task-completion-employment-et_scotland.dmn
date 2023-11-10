@@ -31,6 +31,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_05insq9">
+        <inputEntry id="UnaryTests_0mdh83n">
+          <text>"replyToReferral","closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gpygso">
+          <text>"ReviewReferralResponseAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1iy3i7f">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1n1hrr1">
         <inputEntry id="UnaryTests_0d3nkez">
           <text>"preAcceptanceCase","replyToReferral","closeReferral"</text>
@@ -50,83 +61,6 @@
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zn07yk">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0m15s4f">
-        <inputEntry id="UnaryTests_12rgcau">
-          <text>"et3Vetting"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1x2aji9">
-          <text>"ET3Processing"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_07hil2z">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0o1t3oy">
-        <inputEntry id="UnaryTests_0i0mhhb">
-          <text>"generateCorrespondence"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_12lsf0x">
-          <text>"IssueInitialConsiderationDirections"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0u58y0q">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1e7c3we">
-        <inputEntry id="UnaryTests_1u4doqe">
-          <text>"uploadDocumentForServing"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1yvpnta">
-          <text>"ListServeClaim"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_12qcwv6">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_05insq9">
-        <inputEntry id="UnaryTests_0mdh83n">
-          <text>"replyToReferral","closeReferral"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0gpygso">
-          <text>"ReviewReferralResponseAdmin"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1iy3i7f">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1ufk5zq">
-        <inputEntry id="UnaryTests_1orgb5e">
-          <text>"addAmendJudgment"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0xiq9w4">
-          <text>"DraftAndSignJudgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1vjviwy">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0tsg2dv">
-        <inputEntry id="UnaryTests_1rp99c7">
-          <text>"generateCorrespondence"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0e69sj5">
-          <text>"IssuePostHearingDirection"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1vnufnp">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_098q0pb">
-        <inputEntry id="UnaryTests_15bidkx">
-          <text>"generateCorrespondence"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0h0we02">
-          <text>"SendEt1Notification"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0vbhm39">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
@@ -152,25 +86,47 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_12huova">
-        <inputEntry id="UnaryTests_1061un4">
-          <text>"createReferral"</text>
+      <rule id="DecisionRule_1e7c3we">
+        <inputEntry id="UnaryTests_1u4doqe">
+          <text>"uploadDocumentForServing"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0xln4uh">
-          <text>"ReviewRule21Referral"</text>
+        <outputEntry id="LiteralExpression_1yvpnta">
+          <text>"ListServeClaim"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1s25vmw">
+        <outputEntry id="LiteralExpression_12qcwv6">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0w6li7w">
-        <inputEntry id="UnaryTests_10o0695">
-          <text>"disposeCase"</text>
+      <rule id="DecisionRule_098q0pb">
+        <inputEntry id="UnaryTests_15bidkx">
+          <text>"generateCorrespondence"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0mysecs">
-          <text>"IssueJudgment"</text>
+        <outputEntry id="LiteralExpression_0h0we02">
+          <text>"SendEt1Notification"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1rabwo6">
+        <outputEntry id="LiteralExpression_0vbhm39">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tsg2dv">
+        <inputEntry id="UnaryTests_1rp99c7">
+          <text>"generateCorrespondence"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e69sj5">
+          <text>"IssuePostHearingDirection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vnufnp">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o1t3oy">
+        <inputEntry id="UnaryTests_0i0mhhb">
+          <text>"generateCorrespondence"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12lsf0x">
+          <text>"IssueInitialConsiderationDirections"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u58y0q">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
@@ -187,12 +143,34 @@
       </rule>
       <rule id="DecisionRule_0dw8qxi">
         <inputEntry id="UnaryTests_0dsgzdi">
-          <text>"generateCorrespondence"</text>
+          <text>"et3Notification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0g9uw3d">
           <text>"SendEt3Notification"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16kqmlf">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0m15s4f">
+        <inputEntry id="UnaryTests_12rgcau">
+          <text>"et3Vetting"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x2aji9">
+          <text>"ET3Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07hil2z">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12huova">
+        <inputEntry id="UnaryTests_1061un4">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xln4uh">
+          <text>"ReviewRule21Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1s25vmw">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
@@ -204,6 +182,17 @@
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0hyc3y5">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ufk5zq">
+        <inputEntry id="UnaryTests_1orgb5e">
+          <text>"addAmendJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xiq9w4">
+          <text>"DraftAndSignJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vjviwy">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
@@ -229,6 +218,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0w6li7w">
+        <inputEntry id="UnaryTests_10o0695">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mysecs">
+          <text>"IssueJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rabwo6">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0hnkgbm">
         <inputEntry id="UnaryTests_18iikza">
           <text>"disposeCase","createReferral"</text>
@@ -246,14 +246,15 @@
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral",
-"generateCorrespondence",
 "uploadDocumentForServing",
-"addAmendJudgment",
-"createReferral",
+"generateCorrespondence",
+"initialConsideration",
+"et3Notification",
 "et3Vetting",
+"createReferral",
+"addAmendJudgment",
 "amendClaimantDetails",
 "amendRespondentDetails",
-"initialConsideration",
 "disposeCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0bwibe1">

@@ -195,10 +195,10 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
     public static Stream<Arguments> cmlAndCmc_ScenarioProvider() {
         return Stream.of(
-            Arguments.of("","","","1","765324","Employment"),
-            Arguments.of("3","","Employment","3","765324","Employment"),
-            Arguments.of("","36313","Test","1","36313","Test"),
-            Arguments.of("3","36313","Test","3","36313","Test")
+            Arguments.of("", "", "", "1", "765324", "Employment"),
+            Arguments.of("3", "", "Employment", "3", "765324", "Employment"),
+            Arguments.of("", "36313", "Test", "1", "36313", "Test"),
+            Arguments.of("3", "36313", "Test", "3", "36313", "Test")
         );
     }
 
@@ -260,7 +260,6 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ET3Processing", routineWork),
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
             Arguments.of("ReviewReferralResponseAdmin", routineWork),
-            Arguments.of("ET3Notification", routineWork),
             Arguments.of("IssueInitialConsiderationDirections", routineWork),
 
             Arguments.of("ReviewReferralJudiciary", decisionMakingWork),
@@ -393,149 +392,133 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
-        List<Map<String, Object>> reviewTheReferralCreate = List.of(Map.of(
+        List<Map<String, Object>> descET1Vetting = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)",
+            "value", "[ET1 Vetting](/cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> reviewTheReferralReply = List.of(Map.of(
+        List<Map<String, Object>> descReplyCloseReferral = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "replyToReferral/replyToReferral1)",
+            "value", "[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/replyToReferral/replyToReferral1) "
+                + "or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> reviewET1Submission = List.of(Map.of(
+        List<Map<String, Object>> descReplyCloseReferralAcceptCase = List.of(Map.of(
             "name", "description",
-            "value", "[Review ET1 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)",
+            "value", "[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/replyToReferral/replyToReferral1) "
+                + "or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1) "
+                + "or [Accept/Reject Case](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/preAcceptanceCase/preAcceptanceCase1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> issueET1Notification = List.of(Map.of(
+        List<Map<String, Object>> descUploadDocForServing = List.of(Map.of(
             "name", "description",
-            "value", "[Issue relevant ET1 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "generateCorrespondence/generateCorrespondence1)",
+            "value", "[Upload Document For Serving](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/uploadDocumentForServing/uploadDocumentForServing1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> draftJudgment = List.of(Map.of(
+        List<Map<String, Object>> descIssueDirections = List.of(Map.of(
             "name", "description",
-            "value", "[Draft Judgment and then refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/createReferral/createReferral1)",
+            "value", "[Issue Directions](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/generateCorrespondence/generateCorrespondence1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> listHearingUploadDocument = List.of(Map.of(
+        List<Map<String, Object>> descInitialConsideration = List.of(Map.of(
             "name", "description",
-            "value", "[list hearing if required and then upload document for serving](cases/case-details/"
-                + "${[CASE_REFERENCE]}/trigger/uploadDocumentForServing/uploadDocumentForServing1)",
+            "value", "[Initial Consideration](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/initialConsideration/initialConsideration1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> reviewET3Submission = List.of(Map.of(
+        List<Map<String, Object>> descIssueET3Notification = List.of(Map.of(
             "name", "description",
-            "value", "[Review ET3 Submission](cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)",
+            "value", "[Issue ET3 Notification](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/et3Notification/et3Notification1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> issueET3Notification = List.of(Map.of(
+        List<Map<String, Object>> descET3Processing = List.of(Map.of(
             "name", "description",
-            "value", "[Issue relevant ET3 Notification](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "generateCorrespondence/generateCorrespondence1)",
+            "value", "[ET3 Processing](/cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> initialConsideration = List.of(Map.of(
+        List<Map<String, Object>> descCreateReferral = List.of(Map.of(
             "name", "description",
-            "value", "[provide your initial consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "initialConsideration/initialConsideration1)",
+            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/createReferral/createReferral1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> reviewInitialConsideration = List.of(Map.of(
+        List<Map<String, Object>> descAddJudgment = List.of(Map.of(
             "name", "description",
-            "value", "[Review Initial consideration, update case and then issue relevant correspondence](cases/"
-                + "case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)",
+            "value", "[Add or Amend a Judgment](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/addAmendJudgment/addAmendJudgment1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> reviewTheReferralCorrespondence = List.of(Map.of(
+        List<Map<String, Object>> descUpdateClaimantDetails = List.of(Map.of(
             "name", "description",
-            "value", "[Review Referral, then issue relevant correspondence](cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/generateCorrespondence/generateCorrespondence1)",
+            "value", "[Update Claimant Details](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/amendClaimantDetails/amendClaimantDetails1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> reviewJudgmentPromulgation = List.of(Map.of(
+        List<Map<String, Object>> descUpdateRespondentDetails = List.of(Map.of(
             "name", "description",
-            "value", "[Refer the judgment for promulgation, once signed](cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/addAmendJudgment/addAmendJudgment1)",
+            "value", "[Update Respondent Details](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/amendRespondentDetails/amendRespondentDetails1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> reviewJudgmentReferral = List.of(Map.of(
+        List<Map<String, Object>> descCloseCase = List.of(Map.of(
             "name", "description",
-            "value", "[Review Judgment Referral, then issue relevant correspondence](cases/case-details/"
-                + "${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)",
+            "value", "[Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> updateClaimantDetails = List.of(Map.of(
+        List<Map<String, Object>> descCreateReferralCloseCase = List.of(Map.of(
             "name", "description",
-            "value", "[Update Claimant Details](cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/"
-                + "amendClaimantDetails1)[, as instructed]",
-            "canReconfigure", true
-        ));
-        List<Map<String, Object>> updateRespondentDetails = List.of(Map.of(
-            "name", "description",
-            "value", "[Update Respondent Details](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "amendRespondentDetails/amendRespondentDetails1)[, as instructed]",
-            "canReconfigure", true
-        ));
-        List<Map<String, Object>> withdrawCase = List.of(Map.of(
-            "name", "description",
-            "value", "[Withdraw all or part of the case](cases/case-details/${[CASE_REFERENCE]}/trigger/"
-                + "disposeCase/disposeCase1)",
-            "canReconfigure", true
-        ));
-        List<Map<String, Object>> reviewApplication = List.of(Map.of(
-            "name", "description",
-            "value", "[Review Application and refer to judge](cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/createReferral/createReferral1)",
+            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/closeReferral/closeReferral1) "
+                + "or [Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
             "name", "description",
-            "value","[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
+            "value", "[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
                 + "specific-access)",
             "canReconfigure", true
         ));
 
         return Stream.of(
-            Arguments.of("ReviewReferralJudiciary", reviewTheReferralCreate),
-            Arguments.of("ReviewReferralLegalOps", reviewTheReferralCreate),
-            Arguments.of("ReviewReferralAdmin", reviewTheReferralCreate),
+            Arguments.of("Et1Vetting", descET1Vetting),
 
-            Arguments.of("ReviewReferralResponseJudiciary", reviewTheReferralReply),
-            Arguments.of("ReviewReferralResponseLegalOps", reviewTheReferralReply),
-            Arguments.of("ReviewReferralResponseAdmin", reviewTheReferralReply),
+            Arguments.of("ReviewReferralAdmin", descReplyCloseReferral),
+            Arguments.of("ReviewReferralResponseAdmin", descReplyCloseReferral),
 
-            Arguments.of("Et1Vetting", reviewET1Submission),
+            Arguments.of("ReviewReferralJudiciary", descReplyCloseReferralAcceptCase),
+            Arguments.of("ReviewReferralLegalOps", descReplyCloseReferralAcceptCase),
+            Arguments.of("ReviewReferralResponseJudiciary", descReplyCloseReferralAcceptCase),
+            Arguments.of("ReviewReferralResponseLegalOps", descReplyCloseReferralAcceptCase),
 
-            Arguments.of("SendEt1Notification", issueET1Notification),
+            Arguments.of("ListServeClaim", descUploadDocForServing),
 
-            Arguments.of("ReviewRule21Referral", draftJudgment),
+            Arguments.of("SendEt1Notification", descIssueDirections),
+            Arguments.of("IssuePostHearingDirection", descIssueDirections),
+            Arguments.of("IssueInitialConsiderationDirections", descIssueDirections),
 
-            Arguments.of("ListServeClaim", listHearingUploadDocument),
+            Arguments.of("CompleteInitialConsideration", descInitialConsideration),
 
-            Arguments.of("ET3Processing", reviewET3Submission),
+            Arguments.of("SendEt3Notification", descIssueET3Notification),
 
-            Arguments.of("SendEt3Notification", issueET3Notification),
+            Arguments.of("ET3Processing", descET3Processing),
 
-            Arguments.of("CompleteInitialConsideration", initialConsideration),
+            Arguments.of("ReviewRule21Referral", descCreateReferral),
+            Arguments.of("ContactTribunalWithAnApplication", descCreateReferral),
 
-            Arguments.of("IssueInitialConsiderationDirections", reviewInitialConsideration),
+            Arguments.of("DraftAndSignJudgment", descAddJudgment),
 
-            Arguments.of("IssuePostHearingDirection", reviewTheReferralCorrespondence),
+            Arguments.of("AmendClaimantDetails", descUpdateClaimantDetails),
+            Arguments.of("AmendRespondentDetails", descUpdateRespondentDetails),
 
-            Arguments.of("DraftAndSignJudgment", reviewJudgmentPromulgation),
+            Arguments.of("IssueJudgment", descCloseCase),
 
-            Arguments.of("IssueJudgment", reviewJudgmentReferral),
-
-            Arguments.of("AmendClaimantDetails", updateClaimantDetails),
-            Arguments.of("AmendRespondentDetails", updateRespondentDetails),
-
-            Arguments.of("WithdrawAllOrPartOfCase", withdrawCase),
-
-            Arguments.of("ContactTribunalWithAnApplication", reviewApplication),
+            Arguments.of("WithdrawAllOrPartOfCase", descCreateReferralCloseCase),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -679,65 +662,92 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
         return Stream.of(
             Arguments.of("ListServeClaim", NOT_URGENT,
-                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("SendEt1Notification", NOT_URGENT,
-                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("SendEt3Notification", NOT_URGENT,
-                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("AmendClaimantDetails", NOT_URGENT,
-                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("AmendRespondentDetails", NOT_URGENT,
-                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("WithdrawAllOrPartOfCase", NOT_URGENT,
-                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority
+            ),
 
             Arguments.of("ReviewRule21Referral", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("CompleteInitialConsideration", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("ContactTribunalWithAnApplication", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            ),
 
             Arguments.of("ET3Processing", NOT_URGENT,
-                         dueDateIntervalDays3, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays3, defaultMajorPriority, defaultMinorPriority
+            ),
 
             Arguments.of("Et1Vetting", NOT_URGENT,
-                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("IssueInitialConsiderationDirections", NOT_URGENT,
-                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("IssuePostHearingDirection", NOT_URGENT,
-                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("IssueJudgment", NOT_URGENT,
-                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority
+            ),
 
             Arguments.of("DraftAndSignJudgment", NOT_URGENT,
-                         dueDateIntervalDays28, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays28, defaultMajorPriority, defaultMinorPriority
+            ),
 
             Arguments.of("ReviewReferralAdmin", IS_URGENT,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority
+            ),
             Arguments.of("ReviewReferralResponseAdmin", ISURGENT_REPLY_YES,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority
+            ),
             Arguments.of("ReviewReferralJudiciary", IS_URGENT,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority
+            ),
             Arguments.of("ReviewReferralResponseJudiciary", ISURGENT_REPLY_YES,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority
+            ),
             Arguments.of("ReviewReferralLegalOps", IS_URGENT,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority
+            ),
             Arguments.of("ReviewReferralResponseLegalOps", ISURGENT_REPLY_YES,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority),
+                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority
+            ),
 
             Arguments.of("ReviewReferralAdmin", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("ReviewReferralResponseAdmin", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("ReviewReferralJudiciary", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("ReviewReferralResponseJudiciary", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("ReviewReferralLegalOps", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority),
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            ),
             Arguments.of("ReviewReferralResponseLegalOps", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority)
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority
+            )
         );
     }
 
@@ -832,7 +842,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(54));
+        assertThat(logic.getRules().size(), is(51));
     }
 
     private static Map<String, Object> mapData(String source) {
