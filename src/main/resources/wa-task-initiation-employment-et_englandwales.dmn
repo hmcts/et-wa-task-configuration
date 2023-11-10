@@ -47,8 +47,9 @@ else null</text>
           <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.respondentCollection!=null
-and count(additionalData.Data.respondentCollection) &gt; 0)
-then sort(additionalData.Data.respondentCollection, function(x,y) number(x.value.respondent_ACAS_no) &gt; number(y.value.respondent_ACAS_no)).value.et3Rule26[1]
+and count(additionalData.Data.respondentCollection) &gt; 0
+and additionalData.Data.respondentCollection[1].value.et3Vetting!=null)
+then additionalData.Data.respondentCollection[1].value.et3Vetting.et3Rule26
 else null</text>
         </inputExpression>
       </input>
