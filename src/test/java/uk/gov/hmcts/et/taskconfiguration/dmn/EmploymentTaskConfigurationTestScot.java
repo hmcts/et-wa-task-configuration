@@ -259,7 +259,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ET3Processing", routineWork),
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
             Arguments.of("ReviewReferralResponseAdmin", routineWork),
-            Arguments.of("ET3Notification", routineWork),
             Arguments.of("IssueInitialConsiderationDirections", routineWork),
 
             Arguments.of("ReviewReferralJudiciary", decisionMakingWork),

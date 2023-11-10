@@ -461,7 +461,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
 
     private static String createApplications(String applicationType, String respondFrom) {
         String respondCollection = "";
-        if (!"".equals(respondFrom)) {
+        if (!respondFrom.isEmpty()) {
             respondCollection = String.format(RESPOND_COLLECTION, applicationType, respondFrom);
         }
 
@@ -478,7 +478,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
 
         String replyCollection1 = "";
         String replyCollection2 = "";
-        if (!"".equals(referralDirectionTo)) {
+        if (!referralDirectionTo.isEmpty()) {
             LocalDateTime now = LocalDateTime.now();
             String reply1 = String.format(REFERRALREPLY,
                                           referralSubject1,
