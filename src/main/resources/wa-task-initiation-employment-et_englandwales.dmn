@@ -43,11 +43,13 @@ else null</text>
         </inputExpression>
       </input>
       <input id="InputClause_0gqbing" label="ET3 Rule26" biodi:width="150" camunda:inputVariable="et3Rule26">
-        <inputExpression id="LiteralExpression_1iv0wje" typeRef="string">
-          <text>if(additionalData != null
-and additionalData.Data != null
-and additionalData.Data.et3Rule26 != null)
-then additionalData.Data.et3Rule26
+        <inputExpression id="LiteralExpression_1iv0wje" typeRef="boolean">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.respondentCollection!=null
+and count(additionalData.Data.respondentCollection) &gt; 0
+and additionalData.Data.respondentCollection[1].value.et3Vetting!=null)
+then additionalData.Data.respondentCollection[1].value.et3Vetting.et3Rule26
 else null</text>
         </inputExpression>
       </input>
@@ -805,7 +807,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0jperqz">
-          <text>"Yes"</text>
+          <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0pazggx">
           <text></text>

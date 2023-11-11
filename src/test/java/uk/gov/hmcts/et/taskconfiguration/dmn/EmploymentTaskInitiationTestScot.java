@@ -30,7 +30,8 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final DateTimeFormatter OLD_DATE_TIME_PATTERN =
         DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
-    public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
+    public static final String RULE26_YES =
+        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3Rule26\":true}}}]";
 
     public static final String APPLICATION_COLLECTION =
         "\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]";
@@ -315,6 +316,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Complete Initial Consideration",
                         "processing"
                     ),
+                    mapExpectedOutput(
+                        "SendEt3Notification",
+                        "Send ET3 Notification",
+                        "processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                null,
+                List.of(
                     mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
