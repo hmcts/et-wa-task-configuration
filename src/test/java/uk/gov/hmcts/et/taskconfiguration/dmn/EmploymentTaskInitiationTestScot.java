@@ -31,7 +31,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
     public static final String RULE26_YES =
-        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3Rule26\":\"Yes\"}}}]";
+        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3Rule26\":true}}}]";
 
     public static final String APPLICATION_COLLECTION =
         "\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]";
