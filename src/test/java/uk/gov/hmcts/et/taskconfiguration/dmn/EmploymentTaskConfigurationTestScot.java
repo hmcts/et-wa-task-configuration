@@ -147,9 +147,11 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     @MethodSource("cmlAndCmc_ScenarioProvider")
     void testCMLandCMC(String regionId,
                        String baseLocation,
+                       String managingOffice,
                        String cmCategory,
                        String expectedRegion,
                        String expectedLocation,
+                       String expectedLocationName,
                        String expectedCMC) {
         // Given
         Map<String, Object> caseData = getDefaultCaseData();
@@ -163,6 +165,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         }
         if (!caseManagementLocation.isEmpty()) {
             caseData.put("caseManagementLocation", caseManagementLocation);
+        }
+        if (!managingOffice.isEmpty()) {
+            caseData.put("managingOffice", managingOffice);
         }
 
         Map<String, Object> caseManagementCategory = new HashMap<>();
@@ -189,15 +194,14 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         // Then
         assertEquals(expectedRegion, resultList.get(1).get("value"));
         assertEquals(expectedLocation, resultList.get(2).get("value"));
-        assertEquals(expectedCMC, resultList.get(3).get("value"));
+        assertEquals(expectedLocationName, resultList.get(3).get("value"));
+        assertEquals(expectedCMC, resultList.get(4).get("value"));
     }
 
     public static Stream<Arguments> cmlAndCmc_ScenarioProvider() {
         return Stream.of(
-            Arguments.of("", "", "", "1", "765324", "Employment"),
-            Arguments.of("11", "", "Employment", "11", "765324", "Employment"),
-            Arguments.of("", "366559", "Test", "1", "366559", "Test"),
-            Arguments.of("11", "366559", "Test", "11", "366559", "Test")
+            Arguments.of("", "", "", "", "11", "368308", "Edinburgh", "Employment"),
+            Arguments.of("11", "366559", "Glasgow", "Test", "11", "366559", "Glasgow", "Test")
         );
     }
 
@@ -260,6 +264,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
             Arguments.of("ReviewReferralResponseAdmin", routineWork),
             Arguments.of("IssueInitialConsiderationDirections", routineWork),
+            Arguments.of("ListAHearing", routineWork),
 
             Arguments.of("ReviewReferralJudiciary", decisionMakingWork),
             Arguments.of("ReviewReferralResponseJudiciary", decisionMakingWork),
@@ -323,11 +328,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "CTSC",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> adminctsc = List.of(Map.of(
-            "name", "roleCategory",
-            "value", "ADMIN,CTSC",
-            "canReconfigure", true
-        ));
 
         return Stream.of(
             Arguments.of("reviewSpecificAccessRequestJudiciary", judicial),
@@ -342,16 +342,16 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ET3ReferralLegalOps", legalOperations),
             Arguments.of("ReviewReferralResponseLegalOps", legalOperations),
 
-            Arguments.of("Et1Vetting", adminctsc),
-            Arguments.of("ReviewReferralAdmin", adminctsc),
-            Arguments.of("ReviewReferralResponseAdmin", adminctsc),
-            Arguments.of("ListServeClaim", adminctsc),
-            Arguments.of("SendEt1Notification", adminctsc),
-
+            Arguments.of("Et1Vetting", administrator),
+            Arguments.of("ReviewReferralAdmin", administrator),
+            Arguments.of("ReviewReferralResponseAdmin", administrator),
+            Arguments.of("ListServeClaim", administrator),
+            Arguments.of("SendEt1Notification", administrator),
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
             Arguments.of("ET3Processing", administrator),
             Arguments.of("SendEt3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
+            Arguments.of("ListAHearing", administrator),
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
             Arguments.of("ContactTribunalWithAnApplication", administrator),
@@ -423,6 +423,13 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value", "[Issue Directions](/cases/case-details/${[CASE_REFERENCE]}"
                 + "/trigger/generateCorrespondence/generateCorrespondence1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> descListHearing = List.of(Map.of(
+            "name", "description",
+            "value", "[List Hearing](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/addAmendHearing/addAmendHearing1) "
+                + "or [TODO](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendHearing/addAmendHearing1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descInitialConsideration = List.of(Map.of(
@@ -501,6 +508,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("SendEt1Notification", descIssueDirections),
             Arguments.of("IssuePostHearingDirection", descIssueDirections),
             Arguments.of("IssueInitialConsiderationDirections", descIssueDirections),
+
+            Arguments.of("ListAHearing", descListHearing),
 
             Arguments.of("CompleteInitialConsideration", descInitialConsideration),
 
@@ -633,6 +642,11 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "5",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> dueDateIntervalDays10 = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "10",
+            "canReconfigure", true
+        ));
         List<Map<String, Object>> dueDateIntervalDays28 = List.of(Map.of(
             "name", "dueDateIntervalDays",
             "value", "28",
@@ -707,6 +721,10 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                          dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority
             ),
 
+            Arguments.of("ListAHearing", NOT_URGENT,
+                         dueDateIntervalDays10, defaultMajorPriority, defaultMinorPriority
+            ),
+
             Arguments.of("DraftAndSignJudgment", NOT_URGENT,
                          dueDateIntervalDays28, defaultMajorPriority, defaultMinorPriority
             ),
@@ -761,19 +779,19 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
         List<Map<String, Object>> resultList =
             dmnDecisionTableResult.getResultList().stream().toList();
-        assertEquals(12, resultList.size());
+        assertEquals(13, resultList.size());
 
         assertEquals(Map.of(
             "name", "calculatedDates",
             "value", "nextHearingDate,dueDate,priorityDate",
             "canReconfigure", true
-        ), resultList.get(4));
+        ), resultList.get(5));
 
         assertEquals(Map.of(
             "name", "dueDateTime",
             "value", "16:00",
             "canReconfigure", true
-        ), resultList.get(6));
+        ), resultList.get(7));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingCalendar",
@@ -781,31 +799,31 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
                 + "master/src/main/resources/privilege-calendar.json",
             "canReconfigure", true
-        ), resultList.get(7));
+        ), resultList.get(8));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingDaysOfWeek",
             "value", "SATURDAY,SUNDAY",
             "canReconfigure", true
-        ), resultList.get(8));
+        ), resultList.get(9));
 
         assertEquals(Map.of(
             "name", "dueDateSkipNonWorkingDays",
             "value", "true",
             "canReconfigure", true
-        ), resultList.get(9));
+        ), resultList.get(10));
 
         assertEquals(Map.of(
             "name", "dueDateMustBeWorkingDay",
             "value", "Yes",
             "canReconfigure", true
-        ), resultList.get(10));
+        ), resultList.get(11));
 
         assertEquals(Map.of(
             "name", "priorityDateOriginRef",
             "value", "dueDate",
             "canReconfigure", true
-        ), resultList.get(11));
+        ), resultList.get(12));
     }
 
     @Test
@@ -842,7 +860,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(51));
+        assertThat(logic.getRules().size(), is(53));
     }
 
     private static Map<String, Object> mapData(String source) {
@@ -877,8 +895,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     private List<Map<String, Object>> getExpectedValues() {
         List<Map<String, Object>> rules = new ArrayList<>();
         getExpectedValue(rules, "caseName", "George Jetson");
-        getExpectedValue(rules, "region", "1");
-        getExpectedValue(rules, "location", "765324");
+        getExpectedValue(rules, "region", "11");
+        getExpectedValue(rules, "location", "368308");
+        getExpectedValue(rules, "locationName", "Edinburgh");
         getExpectedValue(rules, "caseManagementCategory", "Employment");
         getExpectedValue(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate");
         getExpectedValue(rules, "dueDateOrigin", null);

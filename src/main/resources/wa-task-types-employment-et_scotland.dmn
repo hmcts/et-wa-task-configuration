@@ -75,6 +75,17 @@
           <text>"Issue Initial Consideration Directions"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_05s29xg">
+        <inputEntry id="UnaryTests_0a696h7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n9jndb">
+          <text>"ListAHearing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_082u6kr">
+          <text>"List A Hearing"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0lfe0ed">
         <inputEntry id="UnaryTests_1vce6t1">
           <text></text>

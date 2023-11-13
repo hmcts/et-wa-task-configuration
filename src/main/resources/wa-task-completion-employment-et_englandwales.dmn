@@ -130,6 +130,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1cpmht8">
+        <inputEntry id="UnaryTests_1ninaep">
+          <text>"addAmendHearing","issueInitialConsiderationDirectionsWA"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0spvbsg">
+          <text>"ListAHearing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o4tf5m">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_17wj6dr">
         <inputEntry id="UnaryTests_1d95t1o">
           <text>"initialConsideration"</text>
@@ -248,6 +259,8 @@
 "closeReferral",
 "uploadDocumentForServing",
 "generateCorrespondence",
+"addAmendHearing",
+"issueInitialConsiderationDirectionsWA",
 "initialConsideration",
 "et3Notification",
 "et3Vetting",
