@@ -67,7 +67,10 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String REFERRALREPLY = "{\"value\":"
         + "{\"referralSubject\":\"%s\",\"directionTo\":\"%s\",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
         + "}";
-
+    public static final String STRIKE_OUT_CLAIM =
+        "\"etInitialConsiderationRule27\": {"
+            + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
+            + "}";
     public static final String REFERRAL_ADMIN =
         createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "Yes", "", "");
     public static final String REFERRAL_ADMIN_HEARING =
@@ -250,7 +253,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                null,
+                mapAdditionalData(STRIKE_OUT_CLAIM),
                 List.of(
                     mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
