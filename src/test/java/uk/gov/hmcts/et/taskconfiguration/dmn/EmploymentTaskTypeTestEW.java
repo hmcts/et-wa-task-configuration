@@ -44,6 +44,8 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
                     Map.of("taskTypeId", "IssueInitialConsiderationDirections", "taskTypeName",
                            "Issue Initial Consideration Directions"),
 
+                    Map.of("taskTypeId", "ListAHearing", "taskTypeName", "List A Hearing"),
+
                     Map.of("taskTypeId", "ListServeClaim", "taskTypeName", "List/ Serve Claim"),
 
                     Map.of("taskTypeId", "SendEt1Notification", "taskTypeName", "SendEt1Notification"),
@@ -104,6 +106,6 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(21));
+        assertThat(logic.getRules().size(), is(22));
     }
 }

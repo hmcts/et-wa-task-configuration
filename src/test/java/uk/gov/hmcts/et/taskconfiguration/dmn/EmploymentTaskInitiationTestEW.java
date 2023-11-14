@@ -30,7 +30,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final DateTimeFormatter OLD_DATE_TIME_PATTERN =
         DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
-    public static final String RULE26_YES = "\"et3Rule26\":\"Yes\"";
+    public static final String RULE26_YES =
+        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3Rule26\":true}}}]";
 
     public static final String APPLICATION_COLLECTION =
         "\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]";
@@ -65,8 +66,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
         + "}";
     public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": [%s]";
     public static final String REFERRALREPLY = "{\"value\":"
-            + "{\"referralSubject\":\"%s\",\"directionTo\":\"%s\",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
-            + "}";
+        + "{\"referralSubject\":\"%s\",\"directionTo\":\"%s\",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
+        + "}";
 
     public static final String STRIKE_OUT_CLAIM =
         "\"etInitialConsiderationRule27\": {"
@@ -92,6 +93,42 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
     public static final String REFERRAL_REPLY_LEGALOFFICER =
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
+
+    public static final String LISTAHEARING_NOTPROCEED = "\"etICCanProceed\":false,"
+        + "\"etICHearingAlreadyListed\":true,"
+        + "\"etICHearingNotListedList\":["
+        + "\"List for preliminary hearing\","
+        + "\"Seek comments on the video hearing\","
+        + "\"List for final hearing\","
+        + "\"UDL hearing\"]";
+
+    public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
+        + "\"etICHearingAlreadyListed\":true,"
+        + "\"etICHearingNotListedList\":["
+        + "\"List for preliminary hearing\","
+        + "\"Seek comments on the video hearing\","
+        + "\"List for final hearing\","
+        + "\"UDL hearing\"]";
+
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_PRELIM = "\"etICCanProceed\":true,"
+        + "\"etICHearingAlreadyListed\":false,"
+        + "\"etICHearingNotListedList\":["
+        + "\"Seek comments on the video hearing\","
+        + "\"List for preliminary hearing\","
+        + "\"UDL hearing\"]";
+
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL = "\"etICCanProceed\":true,"
+        + "\"etICHearingAlreadyListed\":false,"
+        + "\"etICHearingNotListedList\":["
+        + "\"Seek comments on the video hearing\","
+        + "\"List for final hearing\","
+        + "\"UDL hearing\"]";
+
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_NONE = "\"etICCanProceed\":true,"
+        + "\"etICHearingAlreadyListed\":false,"
+        + "\"etICHearingNotListedList\":["
+        + "\"Seek comments on the video hearing\","
+        + "\"UDL hearing\"]";
 
     @BeforeAll
     public static void initialization() {
@@ -252,10 +289,85 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     )
                 )
             ),
-            Arguments.of(
+             Arguments.of(
                 "initialConsideration",
                 "Accepted",
                 mapAdditionalData(STRIKE_OUT_CLAIM),
+                List.of(
+                    mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    )
+                )
+            )
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
+                mapAdditionalData(LISTAHEARING_NOTPROCEED),
+                List.of(
+                    mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
+                mapAdditionalData(LISTAHEARING_PROCEED_LISTED),
+                List.of(
+                    mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    ),
+                    mapExpectedOutput(
+                        "ListAHearing",
+                        "List A Hearing",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
+                mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_PRELIM),
+                List.of(
+                    mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    ),
+                    mapExpectedOutput(
+                        "ListAHearing",
+                        "List A Hearing",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
+                mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL),
+                List.of(
+                    mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    ),
+                    mapExpectedOutput(
+                        "ListAHearing",
+                        "List A Hearing",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
+                mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
                 List.of(
                     mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
@@ -315,6 +427,18 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Complete Initial Consideration",
                         "processing"
                     ),
+                    mapExpectedOutput(
+                        "SendEt3Notification",
+                        "Send ET3 Notification",
+                        "processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                null,
+                List.of(
                     mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
@@ -453,7 +577,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(27));
+        assertThat(logic.getRules().size(), is(28));
     }
 
     private static Map<String, String> mapExpectedOutput(String taskId, String name, String processCategories) {

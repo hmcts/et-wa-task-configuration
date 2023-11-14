@@ -381,6 +381,7 @@
 "ET3Processing",
 "SendEt3Notification",
 "IssueInitialConsiderationDirections",
+"ListAHearing",
 "IssuePostHearingDirection",
 "IssueJudgment",
 "AmendClaimantDetails",
@@ -496,6 +497,64 @@
           <text>4</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ua2m4v">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w6j5or">
+        <inputEntry id="UnaryTests_11dadf3">
+          <text>"ListAHearing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1urdtkc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17r598l">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fybwz2">
+          <text>"regional-centre-team-leader"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ne6cin">
+          <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p1gyfe">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g7rrij">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1daoemn">
+          <text>6</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01y4axq">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wduh70">
+        <inputEntry id="UnaryTests_00rznrz">
+          <text>"ListAHearing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13euj21">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yin0s7">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rwzsoq">
+          <text>"regional-centre-admin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1opyaow">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gfko1u">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fbyoy8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dec71f">
+          <text>4</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vudchr">
           <text>false</text>
         </outputEntry>
       </rule>
