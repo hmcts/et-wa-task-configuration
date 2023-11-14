@@ -300,7 +300,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Hearing"
                     )
                 )
-            )
+            ),
             Arguments.of(
                 "initialConsideration",
                 "Accepted",

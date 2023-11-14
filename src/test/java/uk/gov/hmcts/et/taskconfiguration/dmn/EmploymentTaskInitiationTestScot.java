@@ -374,7 +374,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Hearing"
                     )
                 )
-            )
+            ),
             Arguments.of(
                 "preAcceptanceCase",
                 "Accepted",
