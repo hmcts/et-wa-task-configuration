@@ -435,7 +435,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gqaqfz">
-          <text>"[List Hearing](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendHearing/addAmendHearing1) or [TODO](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendHearing/addAmendHearing1)"</text>
+          <text>"[List Hearing](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendHearing/addAmendHearing1) or [Generate Issue Initial Consideration Directions Task](/cases/case-details/${[CASE_REFERENCE]}/trigger/issueInitialConsiderationDirectionsWA/submit)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sb04tj">
           <text>true</text>
