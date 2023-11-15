@@ -109,8 +109,8 @@ then additionalData.Data.etInitialConsiderationRule27.etICRule27ClaimToBe
 else if (additionalData != null
 and additionalData.Data != null
 and additionalData.Data.etInitialConsiderationRule28 != null 
-and additionalData.Data.etInitialConsiderationRule27.etICRule28ClaimToBe != null)
-then additionalData.Data.etInitialConsiderationRule27.etICRule28ClaimToBe
+and additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe != null)
+then additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe
 else null</text>
         </inputExpression>
       </input>
