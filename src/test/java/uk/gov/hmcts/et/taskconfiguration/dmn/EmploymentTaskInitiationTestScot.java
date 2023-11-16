@@ -69,6 +69,10 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         + "{\"referralSubject\":\"%s\",\"directionTo\":\"%s\",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
         + "}";
 
+    public static final String STRIKE_OUT_CLAIM =
+        "\"etInitialConsiderationRule27\": {"
+            + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
+            + "}";
     public static final String REFERRAL_ADMIN =
         createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "Yes", "", "");
     public static final String REFERRAL_ADMIN_HEARING =
@@ -88,14 +92,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
     public static final String REFERRAL_REPLY_LEGALOFFICER =
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
-
-    public static final String LISTAHEARING_NOTPROCEED = "\"etICCanProceed\":false,"
-        + "\"etICHearingAlreadyListed\":true,"
-        + "\"etICHearingNotListedList\":["
-        + "\"List for preliminary hearing\","
-        + "\"Seek comments on the video hearing\","
-        + "\"List for final hearing\","
-        + "\"UDL hearing\"]";
 
     public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":true,"
@@ -118,6 +114,15 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         + "\"Seek comments on the video hearing\","
         + "\"List for final hearing\","
         + "\"UDL hearing\"]";
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM = "\"etICCanProceed\":true,"
+        + "\"etICHearingAlreadyListed\":false,"
+        + "\"etICHearingNotListedList\":["
+        + "\"Seek comments on the video hearing\","
+        + "\"List for final hearing\","
+        + "\"UDL hearing\"],"
+        + "\"etInitialConsiderationRule27\": {"
+        + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
+        + "}";
 
     public static final String LISTAHEARING_PROCEED_NOTLISTED_NONE = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
@@ -284,11 +289,10 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     )
                 )
             ),
-
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                mapAdditionalData(LISTAHEARING_NOTPROCEED),
+                mapAdditionalData(STRIKE_OUT_CLAIM),
                 List.of(
                     mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
@@ -303,11 +307,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 mapAdditionalData(LISTAHEARING_PROCEED_LISTED),
                 List.of(
                     mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
-                        "Hearing"
-                    ),
-                    mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
@@ -319,11 +318,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_PRELIM),
                 List.of(
-                    mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
-                        "Hearing"
-                    ),
                     mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
@@ -337,11 +331,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL),
                 List.of(
                     mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
-                        "Hearing"
-                    ),
-                    mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
@@ -352,10 +341,21 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "initialConsideration",
                 "Accepted",
                 mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
+                List.of()
+            ),
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
+                mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM),
                 List.of(
                     mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
                         "Issue Initial Consideration Directions",
+                        "Hearing"
+                    ),
+                    mapExpectedOutput(
+                        "ListAHearing",
+                        "List A Hearing",
                         "Hearing"
                     )
                 )
