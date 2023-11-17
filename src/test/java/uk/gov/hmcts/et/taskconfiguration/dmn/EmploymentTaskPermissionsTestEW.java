@@ -123,6 +123,20 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "ADMIN"
     );
+    private static final Map<String, Serializable> regionalCentreTeamLeader = Map.of(
+        "autoAssignable", false,
+        "assignmentPriority", 6,
+        "name", "regional-centre-team-leader",
+        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
+        "roleCategory", "ADMIN"
+    );
+    private static final Map<String, Serializable> regionalCentreAdmin = Map.of(
+        "autoAssignable", false,
+        "assignmentPriority", 4,
+        "name", "regional-centre-admin",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "ADMIN"
+    );
 
     private static final Map<String, Serializable> approverCTSC = Map.of(
         "autoAssignable", true,
@@ -325,6 +339,24 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
+                )
+            ),
+            Arguments.of(
+                "ListAHearing",
+                List.of(
+                    taskSupervisor,
+                    allocatedAdminCaseworker,
+                    regionalCentreTeamLeader,
+                    regionalCentreAdmin
+                )
+            ),
+            Arguments.of(
+                "issueInitialConsiderationDirectionsWA",
+                List.of(
+                    taskSupervisor,
+                    allocatedAdminCaseworker,
+                    regionalCentreTeamLeader,
+                    regionalCentreAdmin
                 )
             ),
             Arguments.of(

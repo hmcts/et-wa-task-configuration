@@ -641,6 +641,53 @@ else null</text>
           <text>"processing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0to8dg1">
+        <inputEntry id="UnaryTests_04ssd5z">
+          <text>"initialConsideration"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ecb7z5">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nip926">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1io1ney">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kj1gv8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hrrgom">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17hhe3m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tokhnl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01padxc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07dj3c1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cxqk75">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04t27c3">
+          <text>"ListAHearing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10ljn92">
+          <text>"List A Hearing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jpj3jh">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00i4psd">
+          <text>"Hearing"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_19ohdmd">
         <inputEntry id="UnaryTests_03hjwfc">
           <text>"initialConsideration"</text>
@@ -688,50 +735,50 @@ else null</text>
           <text>"Hearing"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0to8dg1">
-        <inputEntry id="UnaryTests_04ssd5z">
-          <text>"initialConsideration"</text>
+      <rule id="DecisionRule_07q8gds">
+        <inputEntry id="UnaryTests_1lvorua">
+          <text>"issueInitialConsiderationDirectionsWA"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1ecb7z5">
+        <inputEntry id="UnaryTests_0f2sq7r">
           <text>"Accepted"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1nip926">
+        <inputEntry id="UnaryTests_1e4vuqa">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1io1ney">
+        <inputEntry id="UnaryTests_1tm4ajr">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1kj1gv8">
+        <inputEntry id="UnaryTests_1kldm4s">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1hrrgom">
-          <text>true</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_17hhe3m">
+        <inputEntry id="UnaryTests_01ksbp2">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1tokhnl">
+        <inputEntry id="UnaryTests_0ar1w6h">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_01padxc">
+        <inputEntry id="UnaryTests_1kwxnlm">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_07dj3c1">
+        <inputEntry id="UnaryTests_1b4i0ep">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0cxqk75">
+        <inputEntry id="UnaryTests_1o5oofw">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_04t27c3">
-          <text>"ListAHearing"</text>
+        <inputEntry id="UnaryTests_0ye9jgs">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17tkp20">
+          <text>"IssueInitialConsiderationDirections"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_10ljn92">
-          <text>"List A Hearing"</text>
+        <outputEntry id="LiteralExpression_0qrbc97">
+          <text>"Issue Initial Consideration Directions"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1jpj3jh">
+        <outputEntry id="LiteralExpression_1oo0xmn">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_00i4psd">
+        <outputEntry id="LiteralExpression_0axgb0x">
           <text>"Hearing"</text>
         </outputEntry>
       </rule>
