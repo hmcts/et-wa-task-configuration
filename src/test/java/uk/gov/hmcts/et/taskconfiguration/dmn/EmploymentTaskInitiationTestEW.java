@@ -348,13 +348,25 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM),
                 List.of(
                     mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
+                        "ListAHearing",
+                        "List A Hearing",
                         "Hearing"
                     ),
                     mapExpectedOutput(
-                        "ListAHearing",
-                        "List A Hearing",
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "issueInitialConsiderationDirectionsWA",
+                "Accepted",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
                         "Hearing"
                     )
                 )
@@ -560,7 +572,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(28));
+        assertThat(logic.getRules().size(), is(29));
     }
 
     private static Map<String, String> mapExpectedOutput(String taskId, String name, String processCategories) {
