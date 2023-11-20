@@ -281,11 +281,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "ET3Processing",
                         "ET3 Processing",
                         "processing"
-                    ),
+                    )
+                )
+            ),
+            Arguments.of(
+                "uploadDocumentForServing",
+                "Accepted",
+                null,
+                List.of(
                     mapExpectedOutput(
                         "ReviewRule21Referral",
                         "Review Rule 21 Referral",
-                        "processing"
+                        "ReviewRule21Referral"
                     )
                 )
             ),

@@ -594,6 +594,53 @@ else null</text>
           <text>"processing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1cvmo3m">
+        <inputEntry id="UnaryTests_1if2ltu">
+          <text>"uploadDocumentForServing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d64dbm">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19zrr2q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h75cox">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0htl5u7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19gf7l1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00tl7fh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bxti2c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0auxu8q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1st3wsl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qi3kqg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ytrqr1">
+          <text>"ReviewRule21Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0csgs0c">
+          <text>"Review Rule 21 Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uhsinc">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vy4nwa">
+          <text>"ReviewRule21Referral"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ntdndx">
         <inputEntry id="UnaryTests_0rhsg81">
           <text>"et3Response"</text>
@@ -921,53 +968,6 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19akwho">
           <text>"Judgment"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1cvmo3m">
-        <inputEntry id="UnaryTests_1if2ltu">
-          <text>"et3Response"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1d64dbm">
-          <text>"Accepted"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_19zrr2q">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0h75cox">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0htl5u7">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_19gf7l1">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_00tl7fh">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1bxti2c">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0auxu8q">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1st3wsl">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1qi3kqg">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0ytrqr1">
-          <text>"ReviewRule21Referral"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0csgs0c">
-          <text>"Review Rule 21 Referral"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0uhsinc">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1vy4nwa">
-          <text>"processing"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0edeiu4">
