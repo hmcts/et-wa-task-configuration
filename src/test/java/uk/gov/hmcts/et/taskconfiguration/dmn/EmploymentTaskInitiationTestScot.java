@@ -244,7 +244,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
                         "Review Referral Response - Referral Subject 1",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -256,7 +256,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
                         "Review Referral Response - Referral Subject 1",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -268,7 +268,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
                         "Review Referral Response - Referral Subject 1",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -280,7 +280,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "ET3Processing",
                         "ET3 Processing",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -428,12 +428,12 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "CompleteInitialConsideration",
                         "Complete Initial Consideration",
-                        "processing"
+                        "Processing"
                     ),
                     mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -445,7 +445,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),

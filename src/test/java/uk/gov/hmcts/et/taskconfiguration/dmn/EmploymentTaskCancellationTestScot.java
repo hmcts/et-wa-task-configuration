@@ -40,7 +40,7 @@ class EmploymentTaskCancellationTestScot extends DmnDecisionTableBaseUnitTest {
                     ),
                    Map.of(
                         "action", "Cancel",
-                        "processCategories", "processing"
+                        "processCategories", "Processing"
                     ),
                     Map.of(
                         "action", "Cancel",
