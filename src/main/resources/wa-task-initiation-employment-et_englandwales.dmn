@@ -635,7 +635,12 @@ else null</text>
           <text>"Review Rule 21 Referral"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uhsinc">
-          <text></text>
+          <text>if (additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.bfActions!=null
+and count(additionalData.Data.bfActions) &gt; 0)
+then (date(additionalData.Data.bfActions[1].value.bfDate) - today()).days
+else 0</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vy4nwa">
           <text>"ReviewRule21Referral"</text>
