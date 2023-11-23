@@ -353,17 +353,6 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "issueInitialConsiderationDirectionsWA",
-                List.of(
-                    taskSupervisor,
-                    allocatedAdminCaseworker,
-                    hearingCentreTeamLeader,
-                    hearingCentreAdmin,
-                    regionalCentreTeamLeader,
-                    regionalCentreAdmin
-                )
-            ),
-            Arguments.of(
                 "IssueInitialConsiderationDirections",
                 List.of(
                     taskSupervisor,

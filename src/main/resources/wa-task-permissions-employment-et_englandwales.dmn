@@ -387,8 +387,7 @@
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
-"ListAHearing",
-"issueInitialConsiderationDirectionsWA"</text>
+"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
           <text></text>
@@ -432,8 +431,7 @@
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
-"ListAHearing",
-"issueInitialConsiderationDirectionsWA"</text>
+"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
           <text></text>
@@ -477,8 +475,7 @@
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
-"ListAHearing",
-"issueInitialConsiderationDirectionsWA"</text>
+"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
           <text></text>
@@ -507,8 +504,7 @@
       </rule>
       <rule id="DecisionRule_0w6j5or">
         <inputEntry id="UnaryTests_11dadf3">
-          <text>"ListAHearing",
-"issueInitialConsiderationDirectionsWA"</text>
+          <text>"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1urdtkc">
           <text></text>
@@ -537,8 +533,7 @@
       </rule>
       <rule id="DecisionRule_0wduh70">
         <inputEntry id="UnaryTests_00rznrz">
-          <text>"ListAHearing",
-"issueInitialConsiderationDirectionsWA"</text>
+          <text>"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_13euj21">
           <text></text>
