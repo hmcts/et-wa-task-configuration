@@ -346,6 +346,8 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     taskSupervisor,
                     allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin,
                     regionalCentreTeamLeader,
                     regionalCentreAdmin
                 )
@@ -355,6 +357,8 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     taskSupervisor,
                     allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin,
                     regionalCentreTeamLeader,
                     regionalCentreAdmin
                 )

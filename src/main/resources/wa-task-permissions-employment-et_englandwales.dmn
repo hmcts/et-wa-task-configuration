@@ -381,14 +381,14 @@
 "ET3Processing",
 "SendEt3Notification",
 "IssueInitialConsiderationDirections",
-"ListAHearing",
-"issueInitialConsiderationDirectionsWA",
 "IssuePostHearingDirection",
 "IssueJudgment",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"ContactTribunalWithAnApplication"</text>
+"ContactTribunalWithAnApplication",
+"ListAHearing",
+"issueInitialConsiderationDirectionsWA"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
           <text></text>
@@ -431,7 +431,9 @@
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"ContactTribunalWithAnApplication"</text>
+"ContactTribunalWithAnApplication",
+"ListAHearing",
+"issueInitialConsiderationDirectionsWA"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
           <text></text>
@@ -474,7 +476,9 @@
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"ContactTribunalWithAnApplication"</text>
+"ContactTribunalWithAnApplication",
+"ListAHearing",
+"issueInitialConsiderationDirectionsWA"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
           <text></text>
