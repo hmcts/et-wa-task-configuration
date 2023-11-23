@@ -346,15 +346,8 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     taskSupervisor,
                     allocatedAdminCaseworker,
-                    regionalCentreTeamLeader,
-                    regionalCentreAdmin
-                )
-            ),
-            Arguments.of(
-                "issueInitialConsiderationDirectionsWA",
-                List.of(
-                    taskSupervisor,
-                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin,
                     regionalCentreTeamLeader,
                     regionalCentreAdmin
                 )

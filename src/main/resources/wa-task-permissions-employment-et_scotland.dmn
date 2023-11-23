@@ -381,14 +381,13 @@
 "ET3Processing",
 "SendEt3Notification",
 "IssueInitialConsiderationDirections",
-"ListAHearing",
-"issueInitialConsiderationDirectionsWA",
 "IssuePostHearingDirection",
 "IssueJudgment",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"ContactTribunalWithAnApplication"</text>
+"ContactTribunalWithAnApplication",
+"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
           <text></text>
@@ -431,7 +430,8 @@
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"ContactTribunalWithAnApplication"</text>
+"ContactTribunalWithAnApplication",
+"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
           <text></text>
@@ -474,7 +474,8 @@
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"ContactTribunalWithAnApplication"</text>
+"ContactTribunalWithAnApplication",
+"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
           <text></text>
@@ -503,8 +504,7 @@
       </rule>
       <rule id="DecisionRule_0pc18cl">
         <inputEntry id="UnaryTests_0flkxo9">
-          <text>"ListAHearing",
-"issueInitialConsiderationDirectionsWA"</text>
+          <text>"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1li4c4x">
           <text></text>
@@ -533,8 +533,7 @@
       </rule>
       <rule id="DecisionRule_0aoiqt7">
         <inputEntry id="UnaryTests_0q9pq18">
-          <text>"ListAHearing",
-"issueInitialConsiderationDirectionsWA"</text>
+          <text>"ListAHearing"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0oajq8d">
           <text></text>
