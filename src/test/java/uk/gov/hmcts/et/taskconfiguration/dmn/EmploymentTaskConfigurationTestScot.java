@@ -451,16 +451,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "/trigger/addAmendJudgment/addAmendJudgment1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descUpdateClaimantDetails = List.of(Map.of(
+        List<Map<String, Object>> descApplicationsTab = List.of(Map.of(
             "name", "description",
-            "value", "[Update Claimant Details](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/amendClaimantDetails/amendClaimantDetails1)",
-            "canReconfigure", true
-        ));
-        List<Map<String, Object>> descUpdateRespondentDetails = List.of(Map.of(
-            "name", "description",
-            "value", "[Update Respondent Details](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/amendRespondentDetails/amendRespondentDetails1)",
+            "value", "[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descCloseCase = List.of(Map.of(
@@ -507,12 +500,12 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ET3Processing", descET3Processing),
 
             Arguments.of("ReviewRule21Referral", descCreateReferral),
-            Arguments.of("ContactTribunalWithAnApplication", descCreateReferral),
 
             Arguments.of("DraftAndSignJudgment", descAddJudgment),
 
-            Arguments.of("AmendClaimantDetails", descUpdateClaimantDetails),
-            Arguments.of("AmendRespondentDetails", descUpdateRespondentDetails),
+            Arguments.of("ContactTribunalWithAnApplication", descApplicationsTab),
+            Arguments.of("AmendClaimantDetails", descApplicationsTab),
+            Arguments.of("AmendRespondentDetails", descApplicationsTab),
 
             Arguments.of("IssueJudgment", descCloseCase),
 
@@ -849,7 +842,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(52));
+        assertThat(logic.getRules().size(), is(51));
     }
 
     private static Map<String, Object> mapData(String source) {

@@ -481,8 +481,7 @@ else "1234"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1upl2e0">
-          <text>"ReviewRule21Referral",
-"ContactTribunalWithAnApplication"</text>
+          <text>"ReviewRule21Referral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uttcm7">
           <text>"description"</text>
@@ -516,32 +515,17 @@ else "1234"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_084mxl9">
-          <text>"AmendClaimantDetails"</text>
+          <text>"ContactTribunalWithAnApplication",
+"AmendClaimantDetails",
+"AmendRespondentDetails"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0cakil9">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0trcq8d">
-          <text>"[Update Claimant Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)"</text>
+          <text>"[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_136d3sz">
-        <inputEntry id="UnaryTests_1veneqq">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0mc2ryf">
-          <text>"AmendRespondentDetails"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_15hl68v">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_04s7gmq">
-          <text>"[Update Respondent Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_13no40g">
           <text>true</text>
         </outputEntry>
       </rule>
