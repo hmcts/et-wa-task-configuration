@@ -464,13 +464,6 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             "value", "[Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descCreateReferralCloseCase = List.of(Map.of(
-            "name", "description",
-            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/closeReferral/closeReferral1) "
-                + "or [Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)",
-            "canReconfigure", true
-        ));
         List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
             "name", "description",
             "value", "[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
@@ -509,10 +502,9 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ContactTribunalWithAnApplication", descApplicationsTab),
             Arguments.of("AmendClaimantDetails", descApplicationsTab),
             Arguments.of("AmendRespondentDetails", descApplicationsTab),
+            Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
 
             Arguments.of("IssueJudgment", descCloseCase),
-
-            Arguments.of("WithdrawAllOrPartOfCase", descCreateReferralCloseCase),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -845,7 +837,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(51));
+        assertThat(logic.getRules().size(), is(50));
     }
 
     private static Map<String, Object> mapData(String source) {

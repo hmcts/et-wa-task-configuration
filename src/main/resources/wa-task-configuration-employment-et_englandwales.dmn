@@ -517,7 +517,8 @@ else "1234"</text>
         <inputEntry id="UnaryTests_084mxl9">
           <text>"ContactTribunalWithAnApplication",
 "AmendClaimantDetails",
-"AmendRespondentDetails"</text>
+"AmendRespondentDetails",
+"WithdrawAllOrPartOfCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0cakil9">
           <text>"description"</text>
@@ -543,23 +544,6 @@ else "1234"</text>
           <text>"[Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17bw4fs">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1hx0oqp">
-        <inputEntry id="UnaryTests_1o7293h">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_102pi1k">
-          <text>"WithdrawAllOrPartOfCase"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0j05fcd">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1) or [Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1hnp98x">
           <text>true</text>
         </outputEntry>
       </rule>
