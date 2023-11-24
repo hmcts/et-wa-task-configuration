@@ -349,32 +349,15 @@ else "1234"</text>
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0abku11">
-        <description></description>
-        <inputEntry id="UnaryTests_0xt95i9">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_136m8g2">
-          <text>"ReviewReferralAdmin",
-"ReviewReferralResponseAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0uxjjxf">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_02zdiu5">
-          <text>"[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0s7te75">
-          <text>true</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_02k4psa">
         <inputEntry id="UnaryTests_1v1y792">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1rwubnw">
-          <text>"ReviewReferralJudiciary",
+          <text>"ReviewReferralAdmin",
+"ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
+"ReviewReferralResponseAdmin",
 "ReviewReferralResponseJudiciary",
 "ReviewReferralResponseLegalOps"</text>
         </inputEntry>
@@ -382,7 +365,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14vawv2">
-          <text>"[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1) or [Accept/Reject Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/preAcceptanceCase/preAcceptanceCase1)"</text>
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gw6v67">
           <text>true</text>
