@@ -397,20 +397,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "[ET1 Vetting](/cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descReplyCloseReferral = List.of(Map.of(
+        List<Map<String, Object>> descReferralTab = List.of(Map.of(
             "name", "description",
-            "value", "[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/replyToReferral/replyToReferral1) "
-                + "or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)",
-            "canReconfigure", true
-        ));
-        List<Map<String, Object>> descReplyCloseReferralAcceptCase = List.of(Map.of(
-            "name", "description",
-            "value", "[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/replyToReferral/replyToReferral1) "
-                + "or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1) "
-                + "or [Accept/Reject Case](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/preAcceptanceCase/preAcceptanceCase1)",
+            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descUploadDocForServing = List.of(Map.of(
@@ -462,28 +451,14 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "/trigger/addAmendJudgment/addAmendJudgment1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descUpdateClaimantDetails = List.of(Map.of(
+        List<Map<String, Object>> descApplicationsTab = List.of(Map.of(
             "name", "description",
-            "value", "[Update Claimant Details](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/amendClaimantDetails/amendClaimantDetails1)",
-            "canReconfigure", true
-        ));
-        List<Map<String, Object>> descUpdateRespondentDetails = List.of(Map.of(
-            "name", "description",
-            "value", "[Update Respondent Details](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/amendRespondentDetails/amendRespondentDetails1)",
+            "value", "[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descCloseCase = List.of(Map.of(
             "name", "description",
             "value", "[Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)",
-            "canReconfigure", true
-        ));
-        List<Map<String, Object>> descCreateReferralCloseCase = List.of(Map.of(
-            "name", "description",
-            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/closeReferral/closeReferral1) "
-                + "or [Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
@@ -496,13 +471,12 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         return Stream.of(
             Arguments.of("Et1Vetting", descET1Vetting),
 
-            Arguments.of("ReviewReferralAdmin", descReplyCloseReferral),
-            Arguments.of("ReviewReferralResponseAdmin", descReplyCloseReferral),
-
-            Arguments.of("ReviewReferralJudiciary", descReplyCloseReferralAcceptCase),
-            Arguments.of("ReviewReferralLegalOps", descReplyCloseReferralAcceptCase),
-            Arguments.of("ReviewReferralResponseJudiciary", descReplyCloseReferralAcceptCase),
-            Arguments.of("ReviewReferralResponseLegalOps", descReplyCloseReferralAcceptCase),
+            Arguments.of("ReviewReferralAdmin", descReferralTab),
+            Arguments.of("ReviewReferralJudiciary", descReferralTab),
+            Arguments.of("ReviewReferralLegalOps", descReferralTab),
+            Arguments.of("ReviewReferralResponseAdmin", descReferralTab),
+            Arguments.of("ReviewReferralResponseJudiciary", descReferralTab),
+            Arguments.of("ReviewReferralResponseLegalOps", descReferralTab),
 
             Arguments.of("ListServeClaim", descUploadDocForServing),
 
@@ -519,16 +493,15 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ET3Processing", descET3Processing),
 
             Arguments.of("ReviewRule21Referral", descCreateReferral),
-            Arguments.of("ContactTribunalWithAnApplication", descCreateReferral),
 
             Arguments.of("DraftAndSignJudgment", descAddJudgment),
 
-            Arguments.of("AmendClaimantDetails", descUpdateClaimantDetails),
-            Arguments.of("AmendRespondentDetails", descUpdateRespondentDetails),
+            Arguments.of("ContactTribunalWithAnApplication", descApplicationsTab),
+            Arguments.of("AmendClaimantDetails", descApplicationsTab),
+            Arguments.of("AmendRespondentDetails", descApplicationsTab),
+            Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
 
             Arguments.of("IssueJudgment", descCloseCase),
-
-            Arguments.of("WithdrawAllOrPartOfCase", descCreateReferralCloseCase),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -861,7 +834,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(53));
+        assertThat(logic.getRules().size(), is(50));
     }
 
     private static Map<String, Object> mapData(String source) {

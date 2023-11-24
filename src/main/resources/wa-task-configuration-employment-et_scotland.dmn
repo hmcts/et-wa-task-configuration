@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.14.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0">
   <decision id="wa-task-configuration-employment-et_scotland" name="ET Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -349,32 +349,15 @@ else "1234"</text>
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0abku11">
-        <description></description>
-        <inputEntry id="UnaryTests_0xt95i9">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_136m8g2">
-          <text>"ReviewReferralAdmin",
-"ReviewReferralResponseAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0uxjjxf">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_02zdiu5">
-          <text>"[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0s7te75">
-          <text>true</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_02k4psa">
         <inputEntry id="UnaryTests_1v1y792">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1rwubnw">
-          <text>"ReviewReferralJudiciary",
+          <text>"ReviewReferralAdmin",
+"ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
+"ReviewReferralResponseAdmin",
 "ReviewReferralResponseJudiciary",
 "ReviewReferralResponseLegalOps"</text>
         </inputEntry>
@@ -382,7 +365,7 @@ else "1234"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14vawv2">
-          <text>"[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1) or [Accept/Reject Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/preAcceptanceCase/preAcceptanceCase1)"</text>
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gw6v67">
           <text>true</text>
@@ -498,8 +481,7 @@ else "1234"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0gstj6a">
-          <text>"ReviewRule21Referral",
-"ContactTribunalWithAnApplication"</text>
+          <text>"ReviewRule21Referral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0kitfsk">
           <text>"description"</text>
@@ -533,32 +515,18 @@ else "1234"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_102pi1k">
-          <text>"AmendClaimantDetails"</text>
+          <text>"ContactTribunalWithAnApplication",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
+"WithdrawAllOrPartOfCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0j05fcd">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"[Update Claimant Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)"</text>
+          <text>"[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1uik1j4">
-        <inputEntry id="UnaryTests_0f4x4tl">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1lpzzn0">
-          <text>"AmendRespondentDetails"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0zhywdp">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1au44ex">
-          <text>"[Update Respondent Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_00s5pc2">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -576,23 +544,6 @@ else "1234"</text>
           <text>"[Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13no40g">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0kc6n4b">
-        <inputEntry id="UnaryTests_0820zvv">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0yw8dzs">
-          <text>"WithdrawAllOrPartOfCase"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_00gnug1">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_16xi0q8">
-          <text>"[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1) or [Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0oya7dl">
           <text>true</text>
         </outputEntry>
       </rule>
