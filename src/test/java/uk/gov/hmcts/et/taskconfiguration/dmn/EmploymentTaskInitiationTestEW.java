@@ -264,7 +264,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
-                        "Review Referral Response - Referral Subject 1",
+                        "Review Referral #1 - Referral Subject 1 Response",
                         "Processing"
                     )
                 )
