@@ -66,7 +66,8 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         + "}";
     public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": [%s]";
     public static final String REFERRALREPLY = "{\"value\":"
-        + "{\"referralSubject\":\"%s\",\"directionTo\":\"%s\",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
+        + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"directionTo\":\"%s\""
+        + ",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
         + "}";
 
     public static final String STRIKE_OUT_CLAIM =
@@ -156,7 +157,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral - Referral Subject 2",
+                        "Review Referral #2 - Referral Subject 2",
                         "Vetting"
                     )
                 )
@@ -168,7 +169,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral - Hearings",
+                        "Review Referral #2 - Hearings",
                         "Vetting"
                     ),
                     mapExpectedOutput(
@@ -185,7 +186,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral - Judgment",
+                        "Review Referral #2 - Judgment",
                         "Vetting"
                     ),
                     mapExpectedOutput(
@@ -202,7 +203,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralJudiciary",
-                        "Review Referral - Referral Subject 2",
+                        "Review Referral #2 - Referral Subject 2",
                         "Vetting"
                     )
                 )
@@ -214,7 +215,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralJudiciary",
-                        "Review Referral - Rule 21",
+                        "Review Referral #2 - Rule 21",
                         "Vetting"
                     ),
                     mapExpectedOutput(
@@ -231,7 +232,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralLegalOps",
-                        "Review Referral - Referral Subject 2",
+                        "Review Referral #2 - Referral Subject 2",
                         "Vetting"
                     )
                 )
@@ -243,7 +244,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
-                        "Review Referral Response - Referral Subject 1",
+                        "Review Referral #1 - Referral Subject 1 Response",
                         "processing"
                     )
                 )
@@ -255,7 +256,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
-                        "Review Referral Response - Referral Subject 1",
+                        "Review Referral #1 - Referral Subject 1 Response",
                         "processing"
                     )
                 )
@@ -267,7 +268,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
-                        "Review Referral Response - Referral Subject 1",
+                        "Review Referral #1 - Referral Subject 1 Response",
                         "processing"
                     )
                 )
@@ -606,16 +607,19 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         if (!referralDirectionTo.isEmpty()) {
             LocalDateTime now = LocalDateTime.now();
             String reply1 = String.format(REFERRALREPLY,
+                                          "1",
                                           referralSubject1,
                                           referralDirectionTo,
                                           referralReplyUrgency,
                                           now.plusHours(1).format(OLD_DATE_TIME_PATTERN));
             String reply2 = String.format(REFERRALREPLY,
+                                          "2",
                                           referralSubject2,
                                           referralDirectionTo,
                                           referralReplyUrgency,
                                           now.plusHours(2).format(OLD_DATE_TIME_PATTERN));
             String reply3 = String.format(REFERRALREPLY,
+                                          "1",
                                           referralSubject1,
                                           referralDirectionTo,
                                           referralReplyUrgency,
