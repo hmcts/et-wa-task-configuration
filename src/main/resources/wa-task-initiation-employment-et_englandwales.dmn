@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN">
+    <informationRequirement id="InformationRequirement_0dnw86r">
+      <requiredDecision href="#Decision_0la4l4o" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_19o3lfi">
+      <requiredDecision href="#Decision_0dpy65m" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" biodi:width="342" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -103,19 +109,19 @@ else null</text>
         <inputExpression id="LiteralExpression_08q2e16" typeRef="string">
           <text>if(additionalData != null
 and additionalData.Data != null
-and additionalData.Data.etInitialConsiderationRule27 != null 
+and additionalData.Data.etInitialConsiderationRule27 != null
 and additionalData.Data.etInitialConsiderationRule27.etICRule27ClaimToBe != null)
 then additionalData.Data.etInitialConsiderationRule27.etICRule27ClaimToBe
 else if (additionalData != null
 and additionalData.Data != null
-and additionalData.Data.etInitialConsiderationRule28 != null 
+and additionalData.Data.etInitialConsiderationRule28 != null
 and additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe != null)
 then additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe
 else null</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
-      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="369" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
       <rule id="DecisionRule_1sfku1u">
@@ -203,8 +209,7 @@ else null</text>
           <text>"ReviewReferralAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16yf2nj">
-          <text>"Review Referral - "
-+ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
+          <text>LATEST_REFERRAL_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n9o39e">
           <text></text>
@@ -345,8 +350,7 @@ else null</text>
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16t7tco">
-          <text>"Review Referral - "
-+ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
+          <text>LATEST_REFERRAL_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zdr7bg">
           <text></text>
@@ -440,8 +444,7 @@ else null</text>
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1x90otf">
-          <text>"Review Referral - "
-+ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]</text>
+          <text>LATEST_REFERRAL_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0iaqh1t">
           <text></text>
@@ -488,8 +491,7 @@ else null</text>
           <text>"ReviewReferralResponseAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qcsldu">
-          <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000")).value.referralSubject[1]</text>
+          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
@@ -536,8 +538,7 @@ else null</text>
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08j7d7p">
-          <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000")).value.referralSubject[1]</text>
+          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zcsqzi">
           <text></text>
@@ -584,8 +585,7 @@ else null</text>
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03wz7tv">
-          <text>"Review Referral Response - "
-+ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000")).value.referralSubject[1]</text>
+          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14hvioj">
           <text></text>
@@ -1545,10 +1545,57 @@ else null</text>
       </rule>
     </decisionTable>
   </decision>
+  <decision id="Decision_0la4l4o" name="Latest Referral Reply - Task Name">
+    <variable id="InformationItem_1qtatvh" name="LATEST_REFERRAL_REPLY_TASK_NAME" typeRef="string" />
+    <literalExpression id="LiteralExpression_0h88al5">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then 
+"Review Referral #"
++ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.referralNumber
++ " - "
++ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.referralSubject
++ " Response"
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0dpy65m" name="Latest Referral - Task Name">
+    <variable id="InformationItem_0r9rcnq" name="LATEST_REFERRAL_TASK_NAME" typeRef="string" />
+    <literalExpression id="LiteralExpression_0sbx49n">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0)
+then
+"Review Referral #"
++ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralNumber
++ " - "
++ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralSubject
+else null</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_englandwales">
-        <dc:Bounds height="80" width="180" x="150" y="80" />
+        <dc:Bounds height="80" width="180" x="270" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0s4sgvn" dmnElementRef="InformationRequirement_0dnw86r">
+        <di:waypoint x="460" y="210" />
+        <di:waypoint x="390" y="180" />
+        <di:waypoint x="390" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1r683zz" dmnElementRef="Decision_0la4l4o">
+        <dc:Bounds height="80" width="180" x="370" y="210" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_13aw784" dmnElementRef="InformationRequirement_19o3lfi">
+        <di:waypoint x="250" y="210" />
+        <di:waypoint x="330" y="180" />
+        <di:waypoint x="330" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_125889q" dmnElementRef="Decision_0dpy65m">
+        <dc:Bounds height="80" width="180" x="160" y="210" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
