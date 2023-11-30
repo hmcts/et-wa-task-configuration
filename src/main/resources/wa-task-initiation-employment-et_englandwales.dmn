@@ -648,7 +648,7 @@ else 0</text>
       </rule>
       <rule id="DecisionRule_0ntdndx">
         <inputEntry id="UnaryTests_0rhsg81">
-          <text>"et3Response"</text>
+          <text>"submitEt3"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tdixaj">
           <text>"Accepted"</text>

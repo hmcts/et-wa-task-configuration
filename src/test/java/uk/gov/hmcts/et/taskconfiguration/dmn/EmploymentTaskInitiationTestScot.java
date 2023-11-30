@@ -282,7 +282,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "et3Response",
+                "submitEt3",
                 "Accepted",
                 null,
                 List.of(
