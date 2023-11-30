@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.io.IOException;
@@ -23,7 +24,6 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_INITIATION_ET_SCOTLAND;
 
 class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
 
@@ -70,10 +70,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         + ",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
         + "}";
 
-    public static final String STRIKE_OUT_CLAIM =
-        "\"etInitialConsiderationRule27\": {"
-            + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
-            + "}";
     public static final String REFERRAL_ADMIN =
         createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "Yes", "", "");
     public static final String REFERRAL_ADMIN_HEARING =
@@ -131,9 +127,21 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         + "\"Seek comments on the video hearing\","
         + "\"UDL hearing\"]";
 
+    public static final String STRIKE_OUT_CLAIM =
+        "\"etInitialConsiderationRule27\": {"
+            + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
+            + "}";
+
+    public static final DateTimeFormatter BF_DATE_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static final int BROUGHT_FORWARD_AMOUNT = 3;
+    public static final String BROUGHT_FORWARD = "\"bfActions\":["
+        + "{\"value\":{\"bfDate\":\""
+        + LocalDateTime.now().plusDays(BROUGHT_FORWARD_AMOUNT).format(BF_DATE_PATTERN)
+        + "\"}}]";
+
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_INITIATION_ET_SCOTLAND;
+        CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_ET_SCOTLAND;
     }
 
     public static Stream<Arguments> scenarioProvider() {
@@ -245,7 +253,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
                         "Review Referral #1 - Referral Subject 1 Response",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -257,7 +265,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
                         "Review Referral #1 - Referral Subject 1 Response",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -269,7 +277,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
                         "Review Referral #1 - Referral Subject 1 Response",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -281,12 +289,20 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "ET3Processing",
                         "ET3 Processing",
-                        "processing"
-                    ),
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "uploadDocumentForServing",
+                "Accepted",
+                mapAdditionalData(BROUGHT_FORWARD),
+                List.of(
                     mapExpectedOutput(
                         "ReviewRule21Referral",
                         "Review Rule 21 Referral",
-                        "processing"
+                        "ReviewRule21Referral",
+                        BROUGHT_FORWARD_AMOUNT
                     )
                 )
             ),
@@ -422,12 +438,12 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "CompleteInitialConsideration",
                         "Complete Initial Consideration",
-                        "processing"
+                        "Processing"
                     ),
                     mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -439,7 +455,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                     mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
-                        "processing"
+                        "Processing"
                     )
                 )
             ),
@@ -559,7 +575,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     void given_input_should_return_outcome_dmn(String eventId,
                                                String postEventState,
                                                Map<String, Object> map,
-                                               List<Map<String, String>> expectation) {
+                                               List<Map<String, Object>> expectation) {
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("eventId", eventId);
         inputVariables.putValue("postEventState", postEventState);
@@ -577,11 +593,23 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         assertThat(logic.getRules().size(), is(29));
     }
 
-    private static Map<String, String> mapExpectedOutput(String taskId, String name, String processCategories) {
+    private static Map<String, Object> mapExpectedOutput(String taskId, String name, String processCategories) {
         return Map.of(
-                "taskId", taskId,
-                "name", name,
-                "processCategories", processCategories
+            "taskId", taskId,
+            "name", name,
+            "processCategories", processCategories
+        );
+    }
+
+    private static Map<String, Object> mapExpectedOutput(String taskId,
+                                                         String name,
+                                                         String processCategories,
+                                                         int delayDuration) {
+        return Map.of(
+            "name", name,
+            "processCategories", processCategories,
+            "delayDuration", delayDuration,
+            "taskId", taskId
         );
     }
 

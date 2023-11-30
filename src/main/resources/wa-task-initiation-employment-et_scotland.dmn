@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN">
     <informationRequirement id="InformationRequirement_1l2v2xj">
       <requiredDecision href="#Decision_1xqgkq6" />
@@ -109,12 +109,12 @@ else null</text>
         <inputExpression id="LiteralExpression_1o6638k" typeRef="string">
           <text>if(additionalData != null
 and additionalData.Data != null
-and additionalData.Data.etInitialConsiderationRule27 != null 
+and additionalData.Data.etInitialConsiderationRule27 != null
 and additionalData.Data.etInitialConsiderationRule27.etICRule27ClaimToBe != null)
 then additionalData.Data.etInitialConsiderationRule27.etICRule27ClaimToBe
 else if (additionalData != null
 and additionalData.Data != null
-and additionalData.Data.etInitialConsiderationRule28 != null 
+and additionalData.Data.etInitialConsiderationRule28 != null
 and additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe != null)
 then additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe
 else null</text>
@@ -122,7 +122,7 @@ else null</text>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284" />
-      <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
+      <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="596" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
@@ -497,7 +497,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1opsd1f">
-          <text>"processing"</text>
+          <text>"Processing"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0hm05l9">
@@ -544,7 +544,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gy7tms">
-          <text>"processing"</text>
+          <text>"Processing"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_00vkigv">
@@ -591,7 +591,59 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ce5c8c">
-          <text>"processing"</text>
+          <text>"Processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cvmo3m">
+        <inputEntry id="UnaryTests_1if2ltu">
+          <text>"uploadDocumentForServing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d64dbm">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19zrr2q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h75cox">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0htl5u7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ioy2a7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00tl7fh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bxti2c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i2o0ww">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g333wg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nhsjjf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ytrqr1">
+          <text>"ReviewRule21Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0csgs0c">
+          <text>"Review Rule 21 Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uhsinc">
+          <text>if (additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.bfActions!=null
+and count(additionalData.Data.bfActions) &gt; 0)
+then (date(additionalData.Data.bfActions[1].value.bfDate) - today()).days
+else 0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vy4nwa">
+          <text>"ReviewRule21Referral"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0ntdndx">
@@ -638,7 +690,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1bbfki3">
-          <text>"processing"</text>
+          <text>"Processing"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0to8dg1">
@@ -923,53 +975,6 @@ else null</text>
           <text>"Judgment"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1cvmo3m">
-        <inputEntry id="UnaryTests_1if2ltu">
-          <text>"et3Response"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1d64dbm">
-          <text>"Accepted"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_19zrr2q">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0h75cox">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0htl5u7">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ioy2a7">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_00tl7fh">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1bxti2c">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1i2o0ww">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0g333wg">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0nhsjjf">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0ytrqr1">
-          <text>"ReviewRule21Referral"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0csgs0c">
-          <text>"Review Rule 21 Referral"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0uhsinc">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1vy4nwa">
-          <text>"processing"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0edeiu4">
         <inputEntry id="UnaryTests_0kmldps">
           <text>"et3Vetting"</text>
@@ -1014,7 +1019,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04ac9ba">
-          <text>"processing"</text>
+          <text>"Processing"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1s7q28n">
@@ -1061,7 +1066,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zvnpwe">
-          <text>"processing"</text>
+          <text>"Processing"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01ceigg">
@@ -1567,7 +1572,7 @@ else null</text>
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then 
+then
 "Review Referral #"
 + sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.referralNumber
 + " - "
