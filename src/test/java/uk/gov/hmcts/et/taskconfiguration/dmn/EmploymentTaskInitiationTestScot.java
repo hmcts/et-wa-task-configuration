@@ -30,36 +30,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final DateTimeFormatter OLD_DATE_TIME_PATTERN =
         DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
-    public static final String RULE26_YES =
-        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3Rule26\":true}}}]";
-
-    public static final String APPLICATION_COLLECTION =
-        "\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]";
-    public static final String RESPOND_COLLECTION =
-        ",\"respondCollection\": [{\"value\": {\"applicationType\": \"%s\",\"from\": \"%s\"}}]";
-
-    public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
-            createApplications("Amend my claim", "");
-    public static final String SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS =
-            createApplications("Change my personal details", "");
-
-    public static final String SUBMISSION_REASON_RESPONDENT_AMEND =
-            createApplications("Amend response", "");
-    public static final String SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS =
-            createApplications("Change personal details", "");
-
-    public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND =
-            createApplications("Amend my claim", "Respondent");
-    public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS =
-            createApplications("Change my personal details", "Respondent");
-
-    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND =
-            createApplications("Amend response", "Claimant");
-    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS =
-            createApplications("Change personal details", "Claimant");
-    public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
-            createApplications("Strike out all/part of response", "Claimant");
-
     public static final String REFERRAL_COLLECTION = "\"referralCollection\":[%s]";
     public static final String REFERRAL = "{\"value\": "
         + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"referCaseTo\":\"%s\",\"isUrgent\":\"%s\"%s}"
@@ -89,6 +59,21 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
     public static final String REFERRAL_REPLY_LEGALOFFICER =
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
+
+    public static final DateTimeFormatter BF_DATE_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static final int BROUGHT_FORWARD_AMOUNT = 3;
+    public static final String BROUGHT_FORWARD = "\"bfActions\":["
+        + "{\"value\":{\"bfDate\":\""
+        + LocalDateTime.now().plusDays(BROUGHT_FORWARD_AMOUNT).format(BF_DATE_PATTERN)
+        + "\"}}]";
+
+    public static final String ET3_FORM_RECEIVED =
+        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true}}]";
+    public static final String ET3_FORM_NOT_RECEIVED =
+        "\"respondentCollection\":[{\"value\":{\"responseReceived\":false}}]";
+
+    public static final String RULE26_YES =
+        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3Rule26\":true}}}]";
 
     public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":true,"
@@ -132,12 +117,32 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
             + "}";
 
-    public static final DateTimeFormatter BF_DATE_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static final int BROUGHT_FORWARD_AMOUNT = 3;
-    public static final String BROUGHT_FORWARD = "\"bfActions\":["
-        + "{\"value\":{\"bfDate\":\""
-        + LocalDateTime.now().plusDays(BROUGHT_FORWARD_AMOUNT).format(BF_DATE_PATTERN)
-        + "\"}}]";
+    public static final String APPLICATION_COLLECTION =
+        "\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]";
+    public static final String RESPOND_COLLECTION =
+        ",\"respondCollection\": [{\"value\": {\"applicationType\": \"%s\",\"from\": \"%s\"}}]";
+
+    public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
+            createApplications("Amend my claim", "");
+    public static final String SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS =
+            createApplications("Change my personal details", "");
+
+    public static final String SUBMISSION_REASON_RESPONDENT_AMEND =
+            createApplications("Amend response", "");
+    public static final String SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS =
+            createApplications("Change personal details", "");
+
+    public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND =
+            createApplications("Amend my claim", "Respondent");
+    public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS =
+            createApplications("Change my personal details", "Respondent");
+
+    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND =
+            createApplications("Amend response", "Claimant");
+    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS =
+            createApplications("Change personal details", "Claimant");
+    public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
+            createApplications("Strike out all/part of response", "Claimant");
 
     @BeforeAll
     public static void initialization() {
@@ -282,14 +287,31 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "submitEt3",
+                "preAcceptanceCase",
                 "Accepted",
                 null,
                 List.of(
                     mapExpectedOutput(
-                        "ET3Processing",
-                        "ET3 Processing",
-                        "Processing"
+                        "ListServeClaim",
+                        "List/ Serve Claim",
+                        "Vetting"
+                    ),
+                    mapExpectedOutput(
+                        "SendEt1Notification",
+                        "Send ET1 Notification",
+                        "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
+                "preAcceptanceCase",
+                "Rejected",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "SendEt1Notification",
+                        "Send ET1 Notification",
+                        "Vetting"
                     )
                 )
             ),
@@ -303,6 +325,65 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Review Rule 21 Referral",
                         "ReviewRule21Referral",
                         BROUGHT_FORWARD_AMOUNT
+                    )
+                )
+            ),
+            Arguments.of(
+                "submitEt3",
+                "Accepted",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "ET3Processing",
+                        "ET3 Processing",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                "Accepted",
+                mapAdditionalData(ET3_FORM_RECEIVED),
+                List.of(
+                    mapExpectedOutput(
+                        "ET3Processing",
+                        "ET3 Processing",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                "Accepted",
+                mapAdditionalData(ET3_FORM_NOT_RECEIVED),
+                List.of()
+            ),
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                mapAdditionalData(RULE26_YES),
+                List.of(
+                    mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    ),
+                    mapExpectedOutput(
+                        "SendEt3Notification",
+                        "Send ET3 Notification",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                null,
+                List.of(
+                    mapExpectedOutput(
+                        "SendEt3Notification",
+                        "Send ET3 Notification",
+                        "Processing"
                     )
                 )
             ),
@@ -390,35 +471,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "preAcceptanceCase",
-                "Accepted",
-                null,
-                List.of(
-                    mapExpectedOutput(
-                        "ListServeClaim",
-                        "List/ Serve Claim",
-                        "Vetting"
-                    ),
-                    mapExpectedOutput(
-                        "SendEt1Notification",
-                        "Send ET1 Notification",
-                        "Vetting"
-                    )
-                )
-            ),
-            Arguments.of(
-                "preAcceptanceCase",
-                "Rejected",
-                null,
-                List.of(
-                    mapExpectedOutput(
-                        "SendEt1Notification",
-                        "Send ET1 Notification",
-                        "Vetting"
-                    )
-                )
-            ),
-            Arguments.of(
                 "updateHearing",
                 "Accepted",
                 null,
@@ -427,35 +479,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "DraftAndSignJudgment",
                         "Draft And Sign Judgment",
                         "Judgment"
-                    )
-                )
-            ),
-            Arguments.of(
-                "et3Vetting",
-                "Accepted",
-                mapAdditionalData(RULE26_YES),
-                List.of(
-                    mapExpectedOutput(
-                        "CompleteInitialConsideration",
-                        "Complete Initial Consideration",
-                        "Processing"
-                    ),
-                    mapExpectedOutput(
-                        "SendEt3Notification",
-                        "Send ET3 Notification",
-                        "Processing"
-                    )
-                )
-            ),
-            Arguments.of(
-                "et3Vetting",
-                "Accepted",
-                null,
-                List.of(
-                    mapExpectedOutput(
-                        "SendEt3Notification",
-                        "Send ET3 Notification",
-                        "Processing"
                     )
                 )
             ),
@@ -590,7 +613,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(29));
+        assertThat(logic.getRules().size(), is(30));
     }
 
     private static Map<String, Object> mapExpectedOutput(String taskId, String name, String processCategories) {
