@@ -60,12 +60,34 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String REFERRAL_REPLY_LEGALOFFICER =
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
 
+
     public static final DateTimeFormatter BF_DATE_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static final int BROUGHT_FORWARD_AMOUNT = 2;
+    public static final String CLAIM_SERVED = "\"Claim served\"";
+
+    public static final String BROUGHT_FORWARD_DATE = "{\"value\": {\"bfDate\": \"%s\",\"allActions\": %s}}";
+    public static final int BROUGHT_FORWARD_AMOUNT_1 = 6;
+    public static final String BROUGHT_FORWARD_DATE_1 =
+        LocalDateTime.now().plusDays(BROUGHT_FORWARD_AMOUNT_1).format(BF_DATE_PATTERN);
+    public static final String BF_1 =
+        String.format(BROUGHT_FORWARD_DATE, BROUGHT_FORWARD_DATE_1, CLAIM_SERVED);
+
+    public static final int BROUGHT_FORWARD_AMOUNT_2 = 4;
+    public static final String BROUGHT_FORWARD_DATE_2 =
+        LocalDateTime.now().plusDays(BROUGHT_FORWARD_AMOUNT_2).format(BF_DATE_PATTERN);
+    public static final String BF_2 =
+        String.format(BROUGHT_FORWARD_DATE, BROUGHT_FORWARD_DATE_2, CLAIM_SERVED);
+
+    public static final int BROUGHT_FORWARD_AMOUNT_3 = 2;
+    public static final String BROUGHT_FORWARD_DATE_3 =
+        LocalDateTime.now().plusDays(BROUGHT_FORWARD_AMOUNT_3).format(BF_DATE_PATTERN);
+    public static final String BF_3 =
+        String.format(BROUGHT_FORWARD_DATE, BROUGHT_FORWARD_DATE_3, "null");
+
     public static final String BROUGHT_FORWARD = "\"bfActions\":["
-        + "{\"value\":{\"bfDate\":\""
-        + LocalDateTime.now().plusDays(BROUGHT_FORWARD_AMOUNT).format(BF_DATE_PATTERN)
-        + "\"}}]";
+        + BF_1 + ","
+        + BF_2 + ","
+        + BF_3
+        + "]";
 
     public static final String ET3_FORM_RECEIVED =
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":true}}]";
@@ -324,7 +346,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "ReviewRule21Referral",
                         "Review Rule 21 Referral",
                         "ReviewRule21Referral",
-                        BROUGHT_FORWARD_AMOUNT
+                        BROUGHT_FORWARD_AMOUNT_2
                     )
                 )
             ),
