@@ -110,6 +110,24 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_00pid3a">
+        <description>Use nextListedDate until onboarded to HMC</description>
+        <inputEntry id="UnaryTests_0b91lfo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yl9v8s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ckha3p">
+          <text>"nextHearingDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yoy3rb">
+          <text>if (caseData.nextListedDate!=null) then caseData.nextListedDate else ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u35o3v">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0mnaaav">
         <description>Name of the type of work - this is based on the filter. All Judgment tasks will be decision making work.</description>
         <inputEntry id="UnaryTests_1dq6c8y">
