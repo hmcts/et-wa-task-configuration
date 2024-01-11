@@ -47,7 +47,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String REFERRAL_ADMIN_JUDGMENT =
         createReferrals("Referral Subject 1","Judgment", "Admin", "Yes", "", "");
     public static final String REFERRAL_JUDGE =
-        createReferrals("Referral Subject 1","Referral Subject 2", "Judge", "Yes", "", "");
+        createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "");
     public static final String REFERRAL_JUDGE_RULE21 =
         createReferrals("Referral Subject 1","Rule 21", "Judge", "Yes", "", "");
     public static final String REFERRAL_LEGALOFFICER =
@@ -142,7 +142,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS =
             createApplications("Change personal details", "Claimant");
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
-            createApplications("Strike out all/part of response", "Claimant");
+            createApplications("Withdraw all or part of claim", "Claimant");
 
     @BeforeAll
     public static void initialization() {
@@ -216,7 +216,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     mapExpectedOutput(
                         "ReviewReferralJudiciary",
-                        "Review Referral #2 - Referral Subject 2",
+                        "Review Referral #2 - ET1",
                         "Vetting"
                     )
                 )
@@ -226,11 +226,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 null,
                 mapAdditionalData(REFERRAL_JUDGE_RULE21),
                 List.of(
-                    mapExpectedOutput(
-                        "ReviewReferralJudiciary",
-                        "Review Referral #2 - Rule 21",
-                        "Vetting"
-                    ),
                     mapExpectedOutput(
                         "DraftAndSignJudgment",
                         "Draft And Sign Judgment",
@@ -342,7 +337,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "amendRespondentDetails",
-                "Accepted",
+                null,
                 mapAdditionalData(ET3_FORM_RECEIVED),
                 List.of(
                     mapExpectedOutput(
@@ -354,7 +349,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "amendRespondentDetails",
-                "Accepted",
+                null,
                 mapAdditionalData(ET3_FORM_NOT_RECEIVED),
                 List.of()
             ),
@@ -532,7 +527,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
-                "Accepted",
+                null,
                 mapAdditionalData(SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
@@ -544,7 +539,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
-                "Accepted",
+                null,
                 mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
@@ -556,7 +551,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "respondentTSE",
-                "Accepted",
+                null,
                 mapAdditionalData(SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
@@ -568,7 +563,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "tseRespond",
-                "Accepted",
+                null,
                 mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS),
                 List.of(
                     mapExpectedOutput(
