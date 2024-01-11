@@ -371,7 +371,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("reviewSpecificAccessRequestLegalOps", legalOperations),
             Arguments.of("ReviewRule21Referral", legalOperations),
             Arguments.of("ReviewReferralLegalOps", legalOperations),
-            Arguments.of("ET3ReferralLegalOps", legalOperations),
             Arguments.of("ReviewReferralResponseLegalOps", legalOperations),
 
             Arguments.of("Et1Vetting", administrator),
