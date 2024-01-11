@@ -225,7 +225,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "createReferral",
                 null,
                 mapAdditionalData(REFERRAL_JUDGE_RULE21),
-                List.of(                  
+                List.of(               
                     mapExpectedOutput(
                         "DraftAndSignJudgment",
                         "Draft And Sign Judgment",
