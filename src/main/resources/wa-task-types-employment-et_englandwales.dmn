@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="wa-task-types-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="wa-task-types-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
   <decision id="wa-task-types-employment-et_englandwales" name="ET Task Types DMN">
     <decisionTable id="DecisionTable_17knzal" hitPolicy="COLLECT">
       <input id="Input_1">
@@ -226,7 +226,7 @@
           <text>"AmendClaimantDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00vtfbs">
-          <text>"Amend Party Details"</text>
+          <text>"Amend Party Details (Claimant)"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0oah9qj">
@@ -237,7 +237,51 @@
           <text>"AmendRespondentDetails"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qrijiq">
-          <text>"Amend Party Details"</text>
+          <text>"Amend Party Details (Respondent)"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1slbng1">
+        <inputEntry id="UnaryTests_14jfw6k">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1px3h4u">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ibm2el">
+          <text>"Review Specific Access Request (Judiciary)"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nhxxpd">
+        <inputEntry id="UnaryTests_0kfqoz3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h7xdc5">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xehdz2">
+          <text>"Review Specific Access Request (Legal Ops)"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17drum4">
+        <inputEntry id="UnaryTests_1rclr33">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15scpjq">
+          <text>"reviewSpecificAccessRequestAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uzis06">
+          <text>"Review Specific Access Request (Admin)"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fv8glt">
+        <inputEntry id="UnaryTests_09i4518">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gfuvyb">
+          <text>"reviewSpecificAccessRequestCTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06diubz">
+          <text>"Review Specific Access Request (CTSC)"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0qbw49g">

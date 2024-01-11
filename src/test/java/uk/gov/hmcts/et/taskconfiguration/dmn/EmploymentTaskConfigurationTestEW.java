@@ -206,6 +206,38 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     }
 
     @ParameterizedTest
+    @MethodSource("hearingDate_ScenarioProvider")
+    void testHearingDate(String nextListedDate,
+                       String expectedNextHearingDate) {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("nextListedDate", nextListedDate);
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .toList();
+
+        // Then
+        assertEquals(expectedNextHearingDate, resultList.get(5).get("value"));
+    }
+
+    public static Stream<Arguments> hearingDate_ScenarioProvider() {
+        return Stream.of(
+            Arguments.of("2024-02-01", "2024-02-01"),
+            Arguments.of(null, "")
+        );
+    }
+
+    @ParameterizedTest
     @MethodSource("workType_ScenarioProvider")
     void when_taskId_then_return_workType(String taskType, List<Map<String, String>> expected) {
         VariableMap inputVariables = new VariableMapImpl();
@@ -325,11 +357,6 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> ctsc = List.of(Map.of(
             "name", "roleCategory",
             "value", "CTSC",
-            "canReconfigure", true
-        ));
-        List<Map<String, Object>> adminctsc = List.of(Map.of(
-            "name", "roleCategory",
-            "value", "ADMIN,CTSC",
             "canReconfigure", true
         ));
 
@@ -598,7 +625,6 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     }
 
     public static Stream<Arguments> priority_ScenarioProvider() {
-
         List<Map<String, Object>> dueDateIntervalDays1 = List.of(Map.of(
             "name", "dueDateIntervalDays",
             "value", "1",
@@ -756,19 +782,19 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
         List<Map<String, Object>> resultList =
             dmnDecisionTableResult.getResultList().stream().toList();
-        assertEquals(13, resultList.size());
+        assertEquals(14, resultList.size());
 
         assertEquals(Map.of(
             "name", "calculatedDates",
             "value", "nextHearingDate,dueDate,priorityDate",
             "canReconfigure", true
-        ), resultList.get(5));
+        ), resultList.get(6));
 
         assertEquals(Map.of(
             "name", "dueDateTime",
             "value", "16:00",
             "canReconfigure", true
-        ), resultList.get(7));
+        ), resultList.get(8));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingCalendar",
@@ -776,31 +802,31 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                 + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
                 + "master/src/main/resources/privilege-calendar.json",
             "canReconfigure", true
-        ), resultList.get(8));
+        ), resultList.get(9));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingDaysOfWeek",
             "value", "SATURDAY,SUNDAY",
             "canReconfigure", true
-        ), resultList.get(9));
+        ), resultList.get(10));
 
         assertEquals(Map.of(
             "name", "dueDateSkipNonWorkingDays",
             "value", "true",
             "canReconfigure", true
-        ), resultList.get(10));
+        ), resultList.get(11));
 
         assertEquals(Map.of(
             "name", "dueDateMustBeWorkingDay",
             "value", "Yes",
             "canReconfigure", true
-        ), resultList.get(11));
+        ), resultList.get(12));
 
         assertEquals(Map.of(
             "name", "priorityDateOriginRef",
             "value", "dueDate",
             "canReconfigure", true
-        ), resultList.get(12));
+        ), resultList.get(13));
     }
 
     @Test
@@ -837,7 +863,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(50));
+        assertThat(logic.getRules().size(), is(51));
     }
 
     private static Map<String, Object> mapData(String source) {
@@ -876,6 +902,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         getExpectedValue(rules, "location", "21153");
         getExpectedValue(rules, "locationName", "London Central");
         getExpectedValue(rules, "caseManagementCategory", "Employment");
+        getExpectedValue(rules, "nextHearingDate", "");
         getExpectedValue(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate");
         getExpectedValue(rules, "dueDateOrigin", null);
         getExpectedValue(rules, "dueDateTime", "16:00");
