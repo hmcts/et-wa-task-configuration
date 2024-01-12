@@ -316,15 +316,14 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "uploadDocumentForServing",
+                "WA_REVIEW_RULE21_REFERRAL",
                 "Accepted",
                 mapAdditionalData(BROUGHT_FORWARD),
                 List.of(
                     mapExpectedOutput(
                         "ReviewRule21Referral",
                         "Review Rule 21 Referral",
-                        "ReviewRule21Referral",
-                        BROUGHT_FORWARD_AMOUNT
+                        "ReviewRule21Referral"
                     )
                 )
             ),
