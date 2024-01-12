@@ -578,11 +578,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData(CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE),
                 List.of(
-                       mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
-                        "Contact Tribunal With An Application",
-                        "Application"
-                    ),
                     mapExpectedOutput(
                         "WithdrawAllOrPartOfCase",
                         "Withdraw All or Part of Case",
