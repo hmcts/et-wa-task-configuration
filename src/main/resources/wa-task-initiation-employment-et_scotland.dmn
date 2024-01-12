@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN">
     <informationRequirement id="InformationRequirement_1l2v2xj">
       <requiredDecision href="#Decision_1xqgkq6" />
@@ -28,7 +28,7 @@ then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.r
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="289" camunda:inputVariable="referralSubject">
+      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -738,7 +738,7 @@ else null</text>
       </rule>
       <rule id="DecisionRule_1cvmo3m">
         <inputEntry id="UnaryTests_1if2ltu">
-          <text>"uploadDocumentForServing"</text>
+          <text>"WA_REVIEW_RULE21_REFERRAL"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1d64dbm">
           <text>"Accepted"</text>
@@ -780,12 +780,7 @@ else null</text>
           <text>"Review Rule 21 Referral"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uhsinc">
-          <text>if (additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.bfActions!=null
-and count(additionalData.Data.bfActions) &gt; 0)
-then (date(additionalData.Data.bfActions[1].value.bfDate) - today()).days
-else 0</text>
+          <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vy4nwa">
           <text>"ReviewRule21Referral"</text>
