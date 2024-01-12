@@ -142,7 +142,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS =
             createApplications("Change personal details", "Claimant");
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
-            createApplications("Withdraw all or part of claim", "Claimant");
+            createApplications("Withdraw all/part of claim", "Claimant");
 
     @BeforeAll
     public static void initialization() {
@@ -578,6 +578,11 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 mapAdditionalData(CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE),
                 List.of(
+                        mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact Tribunal With An Application",
+                        "Application"
+                    ),
                     mapExpectedOutput(
                         "WithdrawAllOrPartOfCase",
                         "Withdraw All or Part of Case",

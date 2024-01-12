@@ -28,7 +28,7 @@ then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.r
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
+      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="289" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -347,7 +347,7 @@ else null</text>
           <text>"Judge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_01db6ha">
-          <text>"ET1","ET3/ECC", "Amend claim", "Amend response", "Strike out all or part of claim", "Strike out all or part of response", "Withdraw claim", "Orders","Party not responded/complied", "Order other party", "Rule 50 application", "Order a witness to attend", "Hearings", "Postpone a hearing", "Judgment", "Reconsider decision", "Reconsider judgment", "Extension of time request", "Transfer request"</text>
+          <text>"ET1","ET3/ECC","Amend claim","Amend response","Strike out all or part of claim","Strike out all or part of response","Withdraw claim","Orders","Party not responded/complied","Order other party","Rule 50 application","Order a witness to attend","Hearings","Postpone a hearing","Judgment","Reconsider decision","Reconsider judgment","Extension of time request","Transfer request","Initial Consideration","Other"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
@@ -1676,7 +1676,7 @@ else 0</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wz2erx">
-          <text>"Withdraw all or part of claim"</text>
+          <text>"Withdraw all/part of claim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1xnwr0b">
           <text></text>
