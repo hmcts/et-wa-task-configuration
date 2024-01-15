@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.4.0" camunda:diagramRelationId="03d9678c-0715-45c8-8bd4-51eee951a1be">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.19.0">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN">
     <informationRequirement id="InformationRequirement_1l2v2xj">
       <requiredDecision href="#Decision_1xqgkq6" />
@@ -8,7 +8,7 @@
       <requiredDecision href="#Decision_1merw3p" />
     </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
-      <input id="Input_1" label="Event Id" biodi:width="218" camunda:inputVariable="eventId">
+      <input id="Input_1" label="Event Id" biodi:width="243" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text></text>
         </inputExpression>
@@ -28,7 +28,7 @@ then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.r
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
+      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="407" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -134,8 +134,8 @@ else null</text>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284" />
-      <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="596" />
-      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
+      <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="150" />
+      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="258" />
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
           <text>"SUBMIT_CASE_DRAFT"</text>
@@ -347,7 +347,7 @@ else null</text>
           <text>"Judge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_01db6ha">
-          <text></text>
+          <text>"ET1","ET3/ECC","Amend claim","Amend response","Strike out all or part of claim","Strike out all or part of response","Withdraw claim","Orders","Party not responded/complied","Order other party","Rule 50 application","Order a witness to attend","Hearings","Postpone a hearing","Judgment","Reconsider decision","Reconsider judgment","Extension of time request","Transfer request","Initial Consideration","Other"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
@@ -841,7 +841,7 @@ else null</text>
           <text>"amendRespondentDetails"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0hpedwq">
-          <text>"Accepted","Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1cpfiju">
           <text></text>
@@ -1225,7 +1225,7 @@ else null</text>
 "Restrict publicity",
 "Tell tribunal respondent not complied",
 "Vary/revoke an order",
-"Withdraw all/part of claim"</text>
+"Strike out all/part of response"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_12woi1y">
           <text></text>
@@ -1447,7 +1447,7 @@ else null</text>
           <text>"SUBMIT_CLAIMANT_TSE"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1syn1yj">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ml9qty">
           <text></text>
@@ -1497,7 +1497,7 @@ else null</text>
           <text>"CLAIMANT_TSE_RESPOND"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1kao45i">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ktumlv">
           <text></text>
@@ -1547,7 +1547,7 @@ else null</text>
           <text>"respondentTSE"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1l9gj0l">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mnk1y0">
           <text></text>
@@ -1597,7 +1597,7 @@ else null</text>
           <text>"tseRespond"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0496y6a">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mf1adh">
           <text></text>
@@ -1671,7 +1671,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wz2erx">
-          <text>"Strike out all/part of response"</text>
+          <text>"Withdraw all/part of claim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1xnwr0b">
           <text></text>

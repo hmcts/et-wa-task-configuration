@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.4.0" camunda:diagramRelationId="2641ae79-51f9-4313-84cf-7e3f338471bc">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.19.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN">
     <informationRequirement id="InformationRequirement_0dnw86r">
       <requiredDecision href="#Decision_0la4l4o" />
@@ -7,7 +7,7 @@
     <informationRequirement id="InformationRequirement_19o3lfi">
       <requiredDecision href="#Decision_0dpy65m" />
     </informationRequirement>
-    <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
+    <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT" biodi:annotationsWidth="400">
       <input id="Input_1" label="Event Id" biodi:width="342" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text></text>
@@ -28,7 +28,7 @@ then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.r
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="150" camunda:inputVariable="referralSubject">
+      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="447" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -122,7 +122,7 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_02rm1d2" label="Response to Application Type" biodi:width="290">
+      <input id="InputClause_02rm1d2" label="Response to Application Type" biodi:width="244">
         <inputExpression id="LiteralExpression_009rrzp" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -134,8 +134,8 @@ else null</text>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284" />
-      <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="628" />
-      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
+      <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="152" />
+      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="251" />
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
           <text>"SUBMIT_CASE_DRAFT"</text>
@@ -347,7 +347,7 @@ else null</text>
           <text>"Judge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_01db6ha">
-          <text></text>
+          <text>"ET1","ET3/ECC", "Amend claim", "Amend response", "Strike out all or part of claim", "Strike out all or part of response", "Withdraw claim", "Orders","Party not responded/complied", "Order other party", "Rule 50 application", "Order a witness to attend", "Hearings", "Postpone a hearing", "Judgment", "Reconsider decision", "Reconsider judgment", "Extension of time request", "Transfer request", "Initial Consideration", "Other"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
@@ -841,7 +841,7 @@ else null</text>
           <text>"amendRespondentDetails"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1miobne">
-          <text>"Accepted","Closed"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mrubvm">
           <text></text>
@@ -1225,7 +1225,7 @@ else null</text>
 "Restrict publicity",
 "Tell tribunal respondent not complied",
 "Vary/revoke an order",
-"Withdraw all/part of claim"</text>
+"Strike out all/part of response"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0xf4et5">
           <text></text>
@@ -1447,7 +1447,7 @@ else null</text>
           <text>"SUBMIT_CLAIMANT_TSE"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1syn1yj">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ml9qty">
           <text></text>
@@ -1497,7 +1497,7 @@ else null</text>
           <text>"CLAIMANT_TSE_RESPOND"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1kao45i">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ktumlv">
           <text></text>
@@ -1547,7 +1547,7 @@ else null</text>
           <text>"respondentTSE"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1l9gj0l">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mnk1y0">
           <text></text>
@@ -1597,7 +1597,7 @@ else null</text>
           <text>"tseRespond"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0496y6a">
-          <text>"Accepted"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mf1adh">
           <text></text>
@@ -1671,7 +1671,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wz2erx">
-          <text>"Strike out all/part of response"</text>
+          <text>"Withdraw all/part of claim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_070amq6">
           <text></text>
