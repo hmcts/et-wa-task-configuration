@@ -37,7 +37,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
         "autoAssignable", false,
         "name", "specific-access-approver-judiciary",
         "roleCategory", "JUDICIAL",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign"
     );
     private static final Map<String, Serializable> hearingJudge = Map.of(
         "autoAssignable", true,
@@ -50,7 +50,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
         "autoAssignable", false,
         "assignmentPriority", 4,
         "name", "leadership-judge",
-        "value", "Read, Own, Manage, Claim, Assign, Unassign, Complete, Cancel",
+        "value", "Read, Execute, Manage, Claim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "JUDICIAL"
     );
     private static final Map<String, Serializable> judge = Map.of(
@@ -60,18 +60,10 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
     );
-    private static final Map<String, Serializable> feePaidJudge = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 3,
-        "name", "fee-paid-judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "JUDICIAL"
-    );
-
     private static final Map<String, Serializable> approverLegalOps = Map.of(
         "autoAssignable", false,
         "name", "specific-access-approver-legal-ops",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
         "roleCategory", "LEGAL_OPERATIONS"
     );
     private static final Map<String, Serializable> allocatedTribunalCaseworker = Map.of(
@@ -99,7 +91,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
     private static final Map<String, Serializable> approverAdmin = Map.of(
         "autoAssignable", false,
         "name", "specific-access-approver-admin",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
         "roleCategory", "ADMIN"
     );
     private static final Map<String, Serializable> allocatedAdminCaseworker = Map.of(
@@ -141,7 +133,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
     private static final Map<String, Serializable> approverCTSC = Map.of(
         "autoAssignable", true,
         "name", "specific-access-approver-ctsc",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
         "roleCategory", "CTSC"
     );
     private static final Map<String, Serializable> allocatedCtscCaseworker = Map.of(
@@ -177,7 +169,8 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "reviewSpecificAccessRequestJudiciary",
                 List.of(
                     taskSupervisor,
-                    approverJudiciary
+                    approverJudiciary,
+                    leadershipJudge
                 )
             ),
             Arguments.of(
@@ -186,8 +179,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge,
-                    feePaidJudge
+                    judge
                 )
             ),
             Arguments.of(
@@ -196,8 +188,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge,
-                    feePaidJudge
+                    judge
                 )
             ),
             Arguments.of(
@@ -206,8 +197,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge,
-                    feePaidJudge
+                    judge
                 )
             ),
             Arguments.of(
@@ -216,8 +206,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge,
-                    feePaidJudge
+                    judge
                 )
             ),
 
@@ -225,6 +214,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "reviewSpecificAccessRequestLegalOps",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     approverLegalOps
                 )
             ),
@@ -232,6 +222,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralLegalOps",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -241,6 +232,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralResponseLegalOps",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -250,6 +242,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewRule21Referral",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -260,6 +253,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "reviewSpecificAccessRequestAdmin",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     approverAdmin
                 )
             ),
@@ -267,6 +261,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "Et1Vetting",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin,
@@ -279,6 +274,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralAdmin",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin,
@@ -291,6 +287,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralResponseAdmin",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin,
@@ -303,6 +300,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "SendEt1Notification",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin,
@@ -315,6 +313,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ListServeClaim",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin,
@@ -327,6 +326,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ET3Processing",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -336,6 +336,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "SendEt3Notification",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -345,6 +346,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ListAHearing",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin,
@@ -356,6 +358,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "IssueInitialConsiderationDirections",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -365,6 +368,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "IssuePostHearingDirection",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -374,6 +378,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "IssueJudgment",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -383,6 +388,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "AmendClaimantDetails",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -392,6 +398,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "AmendRespondentDetails",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -401,6 +408,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "WithdrawAllOrPartOfCase",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -410,6 +418,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ContactTribunalWithAnApplication",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     allocatedAdminCaseworker,
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
@@ -420,6 +429,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "reviewSpecificAccessRequestCTSC",
                 List.of(
                     taskSupervisor,
+                    leadershipJudge,
                     approverCTSC
                 )
             )
@@ -465,7 +475,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
         assertThat(logic.getOutputs().size(), is(7));
         assertThatOutputContainInOrder(outputColumnIds, logic.getOutputs());
         //Rules
-        assertThat(logic.getRules().size(), is(20));
+        assertThat(logic.getRules().size(), is(19));
     }
 
     private void assertThatInputContainInOrder(List<String> inputColumnIds, List<DmnDecisionTableInputImpl> inputs) {
