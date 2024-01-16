@@ -848,6 +848,10 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                 actualResults.get(idx).get("name"),
                 expectedResults.get(idx).get("name")
             );
+            assertEquals(
+                actualResults.get(idx).get("canReconfigure"),
+                expectedResults.get(idx).get("canReconfigure")
+            );
             if (!actualResults.get(idx).get("name").equals("dueDateOrigin")) {
                 assertEquals(
                     actualResults.get(idx).get("value"),
@@ -855,6 +859,35 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                 );
             }
         }
+    }
+
+    private List<Map<String, Object>> getExpectedValues() {
+        List<Map<String, Object>> rules = new ArrayList<>();
+        getExpectedValueWithReconfigure(rules, "caseName", "George Jetson", true);
+        getExpectedValueWithReconfigure(rules, "region", "1", false);
+        getExpectedValueWithReconfigure(rules, "location", "21153", true);
+        getExpectedValueWithReconfigure(rules, "locationName", "London Central", true);
+        getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);
+        getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
+        getExpectedValueWithReconfigure(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate", true);
+        getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
+        getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
+        getExpectedValueWithReconfigure(rules, "dueDateNonWorkingCalendar",
+                                        DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
+        getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
+        getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
+        getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
+        getExpectedValueWithReconfigure(rules, "priorityDateOriginRef", "dueDate", true);
+        return rules;
+    }
+
+    private void getExpectedValueWithReconfigure(List<Map<String, Object>> rules, String name, String value,
+                                                 Boolean reconfigure) {
+        Map<String, Object> rule = new HashMap<>();
+        rule.put("name", name);
+        rule.put("value", value);
+        rule.put("canReconfigure", reconfigure);
+        rules.add(rule);
     }
 
     @Test
@@ -872,68 +905,5 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         } catch (IOException exp) {
             return null;
         }
-    }
-
-    @Value
-    @Builder
-    private static class Scenario {
-        Map<String, Object> caseData;
-        Map<String, Object> taskAttributes;
-        String expectedCaseNameValue;
-        String expectedAppealTypeValue;
-        String expectedRegionValue;
-        String expectedLocationValue;
-        String expectedLocationNameValue;
-        String expectedCaseManagementCategoryValue;
-        String expectedWorkType;
-        String expectedRoleCategory;
-        String expectedDescriptionValue;
-        String expectedReconfigureValue;
-        String expectedDueDateOrigin;
-        String expectedDueDateTime;
-        String expectedDueDateIntervalDays;
-    }
-
-    private List<Map<String, Object>> getExpectedValues() {
-        List<Map<String, Object>> rules = new ArrayList<>();
-        getExpectedValue(rules, "caseName", "George Jetson");
-        getExpectedValue(rules, "region", "1");
-        getExpectedValue(rules, "location", "21153");
-        getExpectedValue(rules, "locationName", "London Central");
-        getExpectedValue(rules, "caseManagementCategory", "Employment");
-        getExpectedValue(rules, "nextHearingDate", "");
-        getExpectedValue(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate");
-        getExpectedValue(rules, "dueDateOrigin", null);
-        getExpectedValue(rules, "dueDateTime", "16:00");
-        getExpectedValue(rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR);
-        getExpectedValue(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY");
-        getExpectedValue(rules, "dueDateSkipNonWorkingDays", "true");
-        getExpectedValue(rules, "dueDateMustBeWorkingDay", "Yes");
-        getExpectedValue(rules, "priorityDateOriginRef", "dueDate");
-        return rules;
-    }
-
-    private void getExpectedValue(List<Map<String, Object>> rules, String name, String value) {
-        Map<String, Object> rule = new HashMap<>();
-        rule.put("name", name);
-        rule.put("value", value);
-        rule.put("canReconfigure", true);
-        rules.add(rule);
-    }
-
-    private void getExpectedValueWithReconfigure(List<Map<String, Object>> rules, String name, String value,
-                                                 String reconfigure) {
-        Map<String, Object> rule = new HashMap<>();
-        rule.put("name", name);
-        rule.put("value", value);
-        rule.put("canReconfigure", Boolean.valueOf(reconfigure));
-        rules.add(rule);
-    }
-
-    private boolean validNow(ZonedDateTime expected, ZonedDateTime actual) {
-        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
-        return actual != null
-            && (expected.isEqual(actual) || expected.isBefore(actual))
-            && (now.isEqual(actual) || now.isAfter(actual));
     }
 }
