@@ -355,25 +355,13 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "et3Vetting",
                 "Accepted",
-                mapAdditionalData(RULE26_YES),
+                null,
                 List.of(
                     mapExpectedOutput(
                         "CompleteInitialConsideration",
                         "Complete Initial Consideration",
                         "Processing"
                     ),
-                    mapExpectedOutput(
-                        "SendEt3Notification",
-                        "Send ET3 Notification",
-                        "Processing"
-                    )
-                )
-            ),
-            Arguments.of(
-                "et3Vetting",
-                "Accepted",
-                null,
-                List.of(
                     mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
