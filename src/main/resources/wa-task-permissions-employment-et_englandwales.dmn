@@ -86,7 +86,9 @@
       <rule id="DecisionRule_10ym4yi">
         <description>Case Role for Auto Assignment - Hearing Judge Permissions</description>
         <inputEntry id="UnaryTests_1q4opzl">
-          <text>"ReviewReferralJudiciary",
+          <text>"ReviewReferralLegalOps",
+"ReviewReferralResponseLegalOps",
+"ReviewRule21Referral","ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
 "DraftAndSignJudgment"</text>
@@ -149,7 +151,9 @@
       <rule id="DecisionRule_03zmrwj">
         <description>Judge Permissions</description>
         <inputEntry id="UnaryTests_0nnb9wq">
-          <text>"ReviewReferralJudiciary",
+          <text>"ReviewReferralLegalOps",
+"ReviewReferralResponseLegalOps",
+"ReviewRule21Referral","ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
 "DraftAndSignJudgment"</text>
@@ -245,7 +249,10 @@
         <inputEntry id="UnaryTests_1hlftmk">
           <text>"ReviewReferralLegalOps",
 "ReviewReferralResponseLegalOps",
-"ReviewRule21Referral"</text>
+"ReviewRule21Referral","ReviewReferralJudiciary",
+"ReviewReferralResponseJudiciary",
+"CompleteInitialConsideration",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fewwqo">
           <text></text>
@@ -277,7 +284,10 @@
         <inputEntry id="UnaryTests_0m81xlb">
           <text>"ReviewReferralLegalOps",
 "ReviewReferralResponseLegalOps",
-"ReviewRule21Referral"</text>
+"ReviewRule21Referral","ReviewReferralJudiciary",
+"ReviewReferralResponseJudiciary",
+"CompleteInitialConsideration",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0e431c0">
           <text></text>
