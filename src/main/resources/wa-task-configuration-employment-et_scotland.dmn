@@ -1032,7 +1032,7 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ox5ilk">
-          <text></text>
+          <text>"Et1Vetting","ET3Processing","IssueInitialConsiderationDirections","ListAHearing","DraftAndSignJudgment","IssuePostHearingDirection","SendEt1Notification","ListServeClaim","ReviewRule21Referral","IssueJudgment","CompleteInitialConsideration","SendEt3Notification","AmendClaimantDetails","AmendRespondentDetails","ContactTribunalWithAnApplication","WithdrawAllOrPartOfCase","ReviewReferralResponseAdmin","ReviewReferralResponseJudiciary","ReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>
@@ -1042,6 +1042,23 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tt1zjs">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bva8w0">
+        <inputEntry id="UnaryTests_0ay9cp0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zvrfef">
+          <text>"ReviewReferralAdmin","ReviewReferralJudiciary","ReviewReferralLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0336zf2">
+          <text>"priorityDateOriginEarliest"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1adzosq">
+          <text>"dueDate, nextHearingDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cmb6lz">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
