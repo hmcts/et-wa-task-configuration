@@ -1058,7 +1058,7 @@ else 2</text>
           <text>"dueDate, nextHearingDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14f6prs">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
