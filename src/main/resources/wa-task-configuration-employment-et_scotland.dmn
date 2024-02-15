@@ -1032,7 +1032,25 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ox5ilk">
-          <text>"Et1Vetting","ET3Processing","IssueInitialConsiderationDirections","ListAHearing","DraftAndSignJudgment","IssuePostHearingDirection","SendEt1Notification","ListServeClaim","ReviewRule21Referral","IssueJudgment","CompleteInitialConsideration","SendEt3Notification","AmendClaimantDetails","AmendRespondentDetails","ContactTribunalWithAnApplication","WithdrawAllOrPartOfCase","ReviewReferralResponseAdmin","ReviewReferralResponseJudiciary","ReviewReferralResponseLegalOps"</text>
+          <text>"Et1Vetting",
+"ET3Processing",
+"IssueInitialConsiderationDirections",
+"ListAHearing",
+"DraftAndSignJudgment",
+"IssuePostHearingDirection",
+"SendEt1Notification",
+"ListServeClaim",
+"ReviewRule21Referral",
+"IssueJudgment",
+"CompleteInitialConsideration",
+"SendEt3Notification",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
+"ContactTribunalWithAnApplication",
+"WithdrawAllOrPartOfCase",
+"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>
@@ -1049,7 +1067,9 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0zvrfef">
-          <text>"ReviewReferralAdmin","ReviewReferralJudiciary","ReviewReferralLegalOps"</text>
+          <text>"ReviewReferralAdmin",
+"ReviewReferralJudiciary",
+"ReviewReferralLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0336zf2">
           <text>"priorityDateOriginEarliest"</text>
