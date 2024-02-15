@@ -780,7 +780,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
         List<Map<String, Object>> resultList =
             dmnDecisionTableResult.getResultList().stream().toList();
-        assertEquals(14, resultList.size());
+        assertEquals(13, resultList.size());
 
         assertEquals(Map.of(
             "name", "calculatedDates",
@@ -819,12 +819,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "Yes",
             "canReconfigure", true
         ), resultList.get(12));
-
-        assertEquals(Map.of(
-            "name", "priorityDateOriginRef",
-            "value", "dueDate",
-            "canReconfigure", true
-        ), resultList.get(13));
     }
 
     @Test
@@ -876,7 +870,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
         getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
         getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
-        getExpectedValueWithReconfigure(rules, "priorityDateOriginRef", "dueDate", true);
         return rules;
     }
 
@@ -894,7 +887,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(51));
+        assertThat(logic.getRules().size(), is(52));
     }
 
     private static Map<String, Object> mapData(String source) {
