@@ -218,7 +218,10 @@
         <inputEntry id="UnaryTests_0oqt7zb">
           <text>"ReviewReferralLegalOps",
 "ReviewReferralResponseLegalOps",
-"ReviewRule21Referral"</text>
+"ReviewRule21Referral","ReviewReferralJudiciary",
+"ReviewReferralResponseJudiciary",
+"CompleteInitialConsideration",
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_04f9yju">
           <text></text>

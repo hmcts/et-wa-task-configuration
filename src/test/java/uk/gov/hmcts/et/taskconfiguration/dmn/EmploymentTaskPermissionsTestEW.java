@@ -180,7 +180,9 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge
+                    judge,
+                    tribunalCaseworker,
+                    seniorTribunalCaseworker
                 )
             ),
             Arguments.of(
@@ -189,7 +191,9 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge
+                    judge,
+                    tribunalCaseworker,
+                    seniorTribunalCaseworker
                 )
             ),
             Arguments.of(
@@ -198,7 +202,9 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge
+                    judge,
+                    tribunalCaseworker,
+                    seniorTribunalCaseworker
                 )
             ),
             Arguments.of(
@@ -207,7 +213,9 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge
+                    judge,
+                    tribunalCaseworker,
+                    seniorTribunalCaseworker
                 )
             ),
 
@@ -217,8 +225,8 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     leadershipJudge,
                     approverLegalOps
-                    
-                    
+
+
                 )
             ),
             Arguments.of(
@@ -228,7 +236,9 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     leadershipJudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
-                    tribunalCaseworker
+                    tribunalCaseworker,
+                    judge,
+                    hearingJudge
                 )
             ),
             Arguments.of(
@@ -238,7 +248,9 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     leadershipJudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
-                    tribunalCaseworker
+                    tribunalCaseworker,
+                    judge,
+                    hearingJudge
                 )
             ),
             Arguments.of(
@@ -248,7 +260,9 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     leadershipJudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
-                    tribunalCaseworker
+                    tribunalCaseworker,
+                    judge,
+                    hearingJudge
                 )
             ),
 
