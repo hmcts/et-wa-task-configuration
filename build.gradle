@@ -188,20 +188,20 @@ dependencyCheck {
 dependencyManagement {
   dependencies {
     dependency group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.68'
-    dependencySet(group: 'com.google.guava', version: '32.0.1-jre') {
+    dependencySet(group: 'com.google.guava', version: '32.1.3-jre') {
       entry 'guava'
     }
 
     dependency group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.14'
 
-    dependency group: 'commons-io', name: 'commons-io', version: '2.8.0'
+    dependency group: 'commons-io', name: 'commons-io', version: '2.15.1'
     dependency group: 'org.mybatis', name: 'mybatis', version: '3.5.15'
     dependency group: 'org.camunda.connect', name: 'camunda-connect-connectors-all', version: '1.5.6'
     dependency group: 'org.apiguardian', name: 'apiguardian-api', version: '1.1.2'
 
     //CVE-2023-35116
-    dependency group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
-    dependency group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.15.2'
+    dependency group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.16.1'
+    dependency group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.16.1'
 
     dependency group: 'org.glassfish', name: 'jakarta.el', version: '4.0.2'
 
@@ -224,7 +224,7 @@ def versions = [
   reformLogging   : '5.1.9',
   springDoc       : '1.6.6',
   camunda         : '7.19.0',
-  pitest          : '1.15.3',
+  pitest          : '1.15.8',
   sonarPitest     : '0.5',
   tomcat          : '10.1.18'
 ]
@@ -278,7 +278,7 @@ dependencies {
   testImplementation group: 'org.camunda.bpm.dmn', name: 'camunda-engine-dmn', version: "${versions.camunda}"
   testImplementation group: 'org.camunda.bpm.assert', name: 'camunda-bpm-assert', version: '15.0.0'
   testImplementation group: 'org.camunda.bpm', name: 'camunda-engine', version: "${versions.camunda}"
-  testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+  testImplementation group: 'com.h2database', name: 'h2', version: '2.2.224'
 
   integrationTestImplementation sourceSets.main.runtimeClasspath
   integrationTestImplementation sourceSets.test.runtimeClasspath
