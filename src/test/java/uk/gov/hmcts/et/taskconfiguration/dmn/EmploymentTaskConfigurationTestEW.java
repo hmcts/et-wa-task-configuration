@@ -472,8 +472,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> descAddJudgment = List.of(Map.of(
             "name", "description",
-            "value", "[Add or Amend a Judgment](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/addAmendJudgment/addAmendJudgment1)",
+            "value", "[Draft and Sign Judgement](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/draftAndSignJudgement/draftAndSignJudgement1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descApplicationsTab = List.of(Map.of(

@@ -521,7 +521,7 @@ else null</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rz80bi">
-          <text>"[Add or Amend a Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
+          <text>"[Draft and Sign Judgement](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r68eci">
           <text>true</text>
