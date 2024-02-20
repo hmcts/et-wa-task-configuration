@@ -179,7 +179,10 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge
+                    judge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
                 )
             ),
             Arguments.of(
@@ -188,7 +191,10 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge
+                    judge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
                 )
             ),
             Arguments.of(
@@ -197,7 +203,10 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge
+                    judge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
                 )
             ),
             Arguments.of(
@@ -206,7 +215,10 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     taskSupervisor,
                     hearingJudge,
                     leadershipJudge,
-                    judge
+                    judge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
                 )
             ),
 
@@ -222,7 +234,9 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralLegalOps",
                 List.of(
                     taskSupervisor,
+                    hearingJudge,
                     leadershipJudge,
+                    judge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -232,7 +246,9 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralResponseLegalOps",
                 List.of(
                     taskSupervisor,
+                    hearingJudge,
                     leadershipJudge,
+                    judge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -242,7 +258,9 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewRule21Referral",
                 List.of(
                     taskSupervisor,
+                    hearingJudge,
                     leadershipJudge,
+                    judge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
