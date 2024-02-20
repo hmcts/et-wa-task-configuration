@@ -595,6 +595,53 @@ else null</text>
           <text>"Processing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0o71iym">
+        <inputEntry id="UnaryTests_0adha2q">
+          <text>"draftAndSignJudgement"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_074glbz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cqn1vi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iismo3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d826vn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k30h4q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fgaq74">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01zcowk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ctsmig">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dfyd75">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sosg73">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10hhku8">
+          <text>"IssueJudgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10cin18">
+          <text>"Issue Judgment"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_005yv2t">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vvwix3">
+          <text>"Hearing"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_14jrmmo">
         <inputEntry id="UnaryTests_0zl01pz">
           <text>"preAcceptanceCase"</text>
