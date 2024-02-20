@@ -901,7 +901,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     private List<Map<String, Object>> getExpectedValues() {
         List<Map<String, Object>> rules = new ArrayList<>();
         getExpectedValueWithReconfigure(rules, "caseName", "George Jetson", true);
-        getExpectedValueWithReconfigure(rules, "region", "1", false);
+        getExpectedValueWithReconfigure(rules, "region", "1", true);
         getExpectedValueWithReconfigure(rules, "location", "21153", true);
         getExpectedValueWithReconfigure(rules, "locationName", "London Central", true);
         getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);

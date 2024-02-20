@@ -187,7 +187,7 @@ dependencyCheck {
 
 dependencyManagement {
   dependencies {
-    dependency group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.68'
+    dependency group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.70'
     dependencySet(group: 'com.google.guava', version: '32.1.3-jre') {
       entry 'guava'
     }
@@ -226,7 +226,7 @@ def versions = [
   camunda         : '7.19.0',
   pitest          : '1.15.8',
   sonarPitest     : '0.5',
-  tomcat          : '10.1.18'
+  tomcat          : '10.1.19'
 ]
 
 ext.libraries = [
