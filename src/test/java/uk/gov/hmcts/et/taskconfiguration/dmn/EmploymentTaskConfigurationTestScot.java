@@ -472,7 +472,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "/trigger/createReferral/createReferral1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descAddJudgment = List.of(Map.of(
+        List<Map<String, Object>> descDraftJudgment = List.of(Map.of(
             "name", "description",
             "value", "[Draft and Sign Judgement](/cases/case-details/${[CASE_REFERENCE]}"
                 + "/trigger/draftAndSignJudgement/draftAndSignJudgement1)",
@@ -483,9 +483,10 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descCloseCase = List.of(Map.of(
+        List<Map<String, Object>> descAddJudgment = List.of(Map.of(
             "name", "description",
-            "value", "[Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)",
+            "value", "[Add or Amend a Judgment](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/addAmendJudgment/addAmendJudgment1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
@@ -521,14 +522,14 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ReviewRule21Referral", descCreateReferral),
 
-            Arguments.of("DraftAndSignJudgment", descAddJudgment),
+            Arguments.of("DraftAndSignJudgment", descDraftJudgment),
 
             Arguments.of("ContactTribunalWithAnApplication", descApplicationsTab),
             Arguments.of("AmendClaimantDetails", descApplicationsTab),
             Arguments.of("AmendRespondentDetails", descApplicationsTab),
             Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
 
-            Arguments.of("IssueJudgment", descCloseCase),
+            Arguments.of("IssueJudgment", descAddJudgment),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
