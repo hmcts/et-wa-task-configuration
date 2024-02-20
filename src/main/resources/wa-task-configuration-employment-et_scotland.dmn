@@ -55,7 +55,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null) then caseData.caseManagementLocation.region else "11"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nvk3fu">
-          <text>false</text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0lfg1w3">
