@@ -194,7 +194,7 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "addAmendJudgment",
+                "draftAndSignJudgement",
                 asList(
                     Map.of(
                         "taskType", "DraftAndSignJudgment",

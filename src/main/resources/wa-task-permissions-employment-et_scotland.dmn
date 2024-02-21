@@ -88,7 +88,8 @@
         <inputEntry id="UnaryTests_1q4opzl">
           <text>"ReviewReferralLegalOps",
 "ReviewReferralResponseLegalOps",
-"ReviewRule21Referral","ReviewReferralJudiciary",
+"ReviewRule21Referral",
+"ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
 "DraftAndSignJudgment"</text>
@@ -153,7 +154,8 @@
         <inputEntry id="UnaryTests_0nnb9wq">
           <text>"ReviewReferralLegalOps",
 "ReviewReferralResponseLegalOps",
-"ReviewRule21Referral","ReviewReferralJudiciary",
+"ReviewRule21Referral",
+"ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
 "DraftAndSignJudgment"</text>
@@ -218,7 +220,8 @@
         <inputEntry id="UnaryTests_0oqt7zb">
           <text>"ReviewReferralLegalOps",
 "ReviewReferralResponseLegalOps",
-"ReviewRule21Referral","ReviewReferralJudiciary",
+"ReviewRule21Referral",
+"ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
 "DraftAndSignJudgment"</text>
@@ -252,7 +255,8 @@
         <inputEntry id="UnaryTests_1hlftmk">
           <text>"ReviewReferralLegalOps",
 "ReviewReferralResponseLegalOps",
-"ReviewRule21Referral","ReviewReferralJudiciary",
+"ReviewRule21Referral",
+"ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
 "DraftAndSignJudgment"</text>
@@ -287,7 +291,8 @@
         <inputEntry id="UnaryTests_0m81xlb">
           <text>"ReviewReferralLegalOps",
 "ReviewReferralResponseLegalOps",
-"ReviewRule21Referral","ReviewReferralJudiciary",
+"ReviewRule21Referral",
+"ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
 "DraftAndSignJudgment"</text>

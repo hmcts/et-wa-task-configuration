@@ -198,7 +198,7 @@
       </rule>
       <rule id="DecisionRule_1ufk5zq">
         <inputEntry id="UnaryTests_1orgb5e">
-          <text>"addAmendJudgment"</text>
+          <text>"draftAndSignJudgement"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xiq9w4">
           <text>"DraftAndSignJudgment"</text>
@@ -265,7 +265,7 @@
 "et3Notification",
 "et3Vetting",
 "createReferral",
-"addAmendJudgment",
+"draftAndSignJudgement",
 "amendClaimantDetails",
 "amendRespondentDetails",
 "disposeCase"</text>
