@@ -122,6 +122,13 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String RESPOND_COLLECTION =
         ",\"respondCollection\": [{\"value\": {\"applicationType\": \"%s\",\"from\": \"%s\"}}]";
 
+    public static final String HEARING_DETAIL_COLLECTION_HEARD =
+        "\"hearingDetailsCollection\": [{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
+            + "{\"value\": {\"hearingDetailsStatus\": \"Heard\"}}]";
+    public static final String HEARING_DETAIL_COLLECTION_POSTPONED =
+        "\"hearingDetailsCollection\": [{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
+            + "{\"value\": {\"hearingDetailsStatus\": \"Postponed\"}}]";
+
     public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
             createApplications("Amend my claim", "");
     public static final String SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS =
@@ -467,7 +474,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "updateHearing",
                 "Accepted",
-                null,
+                mapAdditionalData(HEARING_DETAIL_COLLECTION_HEARD),
                 List.of(
                     mapExpectedOutput(
                         "DraftAndSignJudgment",
@@ -475,6 +482,12 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Judgment"
                     )
                 )
+            ),
+            Arguments.of(
+                "updateHearing",
+                "Accepted",
+                mapAdditionalData(HEARING_DETAIL_COLLECTION_POSTPONED),
+                List.of()
             ),
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
