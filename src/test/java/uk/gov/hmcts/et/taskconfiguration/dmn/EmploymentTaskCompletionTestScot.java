@@ -194,7 +194,7 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "addAmendJudgment",
+                "draftAndSignJudgement",
                 asList(
                     Map.of(
                         "taskType", "DraftAndSignJudgment",
@@ -224,12 +224,18 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "disposeCase",
+                "addAmendJudgment",
                 asList(
                     Map.of(
                         "taskType", "IssueJudgment",
                         "completionMode", "Auto"
                     ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "disposeCase",
+                asList(
                     Map.of(
                         "taskType", "WithdrawAllOrPartOfCase",
                         "completionMode", "Auto"

@@ -17,7 +17,7 @@
           else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="236" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="258" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="1014" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
@@ -521,7 +521,7 @@ else null</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rz80bi">
-          <text>"[Add or Amend a Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
+          <text>"[Draft and Sign Judgement](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r68eci">
           <text>true</text>
@@ -558,7 +558,7 @@ else null</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04xihwk">
-          <text>"[Close Case](/cases/case-details/${[CASE_REFERENCE]}/trigger/disposeCase/disposeCase1)"</text>
+          <text>"[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgements) and [Add or Amend a Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17bw4fs">
           <text>true</text>
@@ -1032,7 +1032,25 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ox5ilk">
-          <text>"Et1Vetting","ET3Processing","IssueInitialConsiderationDirections","ListAHearing","DraftAndSignJudgment","IssuePostHearingDirection","SendEt1Notification","ListServeClaim","ReviewRule21Referral","IssueJudgment","CompleteInitialConsideration","SendEt3Notification","AmendClaimantDetails","AmendRespondentDetails","ContactTribunalWithAnApplication","WithdrawAllOrPartOfCase","ReviewReferralResponseAdmin","ReviewReferralResponseJudiciary","ReviewReferralResponseLegalOps"</text>
+          <text>"Et1Vetting",
+"ET3Processing",
+"IssueInitialConsiderationDirections",
+"ListAHearing",
+"DraftAndSignJudgment",
+"IssuePostHearingDirection",
+"SendEt1Notification",
+"ListServeClaim",
+"ReviewRule21Referral",
+"IssueJudgment",
+"CompleteInitialConsideration",
+"SendEt3Notification",
+"AmendClaimantDetails",
+"AmendRespondentDetails",
+"ContactTribunalWithAnApplication",
+"WithdrawAllOrPartOfCase",
+"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>
@@ -1049,7 +1067,9 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1px3uao">
-          <text>"ReviewReferralAdmin","ReviewReferralJudiciary","ReviewReferralLegalOps"</text>
+          <text>"ReviewReferralAdmin",
+"ReviewReferralJudiciary",
+"ReviewReferralLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tqigei">
           <text>"priorityDateOriginEarliest"</text>
