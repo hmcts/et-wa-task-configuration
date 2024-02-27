@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.19.0">
-  <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+  <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_1l2v2xj">
       <requiredDecision href="#Decision_1xqgkq6" />
     </informationRequirement>
@@ -1742,7 +1742,7 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_1xqgkq6" name="Latest Referral - Task Name">
+  <decision id="Decision_1xqgkq6" name="Latest Referral - Task Name" camunda:historyTimeToLive="P30D">
     <variable id="InformationItem_10nuodq" name="LATEST_REFERRAL_TASK_NAME" typeRef="string" />
     <literalExpression id="LiteralExpression_0l31qx1">
       <text>if(additionalData!=null
@@ -1757,7 +1757,7 @@ then
 else null</text>
     </literalExpression>
   </decision>
-  <decision id="Decision_1merw3p" name="Latest Referral Reply - Task Name">
+  <decision id="Decision_1merw3p" name="Latest Referral Reply - Task Name" camunda:historyTimeToLive="P30D">
     <variable id="InformationItem_0z7m2qk" name="LATEST_REFERRAL_REPLY_TASK_NAME" typeRef="string" />
     <literalExpression id="LiteralExpression_11rmzca">
       <text>if(additionalData!=null
