@@ -48,6 +48,16 @@ then sort(flatten(additionalData.Data.referralCollection[value.referralReplyColl
 else null</text>
         </inputExpression>
       </input>
+      <input id="InputClause_1qt4zvw" label="Is Judgement">
+        <inputExpression id="LiteralExpression_0jllg82" typeRef="boolean">
+          <text>if (additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.draftAndSignJudgement!=null
+and additionalData.Data.draftAndSignJudgement.isJudgement!=null)
+then additionalData.Data.draftAndSignJudgement.isJudgement
+else false</text>
+        </inputExpression>
+      </input>
       <input id="InputClause_15dbuhn" label="ET3 form received">
         <inputExpression id="LiteralExpression_1sd7ihy" typeRef="boolean">
           <text>if(additionalData!=null
@@ -150,6 +160,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1ko29uf">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_08s9tlq">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_06jyp0b">
           <text></text>
         </inputEntry>
@@ -198,6 +211,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0s5w63e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b9r9do">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1401u0h">
@@ -250,6 +266,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0twhjtj">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0b2xoyf">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0red2x0">
           <text></text>
         </inputEntry>
@@ -298,6 +317,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text>"Judgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1k99nx6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xuzs2r">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0h9uw0n">
@@ -350,6 +372,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_08lbovi">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1qjqvi5">
           <text></text>
         </inputEntry>
@@ -398,6 +423,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text>"Rule 21"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0cbz43f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fomiml">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_15v1j0p">
@@ -450,6 +478,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_18nyph2">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1bbyy31">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1nshg8r">
           <text></text>
         </inputEntry>
@@ -499,6 +530,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         </inputEntry>
         <inputEntry id="UnaryTests_016z8gq">
           <text>"Admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hyllub">
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1e6qmyl">
           <text></text>
@@ -550,6 +584,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_066p0jd">
           <text>"Judge"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0n8x1o2">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_18zxwbv">
           <text></text>
         </inputEntry>
@@ -599,6 +636,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         </inputEntry>
         <inputEntry id="UnaryTests_0fohd96">
           <text>"Legal officer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yguzrp">
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wym5ij">
           <text></text>
@@ -650,6 +690,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0dci9s4">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0rlxlim">
+          <text>true</text>
+        </inputEntry>
         <inputEntry id="UnaryTests_06yb3z1">
           <text></text>
         </inputEntry>
@@ -698,6 +741,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0gzl8je">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u33ao7">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_09z5ry5">
@@ -750,6 +796,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0dx3x9i">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1ozezje">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1fohhgq">
           <text></text>
         </inputEntry>
@@ -798,6 +847,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0htl5u7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04vxcq0">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05lf1lf">
@@ -850,6 +902,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0yak1o6">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0xwspqp">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0y5qbl2">
           <text></text>
         </inputEntry>
@@ -898,6 +953,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1yk5t4e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13d2xr4">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_15efn68">
@@ -950,6 +1008,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1493fyz">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0sqa260">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1lzl3qf">
           <text></text>
         </inputEntry>
@@ -998,6 +1059,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0g17av6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tu6b0e">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0i6z52k">
@@ -1050,6 +1114,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0tzb7fz">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0wlyrtq">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1eia36i">
           <text></text>
         </inputEntry>
@@ -1098,6 +1165,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1nvcc8n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ffq7ey">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0pedj63">
@@ -1150,6 +1220,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0gquik9">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1akzhoh">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1u16h9d">
           <text></text>
         </inputEntry>
@@ -1200,6 +1273,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1alb0hn">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_11e5u3i">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0i4zfm6">
           <text></text>
         </inputEntry>
@@ -1248,6 +1324,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1admda4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kgk5zc">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0kxvwpk">
@@ -1308,6 +1387,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_028hyp7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hoi1k9">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0arqbbt">
@@ -1378,6 +1460,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1754qga">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0rws696">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_13koqug">
           <text></text>
         </inputEntry>
@@ -1436,6 +1521,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0bdchai">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gcwd8o">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0g05sq8">
@@ -1506,6 +1594,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0hhferk">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_17jxz69">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1mm9aq2">
           <text></text>
         </inputEntry>
@@ -1554,6 +1645,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_06i6p5e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14e9u1w">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_03t0w5m">
@@ -1606,6 +1700,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_048rr3p">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_04piz72">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_18u1sb3">
           <text></text>
         </inputEntry>
@@ -1656,6 +1753,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1530xzd">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0f6y2ms">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0vn04jn">
           <text></text>
         </inputEntry>
@@ -1704,6 +1804,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1btn8d7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04p6971">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1w6rhbs">
