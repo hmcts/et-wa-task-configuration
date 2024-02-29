@@ -60,6 +60,11 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String REFERRAL_REPLY_LEGALOFFICER =
         createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
 
+    public static final String IS_JUDGEMENT_TRUE =
+        "\"draftAndSignJudgement\":{\"isJudgement\":true}";
+    public static final String IS_JUDGEMENT_FALSE =
+        "\"draftAndSignJudgement\":{\"isJudgement\":false}";
+
     public static final DateTimeFormatter BF_DATE_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static final int BROUGHT_FORWARD_AMOUNT = 2;
     public static final String BROUGHT_FORWARD = "\"bfActions\":["
@@ -289,7 +294,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "draftAndSignJudgement",
                 null,
-                null,
+                mapAdditionalData(IS_JUDGEMENT_TRUE),
                 List.of(
                     mapExpectedOutput(
                         "IssueJudgment",
@@ -297,6 +302,12 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Hearing"
                     )
                 )
+            ),
+            Arguments.of(
+                "draftAndSignJudgement",
+                null,
+                mapAdditionalData(IS_JUDGEMENT_FALSE),
+                List.of()
             ),
             Arguments.of(
                 "preAcceptanceCase",
