@@ -39,23 +39,30 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
         "roleCategory", "JUDICIAL",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign"
     );
-    private static final Map<String, Serializable> hearingJudge = Map.of(
+    private static final Map<String, Serializable> leadJudge = Map.of(
         "autoAssignable", true,
         "assignmentPriority", 1,
+        "name", "lead-judge",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "JUDICIAL"
+    );
+    private static final Map<String, Serializable> hearingJudge = Map.of(
+        "autoAssignable", true,
+        "assignmentPriority", 2,
         "name", "hearing-judge",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
     );
     private static final Map<String, Serializable> leadershipJudge = Map.of(
         "autoAssignable", false,
-        "assignmentPriority", 4,
+        "assignmentPriority", 5,
         "name", "leadership-judge",
         "value", "Read, Execute, Manage, Claim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "JUDICIAL"
     );
     private static final Map<String, Serializable> judge = Map.of(
         "autoAssignable", false,
-        "assignmentPriority", 2,
+        "assignmentPriority", 3,
         "name", "judge",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
@@ -75,14 +82,14 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
     );
     private static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
         "autoAssignable", false,
-        "assignmentPriority", 3,
+        "assignmentPriority", 4,
         "name", "senior-tribunal-caseworker",
         "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "LEGAL_OPERATIONS"
     );
     private static final Map<String, Serializable> tribunalCaseworker = Map.of(
         "autoAssignable", false,
-        "assignmentPriority", 2,
+        "assignmentPriority", 3,
         "name", "tribunal-caseworker",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "LEGAL_OPERATIONS"
@@ -177,6 +184,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralJudiciary",
                 List.of(
                     taskSupervisor,
+                    leadJudge,
                     hearingJudge,
                     leadershipJudge,
                     judge,
@@ -189,6 +197,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralResponseJudiciary",
                 List.of(
                     taskSupervisor,
+                    leadJudge,
                     hearingJudge,
                     leadershipJudge,
                     judge,
@@ -201,6 +210,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "CompleteInitialConsideration",
                 List.of(
                     taskSupervisor,
+                    leadJudge,
                     hearingJudge,
                     leadershipJudge,
                     judge,
@@ -213,6 +223,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "DraftAndSignJudgment",
                 List.of(
                     taskSupervisor,
+                    leadJudge,
                     hearingJudge,
                     leadershipJudge,
                     judge,
@@ -234,6 +245,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralLegalOps",
                 List.of(
                     taskSupervisor,
+                    leadJudge,
                     hearingJudge,
                     leadershipJudge,
                     judge,
@@ -246,6 +258,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewReferralResponseLegalOps",
                 List.of(
                     taskSupervisor,
+                    leadJudge,
                     hearingJudge,
                     leadershipJudge,
                     judge,
@@ -258,6 +271,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                 "ReviewRule21Referral",
                 List.of(
                     taskSupervisor,
+                    leadJudge,
                     hearingJudge,
                     leadershipJudge,
                     judge,
@@ -493,7 +507,7 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
         assertThat(logic.getOutputs().size(), is(7));
         assertThatOutputContainInOrder(outputColumnIds, logic.getOutputs());
         //Rules
-        assertThat(logic.getRules().size(), is(19));
+        assertThat(logic.getRules().size(), is(20));
     }
 
     private void assertThatInputContainInOrder(List<String> inputColumnIds, List<DmnDecisionTableInputImpl> inputs) {

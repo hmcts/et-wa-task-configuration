@@ -83,6 +83,42 @@
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1h1q7ir">
+        <description>Case Role for Auto Assignment - Lead Judge Permissions</description>
+        <inputEntry id="UnaryTests_01s4615">
+          <text>"ReviewReferralLegalOps",
+"ReviewReferralResponseLegalOps",
+"ReviewRule21Referral",
+"ReviewReferralJudiciary",
+"ReviewReferralResponseJudiciary",
+"CompleteInitialConsideration",
+"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ppwdd3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vt05m1">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_079sfvp">
+          <text>"lead-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16rrwph">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02781sk">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y5klsz">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1066d5w">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1adeodk">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_10ym4yi">
         <description>Case Role for Auto Assignment - Hearing Judge Permissions</description>
         <inputEntry id="UnaryTests_1q4opzl">
@@ -113,7 +149,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0stu1aw">
-          <text>1</text>
+          <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_02krt2c">
           <text>true</text>
@@ -143,7 +179,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04a0zeu">
-          <text>4</text>
+          <text>5</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0s6z0e2">
           <text>false</text>
@@ -179,7 +215,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zoan3h">
-          <text>2</text>
+          <text>3</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0thq4jp">
           <text>false</text>
@@ -280,7 +316,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cfgabn">
-          <text>3</text>
+          <text>4</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07m3v27">
           <text>false</text>
@@ -316,7 +352,7 @@
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1t942mu">
-          <text>2</text>
+          <text>3</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uuye16">
           <text>false</text>
