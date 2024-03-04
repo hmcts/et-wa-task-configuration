@@ -483,10 +483,10 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descAddJudgment = List.of(Map.of(
+        List<Map<String, Object>> descIssueJudgment = List.of(Map.of(
             "name", "description",
             "value", "[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgements) and "
-                + "[Add or Amend a Judgment](/cases/case-details/${[CASE_REFERENCE]}"
+                + "[Issue Judgment](/cases/case-details/${[CASE_REFERENCE]}"
                 + "/trigger/addAmendJudgment/addAmendJudgment1)",
             "canReconfigure", true
         ));
@@ -530,7 +530,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("AmendRespondentDetails", descApplicationsTab),
             Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
 
-            Arguments.of("IssueJudgment", descAddJudgment),
+            Arguments.of("IssueJudgment", descIssueJudgment),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
