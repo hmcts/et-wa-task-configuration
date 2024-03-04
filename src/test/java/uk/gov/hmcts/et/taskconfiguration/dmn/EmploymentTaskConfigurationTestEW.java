@@ -286,10 +286,12 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("SendEt1Notification", routineWork),
             Arguments.of("SendEt3Notification", routineWork),
             Arguments.of("ListServeClaim", routineWork),
+            Arguments.of("Rule21", routineWork),
             Arguments.of("ET3Processing", routineWork),
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
             Arguments.of("ReviewReferralResponseAdmin", routineWork),
             Arguments.of("IssueInitialConsiderationDirections", routineWork),
+            Arguments.of("ListAHearing", routineWork),
 
             Arguments.of("ReviewReferralJudiciary", decisionMakingWork),
             Arguments.of("ReviewReferralResponseJudiciary", decisionMakingWork),
@@ -372,6 +374,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ListServeClaim", administrator),
             Arguments.of("SendEt1Notification", administrator),
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
+            Arguments.of("Rule21", administrator),
             Arguments.of("ET3Processing", administrator),
             Arguments.of("SendEt3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
@@ -514,6 +517,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("SendEt3Notification", descIssueET3Notification),
 
+            Arguments.of("Rule21", descET3Processing),
             Arguments.of("ET3Processing", descET3Processing),
 
             Arguments.of("ReviewRule21Referral", descReviewRule21Referral),
@@ -737,6 +741,9 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
 
+            Arguments.of("Rule21", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+            ),
             Arguments.of("ReviewRule21Referral", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
