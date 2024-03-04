@@ -189,6 +189,10 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                 "et3Vetting",
                 asList(
                     Map.of(
+                        "taskType", "Rule21",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
                         "taskType", "ET3Processing",
                         "completionMode", "Auto"
                     ),
@@ -280,6 +284,6 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(23));
+        assertThat(logic.getRules().size(), is(24));
     }
 }
