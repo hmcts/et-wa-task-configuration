@@ -139,7 +139,6 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "ReviewReferralLegalOps",
 "SendEt1Notification",
 "ListServeClaim",
-"Rule21",
 "ET3Processing",
 "ReviewReferralResponseLegalOps",
 "ReviewReferralResponseAdmin",
@@ -290,7 +289,6 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "SendEt1Notification",
 "ListServeClaim",
 "reviewSpecificAccessRequestAdmin",
-"Rule21",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
 "ListAHearing",
@@ -483,8 +481,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fiqg3g">
-          <text>"Rule21",
-"ET3Processing"</text>
+          <text>"ET3Processing"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ky7l6o">
           <text>"description"</text>
@@ -597,7 +594,6 @@ else ""</text>
         </inputEntry>
         <inputEntry id="UnaryTests_02rmjxe">
           <text>"Et1Vetting",
-"Rule21",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
 "ListAHearing",
@@ -678,7 +674,6 @@ else 5000</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tyaq8o">
           <text>"Et1Vetting",
-"Rule21",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
 "ListAHearing",
@@ -947,8 +942,7 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_10e0xlu">
-          <text>"Rule21",
-"ReviewRule21Referral",
+          <text>"ReviewRule21Referral",
 "CompleteInitialConsideration",
 "ContactTribunalWithAnApplication"</text>
         </inputEntry>
@@ -1039,7 +1033,6 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ox5ilk">
           <text>"Et1Vetting",
-"Rule21",
 "ET3Processing",
 "IssueInitialConsiderationDirections",
 "ListAHearing",
