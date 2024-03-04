@@ -140,7 +140,7 @@ and count(additionalData.Data.hearingDetailsCollection)&gt;0
 and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.hearingDetailsStatus ="Heard")</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
+      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="333" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="150" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="258" />

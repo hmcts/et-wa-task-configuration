@@ -356,6 +356,16 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "Rule21",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin
+                )
+            ),
+            Arguments.of(
                 "ET3Processing",
                 List.of(
                     taskSupervisor,
