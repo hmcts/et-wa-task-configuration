@@ -60,7 +60,7 @@ class EmploymentTaskCancellationTestScot extends DmnDecisionTableBaseUnitTest {
                     ),
                     Map.of(
                         "action", "Cancel",
-                        "processCategories", "ReviewRule21Referral"
+                        "processCategories", "Rule21"
                     )
                 )
             ),
@@ -71,7 +71,7 @@ class EmploymentTaskCancellationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     Map.of(
                         "action", "Cancel",
-                        "processCategories", "ReviewRule21Referral"
+                        "processCategories", "Rule21"
                     )
                 )
             ),
@@ -98,6 +98,16 @@ class EmploymentTaskCancellationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 null,
                 "caseTransferDifferentCountry",
+                null,
+                List.of(
+                    Map.of(
+                        "action", "Reconfigure"
+                    )
+                )
+            ),
+            Arguments.of(
+                null,
+                "amendCaseDetails",
                 null,
                 List.of(
                     Map.of(
