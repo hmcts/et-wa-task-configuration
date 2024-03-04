@@ -504,7 +504,7 @@ else null</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0492sao">
-          <text>"[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+          <text>"[Review Rule 21 Referral](/cases/case-details/${[CASE_REFERENCE]}#Respondent)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_059enb4">
           <text>true</text>

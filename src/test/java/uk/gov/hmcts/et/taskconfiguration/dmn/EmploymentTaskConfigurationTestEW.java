@@ -462,10 +462,9 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             "value", "[ET3 Processing](/cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descCreateReferral = List.of(Map.of(
+        List<Map<String, Object>> descReviewRule21Referral = List.of(Map.of(
             "name", "description",
-            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/createReferral/createReferral1)",
+            "value", "[Review Rule 21 Referral](/cases/case-details/${[CASE_REFERENCE]}#Respondent)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descDraftJudgment = List.of(Map.of(
@@ -517,7 +516,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ET3Processing", descET3Processing),
 
-            Arguments.of("ReviewRule21Referral", descCreateReferral),
+            Arguments.of("ReviewRule21Referral", descReviewRule21Referral),
 
             Arguments.of("DraftAndSignJudgment", descDraftJudgment),
 
