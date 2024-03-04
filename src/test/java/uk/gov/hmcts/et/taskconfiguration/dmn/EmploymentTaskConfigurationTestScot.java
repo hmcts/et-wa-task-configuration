@@ -1,7 +1,5 @@
 package uk.gov.hmcts.et.taskconfiguration.dmn;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -13,8 +11,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
+import uk.gov.hmcts.et.taskconfiguration.utility.HelperService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,7 +85,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> caseData = getDefaultCaseData();
 
         if (!rawRespondentCollection.isBlank()) {
-            Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
+            Map<String, Object> parsedRespondentCollection = HelperService.mapData(rawRespondentCollection);
             caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
         }
 
@@ -583,7 +581,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> caseData = getDefaultCaseData();
 
         if (!rawReferralCollection.isBlank()) {
-            Map<String, Object> parsedReferralCollection = mapData(rawReferralCollection);
+            Map<String, Object> parsedReferralCollection = HelperService.mapData(rawReferralCollection);
             caseData.put("referralCollection", parsedReferralCollection.get("referralCollection"));
         }
 
@@ -902,34 +900,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         }
     }
 
-    private List<Map<String, Object>> getExpectedValues() {
-        List<Map<String, Object>> rules = new ArrayList<>();
-        getExpectedValueWithReconfigure(rules, "caseName", "George Jetson", true);
-        getExpectedValueWithReconfigure(rules, "region", "11", true);
-        getExpectedValueWithReconfigure(rules, "location", "368308", true);
-        getExpectedValueWithReconfigure(rules, "locationName", "Edinburgh", true);
-        getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);
-        getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
-        getExpectedValueWithReconfigure(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate", true);
-        getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
-        getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
-        getExpectedValueWithReconfigure(rules, "dueDateNonWorkingCalendar",
-                                        DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
-        getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
-        getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
-        getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
-        return rules;
-    }
-
-    private void getExpectedValueWithReconfigure(List<Map<String, Object>> rules, String name, String value,
-                                                 Boolean reconfigure) {
-        Map<String, Object> rule = new HashMap<>();
-        rule.put("name", name);
-        rule.put("value", value);
-        rule.put("canReconfigure", reconfigure);
-        rules.add(rule);
-    }
-
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
@@ -938,12 +908,23 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         assertThat(logic.getRules().size(), is(52));
     }
 
-    private static Map<String, Object> mapData(String source) {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.readValue(source, new TypeReference<>() {});
-        } catch (IOException exp) {
-            return null;
-        }
+    private List<Map<String, Object>> getExpectedValues() {
+        List<Map<String, Object>> rules = new ArrayList<>();
+        HelperService.getExpectedValueWithReconfigure(rules, "caseName", "George Jetson", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "region", "11", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "location", "368308", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "locationName", "Edinburgh", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);
+        HelperService.getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
+        HelperService.getExpectedValueWithReconfigure(
+            rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
+        HelperService.getExpectedValueWithReconfigure(
+            rules, "dueDateNonWorkingCalendar",DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
+        return rules;
     }
 }

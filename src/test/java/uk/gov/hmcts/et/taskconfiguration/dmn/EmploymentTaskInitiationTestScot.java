@@ -1,7 +1,5 @@
 package uk.gov.hmcts.et.taskconfiguration.dmn;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -13,11 +11,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
+import uk.gov.hmcts.et.taskconfiguration.utility.HelperService;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -27,58 +22,35 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
 
-    public static final DateTimeFormatter OLD_DATE_TIME_PATTERN =
-        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-
-    public static final String REFERRAL_COLLECTION = "\"referralCollection\":[%s]";
-    public static final String REFERRAL = "{\"value\": "
-        + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"referCaseTo\":\"%s\",\"isUrgent\":\"%s\"%s}"
-        + "}";
-    public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": [%s]";
-    public static final String REFERRALREPLY = "{\"value\":"
-        + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"directionTo\":\"%s\""
-        + ",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
-        + "}";
-
     public static final String REFERRAL_ADMIN =
-        createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "Yes", "", "");
     public static final String REFERRAL_ADMIN_HEARING =
-        createReferrals("Referral Subject 1","Hearings", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Hearings", "Admin", "Yes", "", "");
     public static final String REFERRAL_ADMIN_JUDGMENT =
-        createReferrals("Referral Subject 1","Judgment", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Judgment", "Admin", "Yes", "", "");
     public static final String REFERRAL_JUDGE =
-        createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "");
     public static final String REFERRAL_JUDGE_RULE21 =
-        createReferrals("Referral Subject 1","Rule 21", "Judge", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Rule 21", "Judge", "Yes", "", "");
     public static final String REFERRAL_LEGALOFFICER =
-        createReferrals("Referral Subject 1","Referral Subject 2", "Legal officer", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "Legal officer", "Yes", "", "");
 
     public static final String REFERRAL_REPLY_ADMIN =
-        createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Admin", "Yes");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Admin", "Yes");
     public static final String REFERRAL_REPLY_JUDGE =
-        createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
     public static final String REFERRAL_REPLY_LEGALOFFICER =
-        createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
 
     public static final String IS_JUDGEMENT_TRUE =
         "\"draftAndSignJudgement\":{\"isJudgement\":true}";
     public static final String IS_JUDGEMENT_FALSE =
         "\"draftAndSignJudgement\":{\"isJudgement\":false}";
 
-    public static final DateTimeFormatter BF_DATE_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static final int BROUGHT_FORWARD_AMOUNT = 3;
-    public static final String BROUGHT_FORWARD = "\"bfActions\":["
-        + "{\"value\":{\"bfDate\":\""
-        + LocalDateTime.now().plusDays(BROUGHT_FORWARD_AMOUNT).format(BF_DATE_PATTERN)
-        + "\"}}]";
-
     public static final String ET3_FORM_RECEIVED =
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":true}}]";
     public static final String ET3_FORM_NOT_RECEIVED =
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":false}}]";
-
-    public static final String RULE26_YES =
-        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3Rule26\":true}}}]";
 
     public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":true,"
@@ -122,11 +94,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
             + "}";
 
-    public static final String APPLICATION_COLLECTION =
-        "\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]";
-    public static final String RESPOND_COLLECTION =
-        ",\"respondCollection\": [{\"value\": {\"applicationType\": \"%s\",\"from\": \"%s\"}}]";
-
     public static final String HEARING_DETAIL_COLLECTION_HEARD =
         "\"hearingDetailsCollection\": [{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
             + "{\"value\": {\"hearingDetailsStatus\": \"Heard\"}}]";
@@ -135,26 +102,26 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             + "{\"value\": {\"hearingDetailsStatus\": \"Postponed\"}}]";
 
     public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
-            createApplications("Amend my claim", "");
+            HelperService.createApplications("Amend my claim", "");
     public static final String SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS =
-            createApplications("Change my personal details", "");
+            HelperService.createApplications("Change my personal details", "");
 
     public static final String SUBMISSION_REASON_RESPONDENT_AMEND =
-            createApplications("Amend response", "");
+            HelperService.createApplications("Amend response", "");
     public static final String SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS =
-            createApplications("Change personal details", "");
+            HelperService.createApplications("Change personal details", "");
 
     public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND =
-            createApplications("Amend my claim", "Respondent");
+            HelperService.createApplications("Amend my claim", "Respondent");
     public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS =
-            createApplications("Change my personal details", "Respondent");
+            HelperService.createApplications("Change my personal details", "Respondent");
 
     public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND =
-            createApplications("Amend response", "Claimant");
+            HelperService.createApplications("Amend response", "Claimant");
     public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS =
-            createApplications("Change personal details", "Claimant");
+            HelperService.createApplications("Change personal details", "Claimant");
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
-            createApplications("Withdraw all/part of claim", "Claimant");
+            HelperService.createApplications("Withdraw all/part of claim", "Claimant");
 
     @BeforeAll
     public static void initialization() {
@@ -168,7 +135,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Submitted",
                 null,
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "Et1Vetting",
                         "Et1 Vetting",
                         "Vetting"
@@ -178,9 +145,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "createReferral",
                 null,
-                mapAdditionalData(REFERRAL_ADMIN),
+                HelperService.mapAdditionalData(REFERRAL_ADMIN),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
                         "Review Referral #2 - Referral Subject 2",
                         "Vetting"
@@ -190,14 +157,14 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "createReferral",
                 null,
-                mapAdditionalData(REFERRAL_ADMIN_HEARING),
+                HelperService.mapAdditionalData(REFERRAL_ADMIN_HEARING),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
                         "Review Referral #2 - Hearings",
                         "Vetting"
                     ),
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "IssuePostHearingDirection",
                         "Issue Post Hearing Direction",
                         "Hearing"
@@ -207,14 +174,14 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "createReferral",
                 null,
-                mapAdditionalData(REFERRAL_ADMIN_JUDGMENT),
+                HelperService.mapAdditionalData(REFERRAL_ADMIN_JUDGMENT),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
                         "Review Referral #2 - Judgment",
                         "Vetting"
                     ),
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "IssueJudgment",
                         "Issue Judgment",
                         "Hearing"
@@ -224,9 +191,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "createReferral",
                 null,
-                mapAdditionalData(REFERRAL_JUDGE),
+                HelperService.mapAdditionalData(REFERRAL_JUDGE),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciary",
                         "Review Referral #2 - ET1",
                         "Vetting"
@@ -236,9 +203,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "createReferral",
                 null,
-                mapAdditionalData(REFERRAL_JUDGE_RULE21),
+                HelperService.mapAdditionalData(REFERRAL_JUDGE_RULE21),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "DraftAndSignJudgment",
                         "Draft And Sign Judgment",
                         "Judgment"
@@ -248,9 +215,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "createReferral",
                 null,
-                mapAdditionalData(REFERRAL_LEGALOFFICER),
+                HelperService.mapAdditionalData(REFERRAL_LEGALOFFICER),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewReferralLegalOps",
                         "Review Referral #2 - Referral Subject 2",
                         "Vetting"
@@ -260,9 +227,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "replyToReferral",
                 null,
-                mapAdditionalData(REFERRAL_REPLY_ADMIN),
+                HelperService.mapAdditionalData(REFERRAL_REPLY_ADMIN),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
                         "Review Referral #1 - Referral Subject 1 Response",
                         "Processing"
@@ -272,9 +239,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "replyToReferral",
                 null,
-                mapAdditionalData(REFERRAL_REPLY_JUDGE),
+                HelperService.mapAdditionalData(REFERRAL_REPLY_JUDGE),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
                         "Review Referral #1 - Referral Subject 1 Response",
                         "Processing"
@@ -284,9 +251,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "replyToReferral",
                 null,
-                mapAdditionalData(REFERRAL_REPLY_LEGALOFFICER),
+                HelperService.mapAdditionalData(REFERRAL_REPLY_LEGALOFFICER),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
                         "Review Referral #1 - Referral Subject 1 Response",
                         "Processing"
@@ -296,9 +263,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "draftAndSignJudgement",
                 null,
-                mapAdditionalData(IS_JUDGEMENT_TRUE),
+                HelperService.mapAdditionalData(IS_JUDGEMENT_TRUE),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "IssueJudgment",
                         "Issue Judgment",
                         "Hearing"
@@ -308,7 +275,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "draftAndSignJudgement",
                 null,
-                mapAdditionalData(IS_JUDGEMENT_FALSE),
+                HelperService.mapAdditionalData(IS_JUDGEMENT_FALSE),
                 List.of()
             ),
             Arguments.of(
@@ -316,12 +283,12 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 null,
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ListServeClaim",
                         "List/ Serve Claim",
                         "Vetting"
                     ),
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "SendEt1Notification",
                         "Send ET1 Notification",
                         "Vetting"
@@ -333,7 +300,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Rejected",
                 null,
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "SendEt1Notification",
                         "Send ET1 Notification",
                         "Vetting"
@@ -345,7 +312,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 null,
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "Rule21",
                         "Rule 21",
                         "Rule21"
@@ -357,7 +324,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 null,
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ET3Processing",
                         "ET3 Processing",
                         "Processing"
@@ -367,9 +334,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "amendRespondentDetails",
                 null,
-                mapAdditionalData(ET3_FORM_RECEIVED),
+                HelperService.mapAdditionalData(ET3_FORM_RECEIVED),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ET3Processing",
                         "ET3 Processing",
                         "Processing"
@@ -379,7 +346,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "amendRespondentDetails",
                 "Accepted",
-                mapAdditionalData(ET3_FORM_NOT_RECEIVED),
+                HelperService.mapAdditionalData(ET3_FORM_NOT_RECEIVED),
                 List.of()
             ),
             Arguments.of(
@@ -387,17 +354,17 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 null,
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ReviewRule21Referral",
                         "Review Rule 21 Referral",
                         "Rule21"
                     ),
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "CompleteInitialConsideration",
                         "Complete Initial Consideration",
                         "Processing"
                     ),
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
                         "Processing"
@@ -407,9 +374,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                mapAdditionalData(STRIKE_OUT_CLAIM),
+                HelperService.mapAdditionalData(STRIKE_OUT_CLAIM),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
                         "Issue Initial Consideration Directions",
                         "Hearing"
@@ -419,9 +386,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                mapAdditionalData(LISTAHEARING_PROCEED_LISTED),
+                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_LISTED),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
@@ -431,9 +398,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_PRELIM),
+                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_PRELIM),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
@@ -443,9 +410,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL),
+                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
@@ -455,20 +422,20 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
+                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
                 List.of()
             ),
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM),
+                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
                     ),
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
                         "Issue Initial Consideration Directions",
                         "Hearing"
@@ -480,7 +447,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 null,
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
                         "Issue Initial Consideration Directions",
                         "Hearing"
@@ -490,9 +457,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "updateHearing",
                 "Accepted",
-                mapAdditionalData(HEARING_DETAIL_COLLECTION_HEARD),
+                HelperService.mapAdditionalData(HEARING_DETAIL_COLLECTION_HEARD),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "DraftAndSignJudgment",
                         "Draft And Sign Judgment",
                         "Judgment"
@@ -502,15 +469,15 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "updateHearing",
                 "Accepted",
-                mapAdditionalData(HEARING_DETAIL_COLLECTION_POSTPONED),
+                HelperService.mapAdditionalData(HEARING_DETAIL_COLLECTION_POSTPONED),
                 List.of()
             ),
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 "Accepted",
-                mapAdditionalData(SUBMISSION_REASON_CLAIMANT_AMEND),
+                HelperService.mapAdditionalData(SUBMISSION_REASON_CLAIMANT_AMEND),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
@@ -520,9 +487,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
                 "Accepted",
-                mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND),
+                HelperService.mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
@@ -532,9 +499,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "respondentTSE",
                 "Accepted",
-                mapAdditionalData(SUBMISSION_REASON_RESPONDENT_AMEND),
+                HelperService.mapAdditionalData(SUBMISSION_REASON_RESPONDENT_AMEND),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
@@ -544,9 +511,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 "Accepted",
-                mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND),
+                HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
                         "Contact Tribunal With An Application",
                         "Application"
@@ -556,9 +523,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 null,
-                mapAdditionalData(SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS),
+                HelperService.mapAdditionalData(SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "AmendClaimantDetails",
                         "Amend Party Details",
                         "Amendments"
@@ -568,9 +535,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
                 null,
-                mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS),
+                HelperService.mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "AmendRespondentDetails",
                         "Amend Party Details",
                         "Amendments"
@@ -580,9 +547,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "respondentTSE",
                 null,
-                mapAdditionalData(SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS),
+                HelperService.mapAdditionalData(SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "AmendRespondentDetails",
                         "Amend Party Details",
                         "Amendments"
@@ -592,9 +559,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 null,
-                mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS),
+                HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "AmendClaimantDetails",
                         "Amend Party Details",
                         "Amendments"
@@ -604,9 +571,9 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 "Accepted",
-                mapAdditionalData(CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE),
+                HelperService.mapAdditionalData(CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE),
                 List.of(
-                    mapExpectedOutput(
+                    HelperService.mapExpectedOutput(
                         "WithdrawAllOrPartOfCase",
                         "Withdraw All or Part of Case",
                         "Amendments"
@@ -637,89 +604,5 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getRules().size(), is(32));
-    }
-
-    private static Map<String, Object> mapExpectedOutput(String taskId, String name, String processCategories) {
-        return Map.of(
-            "taskId", taskId,
-            "name", name,
-            "processCategories", processCategories
-        );
-    }
-
-    private static Map<String, Object> mapExpectedOutput(String taskId,
-                                                         String name,
-                                                         String processCategories,
-                                                         int delayDuration) {
-        return Map.of(
-            "name", name,
-            "processCategories", processCategories,
-            "delayDuration", delayDuration,
-            "taskId", taskId
-        );
-    }
-
-    private static String createApplications(String applicationType, String respondFrom) {
-        String respondCollection = "";
-        if (!respondFrom.isEmpty()) {
-            respondCollection = String.format(RESPOND_COLLECTION, applicationType, respondFrom);
-        }
-
-        return String.format(APPLICATION_COLLECTION, applicationType, respondCollection);
-    }
-
-    private static String createReferrals(
-        String referralSubject1,
-        String referralSubject2,
-        String referralReferCaseTo,
-        String referralUrgency,
-        String referralDirectionTo,
-        String referralReplyUrgency) {
-
-        String replyCollection1 = "";
-        String replyCollection2 = "";
-        if (!referralDirectionTo.isEmpty()) {
-            LocalDateTime now = LocalDateTime.now();
-            String reply1 = String.format(REFERRALREPLY,
-                                          "1",
-                                          referralSubject1,
-                                          referralDirectionTo,
-                                          referralReplyUrgency,
-                                          now.plusHours(1).format(OLD_DATE_TIME_PATTERN));
-            String reply2 = String.format(REFERRALREPLY,
-                                          "2",
-                                          referralSubject2,
-                                          referralDirectionTo,
-                                          referralReplyUrgency,
-                                          now.plusHours(2).format(OLD_DATE_TIME_PATTERN));
-            String reply3 = String.format(REFERRALREPLY,
-                                          "1",
-                                          referralSubject1,
-                                          referralDirectionTo,
-                                          referralReplyUrgency,
-                                          now.plusHours(3).format(OLD_DATE_TIME_PATTERN));
-
-            replyCollection1 = String.format(REFERRALREPLY_COLLECTION, reply1 + "," + reply3);
-            replyCollection2 = String.format(REFERRALREPLY_COLLECTION, reply2);
-        }
-
-        String referralCollection =
-            String.format(REFERRAL,"1",referralSubject1,referralReferCaseTo,referralUrgency,replyCollection1)
-                + ","
-                + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection2);
-
-        return String.format(REFERRAL_COLLECTION, referralCollection);
-    }
-
-    private static Map<String, Object> mapAdditionalData(String additionalDataContent) {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            TypeReference<HashMap<String, Object>> typeRef = new TypeReference<>() {
-            };
-            String addedDataProperty = "{\"Data\":{" + additionalDataContent + "}}";
-            return Map.of("additionalData", mapper.readValue(addedDataProperty, typeRef));
-        } catch (IOException exp) {
-            return null;
-        }
     }
 }
