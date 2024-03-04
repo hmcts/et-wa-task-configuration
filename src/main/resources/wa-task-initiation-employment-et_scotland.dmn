@@ -874,16 +874,16 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ytrqr1">
-          <text>"ReviewRule21Referral"</text>
+          <text>"Rule21"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0csgs0c">
-          <text>"Review Rule 21 Referral"</text>
+          <text>"Rule 21"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uhsinc">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vy4nwa">
-          <text>"ReviewRule21Referral"</text>
+          <text>"Rule21"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0ntdndx">
@@ -990,6 +990,59 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         </outputEntry>
         <outputEntry id="LiteralExpression_0gd8ynr">
           <text>"Processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12hv9ez">
+        <inputEntry id="UnaryTests_0saxgde">
+          <text>"et3Vetting"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0432i3e">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zinj99">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11zd6o6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tf6lnj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tzf607">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nr7dec">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jtxvko">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02gzq4l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pflev6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09ulku4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hxwm15">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kzfika">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_006cvh5">
+          <text>"ReviewRule21Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0imxhfx">
+          <text>"Review Rule 21 Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00v20q3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mtuop5">
+          <text>"Rule21"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0edeiu4">

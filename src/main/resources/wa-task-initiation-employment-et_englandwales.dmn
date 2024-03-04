@@ -140,7 +140,7 @@ and count(additionalData.Data.hearingDetailsCollection)&gt;0
 and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.hearingDetailsStatus ="Heard")</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="255" />
+      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="324" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="152" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="251" />
@@ -874,16 +874,16 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ytrqr1">
-          <text>"ReviewRule21Referral"</text>
+          <text>"Rule21"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0csgs0c">
-          <text>"Review Rule 21 Referral"</text>
+          <text>"Rule 21"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uhsinc">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vy4nwa">
-          <text>"ReviewRule21Referral"</text>
+          <text>"Rule21"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0ntdndx">
@@ -990,6 +990,59 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         </outputEntry>
         <outputEntry id="LiteralExpression_1ldxyi6">
           <text>"Processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_000tbjm">
+        <inputEntry id="UnaryTests_1axfvh9">
+          <text>"et3Vetting"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l6cjj6">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09kaasm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0erw84a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ed7slr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v8ikmt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jzap4i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iqh1ds">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cpqhjx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16cu5en">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w08tar">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13f3enc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fp6usp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mo94bo">
+          <text>"ReviewRule21Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dltz0p">
+          <text>"Review Rule 21 Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m3kv2l">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14rpqlj">
+          <text>"Rule21"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0edeiu4">

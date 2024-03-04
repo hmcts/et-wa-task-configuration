@@ -341,12 +341,12 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "WA_REVIEW_RULE21_REFERRAL",
                 "Accepted",
-                mapAdditionalData(BROUGHT_FORWARD),
+                null,
                 List.of(
                     mapExpectedOutput(
-                        "ReviewRule21Referral",
-                        "Review Rule 21 Referral",
-                        "ReviewRule21Referral"
+                        "Rule21",
+                        "Rule 21",
+                        "Rule21"
                     )
                 )
             ),
@@ -385,6 +385,11 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 null,
                 List.of(
+                    mapExpectedOutput(
+                        "ReviewRule21Referral",
+                        "Review Rule 21 Referral",
+                        "Rule21"
+                    ),
                     mapExpectedOutput(
                         "CompleteInitialConsideration",
                         "Complete Initial Consideration",
@@ -629,7 +634,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(31));
+        assertThat(logic.getRules().size(), is(32));
     }
 
     private static Map<String, Object> mapExpectedOutput(String taskId, String name, String processCategories) {
@@ -637,18 +642,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             "taskId", taskId,
             "name", name,
             "processCategories", processCategories
-        );
-    }
-
-    private static Map<String, Object> mapExpectedOutput(String taskId,
-                                                         String name,
-                                                         String processCategories,
-                                                         int delayDuration) {
-        return Map.of(
-            "name", name,
-            "processCategories", processCategories,
-            "delayDuration", delayDuration,
-            "taskId", taskId
         );
     }
 
