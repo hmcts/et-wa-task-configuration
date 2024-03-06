@@ -52,6 +52,11 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String ET3_FORM_NOT_RECEIVED =
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":false}}]";
 
+    public static final String IS_ET3_RESPONSE_TRUE =
+        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true}}}]";
+    public static final String IS_ET3_RESPONSE_FALSE =
+        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":false}}}]";
+
     public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":true,"
         + "\"etICHearingNotListedList\":["
@@ -352,13 +357,20 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "et3Vetting",
                 "Accepted",
-                null,
+                HelperService.mapAdditionalData(IS_ET3_RESPONSE_FALSE),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewRule21Referral",
                         "Review Rule 21 Referral",
                         "Rule21"
-                    ),
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                HelperService.mapAdditionalData(IS_ET3_RESPONSE_TRUE),
+                List.of(
                     HelperService.mapExpectedOutput(
                         "CompleteInitialConsideration",
                         "Complete Initial Consideration",
