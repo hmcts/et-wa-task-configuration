@@ -7,7 +7,7 @@
           <text>eventId</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="282" />
+      <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="341" />
       <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" />
       <rule id="DecisionRule_12eenty">
         <inputEntry id="UnaryTests_17cg7de">
@@ -22,7 +22,8 @@
       </rule>
       <rule id="DecisionRule_1jameda">
         <inputEntry id="UnaryTests_0q8217i">
-          <text>"replyToReferral","closeReferral"</text>
+          <text>"replyToReferral",
+"closeReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ku023r">
           <text>"ReviewReferralAdmin"</text>
@@ -33,7 +34,8 @@
       </rule>
       <rule id="DecisionRule_05insq9">
         <inputEntry id="UnaryTests_0mdh83n">
-          <text>"replyToReferral","closeReferral"</text>
+          <text>"replyToReferral",
+"closeReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0gpygso">
           <text>"ReviewReferralResponseAdmin"</text>
@@ -44,7 +46,9 @@
       </rule>
       <rule id="DecisionRule_1n1hrr1">
         <inputEntry id="UnaryTests_0d3nkez">
-          <text>"preAcceptanceCase","replyToReferral","closeReferral"</text>
+          <text>"preAcceptanceCase",
+"replyToReferral",
+"closeReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0m9i08l">
           <text>"ReviewReferralJudiciary"</text>
@@ -55,7 +59,9 @@
       </rule>
       <rule id="DecisionRule_0rgoz1c">
         <inputEntry id="UnaryTests_0wfbt17">
-          <text>"preAcceptanceCase","replyToReferral","closeReferral"</text>
+          <text>"preAcceptanceCase",
+"replyToReferral",
+"closeReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0nsl2oy">
           <text>"ReviewReferralLegalOps"</text>
@@ -66,7 +72,9 @@
       </rule>
       <rule id="DecisionRule_0xysxnl">
         <inputEntry id="UnaryTests_12rci1m">
-          <text>"preAcceptanceCase","replyToReferral","closeReferral"</text>
+          <text>"preAcceptanceCase",
+"replyToReferral",
+"closeReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0du4aig">
           <text>"ReviewReferralResponseJudiciary"</text>
@@ -77,7 +85,9 @@
       </rule>
       <rule id="DecisionRule_12zrnvl">
         <inputEntry id="UnaryTests_185czjm">
-          <text>"preAcceptanceCase","replyToReferral","closeReferral"</text>
+          <text>"preAcceptanceCase",
+"replyToReferral",
+"closeReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_076usvw">
           <text>"ReviewReferralResponseLegalOps"</text>
@@ -132,7 +142,8 @@
       </rule>
       <rule id="DecisionRule_1cpmht8">
         <inputEntry id="UnaryTests_1ninaep">
-          <text>"addAmendHearing","issueInitialConsiderationDirectionsWA"</text>
+          <text>"addAmendHearing",
+"issueInitialConsiderationDirectionsWA"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0spvbsg">
           <text>"ListAHearing"</text>
@@ -160,6 +171,17 @@
           <text>"SendEt3Notification"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16kqmlf">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1iinhaz">
+        <inputEntry id="UnaryTests_1vu76wq">
+          <text>"et3Vetting"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0u9k5fc">
+          <text>"Rule21"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mgr82f">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
@@ -242,7 +264,8 @@
       </rule>
       <rule id="DecisionRule_0hnkgbm">
         <inputEntry id="UnaryTests_18iikza">
-          <text>"disposeCase","createReferral"</text>
+          <text>"disposeCase",
+"createReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_00u0nnr">
           <text>"WithdrawAllOrPartOfCase"</text>

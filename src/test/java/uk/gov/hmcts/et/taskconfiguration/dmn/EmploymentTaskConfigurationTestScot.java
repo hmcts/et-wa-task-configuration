@@ -1,7 +1,5 @@
 package uk.gov.hmcts.et.taskconfiguration.dmn;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -13,8 +11,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
+import uk.gov.hmcts.et.taskconfiguration.utility.HelperService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,7 +85,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> caseData = getDefaultCaseData();
 
         if (!rawRespondentCollection.isBlank()) {
-            Map<String, Object> parsedRespondentCollection = mapData(rawRespondentCollection);
+            Map<String, Object> parsedRespondentCollection = HelperService.mapData(rawRespondentCollection);
             caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
         }
 
@@ -288,6 +286,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("SendEt1Notification", routineWork),
             Arguments.of("SendEt3Notification", routineWork),
             Arguments.of("ListServeClaim", routineWork),
+            Arguments.of("Rule21", routineWork),
             Arguments.of("ET3Processing", routineWork),
             Arguments.of("ReviewReferralResponseLegalOps", routineWork),
             Arguments.of("ReviewReferralResponseAdmin", routineWork),
@@ -375,6 +374,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ListServeClaim", administrator),
             Arguments.of("SendEt1Notification", administrator),
             Arguments.of("reviewSpecificAccessRequestAdmin", administrator),
+            Arguments.of("Rule21", administrator),
             Arguments.of("ET3Processing", administrator),
             Arguments.of("SendEt3Notification", administrator),
             Arguments.of("IssueInitialConsiderationDirections", administrator),
@@ -466,10 +466,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "[ET3 Processing](/cases/case-details/${[CASE_REFERENCE]}/trigger/et3Vetting/et3Vetting1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descCreateReferral = List.of(Map.of(
+        List<Map<String, Object>> descReviewRule21Referral = List.of(Map.of(
             "name", "description",
-            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/createReferral/createReferral1)",
+            "value", "[Review Rule 21 Referral](/cases/case-details/${[CASE_REFERENCE]}#Respondent)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descDraftJudgment = List.of(Map.of(
@@ -519,9 +518,10 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("SendEt3Notification", descIssueET3Notification),
 
+            Arguments.of("Rule21", descET3Processing),
             Arguments.of("ET3Processing", descET3Processing),
 
-            Arguments.of("ReviewRule21Referral", descCreateReferral),
+            Arguments.of("ReviewRule21Referral", descReviewRule21Referral),
 
             Arguments.of("DraftAndSignJudgment", descDraftJudgment),
 
@@ -583,7 +583,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> caseData = getDefaultCaseData();
 
         if (!rawReferralCollection.isBlank()) {
-            Map<String, Object> parsedReferralCollection = mapData(rawReferralCollection);
+            Map<String, Object> parsedReferralCollection = HelperService.mapData(rawReferralCollection);
             caseData.put("referralCollection", parsedReferralCollection.get("referralCollection"));
         }
 
@@ -743,6 +743,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
 
+            Arguments.of("Rule21", NOT_URGENT,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+            ),
             Arguments.of("ReviewRule21Referral", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
@@ -902,34 +905,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         }
     }
 
-    private List<Map<String, Object>> getExpectedValues() {
-        List<Map<String, Object>> rules = new ArrayList<>();
-        getExpectedValueWithReconfigure(rules, "caseName", "George Jetson", true);
-        getExpectedValueWithReconfigure(rules, "region", "11", true);
-        getExpectedValueWithReconfigure(rules, "location", "368308", true);
-        getExpectedValueWithReconfigure(rules, "locationName", "Edinburgh", true);
-        getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);
-        getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
-        getExpectedValueWithReconfigure(rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate", true);
-        getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
-        getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
-        getExpectedValueWithReconfigure(rules, "dueDateNonWorkingCalendar",
-                                        DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
-        getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
-        getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
-        getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
-        return rules;
-    }
-
-    private void getExpectedValueWithReconfigure(List<Map<String, Object>> rules, String name, String value,
-                                                 Boolean reconfigure) {
-        Map<String, Object> rule = new HashMap<>();
-        rule.put("name", name);
-        rule.put("value", value);
-        rule.put("canReconfigure", reconfigure);
-        rules.add(rule);
-    }
-
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
@@ -938,12 +913,23 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         assertThat(logic.getRules().size(), is(52));
     }
 
-    private static Map<String, Object> mapData(String source) {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.readValue(source, new TypeReference<>() {});
-        } catch (IOException exp) {
-            return null;
-        }
+    private List<Map<String, Object>> getExpectedValues() {
+        List<Map<String, Object>> rules = new ArrayList<>();
+        HelperService.getExpectedValueWithReconfigure(rules, "caseName", "George Jetson", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "region", "11", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "location", "368308", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "locationName", "Edinburgh", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);
+        HelperService.getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
+        HelperService.getExpectedValueWithReconfigure(
+            rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
+        HelperService.getExpectedValueWithReconfigure(
+            rules, "dueDateNonWorkingCalendar",DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
+        return rules;
     }
 }
