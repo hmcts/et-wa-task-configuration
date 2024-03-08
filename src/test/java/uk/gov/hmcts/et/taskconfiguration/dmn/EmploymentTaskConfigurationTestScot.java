@@ -602,6 +602,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expectedIntervalDays.get(0).get("name"), intervalDaysResultList.get(0).get("name"));
         assertEquals(expectedIntervalDays.get(0).get("value"), intervalDaysResultList.get(0).get("value"));
+        assertEquals(expectedIntervalDays.get(0).get("canReconfigure"),
+                     intervalDaysResultList.get(0).get("canReconfigure"));
 
         List<Map<String, Object>> majorPriorityResultList =
             dmnDecisionTableResult
@@ -612,6 +614,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expectedMajor.get(0).get("name"), majorPriorityResultList.get(0).get("name"));
         assertEquals(expectedMajor.get(0).get("value"), majorPriorityResultList.get(0).get("value"));
+        assertEquals(expectedMajor.get(0).get("canReconfigure"), majorPriorityResultList.get(0).get("canReconfigure"));
 
         List<Map<String, Object>> minorPriorityResultList =
             dmnDecisionTableResult
@@ -652,7 +655,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                          priorityDateEarResultList.get(0).get("name"));
             assertEquals(expectedPriorityDateEarliest.get(0).get("value"),
                          priorityDateEarResultList.get(0).get("value"));
-            assertEquals(expectedMinor.get(0).get("canReconfigure"),
+            assertEquals(expectedPriorityDateEarliest.get(0).get("canReconfigure"),
                          priorityDateEarResultList.get(0).get("canReconfigure")
             );
         }
@@ -665,10 +668,20 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "1",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> dueDateIntervalDays1NoReconfigure = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "1",
+            "canReconfigure", false
+        ));
         List<Map<String, Object>> dueDateIntervalDays2 = List.of(Map.of(
             "name", "dueDateIntervalDays",
             "value", "2",
             "canReconfigure", true
+        ));
+        List<Map<String, Object>> dueDateIntervalDays2NoReconfigure = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "2",
+            "canReconfigure", false
         ));
         List<Map<String, Object>> dueDateIntervalDays3 = List.of(Map.of(
             "name", "dueDateIntervalDays",
@@ -696,20 +709,30 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "5000",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> defaultMajorPriorityNoReconfigure = List.of(Map.of(
+            "name", "majorPriority",
+            "value", "5000",
+            "canReconfigure", false
+        ));
         List<Map<String, Object>> defaultMinorPriority = List.of(Map.of(
             "name", "minorPriority",
             "value", "500",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> defaultMinorPriorityNoReconfigure = List.of(Map.of(
+            "name", "minorPriority",
+            "value", "500",
+            "canReconfigure", false
+        ));
         List<Map<String, Object>> urgentMajorPriority = List.of(Map.of(
             "name", "majorPriority",
             "value", "1000",
-            "canReconfigure", true
+            "canReconfigure", false
         ));
         List<Map<String, Object>> urgentMinorPriority = List.of(Map.of(
             "name", "minorPriority",
             "value", "100",
-            "canReconfigure", true
+            "canReconfigure", false
         ));
 
         List<Map<String, Object>> priorityDateOriginRef = List.of(Map.of(
@@ -782,41 +805,53 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             ),
 
             Arguments.of("ReviewReferralAdmin", IS_URGENT,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority, null, priorityDateOriginEar
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseAdmin", ISURGENT_REPLY_YES,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority, priorityDateOriginRef, null
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         priorityDateOriginRef, null
             ),
             Arguments.of("ReviewReferralJudiciary", IS_URGENT,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority, null, priorityDateOriginEar
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseJudiciary", ISURGENT_REPLY_YES,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority, priorityDateOriginRef, null
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         priorityDateOriginRef, null
             ),
             Arguments.of("ReviewReferralLegalOps", IS_URGENT,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority, null, priorityDateOriginEar
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseLegalOps", ISURGENT_REPLY_YES,
-                         dueDateIntervalDays1, urgentMajorPriority, urgentMinorPriority, priorityDateOriginRef, null
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         priorityDateOriginRef, null
             ),
 
             Arguments.of("ReviewReferralAdmin", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, null, priorityDateOriginEar
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseAdmin", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
             ),
             Arguments.of("ReviewReferralJudiciary", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, null, priorityDateOriginEar
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseJudiciary", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
             ),
             Arguments.of("ReviewReferralLegalOps", NOT_URGENT,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, null, priorityDateOriginEar
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseLegalOps", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
             )
         );
     }
