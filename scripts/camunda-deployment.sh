@@ -18,13 +18,14 @@ for file in ./src/main/resources/*.dmn; do
       -F "deployment-source=$PRODUCT" \
       -F "tenant-id=$TENANT_ID" \
       -F data=@$file
+
+    echo "${file} DMN uploaded successfully"
+    echo ""
   fi
 done
 
 for file in ./scripts/local/*.bpmn; do
   if [ -f "$file" ]; then
-    echo "${file} diagram uploaded successfully"
-
     curl --silent --show-error ${CAMUNDA_URL}/deployment/create \
       -H 'Content-Type: multipart/form-data' \
       -H "ServiceAuthorization: ${SERVICE_TOKEN}" \
@@ -32,5 +33,6 @@ for file in ./scripts/local/*.bpmn; do
       -F "tenant-id=$TENANT_ID" \
       -F data=@$file
 
+    echo "${file} BPMN uploaded successfully"
   fi
 done
