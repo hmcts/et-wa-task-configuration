@@ -120,13 +120,18 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
 
     public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND =
         HelperService.createApplications("Amend my claim", "Respondent");
+    public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT =
+        HelperService.createApplications("Contact about something else", "Respondent");
     public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS =
         HelperService.createApplications("Change my personal details", "Respondent");
 
     public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND =
         HelperService.createApplications("Amend response", "Claimant");
+    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_CONTACT =
+        HelperService.createApplications("Contact the tribunal", "Claimant");
     public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS =
         HelperService.createApplications("Change personal details", "Claimant");
+
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
         HelperService.createApplications("Withdraw all/part of claim", "Claimant");
 
@@ -517,7 +522,19 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Contact Tribunal With An Application",
+                        "Application - Amend response",
+                        "Application"
+                    )
+                )
+            ),
+            Arguments.of(
+                "CLAIMANT_TSE_RESPOND",
+                "Accepted",
+                HelperService.mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_CONTACT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact the tribunal",
                         "Application"
                     )
                 )
@@ -553,7 +570,19 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Contact Tribunal With An Application",
+                        "Application - Amend my claim",
+                        "Application"
+                    )
+                )
+            ),
+            Arguments.of(
+                "tseRespond",
+                "Accepted",
+                HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Contact the tribunal",
                         "Application"
                     )
                 )
