@@ -7,6 +7,12 @@
     <informationRequirement id="InformationRequirement_05r15im">
       <requiredDecision href="#Decision_1merw3p" />
     </informationRequirement>
+    <informationRequirement id="InformationRequirement_15zhznm">
+      <requiredDecision href="#Decision_0mhlyhp" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0xfl3fm">
+      <requiredDecision href="#Decision_1uzjxz3" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" biodi:width="243" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -28,7 +34,7 @@ then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.r
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="407" camunda:inputVariable="referralSubject">
+      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="326" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -112,7 +118,16 @@ then additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="212">
+      <input id="InputClause_0ps66wm" label="Hearings Heard">
+        <inputExpression id="LiteralExpression_13al11j" typeRef="boolean">
+          <text>additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.hearingDetailsCollection!=null
+and count(additionalData.Data.hearingDetailsCollection)&gt;0
+and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.hearingDetailsStatus ="Heard")</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="313">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -132,7 +147,7 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1ki9c2f" label="Response to Application Type" biodi:width="294">
+      <input id="InputClause_1ki9c2f" label="Response to Application Type" biodi:width="395">
         <inputExpression id="LiteralExpression_0egdmqz" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -142,17 +157,8 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0ps66wm" label="Hearings Heard">
-        <inputExpression id="LiteralExpression_13al11j" typeRef="boolean">
-          <text>additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.hearingDetailsCollection!=null
-and count(additionalData.Data.hearingDetailsCollection)&gt;0
-and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.hearingDetailsStatus ="Heard")</text>
-        </inputExpression>
-      </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="333" />
-      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="284" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="363" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="150" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="258" />
       <rule id="DecisionRule_1sfku1u">
@@ -186,6 +192,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0uw2bq6">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0bl6x9q">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0zqmf3j">
           <text></text>
         </inputEntry>
@@ -193,9 +202,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1epxvut">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0bl6x9q">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1inzx22">
@@ -242,6 +248,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0xcej02">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1tix31w">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_06cbbp7">
           <text></text>
         </inputEntry>
@@ -249,9 +258,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_09e5orx">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1tix31w">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1p21nx8">
@@ -298,6 +304,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_03uto4f">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1f0apzj">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0f4qu93">
           <text></text>
         </inputEntry>
@@ -305,9 +314,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0megl45">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1f0apzj">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_19aayz9">
@@ -354,6 +360,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_15qie97">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0iqzk62">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0de3w0g">
           <text></text>
         </inputEntry>
@@ -361,9 +370,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1m78s72">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0iqzk62">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1n64ej0">
@@ -390,7 +396,27 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text>"Judge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_01db6ha">
-          <text>"ET1","ET3/ECC","Amend claim","Amend response","Strike out all or part of claim","Strike out all or part of response","Withdraw claim","Orders","Party not responded/complied","Order other party","Rule 50 application","Order a witness to attend","Hearings","Postpone a hearing","Judgment","Reconsider decision","Reconsider judgment","Extension of time request","Transfer request","Initial Consideration","Other"</text>
+          <text>"ET1",
+"ET3/ECC",
+"Amend claim",
+"Amend response",
+"Strike out all or part of claim",
+"Strike out all or part of response",
+"Withdraw claim",
+"Orders",
+"Party not responded/complied",
+"Order other party",
+"Rule 50 application",
+"Order a witness to attend",
+"Hearings",
+"Postpone a hearing",
+"Judgment",
+"Reconsider decision",
+"Reconsider judgment",
+"Extension of time request",
+"Transfer request",
+"Initial Consideration",
+"Other"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
@@ -410,6 +436,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_05by4ao">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_161qsbt">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0czshzh">
           <text></text>
         </inputEntry>
@@ -417,9 +446,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fdptfn">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_161qsbt">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_02gq0cv">
@@ -466,6 +492,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0urjryl">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1of6mqp">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1io07dz">
           <text></text>
         </inputEntry>
@@ -473,9 +502,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_064u943">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1of6mqp">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zsboti">
@@ -522,6 +548,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0dexhfn">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1kwzlbq">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0xzcpr4">
           <text></text>
         </inputEntry>
@@ -529,9 +558,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_01rplt1">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1kwzlbq">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xmtp1n">
@@ -578,6 +604,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_13ojg09">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1r8soxv">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_14g20yz">
           <text></text>
         </inputEntry>
@@ -585,9 +614,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0yx804m">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1r8soxv">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15ccyjs">
@@ -634,6 +660,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0ghzvwb">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0vovxcq">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1xhiqxw">
           <text></text>
         </inputEntry>
@@ -641,9 +670,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_03on46t">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0vovxcq">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0viokea">
@@ -690,6 +716,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0s4wvbo">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1ymrg5h">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1p59qoe">
           <text></text>
         </inputEntry>
@@ -697,9 +726,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1g3zu9z">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1ymrg5h">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0asscuc">
@@ -746,6 +772,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_01zcowk">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0sosg74">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1ctsmig">
           <text></text>
         </inputEntry>
@@ -753,9 +782,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0sosg73">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0sosg74">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10hhku8">
@@ -802,6 +828,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1i5wisn">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0ywgokm">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0iz4z7m">
           <text></text>
         </inputEntry>
@@ -809,9 +838,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_15pczdj">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ywgokm">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1gzs9ju">
@@ -858,6 +884,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0ja9809">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_06vajmx">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0e8f22s">
           <text></text>
         </inputEntry>
@@ -865,9 +894,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0286jeh">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_06vajmx">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ubx349">
@@ -914,6 +940,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0nhsjjf">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1tjkf3p">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1bxti2c">
           <text></text>
         </inputEntry>
@@ -921,9 +950,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0g333wg">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1tjkf3p">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ytrqr1">
@@ -970,6 +996,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1ym74pm">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_11ummh8">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0g82jor">
           <text></text>
         </inputEntry>
@@ -977,9 +1006,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0kgetix">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_11ummh8">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0z6s9xl">
@@ -1026,6 +1052,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1dkvhk4">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_13ncqb1">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_11lta89">
           <text></text>
         </inputEntry>
@@ -1033,9 +1062,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0vc8l2t">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_13ncqb1">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_17rfvzp">
@@ -1082,6 +1108,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_02gzq4l">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0kzfika">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0pflev6">
           <text></text>
         </inputEntry>
@@ -1089,9 +1118,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0hxwm15">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0kzfika">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_006cvh5">
@@ -1138,6 +1164,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0ru8q0q">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_12wkttg">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0pazggx">
           <text></text>
         </inputEntry>
@@ -1145,9 +1174,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1l4q0cy">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_12wkttg">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1fuv81y">
@@ -1194,6 +1220,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0a3blmb">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1hzlps5">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0x3nihs">
           <text></text>
         </inputEntry>
@@ -1201,9 +1230,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0w54zw1">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1hzlps5">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1l1w4gm">
@@ -1250,6 +1276,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0cxqk75">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_02ksm8j">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1tokhnl">
           <text></text>
         </inputEntry>
@@ -1257,9 +1286,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_07dj3c1">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_02ksm8j">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_04t27c3">
@@ -1304,7 +1330,11 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tbjmth">
-          <text>"Dismissed in full","Dismissed in part"</text>
+          <text>"Dismissed in full",
+"Dismissed in part"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19g32f6">
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vbj3t7">
           <text></text>
@@ -1313,9 +1343,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vuhaot">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_19g32f6">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06w4eix">
@@ -1362,6 +1389,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0ye9jgs">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0j36moj">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1kwxnlm">
           <text></text>
         </inputEntry>
@@ -1369,9 +1399,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1o5oofw">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0j36moj">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_17tkp20">
@@ -1418,6 +1445,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_08pn6j2">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_12dd3af">
+          <text> true</text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0a9q200">
           <text></text>
         </inputEntry>
@@ -1426,9 +1456,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         </inputEntry>
         <inputEntry id="UnaryTests_1trc3u9">
           <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_12dd3af">
-          <text> true</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ir1grh">
           <text>"DraftAndSignJudgment"</text>
@@ -1474,6 +1501,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1x6mq8c">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1fnllv2">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_070tybt">
           <text>"Amend my claim",
 "Consider a decision afresh",
@@ -1493,14 +1523,11 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1t8djnm">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1fnllv2">
-          <text></text>
-        </inputEntry>
         <outputEntry id="LiteralExpression_18a0xvf">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gy7thr">
-          <text>"Contact Tribunal With An Application"</text>
+          <text>LATEST_APPLICATION_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1m17io6">
           <text></text>
@@ -1540,6 +1567,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_17gujoz">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1t0umjr">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0n5d6gx">
           <text></text>
         </inputEntry>
@@ -1567,14 +1597,11 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
 "Vary/revoke an order",
 "Withdraw all/part of claim"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1t0umjr">
-          <text></text>
-        </inputEntry>
         <outputEntry id="LiteralExpression_1o0hceo">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1j51kjz">
-          <text>"Contact Tribunal With An Application"</text>
+          <text>LATEST_APPLICATION_RESPOND_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c8nrxq">
           <text></text>
@@ -1614,6 +1641,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0o33gno">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0vw8ds2">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_057bwbn">
           <text>"Amend response",
 "Claimant not complied",
@@ -1633,14 +1663,11 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1pd5kie">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0vw8ds2">
-          <text></text>
-        </inputEntry>
         <outputEntry id="LiteralExpression_1rzxzd9">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1w8pyhw">
-          <text>"Contact Tribunal With An Application"</text>
+          <text>LATEST_APPLICATION_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_091hz5k">
           <text></text>
@@ -1680,6 +1707,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0a47uho">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_08i7ssd">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1ioj040">
           <text></text>
         </inputEntry>
@@ -1707,14 +1737,11 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
 "Vary/revoke an order",
 "Withdraw all/part of claim"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_08i7ssd">
-          <text></text>
-        </inputEntry>
         <outputEntry id="LiteralExpression_1ir7dto">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14limve">
-          <text>"Contact Tribunal With An Application"</text>
+          <text>LATEST_APPLICATION_RESPOND_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sqt600">
           <text></text>
@@ -1754,6 +1781,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1vmnchp">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0t64fia">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_168e6cq">
           <text>"Change my personal details"</text>
         </inputEntry>
@@ -1761,9 +1791,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0u44yrx">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0t64fia">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15tl4dh">
@@ -1810,6 +1837,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0tbe8hl">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1h8i8ue">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1gulgic">
           <text></text>
         </inputEntry>
@@ -1818,9 +1848,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         </inputEntry>
         <inputEntry id="UnaryTests_0amzmpw">
           <text>"Change personal details"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1h8i8ue">
-          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0iwj30e">
           <text>"AmendRespondentDetails"</text>
@@ -1866,6 +1893,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1p3pk30">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_17ujcel">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_1j14gmm">
           <text>"Change personal details"</text>
         </inputEntry>
@@ -1873,9 +1903,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_057bce2">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_17ujcel">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_07u0vk8">
@@ -1922,6 +1949,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_1c7qols">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1g1cm5x">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0camw01">
           <text></text>
         </inputEntry>
@@ -1930,9 +1960,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         </inputEntry>
         <inputEntry id="UnaryTests_1xknhnu">
           <text>"Change my personal details"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1g1cm5x">
-          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1l73b7e">
           <text>"AmendClaimantDetails"</text>
@@ -1978,6 +2005,9 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
         <inputEntry id="UnaryTests_0yjnmnr">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0sn8atm">
+          <text></text>
+        </inputEntry>
         <inputEntry id="UnaryTests_0wz2erx">
           <text>"Withdraw all/part of claim"</text>
         </inputEntry>
@@ -1985,9 +2015,6 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0oj504f">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0sn8atm">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0q2t52j">
@@ -2005,57 +2032,240 @@ and (every x in additionalData.Data.hearingDetailsCollection satisfies x.value.h
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_1xqgkq6" name="Latest Referral - Task Name" camunda:historyTimeToLive="P30D">
+  <decision id="Decision_1xqgkq6" name="LATEST_REFERRAL_TASK_NAME" camunda:historyTimeToLive="P30D">
     <variable id="InformationItem_10nuodq" name="LATEST_REFERRAL_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_00i37do">
+      <requiredDecision href="#Decision_0eghxfs" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0w7qhtf">
+      <requiredDecision href="#Decision_0yepj5l" />
+    </informationRequirement>
     <literalExpression id="LiteralExpression_0l31qx1">
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection) &gt; 0)
-then
-"Review Referral #"
-+ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralNumber
-+ " - "
-+ sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralSubject
+then "Review Referral #" + LATEST_REFERRAL_NUMBER + " - " + LATEST_REFERRAL_SUBJECT
 else null</text>
     </literalExpression>
   </decision>
-  <decision id="Decision_1merw3p" name="Latest Referral Reply - Task Name" camunda:historyTimeToLive="P30D">
+  <decision id="Decision_1merw3p" name="LATEST_REFERRAL_REPLY_TASK_NAME" camunda:historyTimeToLive="P30D">
     <variable id="InformationItem_0z7m2qk" name="LATEST_REFERRAL_REPLY_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_0hpfgbp">
+      <requiredDecision href="#Decision_03ddjz2" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1ambi2i">
+      <requiredDecision href="#Decision_1hy3wce" />
+    </informationRequirement>
     <literalExpression id="LiteralExpression_11rmzca">
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then
-"Review Referral #"
-+ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.referralNumber
-+ " - "
-+ sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.referralSubject
-+ " Response"
+then "Review Referral #" + LATEST_REFERRAL_REPLY_NUMBER + " - " + LATEST_REFERRAL_REPLY_SUBJECT + " Response"
 else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0mhlyhp" name="LATEST_APPLICATION_TASK_NAME">
+    <variable id="InformationItem_0l35pxs" name="LATEST_APPLICATION_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_1h7r97o">
+      <requiredDecision href="#Decision_1yxg1fw" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0gvbaj1">
+      <text>if(LATEST_APPLICATION_TYPE!=null)
+  then if(LATEST_APPLICATION_TYPE="Contact about something else" or LATEST_APPLICATION_TYPE ="Contact the tribunal")
+    then "Contact the tribunal"
+    else "Application - " + LATEST_APPLICATION_TYPE
+  else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1yxg1fw" name="LATEST_APPLICATION_TYPE">
+    <variable id="InformationItem_177x00h" name="LATEST_APPLICATION_TYPE" typeRef="string" />
+    <literalExpression id="LiteralExpression_0jmjjs6">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
+then sort(additionalData.Data.genericTseApplicationCollection,function(x,y) number(x.value.number) &gt; number(y.value.number)).value.type[1]
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0eghxfs" name="LATEST_REFERRAL_NUMBER">
+    <variable id="InformationItem_05lutfc" name="LATEST_REFERRAL_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_1aht3pd">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0
+and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralNumber!=null)
+then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralNumber
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0yepj5l" name="LATEST_REFERRAL_SUBJECT">
+    <variable id="InformationItem_0058uji" name="LATEST_REFERRAL_SUBJECT" typeRef="string" />
+    <literalExpression id="LiteralExpression_1kazms8">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0
+and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject!=null)
+then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralSubject
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_03ddjz2" name="LATEST_REFERRAL_REPLY_NUMBER">
+    <variable id="InformationItem_0pgmlnv" name="LATEST_REFERRAL_REPLY_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_0vjaqpk">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then (
+  sort(
+    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
+    function(x,y)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "2023-01-01T00:00:00.000")
+      &gt;
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "2023-01-01T00:00:00.000")
+    )[1].value.referralNumber
+)
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1hy3wce" name="LATEST_REFERRAL_REPLY_SUBJECT">
+    <variable id="InformationItem_0ro9f88" name="LATEST_REFERRAL_REPLY_SUBJECT" typeRef="string" />
+    <literalExpression id="LiteralExpression_01hvmvg">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then (
+  sort(
+    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
+    function(x,y)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "2023-01-01T00:00:00.000")
+      &gt;
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "2023-01-01T00:00:00.000")
+  )[1].value.referralSubject
+)
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_10dijkm" name="LATEST_APPLICATION_RESPOND_TYPE">
+    <variable id="InformationItem_1enqaet" name="LATEST_APPLICATION_RESPOND_TYPE" typeRef="string" />
+    <literalExpression id="LiteralExpression_1inyejd">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])&gt;0)
+then sort(
+  flatten(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null].value.respondCollection),
+  function(x,y)
+    date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
+    &gt;
+    date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
+)[1].value.applicationType
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1uzjxz3" name="LATEST_APPLICATION_RESPOND_TASK_NAME">
+    <variable id="InformationItem_06lxh2u" name="LATEST_APPLICATION_RESPOND_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_1qqzkui">
+      <requiredDecision href="#Decision_10dijkm" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0b3dykm">
+      <text>if(LATEST_APPLICATION_RESPOND_TYPE!=null)
+  then if(LATEST_APPLICATION_RESPOND_TYPE="Contact about something else" or LATEST_APPLICATION_RESPOND_TYPE="Contact the tribunal")
+    then "Contact the tribunal Response"
+    else "Application Response - " + LATEST_APPLICATION_RESPOND_TYPE
+  else null</text>
     </literalExpression>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_scotland">
-        <dc:Bounds height="80" width="180" x="150" y="80" />
+        <dc:Bounds height="80" width="180" x="700" y="50" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1srd5ad" dmnElementRef="InformationRequirement_1l2v2xj">
-        <di:waypoint x="240" y="300" />
-        <di:waypoint x="210" y="180" />
-        <di:waypoint x="210" y="160" />
+        <di:waypoint x="790" y="220" />
+        <di:waypoint x="808" y="150" />
+        <di:waypoint x="808" y="130" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1bykp81" dmnElementRef="Decision_1xqgkq6">
-        <dc:Bounds height="80" width="180" x="150" y="300" />
+        <dc:Bounds height="80" width="180" x="700" y="220" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0q240ep" dmnElementRef="InformationRequirement_05r15im">
-        <di:waypoint x="480" y="300" />
-        <di:waypoint x="270" y="180" />
-        <di:waypoint x="270" y="160" />
+        <di:waypoint x="1210" y="220" />
+        <di:waypoint x="844" y="150" />
+        <di:waypoint x="844" y="130" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0baejpx" dmnElementRef="Decision_1merw3p">
-        <dc:Bounds height="80" width="180" x="390" y="300" />
+        <dc:Bounds height="80" width="180" x="1120" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1vutpf4" dmnElementRef="InformationRequirement_15zhznm">
+        <di:waypoint x="250" y="220" />
+        <di:waypoint x="736" y="150" />
+        <di:waypoint x="736" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1lvtmn8" dmnElementRef="Decision_0mhlyhp">
+        <dc:Bounds height="80" width="180" x="160" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_03e5ujv" dmnElementRef="InformationRequirement_1h7r97o">
+        <di:waypoint x="250" y="340" />
+        <di:waypoint x="250" y="320" />
+        <di:waypoint x="250" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1a5mxet" dmnElementRef="Decision_1yxg1fw">
+        <dc:Bounds height="80" width="180" x="160" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_04kia0u" dmnElementRef="InformationRequirement_00i37do">
+        <di:waypoint x="690" y="340" />
+        <di:waypoint x="760" y="320" />
+        <di:waypoint x="760" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0p9429o" dmnElementRef="Decision_0eghxfs">
+        <dc:Bounds height="80" width="180" x="600" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0o2d37b" dmnElementRef="InformationRequirement_0w7qhtf">
+        <di:waypoint x="890" y="340" />
+        <di:waypoint x="820" y="320" />
+        <di:waypoint x="820" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0k48uc5" dmnElementRef="Decision_0yepj5l">
+        <dc:Bounds height="80" width="180" x="800" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_13lg7qf" dmnElementRef="InformationRequirement_0hpfgbp">
+        <di:waypoint x="1110" y="340" />
+        <di:waypoint x="1180" y="320" />
+        <di:waypoint x="1180" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1dgmiib" dmnElementRef="Decision_03ddjz2">
+        <dc:Bounds height="80" width="180" x="1020" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1logy0w" dmnElementRef="InformationRequirement_1ambi2i">
+        <di:waypoint x="1310" y="340" />
+        <di:waypoint x="1240" y="320" />
+        <di:waypoint x="1240" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0f9ko68" dmnElementRef="Decision_1hy3wce">
+        <dc:Bounds height="80" width="180" x="1220" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0ih47e5" dmnElementRef="InformationRequirement_0xfl3fm">
+        <di:waypoint x="470" y="220" />
+        <di:waypoint x="772" y="150" />
+        <di:waypoint x="772" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0db1ev9" dmnElementRef="InformationRequirement_1qqzkui">
+        <di:waypoint x="470" y="340" />
+        <di:waypoint x="470" y="320" />
+        <di:waypoint x="470" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1a1bbfa" dmnElementRef="Decision_10dijkm">
+        <dc:Bounds height="80" width="180" x="380" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0wt1ey1" dmnElementRef="Decision_1uzjxz3">
+        <dc:Bounds height="80" width="180" x="380" y="220" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
