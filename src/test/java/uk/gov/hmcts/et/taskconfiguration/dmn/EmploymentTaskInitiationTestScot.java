@@ -524,7 +524,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Application - Amend response",
+                        "Application Response - Amend response",
                         "Application"
                     )
                 )
@@ -536,7 +536,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Contact the tribunal",
+                        "Contact the tribunal Response",
                         "Application"
                     )
                 )
@@ -572,7 +572,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Application - Amend my claim",
+                        "Application Response - Amend my claim",
                         "Application"
                     )
                 )
@@ -584,7 +584,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Contact the tribunal",
+                        "Contact the tribunal Response",
                         "Application"
                     )
                 )

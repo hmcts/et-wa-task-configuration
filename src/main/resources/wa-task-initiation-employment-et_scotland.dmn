@@ -2177,8 +2177,8 @@ else null</text>
     <literalExpression id="LiteralExpression_0b3dykm">
       <text>if(LATEST_APPLICATION_RESPOND_TYPE!=null)
   then if(LATEST_APPLICATION_RESPOND_TYPE="Contact about something else" or LATEST_APPLICATION_RESPOND_TYPE="Contact the tribunal")
-    then "Contact the tribunal"
-    else "Application - " + LATEST_APPLICATION_RESPOND_TYPE
+    then "Contact the tribunal Response"
+    else "Application Response - " + LATEST_APPLICATION_RESPOND_TYPE
   else null</text>
     </literalExpression>
   </decision>
