@@ -108,8 +108,8 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String HEARING_DETAIL_COLLECTION_POSTPONED =
         "\"hearingDetailsCollection\": ["
             + "{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
-            + "{\"value\": {\"hearingDetailsStatus\": \"Postponed\"}}" +
-            "]";
+            + "{\"value\": {\"hearingDetailsStatus\": \"Postponed\"}}"
+            + "]";
 
     public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
             HelperService.createApplications("Amend my claim", "");
@@ -591,6 +591,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "ContactTribunalWithAnApplication",
                         "Contact the tribunal Response",
                         "Application"
+                    )
+                )
+            ),
+            Arguments.of(
+                "SUBMIT_CLAIMANT_TSE",
+                null,
+                HelperService.mapAdditionalData(SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "AmendClaimantDetails",
+                        "Amend Party Details",
+                        "Amendments"
                     )
                 )
             ),
