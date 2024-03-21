@@ -99,12 +99,17 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
             + "}";
 
-    public static final String HEARING_DETAIL_COLLECTION_HEARD =
-        "\"hearingDetailsCollection\": [{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
-            + "{\"value\": {\"hearingDetailsStatus\": \"Heard\"}}]";
+    public static final String HEARING_DETAIL_COLLECTION_HEARD_VACATED =
+        "\"hearingDetailsCollection\": ["
+            + "{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
+            + "{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
+            + "{\"value\": {\"hearingDetailsStatus\": \"Vacated\"}}"
+            + "]";
     public static final String HEARING_DETAIL_COLLECTION_POSTPONED =
-        "\"hearingDetailsCollection\": [{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
-            + "{\"value\": {\"hearingDetailsStatus\": \"Postponed\"}}]";
+        "\"hearingDetailsCollection\": ["
+            + "{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
+            + "{\"value\": {\"hearingDetailsStatus\": \"Postponed\"}}"
+            + "]";
 
     public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
             HelperService.createApplications("Amend my claim", "");
@@ -478,7 +483,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "updateHearing",
                 "Accepted",
-                HelperService.mapAdditionalData(HEARING_DETAIL_COLLECTION_HEARD),
+                HelperService.mapAdditionalData(HEARING_DETAIL_COLLECTION_HEARD_VACATED),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "DraftAndSignJudgment",
@@ -586,6 +591,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "ContactTribunalWithAnApplication",
                         "Contact the tribunal Response",
                         "Application"
+                    )
+                )
+            ),
+            Arguments.of(
+                "SUBMIT_CLAIMANT_TSE",
+                null,
+                HelperService.mapAdditionalData(SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "AmendClaimantDetails",
+                        "Amend Party Details",
+                        "Amendments"
                     )
                 )
             ),
