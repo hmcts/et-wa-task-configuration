@@ -78,6 +78,8 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
 
                     Map.of("taskTypeId", "ReviewRule21Referral","taskTypeName","Review Rule 21 Referral"),
 
+                    Map.of("taskTypeId", "Rule21","taskTypeName","Rule 21"),
+
                     Map.of("taskTypeId", "SendEt1Notification","taskTypeName", "Send ET1 Notification"),
 
                     Map.of("taskTypeId", "SendEt3Notification", "taskTypeName","Send ET3 Notification"),
@@ -115,6 +117,6 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(26));
+        assertThat(logic.getRules().size(), is(27));
     }
 }
