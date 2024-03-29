@@ -149,7 +149,7 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="324" />
+      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="377" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="348" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="152" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="251" />
@@ -1590,7 +1590,7 @@ else null</text>
 "Withdraw all/part of claim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1o0hceo">
-          <text>"ContactTribunalWithAnApplication"</text>
+          <text>"ContactTribunalWithAnApplicationResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1j51kjz">
           <text>LATEST_APPLICATION_RESPOND_TASK_NAME</text>
@@ -1730,7 +1730,7 @@ else null</text>
 "Withdraw all/part of claim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ir7dto">
-          <text>"ContactTribunalWithAnApplication"</text>
+          <text>"ContactTribunalWithAnApplicationResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14limve">
           <text>LATEST_APPLICATION_RESPOND_TASK_NAME</text>

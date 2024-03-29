@@ -7,7 +7,7 @@
           <text></text>
         </inputExpression>
       </input>
-      <output id="Output_1" name="taskTypeId" typeRef="string" biodi:width="344" />
+      <output id="Output_1" name="taskTypeId" typeRef="string" biodi:width="382" />
       <output id="OutputClause_0aeuwfu" name="taskTypeName" typeRef="string" biodi:width="452" />
       <rule id="DecisionRule_1h596w0">
         <inputEntry id="UnaryTests_0fpzi87">
@@ -50,6 +50,17 @@
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1po49ki">
+          <text>"Contact Tribunal With An Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0op7kvr">
+        <inputEntry id="UnaryTests_1d6tt4u">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bqwfzk">
+          <text>"ContactTribunalWithAnApplicationResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_198m4cr">
           <text>"Contact Tribunal With An Application"</text>
         </outputEntry>
       </rule>

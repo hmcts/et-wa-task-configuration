@@ -399,6 +399,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("IssueJudgment", hearingWork),
 
             Arguments.of("ContactTribunalWithAnApplication", applications),
+            Arguments.of("ContactTribunalWithAnApplicationResponse", applications),
             Arguments.of("AmendClaimantDetails", applications),
             Arguments.of("AmendRespondentDetails", applications),
             Arguments.of("WithdrawAllOrPartOfCase", applications),
@@ -479,6 +480,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
             Arguments.of("ContactTribunalWithAnApplication", administrator),
+            Arguments.of("ContactTribunalWithAnApplicationResponse", administrator),
             Arguments.of("AmendClaimantDetails", administrator),
             Arguments.of("AmendRespondentDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
@@ -622,6 +624,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("DraftAndSignJudgment", descDraftJudgment),
 
             Arguments.of("ContactTribunalWithAnApplication", descApplicationsTab),
+            Arguments.of("ContactTribunalWithAnApplicationResponse", descApplicationsTab),
             Arguments.of("AmendClaimantDetails", descApplicationsTab),
             Arguments.of("AmendRespondentDetails", descApplicationsTab),
             Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
@@ -871,6 +874,9 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
             Arguments.of("ContactTribunalWithAnApplication", null,
+                         dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+            ),
+            Arguments.of("ContactTribunalWithAnApplicationResponse", null,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
 

@@ -508,7 +508,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 HelperService.mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND),
                 List.of(
                     HelperService.mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
+                        "ContactTribunalWithAnApplicationResponse",
                         "Application Response - Amend response",
                         "Application"
                     )
@@ -520,7 +520,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 HelperService.mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_CONTACT),
                 List.of(
                     HelperService.mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
+                        "ContactTribunalWithAnApplicationResponse",
                         "Contact the tribunal Response",
                         "Application"
                     )
@@ -544,7 +544,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND),
                 List.of(
                     HelperService.mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
+                        "ContactTribunalWithAnApplicationResponse",
                         "Application Response - Amend my claim",
                         "Application"
                     )
@@ -556,7 +556,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT),
                 List.of(
                     HelperService.mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
+                        "ContactTribunalWithAnApplicationResponse",
                         "Contact the tribunal Response",
                         "Application"
                     )

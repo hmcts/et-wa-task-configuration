@@ -7,7 +7,7 @@
           <text>eventId</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="348" />
+      <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="370" />
       <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" />
       <rule id="DecisionRule_12eenty">
         <inputEntry id="UnaryTests_17cg7de">
@@ -215,6 +215,17 @@
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0hyc3y5">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b3x7wx">
+        <inputEntry id="UnaryTests_05wsdyc">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04kl4yv">
+          <text>"ContactTribunalWithAnApplicationResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0th0j1e">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

@@ -467,6 +467,16 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     hearingCentreAdmin
                 )
             ),
+            Arguments.of(
+                "ContactTribunalWithAnApplicationResponse",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin
+                )
+            ),
 
             Arguments.of(
                 "reviewSpecificAccessRequestCTSC",
