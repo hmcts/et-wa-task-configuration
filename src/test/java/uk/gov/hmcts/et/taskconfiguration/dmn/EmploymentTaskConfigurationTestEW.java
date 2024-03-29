@@ -32,15 +32,22 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
         + "civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json";
 
+    public static final String DYNAMIC_TASK_TITLE_REFERRAL =
+        "{\"referralCollection\":["
+            + "{\"value\":{\"referralNumber\":\"1\",\"referralSubject\":\"Amend claim\"}},"
+            + "{\"value\":{\"referralNumber\":\"2\",\"referralSubject\":\"ET1\"}}"
+            + "]}";
+    public static final String DYNAMIC_TASK_TITLE_REFERRAL_EXPECTED = "Review Referral #2 - ET1";
+
     public static final String IS_URGENT =
-        "{\"referralCollection\": ["
-            + "{\"value\": {\"isUrgent\": \"No\",\"referralNumber\": \"1\"}},"
-            + "{\"value\": {\"isUrgent\": \"Yes\",\"referralNumber\": \"2\"}}"
+        "{\"referralCollection\":["
+            + "{\"value\":{\"isUrgent\":\"No\",\"referralNumber\":\"1\"}},"
+            + "{\"value\":{\"isUrgent\":\"Yes\",\"referralNumber\":\"2\"}}"
             + "]}";
     public static final String NOT_URGENT =
-        "{\"referralCollection\": ["
-            + "{\"value\": {\"isUrgent\": \"Yes\",\"referralNumber\": \"1\"}},"
-            + "{\"value\": {\"isUrgent\": \"No\",\"referralNumber\": \"2\"}}"
+        "{\"referralCollection\":["
+            + "{\"value\":{\"isUrgent\":\"Yes\",\"referralNumber\":\"1\"}},"
+            + "{\"value\":{\"isUrgent\":\"No\",\"referralNumber\":\"2\"}}"
             + "]}";
 
     public static final String ISURGENT_REPLY_YES =
@@ -76,6 +83,66 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         caseData.put("claimantIndType", claimant);
 
         return caseData;
+    }
+
+    @ParameterizedTest
+    @MethodSource("taskTitle_ScenarioProvider")
+    void when_taskId_then_return_taskTitle(String taskType,
+                                           String collectionType,
+                                           String collectionContent,
+                                           List<Map<String, Object>> expected) {
+        Map<String, Object> caseData = getDefaultCaseData();
+
+        if (!collectionContent.isBlank()) {
+            Map<String, Object> parsedCollection = HelperService.mapData(collectionContent);
+            caseData.put(collectionType, parsedCollection.get(collectionType));
+        }
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter((r) -> r.containsValue("title"))
+                .toList();
+
+        assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
+        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
+        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
+    }
+
+    public static Stream<Arguments> taskTitle_ScenarioProvider() {
+        return Stream.of(
+            Arguments.of("ReviewReferralAdmin",
+                         "referralCollection",
+                         DYNAMIC_TASK_TITLE_REFERRAL,
+                         List.of(Map.of(
+                             "name", "title",
+                             "value", DYNAMIC_TASK_TITLE_REFERRAL_EXPECTED,
+                             "canReconfigure", false
+                         ))),
+            Arguments.of("ReviewReferralJudiciary",
+                         "referralCollection",
+                         DYNAMIC_TASK_TITLE_REFERRAL,
+                         List.of(Map.of(
+                             "name", "title",
+                             "value", DYNAMIC_TASK_TITLE_REFERRAL_EXPECTED,
+                             "canReconfigure", false
+                         ))),
+            Arguments.of("ReviewReferralLegalOps",
+                         "referralCollection",
+                         DYNAMIC_TASK_TITLE_REFERRAL,
+                         List.of(Map.of(
+                             "name", "title",
+                             "value", DYNAMIC_TASK_TITLE_REFERRAL_EXPECTED,
+                             "canReconfigure", false
+                         )))
+        );
     }
 
     @ParameterizedTest
@@ -943,7 +1010,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(52));
+        assertThat(logic.getRules().size(), is(53));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

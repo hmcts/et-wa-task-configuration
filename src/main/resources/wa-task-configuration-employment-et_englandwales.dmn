@@ -28,7 +28,9 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_16s8192">
-          <text>"ReviewReferralAdmin"</text>
+          <text>"ReviewReferralAdmin",
+"ReviewReferralJudiciary",
+"ReviewReferralLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0yhxos5">
           <text>"title"</text>
@@ -38,74 +40,6 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0iexduw">
           <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0zbu4k1">
-        <inputEntry id="UnaryTests_0z5mffy">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_05v4o0y">
-          <text>"ReviewReferralAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0mw77u5">
-          <text>"jurisdiction"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1n4bk0r">
-          <text>"Test 1"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1ije5p1">
-          <text></text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0zi60r0">
-        <inputEntry id="UnaryTests_1qml5e2">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1daydvv">
-          <text>"ReviewReferralAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_15v6c46">
-          <text>"jurisdictionLabel"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0w6xph5">
-          <text>"Test 2"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0s2x35z">
-          <text></text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_09ehwh1">
-        <inputEntry id="UnaryTests_0lo6p50">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0lkc3ny">
-          <text>"ReviewReferralAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_08rp4ye">
-          <text>"jurisdiction_Label"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0xb5kov">
-          <text>"Test 3"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0njhk1g">
-          <text></text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0nzk70h">
-        <inputEntry id="UnaryTests_0izyqai">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0rrwdlm">
-          <text>"ReviewReferralAdmin"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_06p8uss">
-          <text>"jurisdiction_label"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1uoobf9">
-          <text>"Test 4"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_06efbpd">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_19opwhc">
