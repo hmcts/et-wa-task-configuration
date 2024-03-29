@@ -24,6 +24,7 @@
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="1014" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_1p3dcqa">
+        <description>Dynamic Task Title. Other taks default to Task Name.</description>
         <inputEntry id="UnaryTests_1fhf0na">
           <text></text>
         </inputEntry>

@@ -168,7 +168,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral #2 - Referral Subject 2",
+                        "Review Referral - Admin",
                         "Vetting"
                     )
                 )
@@ -180,7 +180,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral #2 - Hearings",
+                        "Review Referral - Admin",
                         "Vetting"
                     ),
                     HelperService.mapExpectedOutput(
@@ -197,7 +197,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral #2 - Judgment",
+                        "Review Referral - Admin",
                         "Vetting"
                     ),
                     HelperService.mapExpectedOutput(
@@ -214,7 +214,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciary",
-                        "Review Referral #2 - ET1",
+                        "Review Referral - Judicial",
                         "Vetting"
                     )
                 )
@@ -238,7 +238,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralLegalOps",
-                        "Review Referral #2 - Referral Subject 2",
+                        "Review Referral - Legal Ops",
                         "Vetting"
                     )
                 )

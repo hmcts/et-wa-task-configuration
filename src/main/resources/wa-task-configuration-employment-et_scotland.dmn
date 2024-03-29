@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <decision id="wa-task-configuration-employment-et_scotland" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
+    <informationRequirement id="InformationRequirement_1eq8zmh">
+      <requiredDecision href="#Decision_0we2m09" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -20,6 +23,26 @@
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="260" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="966" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
+      <rule id="DecisionRule_11tbcwz">
+        <description>Dynamic Task Title. Other taks default to Task Name.</description>
+        <inputEntry id="UnaryTests_0ephlp5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mbjvuf">
+          <text>"ReviewReferralAdmin",
+"ReviewReferralJudiciary",
+"ReviewReferralLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mxnltv">
+          <text>"title"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m4waag">
+          <text>LATEST_REFERRAL_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0y6okxu">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_19opwhc">
         <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
         <inputEntry id="UnaryTests_11xjbt2">
@@ -1090,10 +1113,82 @@ else 2</text>
       </rule>
     </decisionTable>
   </decision>
+  <decision id="Decision_0we2m09" name="LATEST_REFERRAL_TASK_NAME">
+    <variable id="InformationItem_01agi9a" name="LATEST_REFERRAL_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_166mavi">
+      <requiredDecision href="#Decision_00aiizm" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0axt53s">
+      <requiredDecision href="#Decision_0wvcr93" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0xomc0m">
+      <text>if(LATEST_REFERRAL_NUMBER!=null and LATEST_REFERRAL_SUBJECT!=null)
+then "Review Referral #" + LATEST_REFERRAL_NUMBER + " - " + LATEST_REFERRAL_SUBJECT
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_00aiizm" name="LATEST_REFERRAL_NUMBER">
+    <variable id="InformationItem_00ygcd9" name="LATEST_REFERRAL_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_1c654fl">
+      <text>if(caseData!=null
+and caseData.referralCollection!=null
+and count(caseData.referralCollection) &gt; 0
+and sort(caseData.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralNumber!=null)
+then sort(
+  caseData.referralCollection,
+  function(x,y)
+    number(x.value.referralNumber)
+    &gt;
+    number(y.value.referralNumber)
+)[1].value.referralNumber
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0wvcr93" name="LATEST_REFERRAL_SUBJECT">
+    <variable id="InformationItem_0uqcj4r" name="LATEST_REFERRAL_SUBJECT" typeRef="string" />
+    <literalExpression id="LiteralExpression_06wdptp">
+      <text>if(caseData!=null
+and caseData.referralCollection!=null
+and count(caseData.referralCollection) &gt; 0
+and sort(caseData.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject!=null)
+then sort(
+  caseData.referralCollection,
+  function(x,y)
+    number(x.value.referralNumber)
+    &gt;
+    number(y.value.referralNumber)
+)[1].value.referralSubject
+else null</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
       <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_scotland">
-        <dc:Bounds height="80" width="180" x="150" y="80" />
+        <dc:Bounds height="80" width="180" x="260" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1dk9sna" dmnElementRef="InformationRequirement_1eq8zmh">
+        <di:waypoint x="350" y="210" />
+        <di:waypoint x="350" y="180" />
+        <di:waypoint x="350" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1g6xrpz" dmnElementRef="Decision_0we2m09">
+        <dc:Bounds height="80" width="180" x="260" y="210" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0nxzbkl" dmnElementRef="InformationRequirement_166mavi">
+        <di:waypoint x="250" y="340" />
+        <di:waypoint x="320" y="310" />
+        <di:waypoint x="320" y="290" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0c2113c" dmnElementRef="InformationRequirement_0axt53s">
+        <di:waypoint x="450" y="340" />
+        <di:waypoint x="380" y="310" />
+        <di:waypoint x="380" y="290" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0dylaic" dmnElementRef="Decision_00aiizm">
+        <dc:Bounds height="80" width="180" x="160" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0s69ld8" dmnElementRef="Decision_0wvcr93">
+        <dc:Bounds height="80" width="180" x="360" y="340" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
