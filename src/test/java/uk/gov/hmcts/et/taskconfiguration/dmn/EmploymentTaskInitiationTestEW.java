@@ -43,42 +43,42 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
         HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
 
     public static final String IS_JUDGEMENT_TRUE =
-        "\"draftAndSignJudgement\":{\"isJudgement\":true}";
+        "{\"draftAndSignJudgement\":{\"isJudgement\":true}}";
     public static final String IS_JUDGEMENT_FALSE =
-        "\"draftAndSignJudgement\":{\"isJudgement\":false}";
+        "{\"draftAndSignJudgement\":{\"isJudgement\":false}}";
 
     public static final String ET3_FORM_RECEIVED =
-        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true}}]";
+        "{\"respondentCollection\":[{\"value\":{\"responseReceived\":true}}]}";
     public static final String ET3_FORM_NOT_RECEIVED =
-        "\"respondentCollection\":[{\"value\":{\"responseReceived\":false}}]";
+        "{\"respondentCollection\":[{\"value\":{\"responseReceived\":false}}]}";
 
     public static final String IS_ET3_RESPONSE_TRUE =
-        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true}}}]";
+        "{\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true}}}]}";
     public static final String IS_ET3_RESPONSE_FALSE =
-        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":false}}}]";
+        "{\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":false}}}]}";
 
-    public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
+    public static final String LISTAHEARING_PROCEED_LISTED = "{\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":true,"
         + "\"etICHearingNotListedList\":["
         + "\"List for preliminary hearing\","
         + "\"Seek comments on the video hearing\","
         + "\"List for final hearing\","
-        + "\"UDL hearing\"]";
+        + "\"UDL hearing\"]}";
 
-    public static final String LISTAHEARING_PROCEED_NOTLISTED_PRELIM = "\"etICCanProceed\":true,"
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_PRELIM = "{\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
         + "\"etICHearingNotListedList\":["
         + "\"Seek comments on the video hearing\","
         + "\"List for preliminary hearing\","
-        + "\"UDL hearing\"]";
+        + "\"UDL hearing\"]}";
 
-    public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL = "\"etICCanProceed\":true,"
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL = "{\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
         + "\"etICHearingNotListedList\":["
         + "\"Seek comments on the video hearing\","
         + "\"List for final hearing\","
-        + "\"UDL hearing\"]";
-    public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM = "\"etICCanProceed\":true,"
+        + "\"UDL hearing\"]}";
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM = "{\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
         + "\"etICHearingNotListedList\":["
         + "\"Seek comments on the video hearing\","
@@ -86,26 +86,26 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
         + "\"UDL hearing\"],"
         + "\"etInitialConsiderationRule27\": {"
         + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
-        + "}";
+        + "}}";
 
-    public static final String LISTAHEARING_PROCEED_NOTLISTED_NONE = "\"etICCanProceed\":true,"
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_NONE = "{\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
         + "\"etICHearingNotListedList\":["
         + "\"Seek comments on the video hearing\","
-        + "\"UDL hearing\"]";
+        + "\"UDL hearing\"]}";
 
     public static final String STRIKE_OUT_CLAIM =
-        "\"etInitialConsiderationRule27\": {"
+        "{\"etInitialConsiderationRule27\": {"
             + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
-            + "}";
+            + "}}";
 
     public static final String HEARING_DETAIL_COLLECTION_HEARD_VACATED =
-        "\"hearingDetailsCollection\": ["
+        "{\"hearingDetailsCollection\": ["
             + "{\"value\": {\"hearingDetailsStatus\": \"Heard\"}},"
             + "{\"value\": {\"hearingDetailsStatus\": \"Vacated\"}}"
-            + "]";
+            + "]}";
     public static final String HEARING_DETAIL_COLLECTION_VACATED_ONLY =
-        "\"hearingDetailsCollection\": [{\"value\": {\"hearingDetailsStatus\": \"Vacated\"}}]";
+        "{\"hearingDetailsCollection\": [{\"value\": {\"hearingDetailsStatus\": \"Vacated\"}}]}";
 
     public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
         HelperService.createApplications("Amend my claim", "");

@@ -21,11 +21,11 @@ public final class HelperService {
         DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
     public static final String APPLICATION_COLLECTION =
-        "\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]";
+        "{\"genericTseApplicationCollection\":[{\"value\": {\"number\": \"1\",\"type\": \"%s\"%s}}]}";
     public static final String RESPOND_COLLECTION =
         ",\"respondCollection\": [{\"value\": {\"applicationType\": \"%s\",\"from\": \"%s\"}}]";
 
-    public static final String REFERRAL_COLLECTION = "\"referralCollection\":[%s]";
+    public static final String REFERRAL_COLLECTION = "{\"referralCollection\":[%s]}";
     public static final String REFERRAL = "{\"value\": "
         + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"referCaseTo\":\"%s\",\"isUrgent\":\"%s\"%s}"
         + "}";
@@ -100,7 +100,7 @@ public final class HelperService {
         try {
             TypeReference<HashMap<String, Object>> typeRef = new TypeReference<>() {
             };
-            String addedDataProperty = "{\"Data\":{" + additionalDataContent + "}}";
+            String addedDataProperty = "{\"Data\":" + additionalDataContent + "}";
             return Map.of("additionalData", mapper.readValue(addedDataProperty, typeRef));
         } catch (IOException exp) {
             return null;
