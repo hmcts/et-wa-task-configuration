@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
-    <informationRequirement id="InformationRequirement_0dnw86r">
-      <requiredDecision href="#Decision_0la4l4o" />
-    </informationRequirement>
     <informationRequirement id="InformationRequirement_04wvk1b">
       <requiredDecision href="#Decision_1exmu8q" />
     </informationRequirement>
@@ -618,7 +615,7 @@ else null</text>
           <text>"ReviewReferralResponseAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qcsldu">
-          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+          <text>"Review Referral Response - Admin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
@@ -674,7 +671,7 @@ else null</text>
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08j7d7p">
-          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+          <text>"Review Referral Response - Judicial"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zcsqzi">
           <text></text>
@@ -730,7 +727,7 @@ else null</text>
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03wz7tv">
-          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+          <text>"Review Referral Response - Legal Ops"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14hvioj">
           <text></text>
@@ -2030,20 +2027,6 @@ else null</text>
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_0la4l4o" name="LATEST_REFERRAL_REPLY_TASK_NAME" camunda:historyTimeToLive="P30D">
-    <variable id="InformationItem_1qtatvh" name="LATEST_REFERRAL_REPLY_TASK_NAME" typeRef="string" />
-    <informationRequirement id="InformationRequirement_05lp7qd">
-      <requiredDecision href="#Decision_1i5c0ov" />
-    </informationRequirement>
-    <informationRequirement id="InformationRequirement_0cx5tok">
-      <requiredDecision href="#Decision_1frcp4z" />
-    </informationRequirement>
-    <literalExpression id="LiteralExpression_0h88al5">
-      <text>if(LATEST_REFERRAL_REPLY_NUMBER!=null and LATEST_REFERRAL_REPLY_SUBJECT!=null)
-then "Review Referral #" + LATEST_REFERRAL_REPLY_NUMBER + " - " + LATEST_REFERRAL_REPLY_SUBJECT + " Response"
-else null</text>
-    </literalExpression>
-  </decision>
   <decision id="Decision_1exmu8q" name="LATEST_APPLICATION_TASK_NAME" camunda:historyTimeToLive="P30D">
     <variable id="InformationItem_1jld7er" name="LATEST_APPLICATION_TASK_NAME" typeRef="string" />
     <informationRequirement id="InformationRequirement_1mxczet">
@@ -2071,44 +2054,6 @@ then sort(
     &gt;
     number(y.value.number)
 ).value.type[1]
-else null</text>
-    </literalExpression>
-  </decision>
-  <decision id="Decision_1i5c0ov" name="LATEST_REFERRAL_REPLY_NUMBER">
-    <variable id="InformationItem_01teb7t" name="LATEST_REFERRAL_REPLY_NUMBER" typeRef="string" />
-    <literalExpression id="LiteralExpression_1drvsrh">
-      <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then (
-  sort(
-    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
-    function(x,y)
-      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "2023-01-01T00:00:00.000")
-      &gt;
-      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "2023-01-01T00:00:00.000")
-  )[1].value.referralNumber
-)
-else null</text>
-    </literalExpression>
-  </decision>
-  <decision id="Decision_1frcp4z" name="LATEST_REFERRAL_REPLY_SUBJECT">
-    <variable id="InformationItem_0d9a0eo" name="LATEST_REFERRAL_REPLY_SUBJECT" typeRef="string" />
-    <literalExpression id="LiteralExpression_1mtsmyx">
-      <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then (
-  sort(
-    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
-    function(x,y)
-      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "2023-01-01T00:00:00.000")
-      &gt;
-      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "2023-01-01T00:00:00.000")
-  )[1].value.referralSubject
-)
 else null</text>
     </literalExpression>
   </decision>
@@ -2147,18 +2092,10 @@ else null</text>
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_englandwales">
         <dc:Bounds height="80" width="180" x="430" y="40" />
       </dmndi:DMNShape>
-      <dmndi:DMNEdge id="DMNEdge_0s4sgvn" dmnElementRef="InformationRequirement_0dnw86r">
-        <di:waypoint x="350" y="200" />
-        <di:waypoint x="475" y="140" />
-        <di:waypoint x="475" y="120" />
-      </dmndi:DMNEdge>
-      <dmndi:DMNShape id="DMNShape_1r683zz" dmnElementRef="Decision_0la4l4o">
-        <dc:Bounds height="80" width="180" x="260" y="200" />
-      </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0upswmp" dmnElementRef="InformationRequirement_04wvk1b">
         <di:waypoint x="650" y="200" />
-        <di:waypoint x="520" y="140" />
-        <di:waypoint x="520" y="120" />
+        <di:waypoint x="490" y="140" />
+        <di:waypoint x="490" y="120" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1sspufj" dmnElementRef="Decision_1exmu8q">
         <dc:Bounds height="80" width="180" x="560" y="200" />
@@ -2171,26 +2108,10 @@ else null</text>
       <dmndi:DMNShape id="DMNShape_1pt9vt9" dmnElementRef="Decision_12t75fs">
         <dc:Bounds height="80" width="180" x="560" y="310" />
       </dmndi:DMNShape>
-      <dmndi:DMNEdge id="DMNEdge_1kdhj95" dmnElementRef="InformationRequirement_05lp7qd">
-        <di:waypoint x="250" y="310" />
-        <di:waypoint x="320" y="300" />
-        <di:waypoint x="320" y="280" />
-      </dmndi:DMNEdge>
-      <dmndi:DMNShape id="DMNShape_07yw8fy" dmnElementRef="Decision_1i5c0ov">
-        <dc:Bounds height="80" width="180" x="160" y="310" />
-      </dmndi:DMNShape>
-      <dmndi:DMNEdge id="DMNEdge_1edokb1" dmnElementRef="InformationRequirement_0cx5tok">
-        <di:waypoint x="450" y="310" />
-        <di:waypoint x="380" y="300" />
-        <di:waypoint x="380" y="280" />
-      </dmndi:DMNEdge>
-      <dmndi:DMNShape id="DMNShape_07iabr8" dmnElementRef="Decision_1frcp4z">
-        <dc:Bounds height="80" width="180" x="360" y="310" />
-      </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_02v556j" dmnElementRef="InformationRequirement_1g8e2i1">
         <di:waypoint x="850" y="200" />
-        <di:waypoint x="565" y="140" />
-        <di:waypoint x="565" y="120" />
+        <di:waypoint x="550" y="140" />
+        <di:waypoint x="550" y="120" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1fxvd6l" dmnElementRef="Decision_1ilglxh">
         <dc:Bounds height="80" width="180" x="760" y="200" />

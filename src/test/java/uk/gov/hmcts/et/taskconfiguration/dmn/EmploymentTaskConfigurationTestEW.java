@@ -36,6 +36,10 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         HelperService.createReferrals("Amend claim","ET1", "", "", "", "");
     public static final String DYNAMIC_TASK_TITLE_REFERRAL_EXPECTED = "Review Referral #2 - ET1";
 
+    public static final String DYNAMIC_TASK_TITLE_REFERRAL_REPLY =
+        HelperService.createReferrals("ET3/ECC","ET1", "", "", "Admin", "Yes");
+    public static final String DYNAMIC_TASK_TITLE_REFERRAL_REPLY_EXPECTED = "Review Referral #1 - ET3/ECC Response";
+
     public static final String IS_URGENT =
         HelperService.createReferrals("Subject 1","Subject 2", "", "Yes", "", "");
     public static final String NOT_URGENT =
@@ -117,6 +121,31 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                          List.of(Map.of(
                              "name", "title",
                              "value", DYNAMIC_TASK_TITLE_REFERRAL_EXPECTED,
+                             "canReconfigure", false
+                         ))),
+
+            Arguments.of("ReviewReferralResponseAdmin",
+                         "referralCollection",
+                         DYNAMIC_TASK_TITLE_REFERRAL_REPLY,
+                         List.of(Map.of(
+                             "name", "title",
+                             "value", DYNAMIC_TASK_TITLE_REFERRAL_REPLY_EXPECTED,
+                             "canReconfigure", false
+                         ))),
+            Arguments.of("ReviewReferralResponseJudiciary",
+                         "referralCollection",
+                         DYNAMIC_TASK_TITLE_REFERRAL_REPLY,
+                         List.of(Map.of(
+                             "name", "title",
+                             "value", DYNAMIC_TASK_TITLE_REFERRAL_REPLY_EXPECTED,
+                             "canReconfigure", false
+                         ))),
+            Arguments.of("ReviewReferralResponseLegalOps",
+                         "referralCollection",
+                         DYNAMIC_TASK_TITLE_REFERRAL_REPLY,
+                         List.of(Map.of(
+                             "name", "title",
+                             "value", DYNAMIC_TASK_TITLE_REFERRAL_REPLY_EXPECTED,
                              "canReconfigure", false
                          )))
         );
@@ -987,7 +1016,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(53));
+        assertThat(logic.getRules().size(), is(54));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
