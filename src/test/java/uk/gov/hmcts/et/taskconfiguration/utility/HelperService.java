@@ -63,18 +63,19 @@ public final class HelperService {
         String replyCollection1 = "";
         String replyCollection2 = "";
         if (!referralDirectionTo.isEmpty()) {
+            String invertedReplyUrgency = "Yes".equals(referralReplyUrgency) ? "No" : "Yes";
             LocalDateTime now = LocalDateTime.now();
             String reply1 = String.format(REFERRALREPLY,
                                           "1",
                                           referralSubject1,
                                           referralDirectionTo,
-                                          referralReplyUrgency,
+                                          invertedReplyUrgency,
                                           now.plusHours(1).format(OLD_DATE_TIME_PATTERN));
             String reply2 = String.format(REFERRALREPLY,
                                           "2",
                                           referralSubject2,
                                           referralDirectionTo,
-                                          referralReplyUrgency,
+                                          invertedReplyUrgency,
                                           now.plusHours(2).format(OLD_DATE_TIME_PATTERN));
             String reply3 = String.format(REFERRALREPLY,
                                           "1",
@@ -87,8 +88,9 @@ public final class HelperService {
             replyCollection2 = String.format(REFERRALREPLY_COLLECTION, reply2);
         }
 
+        String invertedReferralUrgency = "Yes".equals(referralUrgency) ? "No" : "Yes";
         String referralCollection =
-            String.format(REFERRAL,"1",referralSubject1,referralReferCaseTo,referralUrgency,replyCollection1)
+            String.format(REFERRAL,"1",referralSubject1,referralReferCaseTo,invertedReferralUrgency,replyCollection1)
                 + ","
                 + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection2);
 

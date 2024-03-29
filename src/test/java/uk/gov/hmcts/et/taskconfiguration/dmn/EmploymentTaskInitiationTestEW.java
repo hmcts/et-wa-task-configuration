@@ -23,24 +23,24 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
 
     public static final String REFERRAL_ADMIN =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "Admin", "", "", "");
     public static final String REFERRAL_ADMIN_HEARING =
-        HelperService.createReferrals("Referral Subject 1","Hearings", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Hearings", "Admin", "", "", "");
     public static final String REFERRAL_ADMIN_JUDGMENT =
-        HelperService.createReferrals("Referral Subject 1","Judgment", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Judgment", "Admin", "", "", "");
     public static final String REFERRAL_JUDGE =
-        HelperService.createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","ET1", "Judge", "", "", "");
     public static final String REFERRAL_JUDGE_RULE21 =
-        HelperService.createReferrals("Referral Subject 1","Rule 21", "Judge", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Rule 21", "Judge", "", "", "");
     public static final String REFERRAL_LEGALOFFICER =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "Legal officer", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "Legal officer", "", "", "");
 
     public static final String REFERRAL_REPLY_ADMIN =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Admin", "Yes");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Admin", "");
     public static final String REFERRAL_REPLY_JUDGE =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "");
     public static final String REFERRAL_REPLY_LEGALOFFICER =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "");
 
     public static final String IS_JUDGEMENT_TRUE =
         "{\"draftAndSignJudgement\":{\"isJudgement\":true}}";
