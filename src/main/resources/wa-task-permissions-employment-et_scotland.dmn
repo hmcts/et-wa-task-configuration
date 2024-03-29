@@ -4,11 +4,9 @@
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_12crj6e" label="Task Type" biodi:width="551" camunda:inputVariable="taskType">
         <inputExpression id="LiteralExpression_11cu08d" typeRef="string" expressionLanguage="feel">
-          <text>
-          if(taskAttributes != null and taskAttributes.taskType != null)
-          then taskAttributes.taskType
-          else "r1"
-          </text>
+          <text>if(taskAttributes != null and taskAttributes.taskType != null)
+then taskAttributes.taskType
+else "r1"</text>
         </inputExpression>
       </input>
       <input id="Input_1" label="Case Data" biodi:width="150" camunda:inputVariable="case">
