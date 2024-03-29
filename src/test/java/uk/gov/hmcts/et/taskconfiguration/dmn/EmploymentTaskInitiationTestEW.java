@@ -107,17 +107,13 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String HEARING_DETAIL_COLLECTION_VACATED_ONLY =
         "{\"hearingDetailsCollection\": [{\"value\": {\"hearingDetailsStatus\": \"Vacated\"}}]}";
 
-    public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
+    public static final String SUBMISSION_REASON_CLAIMANT =
         HelperService.createApplications("Amend my claim", "");
-    public static final String SUBMISSION_REASON_CLAIMANT_CONTACT =
-        HelperService.createApplications("Contact about something else", "");
     public static final String SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS =
         HelperService.createApplications("Change my personal details", "");
 
-    public static final String SUBMISSION_REASON_RESPONDENT_AMEND =
+    public static final String SUBMISSION_REASON_RESPONDENT =
         HelperService.createApplications("Amend response", "");
-    public static final String SUBMISSION_REASON_RESPONDENT_CONTACT =
-        HelperService.createApplications("Contact the tribunal", "");
     public static final String SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS =
         HelperService.createApplications("Change personal details", "");
 
@@ -497,23 +493,11 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "SUBMIT_CLAIMANT_TSE",
                 "Accepted",
-                HelperService.mapAdditionalData(SUBMISSION_REASON_CLAIMANT_AMEND),
+                HelperService.mapAdditionalData(SUBMISSION_REASON_CLAIMANT),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Application - Amend my claim",
-                        "Application"
-                    )
-                )
-            ),
-            Arguments.of(
-                "SUBMIT_CLAIMANT_TSE",
-                "Accepted",
-                HelperService.mapAdditionalData(SUBMISSION_REASON_CLAIMANT_CONTACT),
-                List.of(
-                    HelperService.mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
-                        "Contact the tribunal",
+                        "Contact Tribunal With An Application",
                         "Application"
                     )
                 )
@@ -545,23 +529,11 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "respondentTSE",
                 "Accepted",
-                HelperService.mapAdditionalData(SUBMISSION_REASON_RESPONDENT_AMEND),
+                HelperService.mapAdditionalData(SUBMISSION_REASON_RESPONDENT),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Application - Amend response",
-                        "Application"
-                    )
-                )
-            ),
-            Arguments.of(
-                "respondentTSE",
-                "Accepted",
-                HelperService.mapAdditionalData(SUBMISSION_REASON_RESPONDENT_CONTACT),
-                List.of(
-                    HelperService.mapExpectedOutput(
-                        "ContactTribunalWithAnApplication",
-                        "Contact the tribunal",
+                        "Contact Tribunal With An Application",
                         "Application"
                     )
                 )

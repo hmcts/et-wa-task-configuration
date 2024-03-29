@@ -40,6 +40,13 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         HelperService.createReferrals("ET3/ECC","ET1", "", "", "Admin", "Yes");
     public static final String DYNAMIC_TASK_TITLE_REFERRAL_REPLY_EXPECTED = "Review Referral #1 - ET3/ECC Response";
 
+    public static final String DYNAMIC_TASK_TITLE_CLAIMANT_APP =
+        HelperService.createApplications("Amend my claim", "");
+    public static final String DYNAMIC_TASK_TITLE_CLAIMANT_APP_EXPECTED = "Application - Amend my claim";
+    public static final String DYNAMIC_TASK_TITLE_RESPONDENT_APP =
+        HelperService.createApplications("Contact the tribunal", "");
+    public static final String DYNAMIC_TASK_TITLE_RESPONDENT_APP_EXPECTED = "Contact the tribunal";
+
     public static final String IS_URGENT =
         HelperService.createReferrals("Subject 1","Subject 2", "", "Yes", "", "");
     public static final String NOT_URGENT =
@@ -146,6 +153,23 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                          List.of(Map.of(
                              "name", "title",
                              "value", DYNAMIC_TASK_TITLE_REFERRAL_REPLY_EXPECTED,
+                             "canReconfigure", false
+                         ))),
+
+            Arguments.of("ContactTribunalWithAnApplication",
+                         "genericTseApplicationCollection",
+                         DYNAMIC_TASK_TITLE_CLAIMANT_APP,
+                         List.of(Map.of(
+                             "name", "title",
+                             "value", DYNAMIC_TASK_TITLE_CLAIMANT_APP_EXPECTED,
+                             "canReconfigure", false
+                         ))),
+            Arguments.of("ContactTribunalWithAnApplication",
+                         "genericTseApplicationCollection",
+                         DYNAMIC_TASK_TITLE_RESPONDENT_APP,
+                         List.of(Map.of(
+                             "name", "title",
+                             "value", DYNAMIC_TASK_TITLE_RESPONDENT_APP_EXPECTED,
                              "canReconfigure", false
                          )))
         );
@@ -1016,7 +1040,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(54));
+        assertThat(logic.getRules().size(), is(55));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

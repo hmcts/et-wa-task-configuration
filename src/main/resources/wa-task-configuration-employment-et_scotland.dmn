@@ -7,6 +7,9 @@
     <informationRequirement id="InformationRequirement_1axtv3o">
       <requiredDecision href="#Decision_1q1ow6m" />
     </informationRequirement>
+    <informationRequirement id="InformationRequirement_1oslxqq">
+      <requiredDecision href="#Decision_00otckl" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -63,6 +66,24 @@
           <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1w5uryv">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10t3ptx">
+        <description>Dynamic Task Title. Other tasks default to Task Name.</description>
+        <inputEntry id="UnaryTests_0kswnej">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g26f3z">
+          <text>"ContactTribunalWithAnApplication"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ts1jya">
+          <text>"title"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0orkvlt">
+          <text>LATEST_APPLICATION_TASK_TITLE</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vfpb8l">
           <text>false</text>
         </outputEntry>
       </rule>
@@ -1234,15 +1255,44 @@ then (
 else null</text>
     </literalExpression>
   </decision>
+  <decision id="Decision_00otckl" name="LATEST_APPLICATION_TASK_TITLE">
+    <variable id="InformationItem_1yyvb43" name="LATEST_APPLICATION_TASK_TITLE" typeRef="string" />
+    <informationRequirement id="InformationRequirement_0556ie4">
+      <requiredDecision href="#Decision_1wchfjz" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1754wcl">
+      <text>if(LATEST_APPLICATION_TYPE!=null)
+  then if(LATEST_APPLICATION_TYPE="Contact about something else" or LATEST_APPLICATION_TYPE="Contact the tribunal")
+    then "Contact the tribunal"
+    else "Application - " + LATEST_APPLICATION_TYPE
+  else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1wchfjz" name="LATEST_APPLICATION_TYPE">
+    <variable id="InformationItem_0rugypy" name="LATEST_APPLICATION_TYPE" typeRef="string" />
+    <literalExpression id="LiteralExpression_1qdkdbl">
+      <text>if(caseData!=null
+and caseData.genericTseApplicationCollection!=null
+and count(caseData.genericTseApplicationCollection) &gt; 0)
+then sort(
+  caseData.genericTseApplicationCollection,
+  function(x,y)
+    number(x.value.number)
+    &gt;
+    number(y.value.number)
+).value.type[1]
+else null</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
       <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_scotland">
-        <dc:Bounds height="80" width="180" x="460" y="80" />
+        <dc:Bounds height="80" width="180" x="660" y="80" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1dk9sna" dmnElementRef="InformationRequirement_1eq8zmh">
         <di:waypoint x="350" y="210" />
-        <di:waypoint x="520" y="180" />
-        <di:waypoint x="520" y="160" />
+        <di:waypoint x="705" y="180" />
+        <di:waypoint x="705" y="160" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1g6xrpz" dmnElementRef="Decision_0we2m09">
         <dc:Bounds height="80" width="180" x="260" y="210" />
@@ -1265,8 +1315,8 @@ else null</text>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_01l2oha" dmnElementRef="InformationRequirement_1axtv3o">
         <di:waypoint x="750" y="210" />
-        <di:waypoint x="580" y="180" />
-        <di:waypoint x="580" y="160" />
+        <di:waypoint x="750" y="180" />
+        <di:waypoint x="750" y="160" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_10obxkl" dmnElementRef="Decision_1q1ow6m">
         <dc:Bounds height="80" width="180" x="660" y="210" />
@@ -1286,6 +1336,22 @@ else null</text>
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1ehbdy5" dmnElementRef="Decision_09gorf7">
         <dc:Bounds height="80" width="180" x="760" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1sovcxc" dmnElementRef="InformationRequirement_1oslxqq">
+        <di:waypoint x="1050" y="210" />
+        <di:waypoint x="795" y="180" />
+        <di:waypoint x="795" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1v7acsl" dmnElementRef="Decision_00otckl">
+        <dc:Bounds height="80" width="180" x="960" y="210" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0cuhwtf" dmnElementRef="InformationRequirement_0556ie4">
+        <di:waypoint x="1050" y="340" />
+        <di:waypoint x="1050" y="310" />
+        <di:waypoint x="1050" y="290" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0vj0592" dmnElementRef="Decision_1wchfjz">
+        <dc:Bounds height="80" width="180" x="960" y="340" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>

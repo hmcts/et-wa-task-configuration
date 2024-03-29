@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
-    <informationRequirement id="InformationRequirement_04wvk1b">
-      <requiredDecision href="#Decision_1exmu8q" />
-    </informationRequirement>
     <informationRequirement id="InformationRequirement_1g8e2i1">
       <requiredDecision href="#Decision_1ilglxh" />
     </informationRequirement>
@@ -1522,7 +1519,7 @@ else null</text>
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gy7thr">
-          <text>LATEST_APPLICATION_TASK_NAME</text>
+          <text>"Contact Tribunal With An Application"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1m17io6">
           <text></text>
@@ -1662,7 +1659,7 @@ else null</text>
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1w8pyhw">
-          <text>LATEST_APPLICATION_TASK_NAME</text>
+          <text>"Contact Tribunal With An Application"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_091hz5k">
           <text></text>
@@ -2027,36 +2024,6 @@ else null</text>
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_1exmu8q" name="LATEST_APPLICATION_TASK_NAME" camunda:historyTimeToLive="P30D">
-    <variable id="InformationItem_1jld7er" name="LATEST_APPLICATION_TASK_NAME" typeRef="string" />
-    <informationRequirement id="InformationRequirement_1mxczet">
-      <requiredDecision href="#Decision_12t75fs" />
-    </informationRequirement>
-    <literalExpression id="LiteralExpression_1uulftg">
-      <text>if(LATEST_APPLICATION_TYPE!=null)
-  then if(LATEST_APPLICATION_TYPE="Contact about something else" or LATEST_APPLICATION_TYPE="Contact the tribunal")
-    then "Contact the tribunal"
-    else "Application - " + LATEST_APPLICATION_TYPE
-  else null</text>
-    </literalExpression>
-  </decision>
-  <decision id="Decision_12t75fs" name="LATEST_APPLICATION_TYPE">
-    <variable id="InformationItem_01m6yt7" name="LATEST_APPLICATION_TYPE" typeRef="string" />
-    <literalExpression id="LiteralExpression_0firzss">
-      <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.genericTseApplicationCollection!=null
-and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
-then sort(
-  additionalData.Data.genericTseApplicationCollection,
-  function(x,y)
-    number(x.value.number)
-    &gt;
-    number(y.value.number)
-).value.type[1]
-else null</text>
-    </literalExpression>
-  </decision>
   <decision id="Decision_1ilglxh" name="LATEST_APPLICATION_RESPOND_TASK_NAME">
     <variable id="InformationItem_05rq1y7" name="LATEST_APPLICATION_RESPOND_TASK_NAME" typeRef="string" />
     <informationRequirement id="InformationRequirement_0wngeki">
@@ -2090,39 +2057,23 @@ else null</text>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_englandwales">
-        <dc:Bounds height="80" width="180" x="430" y="40" />
-      </dmndi:DMNShape>
-      <dmndi:DMNEdge id="DMNEdge_0upswmp" dmnElementRef="InformationRequirement_04wvk1b">
-        <di:waypoint x="650" y="200" />
-        <di:waypoint x="490" y="140" />
-        <di:waypoint x="490" y="120" />
-      </dmndi:DMNEdge>
-      <dmndi:DMNShape id="DMNShape_1sspufj" dmnElementRef="Decision_1exmu8q">
-        <dc:Bounds height="80" width="180" x="560" y="200" />
-      </dmndi:DMNShape>
-      <dmndi:DMNEdge id="DMNEdge_14d3lw3" dmnElementRef="InformationRequirement_1mxczet">
-        <di:waypoint x="650" y="310" />
-        <di:waypoint x="650" y="300" />
-        <di:waypoint x="650" y="280" />
-      </dmndi:DMNEdge>
-      <dmndi:DMNShape id="DMNShape_1pt9vt9" dmnElementRef="Decision_12t75fs">
-        <dc:Bounds height="80" width="180" x="560" y="310" />
+        <dc:Bounds height="80" width="180" x="160" y="50" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_02v556j" dmnElementRef="InformationRequirement_1g8e2i1">
-        <di:waypoint x="850" y="200" />
-        <di:waypoint x="550" y="140" />
-        <di:waypoint x="550" y="120" />
+        <di:waypoint x="250" y="200" />
+        <di:waypoint x="250" y="150" />
+        <di:waypoint x="250" y="130" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1fxvd6l" dmnElementRef="Decision_1ilglxh">
-        <dc:Bounds height="80" width="180" x="760" y="200" />
+        <dc:Bounds height="80" width="180" x="160" y="200" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_08qr951" dmnElementRef="InformationRequirement_0wngeki">
-        <di:waypoint x="850" y="310" />
-        <di:waypoint x="850" y="300" />
-        <di:waypoint x="850" y="280" />
+        <di:waypoint x="250" y="310" />
+        <di:waypoint x="250" y="300" />
+        <di:waypoint x="250" y="280" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0aetwp5" dmnElementRef="Decision_13u3dfg">
-        <dc:Bounds height="80" width="180" x="760" y="310" />
+        <dc:Bounds height="80" width="180" x="160" y="310" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
