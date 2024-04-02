@@ -112,24 +112,20 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     public static final String SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS =
         HelperService.createApplications("Change my personal details", "");
 
+    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT =
+        HelperService.createApplications("Amend response", "Claimant");
+    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS =
+        HelperService.createApplications("Change personal details", "Claimant");
+
     public static final String SUBMISSION_REASON_RESPONDENT =
         HelperService.createApplications("Amend response", "");
     public static final String SUBMISSION_REASON_RESPONDENT_PERSONALDETAILS =
         HelperService.createApplications("Change personal details", "");
 
-    public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND =
+    public static final String RESPONDENT_RESPONDING_TO_CLAIMANT =
         HelperService.createApplications("Amend my claim", "Respondent");
-    public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT =
-        HelperService.createApplications("Contact about something else", "Respondent");
     public static final String RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS =
         HelperService.createApplications("Change my personal details", "Respondent");
-
-    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND =
-        HelperService.createApplications("Amend response", "Claimant");
-    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_CONTACT =
-        HelperService.createApplications("Contact the tribunal", "Claimant");
-    public static final String CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS =
-        HelperService.createApplications("Change personal details", "Claimant");
 
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
         HelperService.createApplications("Withdraw all/part of claim", "Claimant");
@@ -505,23 +501,11 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "CLAIMANT_TSE_RESPOND",
                 "Accepted",
-                HelperService.mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_AMEND),
+                HelperService.mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplicationResponse",
-                        "Application Response - Amend response",
-                        "Application"
-                    )
-                )
-            ),
-            Arguments.of(
-                "CLAIMANT_TSE_RESPOND",
-                "Accepted",
-                HelperService.mapAdditionalData(CLAIMANT_RESPONDING_TO_RESPONDENT_CONTACT),
-                List.of(
-                    HelperService.mapExpectedOutput(
-                        "ContactTribunalWithAnApplicationResponse",
-                        "Contact the tribunal Response",
+                        "Contact Tribunal With An Application",
                         "Application"
                     )
                 )
@@ -541,23 +525,11 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "tseRespond",
                 "Accepted",
-                HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND),
+                HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplicationResponse",
-                        "Application Response - Amend my claim",
-                        "Application"
-                    )
-                )
-            ),
-            Arguments.of(
-                "tseRespond",
-                "Accepted",
-                HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT),
-                List.of(
-                    HelperService.mapExpectedOutput(
-                        "ContactTribunalWithAnApplicationResponse",
-                        "Contact the tribunal Response",
+                        "Contact Tribunal With An Application",
                         "Application"
                     )
                 )

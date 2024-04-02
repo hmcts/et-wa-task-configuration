@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
-    <informationRequirement id="InformationRequirement_0xfl3fm">
-      <requiredDecision href="#Decision_1uzjxz3" />
-    </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" biodi:width="243" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -1593,7 +1590,7 @@ else null</text>
           <text>"ContactTribunalWithAnApplicationResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1j51kjz">
-          <text>LATEST_APPLICATION_RESPOND_TASK_NAME</text>
+          <text>"Contact Tribunal With An Application"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c8nrxq">
           <text></text>
@@ -1733,7 +1730,7 @@ else null</text>
           <text>"ContactTribunalWithAnApplicationResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14limve">
-          <text>LATEST_APPLICATION_RESPOND_TASK_NAME</text>
+          <text>"Contact Tribunal With An Application"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sqt600">
           <text></text>
@@ -2024,56 +2021,10 @@ else null</text>
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_10dijkm" name="LATEST_APPLICATION_RESPOND_TYPE">
-    <variable id="InformationItem_1enqaet" name="LATEST_APPLICATION_RESPOND_TYPE" typeRef="string" />
-    <literalExpression id="LiteralExpression_1inyejd">
-      <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.genericTseApplicationCollection!=null
-and count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])&gt;0)
-then sort(
-  flatten(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null].value.respondCollection),
-  function(x,y)
-    date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
-    &gt;
-    date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
-)[1].value.applicationType
-else null</text>
-    </literalExpression>
-  </decision>
-  <decision id="Decision_1uzjxz3" name="LATEST_APPLICATION_RESPOND_TASK_NAME">
-    <variable id="InformationItem_06lxh2u" name="LATEST_APPLICATION_RESPOND_TASK_NAME" typeRef="string" />
-    <informationRequirement id="InformationRequirement_1qqzkui">
-      <requiredDecision href="#Decision_10dijkm" />
-    </informationRequirement>
-    <literalExpression id="LiteralExpression_0b3dykm">
-      <text>if(LATEST_APPLICATION_RESPOND_TYPE!=null)
-  then if(LATEST_APPLICATION_RESPOND_TYPE="Contact about something else" or LATEST_APPLICATION_RESPOND_TYPE="Contact the tribunal")
-    then "Contact the tribunal Response"
-    else "Application Response - " + LATEST_APPLICATION_RESPOND_TYPE
-  else null</text>
-    </literalExpression>
-  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_scotland">
         <dc:Bounds height="80" width="180" x="160" y="110" />
-      </dmndi:DMNShape>
-      <dmndi:DMNEdge id="DMNEdge_0ih47e5" dmnElementRef="InformationRequirement_0xfl3fm">
-        <di:waypoint x="250" y="220" />
-        <di:waypoint x="250" y="210" />
-        <di:waypoint x="250" y="190" />
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="DMNEdge_0db1ev9" dmnElementRef="InformationRequirement_1qqzkui">
-        <di:waypoint x="250" y="340" />
-        <di:waypoint x="250" y="320" />
-        <di:waypoint x="250" y="300" />
-      </dmndi:DMNEdge>
-      <dmndi:DMNShape id="DMNShape_1a1bbfa" dmnElementRef="Decision_10dijkm">
-        <dc:Bounds height="80" width="180" x="160" y="340" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="DMNShape_0wt1ey1" dmnElementRef="Decision_1uzjxz3">
-        <dc:Bounds height="80" width="180" x="160" y="220" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
