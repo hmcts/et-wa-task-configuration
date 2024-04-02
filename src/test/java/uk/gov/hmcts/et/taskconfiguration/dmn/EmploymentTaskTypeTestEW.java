@@ -44,7 +44,7 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
                            "taskTypeName","Contact Tribunal With An Application"),
 
                     Map.of("taskTypeId", "ContactTribunalWithAnApplicationResponse",
-                           "taskTypeName","Contact Tribunal With An Application Response"),
+                           "taskTypeName","Contact Tribunal With An Application (Response)"),
 
                     Map.of("taskTypeId", "DraftAndSignJudgment", "taskTypeName", "Draft And Sign Judgment"),
 
