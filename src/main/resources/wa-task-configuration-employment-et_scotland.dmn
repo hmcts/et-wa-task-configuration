@@ -270,6 +270,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
         </inputEntry>
         <inputEntry id="UnaryTests_1hszd50">
           <text>"ContactTribunalWithAnApplication",
+"ContactTribunalWithAnApplicationResponse",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase"</text>
@@ -364,6 +365,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "IssuePostHearingDirection",
 "IssueJudgment",
 "ContactTribunalWithAnApplication",
+"ContactTribunalWithAnApplicationResponse",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
@@ -603,6 +605,7 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_102pi1k">
           <text>"ContactTribunalWithAnApplication",
+"ContactTribunalWithAnApplicationResponse",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase"</text>
@@ -679,6 +682,7 @@ else ""</text>
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
+"ContactTribunalWithAnApplicationResponse",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
@@ -760,6 +764,7 @@ else 5000</text>
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
+"ContactTribunalWithAnApplicationResponse",
 "WithdrawAllOrPartOfCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
@@ -1017,7 +1022,8 @@ else 2</text>
           <text>"Rule21",
 "ReviewRule21Referral",
 "CompleteInitialConsideration",
-"ContactTribunalWithAnApplication"</text>
+"ContactTribunalWithAnApplication",
+"ContactTribunalWithAnApplicationResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1w0lhdh">
           <text>"dueDateIntervalDays"</text>
@@ -1121,6 +1127,7 @@ else 2</text>
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
+"ContactTribunalWithAnApplicationResponse",
 "WithdrawAllOrPartOfCase",
 "ReviewReferralResponseAdmin",
 "ReviewReferralResponseJudiciary",
