@@ -48,11 +48,11 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         "\"draftAndSignJudgement\":{\"isJudgement\":false}";
 
     public static final String ET3_FORM_NOT_RECEIVED =
-        "\"respondentCollection\":[{\"value\":{\"responseReceived\":false}}]";
+        "\"respondentCollection\":[{\"value\":{\"responseReceived\":false,\"responseReceivedCount\":null}}]";
     public static final String ET3_FORM_RECEIVED_ONCE =
-        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":1}}]";
+        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"1\"}}]";
     public static final String ET3_FORM_RECEIVED_MORE =
-        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":2}}]";
+        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"2\"}}]";
 
     public static final String IS_ET3_RESPONSE_TRUE =
         "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true}}}]";

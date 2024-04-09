@@ -73,8 +73,8 @@ and count(additionalData.Data.respondentCollection)&gt;0)
 then
   if(additionalData.Data.respondentCollection[1].value.responseReceived)
   then
-    if(additionalData.Data.respondentCollection[1].value.responseReceivedCount=1)
-    then additionalData.Data.respondentCollection[1].value.responseReceived
+    if(additionalData.Data.respondentCollection[1].value.responseReceivedCount="1")
+    then true
     else false
   else false
 else false</text>
