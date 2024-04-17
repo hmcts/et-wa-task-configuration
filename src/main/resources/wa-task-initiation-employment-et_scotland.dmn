@@ -70,10 +70,14 @@ else false</text>
 and additionalData.Data!=null
 and additionalData.Data.respondentCollection!=null
 and count(additionalData.Data.respondentCollection)&gt;0)
-then if(additionalData.Data.respondentCollection[1].value.responseReceived!=null)
-then additionalData.Data.respondentCollection[1].value.responseReceived
-else null
-else null</text>
+then
+  if(additionalData.Data.respondentCollection[1].value.responseReceived)
+  then
+    if(additionalData.Data.respondentCollection[1].value.responseReceivedCount="1")
+    then true
+    else false
+  else false
+else false</text>
         </inputExpression>
       </input>
       <input id="InputClause_18qp9rh" label="Is There An Et3 Response">

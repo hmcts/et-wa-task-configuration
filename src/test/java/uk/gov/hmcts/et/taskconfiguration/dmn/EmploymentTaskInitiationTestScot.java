@@ -47,10 +47,12 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     public static final String IS_JUDGEMENT_FALSE =
         "\"draftAndSignJudgement\":{\"isJudgement\":false}";
 
-    public static final String ET3_FORM_RECEIVED =
-        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true}}]";
     public static final String ET3_FORM_NOT_RECEIVED =
-        "\"respondentCollection\":[{\"value\":{\"responseReceived\":false}}]";
+        "\"respondentCollection\":[{\"value\":{\"responseReceived\":false,\"responseReceivedCount\":null}}]";
+    public static final String ET3_FORM_RECEIVED_ONCE =
+        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"1\"}}]";
+    public static final String ET3_FORM_RECEIVED_MORE =
+        "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"2\"}}]";
 
     public static final String IS_ET3_RESPONSE_TRUE =
         "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true}}}]";
@@ -353,7 +355,13 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "amendRespondentDetails",
                 null,
-                HelperService.mapAdditionalData(ET3_FORM_RECEIVED),
+                HelperService.mapAdditionalData(ET3_FORM_NOT_RECEIVED),
+                List.of()
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(ET3_FORM_RECEIVED_ONCE),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ET3Processing",
@@ -364,8 +372,8 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             ),
             Arguments.of(
                 "amendRespondentDetails",
-                "Accepted",
-                HelperService.mapAdditionalData(ET3_FORM_NOT_RECEIVED),
+                null,
+                HelperService.mapAdditionalData(ET3_FORM_RECEIVED_MORE),
                 List.of()
             ),
             Arguments.of(
