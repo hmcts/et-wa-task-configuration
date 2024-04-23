@@ -141,6 +141,17 @@
           <text>"List/ Serve Claim"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0rzwamb">
+        <inputEntry id="UnaryTests_0kscm0f">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i8foi5">
+          <text>"ReviewECCResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k1j2ce">
+          <text>"Review ECC Response"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0aenrnf">
         <inputEntry id="UnaryTests_0m29qlf">
           <text></text>
