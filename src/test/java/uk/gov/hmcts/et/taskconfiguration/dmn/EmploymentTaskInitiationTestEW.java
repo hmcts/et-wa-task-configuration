@@ -13,12 +13,15 @@ import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 import uk.gov.hmcts.et.taskconfiguration.utility.HelperService;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static uk.gov.hmcts.et.taskconfiguration.utility.HelperService.createNotification;
+import static uk.gov.hmcts.et.taskconfiguration.utility.HelperService.createNotificationRespondCollection;
 
 class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
 
@@ -139,6 +142,38 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
 
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
         HelperService.createApplications("Withdraw all/part of claim", "Claimant");
+
+    public static final String NOTIFICATION_1 =
+        createNotification("1", "0", "");
+    public static final String NOTIFICATION_2 =
+        createNotification(
+            "2",
+            "1",
+            createNotificationRespondCollection(
+                Arrays.asList("Claimant"),
+                Arrays.asList("2"),
+                Arrays.asList("Yes")
+            )
+        );
+    public static final String NOTIFICATION_3 =
+        createNotification(
+            "3",
+            "2",
+            createNotificationRespondCollection(
+                Arrays.asList("Claimant", "Respondent"),
+                Arrays.asList("1", "3"),
+                Arrays.asList("Yes", "No")
+            )
+        );
+
+    public static final String NOTIFICATIONS_LIST =
+        HelperService.createNotifications(
+            Arrays.asList(
+                NOTIFICATION_1,
+                NOTIFICATION_2,
+                NOTIFICATION_3
+            )
+        );
 
     @BeforeAll
     public static void initialization() {
@@ -657,6 +692,18 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Amendments"
                     )
                 )
+            ),
+            Arguments.of(
+                "UPDATE_NOTIFICATION_RESPONSE",
+                null,
+                HelperService.mapAdditionalData(NOTIFICATIONS_LIST),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReviewECCResponse",
+                        "Review ECC Response",
+                        "Vetting"
+                    )
+                )
             )
         );
     }
@@ -681,6 +728,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(32));
+        assertThat(logic.getRules().size(), is(33));
     }
 }

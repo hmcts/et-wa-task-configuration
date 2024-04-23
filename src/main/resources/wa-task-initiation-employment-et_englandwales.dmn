@@ -13,6 +13,9 @@
     <informationRequirement id="InformationRequirement_1g8e2i1">
       <requiredDecision href="#Decision_1ilglxh" />
     </informationRequirement>
+    <informationRequirement id="InformationRequirement_10hzatg">
+      <requiredDecision href="#Decision_0zw4bmx" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT" biodi:annotationsWidth="400">
       <input id="Input_1" label="Event Id" biodi:width="342" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -162,6 +165,11 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
+      <input id="InputClause_1j45uoy" label="Notification Response is ECC from Claimant">
+        <inputExpression id="LiteralExpression_1pdr93n" typeRef="boolean">
+          <text>LATEST_NOTIFICATION_RESPONSE_IS_ECC_FROM_CLAIMANT</text>
+        </inputExpression>
+      </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="324" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="348" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="152" />
@@ -207,6 +215,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1seervd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i2m01r">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1inzx22">
@@ -265,6 +276,9 @@ else null</text>
         <inputEntry id="UnaryTests_04wjoro">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1mbnb0s">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1p21nx8">
           <text>"ReviewReferralAdmin"</text>
         </outputEntry>
@@ -321,6 +335,9 @@ else null</text>
         <inputEntry id="UnaryTests_0wdw5nm">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0o9vre3">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_19aayz9">
           <text>"IssuePostHearingDirection"</text>
         </outputEntry>
@@ -375,6 +392,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0856pxg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fwykuh">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1n64ej0">
@@ -453,6 +473,9 @@ else null</text>
         <inputEntry id="UnaryTests_050zo3u">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0zffsec">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_02gq0cv">
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
@@ -507,6 +530,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0nsbmo2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yukqqw">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zsboti">
@@ -565,6 +591,9 @@ else null</text>
         <inputEntry id="UnaryTests_1d3dw2b">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1tet4is">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0xmtp1n">
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
@@ -619,6 +648,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0k4862m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04o8nfd">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15ccyjs">
@@ -677,6 +709,9 @@ else null</text>
         <inputEntry id="UnaryTests_1c8v0zv">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1nyu3fi">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0viokea">
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
@@ -731,6 +766,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_11lmlzz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03mracv">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0asscuc">
@@ -789,6 +827,9 @@ else null</text>
         <inputEntry id="UnaryTests_0o54xkt">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0w1t754">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_107bc44">
           <text>"IssueJudgment"</text>
         </outputEntry>
@@ -843,6 +884,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_12nti9r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w5ifkh">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1gzs9ju">
@@ -901,6 +945,9 @@ else null</text>
         <inputEntry id="UnaryTests_1q0g3fh">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1g608ot">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0ubx349">
           <text>"SendEt1Notification"</text>
         </outputEntry>
@@ -955,6 +1002,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1st3wsl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y2i77x">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ytrqr1">
@@ -1013,6 +1063,9 @@ else null</text>
         <inputEntry id="UnaryTests_0h39lil">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0dgxcj1">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0z6s9xl">
           <text>"ET3Processing"</text>
         </outputEntry>
@@ -1067,6 +1120,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0hlmblt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10t4zj9">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0pijgqn">
@@ -1125,6 +1181,9 @@ else null</text>
         <inputEntry id="UnaryTests_13f3enc">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0e7er9f">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1mo94bo">
           <text>"ReviewRule21Referral"</text>
         </outputEntry>
@@ -1179,6 +1238,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1iys4jp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_192njz8">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1fuv81y">
@@ -1237,6 +1299,9 @@ else null</text>
         <inputEntry id="UnaryTests_0gx4b7y">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_08a0jpp">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1l1w4gm">
           <text>"SendEt3Notification"</text>
         </outputEntry>
@@ -1291,6 +1356,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0x3naa4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_172s9pc">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_17hr6ex">
@@ -1350,6 +1418,9 @@ else null</text>
         <inputEntry id="UnaryTests_1dm60al">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_13aqwo6">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_06w4eix">
           <text>"IssueInitialConsiderationDirections"</text>
         </outputEntry>
@@ -1406,6 +1477,9 @@ else null</text>
         <inputEntry id="UnaryTests_18dh7kx">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0z7dzgw">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_12qc6zr">
           <text>"IssueInitialConsiderationDirections"</text>
         </outputEntry>
@@ -1460,6 +1534,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_01ccd9y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11d7kf0">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ir1grh">
@@ -1526,6 +1603,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1412y0f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xohq16">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_18a0xvf">
@@ -1602,6 +1682,9 @@ else null</text>
 "Vary/revoke an order",
 "Withdraw all/part of claim"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0hofe1s">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1o0hceo">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
@@ -1666,6 +1749,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0shlml1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_123w907">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1rzxzd9">
@@ -1742,6 +1828,9 @@ else null</text>
 "Vary/revoke an order",
 "Withdraw all/part of claim"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_000350o">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1ir7dto">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
@@ -1796,6 +1885,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1abtohm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12p39pk">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15tl4dh">
@@ -1854,6 +1946,9 @@ else null</text>
         <inputEntry id="UnaryTests_0wv2far">
           <text>"Change personal details"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1ggk9m2">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0iwj30e">
           <text>"AmendRespondentDetails"</text>
         </outputEntry>
@@ -1908,6 +2003,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0oub2vt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_100qq0k">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_07u0vk8">
@@ -1966,6 +2064,9 @@ else null</text>
         <inputEntry id="UnaryTests_1x7fxmi">
           <text>"Change my personal details"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_17vccv0">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1l73b7e">
           <text>"AmendClaimantDetails"</text>
         </outputEntry>
@@ -2022,6 +2123,9 @@ else null</text>
         <inputEntry id="UnaryTests_0862kaf">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1le5z8i">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0q2t52j">
           <text>"WithdrawAllOrPartOfCase"</text>
         </outputEntry>
@@ -2033,6 +2137,65 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0twg2jr">
           <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hcl2d1">
+        <inputEntry id="UnaryTests_0dsz9l3">
+          <text>"UPDATE_NOTIFICATION_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uj2w02">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_159b9rs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ev6ycq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0037uhl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pgyrf4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1licb82">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wu138f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k8s5sq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_147g3f5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cpewu9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rwbowm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cnus9s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xrz87e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0og7uw2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nakksw">
+          <text>"ReviewECCResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15rfia9">
+          <text>"Review ECC Response"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n8dft7">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k1c0zn">
+          <text>"Vetting"</text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -2199,6 +2362,56 @@ then sort(
 else null</text>
     </literalExpression>
   </decision>
+  <decision id="Decision_0zw4bmx" name="LATEST_NOTIFICATION_RESPONSE_IS_ECC_FROM_CLAIMANT">
+    <variable id="InformationItem_0spflpi" name="LATEST_NOTIFICATION_RESPONSE_IS_ECC_FROM_CLAIMANT" typeRef="boolean" />
+    <informationRequirement id="InformationRequirement_0ce03kk">
+      <requiredDecision href="#Decision_0t2ti0y" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0i8c8w7">
+      <requiredDecision href="#Decision_15k77sd" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1qxcnp9">
+      <text>(LATEST_NOTIFICATION_RESPONSE_IS_ECC and LATEST_NOTIFICATION_RESPONSE_IS_FROM_CLAIMANT)</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0t2ti0y" name="LATEST_NOTIFICATION_RESPONSE_IS_ECC">
+    <variable id="InformationItem_1m1noyu" name="LATEST_NOTIFICATION_RESPONSE_IS_ECC" typeRef="boolean" />
+    <literalExpression id="LiteralExpression_1etqs9w">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.sendNotificationCollection!=null
+and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
+
+then (sort(
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
+function(x,y) 
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
+&gt; 
+date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
+)[1].value.isECC="Yes")
+
+else false</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_15k77sd" name="LATEST_NOTIFICATION_RESPONSE_IS_FROM_CLAIMANT">
+    <variable id="InformationItem_1dxl32m" name="LATEST_NOTIFICATION_RESPONSE_IS_FROM_CLAIMANT" typeRef="boolean" />
+    <literalExpression id="LiteralExpression_1mts7p8">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.sendNotificationCollection!=null
+and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
+  
+then (sort(
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
+function(x,y) 
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
+&gt; 
+date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
+)[1].value.from="Claimant")
+  
+else false</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_englandwales">
@@ -2206,24 +2419,24 @@ else null</text>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0s4sgvn" dmnElementRef="InformationRequirement_0dnw86r">
         <di:waypoint x="750" y="200" />
-        <di:waypoint x="902" y="140" />
-        <di:waypoint x="902" y="120" />
+        <di:waypoint x="890" y="140" />
+        <di:waypoint x="890" y="120" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1r683zz" dmnElementRef="Decision_0la4l4o">
         <dc:Bounds height="80" width="180" x="660" y="200" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_13aw784" dmnElementRef="InformationRequirement_19o3lfi">
         <di:waypoint x="350" y="200" />
-        <di:waypoint x="866" y="140" />
-        <di:waypoint x="866" y="120" />
+        <di:waypoint x="860" y="140" />
+        <di:waypoint x="860" y="120" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_125889q" dmnElementRef="Decision_0dpy65m">
         <dc:Bounds height="80" width="180" x="260" y="200" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0upswmp" dmnElementRef="InformationRequirement_04wvk1b">
         <di:waypoint x="1050" y="200" />
-        <di:waypoint x="938" y="140" />
-        <di:waypoint x="938" y="120" />
+        <di:waypoint x="920" y="140" />
+        <di:waypoint x="920" y="120" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1sspufj" dmnElementRef="Decision_1exmu8q">
         <dc:Bounds height="80" width="180" x="960" y="200" />
@@ -2270,8 +2483,8 @@ else null</text>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_02v556j" dmnElementRef="InformationRequirement_1g8e2i1">
         <di:waypoint x="1250" y="200" />
-        <di:waypoint x="974" y="140" />
-        <di:waypoint x="974" y="120" />
+        <di:waypoint x="950" y="140" />
+        <di:waypoint x="950" y="120" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1fxvd6l" dmnElementRef="Decision_1ilglxh">
         <dc:Bounds height="80" width="180" x="1160" y="200" />
@@ -2283,6 +2496,30 @@ else null</text>
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0aetwp5" dmnElementRef="Decision_13u3dfg">
         <dc:Bounds height="80" width="180" x="1160" y="310" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1x3dmoz" dmnElementRef="InformationRequirement_10hzatg">
+        <di:waypoint x="1550" y="200" />
+        <di:waypoint x="980" y="140" />
+        <di:waypoint x="980" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1ih6pjh" dmnElementRef="Decision_0zw4bmx">
+        <dc:Bounds height="80" width="180" x="1460" y="200" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1ddzpec" dmnElementRef="InformationRequirement_0ce03kk">
+        <di:waypoint x="1450" y="310" />
+        <di:waypoint x="1520" y="300" />
+        <di:waypoint x="1520" y="280" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_002kkcz" dmnElementRef="Decision_0t2ti0y">
+        <dc:Bounds height="80" width="180" x="1360" y="310" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1kps26l" dmnElementRef="InformationRequirement_0i8c8w7">
+        <di:waypoint x="1650" y="310" />
+        <di:waypoint x="1580" y="300" />
+        <di:waypoint x="1580" y="280" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1yvr515" dmnElementRef="Decision_15k77sd">
+        <dc:Bounds height="80" width="180" x="1560" y="310" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
