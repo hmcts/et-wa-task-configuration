@@ -106,12 +106,12 @@ public final class HelperService {
         return String.format(REFERRAL_COLLECTION, referralCollection);
     }
 
-    public static String createNotifications (List<String> notificationList) {
+    public static String createNotifications(List<String> notificationList) {
         return String.format(NOTIFICATION_COLLECTION,
                              String.join(",", notificationList));
     }
 
-    public static String createNotification (
+    public static String createNotification(
         String notificationNumber,
         String notificationResponseCount,
         String respondCollection) {
@@ -130,7 +130,7 @@ public final class HelperService {
         }
 
         List<String> respondCollection = new ArrayList<>();
-        for(int i=0; i < notificationFromList.size(); i++){
+        for (int i = 0; i < notificationFromList.size(); i++) {
             respondCollection.add(
                 createNotificationResponse(
                     notificationFromList.get(i),
@@ -144,7 +144,7 @@ public final class HelperService {
                              String.join(",", respondCollection));
     }
 
-    public static String createNotificationResponse (
+    public static String createNotificationResponse(
         String notificationFrom,
         String notificationOffset,
         String notificationSubject) {
