@@ -406,7 +406,8 @@
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
-"ListAHearing"</text>
+"ListAHearing",
+"ReviewECCResponse"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
           <text></text>
@@ -451,7 +452,8 @@
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
-"ListAHearing"</text>
+"ListAHearing",
+"ReviewECCResponse"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
           <text></text>
@@ -496,7 +498,8 @@
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
-"ListAHearing"</text>
+"ListAHearing",
+"ReviewECCResponse"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
           <text></text>
