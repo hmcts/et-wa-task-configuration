@@ -218,6 +218,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0u0gc5h">
+        <inputEntry id="UnaryTests_18kkbzn">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15tj8vx">
+          <text>"ReviewECCResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i7ohgk">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1ufk5zq">
         <inputEntry id="UnaryTests_1orgb5e">
           <text>"draftAndSignJudgement"</text>
