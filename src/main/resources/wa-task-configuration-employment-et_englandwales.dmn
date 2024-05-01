@@ -146,7 +146,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "IssueInitialConsiderationDirections",
 "ListAHearing",
 "ReviewRule21Referral",
-"SendEt3Notification"</text>
+"SendEt3Notification",
+"ReviewECCResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -300,7 +301,8 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"SendEt3Notification"</text>
+"SendEt3Notification",
+"ReviewECCResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -567,6 +569,23 @@ else null</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1cvdxvd">
+        <inputEntry id="UnaryTests_09b4zfq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xjpic7">
+          <text>"ReviewECCResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_088yv1g">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yl4maj">
+          <text>"[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1odwtvy">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_12zdyry">
         <inputEntry id="UnaryTests_00oc2a8">
           <text></text>
@@ -612,7 +631,8 @@ else ""</text>
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
-"WithdrawAllOrPartOfCase"</text>
+"WithdrawAllOrPartOfCase",
+"ReviewECCResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -693,7 +713,8 @@ else 5000</text>
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
-"WithdrawAllOrPartOfCase"</text>
+"WithdrawAllOrPartOfCase",
+"ReviewECCResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -930,7 +951,8 @@ else 2</text>
 "SendEt3Notification",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
-"WithdrawAllOrPartOfCase"</text>
+"WithdrawAllOrPartOfCase",
+"ReviewECCResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10rjqai">
           <text>"dueDateIntervalDays"</text>
@@ -1057,7 +1079,8 @@ else 2</text>
 "WithdrawAllOrPartOfCase",
 "ReviewReferralResponseAdmin",
 "ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+"ReviewReferralResponseLegalOps",
+"ReviewECCResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>

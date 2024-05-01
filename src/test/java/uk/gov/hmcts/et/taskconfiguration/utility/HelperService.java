@@ -2,10 +2,12 @@ package uk.gov.hmcts.et.taskconfiguration.utility;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.util.CollectionUtils;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +36,15 @@ public final class HelperService {
         + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"directionTo\":\"%s\""
         + ",\"isUrgentReply\":\"%s\",\"replyDateTime\":\"%s\"}"
         + "}";
+
+    public static final String NOTIFICATION_COLLECTION =
+        "\"sendNotificationCollection\": [%s]";
+    public static final String NOTIFICATION =
+        "{\"value\": {\"number\": \"%s\",\"sendNotificationResponsesCount\": \"%s\"%s}}";
+    public static final String NOTIFICATION_RESPOND_COLLECTION =
+        ",\"respondCollection\": [%s]";
+    public static final String NOTIFICATION_RESPOND =
+        "{\"value\": {\"from\": \"%s\",\"datetime\": \"%s\",\"isECC\": \"%s\"}}";
 
     public static Map<String, Object> mapExpectedOutput(String taskId, String name, String processCategories) {
         return Map.of(
@@ -93,6 +104,56 @@ public final class HelperService {
                 + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection2);
 
         return String.format(REFERRAL_COLLECTION, referralCollection);
+    }
+
+    public static String createNotifications(List<String> notificationList) {
+        return String.format(NOTIFICATION_COLLECTION,
+                             String.join(",", notificationList));
+    }
+
+    public static String createNotification(
+        String notificationNumber,
+        String notificationResponseCount,
+        String respondCollection) {
+        return String.format(NOTIFICATION,
+                             notificationNumber,
+                             notificationResponseCount,
+                             respondCollection);
+    }
+
+    public static String createNotificationRespondCollection(
+        List<String> notificationFromList,
+        List<String> notificationOffsetList,
+        List<String> notificationSubjectList) {
+        if (CollectionUtils.isEmpty(notificationFromList)) {
+            return "";
+        }
+
+        List<String> respondCollection = new ArrayList<>();
+        for (int i = 0; i < notificationFromList.size(); i++) {
+            respondCollection.add(
+                createNotificationResponse(
+                    notificationFromList.get(i),
+                    notificationOffsetList.get(i),
+                    notificationSubjectList.get(i)
+                )
+            );
+        }
+
+        return String.format(NOTIFICATION_RESPOND_COLLECTION,
+                             String.join(",", respondCollection));
+    }
+
+    public static String createNotificationResponse(
+        String notificationFrom,
+        String notificationOffset,
+        String notificationSubject) {
+
+        LocalDateTime now = LocalDateTime.now();
+        return String.format(NOTIFICATION_RESPOND,
+                             notificationFrom,
+                             now.plusHours(Integer.parseInt(notificationOffset)).format(OLD_DATE_TIME_PATTERN),
+                             notificationSubject);
     }
 
     public static Map<String, Object> mapAdditionalData(String additionalDataContent) {

@@ -292,6 +292,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ReviewReferralResponseAdmin", routineWork),
             Arguments.of("IssueInitialConsiderationDirections", routineWork),
             Arguments.of("ListAHearing", routineWork),
+            Arguments.of("ReviewECCResponse", routineWork),
 
             Arguments.of("ReviewReferralJudiciary", decisionMakingWork),
             Arguments.of("ReviewReferralResponseJudiciary", decisionMakingWork),
@@ -385,6 +386,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("AmendClaimantDetails", administrator),
             Arguments.of("AmendRespondentDetails", administrator),
             Arguments.of("WithdrawAllOrPartOfCase", administrator),
+            Arguments.of("ReviewECCResponse", administrator),
 
             Arguments.of("reviewSpecificAccessRequestCTSC", ctsc)
         );
@@ -488,6 +490,12 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                 + "/trigger/addAmendJudgment/addAmendJudgment1)",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> descReviewECCResponse = List.of(Map.of(
+            "name", "description",
+            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/createReferral/createReferral1)",
+            "canReconfigure", true
+        ));
         List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
             "name", "description",
             "value", "[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
@@ -530,6 +538,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
 
             Arguments.of("IssueJudgment", descIssueJudgment),
+
+            Arguments.of("ReviewECCResponse", descReviewECCResponse),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -763,6 +773,9 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("WithdrawAllOrPartOfCase", NOT_URGENT,
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
+            Arguments.of("ReviewECCResponse", NOT_URGENT,
+                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+            ),
 
             Arguments.of("Rule21", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
@@ -943,7 +956,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(52));
+        assertThat(logic.getRules().size(), is(53));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
