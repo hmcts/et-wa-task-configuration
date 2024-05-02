@@ -58,9 +58,12 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"2\"}}]";
 
     public static final String IS_ET3_RESPONSE_TRUE =
-        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true}}}]";
+        "\"respondentCollection\""
+            + ":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true,\"et3ContractClaimSection7\":false }}}]";
     public static final String IS_ET3_RESPONSE_FALSE =
-        "\"respondentCollection\":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":false}}}]";
+        "\"respondentCollection\""
+            +  ":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":false ,\"et3ContractClaimSection7\":true}}}]";
+
 
     public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":true,"
