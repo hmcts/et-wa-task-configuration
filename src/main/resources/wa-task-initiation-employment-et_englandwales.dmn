@@ -94,14 +94,14 @@ then additionalData.Data.respondentCollection[1].value.et3Vetting.et3IsThereAnEt
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0la0ez2" label="Is Not ECC">
+      <input id="InputClause_0la0ez2" label="Is ECC">
         <inputExpression id="LiteralExpression_0b9h9z9" typeRef="boolean">
           <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.respondentCollection!=null
 and count(additionalData.Data.respondentCollection) &gt; 0
 and additionalData.Data.respondentCollection[1].value.et3Vetting!=null)
-then additionalData.Data.respondentCollection[1].value.et3Vetting.et3ContractClaimSection7!=true
+then additionalData.Data.respondentCollection[1].value.et3Vetting.et3ContractClaimSection7
 else null</text>
         </inputExpression>
       </input>
@@ -1347,7 +1347,7 @@ else null</text>
           <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qbdiqs">
-          <text>true</text>
+          <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0phdips">
           <text></text>
