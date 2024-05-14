@@ -226,7 +226,7 @@ def versions = [
   camunda         : '7.19.0',
   pitest          : '1.15.8',
   sonarPitest     : '0.5',
-  tomcat          : '10.1.23'
+  tomcat          : '10.1.24'
 ]
 
 ext.libraries = [
