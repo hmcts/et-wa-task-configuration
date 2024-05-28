@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+  <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
+    <informationRequirement id="InformationRequirement_1l2v2xj">
+      <requiredDecision href="#Decision_1xqgkq6" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_05r15im">
+      <requiredDecision href="#Decision_1merw3p" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_15zhznm">
+      <requiredDecision href="#Decision_0mhlyhp" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0xfl3fm">
+      <requiredDecision href="#Decision_1uzjxz3" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0hh008c">
+      <requiredDecision href="#Decision_14sdj4h" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
+      <input id="Input_1" label="Event Id" biodi:width="267" camunda:inputVariable="eventId">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0gxli97" label="Post event state" biodi:width="192" camunda:inputVariable="postEventState">
+        <inputExpression id="LiteralExpression_0dijl5x" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1nkkapg" label="Refer Case To" biodi:width="150" camunda:inputVariable="referCaseTo">
+        <inputExpression id="LiteralExpression_1h40nek" typeRef="string">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0)
+then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referCaseTo[1]
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="326" camunda:inputVariable="referralSubject">
+        <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0)
+then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)).value.referralSubject[1]
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1gia5s6" label="Direction To" biodi:width="150" camunda:inputVariable="directionTo">
+        <inputExpression id="LiteralExpression_1tb9c3z" typeRef="string">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000")).value.directionTo[1]
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1dkkbgp" label="Is Judgement">
+        <inputExpression id="LiteralExpression_12jmuh5" typeRef="boolean">
+          <text>if (additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.draftAndSignJudgement!=null
+and additionalData.Data.draftAndSignJudgement.isJudgement!=null)
+then additionalData.Data.draftAndSignJudgement.isJudgement
+else false</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1xga2us" label="ET3 form received">
+        <inputExpression id="LiteralExpression_03vw0p2" typeRef="boolean">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.respondentCollection!=null
+and count(additionalData.Data.respondentCollection)&gt;0)
+then
+  if(additionalData.Data.respondentCollection[1].value.responseReceived)
+  then
+    if(additionalData.Data.respondentCollection[1].value.responseReceivedCount="1")
+    then true
+    else false
+  else false
+else false</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_18qp9rh" label="Is There An Et3 Response">
+        <inputExpression id="LiteralExpression_1y14227" typeRef="boolean">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.respondentCollection!=null
+and count(additionalData.Data.respondentCollection) &gt; 0
+and additionalData.Data.respondentCollection[1].value.et3Vetting!=null)
+then additionalData.Data.respondentCollection[1].value.et3Vetting.et3IsThereAnEt3Response
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0r1wqre" label="Is ECC">
+        <inputExpression id="LiteralExpression_1vk0scy" typeRef="boolean">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.respondentCollection!=null
+and count(additionalData.Data.respondentCollection) &gt; 0
+and additionalData.Data.respondentCollection[1].value.et3Vetting!=null)
+then additionalData.Data.respondentCollection[1].value.et3Vetting.et3ContractClaimSection7
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1hr458y" label="List A Hearing">
+        <inputExpression id="LiteralExpression_08h2bgb" typeRef="boolean">
+          <text>if(additionalData.Data.etICCanProceed!=null
+and additionalData.Data.etICCanProceed
+and additionalData.Data.etICHearingAlreadyListed!=null)
+then if(additionalData.Data.etICHearingAlreadyListed)
+then additionalData.Data.etICHearingAlreadyListed
+else if(additionalData.Data.etICHearingNotListedList!=null
+and count(additionalData.Data.etICHearingNotListedList) &gt; 0
+and (list contains(additionalData.Data.etICHearingNotListedList, "List for preliminary hearing")
+or list contains(additionalData.Data.etICHearingNotListedList, "List for final hearing")))
+then true
+else false
+else false</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0w8if58" label="Strike Out Claim/Strike Out Response">
+        <inputExpression id="LiteralExpression_1o6638k" typeRef="string">
+          <text>if(additionalData != null
+and additionalData.Data != null
+and additionalData.Data.etInitialConsiderationRule27 != null
+and additionalData.Data.etInitialConsiderationRule27.etICRule27ClaimToBe != null)
+then additionalData.Data.etInitialConsiderationRule27.etICRule27ClaimToBe
+else if (additionalData != null
+and additionalData.Data != null
+and additionalData.Data.etInitialConsiderationRule28 != null
+and additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe != null)
+then additionalData.Data.etInitialConsiderationRule28.etICRule28ClaimToBe
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ps66wm" label="Hearings Heard">
+        <inputExpression id="LiteralExpression_13al11j" typeRef="boolean">
+          <text>additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.hearingDetailsCollection!=null
+and count(additionalData.Data.hearingDetailsCollection)&gt;0
+and (some x in additionalData.Data.hearingDetailsCollection satisfies x.value.hearingDetailsStatus="Heard")
+and (every x in additionalData.Data.hearingDetailsCollection satisfies (x.value.hearingDetailsStatus="Heard" or x.value.hearingDetailsStatus="Vacated"))</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="313">
+        <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
+then sort(additionalData.Data.genericTseApplicationCollection,function(x,y) number(x.value.number) &gt; number(y.value.number)).value.type[1]
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0w8d76g" label="Application Response From">
+        <inputExpression id="LiteralExpression_1ks5p0n" typeRef="string">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])&gt;0)
+then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null].value.respondCollection), function(x,y) date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000"))[1].value.from
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1ki9c2f" label="Response to Application Type" biodi:width="414">
+        <inputExpression id="LiteralExpression_0egdmqz" typeRef="string">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])&gt;0)
+then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null].value.respondCollection), function(x,y) date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000"))[1].value.applicationType
+else null</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_16vtjv4" label="Notification Response is ECC from Claimant">
+        <inputExpression id="LiteralExpression_1hsr3p7" typeRef="boolean">
+          <text>LATEST_NOTIFICATION_RESPONSE_IS_ECC_FROM_CLAIMANT</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="333" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="363" />
+      <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="150" />
+      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="258" />
+      <rule id="DecisionRule_0utzcvo">
+        <inputEntry id="UnaryTests_163041w">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xcs5s3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xkeuj2">
+          <text>"Admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1frkc1e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s5w63e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fbkrev">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o51qok">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w7nc0s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lt38w5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qzgfjq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xcej02">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tix31w">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06cbbp7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0anug3j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09e5orx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a2qc1x">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1p21nx8">
+          <text>"ReviewReferralAdminMultiple"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16yf2nj">
+          <text>LATEST_REFERRAL_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n9o39e">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c8d2go">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1xqgkq6" name="LATEST_REFERRAL_TASK_NAME" camunda:historyTimeToLive="P30D">
+    <variable id="InformationItem_10nuodq" name="LATEST_REFERRAL_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_00i37do">
+      <requiredDecision href="#Decision_0eghxfs" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0w7qhtf">
+      <requiredDecision href="#Decision_0yepj5l" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0l31qx1">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0)
+then "Review Referral #" + LATEST_REFERRAL_NUMBER + " - " + LATEST_REFERRAL_SUBJECT
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1merw3p" name="LATEST_REFERRAL_REPLY_TASK_NAME" camunda:historyTimeToLive="P30D">
+    <variable id="InformationItem_0z7m2qk" name="LATEST_REFERRAL_REPLY_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_0hpfgbp">
+      <requiredDecision href="#Decision_03ddjz2" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1ambi2i">
+      <requiredDecision href="#Decision_1hy3wce" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_11rmzca">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then "Review Referral #" + LATEST_REFERRAL_REPLY_NUMBER + " - " + LATEST_REFERRAL_REPLY_SUBJECT + " Response"
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0mhlyhp" name="LATEST_APPLICATION_TASK_NAME">
+    <variable id="InformationItem_0l35pxs" name="LATEST_APPLICATION_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_1h7r97o">
+      <requiredDecision href="#Decision_1yxg1fw" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0gvbaj1">
+      <text>if(LATEST_APPLICATION_TYPE!=null)
+  then if(LATEST_APPLICATION_TYPE="Contact about something else" or LATEST_APPLICATION_TYPE ="Contact the tribunal")
+    then "Contact the tribunal"
+    else "Application - " + LATEST_APPLICATION_TYPE
+  else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1yxg1fw" name="LATEST_APPLICATION_TYPE">
+    <variable id="InformationItem_177x00h" name="LATEST_APPLICATION_TYPE" typeRef="string" />
+    <literalExpression id="LiteralExpression_0jmjjs6">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection) &gt; 0)
+then sort(additionalData.Data.genericTseApplicationCollection,function(x,y) number(x.value.number) &gt; number(y.value.number)).value.type[1]
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0eghxfs" name="LATEST_REFERRAL_NUMBER">
+    <variable id="InformationItem_05lutfc" name="LATEST_REFERRAL_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_1aht3pd">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0
+and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralNumber!=null)
+then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralNumber
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0yepj5l" name="LATEST_REFERRAL_SUBJECT">
+    <variable id="InformationItem_0058uji" name="LATEST_REFERRAL_SUBJECT" typeRef="string" />
+    <literalExpression id="LiteralExpression_1kazms8">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0
+and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject!=null)
+then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralSubject
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_03ddjz2" name="LATEST_REFERRAL_REPLY_NUMBER">
+    <variable id="InformationItem_0pgmlnv" name="LATEST_REFERRAL_REPLY_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_0vjaqpk">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then (
+  sort(
+    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
+    function(x,y)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "2023-01-01T00:00:00.000")
+      &gt;
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "2023-01-01T00:00:00.000")
+    )[1].value.referralNumber
+)
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1hy3wce" name="LATEST_REFERRAL_REPLY_SUBJECT">
+    <variable id="InformationItem_0ro9f88" name="LATEST_REFERRAL_REPLY_SUBJECT" typeRef="string" />
+    <literalExpression id="LiteralExpression_01hvmvg">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then (
+  sort(
+    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
+    function(x,y)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "2023-01-01T00:00:00.000")
+      &gt;
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "2023-01-01T00:00:00.000")
+  )[1].value.referralSubject
+)
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_10dijkm" name="LATEST_APPLICATION_RESPOND_TYPE">
+    <variable id="InformationItem_1enqaet" name="LATEST_APPLICATION_RESPOND_TYPE" typeRef="string" />
+    <literalExpression id="LiteralExpression_1inyejd">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.genericTseApplicationCollection!=null
+and count(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null])&gt;0)
+then sort(
+  flatten(additionalData.Data.genericTseApplicationCollection[value.respondCollection!=null].value.respondCollection),
+  function(x,y)
+    date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
+    &gt;
+    date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
+)[1].value.applicationType
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1uzjxz3" name="LATEST_APPLICATION_RESPOND_TASK_NAME">
+    <variable id="InformationItem_06lxh2u" name="LATEST_APPLICATION_RESPOND_TASK_NAME" typeRef="string" />
+    <informationRequirement id="InformationRequirement_1qqzkui">
+      <requiredDecision href="#Decision_10dijkm" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0b3dykm">
+      <text>if(LATEST_APPLICATION_RESPOND_TYPE!=null)
+  then if(LATEST_APPLICATION_RESPOND_TYPE="Contact about something else" or LATEST_APPLICATION_RESPOND_TYPE="Contact the tribunal")
+    then "Contact the tribunal Response"
+    else "Application Response - " + LATEST_APPLICATION_RESPOND_TYPE
+  else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_14sdj4h" name="LATEST_NOTIFICATION_RESPONSE_IS_ECC_FROM_CLAIMANT">
+    <variable id="InformationItem_184v5r5" name="LATEST_NOTIFICATION_RESPONSE_IS_ECC_FROM_CLAIMANT" typeRef="boolean" />
+    <informationRequirement id="InformationRequirement_10u30og">
+      <requiredDecision href="#Decision_0jt8p9l" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1q6giso">
+      <requiredDecision href="#Decision_06g5z3o" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0urq14a">
+      <text>(LATEST_NOTIFICATION_RESPONSE_IS_ECC and LATEST_NOTIFICATION_RESPONSE_IS_FROM_CLAIMANT)</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0jt8p9l" name="LATEST_NOTIFICATION_RESPONSE_IS_ECC">
+    <variable id="InformationItem_1r6zcsq" name="LATEST_NOTIFICATION_RESPONSE_IS_ECC" typeRef="boolean" />
+    <literalExpression id="LiteralExpression_1febdn7">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.sendNotificationCollection!=null
+and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
+
+then (sort(
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
+function(x,y) 
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
+&gt; 
+date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
+)[1].value.isECC="Yes")
+
+else false</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_06g5z3o" name="LATEST_NOTIFICATION_RESPONSE_IS_FROM_CLAIMANT">
+    <variable id="InformationItem_04e4n9l" name="LATEST_NOTIFICATION_RESPONSE_IS_FROM_CLAIMANT" typeRef="boolean" />
+    <literalExpression id="LiteralExpression_1vz4bkg">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.sendNotificationCollection!=null
+and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
+  
+then (sort(
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
+function(x,y) 
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
+&gt; 
+date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
+)[1].value.from="Claimant")
+  
+else false</text>
+    </literalExpression>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
+      <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_scotland">
+        <dc:Bounds height="80" width="180" x="700" y="50" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1srd5ad" dmnElementRef="InformationRequirement_1l2v2xj">
+        <di:waypoint x="790" y="220" />
+        <di:waypoint x="790" y="150" />
+        <di:waypoint x="790" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1bykp81" dmnElementRef="Decision_1xqgkq6">
+        <dc:Bounds height="80" width="180" x="700" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0q240ep" dmnElementRef="InformationRequirement_05r15im">
+        <di:waypoint x="1210" y="220" />
+        <di:waypoint x="820" y="150" />
+        <di:waypoint x="820" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0baejpx" dmnElementRef="Decision_1merw3p">
+        <dc:Bounds height="80" width="180" x="1120" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1vutpf4" dmnElementRef="InformationRequirement_15zhznm">
+        <di:waypoint x="250" y="220" />
+        <di:waypoint x="730" y="150" />
+        <di:waypoint x="730" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1lvtmn8" dmnElementRef="Decision_0mhlyhp">
+        <dc:Bounds height="80" width="180" x="160" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_03e5ujv" dmnElementRef="InformationRequirement_1h7r97o">
+        <di:waypoint x="250" y="340" />
+        <di:waypoint x="250" y="320" />
+        <di:waypoint x="250" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1a5mxet" dmnElementRef="Decision_1yxg1fw">
+        <dc:Bounds height="80" width="180" x="160" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_04kia0u" dmnElementRef="InformationRequirement_00i37do">
+        <di:waypoint x="690" y="340" />
+        <di:waypoint x="760" y="320" />
+        <di:waypoint x="760" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0p9429o" dmnElementRef="Decision_0eghxfs">
+        <dc:Bounds height="80" width="180" x="600" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0o2d37b" dmnElementRef="InformationRequirement_0w7qhtf">
+        <di:waypoint x="890" y="340" />
+        <di:waypoint x="820" y="320" />
+        <di:waypoint x="820" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0k48uc5" dmnElementRef="Decision_0yepj5l">
+        <dc:Bounds height="80" width="180" x="800" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_13lg7qf" dmnElementRef="InformationRequirement_0hpfgbp">
+        <di:waypoint x="1110" y="340" />
+        <di:waypoint x="1180" y="320" />
+        <di:waypoint x="1180" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1dgmiib" dmnElementRef="Decision_03ddjz2">
+        <dc:Bounds height="80" width="180" x="1020" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1logy0w" dmnElementRef="InformationRequirement_1ambi2i">
+        <di:waypoint x="1310" y="340" />
+        <di:waypoint x="1240" y="320" />
+        <di:waypoint x="1240" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0f9ko68" dmnElementRef="Decision_1hy3wce">
+        <dc:Bounds height="80" width="180" x="1220" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0ih47e5" dmnElementRef="InformationRequirement_0xfl3fm">
+        <di:waypoint x="470" y="220" />
+        <di:waypoint x="760" y="150" />
+        <di:waypoint x="760" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0db1ev9" dmnElementRef="InformationRequirement_1qqzkui">
+        <di:waypoint x="470" y="340" />
+        <di:waypoint x="470" y="320" />
+        <di:waypoint x="470" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1a1bbfa" dmnElementRef="Decision_10dijkm">
+        <dc:Bounds height="80" width="180" x="380" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0wt1ey1" dmnElementRef="Decision_1uzjxz3">
+        <dc:Bounds height="80" width="180" x="380" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0uvhdb0" dmnElementRef="InformationRequirement_0hh008c">
+        <di:waypoint x="1610" y="220" />
+        <di:waypoint x="850" y="150" />
+        <di:waypoint x="850" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_06xf9xh" dmnElementRef="Decision_14sdj4h">
+        <dc:Bounds height="80" width="180" x="1520" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1wp8kd8" dmnElementRef="InformationRequirement_10u30og">
+        <di:waypoint x="1510" y="340" />
+        <di:waypoint x="1580" y="320" />
+        <di:waypoint x="1580" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1oxmfpk" dmnElementRef="InformationRequirement_1q6giso">
+        <di:waypoint x="1710" y="340" />
+        <di:waypoint x="1640" y="320" />
+        <di:waypoint x="1640" y="300" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_13pqlrp" dmnElementRef="Decision_0jt8p9l">
+        <dc:Bounds height="80" width="180" x="1420" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1mfucxv" dmnElementRef="Decision_06g5z3o">
+        <dc:Bounds height="80" width="180" x="1620" y="340" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
