@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
-  <decision id="wa-task-configuration-employment-et_scotland" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
+  <decision id="wa-task-configuration-employment-et_scotland_multiple" name="ET Multiple Task configuration DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -21,7 +21,7 @@
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="966" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
-        <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
+        <description></description>
         <inputEntry id="UnaryTests_11xjbt2">
           <text></text>
         </inputEntry>
@@ -32,10 +32,7 @@
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection) &gt; 0)
-then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-+ " v " + (caseData.respondentCollection[1]).value.respondent_name
-else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
+          <text>caseData.multipleName</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -104,7 +101,7 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"caseManagementCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18w70uv">
-          <text>if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.selectedLabel !=null) then caseData.caseManagementCategory.selectedLabel else "Employment"</text>
+          <text>"Employment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nzr8nj">
           <text>false</text>
@@ -160,6 +157,23 @@ else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndT
           <text>"ADMIN"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pxnir8">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jsxv8g">
+        <inputEntry id="UnaryTests_1fer8wr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mpta03">
+          <text>"ReviewReferralAdminMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xnep6d">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01cq0a4">
+          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16j4gpk">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -369,7 +383,7 @@ else 2</text>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
-      <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_scotland">
+      <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_scotland_multiple">
         <dc:Bounds height="80" width="180" x="150" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>

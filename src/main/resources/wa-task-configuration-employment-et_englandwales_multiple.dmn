@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
-  <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
+  <decision id="wa-task-configuration-employment-et_englandwales_multiple" name="ET Multiple Task configuration DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -20,6 +20,40 @@
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="258" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="1014" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
+      <rule id="DecisionRule_0cps1im">
+        <inputEntry id="UnaryTests_1qi47tg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yo1btj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0natb9g">
+          <text>"caseName"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k43gid">
+          <text>caseData.multipleName</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cg37fr">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wlp2bc">
+        <inputEntry id="UnaryTests_03a2cqx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_185ex2d">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t1n543">
+          <text>"region"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jejm4d">
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null) then caseData.caseManagementLocation.region else "1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uymtq0">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1mx5olh">
         <inputEntry id="UnaryTests_1y4k25t">
           <text></text>
@@ -37,6 +71,23 @@
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1sqgpyu">
+        <inputEntry id="UnaryTests_0htz4l0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nsszfe">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04uri7d">
+          <text>"locationName"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07n83cc">
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null and caseData.managingOffice != null) then caseData.managingOffice else "London Central"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n5g8gg">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_01qimdq">
         <description>Sets the case category that is displayed in the task list UI</description>
         <inputEntry id="UnaryTests_0iru7nh">
@@ -49,7 +100,7 @@
           <text>"caseManagementCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18w70uv">
-          <text>if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.selectedLabel !=null) then caseData.caseManagementCategory.selectedLabel else "Employment"</text>
+          <text>"Employment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nzr8nj">
           <text>false</text>
@@ -70,6 +121,24 @@
           <text>if (caseData.nextListedDate!=null) then caseData.nextListedDate else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1u35o3v">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vuvzl3">
+        <description>Name of the type of work - this is based on the filter. All Judgment tasks will be decision making work.</description>
+        <inputEntry id="UnaryTests_0aed22u">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s942lt">
+          <text>"ReviewReferralAdminMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n9qju5">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00dchor">
+          <text>"routine_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ftl9wj">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -313,7 +382,7 @@ else 2</text>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
-      <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_englandwales">
+      <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_englandwales_multiple">
         <dc:Bounds height="80" width="180" x="150" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>

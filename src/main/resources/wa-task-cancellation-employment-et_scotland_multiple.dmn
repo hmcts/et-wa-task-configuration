@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-cancellation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
-  <decision id="wa-task-cancellation-employment-et_scotland" name="ET Task cancellation DMN" camunda:historyTimeToLive="P30D">
+  <decision id="wa-task-cancellation-employment-et_scotland_multiple" name="ET Task cancellation DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -21,11 +21,34 @@
       <output id="OutputClause_0tu8bqp" label="Warning Code" name="warningCode" typeRef="string" />
       <output id="OutputClause_1kfc3jv" label="Warning Text" name="warningText" typeRef="string" />
       <output id="OutputClause_0dqzted" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="277" />
+      <rule id="DecisionRule_0bov00l">
+        <inputEntry id="UnaryTests_0pfbr44">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0elis0e">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gxbui4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15mri9v">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wlghmr">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xgb10y">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yio69d">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
-      <dmndi:DMNShape dmnElementRef="wa-task-cancellation-employment-et_scotland">
+      <dmndi:DMNShape dmnElementRef="wa-task-cancellation-employment-et_scotland_multiple">
         <dc:Bounds height="80" width="180" x="160" y="100" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
