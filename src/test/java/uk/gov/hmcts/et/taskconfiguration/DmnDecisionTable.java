@@ -50,6 +50,10 @@ public enum DmnDecisionTable {
         "wa-task-types-employment-et_englandwales",
         "wa-task-types-employment-et_englandwales.dmn"
     ),
+    WA_TASK_TYPE_MULTIPLE_ET_EW(
+        "wa-task-types-employment-et_englandwales_multiple",
+        "wa-task-types-employment-et_englandwales_multiple.dmn"
+    ),
     WA_TASK_CANCELLATION_ET_SCOTLAND(
         "wa-task-cancellation-employment-et_scotland",
         "wa-task-cancellation-employment-et_scotland.dmn"
@@ -93,6 +97,10 @@ public enum DmnDecisionTable {
     WA_TASK_TYPE_ET_SCOTLAND(
         "wa-task-types-employment-et_scotland",
         "wa-task-types-employment-et_scotland.dmn"
+    ),
+    WA_TASK_TYPE_ET_MULTIPLE_SCOTLAND(
+        "wa-task-types-employment-et_scotland_multiple",
+        "wa-task-types-employment-et_scotland_multiple.dmn"
     );
 
     @JsonValue
