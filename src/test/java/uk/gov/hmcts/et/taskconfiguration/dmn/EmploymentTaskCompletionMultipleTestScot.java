@@ -30,10 +30,23 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
     static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
+                "preAcceptanceCase",
+                List.of(
+                    Map.of(
+                        "taskType", "ReviewReferralJudiciaryMultiple",
+                        "completionMode", "Auto"
+                    )
+                )
+            ),
+            Arguments.of(
                 "replyToReferral",
                 List.of(
                     Map.of(
                         "taskType", "ReviewReferralAdminMultiple",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralJudiciaryMultiple",
                         "completionMode", "Auto"
                     )
                 )
@@ -43,6 +56,10 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
                 List.of(
                     Map.of(
                         "taskType", "ReviewReferralAdminMultiple",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralJudiciaryMultiple",
                         "completionMode", "Auto"
                     )
                 )
@@ -64,6 +81,6 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(1));
+        assertThat(logic.getRules().size(), is(2));
     }
 }
