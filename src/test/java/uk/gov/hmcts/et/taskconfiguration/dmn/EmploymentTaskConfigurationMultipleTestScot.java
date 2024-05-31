@@ -177,7 +177,7 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("workType"))
+                .filter(r -> r.containsValue("workType"))
                 .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));

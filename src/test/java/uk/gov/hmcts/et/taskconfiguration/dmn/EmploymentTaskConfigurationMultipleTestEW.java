@@ -216,7 +216,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("roleCategory"))
+                .filter(r -> r.containsValue("roleCategory"))
                 .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
