@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
   <decision id="wa-task-configuration-employment-et_scotland_multiple" name="ET Multiple Task configuration DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -143,6 +143,23 @@
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0h3ryo3">
+        <inputEntry id="UnaryTests_0qnpzgr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qondg8">
+          <text>"ReviewReferralJudiciaryMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06fdvfz">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xahoif">
+          <text>"decision_making_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1exa4ug">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0q41xil">
         <inputEntry id="UnaryTests_0nqsca3">
           <text></text>
@@ -160,12 +177,30 @@
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1h3abct">
+        <inputEntry id="UnaryTests_19bgtv7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tdxvmy">
+          <text>"ReviewReferralJudiciaryMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cfo2ym">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14ipgaj">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ihmgaz">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1jsxv8g">
         <inputEntry id="UnaryTests_1fer8wr">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mpta03">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple",
+"ReviewReferralJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xnep6d">
           <text>"description"</text>
@@ -182,7 +217,8 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_07vjyfi">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple",
+"ReviewReferralJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
@@ -204,7 +240,8 @@ else 5000</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vhou0u">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple"
+"ReviewReferralJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">
           <text>"minorPriority"</text>
@@ -345,7 +382,8 @@ else 500</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1pk6nbg">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple"
+"ReviewReferralJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06yvz5i">
           <text>"dueDateIntervalDays"</text>
@@ -367,7 +405,8 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0zvrfef">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple",
+"ReviewReferralJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0336zf2">
           <text>"priorityDateOriginEarliest"</text>

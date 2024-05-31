@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
   <decision id="wa-task-permissions-employment-et_scotland_multiple" name="ET Task permissions DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_12crj6e" label="Task Type" biodi:width="551" camunda:inputVariable="taskType">
@@ -53,6 +53,66 @@
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0cx3078">
+        <description>Case Role for Auto Assignment - Lead Judge Permissions</description>
+        <inputEntry id="UnaryTests_1g6foeo">
+          <text>"ReviewReferralJudiciaryMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ijvdn7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13i7o3s">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bwffl4">
+          <text>"lead-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06fdrw0">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tk884k">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16qqhae">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l8g9wx">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i0zj1l">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p7uimt">
+        <description>Case Role for Auto Assignment - Hearing Judge Permissions</description>
+        <inputEntry id="UnaryTests_1nafyix">
+          <text>"ReviewReferralJudiciaryMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u09m79">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08cfm9n">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xaqeig">
+          <text>"hearing-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0656mjj">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0clfpgo">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03wnwoh">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_134p8ds">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w9w59c">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0rcls0x">
         <description>Leadership Judge Permissions</description>
         <inputEntry id="UnaryTests_1m23iq2">
@@ -80,6 +140,125 @@
           <text>5</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0s6z0e2">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13ja0ue">
+        <description>Judge Permissions</description>
+        <inputEntry id="UnaryTests_157c1j3">
+          <text>"ReviewReferralJudiciaryMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rwktjz">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f6p6t3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x0yodj">
+          <text>"judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rgn6oq">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v2vk7o">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_149elof">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16jjt3x">
+          <text>3</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tirp7z">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1527m97">
+        <description>Case Role for Auto Assignment - Allocated Tribunal Caseworker</description>
+        <inputEntry id="UnaryTests_0o68wfv">
+          <text>"ReviewReferralJudiciaryMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rs3exq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tg0eel">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h7ztol">
+          <text>"allocated-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l0xvn0">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0eb3jrj">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1btmoh3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02wa02r">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04kdozq">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0382z31">
+        <description></description>
+        <inputEntry id="UnaryTests_0hf6er9">
+          <text>"ReviewReferralJudiciaryMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ie4utb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0u459iu">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bo2326">
+          <text>"senior-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ixevky">
+          <text>"Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0eb72dr">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p7lcwi">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n89uc3">
+          <text>4</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_169ofqv">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0psn58b">
+        <inputEntry id="UnaryTests_1x9p60n">
+          <text>"ReviewReferralJudiciaryMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0emoo51">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wz99ju">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k4ebhf">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_103r6hg">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sx8o3e">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0aagddu">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gz2fgz">
+          <text>3</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0b5kpou">
           <text>false</text>
         </outputEntry>
       </rule>
