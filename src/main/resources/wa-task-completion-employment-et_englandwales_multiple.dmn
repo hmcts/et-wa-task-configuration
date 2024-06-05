@@ -21,6 +21,18 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0bbou0i">
+        <inputEntry id="UnaryTests_0g58wwl">
+          <text>"replyToReferral",
+"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nz644f">
+          <text>"ReviewReferralLegalOpsMultiple"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pzhzlu">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
