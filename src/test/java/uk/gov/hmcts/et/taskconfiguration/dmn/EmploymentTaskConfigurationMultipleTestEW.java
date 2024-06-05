@@ -193,7 +193,8 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         ));
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", routineWork)
+            Arguments.of("ReviewReferralAdminMultiple", routineWork),
+            Arguments.of("ReviewReferralLegalOpsMultiple", routineWork)
         );
     }
 
@@ -224,9 +225,16 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             "value", "ADMIN",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> legalOps = List.of(Map.of(
+            "name", "roleCategory",
+            "value", "LEGAL_OPERATIONS",
+            "canReconfigure", true
+        ));
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", administrator)
+            Arguments.of("ReviewReferralAdminMultiple", administrator),
+
+            Arguments.of("ReviewReferralLegalOpsMultiple", legalOps)
         );
     }
 
@@ -266,7 +274,8 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
 
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", descReferralTab)
+            Arguments.of("ReviewReferralAdminMultiple", descReferralTab),
+            Arguments.of("ReviewReferralLegalOpsMultiple", descReferralTab)
         );
     }
 
@@ -407,6 +416,14 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             Arguments.of("ReviewReferralAdminMultiple", NOT_URGENT,
                          dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
                          defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
+            ),
+            Arguments.of("ReviewReferralLegalOpsMultiple", IS_URGENT,
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         null, priorityDateOriginEar
+            ),
+            Arguments.of("ReviewReferralLegalOpsMultiple", NOT_URGENT,
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
             )
         );
     }
@@ -500,7 +517,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(20));
+        assertThat(logic.getRules().size(), is(21));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
