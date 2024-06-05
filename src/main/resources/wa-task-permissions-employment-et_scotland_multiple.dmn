@@ -173,6 +173,94 @@
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1vtdymg">
+        <description>Case Role for Auto Assignment - Allocated Tribunal Caseworker</description>
+        <inputEntry id="UnaryTests_0nconvq">
+          <text>"ReviewReferralLegalOpsMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hi7cvy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_195po99">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vhoph9">
+          <text>"allocated-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fqq0r5">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0d6v0tv">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09z9bqa">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kvfbr0">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0soelbm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h8vghe">
+        <inputEntry id="UnaryTests_1ykf5d6">
+          <text>"ReviewReferralLegalOpsMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1foo2n8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0okn3ru">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0augx14">
+          <text>"senior-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uk8oew">
+          <text>"Assign, Unassign, Complete, Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ak6ab4">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1q9ci53">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xj7xki">
+          <text>4</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1prbdue">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06tumcs">
+        <inputEntry id="UnaryTests_04nawt8">
+          <text>"ReviewReferralLegalOpsMultiple"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bdu0ml">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ael5w3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e764x9">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19ek3rv">
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wsxa0w">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xhfb5l">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lkf3fc">
+          <text>3</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ruw2pc">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0y729xh">
         <description>Case Role for Auto Assignment - Allocated CTSC Caseworker</description>
         <inputEntry id="UnaryTests_12owvka">

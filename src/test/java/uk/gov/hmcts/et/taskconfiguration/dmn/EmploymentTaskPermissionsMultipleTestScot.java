@@ -63,6 +63,28 @@ class EmploymentTaskPermissionsMultipleTestScot extends DmnDecisionTableBaseUnit
         "roleCategory", "ADMIN"
     );
 
+    private static final Map<String, Serializable> allocatedTribunalCaseworker = Map.of(
+        "autoAssignable", true,
+        "assignmentPriority", 1,
+        "name", "allocated-tribunal-caseworker",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "LEGAL_OPERATIONS"
+    );
+    private static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
+        "autoAssignable", false,
+        "assignmentPriority", 4,
+        "name", "senior-tribunal-caseworker",
+        "value", "Assign, Unassign, Complete, Cancel",
+        "roleCategory", "LEGAL_OPERATIONS"
+    );
+    private static final Map<String, Serializable> tribunalCaseworker = Map.of(
+        "autoAssignable", false,
+        "assignmentPriority", 3,
+        "name", "tribunal-caseworker",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "LEGAL_OPERATIONS"
+    );
+
     private static final Map<String, Serializable> allocatedCtscCaseworker = Map.of(
         "autoAssignable", true,
         "assignmentPriority", 1,
@@ -103,6 +125,16 @@ class EmploymentTaskPermissionsMultipleTestScot extends DmnDecisionTableBaseUnit
                     allocatedCtscCaseworker,
                     leaderCTSC,
                     ctsc
+                )
+            ),
+            Arguments.of(
+                "ReviewReferralLegalOpsMultiple",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
                 )
             )
         );
@@ -147,7 +179,7 @@ class EmploymentTaskPermissionsMultipleTestScot extends DmnDecisionTableBaseUnit
         assertThat(logic.getOutputs().size(), is(7));
         assertThatOutputContainInOrder(outputColumnIds, logic.getOutputs());
         //Rules
-        assertThat(logic.getRules().size(), is(8));
+        assertThat(logic.getRules().size(), is(11));
     }
 
     private void assertThatInputContainInOrder(List<String> inputColumnIds, List<DmnDecisionTableInputImpl> inputs) {
