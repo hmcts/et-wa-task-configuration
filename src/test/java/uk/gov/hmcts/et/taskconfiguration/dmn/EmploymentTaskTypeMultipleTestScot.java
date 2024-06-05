@@ -35,12 +35,16 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
                            "ReviewReferralAdminMultiple",
                            "taskTypeName",
                            "Review Multiples Referral - Admin"
+                    ),
+                    Map.of("taskTypeId",
+                           "ReviewReferralLegalOpsMultiple",
+                           "taskTypeName",
+                           "Review Multiples Referral - Legal Ops"
                     )
                 )
             )
         );
     }
-
     @ParameterizedTest(name = "retrieve all task type data")
     @MethodSource("scenarioProvider")
     void should_evaluate_dmn_return_all_task_type_fields(List<Map<String, Object>> expectedTaskTypes) {
@@ -56,6 +60,7 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(1));
+        // Rows
+        assertThat(logic.getRules().size(), is(2));
     }
 }

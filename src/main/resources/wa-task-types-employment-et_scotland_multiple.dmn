@@ -20,6 +20,17 @@
           <text>"Review Multiples Referral - Admin"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0ciu921">
+        <inputEntry id="UnaryTests_02l8b9j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qyls0o">
+          <text>"ReviewReferralLegalOpsMultiple"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0aneomz">
+          <text>"Review Multiples Referral - Legal Ops"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
