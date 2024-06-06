@@ -4,7 +4,6 @@ import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -45,13 +44,14 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
             )
         );
     }
+
     @ParameterizedTest(name = "retrieve all task type data")
     @MethodSource("scenarioProvider")
     void should_evaluate_dmn_return_all_task_type_fields(List<Map<String, Object>> expectedTaskTypes) {
         VariableMap inputVariables = new VariableMapImpl();
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(expectedTaskTypes));
+        assertThat(dmnDecisionTableResult.getResultList(), is(expectedTaskTypes));
     }
 
     @Test
