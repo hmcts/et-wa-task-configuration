@@ -42,7 +42,7 @@ class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTes
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdminMultiple",
-                        "Review Referral #2 - Referral Subject 2",
+                        "Review Multiples Referral #2 - Referral Subject 2",
                         "Vetting"
                     )
                 )
@@ -54,7 +54,7 @@ class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTes
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralLegalOpsMultiple",
-                        "Review Referral #2 - Referral Subject 2",
+                        "Review Multiples Referral #2 - Referral Subject 2",
                         "Vetting"
                     )
                 )

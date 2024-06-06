@@ -122,7 +122,7 @@ else null</text>
     </informationRequirement>
     <literalExpression id="LiteralExpression_0h88al5">
       <text>if(LATEST_REFERRAL_REPLY_NUMBER!=null and LATEST_REFERRAL_REPLY_SUBJECT!=null)
-then "Review Referral #" + LATEST_REFERRAL_REPLY_NUMBER + " - " + LATEST_REFERRAL_REPLY_SUBJECT + " Response"
+then "Review Multiples Referral #" + LATEST_REFERRAL_REPLY_NUMBER + " - " + LATEST_REFERRAL_REPLY_SUBJECT + " Response"
 else null</text>
     </literalExpression>
   </decision>
@@ -136,7 +136,7 @@ else null</text>
     </informationRequirement>
     <literalExpression id="LiteralExpression_0sbx49n">
       <text>if(LATEST_REFERRAL_NUMBER!=null and LATEST_REFERRAL_SUBJECT!=null)
-then "Review Referral #" + LATEST_REFERRAL_NUMBER + " - " + LATEST_REFERRAL_SUBJECT
+then "Review Multiples Referral #" + LATEST_REFERRAL_NUMBER + " - " + LATEST_REFERRAL_SUBJECT
 else null</text>
     </literalExpression>
   </decision>
