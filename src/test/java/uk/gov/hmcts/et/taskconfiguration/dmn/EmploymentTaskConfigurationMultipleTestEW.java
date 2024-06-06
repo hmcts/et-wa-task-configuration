@@ -41,6 +41,25 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             + "{\"value\": {\"isUrgent\": \"No\",\"referralNumber\": \"2\"}}"
             + "]}";
 
+    public static final String ISURGENT_REPLY_YES =
+        "{\"referralCollection\":["
+            + "{\"value\":{\"referralReplyCollection\":["
+            + "{\"value\":{\"isUrgentReply\":\"No\",\"replyDateTime\":\"2023-10-01T12:00:00.00\"}},"
+            + "{\"value\":{\"isUrgentReply\":\"Yes\",\"replyDateTime\":\"2023-10-01T14:00:00.00\"}}"
+            + "]}},"
+            + "{\"value\":{\"referralReplyCollection\":["
+            + "{\"value\":{\"isUrgentReply\":\"No\",\"replyDateTime\":\"2023-10-01T13:00:00.00\"}}"
+            + "]}}]}";
+    public static final String ISURGENT_REPLY_NO =
+        "{\"referralCollection\":["
+            + "{\"value\":{\"referralReplyCollection\":["
+            + "{\"value\":{\"isUrgentReply\":\"Yes\",\"replyDateTime\":\"2023-10-01T12:00:00.00\"}},"
+            + "{\"value\":{\"isUrgentReply\":\"No\",\"replyDateTime\":\"2023-10-01T14:00:00.00\"}}"
+            + "]}},"
+            + "{\"value\":{\"referralReplyCollection\":["
+            + "{\"value\":{\"isUrgentReply\":\"Yes\",\"replyDateTime\":\"2023-10-01T13:00:00.00\"}}"
+            + "]}}]}";
+
 
     @BeforeAll
     public static void initialization() {
@@ -193,7 +212,8 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         ));
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", routineWork)
+            Arguments.of("ReviewReferralAdminMultiple", routineWork),
+            Arguments.of("ReviewReferralResponseAdminMultiple", routineWork)
         );
     }
 
@@ -226,7 +246,8 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         ));
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", administrator)
+            Arguments.of("ReviewReferralAdminMultiple", administrator),
+            Arguments.of("ReviewReferralResponseAdminMultiple", administrator)
         );
     }
 
@@ -266,7 +287,8 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
 
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", descReferralTab)
+            Arguments.of("ReviewReferralAdminMultiple", descReferralTab),
+            Arguments.of("ReviewReferralResponseAdminMultiple", descReferralTab)
         );
     }
 
@@ -399,6 +421,12 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             "canReconfigure", true
         ));
 
+        List<Map<String, Object>> priorityDateOriginRef = List.of(Map.of(
+            "name", "priorityDateOriginRef",
+            "value", "dueDate",
+            "canReconfigure", true
+        ));
+
         return Stream.of(
             Arguments.of("ReviewReferralAdminMultiple", IS_URGENT,
                          dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
@@ -407,6 +435,14 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             Arguments.of("ReviewReferralAdminMultiple", NOT_URGENT,
                          dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
                          defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
+            ),
+            Arguments.of("ReviewReferralResponseAdminMultiple", ISURGENT_REPLY_YES,
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         priorityDateOriginRef, null
+            ),
+            Arguments.of("ReviewReferralResponseAdminMultiple", ISURGENT_REPLY_NO,
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
             )
         );
     }
@@ -500,7 +536,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(20));
+        assertThat(logic.getRules().size(), is(24));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

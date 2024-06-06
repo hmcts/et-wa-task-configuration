@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.23.0">
   <decision id="wa-task-configuration-employment-et_scotland_multiple" name="ET Multiple Task configuration DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -131,7 +131,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rams4n">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -148,7 +148,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1faq2jo">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -165,7 +165,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mpta03">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xnep6d">
           <text>"description"</text>
@@ -199,6 +199,28 @@ else 5000</text>
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1t0axqe">
+        <inputEntry id="UnaryTests_1lywrya">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zak9u6">
+          <text>"ReviewReferralResponseAdminMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o2jais">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cnnni6">
+          <text>if (caseData!=null
+and caseData.referralCollection != null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+then 1000
+else 5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1son3f1">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0bz90wb">
         <inputEntry id="UnaryTests_0rgnw6c">
           <text></text>
@@ -218,6 +240,28 @@ then 100
 else 500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ry9gq0">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rn8zef">
+        <inputEntry id="UnaryTests_1yp8ekk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nr1i0r">
+          <text>"ReviewReferralResponseAdminMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eqy5c2">
+          <text>"minorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nicucp">
+          <text>if (caseData!=null
+and caseData.referralCollection != null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+then 100
+else 500</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y4zum7">
           <text>false</text>
         </outputEntry>
       </rule>
@@ -360,6 +404,45 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ctz44f">
           <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s1owol">
+        <inputEntry id="UnaryTests_0sp0z4a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kpe5xc">
+          <text>"ReviewReferralResponseAdminMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_012etu4">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04ikyhy">
+          <text>if (caseData!=null
+and caseData.referralCollection != null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+then 1
+else 2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0obf76i">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hwhijs">
+        <inputEntry id="UnaryTests_0nb78cr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12ymwxw">
+          <text>"ReviewReferralResponseAdminMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cd2wcp">
+          <text>"priorityDateOriginRef"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iptbly">
+          <text>"dueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0enuein">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bva8w0">

@@ -104,6 +104,19 @@ class EmploymentTaskPermissionsMultipleTestScot extends DmnDecisionTableBaseUnit
                     leaderCTSC,
                     ctsc
                 )
+            ),
+            Arguments.of(
+                "ReviewReferralResponseAdminMultiple",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin,
+                    allocatedCtscCaseworker,
+                    leaderCTSC,
+                    ctsc
+                )
             )
         );
     }
