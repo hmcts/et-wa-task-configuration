@@ -1,4 +1,4 @@
-package uk.gov.hmcts.et.taskconfiguration.dmn;
+package uk.gov.hmcts.et.taskconfiguration.dmn.multiples;
 
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
@@ -23,71 +23,27 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_PERMISSIONS_MULTIPLE_ET_SCOTLAND;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_PERMISSIONS_MULTIPLE_ET_EW;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.allocatedAdminCaseworker;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.allocatedCtscCaseworker;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.allocatedTribunalCaseworker;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.ctsc;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingCentreAdmin;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingCentreTeamLeader;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingJudge;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.judge;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.leadJudge;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.leaderCTSC;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.leadershipJudge;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.seniorTribunalCaseworker;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.taskSupervisor;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.tribunalCaseworker;
 
-class EmploymentTaskPermissionsMultipleTestScot extends DmnDecisionTableBaseUnitTest {
-
-    private static final Map<String, Serializable> taskSupervisor = Map.of(
-        "autoAssignable", false,
-        "name", "task-supervisor",
-        "value", "Read, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"
-    );
-
-    private static final Map<String, Serializable> leadershipJudge = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 5,
-        "name", "leadership-judge",
-        "value", "Read, Execute, Manage, Claim, Assign, Unassign, Complete, Cancel",
-        "roleCategory", "JUDICIAL"
-    );
-
-    private static final Map<String, Serializable> allocatedAdminCaseworker = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 2,
-        "name", "allocated-admin-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "ADMIN"
-    );
-    private static final Map<String, Serializable> hearingCentreTeamLeader = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 6,
-        "name", "hearing-centre-team-leader",
-        "value", "Assign, Unassign, Complete, Cancel",
-        "roleCategory", "ADMIN"
-    );
-    private static final Map<String, Serializable> hearingCentreAdmin = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 4,
-        "name", "hearing-centre-admin",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "ADMIN"
-    );
-
-    private static final Map<String, Serializable> allocatedCtscCaseworker = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 1,
-        "name", "allocated-ctsc-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "CTSC"
-    );
-    private static final Map<String, Serializable> leaderCTSC = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 5,
-        "name", "ctsc-team-leader",
-        "value", "Assign, Unassign, Complete, Cancel",
-        "roleCategory", "CTSC"
-    );
-    private static final Map<String, Serializable> ctsc = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 3,
-        "name", "ctsc",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "CTSC"
-    );
+class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_PERMISSIONS_MULTIPLE_ET_SCOTLAND;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_PERMISSIONS_MULTIPLE_ET_EW;
     }
 
     public static Stream<Arguments> genericScenarioProvider() {
@@ -103,6 +59,19 @@ class EmploymentTaskPermissionsMultipleTestScot extends DmnDecisionTableBaseUnit
                     allocatedCtscCaseworker,
                     leaderCTSC,
                     ctsc
+                )
+            ),
+            Arguments.of(
+                "MultiplesReviewReferralResponseLegalOps",
+                List.of(
+                    taskSupervisor,
+                    leadJudge,
+                    hearingJudge,
+                    judge,
+                    leadershipJudge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
                 )
             )
         );
@@ -147,7 +116,7 @@ class EmploymentTaskPermissionsMultipleTestScot extends DmnDecisionTableBaseUnit
         assertThat(logic.getOutputs().size(), is(7));
         assertThatOutputContainInOrder(outputColumnIds, logic.getOutputs());
         //Rules
-        assertThat(logic.getRules().size(), is(8));
+        assertThat(logic.getRules().size(), is(14));
     }
 
     private void assertThatInputContainInOrder(List<String> inputColumnIds, List<DmnDecisionTableInputImpl> inputs) {

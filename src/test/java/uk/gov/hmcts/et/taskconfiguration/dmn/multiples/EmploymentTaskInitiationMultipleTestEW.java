@@ -1,4 +1,4 @@
-package uk.gov.hmcts.et.taskconfiguration.dmn;
+package uk.gov.hmcts.et.taskconfiguration.dmn.multiples;
 
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
@@ -19,15 +19,14 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_LEGALOFFICER;
 
-class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitTest {
-
-    public static final String REFERRAL_ADMIN =
-        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Admin", "Yes", "", "");
+class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_MULTIPLE_ET_SCOTLAND;
+        CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_MULTIPLE_ET_EW;
     }
 
     public static Stream<Arguments> scenarioProvider() {
@@ -43,7 +42,20 @@ class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitT
                         "Vetting"
                     )
                 )
-            ));
+            ),
+            Arguments.of(
+                "replyToReferral",
+                null,
+                HelperService.mapAdditionalData(REFERRAL_REPLY_LEGALOFFICER),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "MultiplesReviewReferralResponseLegalOps",
+                        "Review Referral #1 - Referral Subject 1 Response",
+                        "Processing"
+                    )
+                )
+            )
+        );
     }
 
     @ParameterizedTest
@@ -66,6 +78,6 @@ class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitT
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(1));
+        assertThat(logic.getRules().size(), is(2));
     }
 }

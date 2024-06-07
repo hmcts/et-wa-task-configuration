@@ -1,4 +1,4 @@
-package uk.gov.hmcts.et.taskconfiguration.dmn;
+package uk.gov.hmcts.et.taskconfiguration.dmn.multiples;
 
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
@@ -23,23 +23,15 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_MULTIPLE_ET_EW;
+import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.EXTRA_TEST_CALENDAR;
+import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISURGENT_REPLY_NO;
+import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISURGENT_REPLY_YES;
+import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.IS_URGENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.NOT_URGENT;
 
-class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUnitTest {
 
     private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
-    private static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
-        + "civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json";
-
-    public static final String IS_URGENT =
-        "{\"referralCollection\": ["
-            + "{\"value\": {\"isUrgent\": \"No\",\"referralNumber\": \"1\"}},"
-            + "{\"value\": {\"isUrgent\": \"Yes\",\"referralNumber\": \"2\"}}"
-            + "]}";
-    public static final String NOT_URGENT =
-        "{\"referralCollection\": ["
-            + "{\"value\": {\"isUrgent\": \"Yes\",\"referralNumber\": \"1\"}},"
-            + "{\"value\": {\"isUrgent\": \"No\",\"referralNumber\": \"2\"}}"
-            + "]}";
 
 
     @BeforeAll
@@ -135,7 +127,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
     @ParameterizedTest
     @MethodSource("hearingDate_ScenarioProvider")
     void testHearingDate(String nextListedDate,
-                       String expectedNextHearingDate) {
+                         String expectedNextHearingDate) {
         // Given
         Map<String, Object> caseData = getDefaultCaseData();
         caseData.put("nextListedDate", nextListedDate);
@@ -165,39 +157,6 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
     }
 
     @ParameterizedTest
-    @MethodSource("workType_ScenarioProvider")
-    void when_taskId_then_return_workType(String taskType, List<Map<String, String>> expected) {
-        VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("caseData", getDefaultCaseData());
-        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
-
-        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
-        List<Map<String, Object>> resultList =
-            dmnDecisionTableResult
-                .getResultList()
-                .stream()
-                .filter((r) -> r.containsValue("workType"))
-                .toList();
-
-        assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
-        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
-    }
-
-    public static Stream<Arguments> workType_ScenarioProvider() {
-        List<Map<String, Object>> routineWork = List.of(Map.of(
-            "name", "workType",
-            "value", "routine_work",
-            "canReconfigure", true
-        ));
-
-        return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", routineWork)
-        );
-    }
-
-    @ParameterizedTest
     @MethodSource("roleCategory_ScenarioProvider")
     void when_taskId_then_return_roleCategory(String taskType, List<Map<String, String>> expected) {
         VariableMap inputVariables = new VariableMapImpl();
@@ -210,7 +169,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("roleCategory"))
+                .filter(r -> r.containsValue("roleCategory"))
                 .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
@@ -224,9 +183,15 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             "value", "ADMIN",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> legalOperations = List.of(Map.of(
+            "name", "roleCategory",
+            "value", "LEGAL_OPERATIONS",
+            "canReconfigure", true
+        ));
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", administrator)
+            Arguments.of("ReviewReferralAdminMultiple", administrator),
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", legalOperations)
         );
     }
 
@@ -239,7 +204,8 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         inputVariables.putValue("caseData", getDefaultCaseData());
         inputVariables.putValue("taskAttributes", Map.of("taskType", taskType,
                                                          "roleAssignmentId", roleAssignmentId,
-                                                         "taskId", taskId));
+                                                         "taskId", taskId
+        ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -247,7 +213,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("description"))
+                .filter(r -> r.containsValue("description"))
                 .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
@@ -266,7 +232,8 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
 
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", descReferralTab)
+            Arguments.of("ReviewReferralAdminMultiple", descReferralTab),
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", descReferralTab)
         );
     }
 
@@ -296,19 +263,21 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("dueDateIntervalDays"))
+                .filter(r -> r.containsValue("dueDateIntervalDays"))
                 .toList();
 
         assertEquals(expectedIntervalDays.get(0).get("name"), intervalDaysResultList.get(0).get("name"));
         assertEquals(expectedIntervalDays.get(0).get("value"), intervalDaysResultList.get(0).get("value"));
-        assertEquals(expectedIntervalDays.get(0).get("canReconfigure"),
-                     intervalDaysResultList.get(0).get("canReconfigure"));
+        assertEquals(
+            expectedIntervalDays.get(0).get("canReconfigure"),
+            intervalDaysResultList.get(0).get("canReconfigure")
+        );
 
         List<Map<String, Object>> majorPriorityResultList =
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("majorPriority"))
+                .filter(r -> r.containsValue("majorPriority"))
                 .toList();
 
         assertEquals(expectedMajor.get(0).get("name"), majorPriorityResultList.get(0).get("name"));
@@ -319,7 +288,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("minorPriority"))
+                .filter(r -> r.containsValue("minorPriority"))
                 .toList();
 
         assertEquals(expectedMinor.get(0).get("name"), minorPriorityResultList.get(0).get("name"));
@@ -331,15 +300,21 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
                 dmnDecisionTableResult
                     .getResultList()
                     .stream()
-                    .filter((r) -> r.containsValue("priorityDateOriginRef"))
+                    .filter(r -> r.containsValue("priorityDateOriginRef"))
                     .toList();
 
-            assertEquals(expectedPriorityDateOrigin.get(0).get("name"),
-                         priorityDateRefResultList.get(0).get("name"));
-            assertEquals(expectedPriorityDateOrigin.get(0).get("value"),
-                         priorityDateRefResultList.get(0).get("value"));
-            assertEquals(expectedPriorityDateOrigin.get(0).get("canReconfigure"),
-                         priorityDateRefResultList.get(0).get("canReconfigure"));
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("name"),
+                priorityDateRefResultList.get(0).get("name")
+            );
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("value"),
+                priorityDateRefResultList.get(0).get("value")
+            );
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("canReconfigure"),
+                priorityDateRefResultList.get(0).get("canReconfigure")
+            );
         }
 
         if (expectedPriorityDateEarliest != null) {
@@ -347,15 +322,20 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
                 dmnDecisionTableResult
                     .getResultList()
                     .stream()
-                    .filter((r) -> r.containsValue("priorityDateOriginEarliest"))
+                    .filter(r -> r.containsValue("priorityDateOriginEarliest"))
                     .toList();
 
-            assertEquals(expectedPriorityDateEarliest.get(0).get("name"),
-                         priorityDateEarResultList.get(0).get("name"));
-            assertEquals(expectedPriorityDateEarliest.get(0).get("value"),
-                         priorityDateEarResultList.get(0).get("value"));
-            assertEquals(expectedPriorityDateEarliest.get(0).get("canReconfigure"),
-                         priorityDateEarResultList.get(0).get("canReconfigure")
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("name"),
+                priorityDateEarResultList.get(0).get("name")
+            );
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("value"),
+                priorityDateEarResultList.get(0).get("value")
+            );
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("canReconfigure"),
+                priorityDateEarResultList.get(0).get("canReconfigure")
             );
         }
     }
@@ -398,6 +378,11 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             "value", "dueDate, nextHearingDate",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> priorityDateOriginRef = List.of(Map.of(
+            "name", "priorityDateOriginRef",
+            "value", "dueDate",
+            "canReconfigure", true
+        ));
 
         return Stream.of(
             Arguments.of("ReviewReferralAdminMultiple", IS_URGENT,
@@ -407,6 +392,14 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             Arguments.of("ReviewReferralAdminMultiple", NOT_URGENT,
                          dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
                          defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
+            ),
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", ISURGENT_REPLY_YES,
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         priorityDateOriginRef, null
+            ),
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", ISURGENT_REPLY_NO,
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
             )
         );
     }
@@ -500,7 +493,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(20));
+        assertThat(logic.getRules().size(), is(25));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
@@ -516,7 +509,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
         HelperService.getExpectedValueWithReconfigure(
-            rules, "dueDateNonWorkingCalendar",DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
+            rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);

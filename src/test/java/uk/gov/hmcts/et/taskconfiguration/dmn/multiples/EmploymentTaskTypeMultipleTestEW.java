@@ -1,4 +1,4 @@
-package uk.gov.hmcts.et.taskconfiguration.dmn;
+package uk.gov.hmcts.et.taskconfiguration.dmn.multiples;
 
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.util.List;
@@ -18,23 +19,29 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_TYPE_ET_MULTIPLE_SCOTLAND;
 
-public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnitTest {
+public class EmploymentTaskTypeMultipleTestEW extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_TYPE_ET_MULTIPLE_SCOTLAND;
+        CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_TYPE_MULTIPLE_ET_EW;
     }
 
     static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
                 List.of(
-                    Map.of("taskTypeId",
-                           "ReviewReferralAdminMultiple",
-                           "taskTypeName",
-                           "Review Multiples Referral - Admin"
+                    Map.of(
+                        "taskTypeId",
+                        "ReviewReferralAdminMultiple",
+                        "taskTypeName",
+                        "Review Multiples Referral - Admin"
+                    ),
+                    Map.of(
+                        "taskTypeId",
+                        "MultiplesReviewReferralResponseLegalOps",
+                        "taskTypeName",
+                        "Review Referral Response - Legal Ops"
                     )
                 )
             )
@@ -56,6 +63,6 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(1));
+        assertThat(logic.getRules().size(), is(2));
     }
 }

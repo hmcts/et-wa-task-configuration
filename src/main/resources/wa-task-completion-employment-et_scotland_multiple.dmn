@@ -7,7 +7,7 @@
           <text>eventId</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="341" />
+      <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="377" />
       <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" />
       <rule id="DecisionRule_1jameda">
         <inputEntry id="UnaryTests_0q8217i">
@@ -18,6 +18,18 @@
           <text>"ReviewReferralAdminMultiple"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15g3yjk">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05im1as">
+        <inputEntry id="UnaryTests_03m8wkt">
+          <text>"replyToReferral",
+"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06y6w8t">
+          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1iyoeyb">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

@@ -1,4 +1,4 @@
-package uk.gov.hmcts.et.taskconfiguration.dmn;
+package uk.gov.hmcts.et.taskconfiguration.dmn.multiples;
 
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;

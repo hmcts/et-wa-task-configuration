@@ -81,6 +81,35 @@ else null</text>
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_112uuvf">
+        <inputEntry id="UnaryTests_0ta2snk">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03ycfub">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01em7vz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jxnz9l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mzunt7">
+          <text>"Legal officer"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hrkox6">
+          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1adludt">
+          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05qmv0d">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z6yewn">
+          <text>"Processing"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_1xqgkq6" name="LATEST_REFERRAL_TASK_NAME" camunda:historyTimeToLive="P30D">

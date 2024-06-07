@@ -1,4 +1,4 @@
-package uk.gov.hmcts.et.taskconfiguration.dmn;
+package uk.gov.hmcts.et.taskconfiguration.dmn.multiples;
 
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
@@ -18,52 +18,51 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_COMPLETION_MULTIPLE_ET_EW;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_TYPE_ET_MULTIPLE_SCOTLAND;
 
-class EmploymentTaskCompletionMultipleTestEW extends DmnDecisionTableBaseUnitTest {
+public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_COMPLETION_MULTIPLE_ET_EW;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_TYPE_ET_MULTIPLE_SCOTLAND;
     }
 
     static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "replyToReferral",
                 List.of(
                     Map.of(
-                        "taskType", "ReviewReferralAdminMultiple",
-                        "completionMode", "Auto"
-                    )
-                )
-            ),
-            Arguments.of(
-                "closeReferral",
-                List.of(
+                        "taskTypeId",
+                        "ReviewReferralAdminMultiple",
+                        "taskTypeName",
+                        "Review Multiples Referral - Admin"
+                    ),
                     Map.of(
-                        "taskType", "ReviewReferralAdminMultiple",
-                        "completionMode", "Auto"
+                        "taskTypeId",
+                        "MultiplesReviewReferralResponseLegalOps",
+                        "taskTypeName",
+                        "Review Referral Response - Legal Ops"
                     )
                 )
             )
         );
     }
 
-    @ParameterizedTest(name = "event id: {0}")
+    @ParameterizedTest(name = "retrieve all task type data")
     @MethodSource("scenarioProvider")
-    void given_event_ids_should_evaluate_dmn(String eventId, List<Map<String, String>> expectation) {
+    void should_evaluate_dmn_return_all_task_type_fields(List<Map<String, Object>> expectedTaskTypes) {
         VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("eventId", eventId);
-
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
+
+        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(expectedTaskTypes));
     }
 
     @Test
-    void if_this_test_fails_needs_updating_with_your_changes() {
+    void check_dmn_changed() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(1));
+        assertThat(logic.getInputs().size(), is(1));
+        assertThat(logic.getOutputs().size(), is(2));
+        assertThat(logic.getRules().size(), is(2));
     }
 }
