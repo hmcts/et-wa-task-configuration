@@ -40,7 +40,6 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
     );
-
     private static final Map<String, Serializable> hearingJudge = Map.of(
         "autoAssignable", true,
         "assignmentPriority", 2,
@@ -48,7 +47,6 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
     );
-
     private static final Map<String, Serializable> leadershipJudge = Map.of(
         "autoAssignable", false,
         "assignmentPriority", 5,
@@ -56,37 +54,12 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
         "value", "Read, Execute, Manage, Claim, Assign, Unassign, Complete, Cancel",
         "roleCategory", "JUDICIAL"
     );
-
     private static final Map<String, Serializable> judge = Map.of(
         "autoAssignable", false,
         "assignmentPriority", 3,
         "name", "judge",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "JUDICIAL"
-    );
-
-    private static final Map<String, Serializable> allocatedTribunalCaseworker = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 1,
-        "name", "allocated-tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "LEGAL_OPERATIONS"
-    );
-
-    private static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 4,
-        "name", "senior-tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
-        "roleCategory", "LEGAL_OPERATIONS"
-    );
-
-    private static final Map<String, Serializable> tribunalCaseworker = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 3,
-        "name", "tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "LEGAL_OPERATIONS"
     );
 
     private static final Map<String, Serializable> allocatedAdminCaseworker = Map.of(
@@ -96,7 +69,6 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "ADMIN"
     );
-
     private static final Map<String, Serializable> hearingCentreTeamLeader = Map.of(
         "autoAssignable", false,
         "assignmentPriority", 6,
@@ -104,13 +76,34 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
         "value", "Assign, Unassign, Complete, Cancel",
         "roleCategory", "ADMIN"
     );
-
     private static final Map<String, Serializable> hearingCentreAdmin = Map.of(
         "autoAssignable", false,
         "assignmentPriority", 4,
         "name", "hearing-centre-admin",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "ADMIN"
+    );
+
+    private static final Map<String, Serializable> allocatedTribunalCaseworker = Map.of(
+        "autoAssignable", true,
+        "assignmentPriority", 1,
+        "name", "allocated-tribunal-caseworker",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "LEGAL_OPERATIONS"
+    );
+    private static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
+        "autoAssignable", false,
+        "assignmentPriority", 4,
+        "name", "senior-tribunal-caseworker",
+        "value", "Assign, Unassign, Complete, Cancel",
+        "roleCategory", "LEGAL_OPERATIONS"
+    );
+    private static final Map<String, Serializable> tribunalCaseworker = Map.of(
+        "autoAssignable", false,
+        "assignmentPriority", 3,
+        "name", "tribunal-caseworker",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "LEGAL_OPERATIONS"
     );
 
     private static final Map<String, Serializable> allocatedCtscCaseworker = Map.of(
@@ -120,7 +113,6 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
         "roleCategory", "CTSC"
     );
-
     private static final Map<String, Serializable> leaderCTSC = Map.of(
         "autoAssignable", false,
         "assignmentPriority", 5,
@@ -128,7 +120,6 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
         "value", "Assign, Unassign, Complete, Cancel",
         "roleCategory", "CTSC"
     );
-
     private static final Map<String, Serializable> ctsc = Map.of(
         "autoAssignable", false,
         "assignmentPriority", 3,
@@ -145,7 +136,20 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
     public static Stream<Arguments> genericScenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "ReviewReferralJudiciaryMultiple",
+                "ReviewReferralAdminMultiple",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin,
+                    allocatedCtscCaseworker,
+                    leaderCTSC,
+                    ctsc
+                )
+            ),
+            Arguments.of(
+                "ReviewReferralLegalOpsMultiple",
                 List.of(
                     taskSupervisor,
                     leadJudge,
@@ -158,16 +162,16 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
                 )
             ),
             Arguments.of(
-                "ReviewReferralAdminMultiple",
+                "ReviewReferralJudiciaryMultiple",
                 List.of(
                     taskSupervisor,
+                    leadJudge,
+                    hearingJudge,
                     leadershipJudge,
-                    allocatedAdminCaseworker,
-                    hearingCentreTeamLeader,
-                    hearingCentreAdmin,
-                    allocatedCtscCaseworker,
-                    leaderCTSC,
-                    ctsc
+                    judge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
                 )
             )
         );

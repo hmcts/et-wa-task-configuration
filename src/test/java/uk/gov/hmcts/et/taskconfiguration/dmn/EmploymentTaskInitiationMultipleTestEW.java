@@ -41,7 +41,7 @@ class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTes
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdminMultiple",
-                        "Review Referral #2 - Referral Subject 2",
+                        "Review Multiples Referral #2 - Referral Subject 2",
                         "Vetting"
                     )
                 )
@@ -53,7 +53,7 @@ class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTes
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciaryMultiple",
-                        "Review Referral #2 - ET1",
+                        "Review Multiples Referral #2 - ET1",
                         "Vetting"
                     )
                 )
@@ -80,6 +80,6 @@ class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTes
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(2));
+        assertThat(logic.getRules().size(), is(3));
     }
 }

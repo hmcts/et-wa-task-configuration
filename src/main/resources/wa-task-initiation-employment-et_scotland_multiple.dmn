@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
-  <decision id="wa-task-initiation-employment-et_scotland_multiple" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
+  <decision id="wa-task-initiation-employment-et_scotland_multiple" name="ET Multiple Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_1l2v2xj">
       <requiredDecision href="#Decision_1xqgkq6" />
     </informationRequirement>
@@ -81,17 +81,46 @@ else null</text>
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0ptfod8">
-        <inputEntry id="UnaryTests_0cqzit9">
+      <rule id="DecisionRule_1skd0cv">
+        <inputEntry id="UnaryTests_0gxctoq">
           <text>"createReferral"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_08729md">
+        <inputEntry id="UnaryTests_0ma71ii">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0lz3lpm">
+        <inputEntry id="UnaryTests_07xx957">
+          <text>"Legal officer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l982ks">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1akzcdm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jodb9u">
+          <text>"ReviewReferralLegalOpsMultiple"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06jyk6x">
+          <text>LATEST_REFERRAL_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jb2kui">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10lszsg">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12ppvo1">
+        <inputEntry id="UnaryTests_122abz6">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wbaiet">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iinq8v">
           <text>"Judge"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_11xnt33">
+        <inputEntry id="UnaryTests_1y0tstc">
           <text>"ET1",
 "ET3/ECC",
 "Amend claim",
@@ -114,19 +143,19 @@ else null</text>
 "Initial Consideration",
 "Other"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0xg32cz">
+        <inputEntry id="UnaryTests_1m60fya">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0l3q7u7">
+        <outputEntry id="LiteralExpression_08o0qxl">
           <text>"ReviewReferralJudiciaryMultiple"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_03qed7z">
+        <outputEntry id="LiteralExpression_0fgv01v">
           <text>LATEST_REFERRAL_TASK_NAME</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0celhs2">
+        <outputEntry id="LiteralExpression_04m3eoh">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_03u015q">
+        <outputEntry id="LiteralExpression_0dsutkd">
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
@@ -145,7 +174,7 @@ else null</text>
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection) &gt; 0)
-then "Review Referral #" + LATEST_REFERRAL_NUMBER + " - " + LATEST_REFERRAL_SUBJECT
+then "Review Multiples Referral #" + LATEST_REFERRAL_NUMBER + " - " + LATEST_REFERRAL_SUBJECT
 else null</text>
     </literalExpression>
   </decision>
@@ -162,7 +191,7 @@ else null</text>
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
-then "Review Referral #" + LATEST_REFERRAL_REPLY_NUMBER + " - " + LATEST_REFERRAL_REPLY_SUBJECT + " Response"
+then "Review Multiples Referral #" + LATEST_REFERRAL_REPLY_NUMBER + " - " + LATEST_REFERRAL_REPLY_SUBJECT + " Response"
 else null</text>
     </literalExpression>
   </decision>
@@ -231,20 +260,20 @@ else null</text>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_scotland_multiple">
-        <dc:Bounds height="80" width="180" x="260" y="50" />
+        <dc:Bounds height="80" width="180" x="470" y="60" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1srd5ad" dmnElementRef="InformationRequirement_1l2v2xj">
         <di:waypoint x="350" y="220" />
-        <di:waypoint x="320" y="150" />
-        <di:waypoint x="320" y="130" />
+        <di:waypoint x="530" y="160" />
+        <di:waypoint x="530" y="140" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1bykp81" dmnElementRef="Decision_1xqgkq6">
         <dc:Bounds height="80" width="180" x="260" y="220" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0q240ep" dmnElementRef="InformationRequirement_05r15im">
         <di:waypoint x="770" y="220" />
-        <di:waypoint x="380" y="150" />
-        <di:waypoint x="380" y="130" />
+        <di:waypoint x="590" y="160" />
+        <di:waypoint x="590" y="140" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0baejpx" dmnElementRef="Decision_1merw3p">
         <dc:Bounds height="80" width="180" x="680" y="220" />
