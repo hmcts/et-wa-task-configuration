@@ -24,6 +24,10 @@ class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTes
 
     public static final String REFERRAL_ADMIN =
         HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Admin", "Yes", "", "");
+
+    public static final String REFERRAL_LEGALOPS =
+        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Legal officer", "Yes", "", "");
+
     public static final String REFERRAL_JUDGE =
         HelperService.createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "");
 
@@ -49,6 +53,18 @@ class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTes
             Arguments.of(
                 "createReferral",
                 null,
+                HelperService.mapAdditionalData(REFERRAL_LEGALOPS),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReviewReferralLegalOpsMultiple",
+                        "Review Multiples Referral #2 - Referral Subject 2",
+                        "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
+                "createReferral",
+                null,
                 HelperService.mapAdditionalData(REFERRAL_JUDGE),
                 List.of(
                     HelperService.mapExpectedOutput(
@@ -57,7 +73,8 @@ class EmploymentTaskInitiationMultipleTestEW extends DmnDecisionTableBaseUnitTes
                         "Vetting"
                     )
                 )
-            ));
+            )
+        );
     }
 
     @ParameterizedTest

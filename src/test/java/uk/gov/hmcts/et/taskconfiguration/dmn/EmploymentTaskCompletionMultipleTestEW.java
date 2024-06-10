@@ -29,15 +29,6 @@ class EmploymentTaskCompletionMultipleTestEW extends DmnDecisionTableBaseUnitTes
     static Stream<Arguments> scenarioProvider() {
         return Stream.of(
             Arguments.of(
-                "preAcceptanceCase",
-                List.of(
-                    Map.of(
-                        "taskType", "ReviewReferralJudiciaryMultiple",
-                        "completionMode", "Auto"
-                    )
-                )
-            ),
-            Arguments.of(
                 "replyToReferral",
                 List.of(
                     Map.of(

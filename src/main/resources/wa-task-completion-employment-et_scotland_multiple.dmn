@@ -23,8 +23,7 @@
       </rule>
       <rule id="DecisionRule_0toaplc">
         <inputEntry id="UnaryTests_030e1io">
-          <text>"preAcceptanceCase",
-"replyToReferral",
+          <text>"replyToReferral",
 "closeReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_12l4agw">

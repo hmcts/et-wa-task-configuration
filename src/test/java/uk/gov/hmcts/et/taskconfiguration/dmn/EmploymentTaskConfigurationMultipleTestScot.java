@@ -177,7 +177,7 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter(r -> r.containsValue("workType"))
+                .filter((r) -> r.containsValue("workType"))
                 .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
@@ -186,6 +186,11 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
     }
 
     public static Stream<Arguments> workType_ScenarioProvider() {
+        List<Map<String, Object>> routineWork = List.of(Map.of(
+            "name", "workType",
+            "value", "routine_work",
+            "canReconfigure", true
+        ));
         List<Map<String, Object>> decisionMakingWork = List.of(Map.of(
             "name", "workType",
             "value", "decision_making_work",
@@ -193,6 +198,8 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
         ));
 
         return Stream.of(
+            Arguments.of("ReviewReferralAdminMultiple", routineWork),
+            Arguments.of("ReviewReferralLegalOpsMultiple", routineWork),
             Arguments.of("ReviewReferralJudiciaryMultiple", decisionMakingWork)
         );
     }
@@ -219,21 +226,26 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
     }
 
     public static Stream<Arguments> roleCategory_ScenarioProvider() {
-        List<Map<String, Object>> judicial = List.of(Map.of(
-            "name", "roleCategory",
-            "value", "JUDICIAL",
-            "canReconfigure", true
-        ));
         List<Map<String, Object>> administrator = List.of(Map.of(
             "name", "roleCategory",
             "value", "ADMIN",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> legalOps = List.of(Map.of(
+            "name", "roleCategory",
+            "value", "LEGAL_OPERATIONS",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> judicial = List.of(Map.of(
+            "name", "roleCategory",
+            "value", "JUDICIAL",
+            "canReconfigure", true
+        ));
 
         return Stream.of(
-            Arguments.of("ReviewReferralJudiciaryMultiple", judicial),
-            Arguments.of("ReviewReferralAdminMultiple", administrator)
-
+            Arguments.of("ReviewReferralAdminMultiple", administrator),
+            Arguments.of("ReviewReferralLegalOpsMultiple", legalOps),
+            Arguments.of("ReviewReferralJudiciaryMultiple", judicial)
         );
     }
 
@@ -275,7 +287,9 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
 
         return Stream.of(
             Arguments.of("ReviewReferralAdminMultiple", descReferralTab),
+            Arguments.of("ReviewReferralLegalOpsMultiple", descReferralTab),
             Arguments.of("ReviewReferralJudiciaryMultiple", descReferralTab)
+
         );
     }
 
@@ -427,6 +441,14 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
                          null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralAdminMultiple", NOT_URGENT,
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
+            ),
+            Arguments.of("ReviewReferralLegalOpsMultiple", IS_URGENT,
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         null, priorityDateOriginEar
+            ),
+            Arguments.of("ReviewReferralLegalOpsMultiple", NOT_URGENT,
                          dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
                          defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
             ),
