@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-completion-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
-  <decision id="wa-task-completion-employment-et_scotland_multiple" name="ET Task completion DMN" camunda:historyTimeToLive="P30D">
+  <decision id="wa-task-completion-employment-et_scotland_multiple" name="ET Multiple Task completion DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_01re27m" hitPolicy="COLLECT">
       <input id="eventId" label="Event ID" biodi:width="392">
         <inputExpression id="LiteralExpression_1ngg489" typeRef="string">
@@ -21,16 +21,28 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0bfqmda">
-        <inputEntry id="UnaryTests_0y8aeo3">
+      <rule id="DecisionRule_0toaplc">
+        <inputEntry id="UnaryTests_030e1io">
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1i5jrgq">
+        <outputEntry id="LiteralExpression_12l4agw">
           <text>"ReviewReferralJudiciaryMultiple"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0pwg5c9">
+        <outputEntry id="LiteralExpression_0oahqe1">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e8rg2v">
+        <inputEntry id="UnaryTests_052m2eh">
+          <text>"replyToReferral",
+"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ddx5m0">
+          <text>"ReviewReferralLegalOpsMultiple"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pf0t4y">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

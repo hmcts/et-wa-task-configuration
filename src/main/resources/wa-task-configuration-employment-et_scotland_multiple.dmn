@@ -131,7 +131,8 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rams4n">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple",
+"ReviewReferralLegalOpsMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -194,13 +195,31 @@
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0uwjugj">
+        <inputEntry id="UnaryTests_0ebprpi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xfhhdq">
+          <text>"ReviewReferralLegalOpsMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oah3lh">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bg2p98">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tlsk9h">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1jsxv8g">
         <inputEntry id="UnaryTests_1fer8wr">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mpta03">
           <text>"ReviewReferralAdminMultiple",
-"ReviewReferralJudiciaryMultiple"</text>
+"ReviewReferralJudiciaryMultiple",
+"ReviewReferralLegalOpsMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xnep6d">
           <text>"description"</text>
@@ -218,7 +237,8 @@
         </inputEntry>
         <inputEntry id="UnaryTests_07vjyfi">
           <text>"ReviewReferralAdminMultiple",
-"ReviewReferralJudiciaryMultiple"</text>
+"ReviewReferralJudiciaryMultiple",
+"ReviewReferralLegalOpsMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
@@ -241,7 +261,8 @@ else 5000</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vhou0u">
           <text>"ReviewReferralAdminMultiple"
-"ReviewReferralJudiciaryMultiple"</text>
+"ReviewReferralJudiciaryMultiple",
+"ReviewReferralLegalOpsMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">
           <text>"minorPriority"</text>
@@ -382,8 +403,9 @@ else 500</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1pk6nbg">
-          <text>"ReviewReferralAdminMultiple"
-"ReviewReferralJudiciaryMultiple"</text>
+          <text>"ReviewReferralAdminMultiple",
+"ReviewReferralJudiciaryMultiple",
+"ReviewReferralLegalOpsMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06yvz5i">
           <text>"dueDateIntervalDays"</text>
@@ -406,7 +428,8 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0zvrfef">
           <text>"ReviewReferralAdminMultiple",
-"ReviewReferralJudiciaryMultiple"</text>
+"ReviewReferralJudiciaryMultiple",
+"ReviewReferralLegalOpsMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0336zf2">
           <text>"priorityDateOriginEarliest"</text>
