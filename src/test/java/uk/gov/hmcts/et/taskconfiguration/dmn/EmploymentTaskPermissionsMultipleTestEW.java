@@ -160,6 +160,19 @@ class EmploymentTaskPermissionsMultipleTestEW extends DmnDecisionTableBaseUnitTe
                     seniorTribunalCaseworker,
                     tribunalCaseworker
                 )
+            ),
+            Arguments.of(
+                "ReviewReferralJudiciaryMultiple",
+                List.of(
+                    taskSupervisor,
+                    leadJudge,
+                    hearingJudge,
+                    leadershipJudge,
+                    judge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
+                )
             )
         );
     }

@@ -160,6 +160,19 @@ class EmploymentTaskPermissionsMultipleTestScot extends DmnDecisionTableBaseUnit
                     seniorTribunalCaseworker,
                     tribunalCaseworker
                 )
+            ),
+            Arguments.of(
+                "ReviewReferralJudiciaryMultiple",
+                List.of(
+                    taskSupervisor,
+                    leadJudge,
+                    hearingJudge,
+                    leadershipJudge,
+                    judge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
+                )
             )
         );
     }
