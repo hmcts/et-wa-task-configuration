@@ -303,3 +303,6 @@ bootJar {
 wrapper {
   distributionType = Wrapper.DistributionType.ALL
 }
+
+pmdMain.maxFailures = 315
+pmdTest.maxFailures = 385

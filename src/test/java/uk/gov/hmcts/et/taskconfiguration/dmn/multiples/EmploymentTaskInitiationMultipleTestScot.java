@@ -24,6 +24,15 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 
 class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitTest {
 
+    public static final String REFERRAL_ADMIN =
+        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Admin", "Yes", "", "");
+
+    public static final String REFERRAL_LEGALOPS =
+        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Legal officer", "Yes", "", "");
+
+    public static final String REFERRAL_JUDGE =
+        HelperService.createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "");
+
     @BeforeAll
     public static void initialization() {
         CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_MULTIPLE_ET_SCOTLAND;
@@ -38,7 +47,31 @@ class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitT
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdminMultiple",
-                        "Review Referral #2 - Referral Subject 2",
+                        "Review Multiples Referral #2 - Referral Subject 2",
+                        "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
+                "createReferral",
+                null,
+                HelperService.mapAdditionalData(REFERRAL_LEGALOPS),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReviewReferralLegalOpsMultiple",
+                        "Review Multiples Referral #2 - Referral Subject 2",
+                        "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
+                "createReferral",
+                null,
+                HelperService.mapAdditionalData(REFERRAL_JUDGE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReviewReferralJudiciaryMultiple",
+                        "Review Multiples Referral #2 - ET1",
                         "Vetting"
                     )
                 )
@@ -77,6 +110,6 @@ class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitT
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(2));
+        assertThat(logic.getRules().size(), is(4));
     }
 }

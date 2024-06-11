@@ -4,7 +4,6 @@ import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,6 +35,14 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
                         "taskType", "ReviewReferralAdminMultiple",
                         "completionMode", "Auto"
                     ),
+                    Map.of(
+                        "taskType", "ReviewReferralJudiciaryMultiple",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralLegalOpsMultiple",
+                        "completionMode", "Auto"
+                    ),
                     Map.of("taskType", "MultiplesReviewReferralResponseLegalOps",
                            "completionMode", "Auto"
                     )
@@ -46,6 +53,14 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
                 List.of(
                     Map.of(
                         "taskType", "ReviewReferralAdminMultiple",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralJudiciaryMultiple",
+                        "completionMode", "Auto"
+                    ),
+                    Map.of(
+                        "taskType", "ReviewReferralLegalOpsMultiple",
                         "completionMode", "Auto"
                     ),
                     Map.of("taskType", "MultiplesReviewReferralResponseLegalOps",
@@ -63,13 +78,13 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
         inputVariables.putValue("eventId", eventId);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
+        assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
     }
 
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(2));
+        assertThat(logic.getRules().size(), is(4));
     }
 }

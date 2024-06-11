@@ -4,7 +4,6 @@ import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,12 +30,20 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
         return Stream.of(
             Arguments.of(
                 List.of(
-                    Map.of(
-                        "taskTypeId",
-                        "ReviewReferralAdminMultiple",
-                        "taskTypeName",
-                        "Review Multiples Referral - Admin"
+                    Map.of("taskTypeId",
+                           "ReviewReferralAdminMultiple",
+                           "taskTypeName",
+                           "Review Multiples Referral - Admin"
                     ),
+                    Map.of("taskTypeId",
+                           "ReviewReferralJudiciaryMultiple",
+                           "taskTypeName",
+                           "Review Multiples Referral - Judicial"
+                    ),
+                    Map.of("taskTypeId",
+                           "ReviewReferralLegalOpsMultiple",
+                           "taskTypeName",
+                           "Review Multiples Referral - Legal Ops"),
                     Map.of(
                         "taskTypeId",
                         "MultiplesReviewReferralResponseLegalOps",
@@ -54,7 +61,7 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
         VariableMap inputVariables = new VariableMapImpl();
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(expectedTaskTypes));
+        assertThat(dmnDecisionTableResult.getResultList(), is(expectedTaskTypes));
     }
 
     @Test
@@ -63,6 +70,6 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(2));
+        assertThat(logic.getRules().size(), is(4));
     }
 }
