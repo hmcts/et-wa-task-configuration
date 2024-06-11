@@ -17,6 +17,9 @@ public final class InitiationUtility {
     public static final String REFERRAL_ADMIN =
         HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Admin", "Yes", "", "");
 
+    public static final String REFERRAL_LEGALOPS =
+        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Legal officer", "Yes", "", "");
+
     public static final String REFERRAL_ADMIN_HEARING =
         HelperService.createReferrals("Referral Subject 1","Hearings", "Admin", "Yes", "", "");
     public static final String REFERRAL_ADMIN_JUDGMENT =

@@ -48,7 +48,7 @@ public class EmploymentTaskTypeMultipleTestEW extends DmnDecisionTableBaseUnitTe
                         "taskTypeId",
                         "MultiplesReviewReferralResponseLegalOps",
                         "taskTypeName",
-                        "Review Referral Response - Legal Ops"
+                        "Review Multiples Referral Response - Legal Ops"
                     )
                 )
             )

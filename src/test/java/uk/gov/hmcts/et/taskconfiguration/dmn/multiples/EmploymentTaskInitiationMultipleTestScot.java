@@ -20,18 +20,11 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_JUDGE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_LEGALOPS;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_LEGALOFFICER;
 
 class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitTest {
-
-    public static final String REFERRAL_ADMIN =
-        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Admin", "Yes", "", "");
-
-    public static final String REFERRAL_LEGALOPS =
-        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Legal officer", "Yes", "", "");
-
-    public static final String REFERRAL_JUDGE =
-        HelperService.createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "");
 
     @BeforeAll
     public static void initialization() {
@@ -83,7 +76,7 @@ class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitT
                 List.of(
                     HelperService.mapExpectedOutput(
                         "MultiplesReviewReferralResponseLegalOps",
-                        "Review Referral #1 - Referral Subject 1 Response",
+                        "Review Multiples Referral #1 - Referral Subject 1 Response",
                         "Processing"
                     )
                 )

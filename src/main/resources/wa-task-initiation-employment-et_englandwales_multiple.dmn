@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <decision id="wa-task-initiation-employment-et_englandwales_multiple" name="ET Multiple Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0dnw86r">
       <requiredDecision href="#Decision_0la4l4o" />
@@ -81,35 +81,6 @@ else null</text>
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1b2zvch">
-        <inputEntry id="UnaryTests_0v4i8jv">
-          <text>"replyToReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1xel5p1">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1ye0k0a">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1o126fn">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1ud0qir">
-          <text>"Legal officer"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0nqkmgm">
-          <text>"MultiplesReviewReferralResponseLegalOps"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0rfzea8">
-          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1cnlj1k">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0e2ak2s">
-          <text>"Processing"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0y5f594">
         <inputEntry id="UnaryTests_1ileldy">
           <text>"createReferral"</text>
@@ -186,6 +157,35 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0se2u7j">
           <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b2zvch">
+        <inputEntry id="UnaryTests_0v4i8jv">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xel5p1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ye0k0a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o126fn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ud0qir">
+          <text>"Legal officer"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nqkmgm">
+          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rfzea8">
+          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cnlj1k">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e2ak2s">
+          <text>"Processing"</text>
         </outputEntry>
       </rule>
     </decisionTable>

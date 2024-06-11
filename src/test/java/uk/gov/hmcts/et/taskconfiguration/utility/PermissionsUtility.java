@@ -65,7 +65,7 @@ public final class PermissionsUtility {
     public static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
         "assignmentPriority", 4,
         "name", "senior-tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
+        "value", "Assign, Unassign, Complete, Cancel",
         "roleCategory", "LEGAL_OPERATIONS",
         "autoAssignable", false
     );

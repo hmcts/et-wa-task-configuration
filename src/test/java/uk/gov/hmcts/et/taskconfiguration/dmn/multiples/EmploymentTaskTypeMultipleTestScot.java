@@ -48,7 +48,7 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
                         "taskTypeId",
                         "MultiplesReviewReferralResponseLegalOps",
                         "taskTypeName",
-                        "Review Referral Response - Legal Ops"
+                        "Review Multiples Referral Response - Legal Ops"
                     )
                 )
             )
