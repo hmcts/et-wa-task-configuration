@@ -24,146 +24,28 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_PERMISSIONS_ET_SCOTLAND;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.allocatedAdminCaseworker;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.allocatedCtscCaseworker;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.allocatedTribunalCaseworker;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.approverAdmin;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.approverCTSC;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.approverJudiciary;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.approverLegalOps;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.ctsc;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingCentreAdmin;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingCentreTeamLeader;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingJudge;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.judge;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.leadJudge;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.leaderCTSC;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.leadershipJudge;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.regionalCentreAdmin;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.regionalCentreTeamLeader;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.seniorTribunalCaseworker;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.taskSupervisor;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.tribunalCaseworker;
 
 class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
-
-    private static final Map<String, Serializable> taskSupervisor = Map.of(
-        "autoAssignable", false,
-        "name", "task-supervisor",
-        "value", "Read, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"
-    );
-
-    private static final Map<String, Serializable> approverJudiciary = Map.of(
-        "autoAssignable", false,
-        "name", "specific-access-approver-judiciary",
-        "roleCategory", "JUDICIAL",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign"
-    );
-    private static final Map<String, Serializable> leadJudge = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 1,
-        "name", "lead-judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "JUDICIAL"
-    );
-    private static final Map<String, Serializable> hearingJudge = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 2,
-        "name", "hearing-judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "JUDICIAL"
-    );
-    private static final Map<String, Serializable> leadershipJudge = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 5,
-        "name", "leadership-judge",
-        "value", "Read, Execute, Manage, Claim, Assign, Unassign, Complete, Cancel",
-        "roleCategory", "JUDICIAL"
-    );
-    private static final Map<String, Serializable> judge = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 3,
-        "name", "judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "JUDICIAL"
-    );
-    private static final Map<String, Serializable> approverLegalOps = Map.of(
-        "autoAssignable", false,
-        "name", "specific-access-approver-legal-ops",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
-        "roleCategory", "LEGAL_OPERATIONS"
-    );
-    private static final Map<String, Serializable> allocatedTribunalCaseworker = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 1,
-        "name", "allocated-tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "LEGAL_OPERATIONS"
-    );
-    private static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 4,
-        "name", "senior-tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
-        "roleCategory", "LEGAL_OPERATIONS"
-    );
-    private static final Map<String, Serializable> tribunalCaseworker = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 3,
-        "name", "tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "LEGAL_OPERATIONS"
-    );
-
-    private static final Map<String, Serializable> approverAdmin = Map.of(
-        "autoAssignable", false,
-        "name", "specific-access-approver-admin",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
-        "roleCategory", "ADMIN"
-    );
-    private static final Map<String, Serializable> allocatedAdminCaseworker = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 2,
-        "name", "allocated-admin-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "ADMIN"
-    );
-    private static final Map<String, Serializable> hearingCentreTeamLeader = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 6,
-        "name", "hearing-centre-team-leader",
-        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
-        "roleCategory", "ADMIN"
-    );
-    private static final Map<String, Serializable> hearingCentreAdmin = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 4,
-        "name", "hearing-centre-admin",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "ADMIN"
-    );
-    private static final Map<String, Serializable> regionalCentreTeamLeader = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 6,
-        "name", "regional-centre-team-leader",
-        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
-        "roleCategory", "ADMIN"
-    );
-    private static final Map<String, Serializable> regionalCentreAdmin = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 4,
-        "name", "regional-centre-admin",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "ADMIN"
-    );
-
-    private static final Map<String, Serializable> approverCTSC = Map.of(
-        "autoAssignable", true,
-        "name", "specific-access-approver-ctsc",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
-        "roleCategory", "CTSC"
-    );
-    private static final Map<String, Serializable> allocatedCtscCaseworker = Map.of(
-        "autoAssignable", true,
-        "assignmentPriority", 1,
-        "name", "allocated-ctsc-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "CTSC"
-    );
-    private static final Map<String, Serializable> leaderCTSC = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 5,
-        "name", "ctsc-team-leader",
-        "value", "Read, Own, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
-        "roleCategory", "CTSC"
-    );
-    private static final Map<String, Serializable> ctsc = Map.of(
-        "autoAssignable", false,
-        "assignmentPriority", 3,
-        "name", "ctsc",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
-        "roleCategory", "CTSC"
-    );
 
     @BeforeAll
     public static void initialization() {

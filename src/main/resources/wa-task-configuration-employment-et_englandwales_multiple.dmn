@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <decision id="wa-task-configuration-employment-et_englandwales_multiple" name="ET Multiple Task configuration DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -130,8 +130,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1s942lt">
-          <text>"ReviewReferralAdminMultiple",
-"ReviewReferralLegalOpsMultiple"</text>
+          <text>"ReviewReferralAdminMultiple", "ReviewReferralLegalOpsMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0n9qju5">
           <text>"workType"</text>
@@ -199,7 +198,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1usq9ui">
-          <text>"ReviewReferralLegalOpsMultiple"</text>
+          <text>"ReviewReferralLegalOpsMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0d8to5q">
           <text>"roleCategory"</text>
@@ -216,9 +215,8 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_07rgo5f">
-          <text>"ReviewReferralAdminMultiple",
-"ReviewReferralJudiciaryMultiple",
-"ReviewReferralLegalOpsMultiple"</text>
+          <text>"ReviewReferralAdminMultiple", "ReviewReferralJudiciaryMultiple",
+                                               "ReviewReferralLegalOpsMultiple","MultiplesReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0c6p65o">
           <text>"description"</text>
@@ -254,6 +252,28 @@ else 5000</text>
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0rkpxpg">
+        <inputEntry id="UnaryTests_0zcyndp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hgnauw">
+          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0owfzza">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_127mnhz">
+          <text>if (caseData != null
+and caseData.referralCollection != null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+then 1000
+else 5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gqevr5">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0bz90wb">
         <inputEntry id="UnaryTests_0rgnw6c">
           <text></text>
@@ -275,6 +295,28 @@ then 100
 else 500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ry9gq0">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hbho2k">
+        <inputEntry id="UnaryTests_1dzcjq2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19041y8">
+          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1th3fkl">
+          <text>"minorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0aigk0j">
+          <text>if (caseData!=null
+and caseData.referralCollection != null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+then 100
+else 500</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_000yk1a">
           <text>false</text>
         </outputEntry>
       </rule>
@@ -421,6 +463,28 @@ else 2</text>
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1vv1d0d">
+        <inputEntry id="UnaryTests_0urapjf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n6xyme">
+          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hssll5">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m9t2hs">
+          <text>if (caseData!=null
+and caseData.referralCollection != null
+and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+then 1
+else 2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1aucxkm">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_08bmr9f">
         <inputEntry id="UnaryTests_0gi75r4">
           <text></text>
@@ -437,6 +501,23 @@ else 2</text>
           <text>"dueDate, nextHearingDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14f6prs">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tqfsmx">
+        <inputEntry id="UnaryTests_0cib2ve">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vudyc1">
+          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o9amih">
+          <text>"priorityDateOriginRef"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1eona79">
+          <text>"dueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mox5vb">
           <text>true</text>
         </outputEntry>
       </rule>

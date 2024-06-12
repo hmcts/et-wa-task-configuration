@@ -44,6 +44,29 @@
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1t94cmr">
+        <inputEntry id="UnaryTests_18n6244">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sepicc">
+          <text>"disposeCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_133y0ug">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fhcstw">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08keycj">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qk5wc8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13bnols">
+          <text>"Processing"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
