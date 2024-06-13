@@ -192,7 +192,9 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
         return Stream.of(
             Arguments.of("ReviewReferralAdminMultiple", routineWork),
             Arguments.of("ReviewReferralLegalOpsMultiple", routineWork),
-            Arguments.of("ReviewReferralJudiciaryMultiple", decisionMakingWork)
+            Arguments.of("ReviewReferralJudiciaryMultiple", decisionMakingWork),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", decisionMakingWork)
+
         );
     }
 

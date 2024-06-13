@@ -193,7 +193,9 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             Arguments.of("ReviewReferralAdminMultiple", routineWork),
             Arguments.of("ReviewReferralLegalOpsMultiple", routineWork),
             Arguments.of("ReviewReferralJudiciaryMultiple", decisionMakingWork),
-            Arguments.of("MultiplesReviewReferralResponseLegalOps", routineWork)
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", routineWork),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", decisionMakingWork)
+
         );
     }
 
