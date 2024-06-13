@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-task-types-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-task-types-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
   <decision id="wa-task-types-employment-et_scotland_multiple" name="ET Multiple Task Types DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_17knzal" hitPolicy="COLLECT">
       <input id="Input_1">
@@ -51,6 +51,17 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_17c94kh">
           <text>"Review Multiples Referral Response - Legal Ops"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1iub1sk">
+        <inputEntry id="UnaryTests_1xl8uwf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lh3a73">
+          <text>"ReviewReferralResponseJudiciaryMultiple"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nxl8kr">
+          <text>"Review Multiples Referral Response - Judicial"</text>
         </outputEntry>
       </rule>
     </decisionTable>

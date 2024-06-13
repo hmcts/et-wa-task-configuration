@@ -57,7 +57,9 @@
         <description>Case Role for Auto Assignment - Lead Judge Permissions</description>
         <inputEntry id="UnaryTests_1x2w84t">
           <text>"ReviewReferralLegalOpsMultiple",
-"ReviewReferralJudiciaryMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+"ReviewReferralJudiciaryMultiple",
+"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1useskg">
           <text></text>
@@ -88,7 +90,9 @@
         <description>Case Role for Auto Assignment - Hearing Judge Permissions</description>
         <inputEntry id="UnaryTests_0fc3hgz">
           <text>"ReviewReferralLegalOpsMultiple",
-"ReviewReferralJudiciaryMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+"ReviewReferralJudiciaryMultiple",
+"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jf6if8">
           <text></text>
@@ -149,7 +153,9 @@
         <description>Judge Permissions</description>
         <inputEntry id="UnaryTests_0e7xm9i">
           <text>"ReviewReferralLegalOpsMultiple",
-"ReviewReferralJudiciaryMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+"ReviewReferralJudiciaryMultiple",
+"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_04nvbek">
           <text></text>
@@ -180,7 +186,9 @@
         <description>Case Role for Auto Assignment - Allocated Tribunal Caseworker</description>
         <inputEntry id="UnaryTests_1u5hyvx">
           <text>"ReviewReferralLegalOpsMultiple",
-"ReviewReferralJudiciaryMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+"ReviewReferralJudiciaryMultiple",
+"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fyizk3">
           <text></text>
@@ -210,7 +218,9 @@
       <rule id="DecisionRule_01j198j">
         <inputEntry id="UnaryTests_1fcvuze">
           <text>"ReviewReferralLegalOpsMultiple",
-"ReviewReferralJudiciaryMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+"ReviewReferralJudiciaryMultiple",
+"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1miz64m">
           <text></text>
@@ -240,7 +250,9 @@
       <rule id="DecisionRule_1ex46p2">
         <inputEntry id="UnaryTests_1vlxyq4">
           <text>"ReviewReferralLegalOpsMultiple",
-"ReviewReferralJudiciaryMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+"ReviewReferralJudiciaryMultiple",
+"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0pntfkx">
           <text></text>
