@@ -132,7 +132,8 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0rams4n">
           <text>"ReviewReferralAdminMultiple",
-"ReviewReferralLegalOpsMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+"ReviewReferralLegalOpsMultiple",
+"MultiplesReviewReferralResponseLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -184,7 +185,8 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0tdxvmy">
-          <text>"ReviewReferralJudiciaryMultiple"</text>
+          <text>"ReviewReferralJudiciaryMultiple",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cfo2ym">
           <text>"roleCategory"</text>
@@ -220,7 +222,9 @@
         <inputEntry id="UnaryTests_1mpta03">
           <text>"ReviewReferralAdminMultiple",
 "ReviewReferralJudiciaryMultiple",
-"ReviewReferralLegalOpsMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+"ReviewReferralLegalOpsMultiple",
+"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xnep6d">
           <text>"description"</text>
@@ -261,7 +265,8 @@ else 5000</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1aujm74">
-          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+          <text>"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ps3ndm">
           <text>"majorPriority"</text>
@@ -307,7 +312,8 @@ else 500</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1grsjwz">
-          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+          <text>"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_116cqq5">
           <text>"minorPriority"</text>
@@ -472,7 +478,8 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_19ib501">
-          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+          <text>"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0jimamk">
           <text>"dueDateIntervalDays"</text>
@@ -513,7 +520,8 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jdpa4c">
-          <text>"MultiplesReviewReferralResponseLegalOps"</text>
+          <text>"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0absvie">
           <text>"priorityDateOriginRef"</text>
