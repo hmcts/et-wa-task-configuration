@@ -193,7 +193,9 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             Arguments.of("ReviewReferralAdminMultiple", routineWork),
             Arguments.of("ReviewReferralLegalOpsMultiple", routineWork),
             Arguments.of("ReviewReferralJudiciaryMultiple", decisionMakingWork),
-            Arguments.of("MultiplesReviewReferralResponseLegalOps", routineWork)
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", routineWork),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", decisionMakingWork)
+
         );
     }
 
@@ -241,8 +243,9 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             Arguments.of("ReviewReferralLegalOpsMultiple", legalOps),
             Arguments.of("ReviewReferralJudiciaryMultiple", judicial),
             Arguments.of("ReviewReferralAdminMultiple", administrator),
-            Arguments.of("MultiplesReviewReferralResponseLegalOps", legalOps)
-        );
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", legalOps),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", judicial)
+            );
     }
 
     @ParameterizedTest
@@ -284,8 +287,9 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
             Arguments.of("ReviewReferralAdminMultiple", descReferralTab),
             Arguments.of("ReviewReferralLegalOpsMultiple", descReferralTab),
             Arguments.of("ReviewReferralJudiciaryMultiple", descReferralTab),
-            Arguments.of("MultiplesReviewReferralResponseLegalOps", descReferralTab)
-        );
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", descReferralTab),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", descReferralTab)
+            );
     }
 
     @ParameterizedTest
@@ -452,6 +456,14 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
                          priorityDateOriginRef, null
             ),
             Arguments.of("MultiplesReviewReferralResponseLegalOps", ISURGENT_REPLY_NO,
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
+            ),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", ISURGENT_REPLY_YES,
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         priorityDateOriginRef, null
+            ),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", ISURGENT_REPLY_NO,
                          dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
                          defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
             )

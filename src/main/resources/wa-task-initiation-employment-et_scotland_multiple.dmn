@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
   <decision id="wa-task-initiation-employment-et_scotland_multiple" name="ET Multiple Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_1l2v2xj">
       <requiredDecision href="#Decision_1xqgkq6" />
@@ -185,6 +185,35 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0z6yewn">
+          <text>"Processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03y3ngi">
+        <inputEntry id="UnaryTests_1u10vjh">
+          <text>"replyToReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lrmkm3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nosgca">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qxy7ei">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ukpuq6">
+          <text>"Judge"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jq8mpe">
+          <text>"ReviewReferralResponseJudiciaryMultiple"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bkq2mj">
+          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ok5ngi">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fa21wf">
           <text>"Processing"</text>
         </outputEntry>
       </rule>

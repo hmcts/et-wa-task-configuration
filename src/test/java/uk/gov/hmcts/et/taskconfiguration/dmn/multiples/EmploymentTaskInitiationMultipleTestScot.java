@@ -22,6 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_JUDGE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_LEGALOPS;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_JUDGE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_LEGALOFFICER;
 
 class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitTest {
@@ -80,6 +81,18 @@ class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitT
                         "Processing"
                     )
                 )
+            ),
+            Arguments.of(
+                "replyToReferral",
+                null,
+                HelperService.mapAdditionalData(REFERRAL_REPLY_JUDGE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReviewReferralResponseJudiciaryMultiple",
+                        "Review Multiples Referral #1 - Referral Subject 1 Response",
+                        "Processing"
+                    )
+                )
             ));
     }
 
@@ -103,6 +116,6 @@ class EmploymentTaskInitiationMultipleTestScot extends DmnDecisionTableBaseUnitT
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(4));
+        assertThat(logic.getRules().size(), is(5));
     }
 }

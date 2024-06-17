@@ -49,6 +49,12 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
                         "MultiplesReviewReferralResponseLegalOps",
                         "taskTypeName",
                         "Review Multiples Referral Response - Legal Ops"
+                    ),
+                    Map.of(
+                        "taskTypeId",
+                        "ReviewReferralResponseJudiciaryMultiple",
+                        "taskTypeName",
+                        "Review Multiples Referral Response - Judicial"
                     )
                 )
             )
@@ -70,6 +76,6 @@ public class EmploymentTaskTypeMultipleTestScot extends DmnDecisionTableBaseUnit
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(4));
+        assertThat(logic.getRules().size(), is(5));
     }
 }
