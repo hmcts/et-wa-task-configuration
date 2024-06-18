@@ -241,7 +241,8 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
             Arguments.of("ReviewReferralLegalOpsMultiple", legalOps),
             Arguments.of("ReviewReferralJudiciaryMultiple", judicial),
             Arguments.of("MultiplesReviewReferralResponseLegalOps", legalOps),
-            Arguments.of("ReviewReferralResponseJudiciaryMultiple", judicial)
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", judicial),
+            Arguments.of("ReviewReferralResponseAdminMultiple", administrator)
         );
     }
 
@@ -286,7 +287,8 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
             Arguments.of("ReviewReferralLegalOpsMultiple", descReferralTab),
             Arguments.of("ReviewReferralJudiciaryMultiple", descReferralTab),
             Arguments.of("MultiplesReviewReferralResponseLegalOps", descReferralTab),
-            Arguments.of("ReviewReferralResponseJudiciaryMultiple", descReferralTab)
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", descReferralTab),
+            Arguments.of("ReviewReferralResponseAdminMultiple", descReferralTab)
         );
     }
 
@@ -475,6 +477,14 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
                          priorityDateOriginRef, null
             ),
             Arguments.of("ReviewReferralResponseJudiciaryMultiple", ISURGENT_REPLY_NO,
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
+                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
+            ),
+            Arguments.of("ReviewReferralResponseAdminMultiple", ISURGENT_REPLY_YES,
+                         dueDateIntervalDays1NoReconfigure, urgentMajorPriority, urgentMinorPriority,
+                         priorityDateOriginRef, null
+            ),
+            Arguments.of("ReviewReferralResponseAdminMultiple", ISURGENT_REPLY_NO,
                          dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
                          defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
             )
