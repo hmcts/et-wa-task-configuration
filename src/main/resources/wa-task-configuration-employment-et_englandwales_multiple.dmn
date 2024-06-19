@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.18.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.23.0">
   <decision id="wa-task-configuration-employment-et_englandwales_multiple" name="ET Multiple Task configuration DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -130,7 +130,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1s942lt">
-          <text>"ReviewReferralAdminMultiple", "ReviewReferralLegalOpsMultiple", "MultiplesReviewReferralResponseLegalOps"</text>
+          <text>"ReviewReferralAdminMultiple", "ReviewReferralLegalOpsMultiple", "MultiplesReviewReferralResponseLegalOps", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0n9qju5">
           <text>"workType"</text>
@@ -165,7 +165,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1faq2jo">
-          <text>"ReviewReferralAdminMultiple"</text>
+          <text>"ReviewReferralAdminMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -221,7 +221,7 @@
 "ReviewReferralJudiciaryMultiple",
 "ReviewReferralLegalOpsMultiple",
 "MultiplesReviewReferralResponseLegalOps",
-"ReviewReferralResponseJudiciaryMultiple"</text>
+"ReviewReferralResponseJudiciaryMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0c6p65o">
           <text>"description"</text>
@@ -263,7 +263,7 @@ else 5000</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1hgnauw">
           <text>"MultiplesReviewReferralResponseLegalOps",
-"ReviewReferralResponseJudiciaryMultiple"</text>
+"ReviewReferralResponseJudiciaryMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0owfzza">
           <text>"majorPriority"</text>
@@ -310,7 +310,7 @@ else 500</text>
         </inputEntry>
         <inputEntry id="UnaryTests_19041y8">
           <text>"MultiplesReviewReferralResponseLegalOps",
-"ReviewReferralResponseJudiciaryMultiple"</text>
+"ReviewReferralResponseJudiciaryMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1th3fkl">
           <text>"minorPriority"</text>
@@ -476,7 +476,7 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1n6xyme">
           <text>"MultiplesReviewReferralResponseLegalOps",
-"ReviewReferralResponseJudiciaryMultiple"</text>
+"ReviewReferralResponseJudiciaryMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0hssll5">
           <text>"dueDateIntervalDays"</text>
@@ -518,7 +518,7 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0vudyc1">
           <text>"MultiplesReviewReferralResponseLegalOps",
-"ReviewReferralResponseJudiciaryMultiple"</text>
+"ReviewReferralResponseJudiciaryMultiple", "ReviewReferralResponseAdminMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0o9amih">
           <text>"priorityDateOriginRef"</text>
