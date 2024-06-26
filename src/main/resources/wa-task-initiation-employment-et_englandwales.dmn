@@ -464,7 +464,8 @@ else null</text>
 "Extension of time request",
 "Transfer request",
 "Initial Consideration",
-"Other"</text>
+"Other",
+"Rule 21"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
@@ -513,68 +514,6 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1flovqn">
           <text>"Vetting"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0czmplo">
-        <inputEntry id="UnaryTests_171nfwx">
-          <text>"createReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0psy3au">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ar4dx9">
-          <text>"Judge"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_008f6zs">
-          <text>"Rule 21"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0cbz43f">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0fomiml">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_15v1j0p">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0adqbkn">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1ku3a5g">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_083mfad">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0xap2lw">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0vzupos">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1io07dz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_01f0122">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0nsbmo2">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0yukqqw">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0zsboti">
-          <text>"DraftAndSignJudgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1juaks9">
-          <text>"Draft And Sign Judgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_17sbt3s">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_06gpnf8">
-          <text>"Judgment"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1xtkppt">
