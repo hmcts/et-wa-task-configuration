@@ -444,27 +444,7 @@ else null</text>
           <text>"Judge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_01db6ha">
-          <text>"ET1",
-"ET3/ECC",
-"Amend claim",
-"Amend response",
-"Strike out all or part of claim",
-"Strike out all or part of response",
-"Withdraw claim",
-"Orders",
-"Party not responded/complied",
-"Order other party",
-"Rule 50 application",
-"Order a witness to attend",
-"Hearings",
-"Postpone a hearing",
-"Judgment",
-"Reconsider decision",
-"Reconsider judgment",
-"Extension of time request",
-"Transfer request",
-"Initial Consideration",
-"Other"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
@@ -513,68 +493,6 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1flovqn">
           <text>"Vetting"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0czmplo">
-        <inputEntry id="UnaryTests_171nfwx">
-          <text>"createReferral"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0psy3au">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ar4dx9">
-          <text>"Judge"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_008f6zs">
-          <text>"Rule 21"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0cbz43f">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1bv77n6">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1odjlr3">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1612eft">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ddn923">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ricvbe">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0urjryl">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1of6mqp">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1io07dz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_072j9rn">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_064u943">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1b8wx9o">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0zsboti">
-          <text>"DraftAndSignJudgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1juaks9">
-          <text>"Draft And Sign Judgment"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_17sbt3s">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_06gpnf8">
-          <text>"Judgment"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1xtkppt">
@@ -2543,10 +2461,10 @@ and additionalData.Data.sendNotificationCollection!=null
 and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
 
 then (sort(
-flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
-function(x,y) 
-date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
-&gt; 
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection),
+function(x,y)
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
+&gt;
 date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
 )[1].value.isECC="Yes")
 
@@ -2560,15 +2478,15 @@ else false</text>
 and additionalData.Data!=null
 and additionalData.Data.sendNotificationCollection!=null
 and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
-  
+
 then (sort(
-flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
-function(x,y) 
-date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
-&gt; 
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection),
+function(x,y)
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
+&gt;
 date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
 )[1].value.from="Claimant")
-  
+
 else false</text>
     </literalExpression>
   </decision>
