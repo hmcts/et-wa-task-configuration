@@ -444,28 +444,7 @@ else null</text>
           <text>"Judge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_01db6ha">
-          <text>"ET1",
-"ET3/ECC",
-"Amend claim",
-"Amend response",
-"Strike out all or part of claim",
-"Strike out all or part of response",
-"Withdraw claim",
-"Orders",
-"Party not responded/complied",
-"Order other party",
-"Rule 50 application",
-"Order a witness to attend",
-"Hearings",
-"Postpone a hearing",
-"Judgment",
-"Reconsider decision",
-"Reconsider judgment",
-"Extension of time request",
-"Transfer request",
-"Initial Consideration",
-"Other",
-"Rule 21"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mxz5ig">
           <text></text>
