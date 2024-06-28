@@ -31,7 +31,7 @@ class EmploymentTaskCancellationMultipleTestScot extends DmnDecisionTableBaseUni
         return Stream.of(
             Arguments.of(
                 null,
-                "disposeCase",
+                "close",
                 null,
                 List.of(
                     Map.of(

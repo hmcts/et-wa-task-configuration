@@ -31,7 +31,7 @@ class EmploymentTaskCancellationMultipleTestEW extends DmnDecisionTableBaseUnitT
         return Stream.of(
             Arguments.of(
                 null,
-                "disposeCase",
+                "close",
                 null,
                 List.of(
                     Map.of(
