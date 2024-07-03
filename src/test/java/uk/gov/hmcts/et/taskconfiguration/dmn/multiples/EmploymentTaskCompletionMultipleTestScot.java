@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_COMPLETION_ET_MULTIPLE_SCOTLAND;
@@ -53,7 +54,8 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
                     Map.of(
                         "taskType", "ReviewReferralResponseAdminMultiple",
                         "completionMode", "Auto"
-                    )
+                    ),
+                    emptyMap()
                 )
             ),
             Arguments.of(
@@ -81,7 +83,8 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
                     Map.of(
                         "taskType", "ReviewReferralResponseAdminMultiple",
                         "completionMode", "Auto"
-                    )
+                    ),
+                    emptyMap()
                 )
             )
         );
@@ -101,6 +104,6 @@ class EmploymentTaskCompletionMultipleTestScot extends DmnDecisionTableBaseUnitT
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(6));
+        assertThat(logic.getRules().size(), is(7));
     }
 }

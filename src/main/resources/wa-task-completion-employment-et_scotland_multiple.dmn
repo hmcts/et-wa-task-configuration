@@ -81,6 +81,19 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1lczrsw">
+        <description>Left empty so event can be triggered without a task</description>
+        <inputEntry id="UnaryTests_1i6vjei">
+          <text>"replyToReferral",
+"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09rbxbo">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1153okh">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
