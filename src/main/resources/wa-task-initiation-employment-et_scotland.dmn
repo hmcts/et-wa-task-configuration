@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.22.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_1l2v2xj">
       <requiredDecision href="#Decision_1xqgkq6" />
@@ -15,6 +15,9 @@
     </informationRequirement>
     <informationRequirement id="InformationRequirement_0hh008c">
       <requiredDecision href="#Decision_14sdj4h" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0kbw8n2">
+      <requiredDecision href="#Decision_1kilhjk" />
     </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" biodi:width="267" camunda:inputVariable="eventId">
@@ -300,13 +303,13 @@ else null</text>
           <text>"ReviewReferralAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16yf2nj">
-          <text>LATEST_REFERRAL_TASK_NAME</text>
+          <text>"Review Referral - Admin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n9o39e">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c8d2go">
-          <text>"Vetting"</text>
+          <text>"Vetting, referralNumber_" + REFERRAL_NUMBER</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1s31bcd">
@@ -486,13 +489,13 @@ else null</text>
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16t7tco">
-          <text>LATEST_REFERRAL_TASK_NAME</text>
+          <text>"Review Referral - Judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zdr7bg">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1flovqn">
-          <text>"Vetting"</text>
+          <text>"Vetting, referralNumber_" + REFERRAL_NUMBER</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1xtkppt">
@@ -548,13 +551,13 @@ else null</text>
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1x90otf">
-          <text>LATEST_REFERRAL_TASK_NAME</text>
+          <text>"Review Referral - Legal Officer"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0iaqh1t">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1luz902">
-          <text>"Vetting"</text>
+          <text>"Vetting, referralNumber_" + REFERRAL_NUMBER</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1579wwj">
@@ -610,13 +613,13 @@ else null</text>
           <text>"ReviewReferralResponseAdmin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qcsldu">
-          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+          <text>"Review Referral response - Admin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kmxycv">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1opsd1f">
-          <text>"Processing"</text>
+          <text>"Processing, referralNumber_" + REFERRAL_NUMBER</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0hm05l9">
@@ -672,13 +675,13 @@ else null</text>
           <text>"ReviewReferralResponseJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08j7d7p">
-          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+          <text>"Review Referral response - Judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zcsqzi">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gy7tms">
-          <text>"Processing"</text>
+          <text>"Processing, referralNumber_" + REFERRAL_NUMBER</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_00vkigv">
@@ -734,13 +737,13 @@ else null</text>
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03wz7tv">
-          <text>LATEST_REFERRAL_REPLY_TASK_NAME</text>
+          <text>"Review Referral response - Legal Officer"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14hvioj">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ce5c8c">
-          <text>"Processing"</text>
+          <text>"Processing, referralNumber_" + REFERRAL_NUMBER</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0o71iym">
@@ -2490,6 +2493,24 @@ date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T0
 else false</text>
     </literalExpression>
   </decision>
+  <decision id="Decision_1kilhjk" name="INITIATION_REFERRAL_NUMBER">
+    <variable id="InformationItem_01d3lbm" name="REFERRAL_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_0z05q4l">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0
+and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralNumber!=null)
+then sort(
+  additionalData.Data.referralCollection,
+  function(x,y)
+    number(x.value.referralNumber)
+    &gt;
+    number(y.value.referralNumber)
+)[1].value.referralNumber
+else null</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_scotland">
@@ -2598,6 +2619,14 @@ else false</text>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_1mfucxv" dmnElementRef="Decision_06g5z3o">
         <dc:Bounds height="80" width="180" x="1620" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_06cyuw0" dmnElementRef="InformationRequirement_0kbw8n2">
+        <di:waypoint x="340" y="130" />
+        <di:waypoint x="680" y="90" />
+        <di:waypoint x="700" y="90" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_08b237p" dmnElementRef="Decision_1kilhjk">
+        <dc:Bounds height="80" width="180" x="160" y="90" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>

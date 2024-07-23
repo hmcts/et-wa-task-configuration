@@ -30,6 +30,7 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISU
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISURGENT_REPLY_YES;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.IS_URGENT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.NOT_URGENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.HelperService.getReferralObjectString;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_JUDGE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_LEGALOPS;
@@ -39,7 +40,7 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
     private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
-    public static final String TITLE_1 = "Review Referral #" + 1 + " - " + "Referral Subject " + 1;
+    private static final String REFERRAL_TITLE = "Review Referral #" + 1 + " - " + "Referral Subject " + 1;
 
     @BeforeAll
     public static void initialization() {
@@ -597,37 +598,33 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         return Stream.of(
             Arguments.of(
                 getReferralObjectString(REFERRAL_ADMIN),
-                TITLE_1
+                REFERRAL_TITLE
             ),
             Arguments.of(
                 getReferralObjectString(REFERRAL_JUDGE),
-                TITLE_1
+                REFERRAL_TITLE
             ),
             Arguments.of(
                 getReferralObjectString(REFERRAL_LEGALOPS),
-                TITLE_1
+                REFERRAL_TITLE
             ),
             Arguments.of(
                 getReferralObjectString(REFERRAL_REPLY_JUDGE),
-                TITLE_1
+                REFERRAL_TITLE
             ),
             Arguments.of(
                 getReferralObjectString(REFERRAL_REPLY_JUDGE),
-                TITLE_1
+                REFERRAL_TITLE
             ),
             Arguments.of(
                 getReferralObjectString(REFERRAL_REPLY_LEGALOFFICER),
-                TITLE_1
+                REFERRAL_TITLE
             ),
             Arguments.of(
                 "",
                 null
             )
         );
-    }
-
-    private static String getReferralObjectString(String rawReferralCollection) {
-        return "{" + rawReferralCollection + "}";
     }
 
     @ParameterizedTest

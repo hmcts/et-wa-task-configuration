@@ -22,7 +22,7 @@ then taskType
 else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="369" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="245" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="1014" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_1ea127g">
