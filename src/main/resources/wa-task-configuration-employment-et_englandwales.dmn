@@ -382,7 +382,7 @@ else null</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1b7smpa">
-          <text>"[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
+          <text>"[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nnd54t">
           <text>true</text>
@@ -401,8 +401,9 @@ else null</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vtkg3d">
-          <text>"Review the Referral Response
-You can also [Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
+          <text>"**Review the Referral Response**   
+  
+You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1q4z2i4">
           <text>true</text>

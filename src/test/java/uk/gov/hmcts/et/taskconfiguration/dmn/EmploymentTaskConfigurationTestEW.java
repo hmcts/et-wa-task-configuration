@@ -402,16 +402,18 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> descReferralReplyTab = List.of(Map.of(
             "name", "description",
             "value",
-            "[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)",
+            "[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/"
+                + "trigger/replyToReferral/replyToReferral1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descReferralResponseTab = List.of(Map.of(
             "name", "description",
             "value",
-            "Review the Referral Response\n"
-                + "You can also [Reply to Referral](/cases/case-details/"
+            "**Review the Referral Response**   \n  \n"
+                + "You can also [Reply to the Referral](/cases/case-details/"
                 + "${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"
-                + " or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)",
+                + " or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/"
+                + "trigger/closeReferral/closeReferral1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descUploadDocForServing = List.of(Map.of(
