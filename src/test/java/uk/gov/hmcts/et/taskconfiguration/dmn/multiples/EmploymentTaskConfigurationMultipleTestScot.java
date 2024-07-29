@@ -285,11 +285,12 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
         List<Map<String, Object>> descReferralResponseTab = List.of(Map.of(
             "name", "description",
             "value",
-            "**Review the Referral Response**   \n  \n"
-                + "You can also [Reply to the Referral](/cases/case-details/"
-                + "${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"
-                + " or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/closeReferral/closeReferral1)",
+            """
+                **Review the Referral Response**
+
+                You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/\
+                replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/\
+                closeReferral/closeReferral1)""",
             "canReconfigure", true
         ));
 
