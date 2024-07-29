@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales_multiple" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.24.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales_multiple" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <decision id="wa-task-configuration-employment-et_englandwales_multiple" name="ET Multiple Task configuration DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" biodi:width="150" camunda:inputVariable="caseData">
@@ -223,18 +223,36 @@ else null</text>
         <inputEntry id="UnaryTests_07rgo5f">
           <text>"ReviewReferralAdminMultiple",
 "ReviewReferralJudiciaryMultiple",
-"ReviewReferralLegalOpsMultiple",
-"MultiplesReviewReferralResponseLegalOps",
-"ReviewReferralResponseJudiciaryMultiple",
-"ReviewReferralResponseAdminMultiple"</text>
+"ReviewReferralLegalOpsMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0c6p65o">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1b7smpa">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
+          <text>"[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nnd54t">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hujglq">
+        <inputEntry id="UnaryTests_1qgy0et">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a5s5hg">
+          <text>"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple",
+"ReviewReferralResponseAdminMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wwiv4n">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w79wqn">
+          <text>"**Review the Referral Response**   
+  
+You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10jxmz4">
           <text>true</text>
         </outputEntry>
       </rule>
