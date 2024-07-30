@@ -467,7 +467,12 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> descApplicationsTab = List.of(Map.of(
             "name", "description",
-            "value", "[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)",
+            "value",
+            "**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/"
+                + "trigger/tseAdmReply/tseAdmReply1), "
+                + "[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1) "
+                + "or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/"
+                + "tseAdminCloseAnApplication1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descIssueJudgment = List.of(Map.of(

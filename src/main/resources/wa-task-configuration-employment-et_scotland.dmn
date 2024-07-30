@@ -563,7 +563,7 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)"</text>
+          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/tseAdmReply1), [Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/tseAdminCloseAnApplication1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
           <text>true</text>
