@@ -223,18 +223,36 @@ else null</text>
         <inputEntry id="UnaryTests_1mpta03">
           <text>"ReviewReferralAdminMultiple",
 "ReviewReferralJudiciaryMultiple",
-"ReviewReferralLegalOpsMultiple",
-"MultiplesReviewReferralResponseLegalOps",
-"ReviewReferralResponseJudiciaryMultiple",
-"ReviewReferralResponseAdminMultiple"</text>
+"ReviewReferralLegalOpsMultiple"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xnep6d">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01cq0a4">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
+          <text>"[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16j4gpk">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17dl6u2">
+        <inputEntry id="UnaryTests_1k680n0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gl1va7">
+          <text>"MultiplesReviewReferralResponseLegalOps",
+"ReviewReferralResponseJudiciaryMultiple",
+"ReviewReferralResponseAdminMultiple"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f4t84s">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02xfy4g">
+          <text>"**Review the Referral Response**
+
+You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0907vig">
           <text>true</text>
         </outputEntry>
       </rule>
