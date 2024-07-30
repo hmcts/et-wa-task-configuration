@@ -399,14 +399,14 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             "value", "[ET1 Vetting](/cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descReferralReplyTab = List.of(Map.of(
+        List<Map<String, Object>> descReferralReply = List.of(Map.of(
             "name", "description",
             "value",
             "[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/"
                 + "trigger/replyToReferral/replyToReferral1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descReferralResponseTab = List.of(Map.of(
+        List<Map<String, Object>> descReferralResponse = List.of(Map.of(
             "name", "description",
             "value",
             """
@@ -493,12 +493,12 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         return Stream.of(
             Arguments.of("Et1Vetting", descET1Vetting),
 
-            Arguments.of("ReviewReferralAdmin", descReferralReplyTab),
-            Arguments.of("ReviewReferralJudiciary", descReferralReplyTab),
-            Arguments.of("ReviewReferralLegalOps", descReferralReplyTab),
-            Arguments.of("ReviewReferralResponseAdmin", descReferralResponseTab),
-            Arguments.of("ReviewReferralResponseJudiciary", descReferralResponseTab),
-            Arguments.of("ReviewReferralResponseLegalOps", descReferralResponseTab),
+            Arguments.of("ReviewReferralAdmin", descReferralReply),
+            Arguments.of("ReviewReferralJudiciary", descReferralReply),
+            Arguments.of("ReviewReferralLegalOps", descReferralReply),
+            Arguments.of("ReviewReferralResponseAdmin", descReferralResponse),
+            Arguments.of("ReviewReferralResponseJudiciary", descReferralResponse),
+            Arguments.of("ReviewReferralResponseLegalOps", descReferralResponse),
 
             Arguments.of("ListServeClaim", descUploadDocForServing),
 

@@ -277,14 +277,14 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
-        List<Map<String, Object>> descReferralReplyTab = List.of(Map.of(
+        List<Map<String, Object>> descReferralReply = List.of(Map.of(
             "name", "description",
             "value",
             "[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/"
                 + "trigger/replyToReferral/replyToReferral1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descReferralResponseTab = List.of(Map.of(
+        List<Map<String, Object>> descReferralResponse = List.of(Map.of(
             "name", "description",
             "value",
             """
@@ -298,12 +298,12 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
 
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", descReferralReplyTab),
-            Arguments.of("ReviewReferralLegalOpsMultiple", descReferralReplyTab),
-            Arguments.of("ReviewReferralJudiciaryMultiple", descReferralReplyTab),
-            Arguments.of("MultiplesReviewReferralResponseLegalOps", descReferralResponseTab),
-            Arguments.of("ReviewReferralResponseJudiciaryMultiple", descReferralResponseTab),
-            Arguments.of("ReviewReferralResponseAdminMultiple", descReferralResponseTab)
+            Arguments.of("ReviewReferralAdminMultiple", descReferralReply),
+            Arguments.of("ReviewReferralLegalOpsMultiple", descReferralReply),
+            Arguments.of("ReviewReferralJudiciaryMultiple", descReferralReply),
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", descReferralResponse),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", descReferralResponse),
+            Arguments.of("ReviewReferralResponseAdminMultiple", descReferralResponse)
             );
     }
 
