@@ -175,7 +175,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     @ParameterizedTest
     @MethodSource("hearingDate_ScenarioProvider")
     void testHearingDate(String nextListedDate,
-                       String expectedNextHearingDate) {
+                         String expectedNextHearingDate) {
         // Given
         Map<String, Object> caseData = getDefaultCaseData();
         caseData.put("nextListedDate", nextListedDate);
@@ -374,7 +374,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         inputVariables.putValue("caseData", getDefaultCaseData());
         inputVariables.putValue("taskAttributes", Map.of("taskType", taskType,
                                                          "roleAssignmentId", roleAssignmentId,
-                                                         "taskId", taskId));
+                                                         "taskId", taskId
+        ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -455,10 +456,10 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value",
             "**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/tseAdmReply/tseAdmReply1), "
-                + "[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1) "
-                + "or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/"
-                + "tseAdminCloseAnApplication1)",
+                + "trigger/tseAdmin/tseAdmin1),\\ \n"
+                + "[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/"
+                + "tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "tseAdminCloseAnApplication/tseAdminCloseAnApplication1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descIssueJudgment = List.of(Map.of(
@@ -478,6 +479,24 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value", "[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
                 + "specific-access)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> claimantDetails = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also update [Claimant Details](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> respondentDetails = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also update [Respondent Details](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> createReferral = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also [Send a new referral](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)",
             "canReconfigure", true
         ));
 
@@ -511,9 +530,9 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("DraftAndSignJudgment", descDraftJudgment),
 
             Arguments.of("ContactTribunalWithAnApplication", descApplicationsTab),
-            Arguments.of("AmendClaimantDetails", descApplicationsTab),
-            Arguments.of("AmendRespondentDetails", descApplicationsTab),
-            Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
+            Arguments.of("AmendClaimantDetails", claimantDetails),
+            Arguments.of("AmendRespondentDetails", respondentDetails),
+            Arguments.of("WithdrawAllOrPartOfCase", createReferral),
 
             Arguments.of("IssueJudgment", descIssueJudgment),
 
@@ -540,7 +559,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         inputVariables.putValue("caseData", getDefaultCaseData());
         inputVariables.putValue("taskAttributes", Map.of("taskType", taskType,
                                                          "roleAssignmentId", roleAssignmentId,
-                                                         "taskId", taskId));
+                                                         "taskId", taskId
+        ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -589,8 +609,10 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expectedIntervalDays.get(0).get("name"), intervalDaysResultList.get(0).get("name"));
         assertEquals(expectedIntervalDays.get(0).get("value"), intervalDaysResultList.get(0).get("value"));
-        assertEquals(expectedIntervalDays.get(0).get("canReconfigure"),
-                     intervalDaysResultList.get(0).get("canReconfigure"));
+        assertEquals(
+            expectedIntervalDays.get(0).get("canReconfigure"),
+            intervalDaysResultList.get(0).get("canReconfigure")
+        );
 
         List<Map<String, Object>> majorPriorityResultList =
             dmnDecisionTableResult
@@ -622,12 +644,18 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                     .filter((r) -> r.containsValue("priorityDateOriginRef"))
                     .toList();
 
-            assertEquals(expectedPriorityDateOrigin.get(0).get("name"),
-                         priorityDateRefResultList.get(0).get("name"));
-            assertEquals(expectedPriorityDateOrigin.get(0).get("value"),
-                         priorityDateRefResultList.get(0).get("value"));
-            assertEquals(expectedPriorityDateOrigin.get(0).get("canReconfigure"),
-                         priorityDateRefResultList.get(0).get("canReconfigure"));
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("name"),
+                priorityDateRefResultList.get(0).get("name")
+            );
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("value"),
+                priorityDateRefResultList.get(0).get("value")
+            );
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("canReconfigure"),
+                priorityDateRefResultList.get(0).get("canReconfigure")
+            );
         }
 
         if (expectedPriorityDateEarliest != null) {
@@ -638,12 +666,17 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                     .filter((r) -> r.containsValue("priorityDateOriginEarliest"))
                     .toList();
 
-            assertEquals(expectedPriorityDateEarliest.get(0).get("name"),
-                         priorityDateEarResultList.get(0).get("name"));
-            assertEquals(expectedPriorityDateEarliest.get(0).get("value"),
-                         priorityDateEarResultList.get(0).get("value"));
-            assertEquals(expectedPriorityDateEarliest.get(0).get("canReconfigure"),
-                         priorityDateEarResultList.get(0).get("canReconfigure")
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("name"),
+                priorityDateEarResultList.get(0).get("name")
+            );
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("value"),
+                priorityDateEarResultList.get(0).get("value")
+            );
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("canReconfigure"),
+                priorityDateEarResultList.get(0).get("canReconfigure")
             );
         }
     }
@@ -934,7 +967,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(53));
+        assertThat(logic.getRules().size(), is(56));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
@@ -950,7 +983,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
         HelperService.getExpectedValueWithReconfigure(
-            rules, "dueDateNonWorkingCalendar",DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
+            rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);

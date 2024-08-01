@@ -456,10 +456,10 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value",
             "**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/tseAdmReply/tseAdmReply1), "
-                + "[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1) "
-                + "or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/"
-                + "tseAdminCloseAnApplication1)",
+                + "trigger/tseAdmin/tseAdmin1),\\ \n"
+                + "[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/"
+                + "tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "tseAdminCloseAnApplication/tseAdminCloseAnApplication1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descIssueJudgment = List.of(Map.of(
@@ -479,6 +479,24 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value", "[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
                 + "specific-access)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> claimantDetails = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also update [Claimant Details](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> respondentDetails = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also update [Respondent Details](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> createReferral = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also [Send a new referral](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)",
             "canReconfigure", true
         ));
 
@@ -512,9 +530,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("DraftAndSignJudgment", descDraftJudgment),
 
             Arguments.of("ContactTribunalWithAnApplication", descApplicationsTab),
-            Arguments.of("AmendClaimantDetails", descApplicationsTab),
-            Arguments.of("AmendRespondentDetails", descApplicationsTab),
-            Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
+            Arguments.of("AmendClaimantDetails", claimantDetails),
+            Arguments.of("AmendRespondentDetails", respondentDetails),
+            Arguments.of("WithdrawAllOrPartOfCase", createReferral),
 
             Arguments.of("IssueJudgment", descIssueJudgment),
 
@@ -936,7 +954,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(53));
+        assertThat(logic.getRules().size(), is(56));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
