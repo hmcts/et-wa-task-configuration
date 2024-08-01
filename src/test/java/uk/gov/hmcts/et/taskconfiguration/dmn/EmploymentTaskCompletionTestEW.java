@@ -206,10 +206,6 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     ),
                     Map.of(
-                        "taskType", "ContactTribunalWithAnApplication",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
                         "taskType", "ReviewECCResponse",
                         "completionMode", "Auto"
                     ),
@@ -266,6 +262,33 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "taskType", "WithdrawAllOrPartOfCase",
                         "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "tseAdmin",
+                asList(
+                    Map.of("taskType", "ContactTribunalWithAnApplication",
+                           "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "tseAdmReply",
+                asList(
+                    Map.of("taskType", "ContactTribunalWithAnApplication",
+                           "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "tseAdminCloseAnApplication",
+                asList(
+                    Map.of("taskType", "ContactTribunalWithAnApplication",
+                           "completionMode", "Auto"
                     ),
                     emptyMap()
                 )
