@@ -399,9 +399,19 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "[ET1 Vetting](/cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descReferralTab = List.of(Map.of(
+        List<Map<String, Object>> descReferralReplyTab = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)",
+            "value",
+            "[Reply to Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> descReferralResponseTab = List.of(Map.of(
+            "name", "description",
+            "value",
+            "Review the Referral Response\n"
+                + "You can also [Reply to Referral](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"
+                + " or [Close Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descUploadDocForServing = List.of(Map.of(
@@ -480,12 +490,12 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         return Stream.of(
             Arguments.of("Et1Vetting", descET1Vetting),
 
-            Arguments.of("ReviewReferralAdmin", descReferralTab),
-            Arguments.of("ReviewReferralJudiciary", descReferralTab),
-            Arguments.of("ReviewReferralLegalOps", descReferralTab),
-            Arguments.of("ReviewReferralResponseAdmin", descReferralTab),
-            Arguments.of("ReviewReferralResponseJudiciary", descReferralTab),
-            Arguments.of("ReviewReferralResponseLegalOps", descReferralTab),
+            Arguments.of("ReviewReferralAdmin", descReferralReplyTab),
+            Arguments.of("ReviewReferralJudiciary", descReferralReplyTab),
+            Arguments.of("ReviewReferralLegalOps", descReferralReplyTab),
+            Arguments.of("ReviewReferralResponseAdmin", descReferralResponseTab),
+            Arguments.of("ReviewReferralResponseJudiciary", descReferralResponseTab),
+            Arguments.of("ReviewReferralResponseLegalOps", descReferralResponseTab),
 
             Arguments.of("ListServeClaim", descUploadDocForServing),
 
@@ -931,7 +941,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(53));
+        assertThat(logic.getRules().size(), is(54));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
