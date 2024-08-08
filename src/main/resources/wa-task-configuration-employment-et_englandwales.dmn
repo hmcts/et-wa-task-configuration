@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.24.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
+    <informationRequirement id="InformationRequirement_033q10u">
+      <requiredDecision href="#Decision_0jm8h9b" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1ydwuey">
+      <requiredDecision href="#Decision_1bya5si" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -16,9 +22,28 @@ then taskType
 else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="258" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="369" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="1014" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
+      <rule id="DecisionRule_1ea127g">
+        <inputEntry id="UnaryTests_1ujoyvh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_041nbr3">
+          <text>"ReviewReferralAdmin"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xxcfdq">
+          <text>"title"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07bzrql">
+          <text>if(REFERRAL_NUMBER!=null and REFERRAL_SUBJECT!=null)
+then "Review Referral #" + REFERRAL_NUMBER + " - " + REFERRAL_SUBJECT
+else null</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08mp2n4">
+          <text></text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_19opwhc">
         <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
         <inputEntry id="UnaryTests_11xjbt2">
@@ -1129,11 +1154,58 @@ else 2</text>
       </rule>
     </decisionTable>
   </decision>
+  <decision id="Decision_0jm8h9b" name="CONFIG_REFERRAL_NUMBER">
+    <variable id="InformationItem_1ay83jb" name="REFERRAL_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_1xq2mzi">
+      <text>{
+  "__prefix" : "__processCategory__referralNumber_",
+  "__attribute_entries" : get entries(taskAttributes),
+  "__matching_keys" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then substring(__item.key, string length(__prefix) + 1) else null,
+  "__filtered_keys" : __matching_keys[item != null],
+  "__nonempty_keys" : append(__filtered_keys, null),
+  "__nullable_referral_number" : __nonempty_keys[1]
+}.__nullable_referral_number</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1bya5si" name="CONFIG_REFERRAL_SUBJECT">
+    <variable id="InformationItem_1g4bvgc" name="REFERRAL_SUBJECT" typeRef="string" />
+    <informationRequirement id="InformationRequirement_0fhkp9k">
+      <requiredDecision href="#Decision_0jm8h9b" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_03jqrnn">
+      <text>if(caseData!=null
+and caseData.referralCollection!=null
+and count(caseData.referralCollection) &gt; 0)
+then caseData.referralCollection.value[referralNumber=REFERRAL_NUMBER][1].referralSubject
+else null</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
       <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_englandwales">
         <dc:Bounds height="80" width="180" x="150" y="80" />
       </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0qameeh" dmnElementRef="InformationRequirement_033q10u">
+        <di:waypoint x="210" y="390" />
+        <di:waypoint x="210" y="180" />
+        <di:waypoint x="210" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0jpyj1w" dmnElementRef="Decision_0jm8h9b">
+        <dc:Bounds height="80" width="180" x="120" y="390" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0krrxfq" dmnElementRef="InformationRequirement_1ydwuey">
+        <di:waypoint x="320" y="220" />
+        <di:waypoint x="270" y="180" />
+        <di:waypoint x="270" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_133yz9v" dmnElementRef="Decision_1bya5si">
+        <dc:Bounds height="80" width="180" x="230" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_16u2vkc" dmnElementRef="InformationRequirement_0fhkp9k">
+        <di:waypoint x="210" y="390" />
+        <di:waypoint x="320" y="320" />
+        <di:waypoint x="320" y="300" />
+      </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </definitions>
