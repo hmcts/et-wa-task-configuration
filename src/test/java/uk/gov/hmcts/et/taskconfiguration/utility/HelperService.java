@@ -106,6 +106,10 @@ public final class HelperService {
         return String.format(REFERRAL_COLLECTION, referralCollection);
     }
 
+    public static String getReferralObjectString(String rawReferralCollection) {
+        return "{" + rawReferralCollection + "}";
+    }
+
     public static String createNotifications(List<String> notificationList) {
         return String.format(NOTIFICATION_COLLECTION,
                              String.join(",", notificationList));
