@@ -554,7 +554,7 @@ else 2</text>
           <text>"dueDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wv03h7">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
