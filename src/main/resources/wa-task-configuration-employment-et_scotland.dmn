@@ -402,18 +402,36 @@ else null</text>
         <inputEntry id="UnaryTests_1rwubnw">
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
-"ReviewReferralLegalOps",
-"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+"ReviewReferralLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_071sio5">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14vawv2">
-          <text>"[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)"</text>
+          <text>"[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gw6v67">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_190h4rm">
+        <inputEntry id="UnaryTests_0jrzbk7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ibdab0">
+          <text>"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0x5bry5">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jzzfi2">
+          <text>"**Review the Referral Response**
+
+You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0q17zzy">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -562,18 +580,67 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_102pi1k">
-          <text>"ContactTribunalWithAnApplication",
-"AmendClaimantDetails",
-"AmendRespondentDetails",
-"WithdrawAllOrPartOfCase"</text>
+          <text>"ContactTribunalWithAnApplication"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0j05fcd">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)"</text>
+          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1),\
+[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/tseAdminCloseAnApplication1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0oo8mav">
+        <inputEntry id="UnaryTests_08zzyws">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e5gkyh">
+          <text>"AmendClaimantDetails"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0klg7sq">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_083c5iy">
+          <text>"**Review the Application**. You can also update [Claimant Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_033422p">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tqnjsj">
+        <inputEntry id="UnaryTests_03lw08p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yh1qhs">
+          <text>"AmendRespondentDetails"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12y3cba">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02xehky">
+          <text>"**Review the Application**. You can also update [Respondent Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0clj2oa">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bj736g">
+        <inputEntry id="UnaryTests_02gh59i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gx20hq">
+          <text>"WithdrawAllOrPartOfCase"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0enrtvq">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sa6x44">
+          <text>"**Review the Application**. You can also [Send a new referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x1wfnk">
           <text>true</text>
         </outputEntry>
       </rule>

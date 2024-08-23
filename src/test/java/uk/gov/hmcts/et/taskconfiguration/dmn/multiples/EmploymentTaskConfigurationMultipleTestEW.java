@@ -277,20 +277,33 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
-        List<Map<String, Object>> descReferralTab = List.of(Map.of(
+        List<Map<String, Object>> descReferralReply = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)",
+            "value",
+            "[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/"
+                + "trigger/replyToReferral/replyToReferral1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> descReferralResponse = List.of(Map.of(
+            "name", "description",
+            "value",
+            """
+                **Review the Referral Response**
+
+                You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/\
+                replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/\
+                closeReferral/closeReferral1)""",
             "canReconfigure", true
         ));
 
 
         return Stream.of(
-            Arguments.of("ReviewReferralAdminMultiple", descReferralTab),
-            Arguments.of("ReviewReferralLegalOpsMultiple", descReferralTab),
-            Arguments.of("ReviewReferralJudiciaryMultiple", descReferralTab),
-            Arguments.of("MultiplesReviewReferralResponseLegalOps", descReferralTab),
-            Arguments.of("ReviewReferralResponseJudiciaryMultiple", descReferralTab),
-            Arguments.of("ReviewReferralResponseAdminMultiple", descReferralTab)
+            Arguments.of("ReviewReferralAdminMultiple", descReferralReply),
+            Arguments.of("ReviewReferralLegalOpsMultiple", descReferralReply),
+            Arguments.of("ReviewReferralJudiciaryMultiple", descReferralReply),
+            Arguments.of("MultiplesReviewReferralResponseLegalOps", descReferralResponse),
+            Arguments.of("ReviewReferralResponseJudiciaryMultiple", descReferralResponse),
+            Arguments.of("ReviewReferralResponseAdminMultiple", descReferralResponse)
             );
     }
 
@@ -569,7 +582,7 @@ class EmploymentTaskConfigurationMultipleTestEW extends DmnDecisionTableBaseUnit
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(27));
+        assertThat(logic.getRules().size(), is(28));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

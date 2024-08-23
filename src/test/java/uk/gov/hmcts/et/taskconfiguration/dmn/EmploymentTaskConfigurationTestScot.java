@@ -406,9 +406,22 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "[ET1 Vetting](/cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descReferralTab = List.of(Map.of(
+        List<Map<String, Object>> descReferralReply = List.of(Map.of(
             "name", "description",
-            "value", "[Review the Referral](/cases/case-details/${[CASE_REFERENCE]}#Referrals)",
+            "value",
+            "[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/"
+                + "trigger/replyToReferral/replyToReferral1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> descReferralResponse = List.of(Map.of(
+            "name", "description",
+            "value",
+            """
+                **Review the Referral Response**
+
+                You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/\
+                replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/\
+                closeReferral/closeReferral1)""",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descUploadDocForServing = List.of(Map.of(
@@ -461,7 +474,12 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> descApplicationsTab = List.of(Map.of(
             "name", "description",
-            "value", "[Review Application](/cases/case-details/${[CASE_REFERENCE]}#Applications)",
+            "value",
+            "**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/"
+                + "trigger/tseAdmin/tseAdmin1),\\\n"
+                + "[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/"
+                + "tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "tseAdminCloseAnApplication/tseAdminCloseAnApplication1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descIssueJudgment = List.of(Map.of(
@@ -483,16 +501,34 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "specific-access)",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> claimantDetails = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also update [Claimant Details](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> respondentDetails = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also update [Respondent Details](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> createReferral = List.of(Map.of(
+            "name", "description",
+            "value", "**Review the Application**. You can also [Send a new referral](/cases/case-details/"
+                + "${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)",
+            "canReconfigure", true
+        ));
 
         return Stream.of(
             Arguments.of("Et1Vetting", descET1Vetting),
 
-            Arguments.of("ReviewReferralAdmin", descReferralTab),
-            Arguments.of("ReviewReferralJudiciary", descReferralTab),
-            Arguments.of("ReviewReferralLegalOps", descReferralTab),
-            Arguments.of("ReviewReferralResponseAdmin", descReferralTab),
-            Arguments.of("ReviewReferralResponseJudiciary", descReferralTab),
-            Arguments.of("ReviewReferralResponseLegalOps", descReferralTab),
+            Arguments.of("ReviewReferralAdmin", descReferralReply),
+            Arguments.of("ReviewReferralJudiciary", descReferralReply),
+            Arguments.of("ReviewReferralLegalOps", descReferralReply),
+            Arguments.of("ReviewReferralResponseAdmin", descReferralResponse),
+            Arguments.of("ReviewReferralResponseJudiciary", descReferralResponse),
+            Arguments.of("ReviewReferralResponseLegalOps", descReferralResponse),
 
             Arguments.of("ListServeClaim", descUploadDocForServing),
 
@@ -514,9 +550,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("DraftAndSignJudgment", descDraftJudgment),
 
             Arguments.of("ContactTribunalWithAnApplication", descApplicationsTab),
-            Arguments.of("AmendClaimantDetails", descApplicationsTab),
-            Arguments.of("AmendRespondentDetails", descApplicationsTab),
-            Arguments.of("WithdrawAllOrPartOfCase", descApplicationsTab),
+            Arguments.of("AmendClaimantDetails", claimantDetails),
+            Arguments.of("AmendRespondentDetails", respondentDetails),
+            Arguments.of("WithdrawAllOrPartOfCase", createReferral),
 
             Arguments.of("IssueJudgment", descIssueJudgment),
 
@@ -543,7 +579,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         inputVariables.putValue("caseData", getDefaultCaseData());
         inputVariables.putValue("taskAttributes", Map.of("taskType", taskType,
                                                          "roleAssignmentId", roleAssignmentId,
-                                                         "taskId", taskId));
+                                                         "taskId", taskId
+        ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -592,8 +629,10 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expectedIntervalDays.get(0).get("name"), intervalDaysResultList.get(0).get("name"));
         assertEquals(expectedIntervalDays.get(0).get("value"), intervalDaysResultList.get(0).get("value"));
-        assertEquals(expectedIntervalDays.get(0).get("canReconfigure"),
-                     intervalDaysResultList.get(0).get("canReconfigure"));
+        assertEquals(
+            expectedIntervalDays.get(0).get("canReconfigure"),
+            intervalDaysResultList.get(0).get("canReconfigure")
+        );
 
         List<Map<String, Object>> majorPriorityResultList =
             dmnDecisionTableResult
@@ -625,12 +664,18 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                     .filter(r -> r.containsValue("priorityDateOriginRef"))
                     .toList();
 
-            assertEquals(expectedPriorityDateOrigin.get(0).get("name"),
-                         priorityDateRefResultList.get(0).get("name"));
-            assertEquals(expectedPriorityDateOrigin.get(0).get("value"),
-                         priorityDateRefResultList.get(0).get("value"));
-            assertEquals(expectedPriorityDateOrigin.get(0).get("canReconfigure"),
-                         priorityDateRefResultList.get(0).get("canReconfigure"));
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("name"),
+                priorityDateRefResultList.get(0).get("name")
+            );
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("value"),
+                priorityDateRefResultList.get(0).get("value")
+            );
+            assertEquals(
+                expectedPriorityDateOrigin.get(0).get("canReconfigure"),
+                priorityDateRefResultList.get(0).get("canReconfigure")
+            );
         }
 
         if (expectedPriorityDateEarliest != null) {
@@ -641,12 +686,17 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                     .filter(r -> r.containsValue("priorityDateOriginEarliest"))
                     .toList();
 
-            assertEquals(expectedPriorityDateEarliest.get(0).get("name"),
-                         priorityDateEarResultList.get(0).get("name"));
-            assertEquals(expectedPriorityDateEarliest.get(0).get("value"),
-                         priorityDateEarResultList.get(0).get("value"));
-            assertEquals(expectedPriorityDateEarliest.get(0).get("canReconfigure"),
-                         priorityDateEarResultList.get(0).get("canReconfigure")
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("name"),
+                priorityDateEarResultList.get(0).get("name")
+            );
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("value"),
+                priorityDateEarResultList.get(0).get("value")
+            );
+            assertEquals(
+                expectedPriorityDateEarliest.get(0).get("canReconfigure"),
+                priorityDateEarResultList.get(0).get("canReconfigure")
             );
         }
     }
@@ -1005,7 +1055,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(54));
+        assertThat(logic.getRules().size(), is(58));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
@@ -1021,7 +1071,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
         HelperService.getExpectedValueWithReconfigure(
-            rules, "dueDateNonWorkingCalendar",DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
+            rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
