@@ -36,10 +36,7 @@ public final class InitiationUtility {
     public static final String REFERRAL_REPLY_JUDGE =
         HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
 
-    public static final String IS_JUDGEMENT_TRUE =
-        "\"draftAndSignJudgement\":{\"isJudgement\":true}";
-    public static final String IS_JUDGEMENT_FALSE =
-        "\"draftAndSignJudgement\":{\"isJudgement\":false}";
+    public static final String DRAFT_AND_SIGN_JUDGEMENT = "\"draftAndSignJudgement\":{}";
 
     public static final String ET3_FORM_NOT_RECEIVED =
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":false,\"responseReceivedCount\":null}}]";
