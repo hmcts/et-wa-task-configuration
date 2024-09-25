@@ -30,10 +30,17 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISU
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISURGENT_REPLY_YES;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.IS_URGENT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.NOT_URGENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.HelperService.getReferralObjectString;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_JUDGE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_LEGALOPS;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_JUDGE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_LEGALOFFICER;
 
 class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
     private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/scotland.json";
+    private static final String REFERRAL_TITLE = "Review Referral #" + 1 + " - " + "Referral Subject " + 1;
 
     @BeforeAll
     public static void initialization() {
@@ -73,7 +80,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("caseName"))
+                .filter(r -> r.containsValue("caseName"))
                 .toList();
 
         // Then
@@ -217,7 +224,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("workType"))
+                .filter(r -> r.containsValue("workType"))
                 .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
@@ -300,7 +307,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("roleCategory"))
+                .filter(r -> r.containsValue("roleCategory"))
                 .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
@@ -383,7 +390,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("description"))
+                .filter(r -> r.containsValue("description"))
                 .toList();
 
         assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
@@ -469,7 +476,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value",
             "**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/tseAdmin/tseAdmin1),\\ \n"
+                + "trigger/tseAdmin/tseAdmin1),\\\n"
                 + "[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/"
                 + "tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
                 + "tseAdminCloseAnApplication/tseAdminCloseAnApplication1)",
@@ -581,7 +588,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+                .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
                 .toList();
 
         assertTrue(resultList.contains(Map.of(
@@ -617,7 +624,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("dueDateIntervalDays"))
+                .filter(r -> r.containsValue("dueDateIntervalDays"))
                 .toList();
 
         assertEquals(expectedIntervalDays.get(0).get("name"), intervalDaysResultList.get(0).get("name"));
@@ -631,7 +638,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("majorPriority"))
+                .filter(r -> r.containsValue("majorPriority"))
                 .toList();
 
         assertEquals(expectedMajor.get(0).get("name"), majorPriorityResultList.get(0).get("name"));
@@ -642,7 +649,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("minorPriority"))
+                .filter(r -> r.containsValue("minorPriority"))
                 .toList();
 
         assertEquals(expectedMinor.get(0).get("name"), minorPriorityResultList.get(0).get("name"));
@@ -654,7 +661,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 dmnDecisionTableResult
                     .getResultList()
                     .stream()
-                    .filter((r) -> r.containsValue("priorityDateOriginRef"))
+                    .filter(r -> r.containsValue("priorityDateOriginRef"))
                     .toList();
 
             assertEquals(
@@ -676,7 +683,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 dmnDecisionTableResult
                     .getResultList()
                     .stream()
-                    .filter((r) -> r.containsValue("priorityDateOriginEarliest"))
+                    .filter(r -> r.containsValue("priorityDateOriginEarliest"))
                     .toList();
 
             assertEquals(
@@ -760,12 +767,12 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> urgentMajorPriority = List.of(Map.of(
             "name", "majorPriority",
             "value", "1000",
-            "canReconfigure", false
+            "canReconfigure", true
         ));
         List<Map<String, Object>> urgentMinorPriority = List.of(Map.of(
             "name", "minorPriority",
             "value", "100",
-            "canReconfigure", false
+            "canReconfigure", true
         ));
 
         List<Map<String, Object>> priorityDateOriginRef = List.of(Map.of(
@@ -866,28 +873,95 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             ),
 
             Arguments.of("ReviewReferralAdmin", NOT_URGENT,
-                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
-                         defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriority,
+                         defaultMinorPriority, null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseAdmin", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
-                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriority,
+                         defaultMinorPriority, priorityDateOriginRef, null
             ),
             Arguments.of("ReviewReferralJudiciary", NOT_URGENT,
-                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
-                         defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriority,
+                         defaultMinorPriority, null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseJudiciary", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
-                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriority,
+                         defaultMinorPriority, priorityDateOriginRef, null
             ),
             Arguments.of("ReviewReferralLegalOps", NOT_URGENT,
-                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
-                         defaultMinorPriorityNoReconfigure, null, priorityDateOriginEar
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriority,
+                         defaultMinorPriority, null, priorityDateOriginEar
             ),
             Arguments.of("ReviewReferralResponseLegalOps", ISURGENT_REPLY_NO,
-                         dueDateIntervalDays2NoReconfigure, defaultMajorPriorityNoReconfigure,
-                         defaultMinorPriorityNoReconfigure, priorityDateOriginRef, null
+                         dueDateIntervalDays2NoReconfigure, defaultMajorPriority,
+                         defaultMinorPriority, priorityDateOriginRef, null
+            )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("title_ScenarioProvider")
+    void whenReferralNumberAndReferralSubjectReturnTitle(String rawReferralCollection,
+                                                         String expectedTitle) {
+        Map<String, Object> caseData = getDefaultCaseData();
+
+        if (!rawReferralCollection.isBlank()) {
+            Map<String, Object> parsedReferralCollection = HelperService.mapData(rawReferralCollection);
+            caseData.put("referralCollection", parsedReferralCollection.get("referralCollection"));
+        }
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+
+        Map<String, Object> taskAttributes = new HashMap<>();
+        taskAttributes.put("taskType", "ReviewReferralAdmin");
+        taskAttributes.put("__processCategory__referralNumber_1", "2");
+        inputVariables.putValue("taskAttributes", taskAttributes);
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter(r -> r.containsValue("title"))
+                .toList();
+
+        // Then
+        assertEquals(expectedTitle, resultList.get(0).get("value"));
+
+    }
+
+    public static Stream<Arguments> title_ScenarioProvider() {
+        return Stream.of(
+            Arguments.of(
+                getReferralObjectString(REFERRAL_ADMIN),
+                REFERRAL_TITLE
+            ),
+            Arguments.of(
+                getReferralObjectString(REFERRAL_JUDGE),
+                REFERRAL_TITLE
+            ),
+            Arguments.of(
+                getReferralObjectString(REFERRAL_LEGALOPS),
+                REFERRAL_TITLE
+            ),
+            Arguments.of(
+                getReferralObjectString(REFERRAL_REPLY_JUDGE),
+                REFERRAL_TITLE
+            ),
+            Arguments.of(
+                getReferralObjectString(REFERRAL_REPLY_JUDGE),
+                REFERRAL_TITLE
+            ),
+            Arguments.of(
+                getReferralObjectString(REFERRAL_REPLY_LEGALOFFICER),
+                REFERRAL_TITLE
+            ),
+            Arguments.of(
+                "",
+                null
             )
         );
     }
@@ -981,7 +1055,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(57));
+        assertThat(logic.getRules().size(), is(58));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
