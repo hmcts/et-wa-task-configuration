@@ -23,13 +23,12 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMA
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_RESPONDING_TO_RESPONDENT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.DRAFT_AND_SIGN_JUDGEMENT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_NOT_RECEIVED;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_MORE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_ONCE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_ET3_RESPONSE_FALSE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_ET3_RESPONSE_TRUE;
-import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_JUDGEMENT_FALSE;
-import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_JUDGEMENT_TRUE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_LISTED;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_FINAL;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM;
@@ -210,7 +209,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "draftAndSignJudgement",
                 null,
-                HelperService.mapAdditionalData(IS_JUDGEMENT_TRUE),
+                HelperService.mapAdditionalData(DRAFT_AND_SIGN_JUDGEMENT),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "IssueJudgment",
@@ -218,12 +217,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Hearing"
                     )
                 )
-            ),
-            Arguments.of(
-                "draftAndSignJudgement",
-                null,
-                HelperService.mapAdditionalData(IS_JUDGEMENT_FALSE),
-                List.of()
             ),
             Arguments.of(
                 "preAcceptanceCase",
