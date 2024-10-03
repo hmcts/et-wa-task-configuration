@@ -83,6 +83,15 @@ public final class InitiationUtility {
         + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
         + "}";
 
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_DO_NOT_LIST = "\"etICCanProceed\":true,"
+        + "\"etICHearingAlreadyListed\":false,"
+        + "\"etICHearingNotListedList\":["
+        + "\"Seek comments on the video hearing\","
+        + "\"List for preliminary hearing\","
+        + "\"List for final hearing\","
+        + "\"UDL hearing\","
+        + "\"Do not list\"]";
+
     public static final String LISTAHEARING_PROCEED_NOTLISTED_NONE = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
         + "\"etICHearingNotListedList\":["

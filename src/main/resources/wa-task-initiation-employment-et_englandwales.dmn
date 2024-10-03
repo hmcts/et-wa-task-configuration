@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.26.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.27.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0dnw86r">
       <requiredDecision href="#Decision_0la4l4o" />
@@ -17,7 +17,7 @@
       <requiredDecision href="#Decision_0zw4bmx" />
     </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT" biodi:annotationsWidth="400">
-      <input id="Input_1" label="Event Id" biodi:width="342" camunda:inputVariable="eventId">
+      <input id="Input_1" label="Event Id" biodi:width="339" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text></text>
         </inputExpression>
@@ -37,7 +37,7 @@ then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.r
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="325" camunda:inputVariable="referralSubject">
+      <input id="InputClause_1idexf5" label="Referral Subject" biodi:width="151" camunda:inputVariable="referralSubject">
         <inputExpression id="LiteralExpression_0tjv49t" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -95,8 +95,8 @@ then additionalData.Data.respondentCollection[1].value.et3Vetting.et3ContractCla
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_16zvm0d" label="List A Hearing">
-        <inputExpression id="LiteralExpression_0p48kud" typeRef="boolean">
+      <input id="InputClause_16zvm0d" label="List A Hearing" biodi:width="150">
+        <inputExpression id="LiteralExpression_0p48kud" typeRef="boolean" expressionLanguage="feel">
           <text>if(additionalData.Data.etICCanProceed!=null
 and additionalData.Data.etICCanProceed
 and additionalData.Data.etICHearingAlreadyListed!=null)
@@ -104,8 +104,11 @@ then if(additionalData.Data.etICHearingAlreadyListed)
 then additionalData.Data.etICHearingAlreadyListed
 else if(additionalData.Data.etICHearingNotListedList!=null
 and count(additionalData.Data.etICHearingNotListedList) &gt; 0
-and (list contains(additionalData.Data.etICHearingNotListedList, "List for preliminary hearing")
-or list contains(additionalData.Data.etICHearingNotListedList, "List for final hearing")))
+and (list contains(additionalData.Data.etICHearingNotListedList, "Seek comments on the video hearing")
+or list contains(additionalData.Data.etICHearingNotListedList, "List for preliminary hearing")
+or list contains(additionalData.Data.etICHearingNotListedList, "List for final hearing")
+or list contains(additionalData.Data.etICHearingNotListedList, "UDL hearing")
+or list contains(additionalData.Data.etICHearingNotListedList, "Do not list")))
 then true
 else false
 else false</text>
@@ -156,7 +159,7 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_02rm1d2" label="Response to Application Type" biodi:width="391">
+      <input id="InputClause_02rm1d2" label="Response to Application Type" biodi:width="248">
         <inputExpression id="LiteralExpression_009rrzp" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -1353,6 +1356,65 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0w8zpej">
+          <text>"Hearing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_101puym">
+        <inputEntry id="UnaryTests_1irqa8f">
+          <text>"initialConsideration"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p54c1s">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m52ug8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yzttvv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wyjrtq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_149kwkq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1738n0x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rxr9sx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jfmcw8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bo3v53">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_048nc45">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ly1qsi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iiwrv7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12pp9gs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09vcot5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1u1en20">
+          <text>"IssueInitialConsiderationDirections"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zp2qng">
+          <text>"Issue Initial Consideration Directions"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uez26k">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w03esj">
           <text>"Hearing"</text>
         </outputEntry>
       </rule>
