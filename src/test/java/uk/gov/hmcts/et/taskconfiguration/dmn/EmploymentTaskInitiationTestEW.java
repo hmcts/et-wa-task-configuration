@@ -330,11 +330,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "IssueInitialConsiderationDirections",
                         "Issue Initial Consideration Directions",
                         "Hearing"
-                    ),
-                    HelperService.mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
-                        "Hearing"
                     )
                 )
             ),
@@ -346,11 +341,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
-                        "Hearing"
-                    ),
-                    HelperService.mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
                         "Hearing"
                     )
                 )
@@ -364,11 +354,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
-                    ),
-                    HelperService.mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
-                        "Hearing"
                     )
                 )
             ),
@@ -380,11 +365,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
-                        "Hearing"
-                    ),
-                    HelperService.mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
                         "Hearing"
                     )
                 )
@@ -403,11 +383,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "IssueInitialConsiderationDirections",
                         "Issue Initial Consideration Directions",
                         "Hearing"
-                    ),
-                    HelperService.mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
-                        "Hearing"
                     )
                 )
             ),
@@ -415,18 +390,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 "initialConsideration",
                 "Accepted",
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
-                List.of(
-                    HelperService.mapExpectedOutput(
-                        "ListAHearing",
-                        "List A Hearing",
-                        "Hearing"
-                    ),
-                    HelperService.mapExpectedOutput(
-                       "IssueInitialConsiderationDirections",
-                       "Issue Initial Consideration Directions",
-                       "Hearing"
-                    )
-                )
+                List.of()
             ),
             Arguments.of(
                 "issueInitialConsiderationDirectionsWA",
