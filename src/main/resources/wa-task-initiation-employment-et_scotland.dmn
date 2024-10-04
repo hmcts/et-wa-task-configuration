@@ -2286,7 +2286,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qm6fe3">
-          <text>"Claimant"</text>
+          <text>"Claimant Representative"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0jx5cvh">
           <text>"Amend my claim",
@@ -2422,7 +2422,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0i9hrud">
-          <text>"Claimant"</text>
+          <text>"Claimant Representative"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_04piavq">
           <text>"Change personal details"</text>
