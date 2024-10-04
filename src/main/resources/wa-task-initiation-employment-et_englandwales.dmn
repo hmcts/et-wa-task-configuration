@@ -2215,7 +2215,6 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mu29l4">
           <text>"Amend claim",
-"Change personal details",
 "Consider decision afresh",
 "Contact the tribunal",
 "Order a witness to attend to give evidence",
@@ -2225,8 +2224,7 @@ else null</text>
 "Respondent not complied",
 "Restrict publicity",
 "Strike out all or part of the response",
-"Vary or revoke an order",
-"Withdraw all or part of claim"</text>
+"Vary or revoke an order"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1b91ytk">
           <text></text>
@@ -2288,22 +2286,28 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0dkmyb2">
-          <text>"Respondent"</text>
+          <text>"Claimant"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_03m1s1k">
-          <text>"Amend claim",
-"Change personal details",
-"Consider decision afresh",
+          <text>"Amend my claim",
+"Amend response",
+"Claimant not complied",
+"Consider a decision afresh",
+"Contact about something else",
 "Contact the tribunal",
 "Order a witness to attend to give evidence",
+"Order a witness to attend",
 "Order other party",
+"Order respondent to do something",
 "Postpone a hearing",
-"Reconsider judgment",
-"Respondent not complied",
+"Reconsider judgement",
 "Restrict publicity",
-"Strike out all or part of the response",
+"Strike out all or part of a claim",
+"Strike out all/part of response",
+"Tell tribunal respondent not complied",
 "Vary or revoke an order",
-"Withdraw all or part of claim"</text>
+"Vary/revoke an order",
+"Withdraw all/part of claim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ljev92">
           <text></text>
@@ -2319,6 +2323,183 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0mrop9u">
           <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s8pau2">
+        <inputEntry id="UnaryTests_1ywxq9k">
+          <text>"claimantTSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qkhm5i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10tlzdj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rqkkey">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04ae2wj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qn09hb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qrj7gt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08ko27s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ajw4rn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_189va9n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cd3ao4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iuvq4q">
+          <text>"Change my personal details"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d0e98d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tn4k7b">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_101wv5s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ypt0z2">
+          <text>"AmendClaimantDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p3xjto">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01u5xs1">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0np3z8l">
+          <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ige02e">
+        <inputEntry id="UnaryTests_1da4okr">
+          <text>"tseClaimantRepResponse"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cgyz1i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wvl1z1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08br72a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_117eg1d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18uyxon">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16yztyn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dek4m6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lo02uk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xkywpp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f3jmy8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qas7r4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08tml81">
+          <text>"Claimant"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yo9o6d">
+          <text>"Change personal details"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iervo8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kb2yo9">
+          <text>"AmendRespondentDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0axpav4">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vkbpll">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s3a8vy">
+          <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h7o8yi">
+        <inputEntry id="UnaryTests_0psrvvo">
+          <text>"claimantTSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10csuuz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oqsthh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_110femz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1259nln">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fjj7s4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pnn8ms">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sma08z">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bv7mlj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ocr9pu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dq63su">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lw8a8f">
+          <text>"Withdraw all or part of claim"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13k7qet">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ruivy5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qjpeat">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oc3lys">
+          <text>"WithdrawAllOrPartOfCase"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u3mhec">
+          <text>"Withdraw All or Part of Case"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ms5r9a">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fp1th9">
+          <text>"Amendments"</text>
         </outputEntry>
       </rule>
     </decisionTable>
