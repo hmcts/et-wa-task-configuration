@@ -371,12 +371,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
-                List.of()
-            ),
-            Arguments.of(
-                "initialConsideration",
-                "Accepted",
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM),
                 List.of(
                     HelperService.mapExpectedOutput(
@@ -390,6 +384,12 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Hearing"
                     )
                 )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
+                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
+                List.of()
             ),
             Arguments.of(
                 "issueInitialConsiderationDirectionsWA",
@@ -624,6 +624,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(33));
+        assertThat(logic.getRules().size(), is(34));
     }
 }
