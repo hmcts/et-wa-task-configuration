@@ -2359,6 +2359,329 @@ else null</text>
           <text>"Vetting"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1xk7bft">
+        <inputEntry id="UnaryTests_0b807oh">
+          <text>"claimantTSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z80fn2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q43pr6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_153z8eg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ojwwmc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ilsnn3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m7xgry">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h3wh96">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vqtbxg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wmmxk8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nszytp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mu29l4">
+          <text>"Amend claim",
+"Consider decision afresh",
+"Contact the tribunal",
+"Order a witness to attend to give evidence",
+"Order other party",
+"Postpone a hearing",
+"Reconsider judgment",
+"Respondent not complied",
+"Restrict publicity",
+"Strike out all or part of the response",
+"Vary or revoke an order"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b91ytk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fydq8v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z143w6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cq0obc">
+          <text>"ContactTribunalWithAnApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qqwgca">
+          <text>LATEST_APPLICATION_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jr2m3q">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_146n14u">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s8pau2">
+        <inputEntry id="UnaryTests_1ywxq9k">
+          <text>"claimantTSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qkhm5i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10tlzdj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rqkkey">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04ae2wj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qn09hb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qrj7gt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08ko27s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ajw4rn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_189va9n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cd3ao4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iuvq4q">
+          <text>"Change my personal details"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d0e98d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tn4k7b">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_101wv5s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ypt0z2">
+          <text>"AmendClaimantDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p3xjto">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01u5xs1">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0np3z8l">
+          <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h7o8yi">
+        <inputEntry id="UnaryTests_0psrvvo">
+          <text>"claimantTSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10csuuz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oqsthh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_110femz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1259nln">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fjj7s4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pnn8ms">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sma08z">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bv7mlj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ocr9pu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dq63su">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lw8a8f">
+          <text>"Withdraw all or part of claim"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13k7qet">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ruivy5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qjpeat">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oc3lys">
+          <text>"WithdrawAllOrPartOfCase"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u3mhec">
+          <text>"Withdraw All or Part of Case"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ms5r9a">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fp1th9">
+          <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06zve82">
+        <inputEntry id="UnaryTests_08cxohy">
+          <text>"tseClaimantRepResponse"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04ugsz2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pnur2c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vj7e3l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oivp2h">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w0mde5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09so3ev">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mfnod5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tnr00d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uh86rb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15w6ni9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w103v5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dkmyb2">
+          <text>"Claimant Representative"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03m1s1k">
+          <text>"Amend my claim",
+"Amend response",
+"Claimant not complied",
+"Consider a decision afresh",
+"Contact about something else",
+"Contact the tribunal",
+"Order a witness to attend to give evidence",
+"Order a witness to attend",
+"Order other party",
+"Order respondent to do something",
+"Postpone a hearing",
+"Reconsider judgement",
+"Restrict publicity",
+"Strike out all or part of a claim",
+"Strike out all/part of response",
+"Tell tribunal respondent not complied",
+"Vary or revoke an order",
+"Vary/revoke an order",
+"Withdraw all/part of claim"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ljev92">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0herdoa">
+          <text>"ContactTribunalWithAnApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wkribm">
+          <text>LATEST_APPLICATION_RESPOND_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15as14m">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mrop9u">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ige02e">
+        <inputEntry id="UnaryTests_1da4okr">
+          <text>"tseClaimantRepResponse"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cgyz1i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wvl1z1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08br72a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_117eg1d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18uyxon">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16yztyn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dek4m6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lo02uk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xkywpp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f3jmy8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qas7r4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08tml81">
+          <text>"Claimant Representative"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yo9o6d">
+          <text>"Change personal details"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iervo8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kb2yo9">
+          <text>"AmendRespondentDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0axpav4">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vkbpll">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s3a8vy">
+          <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_0la4l4o" name="LATEST_REFERRAL_REPLY_TASK_NAME" camunda:historyTimeToLive="P30D">
@@ -2544,10 +2867,10 @@ and additionalData.Data.sendNotificationCollection!=null
 and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
 
 then (sort(
-flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
-function(x,y) 
-date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
-&gt; 
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection),
+function(x,y)
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
+&gt;
 date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
 )[1].value.isECC="Yes")
 
@@ -2561,15 +2884,15 @@ else false</text>
 and additionalData.Data!=null
 and additionalData.Data.sendNotificationCollection!=null
 and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
-  
+
 then (sort(
-flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
-function(x,y) 
-date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
-&gt; 
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection),
+function(x,y)
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
+&gt;
 date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
 )[1].value.from="Claimant")
-  
+
 else false</text>
     </literalExpression>
   </decision>
