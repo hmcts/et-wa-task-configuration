@@ -371,12 +371,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
-                List.of()
-            ),
-            Arguments.of(
-                "initialConsideration",
-                "Accepted",
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM),
                 List.of(
                     HelperService.mapExpectedOutput(
@@ -390,6 +384,12 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Hearing"
                     )
                 )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
+                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
+                List.of()
             ),
             Arguments.of(
                 "issueInitialConsiderationDirectionsWA",
