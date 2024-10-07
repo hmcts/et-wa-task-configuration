@@ -30,6 +30,7 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FO
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_ET3_RESPONSE_FALSE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_ET3_RESPONSE_TRUE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_LISTED;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_DO_NOT_LIST;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_FINAL;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_NONE;
@@ -327,6 +328,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
+                HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_DO_NOT_LIST),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "initialConsideration",
+                "Accepted",
                 HelperService.mapAdditionalData(STRIKE_OUT_CLAIM),
                 List.of(
                     HelperService.mapExpectedOutput(
@@ -342,6 +355,11 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_LISTED),
                 List.of(
                     HelperService.mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    ),
+                    HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
@@ -353,6 +371,11 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "Accepted",
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_PRELIM),
                 List.of(
+                    HelperService.mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    ),
                     HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
@@ -366,6 +389,11 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL),
                 List.of(
                     HelperService.mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    ),
+                    HelperService.mapExpectedOutput(
                         "ListAHearing",
                         "List A Hearing",
                         "Hearing"
@@ -376,18 +404,19 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "initialConsideration",
                 "Accepted",
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
-                List.of()
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    )
+                )
             ),
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM),
                 List.of(
-                    HelperService.mapExpectedOutput(
-                        "ListAHearing",
-                        "List A Hearing",
-                        "Hearing"
-                    ),
                     HelperService.mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
                         "Issue Initial Consideration Directions",
