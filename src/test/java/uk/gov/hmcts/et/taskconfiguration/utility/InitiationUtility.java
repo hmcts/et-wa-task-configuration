@@ -73,12 +73,7 @@ public final class InitiationUtility {
         + "\"Seek comments on the video hearing\","
         + "\"List for final hearing\","
         + "\"UDL hearing\"]";
-    public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM = "\"etICCanProceed\":true,"
-        + "\"etICHearingAlreadyListed\":false,"
-        + "\"etICHearingNotListedList\":["
-        + "\"Seek comments on the video hearing\","
-        + "\"List for final hearing\","
-        + "\"UDL hearing\"],"
+    public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM = "\"etICCanProceed\":false,"
         + "\"etInitialConsiderationRule27\": {"
         + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
         + "}";
@@ -87,8 +82,6 @@ public final class InitiationUtility {
         + "\"etICHearingAlreadyListed\":false,"
         + "\"etICHearingNotListedList\":["
         + "\"Seek comments on the video hearing\","
-        + "\"List for preliminary hearing\","
-        + "\"List for final hearing\","
         + "\"UDL hearing\","
         + "\"Do not list\"]";
 
