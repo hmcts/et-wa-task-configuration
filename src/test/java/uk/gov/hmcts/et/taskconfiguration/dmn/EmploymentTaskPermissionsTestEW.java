@@ -32,6 +32,7 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.appro
 import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.approverJudiciary;
 import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.approverLegalOps;
 import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.ctsc;
+import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.feepaidjudge;
 import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingCentreAdmin;
 import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingCentreTeamLeader;
 import static uk.gov.hmcts.et.taskconfiguration.utility.PermissionsUtility.hearingJudge;
@@ -70,6 +71,7 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     hearingJudge,
                     leadershipJudge,
                     judge,
+                    feepaidjudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -83,6 +85,7 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     hearingJudge,
                     leadershipJudge,
                     judge,
+                    feepaidjudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -96,6 +99,7 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     hearingJudge,
                     leadershipJudge,
                     judge,
+                    feepaidjudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -109,6 +113,7 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     hearingJudge,
                     leadershipJudge,
                     judge,
+                    feepaidjudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -131,6 +136,7 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     hearingJudge,
                     leadershipJudge,
                     judge,
+                    feepaidjudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -144,6 +150,7 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     hearingJudge,
                     leadershipJudge,
                     judge,
+                    feepaidjudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker
@@ -157,6 +164,7 @@ class EmploymentTaskPermissionsTestEW extends DmnDecisionTableBaseUnitTest {
                     hearingJudge,
                     leadershipJudge,
                     judge,
+                    feepaidjudge,
                     allocatedTribunalCaseworker,
                     seniorTribunalCaseworker,
                     tribunalCaseworker

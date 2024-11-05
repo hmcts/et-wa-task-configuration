@@ -48,6 +48,13 @@ public final class PermissionsUtility {
         "roleCategory", "JUDICIAL",
         "autoAssignable", false
     );
+    public static final Map<String, Serializable> feepaidjudge = Map.of(
+        "assignmentPriority", 3,
+        "name", "fee-paid-judge",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "roleCategory", "JUDICIAL",
+        "autoAssignable", false
+    );
 
     public static final Map<String, Serializable> approverLegalOps = Map.of(
         "name", "specific-access-approver-legal-ops",
