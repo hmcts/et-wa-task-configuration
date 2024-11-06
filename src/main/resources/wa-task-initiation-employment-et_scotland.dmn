@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.27.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.22.0">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_1l2v2xj">
       <requiredDecision href="#Decision_1xqgkq6" />
@@ -2693,6 +2693,68 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1m9io2b">
           <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07jxnvn">
+        <inputEntry id="UnaryTests_1l29zs1">
+          <text>"respondentSubmitEt3"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07sp7rt">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cewzmc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uk12bb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gyavrf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06rnfik">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14c1531">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y8yhsl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kw65ha">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18euu7x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1669iog">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09myjlo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05up5c2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pcv65x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09mh5v8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g8xyeh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13xjolu">
+          <text>"ET3Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18atd1v">
+          <text>"ET3 Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vgmk3z">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_020xvnu">
+          <text>"Processing"</text>
         </outputEntry>
       </rule>
     </decisionTable>

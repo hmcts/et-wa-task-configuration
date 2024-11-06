@@ -2695,6 +2695,68 @@ else null</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0i9gdgy">
+        <inputEntry id="UnaryTests_1rjopdb">
+          <text>"respondentSubmitEt3"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kb4r8l">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ycdvdn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vs066w">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fxnyy6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g91sij">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04uptwp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04f8fst">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m1udqp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bctamm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13ac2x1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bxva5l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17jpz2a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08mfcyt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13kznrb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bc2vwk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lcrs1v">
+          <text>"ET3Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0769s9n">
+          <text>"ET3 Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07lmo9d">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14dbijp">
+          <text>"Processing"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_0la4l4o" name="LATEST_REFERRAL_REPLY_TASK_NAME" camunda:historyTimeToLive="P30D">
