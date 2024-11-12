@@ -632,7 +632,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "submitET3Form",
+                "SUBMIT_ET3_FORM",
                 "Accepted",
                 null,
                 List.of(
