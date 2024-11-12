@@ -633,6 +633,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Vetting"
                     )
                 )
+            ),
+            Arguments.of(
+                "submitET3Form",
+                "Accepted",
+                null,
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ET3Processing",
+                        "ET3 Processing",
+                        "Processing"
+                    )
+                )
             )
         );
     }
@@ -657,6 +669,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(39));
+        assertThat(logic.getRules().size(), is(40));
     }
 }
