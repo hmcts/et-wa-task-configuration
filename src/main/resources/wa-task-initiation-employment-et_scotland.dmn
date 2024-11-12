@@ -2697,7 +2697,7 @@ else null</text>
       </rule>
       <rule id="DecisionRule_07jxnvn">
         <inputEntry id="UnaryTests_1l29zs1">
-          <text>"submitET3Form"</text>
+          <text>"SUBMIT_ET3_FORM"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_07sp7rt">
           <text>"Accepted"</text>
