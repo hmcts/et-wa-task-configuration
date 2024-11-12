@@ -2697,7 +2697,7 @@ else null</text>
       </rule>
       <rule id="DecisionRule_0i9gdgy">
         <inputEntry id="UnaryTests_1rjopdb">
-          <text>"respondentSubmitEt3"</text>
+          <text>"submitET3Form"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0kb4r8l">
           <text>"Accepted"</text>
@@ -2942,10 +2942,10 @@ and additionalData.Data.sendNotificationCollection!=null
 and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
 
 then (sort(
-flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
-function(x,y) 
-date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
-&gt; 
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection),
+function(x,y)
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
+&gt;
 date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
 )[1].value.isECC="Yes")
 
@@ -2959,15 +2959,15 @@ else false</text>
 and additionalData.Data!=null
 and additionalData.Data.sendNotificationCollection!=null
 and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0])&gt;0)
-  
+
 then (sort(
-flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection), 
-function(x,y) 
-date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000") 
-&gt; 
+flatten(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount)&gt;0].value.respondCollection),
+function(x,y)
+date and time(if(x.value.dateTime!=null)then x.value.dateTime else "2023-01-01T00:00:00.000")
+&gt;
 date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T00:00:00.000")
 )[1].value.from="Claimant")
-  
+
 else false</text>
     </literalExpression>
   </decision>
