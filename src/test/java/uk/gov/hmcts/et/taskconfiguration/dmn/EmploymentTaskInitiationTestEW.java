@@ -48,7 +48,6 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
-import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.STRIKE_OUT_CLAIM;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS;

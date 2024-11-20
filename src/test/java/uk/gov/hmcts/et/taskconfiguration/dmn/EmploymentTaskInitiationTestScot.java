@@ -30,9 +30,7 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FO
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_ET3_RESPONSE_FALSE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_ET3_RESPONSE_TRUE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_LISTED;
-import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_DO_NOT_LIST;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_FINAL;
-import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_FINAL_WITH_STRIKE_OUT_CLAIM;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_NONE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_PRELIM;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.NOTIFICATIONS_LIST;
@@ -48,7 +46,6 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
-import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.STRIKE_OUT_CLAIM;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS;
