@@ -432,9 +432,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> descListHearing = List.of(Map.of(
             "name", "description",
             "value", "[List Hearing](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/addAmendHearing/addAmendHearing1) "
-                + "or [Generate Issue Initial Consideration Directions Task](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/issueInitialConsiderationDirectionsWA/submit)",
+                + "/trigger/addAmendHearing/addAmendHearing1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descInitialConsideration = List.of(Map.of(
