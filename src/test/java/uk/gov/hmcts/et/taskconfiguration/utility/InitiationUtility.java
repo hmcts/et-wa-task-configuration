@@ -54,7 +54,7 @@ public final class InitiationUtility {
 
     public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":true,"
-        + "\"etICHearingNotListedList\":["
+        + "\"etICHearingNotListedListUpdated\":["
         + "\"List for preliminary hearing\","
         + "\"Seek comments on the video hearing\","
         + "\"List for final hearing\","
@@ -62,14 +62,14 @@ public final class InitiationUtility {
 
     public static final String LISTAHEARING_PROCEED_NOTLISTED_PRELIM = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
-        + "\"etICHearingNotListedList\":["
+        + "\"etICHearingNotListedListUpdated\":["
         + "\"Seek comments on the video hearing\","
         + "\"List for preliminary hearing\","
         + "\"UDL hearing\"]";
 
     public static final String LISTAHEARING_PROCEED_NOTLISTED_FINAL = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
-        + "\"etICHearingNotListedList\":["
+        + "\"etICHearingNotListedListUpdated\":["
         + "\"Seek comments on the video hearing\","
         + "\"List for final hearing\","
         + "\"UDL hearing\"]";
@@ -80,14 +80,14 @@ public final class InitiationUtility {
 
     public static final String LISTAHEARING_PROCEED_NOTLISTED_DO_NOT_LIST = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
-        + "\"etICHearingNotListedList\":["
+        + "\"etICHearingNotListedListUpdated\":["
         + "\"Seek comments on the video hearing\","
         + "\"UDL hearing\","
         + "\"Do not list\"]";
 
     public static final String LISTAHEARING_PROCEED_NOTLISTED_NONE = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":false,"
-        + "\"etICHearingNotListedList\":["
+        + "\"etICHearingNotListedListUpdated\":["
         + "\"Seek comments on the video hearing\","
         + "\"UDL hearing\"]";
 

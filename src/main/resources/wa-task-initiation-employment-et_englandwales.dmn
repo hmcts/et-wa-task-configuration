@@ -97,10 +97,10 @@ else null</text>
       </input>
       <input id="InputClause_16zvm0d" label="List A Hearing" biodi:width="150">
         <inputExpression id="LiteralExpression_0p48kud" typeRef="boolean" expressionLanguage="feel">
-          <text>if(additionalData.Data.etICHearingNotListedList!=null
-and count(additionalData.Data.etICHearingNotListedList) &gt; 0
-and (list contains(additionalData.Data.etICHearingNotListedList, "List for preliminary hearing")
-or list contains(additionalData.Data.etICHearingNotListedList, "List for final hearing")))
+          <text>if(additionalData.Data.etICHearingNotListedListUpdated!=null
+and count(additionalData.Data.etICHearingNotListedListUpdated) &gt; 0
+and (list contains(additionalData.Data.etICHearingNotListedListUpdated, "List for preliminary hearing")
+or list contains(additionalData.Data.etICHearingNotListedListUpdated, "List for final hearing")))
 then true
 else false</text>
         </inputExpression>
