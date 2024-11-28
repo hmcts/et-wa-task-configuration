@@ -48,7 +48,6 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
-import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.STRIKE_OUT_CLAIM;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.SUBMISSION_REASON_CLAIMANT_PERSONALDETAILS;
@@ -337,7 +336,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "initialConsideration",
                 "Accepted",
-                HelperService.mapAdditionalData(STRIKE_OUT_CLAIM),
+                null,
                 List.of(
                     HelperService.mapExpectedOutput(
                         "IssueInitialConsiderationDirections",
@@ -666,6 +665,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(40));
+        assertThat(logic.getRules().size(), is(39));
     }
 }
