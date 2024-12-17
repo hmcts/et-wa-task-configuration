@@ -414,7 +414,7 @@ else 500</text>
           <text>"dueDateNonWorkingCalendar"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1luowkm">
-          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json, https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json"</text>
+          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json, https://raw.githubusercontent.com/hmcts/et-wa-task-configuration/master/src/main/resources/privilege-calendar-engwales.json"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gnav2w">
           <text>true</text>

@@ -25,7 +25,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_ET_EW;
-import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.EXTRA_TEST_CALENDAR;
+import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.EXTRA_TEST_CALENDAR_ENGWALES;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISURGENT_REPLY_NO;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISURGENT_REPLY_YES;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.IS_URGENT;
@@ -916,8 +916,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         assertEquals(Map.of(
             "name", "dueDateNonWorkingCalendar",
             "value", "https://www.gov.uk/bank-holidays/england-and-wales.json, "
-                + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
-                + "master/src/main/resources/privilege-calendar.json",
+                + "https://raw.githubusercontent.com/hmcts/et-wa-task-configuration/"
+                + "master/src/main/resources/privilege-calendar-engwales.json",
             "canReconfigure", true
         ), resultList.get(9));
 
@@ -994,7 +994,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
         HelperService.getExpectedValueWithReconfigure(
-            rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
+            rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR_ENGWALES, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);

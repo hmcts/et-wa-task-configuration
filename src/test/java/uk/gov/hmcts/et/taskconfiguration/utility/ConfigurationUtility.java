@@ -5,8 +5,10 @@ public final class ConfigurationUtility {
     private ConfigurationUtility() {
     }
 
-    public static final String EXTRA_TEST_CALENDAR = "https://raw.githubusercontent.com/hmcts/"
-        + "civil-wa-task-configuration/master/src/main/resources/privilege-calendar.json";
+    public static final String EXTRA_TEST_CALENDAR_ENGWALES = "https://raw.githubusercontent.com/hmcts/"
+        + "et-wa-task-configuration/master/src/main/resources/privilege-calendar-engwales.json";
+    public static final String EXTRA_TEST_CALENDAR_SCOTLAND = "https://raw.githubusercontent.com/hmcts/"
+        + "et-wa-task-configuration/master/src/main/resources/privilege-calendar-scotland.json";
 
     public static final String ISURGENT_REPLY_YES =
         "{\"referralCollection\":["
