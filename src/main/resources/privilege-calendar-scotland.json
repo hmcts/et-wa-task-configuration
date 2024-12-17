@@ -1,0 +1,19 @@
+{
+  "division": "scotland",
+  "events": [
+    {
+      "title": "Christmas Day",
+      "date": "2022-12-25",
+      "notes": "",
+      "bunting": true,
+      "working_day": false
+    },
+    {
+      "title": "Fixed Christmas Privilege Day 2024",
+      "date": "2024-12-27",
+      "notes": "",
+      "bunting": true,
+      "working_day": false
+    }
+  ]
+}

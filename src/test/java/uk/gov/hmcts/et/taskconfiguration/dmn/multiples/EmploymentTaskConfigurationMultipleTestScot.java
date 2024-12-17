@@ -22,8 +22,8 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_MULTIPLE_ET_EW;
-import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.EXTRA_TEST_CALENDAR;
+import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_MULTIPLE_ET_SCOTLAND;
+import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.EXTRA_TEST_CALENDAR_SCOTLAND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISURGENT_REPLY_NO;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.ISURGENT_REPLY_YES;
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.IS_URGENT;
@@ -31,12 +31,12 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.NOT
 
 class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUnitTest {
 
-    private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
+    private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/scotland.json";
 
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_MULTIPLE_ET_EW;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_MULTIPLE_ET_SCOTLAND;
     }
 
     private static Map<String, Object> getDefaultCaseData() {
@@ -119,8 +119,8 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
 
     public static Stream<Arguments> cmlAndCmc_ScenarioProvider() {
         return Stream.of(
-            Arguments.of("", "", "", "", "1", "21153", "London Central", "Employment"),
-            Arguments.of("3", "36313", "Leeds", "Test", "3", "36313", "Leeds", "Employment")
+            Arguments.of("", "", "", "", "11", "368308", "Edinburgh", "Employment"),
+            Arguments.of("11", "366559", "Glasgow", "Test", "11", "366559", "Glasgow", "Employment")
         );
     }
 
@@ -530,9 +530,9 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingCalendar",
-            "value", "https://www.gov.uk/bank-holidays/england-and-wales.json, "
-                + "https://raw.githubusercontent.com/hmcts/civil-wa-task-configuration/"
-                + "master/src/main/resources/privilege-calendar.json",
+            "value", "https://www.gov.uk/bank-holidays/scotland.json, "
+                + "https://raw.githubusercontent.com/hmcts/et-wa-task-configuration/"
+                + "master/src/main/resources/privilege-calendar-scotland.json",
             "canReconfigure", true
         ), resultList.get(9));
 
@@ -599,9 +599,9 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
     private List<Map<String, Object>> getExpectedValues() {
         List<Map<String, Object>> rules = new ArrayList<>();
         HelperService.getExpectedValueWithReconfigure(rules, "caseName", "Big Multiple", true);
-        HelperService.getExpectedValueWithReconfigure(rules, "region", "1", true);
-        HelperService.getExpectedValueWithReconfigure(rules, "location", "21153", true);
-        HelperService.getExpectedValueWithReconfigure(rules, "locationName", "London Central", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "region", "11", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "location", "368308", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "locationName", "Edinburgh", true);
         HelperService.getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);
         HelperService.getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
         HelperService.getExpectedValueWithReconfigure(
@@ -609,7 +609,7 @@ class EmploymentTaskConfigurationMultipleTestScot extends DmnDecisionTableBaseUn
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
         HelperService.getExpectedValueWithReconfigure(
-            rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR, true);
+            rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR_SCOTLAND, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateSkipNonWorkingDays", "true", true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
