@@ -252,7 +252,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "Rule21",
-                        "Rule 21",
+                        "Rule 22",
                         "Rule21"
                     )
                 )
@@ -300,7 +300,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewRule21Referral",
-                        "Review Rule 21 Referral",
+                        "Review Rule 22 Referral",
                         "Rule21"
                     )
                 )

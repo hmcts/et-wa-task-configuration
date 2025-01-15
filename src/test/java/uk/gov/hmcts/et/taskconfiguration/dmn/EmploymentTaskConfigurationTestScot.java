@@ -454,7 +454,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> descReviewRule21Referral = List.of(Map.of(
             "name", "description",
-            "value", "[Review Rule 21 Referral](/cases/case-details/${[CASE_REFERENCE]}#Respondent)",
+            "value", "[Review Rule 22 Referral](/cases/case-details/${[CASE_REFERENCE]}#Respondent)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> descDraftJudgment = List.of(Map.of(
