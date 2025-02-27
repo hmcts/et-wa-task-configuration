@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.30.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.32.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0dnw86r">
       <requiredDecision href="#Decision_0la4l4o" />
@@ -115,7 +115,7 @@ and (some x in additionalData.Data.hearingDetailsCollection satisfies x.value.he
 and (every x in additionalData.Data.hearingDetailsCollection satisfies (x.value.hearingDetailsStatus="Heard" or x.value.hearingDetailsStatus="Vacated"))</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="358">
+      <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="423">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -135,7 +135,7 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_02rm1d2" label="Response to Application Type" biodi:width="248">
+      <input id="InputClause_02rm1d2" label="Response to Application Type" biodi:width="291">
         <inputExpression id="LiteralExpression_009rrzp" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -2422,6 +2422,146 @@ else null</text>
           <text>"Processing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1ayjrt6">
+        <inputEntry id="UnaryTests_0wi22f7">
+          <text>"SUBMIT_RESPONDENT_TSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vs89k0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eoezgv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mh9dov">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09bz1wv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bs2lzd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wb5u7s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f02425">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hllvsj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_056dfah">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oyvgvr">
+          <text>"Amend response",
+"Claimant not complied",
+"Consider a decision afresh",
+"Contact the tribunal",
+"Order other party",
+"Order a witness to attend to give evidence",
+"Postpone a hearing",
+"Reconsider judgement",
+"Restrict publicity",
+"Strike out all or part of a claim",
+"Vary or revoke an order"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qsks56">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00ehojx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oq5q1y">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06qqvty">
+          <text>"ContactTribunalWithAnApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14ck8zs">
+          <text>LATEST_APPLICATION_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09lgzye">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_165pivl">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cy8ete">
+        <inputEntry id="UnaryTests_1nwcup5">
+          <text>"RESPONDENT_TSE_RESPOND"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_043ma5u">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h6lpoa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h2vec3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oc6n7r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v1ncvt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10c66tl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wqzyqc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03sa1ec">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dwppt7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dn6tb1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jqudd2">
+          <text>"Respondent"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19e0tk4">
+          <text>"Amend my claim",
+"Amend response",
+"Claimant not complied",
+"Consider a decision afresh",
+"Contact about something else",
+"Contact the tribunal",
+"Order a witness to attend to give evidence",
+"Order a witness to attend",
+"Order other party",
+"Order respondent to do something",
+"Postpone a hearing",
+"Reconsider judgement",
+"Restrict publicity",
+"Strike out all or part of a claim",
+"Strike out all/part of response",
+"Tell tribunal claimant not complied",
+"Vary or revoke an order",
+"Vary/revoke an order",
+"Withdraw all/part of claim"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0figtif">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i804u3">
+          <text>"ContactTribunalWithAnApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fcyemk">
+          <text>LATEST_APPLICATION_RESPOND_TASK_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ukvvv8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16a3aq8">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_0la4l4o" name="LATEST_REFERRAL_REPLY_TASK_NAME" camunda:historyTimeToLive="P30D">
@@ -2461,7 +2601,7 @@ else null</text>
       <text>if(LATEST_APPLICATION_TYPE!=null)
   then if(LATEST_APPLICATION_TYPE="Contact about something else" or LATEST_APPLICATION_TYPE="Contact the tribunal")
     then "Contact the tribunal"
-    else "Application - " + LATEST_APPLICATION_TYPE
+    else "Review Application - " + LATEST_APPLICATION_TYPE
   else null</text>
     </literalExpression>
   </decision>
@@ -2565,7 +2705,7 @@ else null</text>
       <text>if(LATEST_APPLICATION_RESPOND_TYPE!=null)
   then if(LATEST_APPLICATION_RESPOND_TYPE="Contact about something else" or LATEST_APPLICATION_RESPOND_TYPE="Contact the tribunal")
     then "Contact the tribunal Response"
-    else "Application Response - " + LATEST_APPLICATION_RESPOND_TYPE
+    else "Review Application Response - " + LATEST_APPLICATION_RESPOND_TYPE
   else null</text>
     </literalExpression>
   </decision>
