@@ -457,7 +457,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Application - Amend my claim",
+                        "Review Application - Amend my claim",
                         "Application"
                     )
                 )
@@ -481,7 +481,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Application Response - Amend response",
+                        "Review Application Response - Amend response",
                         "Application"
                     )
                 )
@@ -505,7 +505,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Application - Amend response",
+                        "Review Application - Amend response",
                         "Application"
                     )
                 )
@@ -529,7 +529,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ContactTribunalWithAnApplication",
-                        "Application Response - Amend my claim",
+                        "Review Application Response - Amend my claim",
                         "Application"
                     )
                 )
@@ -641,6 +641,30 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Processing"
                     )
                 )
+            ),
+            Arguments.of(
+                "SUBMIT_RESPONDENT_TSE",
+                null,
+                HelperService.mapAdditionalData(SUBMISSION_REASON_RESPONDENT_AMEND),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Review Application - Amend response",
+                        "Application"
+                    )
+                )
+            ),
+            Arguments.of(
+                "RESPONDENT_TSE_RESPOND",
+                "Accepted",
+                HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ContactTribunalWithAnApplication",
+                        "Review Application Response - Amend my claim",
+                        "Application"
+                    )
+                )
             )
         );
     }
@@ -665,6 +689,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(39));
+        assertThat(logic.getRules().size(), is(41));
     }
 }
