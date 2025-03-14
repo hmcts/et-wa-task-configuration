@@ -114,6 +114,41 @@ class EmploymentTaskCancellationTestScot extends DmnDecisionTableBaseUnitTest {
                         "action", "Reconfigure"
                     )
                 )
+            ),
+            Arguments.of(
+                null,
+                "rollbackMigrateCase",
+                null,
+                List.of(
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Vetting"
+                    ),
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Processing"
+                    ),
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Hearing"
+                    ),
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Judgment"
+                    ),
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Application"
+                    ),
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Amendments"
+                    ),
+                    Map.of(
+                        "action", "Cancel",
+                        "processCategories", "Rule21"
+                    )
+                )
             )
         );
     }

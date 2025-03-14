@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-cancellation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-cancellation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.32.0">
   <decision id="wa-task-cancellation-employment-et_englandwales" name="ET Task cancellation DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
@@ -26,7 +26,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0puirp2">
-          <text>"disposeCase"</text>
+          <text>"disposeCase", "rollbackMigrateCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1nrvqbg">
           <text></text>
@@ -49,7 +49,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1woxl8e">
-          <text>"disposeCase"</text>
+          <text>"disposeCase", "rollbackMigrateCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lt298h">
           <text></text>
@@ -72,7 +72,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_179f1yj">
-          <text>"disposeCase"</text>
+          <text>"disposeCase", "rollbackMigrateCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qf1qt9">
           <text></text>
@@ -95,7 +95,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0neewht">
-          <text>"disposeCase"</text>
+          <text>"disposeCase", "rollbackMigrateCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rsetu2">
           <text></text>
@@ -118,7 +118,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1343btr">
-          <text>"disposeCase"</text>
+          <text>"disposeCase", "rollbackMigrateCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1rfdad7">
           <text></text>
@@ -141,7 +141,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wy94bd">
-          <text>"disposeCase"</text>
+          <text>"disposeCase", "rollbackMigrateCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_19r12pr">
           <text></text>
@@ -165,7 +165,7 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0m2nxdv">
           <text>"disposeCase",
-"et3Response"</text>
+"et3Response", "rollbackMigrateCase"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1wa7mlt">
           <text></text>
