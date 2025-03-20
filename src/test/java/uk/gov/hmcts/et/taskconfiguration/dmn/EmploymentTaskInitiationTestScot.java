@@ -608,7 +608,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "respondentTSE",
+                "SUBMIT_RESPONDENT_TSE",
                 null,
                 HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS),
                 List.of(
