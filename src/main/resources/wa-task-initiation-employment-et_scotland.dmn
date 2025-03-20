@@ -2761,7 +2761,7 @@ else null</text>
       </rule>
       <rule id="DecisionRule_1uc8crn">
         <inputEntry id="UnaryTests_0rt0ib5">
-          <text>"respondentTSE"</text>
+          <text>"SUBMIT_RESPONDENT_TSE"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0t91fv7">
           <text></text>
