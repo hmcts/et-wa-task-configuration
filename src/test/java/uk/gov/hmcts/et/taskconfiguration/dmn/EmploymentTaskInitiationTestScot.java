@@ -630,6 +630,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Processing"
                     )
                 )
+            ),
+            Arguments.of(
+                "createEcmCase",
+                "Submitted",
+                null,
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "Et1Vetting",
+                        "Et1 Vetting",
+                        "Vetting"
+                    )
+                )
             )
         );
     }

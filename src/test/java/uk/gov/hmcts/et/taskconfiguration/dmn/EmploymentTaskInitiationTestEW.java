@@ -677,6 +677,18 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Application"
                     )
                 )
+            ),
+            Arguments.of(
+                "createEcmCase",
+                "Submitted",
+                null,
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "Et1Vetting",
+                        "Et1 Vetting",
+                        "Vetting"
+                    )
+                )
             )
         );
     }

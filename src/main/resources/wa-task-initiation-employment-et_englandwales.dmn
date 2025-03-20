@@ -2422,6 +2422,62 @@ else null</text>
           <text>"Processing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1obh4sp">
+        <inputEntry id="UnaryTests_0f0ck99">
+          <text>"createEcmCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l7fwvx">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15nu2ne">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ldtdqn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g5r8ec">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jm2t0a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jqm192">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vzjrw6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vig9p0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hr8iu2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dwaeeh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_112tly3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03wnexs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1is25tk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09j3eg8">
+          <text>"Et1Vetting"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0252sd7">
+          <text>"Et1 Vetting"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_174d06f">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mbpybi">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1ayjrt6">
         <inputEntry id="UnaryTests_0wi22f7">
           <text>"SUBMIT_RESPONDENT_TSE"</text>
