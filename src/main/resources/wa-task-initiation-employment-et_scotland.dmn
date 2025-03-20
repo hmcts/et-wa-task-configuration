@@ -2554,6 +2554,65 @@ else null</text>
           <text>"Processing"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0y0iaor">
+        <inputEntry id="UnaryTests_0uw3zl4">
+          <text>"createEcmCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1691c5n">
+          <text>"Submitted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08ocmxb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pbaup2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_084j77t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w8v75m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0chjhm3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1livl77">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i6jb3t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1llmk86">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g1q8lx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hmytp2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gxyswm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16ogqov">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_120o83o">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gi7j9l">
+          <text>"Et1Vetting"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fzpv1k">
+          <text>"Et1 Vetting"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01pwzy7">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13ojbyu">
+          <text>"Vetting"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0jyaztq">
         <inputEntry id="UnaryTests_1pyf2h8">
           <text>"SUBMIT_RESPONDENT_TSE"</text>
