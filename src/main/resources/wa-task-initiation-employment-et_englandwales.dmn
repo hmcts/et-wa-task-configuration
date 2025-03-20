@@ -2562,6 +2562,62 @@ else null</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_165ux4u">
+        <inputEntry id="UnaryTests_0dpgbaj">
+          <text>"respondentTSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01urua0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bugi8a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uq6tw3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z7i6dx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vh2hvg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j6p33x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15m3pri">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nres9k">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mre0c5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04upt0g">
+          <text>"Change my personal details"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1szdu8a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0thadt7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yw34gj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09dcytf">
+          <text>"AmendRespondentDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ooc7yo">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yn91kd">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_150trrl">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_0la4l4o" name="LATEST_REFERRAL_REPLY_TASK_NAME" camunda:historyTimeToLive="P30D">

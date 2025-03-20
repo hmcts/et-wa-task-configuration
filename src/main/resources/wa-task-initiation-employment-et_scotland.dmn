@@ -2700,6 +2700,65 @@ else null</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1uc8crn">
+        <inputEntry id="UnaryTests_0rt0ib5">
+          <text>"respondentTSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t91fv7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_064pi63">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lejng5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12bfih2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k1q75s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07ol6om">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t6yh4j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1adotjm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_121b2ha">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_165tzcq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r8wxsp">
+          <text>"Change my personal details"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q4v2bw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ti8jnm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_143v52p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fo4s87">
+          <text>"AmendRespondentDetails"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0is9vma">
+          <text>"Amend Party Details"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yet8ml">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kiyohh">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_1xqgkq6" name="LATEST_REFERRAL_TASK_NAME" camunda:historyTimeToLive="P30D">

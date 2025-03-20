@@ -17,8 +17,8 @@ else null</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="260" />
-      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="966" />
-      <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
+      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="598" />
+      <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" biodi:width="231" />
       <rule id="DecisionRule_19opwhc">
         <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
         <inputEntry id="UnaryTests_11xjbt2">
