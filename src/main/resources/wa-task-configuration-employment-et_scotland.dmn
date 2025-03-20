@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.30.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.32.0">
   <decision id="wa-task-configuration-employment-et_scotland" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -31,10 +31,11 @@ else null</text>
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection) &gt; 0)
-then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-+ " v " + (caseData.respondentCollection[1]).value.respondent_name
-else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
+          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection) &gt; 0 and caseData.respondentCollection[1].value.respondent_name != null)
+then (if caseData.claimant_TypeOfClaimant = "Company" then if (caseData.claimant_Company != null) then caseData.claimant_Company else "Unknown"
+else (if (caseData.claimantIndType != null and caseData.claimantIndType.claimant_first_names != null and caseData.claimantIndType.claimant_last_name != null) then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name else "Unknown"))
++ " v " + caseData.respondentCollection[1].value.respondent_name
+else if caseData.claimant_TypeOfClaimant = "Company" then caseData.claimant_Company else if (caseData.claimantIndType != null and caseData.claimantIndType.claimant_first_names != null and caseData.claimantIndType.claimant_last_name != null) then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name else "Unknown"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>

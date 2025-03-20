@@ -36,7 +36,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_ET_EW;
     }
 
@@ -47,8 +47,36 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
         Map<String, Object> caseData = new HashMap<>();
         caseData.put("claimantIndType", claimant);
+        caseData.put("claimant_TypeOfClaimant", "Individual");
 
         return caseData;
+    }
+
+    @Test
+    void testClaimantCompanyName() {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("claimant_TypeOfClaimant", "Company");
+        caseData.put("claimant_Company", "Acme Inc");
+        caseData.put("respondentCollection", HelperService.mapData("{\"respondentCollection\":["
+           + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }}]}").get("respondentCollection"));
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter(r -> r.containsValue("caseName"))
+                .toList();
+
+        // Then
+        assertThat(resultList.get(0).get("caseName"), is("Acme Inc v Cosmo Spacely"));
     }
 
     @ParameterizedTest
@@ -73,7 +101,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("caseName"))
+                .filter(r -> r.containsValue("caseName"))
                 .toList();
 
         // Then
