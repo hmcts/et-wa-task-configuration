@@ -495,7 +495,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value",
             "**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/"
-                + "trigger/tseAdmin/tseAdmin1),\\ \n"
+                + "trigger/tseAdmin/tseAdmin1), \n"
                 + "[Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/"
                 + "tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
                 + "tseAdminCloseAnApplication/tseAdminCloseAnApplication1)",
