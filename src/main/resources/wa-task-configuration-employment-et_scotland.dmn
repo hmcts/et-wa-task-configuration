@@ -31,11 +31,9 @@ else null</text>
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection) &gt; 0 and caseData.respondentCollection[1].value.respondent_name != null)
-then (if caseData.claimant_TypeOfClaimant = "Company" then if (caseData.claimant_Company != null) then caseData.claimant_Company else "Unknown"
-else (if (caseData.claimantIndType != null and caseData.claimantIndType.claimant_first_names != null and caseData.claimantIndType.claimant_last_name != null) then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name else "Unknown"))
-+ " v " + caseData.respondentCollection[1].value.respondent_name
-else if caseData.claimant_TypeOfClaimant = "Company" then caseData.claimant_Company else if (caseData.claimantIndType != null and caseData.claimantIndType.claimant_first_names != null and caseData.claimantIndType.claimant_last_name != null) then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name else "Unknown"</text>
+          <text>(if (caseData.claimant != null) then caseData.claimant else "Unknown")
++ " v " +
+(if (caseData.respondent != null) then caseData.respondent else "Unknown")</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -561,7 +559,7 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1),  
+          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1),
 [Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/tseAdminCloseAnApplication1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
