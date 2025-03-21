@@ -31,10 +31,9 @@ else null</text>
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection) &gt; 0)
-then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-+ " v " + (caseData.respondentCollection[1]).value.respondent_name
-else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
+          <text>(if (caseData.claimant != null) then caseData.claimant else "Unknown")
++ " v " +
+(if (caseData.respondent != null) then caseData.respondent else "Unknown")</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>

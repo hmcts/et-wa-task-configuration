@@ -17,7 +17,7 @@ else null</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="211" />
-      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="562" />
+      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="678" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
         <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
@@ -31,10 +31,9 @@ else null</text>
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>if (caseData.respondentCollection != null and count(caseData.respondentCollection) &gt; 0)
-then caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name
-+ " v " + (caseData.respondentCollection[1]).value.respondent_name
-else caseData.claimantIndType.claimant_first_names + " " + caseData.claimantIndType.claimant_last_name</text>
+          <text>(if (caseData.claimant != null) then caseData.claimant else "Unknown")
++ " v " +
+(if (caseData.respondent != null) then caseData.respondent else "Unknown")</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -560,7 +559,7 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0trcq8d">
-          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1), 
+          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1),
 [Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/tseAdminCloseAnApplication1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
