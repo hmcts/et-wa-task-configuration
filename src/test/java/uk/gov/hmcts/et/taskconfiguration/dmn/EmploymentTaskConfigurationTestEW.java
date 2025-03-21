@@ -36,32 +36,59 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_ET_EW;
     }
 
     private static Map<String, Object> getDefaultCaseData() {
-        Map<String, Object> claimant = new HashMap<>();
-        claimant.put("claimant_first_names", "George");
-        claimant.put("claimant_last_name", "Jetson");
-
         Map<String, Object> caseData = new HashMap<>();
-        caseData.put("claimantIndType", claimant);
-
+        caseData.put("claimant", "George Jetson");
         return caseData;
     }
 
-    @ParameterizedTest
-    @MethodSource("respondentCollection_ScenarioProvider")
-    void testCaseNameWithRespondentCollection(String rawRespondentCollection, String expectedCaseName) {
+    @Test
+    void nullClaimantAndRespondentName() {
         // Given
         Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("claimant", null);
+        caseData.put("respondent", null);
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        if (!rawRespondentCollection.isBlank()) {
-            Map<String, Object> parsedRespondentCollection = HelperService.mapData(rawRespondentCollection);
-            caseData.put("respondentCollection", parsedRespondentCollection.get("respondentCollection"));
-        }
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter(r -> r.containsValue("caseName"))
+                .toList();
 
+        // Then
+        assertEquals("Unknown v Unknown", resultList.get(0).get("value"));
+    }
+
+    public static Stream<Arguments> claimantName_ScenarioProvider() {
+        return Stream.of(
+            // null claimant name
+            Arguments.of(
+                null,
+                "Unknown v Cosmo Spacely"
+            ),
+            // valid respondent name
+            Arguments.of("George Jetson",
+                         "George Jetson v Cosmo Spacely"
+            )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("claimantName_ScenarioProvider")
+    void testCaseNameWithClaimantName(String claimantName, String expectedCaseName) {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("claimant", claimantName);
+        caseData.put("respondent", "Cosmo Spacely");
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("caseData", caseData);
         inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
@@ -73,38 +100,46 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("caseName"))
+                .filter(r -> r.containsValue("caseName"))
                 .toList();
 
         // Then
         assertEquals(expectedCaseName, resultList.get(0).get("value"));
     }
 
-    public static Stream<Arguments> respondentCollection_ScenarioProvider() {
+    @ParameterizedTest
+    @MethodSource("respondentName_ScenarioProvider")
+    void testCaseNameWithRespondentName(String respondentName, String expectedCaseName) {
+        // Given
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("respondent", respondentName);
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+
+        // When
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter(r -> r.containsValue("caseName"))
+                .toList();
+
+        // Then
+        assertEquals(expectedCaseName, resultList.get(0).get("value"));
+    }
+
+    public static Stream<Arguments> respondentName_ScenarioProvider() {
         return Stream.of(
-            // No respondentCollection
+            // null respondentName
             Arguments.of(
-                "",
-                "George Jetson"
+                null,
+                "George Jetson v Unknown"
             ),
-            // empty respondentCollection
-            Arguments.of(
-                "{\"respondentCollection\":[]}",
-                "George Jetson"
-            ),
-            // respondentCollection with one Respondent
-            Arguments.of(
-                "{\"respondentCollection\":["
-                    + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }}"
-                    + "]}",
-                "George Jetson v Cosmo Spacely"
-            ),
-            // respondentCollection with 2+
-            Arguments.of(
-                "{\"respondentCollection\":["
-                    + "{ \"value\":{ \"respondent_name\":\"Cosmo Spacely\" }},"
-                    + "{ \"value\":{ \"respondent_name\":\"Coswell Cogs\" }}"
-                    + "]}",
+            // valid respondentName
+            Arguments.of("Cosmo Spacely",
                 "George Jetson v Cosmo Spacely"
             )
         );
@@ -983,7 +1018,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
     private List<Map<String, Object>> getExpectedValues() {
         List<Map<String, Object>> rules = new ArrayList<>();
-        HelperService.getExpectedValueWithReconfigure(rules, "caseName", "George Jetson", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "caseName", "George Jetson v Unknown", true);
         HelperService.getExpectedValueWithReconfigure(rules, "region", "1", true);
         HelperService.getExpectedValueWithReconfigure(rules, "location", "21153", true);
         HelperService.getExpectedValueWithReconfigure(rules, "locationName", "London Central", true);
