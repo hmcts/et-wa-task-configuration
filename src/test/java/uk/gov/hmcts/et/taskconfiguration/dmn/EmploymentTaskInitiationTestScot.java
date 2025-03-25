@@ -608,18 +608,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
-                "SUBMIT_RESPONDENT_TSE",
-                null,
-                HelperService.mapAdditionalData(RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS),
-                List.of(
-                    HelperService.mapExpectedOutput(
-                        "AmendRespondentDetails",
-                        "Amend Party Details",
-                        "Application"
-                    )
-                )
-            ),
-            Arguments.of(
                 "SUBMIT_ET3_FORM",
                 "Accepted",
                 null,

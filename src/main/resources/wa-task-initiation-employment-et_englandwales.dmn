@@ -2510,17 +2510,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0oyvgvr">
-          <text>"Amend response",
-"Claimant not complied",
-"Consider a decision afresh",
-"Contact the tribunal",
-"Order other party",
-"Order a witness to attend to give evidence",
-"Postpone a hearing",
-"Reconsider judgement",
-"Restrict publicity",
-"Strike out all or part of a claim",
-"Vary or revoke an order"</text>
+          <text>"Amend response","Claimant not complied","Consider a decision afresh","Contact the tribunal","Order other party","Order a witness to attend to give evidence","Postpone a hearing","Reconsider judgement","Restrict publicity","Strike out all or part of a claim","Vary or revoke an order","Change personal details"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qsks56">
           <text></text>
@@ -2615,62 +2605,6 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16a3aq8">
-          <text>"Application"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_165ux4u">
-        <inputEntry id="UnaryTests_0dpgbaj">
-          <text>"SUBMIT_RESPONDENT_TSE"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_01urua0">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0bugi8a">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0uq6tw3">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0z7i6dx">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0vh2hvg">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0j6p33x">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_15m3pri">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1nres9k">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1mre0c5">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_04upt0g">
-          <text>"Change my personal details"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1szdu8a">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0thadt7">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1yw34gj">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_09dcytf">
-          <text>"AmendRespondentDetails"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0ooc7yo">
-          <text>"Amend Party Details"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1yn91kd">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_150trrl">
           <text>"Application"</text>
         </outputEntry>
       </rule>
