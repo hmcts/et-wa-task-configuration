@@ -2510,17 +2510,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0oyvgvr">
-          <text>"Amend response",
-"Claimant not complied",
-"Consider a decision afresh",
-"Contact the tribunal",
-"Order other party",
-"Order a witness to attend to give evidence",
-"Postpone a hearing",
-"Reconsider judgement",
-"Restrict publicity",
-"Strike out all or part of a claim",
-"Vary or revoke an order"</text>
+          <text>"Amend response","Claimant not complied","Consider a decision afresh","Contact the tribunal","Order other party","Order a witness to attend to give evidence","Postpone a hearing","Reconsider judgement","Restrict publicity","Strike out all or part of a claim","Vary or revoke an order","Change personal details"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qsks56">
           <text></text>
