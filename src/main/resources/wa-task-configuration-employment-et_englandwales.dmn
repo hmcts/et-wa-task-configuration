@@ -1119,6 +1119,29 @@ else 2</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1sog1is">
+        <inputEntry id="UnaryTests_04hg86y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19hhelw">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ksw63x">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12ms96n">
+          <text>if (caseData!=null
+and caseData.hearingCollection != null
+and caseData.hearingCollection.value.hearingDateCollection != null
+and count(caseData.hearingCollection[count(value.hearingDateCollection)&gt;0])&gt;0
+and sort(flatten(caseData.hearingCollection.value.hearingDateCollection), function(x,y) date and time(if(x.value.listedDate!=null)then x.value.listedDate else now()) &gt; date and time(if(y.value.listedDate!=null)then y.value.listedDate else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+then caseData.hearingCollection.value.hearingDateCollection.value
+else now()</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h6fv95">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0xrz5gi">
         <inputEntry id="UnaryTests_1ub6lnr">
           <text></text>
