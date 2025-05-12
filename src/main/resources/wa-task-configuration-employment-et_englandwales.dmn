@@ -1102,23 +1102,6 @@ else 2</text>
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0tqb9qt">
-        <inputEntry id="UnaryTests_1fn3ca0">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_153b9yz">
-          <text>"DraftAndSignJudgment"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1766vh4">
-          <text>"dueDateIntervalDays"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0iuokqg">
-          <text>28</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0ln2d99">
-          <text>true</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1sog1is">
         <inputEntry id="UnaryTests_04hg86y">
           <text></text>
@@ -1130,16 +1113,63 @@ else 2</text>
           <text>"dueDateOrigin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_12ms96n">
-          <text>if (caseData!=null
-and caseData.hearingCollection != null
-and caseData.hearingCollection.value.hearingDateCollection != null
-and count(caseData.hearingCollection[count(value.hearingDateCollection)&gt;0])&gt;0
-and sort(flatten(caseData.hearingCollection.value.hearingDateCollection), function(x,y) date and time(if(x.value.listedDate!=null)then x.value.listedDate else now()) &gt; date and time(if(y.value.listedDate!=null)then y.value.listedDate else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
-then caseData.hearingCollection.value.hearingDateCollection.value
+          <text>if (
+  caseData != null and
+  caseData.hearingCollection != null and
+  caseData.hearingCollection.value.hearingDateCollection != null
+) then
+  if (
+    count(
+      flatten(
+        [ for h in caseData.hearingCollection return
+          [ for d in h.value.hearingDateCollection return d.value.listedDate ]
+        ]
+      )
+    ) = 1
+  ) then
+    flatten(
+      [ for h in caseData.hearingCollection return
+        [ for d in h.value.hearingDateCollection return d.value.listedDate ]
+      ]
+    )[1]
+  else if (
+    count(
+      flatten(
+        [ for h in caseData.hearingCollection return
+          [ for d in h.value.hearingDateCollection return d.value.listedDate ]
+        ]
+      )
+    ) &gt; 1
+  ) then
+    max(
+      flatten(
+        [ for h in caseData.hearingCollection return
+          [ for d in h.value.hearingDateCollection return d.value.listedDate ]
+        ]
+      )
+    )
+  else now()
 else now()</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0h6fv95">
           <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0eee2kw">
+        <inputEntry id="UnaryTests_0jbyk95">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iz2g20">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jhwlwn">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c5muf3">
+          <text>date("dueDateOrigin") + duration("P28D")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1veqqr8">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0xrz5gi">
