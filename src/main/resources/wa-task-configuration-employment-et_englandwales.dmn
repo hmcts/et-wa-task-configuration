@@ -7,7 +7,7 @@
           <text></text>
         </inputExpression>
       </input>
-      <input id="InputClause_00c59gm" label="Task type" biodi:width="402" camunda:inputVariable="taskType">
+      <input id="InputClause_00c59gm" label="Task type" biodi:width="247" camunda:inputVariable="taskType">
         <inputExpression id="LiteralExpression_1ngi22k" typeRef="string">
           <text>if(taskAttributes != null and taskAttributes.taskType != null)
 then taskAttributes.taskType
@@ -16,8 +16,8 @@ then taskType
 else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="211" />
-      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="678" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="290" />
+      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="629" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
         <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
@@ -855,6 +855,23 @@ else 500</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0h2yrh9">
+        <inputEntry id="UnaryTests_038hb47">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01q40qe">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14j9rg6">
+          <text>"dueDateTime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w4y7mn">
+          <text>time("16:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1t5kkwb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_108ksv2">
         <inputEntry id="UnaryTests_08hi4x5">
           <text></text>
@@ -872,20 +889,84 @@ else 500</text>
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0h2yrh9">
-        <inputEntry id="UnaryTests_038hb47">
+      <rule id="DecisionRule_0cb9nef">
+        <inputEntry id="UnaryTests_1nrmnje">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_01q40qe">
+        <inputEntry id="UnaryTests_0t86tej">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jo2ij7">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14dirk4">
+          <text>if (caseData != null 
+and caseData.hearingDetailsCollection != null
+and count(caseData.hearingDetailsCollection) = 1)
+then date and time(caseData.hearingDetailsCollection[1].value.hearingDetailsDate)
+else if caseData.hearingDetailsCollection != null and count(caseData.hearingDetailsCollection) &gt; 1
+then max(
+flatten(
+  [ for h in caseData.hearingDetailsCollection return
+   date and time(h.value.hearingDetailsDate) ]
+  )
+)
+else now()</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f15zca">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s7x3bc">
+        <inputEntry id="UnaryTests_024ubmb">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_14j9rg6">
-          <text>"dueDateTime"</text>
+        <inputEntry id="UnaryTests_15o2cl6">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mmc9y1">
+          <text>"dueDateIntervalDays"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0w4y7mn">
-          <text>time("16:00")</text>
+        <outputEntry id="LiteralExpression_1x661vr">
+          <text>if month(dueDateOrigin) = 2 then 18
+else if month(dueDateOrigin) = 4 or month(dueDateOrigin) = 6 or month(dueDateOrigin) = 9 or month(dueDateOrigin) = 11 then 19
+else 20</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1t5kkwb">
+        <outputEntry id="LiteralExpression_1ola6kc">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_099wcz3">
+        <inputEntry id="UnaryTests_1rhlolr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lds604">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eyc1sx">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bb9jhe">
+          <text>"false"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w8b9ge">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01tj6t8">
+        <inputEntry id="UnaryTests_0e8j1v1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1agpbzo">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12xa2ze">
+          <text>"dueDateNonWorkingDaysOfWeek"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ik8w1s">
+          <text>"false"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kwkp68">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -1099,76 +1180,6 @@ else 2</text>
           <text>10</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ej03d9">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1sog1is">
-        <inputEntry id="UnaryTests_04hg86y">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_19hhelw">
-          <text>"DraftAndSignJudgment"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1ksw63x">
-          <text>"dueDateOrigin"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_12ms96n">
-          <text>if (
-  caseData != null and
-  caseData.hearingCollection != null and
-  caseData.hearingCollection.value.hearingDateCollection != null
-) then
-  if (
-    count(
-      flatten(
-        [ for h in caseData.hearingCollection return
-          [ for d in h.value.hearingDateCollection return d.value.listedDate ]
-        ]
-      )
-    ) = 1
-  ) then
-    flatten(
-      [ for h in caseData.hearingCollection return
-        [ for d in h.value.hearingDateCollection return d.value.listedDate ]
-      ]
-    )[1]
-  else if (
-    count(
-      flatten(
-        [ for h in caseData.hearingCollection return
-          [ for d in h.value.hearingDateCollection return d.value.listedDate ]
-        ]
-      )
-    ) &gt; 1
-  ) then
-    max(
-      flatten(
-        [ for h in caseData.hearingCollection return
-          [ for d in h.value.hearingDateCollection return d.value.listedDate ]
-        ]
-      )
-    )
-  else now()
-else now()</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0h6fv95">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0eee2kw">
-        <inputEntry id="UnaryTests_0jbyk95">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1iz2g20">
-          <text>"DraftAndSignJudgment"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0jhwlwn">
-          <text>"dueDateIntervalDays"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1c5muf3">
-          <text>date("dueDateOrigin") + duration("P28D")</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1veqqr8">
           <text>true</text>
         </outputEntry>
       </rule>
