@@ -890,6 +890,87 @@ else 500</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1ph4gqo">
+        <inputEntry id="UnaryTests_0dqu09p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jytn9b">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00ackfj">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sgjcqj">
+          <text>if (caseData != null 
+and caseData.hearingDetailsCollection != null
+and count(caseData.hearingDetailsCollection) = 1)
+then date and time(caseData.hearingDetailsCollection[1].value.hearingDetailsDate)
+else if caseData.hearingDetailsCollection != null and count(caseData.hearingDetailsCollection) &gt; 1
+then max(
+flatten(
+  [ for h in caseData.hearingDetailsCollection return
+   date and time(h.value.hearingDetailsDate) ]
+  )
+)
+else now()</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_047vyqb">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1r3vod1">
+        <inputEntry id="UnaryTests_0fyoo24">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00v5gpx">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f5ncqi">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_049uasc">
+          <text>if month(dueDateOrigin) = 2 then 18
+else if month(dueDateOrigin) = 4 or month(dueDateOrigin) = 6 or month(dueDateOrigin) = 9 or month(dueDateOrigin) = 11 then 19
+else 20</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0afpco8">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1t4uxif">
+        <inputEntry id="UnaryTests_051sjyl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rkgtrm">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02abozk">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_158lxad">
+          <text>"false"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vf4p60">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05vdszk">
+        <inputEntry id="UnaryTests_10c9i73">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c660mc">
+          <text>"DraftAndSignJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qkks05">
+          <text>"dueDateNonWorkingDaysOfWeek"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fj0txp">
+          <text>"false"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zwww0n">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1026abf">
         <inputEntry id="UnaryTests_1o2htjd">
           <text></text>

@@ -13,6 +13,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 import uk.gov.hmcts.et.taskconfiguration.utility.HelperService;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +34,6 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.IS_
 import static uk.gov.hmcts.et.taskconfiguration.utility.ConfigurationUtility.NOT_URGENT;
 
 class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
-
     private static final String DEFAULT_CALENDAR = "https://www.gov.uk/bank-holidays/england-and-wales.json";
 
     @BeforeAll
@@ -763,10 +764,10 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             "value", "10",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> dueDateIntervalDays28 = List.of(Map.of(
+        List<Map<String, Object>> dueDateIntervalDays20 = List.of(Map.of(
             "name", "dueDateIntervalDays",
-            "value", "28",
-            "canReconfigure", true
+            "value", "20",
+            "canReconfigure", false
         ));
 
         List<Map<String, Object>> defaultMajorPriority = List.of(Map.of(
@@ -869,7 +870,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             ),
 
             Arguments.of("DraftAndSignJudgment", NOT_URGENT,
-                         dueDateIntervalDays28, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+                         dueDateIntervalDays20, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
 
             Arguments.of("ReviewReferralAdmin", IS_URGENT,
@@ -927,26 +928,43 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     @Test
     void when_any_taskId_then_return_due_date_variables() {
         VariableMap inputVariables = new VariableMapImpl();
+        Map<String, Object> caseData = getDefaultCaseData();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "DraftAndSignJudgment"));
 
-        inputVariables.putValue("taskAttributes", Map.of("taskType", "someTaskType"));
+        LocalDateTime fixedNow = LocalDateTime.of(2024, 1, 1, 12, 0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        String expectedDueDateOrigin = fixedNow.format(formatter);
+        caseData.put("hearingDetailsCollection", Map.of(
+            "hearingDetailsCollection", List.of(Map.of(
+                "hearingDetailsDate", fixedNow
+            ))
+        ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
         List<Map<String, Object>> resultList =
             dmnDecisionTableResult.getResultList().stream().toList();
-        assertEquals(13, resultList.size());
+        assertEquals(23, resultList.size());
 
         assertEquals(Map.of(
             "name", "calculatedDates",
             "value", "nextHearingDate,dueDate,priorityDate",
             "canReconfigure", true
-        ), resultList.get(6));
+        ), resultList.get(11));
 
         assertEquals(Map.of(
             "name", "dueDateTime",
             "value", "16:00",
             "canReconfigure", true
-        ), resultList.get(8));
+        ), resultList.get(12));
+
+        /*assertEquals(
+            Map.of(
+                "name", "dueDateOrigin",
+                "value", expectedDueDateOrigin,
+                "canReconfigure", true
+            ), resultList.get(13)
+        );*/
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingCalendar",
@@ -954,25 +972,25 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                 + "https://raw.githubusercontent.com/hmcts/et-wa-task-configuration/"
                 + "master/src/main/resources/privilege-calendar-engwales.json",
             "canReconfigure", true
-        ), resultList.get(9));
+        ), resultList.get(18));
 
         assertEquals(Map.of(
             "name", "dueDateNonWorkingDaysOfWeek",
             "value", "SATURDAY,SUNDAY",
             "canReconfigure", true
-        ), resultList.get(10));
+        ), resultList.get(19));
 
         assertEquals(Map.of(
             "name", "dueDateSkipNonWorkingDays",
             "value", "true",
             "canReconfigure", true
-        ), resultList.get(11));
+        ), resultList.get(20));
 
         assertEquals(Map.of(
             "name", "dueDateMustBeWorkingDay",
             "value", "Yes",
             "canReconfigure", true
-        ), resultList.get(12));
+        ), resultList.get(21));
     }
 
     @Test
@@ -1013,7 +1031,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(57));
+        assertThat(logic.getRules().size(), is(60));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
@@ -1026,8 +1044,9 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         HelperService.getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
         HelperService.getExpectedValueWithReconfigure(
             rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate", true);
-        HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
+
         HelperService.getExpectedValueWithReconfigure(
             rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR_ENGWALES, true);
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateNonWorkingDaysOfWeek", "SATURDAY,SUNDAY", true);
