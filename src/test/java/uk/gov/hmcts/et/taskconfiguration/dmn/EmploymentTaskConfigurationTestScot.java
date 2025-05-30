@@ -947,7 +947,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
         List<Map<String, Object>> resultList =
             dmnDecisionTableResult.getResultList().stream().toList();
-        assertEquals(24, resultList.size());
+        assertEquals(23, resultList.size());
 
         assertEquals(Map.of(
             "name", "calculatedDates",
