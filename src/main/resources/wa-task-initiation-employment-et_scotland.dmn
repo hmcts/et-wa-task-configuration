@@ -16,6 +16,18 @@
     <informationRequirement id="InformationRequirement_0hh008c">
       <requiredDecision href="#Decision_14sdj4h" />
     </informationRequirement>
+    <informationRequirement id="InformationRequirement_1czrydl">
+      <requiredDecision href="#Decision_1komswz" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0fn2uby">
+      <requiredDecision href="#Decision_01k2es5" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1b90n5m">
+      <requiredDecision href="#Decision_0ivu6kl" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1qr9baa">
+      <requiredDecision href="#Decision_13xjrb4" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" biodi:width="267" camunda:inputVariable="eventId">
         <inputExpression id="InputExpression_1" typeRef="string">
@@ -166,9 +178,9 @@ else null</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="333" />
-      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="363" />
+      <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="315" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="150" />
-      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="258" />
+      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="630" />
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
           <text>"SUBMIT_CASE_DRAFT"</text>
@@ -284,7 +296,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c8d2go">
-          <text>"Vetting"</text>
+          <text>"reviewReferralSerialNumberAndSubject_"+CURRENT_REFERRAL_SERIAL_NUMBER+" - "+CURRENT_REFERRAL_SUBJECT</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1s31bcd">
@@ -461,7 +473,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1flovqn">
-          <text>"Vetting"</text>
+          <text>"reviewReferralSerialNumberAndSubject_"+CURRENT_REFERRAL_SERIAL_NUMBER+" - "+CURRENT_REFERRAL_SUBJECT</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1xtkppt">
@@ -520,7 +532,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1luz902">
-          <text>"Vetting"</text>
+          <text>"reviewReferralSerialNumberAndSubject_"+CURRENT_REFERRAL_SERIAL_NUMBER+" - "+CURRENT_REFERRAL_SUBJECT</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1579wwj">
@@ -579,7 +591,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1opsd1f">
-          <text>"Processing"</text>
+          <text>"reviewReferralResponseSerialNumberAndSubject_"+CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER+" - "+CURRENT_REFERRAL_RESPONSE_SUBJECT</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0hm05l9">
@@ -638,7 +650,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gy7tms">
-          <text>"Processing"</text>
+          <text>"reviewReferralResponseSerialNumberAndSubject_"+CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER+" - "+CURRENT_REFERRAL_RESPONSE_SUBJECT</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_00vkigv">
@@ -697,7 +709,7 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ce5c8c">
-          <text>"Processing"</text>
+          <text>"reviewReferralResponseSerialNumberAndSubject_"+CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER+" - "+CURRENT_REFERRAL_RESPONSE_SUBJECT</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0o71iym">
@@ -2878,15 +2890,21 @@ then sort(additionalData.Data.genericTseApplicationCollection,function(x,y) numb
 else null</text>
     </literalExpression>
   </decision>
-  <decision id="Decision_0eghxfs" name="LATEST_REFERRAL_NUMBER">
-    <variable id="InformationItem_05lutfc" name="LATEST_REFERRAL_NUMBER" typeRef="string" />
+  <decision id="Decision_0eghxfs" name="LATEST_REFERRAL_SERIAL_NUMBER">
+    <variable id="InformationItem_05lutfc" name="LATEST_REFERRAL_SERIAL_NUMBER" typeRef="string" />
     <literalExpression id="LiteralExpression_1aht3pd">
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection) &gt; 0
 and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralNumber!=null)
-then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralNumber
+then sort(
+  additionalData.Data.referralCollection,
+  function(x,y)
+    number(x.value.referralNumber)
+    &gt;
+    number(y.value.referralNumber)
+)[1].value.referralNumber
 else null</text>
     </literalExpression>
   </decision>
@@ -2898,7 +2916,13 @@ and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection) &gt; 0
 and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject!=null)
-then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.referralSubject
+then sort(
+  additionalData.Data.referralCollection,
+  function(x,y)
+    number(x.value.referralNumber)
+    &gt;
+    number(y.value.referralNumber)
+)[1].value.referralSubject
 else null</text>
     </literalExpression>
   </decision>
@@ -3020,114 +3044,220 @@ date and time(if(y.value.dateTime!=null)then y.value.dateTime else "2023-01-01T0
 else false</text>
     </literalExpression>
   </decision>
+  <decision id="Decision_1komswz" name="CURRENT_REFERRAL_SERIAL_NUMBER">
+    <variable id="InformationItem_0snok9l" name="CURRENT_REFERRAL_SERIAL_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_0f6ea87">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0
+and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralNumber!=null)
+then sort(
+  additionalData.Data.referralCollection,
+  function(x,y)
+    number(x.value.referralNumber)
+    &gt;
+    number(y.value.referralNumber)
+)[1].value.referralNumber
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_01k2es5" name="CURRENT_REFERRAL_SUBJECT">
+    <variable id="InformationItem_0pa4934" name="CURRENT_REFERRAL_SUBJECT" typeRef="string" />
+    <literalExpression id="LiteralExpression_19dcw3y">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection) &gt; 0
+and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject!=null)
+then sort(
+  additionalData.Data.referralCollection,
+  function(x,y)
+    number(x.value.referralNumber)
+    &gt;
+    number(y.value.referralNumber)
+)[1].value.referralSubject
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0ivu6kl" name="CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER">
+    <variable id="InformationItem_0ja06f5" name="CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_1iv4liu">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then (
+  sort(
+    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
+    function(x,y)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else null)
+      &gt;
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else null)
+  )[1].value.referralNumber
+)
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_13xjrb4" name="CURRENT_REFERRAL_RESPONSE_SUBJECT">
+    <variable id="InformationItem_1qqnn8q" name="CURRENT_REFERRAL_RESPONSE_SUBJECT" typeRef="string" />
+    <literalExpression id="LiteralExpression_0c8yc8q">
+      <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.referralCollection!=null
+and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+then (
+  sort(
+    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
+    function(x,y)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else null)
+      &gt;
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else null)
+  )[1].value.referralSubject
+)
+else null</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_scotland">
-        <dc:Bounds height="80" width="180" x="700" y="50" />
+        <dc:Bounds height="80" width="180" x="790" y="80" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1srd5ad" dmnElementRef="InformationRequirement_1l2v2xj">
-        <di:waypoint x="790" y="220" />
-        <di:waypoint x="790" y="150" />
-        <di:waypoint x="790" y="130" />
+        <di:waypoint x="460" y="390" />
+        <di:waypoint x="813" y="180" />
+        <di:waypoint x="813" y="160" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1bykp81" dmnElementRef="Decision_1xqgkq6">
-        <dc:Bounds height="80" width="180" x="700" y="220" />
+        <dc:Bounds height="80" width="180" x="370" y="390" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0q240ep" dmnElementRef="InformationRequirement_05r15im">
-        <di:waypoint x="1210" y="220" />
-        <di:waypoint x="820" y="150" />
-        <di:waypoint x="820" y="130" />
+        <di:waypoint x="1360" y="230" />
+        <di:waypoint x="948" y="180" />
+        <di:waypoint x="948" y="160" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0baejpx" dmnElementRef="Decision_1merw3p">
-        <dc:Bounds height="80" width="180" x="1120" y="220" />
+        <dc:Bounds height="80" width="180" x="1270" y="230" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1vutpf4" dmnElementRef="InformationRequirement_15zhznm">
-        <di:waypoint x="250" y="220" />
-        <di:waypoint x="730" y="150" />
-        <di:waypoint x="730" y="130" />
+        <di:waypoint x="420" y="120" />
+        <di:waypoint x="770" y="120" />
+        <di:waypoint x="790" y="120" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1lvtmn8" dmnElementRef="Decision_0mhlyhp">
-        <dc:Bounds height="80" width="180" x="160" y="220" />
+        <dc:Bounds height="80" width="180" x="240" y="80" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_03e5ujv" dmnElementRef="InformationRequirement_1h7r97o">
-        <di:waypoint x="250" y="340" />
-        <di:waypoint x="250" y="320" />
-        <di:waypoint x="250" y="300" />
+        <di:waypoint x="250" y="210" />
+        <di:waypoint x="330" y="180" />
+        <di:waypoint x="330" y="160" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1a5mxet" dmnElementRef="Decision_1yxg1fw">
-        <dc:Bounds height="80" width="180" x="160" y="340" />
+        <dc:Bounds height="80" width="180" x="160" y="210" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_04kia0u" dmnElementRef="InformationRequirement_00i37do">
-        <di:waypoint x="690" y="340" />
-        <di:waypoint x="760" y="320" />
-        <di:waypoint x="760" y="300" />
+        <di:waypoint x="290" y="520" />
+        <di:waypoint x="430" y="490" />
+        <di:waypoint x="430" y="470" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0p9429o" dmnElementRef="Decision_0eghxfs">
-        <dc:Bounds height="80" width="180" x="600" y="340" />
+        <dc:Bounds height="80" width="180" x="200" y="520" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0o2d37b" dmnElementRef="InformationRequirement_0w7qhtf">
-        <di:waypoint x="890" y="340" />
-        <di:waypoint x="820" y="320" />
-        <di:waypoint x="820" y="300" />
+        <di:waypoint x="500" y="520" />
+        <di:waypoint x="490" y="490" />
+        <di:waypoint x="490" y="470" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0k48uc5" dmnElementRef="Decision_0yepj5l">
-        <dc:Bounds height="80" width="180" x="800" y="340" />
+        <dc:Bounds height="80" width="180" x="410" y="520" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_13lg7qf" dmnElementRef="InformationRequirement_0hpfgbp">
-        <di:waypoint x="1110" y="340" />
-        <di:waypoint x="1180" y="320" />
-        <di:waypoint x="1180" y="300" />
+        <di:waypoint x="1270" y="370" />
+        <di:waypoint x="1330" y="330" />
+        <di:waypoint x="1330" y="310" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1dgmiib" dmnElementRef="Decision_03ddjz2">
-        <dc:Bounds height="80" width="180" x="1020" y="340" />
+        <dc:Bounds height="80" width="180" x="1180" y="370" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1logy0w" dmnElementRef="InformationRequirement_1ambi2i">
-        <di:waypoint x="1310" y="340" />
-        <di:waypoint x="1240" y="320" />
-        <di:waypoint x="1240" y="300" />
+        <di:waypoint x="1460" y="370" />
+        <di:waypoint x="1390" y="330" />
+        <di:waypoint x="1390" y="310" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0f9ko68" dmnElementRef="Decision_1hy3wce">
-        <dc:Bounds height="80" width="180" x="1220" y="340" />
+        <dc:Bounds height="80" width="180" x="1370" y="370" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0ih47e5" dmnElementRef="InformationRequirement_0xfl3fm">
-        <di:waypoint x="470" y="220" />
-        <di:waypoint x="760" y="150" />
-        <di:waypoint x="760" y="130" />
+        <di:waypoint x="470" y="210" />
+        <di:waypoint x="835" y="180" />
+        <di:waypoint x="835" y="160" />
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="DMNEdge_0db1ev9" dmnElementRef="InformationRequirement_1qqzkui">
-        <di:waypoint x="470" y="340" />
-        <di:waypoint x="470" y="320" />
-        <di:waypoint x="470" y="300" />
+        <di:waypoint x="250" y="350" />
+        <di:waypoint x="470" y="310" />
+        <di:waypoint x="470" y="290" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1a1bbfa" dmnElementRef="Decision_10dijkm">
-        <dc:Bounds height="80" width="180" x="380" y="340" />
+        <dc:Bounds height="80" width="180" x="160" y="350" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_0wt1ey1" dmnElementRef="Decision_1uzjxz3">
-        <dc:Bounds height="80" width="180" x="380" y="220" />
+        <dc:Bounds height="80" width="180" x="380" y="210" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0uvhdb0" dmnElementRef="InformationRequirement_0hh008c">
-        <di:waypoint x="1610" y="220" />
-        <di:waypoint x="850" y="150" />
-        <di:waypoint x="850" y="130" />
+        <di:waypoint x="1570" y="130" />
+        <di:waypoint x="990" y="120" />
+        <di:waypoint x="970" y="120" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_06xf9xh" dmnElementRef="Decision_14sdj4h">
-        <dc:Bounds height="80" width="180" x="1520" y="220" />
+        <dc:Bounds height="80" width="180" x="1570" y="90" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1wp8kd8" dmnElementRef="InformationRequirement_10u30og">
-        <di:waypoint x="1510" y="340" />
-        <di:waypoint x="1580" y="320" />
-        <di:waypoint x="1580" y="300" />
+        <di:waypoint x="1630" y="230" />
+        <di:waypoint x="1630" y="190" />
+        <di:waypoint x="1630" y="170" />
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="DMNEdge_1oxmfpk" dmnElementRef="InformationRequirement_1q6giso">
-        <di:waypoint x="1710" y="340" />
-        <di:waypoint x="1640" y="320" />
-        <di:waypoint x="1640" y="300" />
+        <di:waypoint x="1850" y="230" />
+        <di:waypoint x="1690" y="190" />
+        <di:waypoint x="1690" y="170" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_13pqlrp" dmnElementRef="Decision_0jt8p9l">
-        <dc:Bounds height="80" width="180" x="1420" y="340" />
+        <dc:Bounds height="80" width="180" x="1540" y="230" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_1mfucxv" dmnElementRef="Decision_06g5z3o">
-        <dc:Bounds height="80" width="180" x="1620" y="340" />
+        <dc:Bounds height="80" width="180" x="1760" y="230" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_132ldaf" dmnElementRef="InformationRequirement_1czrydl">
+        <di:waypoint x="790" y="430" />
+        <di:waypoint x="880" y="180" />
+        <di:waypoint x="880" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1utws27" dmnElementRef="Decision_1komswz">
+        <dc:Bounds height="80" width="180" x="700" y="430" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1mid0q4" dmnElementRef="InformationRequirement_0fn2uby">
+        <di:waypoint x="680" y="320" />
+        <di:waypoint x="858" y="180" />
+        <di:waypoint x="858" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0ui9uym" dmnElementRef="Decision_01k2es5">
+        <dc:Bounds height="80" width="180" x="590" y="320" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_07jzhgy" dmnElementRef="InformationRequirement_1b90n5m">
+        <di:waypoint x="1070" y="260" />
+        <di:waypoint x="925" y="180" />
+        <di:waypoint x="925" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_05y3moe" dmnElementRef="Decision_0ivu6kl">
+        <dc:Bounds height="80" width="180" x="980" y="260" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18b4eni" dmnElementRef="InformationRequirement_1qr9baa">
+        <di:waypoint x="990" y="430" />
+        <di:waypoint x="903" y="180" />
+        <di:waypoint x="903" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1rs6daf" dmnElementRef="Decision_13xjrb4">
+        <dc:Bounds height="80" width="180" x="900" y="430" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>

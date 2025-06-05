@@ -4,6 +4,9 @@
     <informationRequirement id="InformationRequirement_181rjsg">
       <requiredDecision href="#Decision_07yhq0k" />
     </informationRequirement>
+    <informationRequirement id="InformationRequirement_134ckm5">
+      <requiredDecision href="#Decision_15im37r" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -403,7 +406,7 @@ else null</text>
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17jk018">
-          <text>LATEST_REFERRAL_TASK_TITLE</text>
+          <text>LATEST_REVIEW_REFERRAL_TASK_TITLE</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0a0pqlr">
           <text>true</text>
@@ -427,6 +430,25 @@ else null</text>
 You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0q17zzy">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18z64p2">
+        <inputEntry id="UnaryTests_1viwgi9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ytgrj8">
+          <text>"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1a5lcrq">
+          <text>"title"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13930fy">
+          <text>LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ta8hyu">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -1264,82 +1286,90 @@ else 2</text>
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_07yhq0k" name="LATEST_REFERRAL_TASK_TITLE">
-    <variable id="InformationItem_1s5gpuw" name="LATEST_REFERRAL_TASK_TITLE" typeRef="string" />
+  <decision id="Decision_07yhq0k" name="LATEST_REVIEW_REFERRAL_TASK_TITLE">
+    <variable id="InformationItem_1s5gpuw" name="LATEST_REVIEW_REFERRAL_TASK_TITLE" typeRef="string" />
     <informationRequirement id="InformationRequirement_145p5nj">
       <requiredDecision href="#Decision_1fo6auw" />
     </informationRequirement>
+    <literalExpression id="LiteralExpression_1s87hh4">
+      <text>if(reviewReferralSerialNumberAndSubject!=null)
+then "Review Referral #" + reviewReferralSerialNumberAndSubject
+else null</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1fo6auw" name="reviewReferralSerialNumberAndSubject">
+    <variable id="InformationItem_0za1w6z" name="reviewReferralSerialNumberAndSubject" typeRef="string" />
+    <literalExpression id="LiteralExpression_0bygppz">
+      <text>{
+  "__prefix" : "__processCategory__reviewReferralSerialNumberAndSubject_",
+  "__attribute_entries" : get entries(taskAttributes),
+  "__matching_keys" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then substring(__item.key, string length(__prefix) + 1) else null,
+  "__filtered_keys" : __matching_keys[item != null],
+  "__nonempty_keys" : append(__filtered_keys, null),
+  "__nullable_review_referral_serial_number_and_subject" : __nonempty_keys[1]
+}.__nullable_review_referral_serial_number_and_subject</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_0qmdbpz" name="referralReviewResponseSerialNumberAndSubject">
+    <variable id="InformationItem_0vg7e2o" name="referralReviewResponseSerialNumberAndSubject" typeRef="string" />
+    <literalExpression id="LiteralExpression_1m1f1dg">
+      <text>{
+  "__prefix" : "__processCategory__reviewReferralResponseSerialNumberAndSubject_",
+  "__attribute_entries" : get entries(taskAttributes),
+  "__matching_keys" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then substring(__item.key, string length(__prefix) + 1) else null,
+  "__filtered_keys" : __matching_keys[item != null],
+  "__nonempty_keys" : append(__filtered_keys, null),
+  "__nullable_review_referral_response_serial_number_and_subject" : __nonempty_keys[1]
+}.__nullable_review_referral_response_serial_number_and_subject</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_15im37r" name="LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE">
+    <variable id="InformationItem_0zgjucf" name="LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE" typeRef="string" />
     <informationRequirement id="InformationRequirement_0inw8mx">
       <requiredDecision href="#Decision_0qmdbpz" />
     </informationRequirement>
-    <literalExpression id="LiteralExpression_1s87hh4">
-      <text>if(LATEST_REFERRAL_NUMBER2!=null and LATEST_REFERRAL_SUBJECT2!=null)
-then "Review Referral #" + LATEST_REFERRAL_NUMBER2 + " - " + LATEST_REFERRAL_SUBJECT2
-else null</text>
-    </literalExpression>
-  </decision>
-  <decision id="Decision_1fo6auw" name="LATEST_REFERRAL_NUMBER2">
-    <variable id="InformationItem_0za1w6z" name="LATEST_REFERRAL_NUMBER2" typeRef="string" />
-    <literalExpression id="LiteralExpression_0bygppz">
-      <text>if(caseData!=null
-and caseData.referralCollection!=null
-and count(caseData.referralCollection) &gt; 0
-and sort(caseData.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralNumber!=null)
-then sort(
-  caseData.referralCollection,
-  function(x,y)
-    number(x.value.referralNumber)
-    &gt;
-    number(y.value.referralNumber)
-)[1].value.referralNumber
-else null</text>
-    </literalExpression>
-  </decision>
-  <decision id="Decision_0qmdbpz" name="LATEST_REFERRAL_SUBJECT2">
-    <variable id="InformationItem_0vg7e2o" name="LATEST_REFERRAL_SUBJECT2" typeRef="string" />
-    <literalExpression id="LiteralExpression_1m1f1dg">
-      <text>if(caseData!=null
-and caseData.referralCollection!=null
-and count(caseData.referralCollection) &gt; 0
-and sort(caseData.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject!=null)
-then sort(
-  caseData.referralCollection,
-  function(x,y)
-    number(x.value.referralNumber)
-    &gt;
-    number(y.value.referralNumber)
-)[1].value.referralSubject
+    <literalExpression id="LiteralExpression_046sa54">
+      <text>if(referralReviewResponseSerialNumberAndSubject!=null)
+then "Review Referral Response #" + referralReviewResponseSerialNumberAndSubject
 else null</text>
     </literalExpression>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
       <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_scotland">
-        <dc:Bounds height="80" width="180" x="410" y="80" />
+        <dc:Bounds height="80" width="180" x="270" y="80" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0tow641" dmnElementRef="InformationRequirement_181rjsg">
-        <di:waypoint x="500" y="270" />
-        <di:waypoint x="500" y="180" />
-        <di:waypoint x="500" y="160" />
+        <di:waypoint x="250" y="250" />
+        <di:waypoint x="330" y="180" />
+        <di:waypoint x="330" y="160" />
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="DMNEdge_04r4xtp" dmnElementRef="InformationRequirement_145p5nj">
-        <di:waypoint x="320" y="470" />
-        <di:waypoint x="470" y="370" />
-        <di:waypoint x="470" y="350" />
+        <di:waypoint x="250" y="370" />
+        <di:waypoint x="250" y="350" />
+        <di:waypoint x="250" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="DMNEdge_0tpq7iq" dmnElementRef="InformationRequirement_0inw8mx">
-        <di:waypoint x="680" y="470" />
-        <di:waypoint x="530" y="370" />
-        <di:waypoint x="530" y="350" />
+        <di:waypoint x="520" y="370" />
+        <di:waypoint x="520" y="350" />
+        <di:waypoint x="520" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0qgoj2p" dmnElementRef="Decision_07yhq0k">
-        <dc:Bounds height="80" width="180" x="410" y="270" />
+        <dc:Bounds height="80" width="180" x="160" y="250" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_1sub5cx" dmnElementRef="Decision_1fo6auw">
-        <dc:Bounds height="80" width="180" x="230" y="470" />
+        <dc:Bounds height="80" width="180" x="160" y="370" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_1rk1cum" dmnElementRef="Decision_0qmdbpz">
-        <dc:Bounds height="80" width="180" x="590" y="470" />
+        <dc:Bounds height="80" width="180" x="430" y="370" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_16vt5t2" dmnElementRef="InformationRequirement_134ckm5">
+        <di:waypoint x="520" y="250" />
+        <di:waypoint x="390" y="180" />
+        <di:waypoint x="390" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1uo4xa9" dmnElementRef="Decision_15im37r">
+        <dc:Bounds height="80" width="180" x="430" y="250" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
