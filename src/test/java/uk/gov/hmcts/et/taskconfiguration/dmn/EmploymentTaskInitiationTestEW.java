@@ -92,8 +92,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral #2 - Referral Subject 2",
-                        "Vetting"
+                        "Review Referral",
+                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 2"
                     )
                 )
             ),
@@ -104,8 +104,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral #2 - Hearings",
-                        "Vetting"
+                        "Review Referral",
+                        "reviewReferralSerialNumberAndSubject_2 - Hearings"
                     ),
                     HelperService.mapExpectedOutput(
                         "IssuePostHearingDirection",
@@ -121,8 +121,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
-                        "Review Referral #2 - Judgment",
-                        "Vetting"
+                        "Review Referral",
+                        "reviewReferralSerialNumberAndSubject_2 - Judgment"
                     ),
                     HelperService.mapExpectedOutput(
                         "IssueJudgment",
@@ -138,8 +138,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciary",
-                        "Review Referral #2 - ET1",
-                        "Vetting"
+                        "Review Referral",
+                        "reviewReferralSerialNumberAndSubject_2 - ET1"
                     )
                 )
             ),
@@ -150,8 +150,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciary",
-                        "Review Referral #2 - Rule 21",
-                        "Vetting"
+                        "Review Referral",
+                        "reviewReferralSerialNumberAndSubject_2 - Rule 21"
                     )
                 )
             ),
@@ -162,8 +162,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralLegalOps",
-                        "Review Referral #2 - Referral Subject 2",
-                        "Vetting"
+                        "Review Referral",
+                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 2"
                     )
                 )
             ),
@@ -174,8 +174,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseAdmin",
-                        "Review Referral #1 - Referral Subject 1 Response",
-                        "Processing"
+                        "Review Referral Response",
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1"
                     )
                 )
             ),
@@ -186,8 +186,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
-                        "Review Referral #1 - Referral Subject 1 Response",
-                        "Processing"
+                        "Review Referral Response",
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1"
                     )
                 )
             ),
@@ -198,8 +198,8 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
-                        "Review Referral #1 - Referral Subject 1 Response",
-                        "Processing"
+                        "Review Referral Response",
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1"
                     )
                 )
             ),
