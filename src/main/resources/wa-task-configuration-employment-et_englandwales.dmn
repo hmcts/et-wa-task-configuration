@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.35.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0cm80l7">
       <requiredDecision href="#Decision_1lqqy4i" />
@@ -740,7 +740,8 @@ else ""</text>
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -822,7 +823,8 @@ else 5000</text>
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -1161,7 +1163,8 @@ else 2</text>
           <text>"Rule21",
 "ReviewRule21Referral",
 "CompleteInitialConsideration",
-"ContactTribunalWithAnApplication"</text>
+"ContactTribunalWithAnApplication",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1w0lhdh">
           <text>"dueDateIntervalDays"</text>
@@ -1252,7 +1255,8 @@ else 2</text>
 "ReviewReferralResponseAdmin",
 "ReviewReferralResponseJudiciary",
 "ReviewReferralResponseLegalOps",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>
