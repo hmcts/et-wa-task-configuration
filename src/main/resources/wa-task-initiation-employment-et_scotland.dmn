@@ -2972,7 +2972,7 @@ else null</text>
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+and count(additionalData.Data.referralCollection[value.referralReplyCollection != null and count(value.referralReplyCollection)&gt;0])&gt;0)
 then (
   sort(
     flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null and count(value.referralReplyCollection) &gt; 0].value.referralReplyCollection),
