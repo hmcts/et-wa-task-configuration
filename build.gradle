@@ -259,6 +259,10 @@ dependencies {
 
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcat
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: versions.tomcat
+
+  implementation('net.logstash.logback:logstash-logback-encoder:6.6') {
+    exclude group: 'org.apache.commons', module: 'commons-lang3'
+  }
   implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.18.0'
 
   implementation 'org.camunda.bpm:camunda-external-task-client:7.23.0'
