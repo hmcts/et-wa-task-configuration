@@ -413,7 +413,7 @@ else if (taskAttributes != null and taskAttributes.name != null) then
 else "Review Referral"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0a0pqlr">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_190h4rm">
@@ -457,7 +457,7 @@ else if (taskAttributes != null and taskAttributes.name != null) then
 else "Review Referral Response"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ta8hyu">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12bi1xb">
