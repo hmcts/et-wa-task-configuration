@@ -410,7 +410,7 @@ else null</text>
 else if (taskAttributes != null and taskAttributes.name != null) then
   taskAttributes.name
 else
-  null</text>
+  "Review Referral"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cjhtei">
           <text>true</text>
@@ -455,7 +455,7 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
 else if (taskAttributes != null and taskAttributes.name != null) then
   taskAttributes.name
 else
-  null</text>
+  "Review Referral Response"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0g8aepj">
           <text>true</text>

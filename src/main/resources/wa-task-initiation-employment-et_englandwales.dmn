@@ -2797,7 +2797,7 @@ then sort(
     &gt;
     number(y.value.referralNumber)
 )[1].value.referralNumber
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <decision id="Decision_1jygun3" name="CURRENT_REFERRAL_SUBJECT">
@@ -2815,7 +2815,7 @@ then sort(
     &gt;
     number(y.value.referralNumber)
 )[1].value.referralSubject
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <decision id="Decision_1rrsvbw" name="CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER">
@@ -2834,7 +2834,7 @@ then (
       date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "0001-01-01T00:00:00")
   )[1].value.referralNumber
 )
-else null
+else ""
 
 </text>
     </literalExpression>
@@ -2855,7 +2855,7 @@ then (
       date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else null)
   )[1].value.referralSubject
 )
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <dmndi:DMNDI>

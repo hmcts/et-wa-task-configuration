@@ -410,7 +410,7 @@ else null</text>
   LATEST_REVIEW_REFERRAL_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
   taskAttributes.name
-else null</text>
+else "Review Referral"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0a0pqlr">
           <text>true</text>
@@ -454,7 +454,7 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
   LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
   taskAttributes.name
-else null</text>
+else "Review Referral Response"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ta8hyu">
           <text>true</text>
