@@ -2845,14 +2845,14 @@ else ""
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+and count(additionalData.Data.referralCollection[value.referralReplyCollection != null and count(value.referralReplyCollection)&gt;0])&gt;0)
 then (
   sort(
     flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
     function(x,y)
-      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else null)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "0001-01-01T00:00:00")
       &gt;
-      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else null)
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "0001-01-01T00:00:00")
   )[1].value.referralSubject
 )
 else ""</text>
