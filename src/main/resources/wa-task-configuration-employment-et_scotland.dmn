@@ -758,7 +758,7 @@ else ""</text>
           <text>5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1mzeeq8">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1ua5utw">
@@ -840,7 +840,7 @@ else 5000</text>
           <text>500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1lezcx4">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bz90wb">
@@ -905,7 +905,7 @@ else 500</text>
           <text>"nextHearingDate,dueDate,priorityDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13crvik">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_108ksv2">
@@ -922,7 +922,7 @@ else 500</text>
           <text>now()</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cg2n4r">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0h2yrh9">
@@ -939,7 +939,7 @@ else 500</text>
           <text>time("16:00")</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1t5kkwb">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1ph4gqo">
@@ -1270,7 +1270,7 @@ else 2</text>
           <text>"dueDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tt1zjs">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bva8w0">
@@ -1289,7 +1289,7 @@ else 2</text>
           <text>"dueDate, nextHearingDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cmb6lz">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
     </decisionTable>
