@@ -773,7 +773,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> defaultMajorPriority = List.of(Map.of(
             "name", "majorPriority",
             "value", "5000",
-            "canReconfigure", true
+            "canReconfigure", false
         ));
         List<Map<String, Object>> defaultMajorPriorityNoReconfigure = List.of(Map.of(
             "name", "majorPriority",
@@ -783,7 +783,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> defaultMinorPriority = List.of(Map.of(
             "name", "minorPriority",
             "value", "500",
-            "canReconfigure", true
+            "canReconfigure", false
         ));
         List<Map<String, Object>> defaultMinorPriorityNoReconfigure = List.of(Map.of(
             "name", "minorPriority",
@@ -804,12 +804,12 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> priorityDateOriginRef = List.of(Map.of(
             "name", "priorityDateOriginRef",
             "value", "dueDate",
-            "canReconfigure", true
+            "canReconfigure", false
         ));
         List<Map<String, Object>> priorityDateOriginEar = List.of(Map.of(
             "name", "priorityDateOriginEarliest",
             "value", "dueDate, nextHearingDate",
-            "canReconfigure", true
+            "canReconfigure", false
         ));
 
         return Stream.of(
@@ -949,13 +949,13 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         assertEquals(Map.of(
             "name", "calculatedDates",
             "value", "nextHearingDate,dueDate,priorityDate",
-            "canReconfigure", true
+            "canReconfigure", false
         ), resultList.get(11));
 
         assertEquals(Map.of(
             "name", "dueDateTime",
             "value", "16:00",
-            "canReconfigure", true
+            "canReconfigure", false
         ), resultList.get(12));
 
         /*assertEquals(
@@ -1043,9 +1043,9 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         HelperService.getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);
         HelperService.getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
         HelperService.getExpectedValueWithReconfigure(
-            rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate", true);
-        HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", true);
-        HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, true);
+            rules, "calculatedDates", "nextHearingDate,dueDate,priorityDate", false);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateTime", "16:00", false);
+        HelperService.getExpectedValueWithReconfigure(rules, "dueDateOrigin", null, false);
 
         HelperService.getExpectedValueWithReconfigure(
             rules, "dueDateNonWorkingCalendar", DEFAULT_CALENDAR + ", " + EXTRA_TEST_CALENDAR_ENGWALES, true);

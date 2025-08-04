@@ -18,7 +18,7 @@ version = '0.0.1'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(21)
   }
 }
 
@@ -228,7 +228,7 @@ def versions = [
   camunda         : '7.23.0',
   pitest          : '1.17.0',
   sonarPitest     : '0.5',
-  tomcat          : '11.0.8'
+  tomcat          : '11.0.9'
 ]
 
 ext.libraries = [
@@ -259,6 +259,10 @@ dependencies {
 
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcat
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: versions.tomcat
+  implementation('net.logstash.logback:logstash-logback-encoder:6.6') {
+    exclude group: 'org.apache.commons', module: 'commons-lang3'
+  }
+  implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.18.0'
 
   implementation 'org.camunda.bpm:camunda-external-task-client:7.23.0'
 
