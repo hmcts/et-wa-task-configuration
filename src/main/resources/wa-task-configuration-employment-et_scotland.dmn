@@ -406,10 +406,14 @@ else null</text>
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17jk018">
-          <text>LATEST_REVIEW_REFERRAL_TASK_TITLE</text>
+          <text>if (LATEST_REVIEW_REFERRAL_TASK_TITLE != null) then
+  LATEST_REVIEW_REFERRAL_TASK_TITLE
+else if (taskAttributes != null and taskAttributes.name != null) then
+  taskAttributes.name
+else "Review Referral"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0a0pqlr">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_190h4rm">
@@ -446,10 +450,14 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13930fy">
-          <text>LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE</text>
+          <text>if (LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE != null) then
+  LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE
+else if (taskAttributes != null and taskAttributes.name != null) then
+  taskAttributes.name
+else "Review Referral Response"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ta8hyu">
-          <text>true</text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12bi1xb">
