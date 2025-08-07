@@ -121,7 +121,7 @@ and (some x in additionalData.Data.hearingDetailsCollection satisfies x.value.he
 and (every x in additionalData.Data.hearingDetailsCollection satisfies (x.value.hearingDetailsStatus="Heard" or x.value.hearingDetailsStatus="Vacated"))</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="351">
+      <input id="InputClause_0z98r1i" label="Submission Reason (Application)" biodi:width="197">
         <inputExpression id="LiteralExpression_1ebb1do" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -141,7 +141,7 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_02rm1d2" label="Response to Application Type" biodi:width="291">
+      <input id="InputClause_02rm1d2" label="Response to Application Type" biodi:width="186">
         <inputExpression id="LiteralExpression_009rrzp" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -159,7 +159,7 @@ else null</text>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="324" />
       <output id="OutputClause_18hhub7" label="Name" name="name" typeRef="string" biodi:width="347" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="152" />
-      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="589" />
+      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="1420" />
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
           <text>"SUBMIT_CASE_DRAFT"</text>
@@ -2853,7 +2853,7 @@ then sort(
     &gt;
     number(y.value.referralNumber)
 )[1].value.referralNumber
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <decision id="Decision_1jygun3" name="CURRENT_REFERRAL_SUBJECT">
@@ -2871,7 +2871,7 @@ then sort(
     &gt;
     number(y.value.referralNumber)
 )[1].value.referralSubject
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <decision id="Decision_1rrsvbw" name="CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER">
@@ -2880,17 +2880,19 @@ else null</text>
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+and count(additionalData.Data.referralCollection[value.referralReplyCollection != null and count(value.referralReplyCollection)&gt;0])&gt;0)
 then (
   sort(
-    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
+    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null and count(value.referralReplyCollection) &gt; 0].value.referralReplyCollection),
     function(x,y)
-      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else null)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "0001-01-01T00:00:00")
       &gt;
-      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else null)
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "0001-01-01T00:00:00")
   )[1].value.referralNumber
 )
-else null</text>
+else ""
+
+</text>
     </literalExpression>
   </decision>
   <decision id="Decision_0jnixrx" name="CURRENT_REFERRAL_RESPONSE_SUBJECT">
@@ -2899,17 +2901,17 @@ else null</text>
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+and count(additionalData.Data.referralCollection[value.referralReplyCollection != null and count(value.referralReplyCollection)&gt;0])&gt;0)
 then (
   sort(
     flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
     function(x,y)
-      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else null)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "0001-01-01T00:00:00")
       &gt;
-      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else null)
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "0001-01-01T00:00:00")
   )[1].value.referralSubject
 )
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <dmndi:DMNDI>

@@ -40,6 +40,8 @@
   ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-aop@.*$</packageUrl>
     <cve>CVE-2024-38820</cve>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
@@ -47,6 +49,8 @@
   ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-beans@.*$</packageUrl>
     <cve>CVE-2024-38820</cve>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
@@ -54,6 +58,8 @@
   ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-context@.*$</packageUrl>
     <cve>CVE-2024-38820</cve>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
@@ -61,6 +67,8 @@
   ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-core@.*$</packageUrl>
     <cve>CVE-2024-38820</cve>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
@@ -68,6 +76,8 @@
   ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-expression@.*$</packageUrl>
     <cve>CVE-2024-38820</cve>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
@@ -75,6 +85,23 @@
   ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-jcl@.*$</packageUrl>
     <cve>CVE-2024-38820</cve>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+  file name: logstash-logback-encoder-6.6.jar
+  ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.commons/commons-lang3@.*$</packageUrl>
+    <cve>CVE-2025-48924</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+  file name: spring-webmvc-5.3.31.jar
+  ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\/spring-webmvc@.*$</packageUrl>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
@@ -82,6 +109,14 @@
   ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-webmvc@.*$</packageUrl>
     <cve>CVE-2024-38820</cve>
+    <cve>CVE-2024-22259</cve>
+    <cve>CVE-2024-38808</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+  file name: logstash-logback-encoder-6.6.jar
+  ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.commons/commons-lang3@.*$</packageUrl>
+    <cve>CVE-2025-48924</cve>
   </suppress>
 </suppressions>
-

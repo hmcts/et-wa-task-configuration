@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.35.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_15zhznm">
       <requiredDecision href="#Decision_0mhlyhp" />
@@ -156,7 +156,7 @@ then sort(flatten(additionalData.Data.genericTseApplicationCollection[value.resp
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1ki9c2f" label="Response to Application Type" biodi:width="414">
+      <input id="InputClause_1ki9c2f" label="Response to Application Type" biodi:width="270">
         <inputExpression id="LiteralExpression_0egdmqz" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -174,7 +174,7 @@ else null</text>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="333" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="315" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="150" />
-      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="630" />
+      <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="923" />
       <rule id="DecisionRule_1sfku1u">
         <inputEntry id="UnaryTests_1671vji">
           <text>"SUBMIT_CASE_DRAFT"</text>
@@ -2945,7 +2945,7 @@ then sort(
     &gt;
     number(y.value.referralNumber)
 )[1].value.referralNumber
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <decision id="Decision_01k2es5" name="CURRENT_REFERRAL_SUBJECT">
@@ -2963,7 +2963,7 @@ then sort(
     &gt;
     number(y.value.referralNumber)
 )[1].value.referralSubject
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <decision id="Decision_0ivu6kl" name="CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER">
@@ -2972,17 +2972,20 @@ else null</text>
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+and count(additionalData.Data.referralCollection[value.referralReplyCollection != null and count(value.referralReplyCollection)&gt;0])&gt;0)
 then (
   sort(
-    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
+    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null and count(value.referralReplyCollection) &gt; 0].value.referralReplyCollection),
     function(x,y)
-      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else null)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "0001-01-01T00:00:00")
       &gt;
-      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else null)
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "0001-01-01T00:00:00")
   )[1].value.referralNumber
 )
-else null</text>
+else ""
+
+
+</text>
     </literalExpression>
   </decision>
   <decision id="Decision_13xjrb4" name="CURRENT_REFERRAL_RESPONSE_SUBJECT">
@@ -2991,17 +2994,17 @@ else null</text>
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0)
+and count(additionalData.Data.referralCollection[value.referralReplyCollection != null and count(value.referralReplyCollection)&gt;0])&gt;0)
 then (
   sort(
     flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
     function(x,y)
-      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else null)
+      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "0001-01-01T00:00:00")
       &gt;
-      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else null)
+      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "0001-01-01T00:00:00")
   )[1].value.referralSubject
 )
-else null</text>
+else ""</text>
     </literalExpression>
   </decision>
   <dmndi:DMNDI>
