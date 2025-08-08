@@ -888,6 +888,62 @@ else null</text>
           <text>"Rule21"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_09qiava">
+        <inputEntry id="UnaryTests_0f86jl3">
+          <text>"WA_EXPIRED_BF_ACTION_TASK"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rqk6hg">
+          <text>"Accepted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qsywlx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1irfojh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hhrwc5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fw2t24">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_058xfy6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ejwbqa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04sk0pw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j3jh84">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02263gl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lns9os">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jt5elm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t45he0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ukafle">
+          <text>"ExpiredBfAction"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ikcqwl">
+          <text>"Expired Bf Action"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04kcqv9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0daj2pu">
+          <text>"ExpiredBfAction"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0ntdndx">
         <inputEntry id="UnaryTests_0rhsg81">
           <text>"submitEt3"</text>
