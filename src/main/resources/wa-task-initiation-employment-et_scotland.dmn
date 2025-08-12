@@ -28,7 +28,7 @@
           <text></text>
         </inputExpression>
       </input>
-      <input id="InputClause_0gxli97" label="Post event state" biodi:width="192" camunda:inputVariable="postEventState">
+      <input id="InputClause_0gxli97" label="Post event state" biodi:width="314" camunda:inputVariable="postEventState">
         <inputExpression id="LiteralExpression_0dijl5x" typeRef="string">
           <text></text>
         </inputExpression>
@@ -940,6 +940,65 @@ else null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vy4nwa">
           <text>"Rule21"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k52wf9">
+        <inputEntry id="UnaryTests_1fhtgkx">
+          <text>"WA_EXPIRED_BF_ACTION_TASK"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lwurn7">
+          <text>"Accepted","Rejected", "Vetted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y6nzjz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17p6j8s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11yleq6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11rttqb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0obo9nb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hyo3uw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12yi4fh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l14uxe">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yy6uzi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nikzpy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00yirhv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zhdv4f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17f7sie">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mwwyvm">
+          <text>"ExpiredBfAction"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hm3eum">
+          <text>"Expired Bf Action"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03ymc4x">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lnzhsn">
+          <text>"ExpiredBfAction"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0ntdndx">

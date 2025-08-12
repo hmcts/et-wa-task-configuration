@@ -151,7 +151,8 @@ else null</text>
 "ListAHearing",
 "ReviewRule21Referral",
 "SendEt3Notification",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -306,7 +307,8 @@ else null</text>
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "SendEt3Notification",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -749,7 +751,8 @@ else ""</text>
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -831,7 +834,8 @@ else 5000</text>
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -1261,7 +1265,8 @@ else 2</text>
 "ReviewReferralResponseAdmin",
 "ReviewReferralResponseJudiciary",
 "ReviewReferralResponseLegalOps",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>
