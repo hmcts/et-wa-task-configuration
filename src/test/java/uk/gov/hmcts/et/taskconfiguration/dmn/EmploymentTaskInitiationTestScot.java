@@ -87,6 +87,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "initiateCase",
+                "Submitted",
+                null,
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "Et1Vetting",
+                        "Et1 Vetting",
+                        "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
                 "createReferral",
                 null,
                 HelperService.mapAdditionalData(REFERRAL_ADMIN),
