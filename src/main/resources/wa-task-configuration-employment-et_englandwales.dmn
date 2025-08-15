@@ -569,6 +569,23 @@ else
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1kqknss">
+        <inputEntry id="UnaryTests_0oeoouv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wb9dje">
+          <text>"ExpiredBfAction"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nhb0o5">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17wcw3e">
+          <text>"[Expired Bf Action](/cases/case-details/${[CASE_REFERENCE]}/trigger/broughtForward/broughtForward1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1baj884">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1ie2zm4">
         <inputEntry id="UnaryTests_0mrd6md">
           <text></text>

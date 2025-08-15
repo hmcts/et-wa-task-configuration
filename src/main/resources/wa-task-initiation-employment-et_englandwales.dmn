@@ -28,7 +28,7 @@
           <text></text>
         </inputExpression>
       </input>
-      <input id="InputClause_0gxli97" label="Post event state" biodi:width="371" camunda:inputVariable="postEventState">
+      <input id="InputClause_0gxli97" label="Post event state" biodi:width="417" camunda:inputVariable="postEventState">
         <inputExpression id="LiteralExpression_0dijl5x" typeRef="string">
           <text></text>
         </inputExpression>
@@ -949,7 +949,7 @@ else null</text>
           <text>"WA_EXPIRED_BF_ACTION_TASK"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rqk6hg">
-          <text>"Accepted","Rejected", "Vetted"</text>
+          <text>"Accepted","Rejected", "Vetted", "Submitted"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qsywlx">
           <text></text>

@@ -183,29 +183,6 @@
           <text>"Rule21"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1ue5vn0">
-        <inputEntry id="UnaryTests_0ibdw1y">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_012su6h">
-          <text>"broughtForward"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0nw5f51">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_00gcfio">
-          <text>"Cancel"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_002s0eh">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0n4z770">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1shcgtm">
-          <text>"ExpiredBfAction"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_15ptch9">
         <inputEntry id="UnaryTests_0o3w5oy">
           <text></text>

@@ -568,6 +568,23 @@ else "Review Referral Response"</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1if0ltw">
+        <inputEntry id="UnaryTests_0rzphkx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_011anyx">
+          <text>"ExpiredBfAction"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_006cer8">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x8rzqb">
+          <text>"[Expired Bf Action](/cases/case-details/${[CASE_REFERENCE]}/trigger/broughtForward/broughtForward1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d0kmni">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0las4xs">
         <inputEntry id="UnaryTests_11zzeh6">
           <text></text>
