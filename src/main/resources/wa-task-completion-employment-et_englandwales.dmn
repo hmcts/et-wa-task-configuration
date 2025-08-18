@@ -329,17 +329,6 @@
           <text></text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1owjy4h">
-        <inputEntry id="UnaryTests_1iqe3mz">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_078x702">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1xx2efk">
-          <text></text>
-        </outputEntry>
-      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
