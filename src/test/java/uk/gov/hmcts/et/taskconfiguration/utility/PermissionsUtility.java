@@ -10,62 +10,62 @@ public final class PermissionsUtility {
 
     public static final Map<String, Serializable> taskSupervisor = Map.of(
         "name", "task-supervisor",
-        "value", "Read, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel",
+        "value", "Read, Manage, Claim, Unclaim, Assign, Unassign, Complete",
         "autoAssignable", false
     );
 
     public static final Map<String, Serializable> approverJudiciary = Map.of(
         "name", "specific-access-approver-judiciary",
         "roleCategory", "JUDICIAL",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, Assign, Unassign",
         "autoAssignable", false
     );
     public static final Map<String, Serializable> leadJudge = Map.of(
         "assignmentPriority", 1,
         "name", "lead-judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "JUDICIAL",
         "autoAssignable", true
     );
     public static final Map<String, Serializable> hearingJudge = Map.of(
         "assignmentPriority", 2,
         "name", "hearing-judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "JUDICIAL",
         "autoAssignable", true
     );
     public static final Map<String, Serializable> leadershipJudge = Map.of(
         "assignmentPriority", 5,
         "name", "leadership-judge",
-        "value", "Read, Execute, Manage, Claim, Assign, Unassign, Complete, Cancel",
+        "value", "Read, Execute, Manage, Claim, Assign, Unassign, Complete",
         "roleCategory", "JUDICIAL",
         "autoAssignable", false
     );
     public static final Map<String, Serializable> judge = Map.of(
         "assignmentPriority", 3,
         "name", "judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "JUDICIAL",
         "autoAssignable", false
     );
     public static final Map<String, Serializable> feepaidjudge = Map.of(
         "assignmentPriority", 3,
         "name", "fee-paid-judge",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "JUDICIAL",
         "autoAssignable", false
     );
 
     public static final Map<String, Serializable> approverLegalOps = Map.of(
         "name", "specific-access-approver-legal-ops",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, Assign, Unassign",
         "roleCategory", "LEGAL_OPERATIONS",
         "autoAssignable", false
     );
     public static final Map<String, Serializable> allocatedTribunalCaseworker = Map.of(
         "assignmentPriority", 1,
         "name", "allocated-tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "LEGAL_OPERATIONS",
         "autoAssignable", true
     );
@@ -79,21 +79,21 @@ public final class PermissionsUtility {
     public static final Map<String, Serializable> tribunalCaseworker = Map.of(
         "assignmentPriority", 3,
         "name", "tribunal-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "LEGAL_OPERATIONS",
         "autoAssignable", false
     );
 
     public static final Map<String, Serializable> approverAdmin = Map.of(
         "name", "specific-access-approver-admin",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, Assign, Unassign",
         "roleCategory", "ADMIN",
         "autoAssignable", false
     );
     public static final Map<String, Serializable> allocatedAdminCaseworker = Map.of(
         "assignmentPriority", 2,
         "name", "allocated-admin-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "ADMIN",
         "autoAssignable", true
     );
@@ -107,7 +107,7 @@ public final class PermissionsUtility {
     public static final Map<String, Serializable> hearingCentreAdmin = Map.of(
         "assignmentPriority", 4,
         "name", "hearing-centre-admin",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "ADMIN",
         "autoAssignable", false
     );
@@ -121,35 +121,35 @@ public final class PermissionsUtility {
     public static final Map<String, Serializable> regionalCentreAdmin = Map.of(
         "assignmentPriority", 4,
         "name", "regional-centre-admin",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "ADMIN",
         "autoAssignable", false
     );
 
     public static final Map<String, Serializable> approverCTSC = Map.of(
         "name", "specific-access-approver-ctsc",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, Assign, Unassign",
         "roleCategory", "CTSC",
         "autoAssignable", true
     );
     public static final Map<String, Serializable> allocatedCtscCaseworker = Map.of(
         "assignmentPriority", 1,
         "name", "allocated-ctsc-caseworker",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "CTSC",
         "autoAssignable", true
     );
     public static final Map<String, Serializable> leaderCTSC = Map.of(
         "assignmentPriority", 5,
         "name", "ctsc-team-leader",
-        "value", "Assign, Unassign, Complete, Cancel",
+        "value", "Assign, Unassign, Complete",
         "roleCategory", "CTSC",
         "autoAssignable", false
     );
     public static final Map<String, Serializable> ctsc = Map.of(
         "assignmentPriority", 3,
         "name", "ctsc",
-        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn",
+        "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "CTSC",
         "autoAssignable", false
     );
