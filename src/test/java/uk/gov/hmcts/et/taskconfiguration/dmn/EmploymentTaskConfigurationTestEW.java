@@ -958,14 +958,6 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             "canReconfigure", false
         ), resultList.get(12));
 
-        /*assertEquals(
-            Map.of(
-                "name", "dueDateOrigin",
-                "value", expectedDueDateOrigin,
-                "canReconfigure", true
-            ), resultList.get(13)
-        );*/
-
         assertEquals(Map.of(
             "name", "dueDateNonWorkingCalendar",
             "value", "https://www.gov.uk/bank-holidays/england-and-wales.json, "
@@ -1031,7 +1023,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(62));
+        assertThat(logic.getRules().size(), is(63));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
