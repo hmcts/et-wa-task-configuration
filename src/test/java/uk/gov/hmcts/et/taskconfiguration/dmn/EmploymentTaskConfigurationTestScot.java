@@ -49,6 +49,47 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     }
 
     @Test
+    void ethosCaseReferenceCaseNameConfigurationTest() {
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("respondent", "Cosmo Spacely");
+        caseData.put("ethosCaseReference", "8000001/2025");
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+                dmnDecisionTableResult
+                        .getResultList()
+                        .stream()
+                        .filter(r -> r.containsValue("caseName"))
+                        .toList();
+
+        assertEquals("8000001/2025 - George Jetson v Cosmo Spacely", resultList.getFirst().get("value"));
+    }
+
+    @Test
+    void ethosCaseReferenceNullCaseNameConfigurationTest() {
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("respondent", "Cosmo Spacely");
+        caseData.put("ethosCaseReference", null);
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "Et1Vetting"));
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+                dmnDecisionTableResult
+                        .getResultList()
+                        .stream()
+                        .filter(r -> r.containsValue("caseName"))
+                        .toList();
+
+        // Then
+        assertEquals("George Jetson v Cosmo Spacely", resultList.getFirst().get("value"));
+    }
+
+    @Test
     void nullClaimantAndRespondentName() {
         // Given
         Map<String, Object> caseData = getDefaultCaseData();
