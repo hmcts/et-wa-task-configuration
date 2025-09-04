@@ -29,8 +29,8 @@ public final class HelperService {
 
     public static final String REFERRAL_COLLECTION = "\"referralCollection\":[%s]";
     public static final String REFERRAL = "{\"value\": "
-        + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"referCaseTo\":\"%s\",\"isUrgent\":\"%s\"%s}"
-        + "}";
+        + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"referralSubjectSpecify\":\"%s\","
+          + "\"referCaseTo\":\"%s\",\"isUrgent\":\"%s\"%s}}";
     public static final String REFERRALREPLY_COLLECTION = ",\"referralReplyCollection\": [%s]";
     public static final String REFERRALREPLY = "{\"value\":"
         + "{\"referralNumber\": \"%s\",\"referralSubject\":\"%s\",\"directionTo\":\"%s\""
@@ -69,7 +69,8 @@ public final class HelperService {
         String referralReferCaseTo,
         String referralUrgency,
         String referralDirectionTo,
-        String referralReplyUrgency) {
+        String referralReplyUrgency,
+        String referralSubjectSpecify) {
 
         String replyCollection1 = "";
         String replyCollection2 = "";
@@ -99,9 +100,11 @@ public final class HelperService {
         }
 
         String referralCollection =
-            String.format(REFERRAL,"1",referralSubject1,referralReferCaseTo,referralUrgency,replyCollection1)
+            String.format(REFERRAL,"1", referralSubject1, referralSubjectSpecify, referralReferCaseTo, referralUrgency,
+                    replyCollection1)
                 + ","
-                + String.format(REFERRAL,"2",referralSubject2,referralReferCaseTo,referralUrgency,replyCollection2);
+                + String.format(REFERRAL, "2", referralSubject2,referralSubjectSpecify,
+                    referralReferCaseTo, referralUrgency, replyCollection2);
 
         return String.format(REFERRAL_COLLECTION, referralCollection);
     }

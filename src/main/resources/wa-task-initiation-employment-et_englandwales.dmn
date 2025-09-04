@@ -2862,15 +2862,16 @@ else ""</text>
       <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection) &gt; 0
-and sort(additionalData.Data.referralCollection,function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject!=null)
-then sort(
-  additionalData.Data.referralCollection,
-  function(x,y)
-    number(x.value.referralNumber)
-    &gt;
-    number(y.value.referralNumber)
-)[1].value.referralSubject
+and count(additionalData.Data.referralCollection) &gt; 0)
+then (
+  if(sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject = "Other")
+  then (
+    if(sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubjectSpecify != null)
+    then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubjectSpecify
+    else "Other"
+  )
+  else sort(additionalData.Data.referralCollection, function(x,y) number(x.value.referralNumber)&gt;number(y.value.referralNumber))[1].value.referralSubject
+)
 else ""</text>
     </literalExpression>
   </decision>
@@ -2898,20 +2899,23 @@ else ""
   <decision id="Decision_0jnixrx" name="CURRENT_REFERRAL_RESPONSE_SUBJECT">
     <variable id="InformationItem_1dpeljq" name="CURRENT_REFERRAL_RESPONSE_SUBJECT" typeRef="string" />
     <literalExpression id="LiteralExpression_06ppz63">
-      <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.referralCollection!=null
-and count(additionalData.Data.referralCollection[value.referralReplyCollection != null and count(value.referralReplyCollection)&gt;0])&gt;0)
-then (
-  sort(
-    flatten(additionalData.Data.referralCollection[value.referralReplyCollection!=null].value.referralReplyCollection),
-    function(x,y)
-      date and time(if(x.value.replyDateTime!=null) then x.value.replyDateTime else "0001-01-01T00:00:00")
-      &gt;
-      date and time(if(y.value.replyDateTime!=null) then y.value.replyDateTime else "0001-01-01T00:00:00")
-  )[1].value.referralSubject
-)
-else ""</text>
+      <text>if(additionalData != null and additionalData.Data != null and additionalData.Data.referralCollection != null and count(additionalData.Data.referralCollection[value.referralReplyCollection != null and count(value.referralReplyCollection) &gt; 0]) &gt; 0)
+then
+  if(
+    (additionalData.Data.referralCollection[value.referralNumber = sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection != null].value.referralReplyCollection), function(x, y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime))[1].value.referralNumber][1].value.referralSubject) = "Other"
+  )
+  then
+    if(
+      (additionalData.Data.referralCollection[value.referralNumber = sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection != null].value.referralReplyCollection), function(x, y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime))[1].value.referralNumber][1].value.referralSubjectSpecify) != null
+    )
+    then
+      (additionalData.Data.referralCollection[value.referralNumber = sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection != null].value.referralReplyCollection), function(x, y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime))[1].value.referralNumber][1].value.referralSubjectSpecify)
+    else
+      "Other"
+  else
+    (additionalData.Data.referralCollection[value.referralNumber = sort(flatten(additionalData.Data.referralCollection[value.referralReplyCollection != null].value.referralReplyCollection), function(x, y) date and time(x.value.replyDateTime) &gt; date and time(y.value.replyDateTime))[1].value.referralNumber][1].value.referralSubject)
+else
+  ""</text>
     </literalExpression>
   </decision>
   <dmndi:DMNDI>
