@@ -12,30 +12,33 @@ public final class InitiationUtility {
     }
 
     public static final String REFERRAL_REPLY_LEGALOFFICER =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Legal officer", "Yes", "");
 
     public static final String REFERRAL_ADMIN =
-        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Admin", "Yes", "", "", "");
 
     public static final String REFERRAL_LEGALOPS =
-        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Legal officer", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1", "Referral Subject 2", "Legal officer", "Yes", "", "", "");
 
     public static final String REFERRAL_ADMIN_HEARING =
-        HelperService.createReferrals("Referral Subject 1","Hearings", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Hearings", "Admin", "Yes", "", "", "");
     public static final String REFERRAL_ADMIN_JUDGMENT =
-        HelperService.createReferrals("Referral Subject 1","Judgment", "Admin", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Judgment", "Admin", "Yes", "", "", "");
     public static final String REFERRAL_JUDGE =
-        HelperService.createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","ET1", "Judge", "Yes", "", "", "");
     public static final String REFERRAL_JUDGE_RULE21 =
-        HelperService.createReferrals("Referral Subject 1","Rule 21", "Judge", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Rule 21", "Judge", "Yes", "", "", "");
     public static final String REFERRAL_LEGALOFFICER =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "Legal officer", "Yes", "", "");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "Legal officer", "Yes", "", "", "");
 
     public static final String REFERRAL_REPLY_ADMIN =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Admin", "Yes");
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Admin", "Yes", "");
     public static final String REFERRAL_REPLY_JUDGE =
-        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes");
-
+        HelperService.createReferrals("Referral Subject 1","Referral Subject 2", "", "", "Judge", "Yes", "");
+    public static final String REFERRAL_OTHER_SUBJECT =
+        HelperService.createReferrals("Referral Subject 1", "Other", "Admin", "Yes", "", "", "Random Subject");
+    public static final String REFERRAL_REPLY_OTHER_SUBJECT =
+            HelperService.createReferrals("Other", "", "Admin", "Yes", "Judge", "", "Random Subject");
     public static final String DRAFT_AND_SIGN_JUDGEMENT = "\"draftAndSignJudgement\":{}";
 
     public static final String ET3_FORM_NOT_RECEIVED =

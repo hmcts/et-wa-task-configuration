@@ -40,9 +40,11 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_JUDGE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_JUDGE_RULE21;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_LEGALOFFICER;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_OTHER_SUBJECT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_ADMIN;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_JUDGE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_LEGALOFFICER;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_OTHER_SUBJECT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
@@ -68,7 +70,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
             + "]";
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_INITIATION_ET_SCOTLAND;
     }
 
@@ -95,6 +97,30 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Et1Vetting",
                         "Et1 Vetting",
                         "Vetting"
+                    )
+                )
+            ),
+            Arguments.of(
+                "createReferral",
+                null,
+                HelperService.mapAdditionalData(REFERRAL_OTHER_SUBJECT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReviewReferralAdmin",
+                        "Review Referral",
+                        "reviewReferralSerialNumberAndSubject_2 - Random Subject"
+                    )
+                )
+            ),
+            Arguments.of(
+                "replyToReferral",
+                null,
+                HelperService.mapAdditionalData(REFERRAL_REPLY_OTHER_SUBJECT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReviewReferralResponseJudiciary",
+                        "Review Referral Response",
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Random Subject"
                     )
                 )
             ),
