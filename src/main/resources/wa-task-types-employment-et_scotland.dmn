@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-task-types-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.30.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-task-types-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1">
   <decision id="wa-task-types-employment-et_scotland" name="ET Task Types DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_17knzal" hitPolicy="COLLECT">
       <input id="Input_1">
@@ -238,6 +238,17 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1ihs3z1">
           <text>"Rule 22"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kw9f53">
+        <inputEntry id="UnaryTests_0du8314">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16gewj0">
+          <text>"ExpiredBfAction"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15f63ww">
+          <text>"Expired Bf Action"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1gnw3c1">
