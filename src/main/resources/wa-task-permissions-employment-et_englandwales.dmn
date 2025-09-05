@@ -36,7 +36,7 @@ else "r1"</text>
           <text>"task-supervisor"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gda35a">
-          <text>"Read, Manage, Claim, Unclaim, Assign, Unassign, Complete, Cancel"</text>
+          <text>"Read, Manage, Claim, Unclaim, Assign, Unassign, Complete"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0uxj36c">
           <text></text>
@@ -66,7 +66,7 @@ else "r1"</text>
           <text>"specific-access-approver-judiciary"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ekjswr">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, Assign, Unassign"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tlohef">
           <text>"JUDICIAL"</text>
@@ -102,7 +102,7 @@ else "r1"</text>
           <text>"lead-judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17xnxnr">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1rj56pf">
           <text>"JUDICIAL"</text>
@@ -138,7 +138,7 @@ else "r1"</text>
           <text>"hearing-judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0jwzwz9">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15bs3yk">
           <text>"JUDICIAL"</text>
@@ -168,7 +168,7 @@ else "r1"</text>
           <text>"leadership-judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0lzkacj">
-          <text>"Read, Execute, Manage, Claim, Assign, Unassign, Complete, Cancel"</text>
+          <text>"Read, Execute, Manage, Claim, Assign, Unassign, Complete"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ultxtd">
           <text>"JUDICIAL"</text>
@@ -204,7 +204,7 @@ else "r1"</text>
           <text>"judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04xmr5g">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zx2tiv">
           <text>"JUDICIAL"</text>
@@ -240,7 +240,7 @@ else "r1"</text>
           <text>"fee-paid-judge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_091zmwh">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sspucu">
           <text>"JUDICIAL"</text>
@@ -270,7 +270,7 @@ else "r1"</text>
           <text>"specific-access-approver-legal-ops"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_151ry1h">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, Assign, Unassign"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1rwokl1">
           <text>"LEGAL_OPERATIONS"</text>
@@ -307,7 +307,7 @@ else "r1"</text>
           <text>"allocated-tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10qxteh">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_138qnwi">
           <text>"LEGAL_OPERATIONS"</text>
@@ -380,7 +380,7 @@ else "r1"</text>
           <text>"tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1pl4emq">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0dbwltl">
           <text>"LEGAL_OPERATIONS"</text>
@@ -410,7 +410,7 @@ else "r1"</text>
           <text>"specific-access-approver-admin"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18uxrkl">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, Assign, Unassign"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0fbgbzp">
           <text>"ADMIN"</text>
@@ -457,7 +457,7 @@ else "r1"</text>
           <text>"allocated-admin-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14zangn">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_159koxv">
           <text>"ADMIN"</text>
@@ -551,7 +551,7 @@ else "r1"</text>
           <text>"hearing-centre-admin"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1fytz53">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0juaexm">
           <text>"ADMIN"</text>
@@ -609,7 +609,7 @@ else "r1"</text>
           <text>"regional-centre-admin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1opyaow">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gfko1u">
           <text>"ADMIN"</text>
@@ -639,7 +639,7 @@ else "r1"</text>
           <text>"specific-access-approver-ctsc"	</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1n6hq4e">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn, Assign, Unassign"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, Assign, Unassign"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pti6xc">
           <text>"CTSC"</text>
@@ -673,7 +673,7 @@ else "r1"</text>
           <text>"allocated-ctsc-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gt85kl">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ko23eb">
           <text>"CTSC"</text>
@@ -707,7 +707,7 @@ else "r1"</text>
           <text>"ctsc-team-leader"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19yif9o">
-          <text>"Assign, Unassign, Complete, Cancel"</text>
+          <text>"Assign, Unassign, Complete"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ej6vgq">
           <text>"CTSC"</text>
@@ -741,7 +741,7 @@ else "r1"</text>
           <text>"ctsc"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05f0bbl">
-          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn, CancelOwn"</text>
+          <text>"Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c6umfy">
           <text>"CTSC"</text>
