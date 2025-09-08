@@ -329,7 +329,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ExpiredBfAction"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fewwqo">
           <text></text>
@@ -365,7 +366,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ExpiredBfAction"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0e431c0">
           <text></text>
@@ -441,7 +443,8 @@ else "r1"</text>
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
 "ListAHearing",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
           <text></text>
@@ -487,7 +490,8 @@ else "r1"</text>
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
 "ListAHearing",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
           <text></text>
@@ -533,7 +537,8 @@ else "r1"</text>
 "WithdrawAllOrPartOfCase",
 "ContactTribunalWithAnApplication",
 "ListAHearing",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"ExpiredBfAction"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
           <text></text>
