@@ -23,7 +23,7 @@ import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_CANCELL
 class EmploymentTaskCancellationTestEW extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         CURRENT_DMN_DECISION_TABLE = WA_TASK_CANCELLATION_ET_EW;
     }
 
@@ -61,6 +61,16 @@ class EmploymentTaskCancellationTestEW extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "action", "Cancel",
                         "processCategories", "Rule21"
+                    )
+                )
+            ),
+            Arguments.of(
+                null,
+                "RECONFIGURE_WA_TASKS",
+                null,
+                List.of(
+                    Map.of(
+                        "action", "Reconfigure"
                     )
                 )
             ),
@@ -172,6 +182,6 @@ class EmploymentTaskCancellationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(11));
+        assertThat(logic.getRules().size(), is(12));
     }
 }

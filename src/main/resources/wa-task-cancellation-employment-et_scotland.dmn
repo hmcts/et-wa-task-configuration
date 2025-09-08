@@ -275,6 +275,29 @@
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1e6aehy">
+        <inputEntry id="UnaryTests_1h9bqhf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1djw2cg">
+          <text>"RECONFIGURE_WA_TASKS"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19mnjke">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xmsh0o">
+          <text>"Reconfigure"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lumjb2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bpj5i3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10vzz5i">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
