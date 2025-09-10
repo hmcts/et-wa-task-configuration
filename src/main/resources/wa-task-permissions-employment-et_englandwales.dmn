@@ -294,8 +294,7 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment",
-"ExpiredBfAction"</text>
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_04f9yju">
           <text></text>
@@ -330,8 +329,7 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment",
-"ExpiredBfAction"</text>
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fewwqo">
           <text></text>
@@ -367,8 +365,7 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment",
-"ExpiredBfAction"</text>
+"DraftAndSignJudgment"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0e431c0">
           <text></text>
