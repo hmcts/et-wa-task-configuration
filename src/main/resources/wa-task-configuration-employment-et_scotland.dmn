@@ -613,7 +613,7 @@ else "Review Referral Response"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0trcq8d">
-          <text>"[Draft and Sign Judgement](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
+          <text>"[Draft and Sign Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
           <text>true</text>
@@ -699,7 +699,7 @@ else "Review Referral Response"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04s7gmq">
-          <text>"[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgements) and [Issue Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
+          <text>"[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and [Issue Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13no40g">
           <text>true</text>
