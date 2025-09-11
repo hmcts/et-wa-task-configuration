@@ -537,7 +537,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> descDraftJudgment = List.of(Map.of(
             "name", "description",
-            "value", "[Draft and Sign Judgement](/cases/case-details/${[CASE_REFERENCE]}"
+            "value", "[Draft and Sign Judgment](/cases/case-details/${[CASE_REFERENCE]}"
                 + "/trigger/draftAndSignJudgement/draftAndSignJudgement1)",
             "canReconfigure", true
         ));
@@ -553,7 +553,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> descIssueJudgment = List.of(Map.of(
             "name", "description",
-            "value", "[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgements) and "
+            "value", "[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and "
                 + "[Issue Judgment](/cases/case-details/${[CASE_REFERENCE]}"
                 + "/trigger/addAmendJudgment/addAmendJudgment1)",
             "canReconfigure", true
