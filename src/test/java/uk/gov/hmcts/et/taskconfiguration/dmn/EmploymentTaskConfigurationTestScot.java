@@ -108,7 +108,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .toList();
 
         // Then
-        assertEquals("Unknown v Unknown", resultList.get(0).get("value"));
+        assertEquals("Unknown v Unknown", resultList.getFirst().get("value"));
     }
 
     public static Stream<Arguments> claimantName_ScenarioProvider() {
@@ -147,7 +147,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .toList();
 
         // Then
-        assertEquals(expectedCaseName, resultList.get(0).get("value"));
+        assertEquals(expectedCaseName, resultList.getFirst().get("value"));
     }
 
     @ParameterizedTest
@@ -171,7 +171,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .toList();
 
         // Then
-        assertEquals(expectedCaseName, resultList.get(0).get("value"));
+        assertEquals(expectedCaseName, resultList.getFirst().get("value"));
     }
 
     public static Stream<Arguments> respondentName_ScenarioProvider() {
@@ -298,9 +298,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .filter((r) -> r.containsValue("workType"))
                 .toList();
 
-        assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
-        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
+        assertEquals(expected.getFirst().get("name"), resultList.getFirst().get("name"));
+        assertEquals(expected.getFirst().get("value"), resultList.getFirst().get("value"));
+        assertEquals(expected.getFirst().get("canReconfigure"), resultList.getFirst().get("canReconfigure"));
     }
 
     public static Stream<Arguments> workType_ScenarioProvider() {
@@ -381,9 +381,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .filter((r) -> r.containsValue("roleCategory"))
                 .toList();
 
-        assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value"), resultList.get(0).get("value"));
-        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
+        assertEquals(expected.getFirst().get("name"), resultList.getFirst().get("name"));
+        assertEquals(expected.getFirst().get("value"), resultList.getFirst().get("value"));
+        assertEquals(expected.getFirst().get("canReconfigure"), resultList.getFirst().get("canReconfigure"));
     }
 
     public static Stream<Arguments> roleCategory_ScenarioProvider() {
@@ -464,11 +464,11 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .filter((r) -> r.containsValue("description"))
                 .toList();
 
-        assertEquals(expected.get(0).get("name"), resultList.get(0).get("name"));
-        assertEquals(expected.get(0).get("value")
+        assertEquals(expected.getFirst().get("name"), resultList.getFirst().get("name"));
+        assertEquals(expected.getFirst().get("value")
                          .replace("${[roleAssignmentId]}", roleAssignmentId)
-                         .replace("${[taskId]}", taskId), resultList.get(0).get("value"));
-        assertEquals(expected.get(0).get("canReconfigure"), resultList.get(0).get("canReconfigure"));
+                         .replace("${[taskId]}", taskId), resultList.getFirst().get("value"));
+        assertEquals(expected.getFirst().get("canReconfigure"), resultList.getFirst().get("canReconfigure"));
     }
 
     public static Stream<Arguments> description_ScenarioProvider() {
@@ -558,12 +558,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "/trigger/addAmendJudgment/addAmendJudgment1)",
             "canReconfigure", true
         ));
-        List<Map<String, Object>> descReviewECCResponse = List.of(Map.of(
-            "name", "description",
-            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}"
-                + "/trigger/createReferral/createReferral1)",
-            "canReconfigure", true
-        ));
         List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
             "name", "description",
             "value", "[Review Access Request](/role-access/${[taskId]}/assignment/${[roleAssignmentId]}/"
@@ -613,6 +607,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("Rule21", descET3Processing),
             Arguments.of("ET3Processing", descET3Processing),
+            Arguments.of("ReviewECCResponse", descET3Processing),
 
             Arguments.of("ReviewRule21Referral", descReviewRule21Referral),
 
@@ -624,8 +619,6 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("WithdrawAllOrPartOfCase", createReferral),
 
             Arguments.of("IssueJudgment", descIssueJudgment),
-
-            Arguments.of("ReviewECCResponse", descReviewECCResponse),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -696,11 +689,11 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .filter((r) -> r.containsValue("dueDateIntervalDays"))
                 .toList();
 
-        assertEquals(expectedIntervalDays.get(0).get("name"), intervalDaysResultList.get(0).get("name"));
-        assertEquals(expectedIntervalDays.get(0).get("value"), intervalDaysResultList.get(0).get("value"));
+        assertEquals(expectedIntervalDays.getFirst().get("name"), intervalDaysResultList.getFirst().get("name"));
+        assertEquals(expectedIntervalDays.getFirst().get("value"), intervalDaysResultList.getFirst().get("value"));
         assertEquals(
-            expectedIntervalDays.get(0).get("canReconfigure"),
-            intervalDaysResultList.get(0).get("canReconfigure")
+            expectedIntervalDays.getFirst().get("canReconfigure"),
+            intervalDaysResultList.getFirst().get("canReconfigure")
         );
 
         List<Map<String, Object>> majorPriorityResultList =
@@ -710,9 +703,10 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .filter((r) -> r.containsValue("majorPriority"))
                 .toList();
 
-        assertEquals(expectedMajor.get(0).get("name"), majorPriorityResultList.get(0).get("name"));
-        assertEquals(expectedMajor.get(0).get("value"), majorPriorityResultList.get(0).get("value"));
-        assertEquals(expectedMajor.get(0).get("canReconfigure"), majorPriorityResultList.get(0).get("canReconfigure"));
+        assertEquals(expectedMajor.getFirst().get("name"), majorPriorityResultList.getFirst().get("name"));
+        assertEquals(expectedMajor.getFirst().get("value"), majorPriorityResultList.getFirst().get("value"));
+        assertEquals(expectedMajor.getFirst().get("canReconfigure"),
+                     majorPriorityResultList.getFirst().get("canReconfigure"));
 
         List<Map<String, Object>> minorPriorityResultList =
             dmnDecisionTableResult
@@ -721,9 +715,10 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 .filter((r) -> r.containsValue("minorPriority"))
                 .toList();
 
-        assertEquals(expectedMinor.get(0).get("name"), minorPriorityResultList.get(0).get("name"));
-        assertEquals(expectedMinor.get(0).get("value"), minorPriorityResultList.get(0).get("value"));
-        assertEquals(expectedMinor.get(0).get("canReconfigure"), minorPriorityResultList.get(0).get("canReconfigure"));
+        assertEquals(expectedMinor.getFirst().get("name"), minorPriorityResultList.getFirst().get("name"));
+        assertEquals(expectedMinor.getFirst().get("value"), minorPriorityResultList.getFirst().get("value"));
+        assertEquals(expectedMinor.getFirst().get("canReconfigure"),
+                     minorPriorityResultList.getFirst().get("canReconfigure"));
 
         if (expectedPriorityDateOrigin != null) {
             List<Map<String, Object>> priorityDateRefResultList =
@@ -734,16 +729,16 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                     .toList();
 
             assertEquals(
-                expectedPriorityDateOrigin.get(0).get("name"),
-                priorityDateRefResultList.get(0).get("name")
+                expectedPriorityDateOrigin.getFirst().get("name"),
+                priorityDateRefResultList.getFirst().get("name")
             );
             assertEquals(
-                expectedPriorityDateOrigin.get(0).get("value"),
-                priorityDateRefResultList.get(0).get("value")
+                expectedPriorityDateOrigin.getFirst().get("value"),
+                priorityDateRefResultList.getFirst().get("value")
             );
             assertEquals(
-                expectedPriorityDateOrigin.get(0).get("canReconfigure"),
-                priorityDateRefResultList.get(0).get("canReconfigure")
+                expectedPriorityDateOrigin.getFirst().get("canReconfigure"),
+                priorityDateRefResultList.getFirst().get("canReconfigure")
             );
         }
 
@@ -756,16 +751,16 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                     .toList();
 
             assertEquals(
-                expectedPriorityDateEarliest.get(0).get("name"),
-                priorityDateEarResultList.get(0).get("name")
+                expectedPriorityDateEarliest.getFirst().get("name"),
+                priorityDateEarResultList.getFirst().get("name")
             );
             assertEquals(
-                expectedPriorityDateEarliest.get(0).get("value"),
-                priorityDateEarResultList.get(0).get("value")
+                expectedPriorityDateEarliest.getFirst().get("value"),
+                priorityDateEarResultList.getFirst().get("value")
             );
             assertEquals(
-                expectedPriorityDateEarliest.get(0).get("canReconfigure"),
-                priorityDateEarResultList.get(0).get("canReconfigure")
+                expectedPriorityDateEarliest.getFirst().get("canReconfigure"),
+                priorityDateEarResultList.getFirst().get("canReconfigure")
             );
         }
     }
@@ -1067,7 +1062,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(63));
+        assertThat(logic.getRules().size(), is(62));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

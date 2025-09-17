@@ -607,6 +607,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("Rule21", descET3Processing),
             Arguments.of("ET3Processing", descET3Processing),
+            Arguments.of("ReviewECCResponse", descET3Processing),
 
             Arguments.of("ReviewRule21Referral", descReviewRule21Referral),
 
@@ -618,8 +619,6 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("WithdrawAllOrPartOfCase", createReferral),
 
             Arguments.of("IssueJudgment", descIssueJudgment),
-
-            Arguments.of("ReviewECCResponse", descET3Processing),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -706,7 +705,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expectedMajor.getFirst().get("name"), majorPriorityResultList.getFirst().get("name"));
         assertEquals(expectedMajor.getFirst().get("value"), majorPriorityResultList.getFirst().get("value"));
-        assertEquals(expectedMajor.getFirst().get("canReconfigure"), majorPriorityResultList.getFirst().get("canReconfigure"));
+        assertEquals(expectedMajor.getFirst().get("canReconfigure"),
+                     majorPriorityResultList.getFirst().get("canReconfigure"));
 
         List<Map<String, Object>> minorPriorityResultList =
             dmnDecisionTableResult
@@ -717,7 +717,8 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
         assertEquals(expectedMinor.getFirst().get("name"), minorPriorityResultList.getFirst().get("name"));
         assertEquals(expectedMinor.getFirst().get("value"), minorPriorityResultList.getFirst().get("value"));
-        assertEquals(expectedMinor.getFirst().get("canReconfigure"), minorPriorityResultList.getFirst().get("canReconfigure"));
+        assertEquals(expectedMinor.getFirst().get("canReconfigure"),
+                     minorPriorityResultList.getFirst().get("canReconfigure"));
 
         if (expectedPriorityDateOrigin != null) {
             List<Map<String, Object>> priorityDateRefResultList =
