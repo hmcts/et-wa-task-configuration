@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.39.0">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_15zhznm">
       <requiredDecision href="#Decision_0mhlyhp" />
@@ -2228,7 +2228,7 @@ else null</text>
           <text>"ReviewECCResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1jyu855">
-          <text>"Review ECC Response"</text>
+          <text>"Review ECC Reply"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wpr9h4">
           <text></text>
