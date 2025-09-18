@@ -631,7 +631,7 @@ else "Review Referral Response"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0k9sgy7">
-          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1),
+          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1), 
 [Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/tseAdminCloseAnApplication1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hnp98x">
@@ -958,7 +958,7 @@ else 500</text>
           <text>"dueDateOrigin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sgjcqj">
-          <text>if (caseData != null
+          <text>if (caseData != null 
 and caseData.hearingDetailsCollection != null
 and count(caseData.hearingDetailsCollection) = 1)
 then date and time(caseData.hearingDetailsCollection[1].value.hearingDetailsDate)
