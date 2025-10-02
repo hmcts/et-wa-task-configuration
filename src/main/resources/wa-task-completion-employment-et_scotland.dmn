@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-completion-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-completion-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
   <decision id="wa-task-completion-employment-et_scotland" name="ET Task completion DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_01re27m" hitPolicy="COLLECT">
       <input id="eventId" label="Event ID" biodi:width="392">
@@ -298,6 +298,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0z377ya">
+        <inputEntry id="UnaryTests_1d95epp">
+          <text>"sendNotification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jk0x59">
+          <text>"IssueOrder"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1buhiyr">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0torhiv">
         <description>Left empty so event can be triggered without a task</description>
         <inputEntry id="UnaryTests_1oec0ex">
@@ -320,7 +331,8 @@
 "tseAdmin",
 "tseAdmReply", 
 "tseAdminCloseAnApplication", 
-"broughtForward"</text>
+"broughtForward",
+"sendNotification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0bwibe1">
           <text></text>

@@ -14,7 +14,6 @@ import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 import uk.gov.hmcts.et.taskconfiguration.utility.HelperService;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -295,7 +294,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("workType"))
+                .filter(r -> r.containsValue("workType"))
                 .toList();
 
         assertEquals(expected.getFirst().get("name"), resultList.getFirst().get("name"));
@@ -352,6 +351,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("IssuePostHearingDirection", hearingWork),
             Arguments.of("IssueJudgment", hearingWork),
+            Arguments.of("IssueOrder", hearingWork),
 
             Arguments.of("ContactTribunalWithAnApplication", applications),
             Arguments.of("AmendClaimantDetails", applications),
@@ -378,7 +378,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("roleCategory"))
+                .filter(r -> r.containsValue("roleCategory"))
                 .toList();
 
         assertEquals(expected.getFirst().get("name"), resultList.getFirst().get("name"));
@@ -433,6 +433,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("ListAHearing", administrator),
             Arguments.of("IssuePostHearingDirection", administrator),
             Arguments.of("IssueJudgment", administrator),
+            Arguments.of("IssueOrder", administrator),
             Arguments.of("ContactTribunalWithAnApplication", administrator),
             Arguments.of("AmendClaimantDetails", administrator),
             Arguments.of("AmendRespondentDetails", administrator),
@@ -461,7 +462,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("description"))
+                .filter(r -> r.containsValue("description"))
                 .toList();
 
         assertEquals(expected.getFirst().get("name"), resultList.getFirst().get("name"));
@@ -537,7 +538,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> descDraftJudgment = List.of(Map.of(
             "name", "description",
-            "value", "[Draft and Sign Judgment](/cases/case-details/${[CASE_REFERENCE]}"
+            "value", "[Draft and Sign Judgment/Order](/cases/case-details/${[CASE_REFERENCE]}"
                 + "/trigger/draftAndSignJudgement/draftAndSignJudgement1)",
             "canReconfigure", true
         ));
@@ -556,6 +557,13 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and "
                 + "[Issue Judgment](/cases/case-details/${[CASE_REFERENCE]}"
                 + "/trigger/addAmendJudgment/addAmendJudgment1)",
+            "canReconfigure", true
+        ));
+        List<Map<String, Object>> descIssueOrder = List.of(Map.of(
+            "name", "description",
+            "value", "[View Order](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and "
+                     + "[Issue Order](/cases/case-details/${[CASE_REFERENCE]}"
+                     + "/trigger/sendNotification/sendNotification1)",
             "canReconfigure", true
         ));
         List<Map<String, Object>> reviewAccessRequest = List.of(Map.of(
@@ -619,6 +627,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("WithdrawAllOrPartOfCase", createReferral),
 
             Arguments.of("IssueJudgment", descIssueJudgment),
+            Arguments.of("IssueOrder", descIssueOrder),
 
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
@@ -650,7 +659,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+                .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
                 .toList();
 
         assertTrue(resultList.contains(Map.of(
@@ -686,7 +695,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("dueDateIntervalDays"))
+                .filter(r -> r.containsValue("dueDateIntervalDays"))
                 .toList();
 
         assertEquals(expectedIntervalDays.getFirst().get("name"), intervalDaysResultList.getFirst().get("name"));
@@ -700,7 +709,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("majorPriority"))
+                .filter(r -> r.containsValue("majorPriority"))
                 .toList();
 
         assertEquals(expectedMajor.getFirst().get("name"), majorPriorityResultList.getFirst().get("name"));
@@ -712,7 +721,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             dmnDecisionTableResult
                 .getResultList()
                 .stream()
-                .filter((r) -> r.containsValue("minorPriority"))
+                .filter(r -> r.containsValue("minorPriority"))
                 .toList();
 
         assertEquals(expectedMinor.getFirst().get("name"), minorPriorityResultList.getFirst().get("name"));
@@ -725,7 +734,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 dmnDecisionTableResult
                     .getResultList()
                     .stream()
-                    .filter((r) -> r.containsValue("priorityDateOriginRef"))
+                    .filter(r -> r.containsValue("priorityDateOriginRef"))
                     .toList();
 
             assertEquals(
@@ -747,7 +756,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 dmnDecisionTableResult
                     .getResultList()
                     .stream()
-                    .filter((r) -> r.containsValue("priorityDateOriginEarliest"))
+                    .filter(r -> r.containsValue("priorityDateOriginEarliest"))
                     .toList();
 
             assertEquals(
@@ -902,7 +911,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("IssueJudgment", NOT_URGENT,
                          dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
-
+            Arguments.of("IssueOrder", NOT_URGENT,
+                dueDateIntervalDays5, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+            ),
             Arguments.of("ListAHearing", NOT_URGENT,
                          dueDateIntervalDays10, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
@@ -971,8 +982,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         inputVariables.putValue("taskAttributes", Map.of("taskType", "DraftAndSignJudgment"));
 
         LocalDateTime fixedNow = LocalDateTime.of(2024, 1, 1, 12, 0);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-        String expectedDueDateOrigin = fixedNow.format(formatter);
+
         caseData.put("hearingDetailsCollection", Map.of(
             "hearingDetailsCollection", List.of(Map.of(
                 "hearingDetailsDate", fixedNow
@@ -1062,7 +1072,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(62));
+        assertThat(logic.getRules().size(), is(63));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
