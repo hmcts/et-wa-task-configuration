@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.39.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0cm80l7">
       <requiredDecision href="#Decision_1lqqy4i" />
@@ -191,7 +191,8 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fttakc">
           <text>"IssuePostHearingDirection",
-"IssueJudgment"</text>
+"IssueJudgment",
+"IssueOrder"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1vbbzn1">
           <text>"workType"</text>
@@ -307,7 +308,8 @@ else null</text>
 "WithdrawAllOrPartOfCase",
 "SendEt3Notification",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"IssueOrder"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -615,7 +617,7 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rz80bi">
-          <text>"[Draft and Sign Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
+          <text>"[Draft and Sign Judgment/Order](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r68eci">
           <text>true</text>
@@ -706,6 +708,23 @@ else
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_05qho74">
+        <inputEntry id="UnaryTests_0ewibbb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ykbisg">
+          <text>"IssueOrder"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15go8zu">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vq8gcr">
+          <text>"[View Order](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and [Issue Order](/cases/case-details/${[CASE_REFERENCE]}/trigger/sendNotification/sendNotification1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08wbxso">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_12zdyry">
         <inputEntry id="UnaryTests_00oc2a8">
           <text></text>
@@ -753,7 +772,8 @@ else ""</text>
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"IssueOrder"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -836,7 +856,8 @@ else 5000</text>
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"IssueOrder"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -1213,7 +1234,8 @@ else 2</text>
           <text>"Et1Vetting",
 "IssueInitialConsiderationDirections",
 "IssuePostHearingDirection",
-"IssueJudgment"</text>
+"IssueJudgment",
+"IssueOrder"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0igzsz3">
           <text>"dueDateIntervalDays"</text>
@@ -1268,7 +1290,8 @@ else 2</text>
 "ReviewReferralResponseJudiciary",
 "ReviewReferralResponseLegalOps",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"IssueOrder"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>
