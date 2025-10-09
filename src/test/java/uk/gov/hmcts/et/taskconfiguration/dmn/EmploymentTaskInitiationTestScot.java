@@ -24,6 +24,7 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMA
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.DRAFT_AND_SIGN_JUDGEMENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_CONTRACT_CLAIM_SECTION_7;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_NOT_RECEIVED;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_MORE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_ONCE;
@@ -658,6 +659,30 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "et3Processing",
+                "Accepted",
+                HelperService.mapAdditionalData(ET3_CONTRACT_CLAIM_SECTION_7 + "true}}}]"),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReferEmployersContractClaim",
+                        "Refer Employer's Contract Claim",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "et3Processing",
+                "Accepted",
+                HelperService.mapAdditionalData(ET3_CONTRACT_CLAIM_SECTION_7 + "false}}}]"),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "IssueInitialConsiderationDirections",
+                        "Issue Initial Consideration Directions",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
                 "createEcmCase",
                 "Submitted",
                 null,
@@ -692,6 +717,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(45));
+        assertThat(logic.getRules().size(), is(47));
     }
 }

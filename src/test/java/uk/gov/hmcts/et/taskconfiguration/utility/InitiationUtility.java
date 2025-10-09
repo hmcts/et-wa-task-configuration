@@ -94,6 +94,10 @@ public final class InitiationUtility {
         + "\"Seek comments on the video hearing\","
         + "\"UDL hearing\"]";
 
+    public static final String ET3_CONTRACT_CLAIM_SECTION_7 = "\"respondentCollection\":[{\"value\":{\"et3Vetting\":"
+        + "{\"et3ContractClaimSection7\":";
+
+
     public static final String STRIKE_OUT_CLAIM =
         "\"etInitialConsiderationRule27\": {"
             + "\"etICRule27ClaimToBe\": \"Dismissed in full\""

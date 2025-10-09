@@ -582,6 +582,12 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                 + "${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> descUpdateRespondentDetails = List.of(Map.of(
+            "name", "description",
+            "value", "[Update Respondent's Details](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/amendRespondentDetails/amendRespondentDetails1)",
+            "canReconfigure", true
+        ));
 
         return Stream.of(
             Arguments.of("Et1Vetting", descET1Vetting),
@@ -607,7 +613,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("Rule21", descET3Processing),
             Arguments.of("ET3Processing", descET3Processing),
-            Arguments.of("ReviewECCResponse", descET3Processing),
+            Arguments.of("ReviewECCResponse", descUpdateRespondentDetails),
 
             Arguments.of("ReviewRule21Referral", descReviewRule21Referral),
 
@@ -1060,7 +1066,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(62));
+        assertThat(logic.getRules().size(), is(64));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

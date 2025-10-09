@@ -152,7 +152,8 @@ else null</text>
 "ReviewRule21Referral",
 "SendEt3Notification",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"ReferEmployersContractClaim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -557,8 +558,7 @@ else
         </inputEntry>
         <inputEntry id="UnaryTests_1fiqg3g">
           <text>"Rule21",
-"ET3Processing",
-"ReviewECCResponse"</text>
+"ET3Processing"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ky7l6o">
           <text>"description"</text>
@@ -601,6 +601,40 @@ else
           <text>"[Review Rule 22 Referral](/cases/case-details/${[CASE_REFERENCE]}#Respondent)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yh9meg">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0refEccConfig">
+        <inputEntry id="UnaryTests_0refEccConfig">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1refEccConfig">
+          <text>"ReferEmployersContractClaim"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0refEccConfig">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1refEccConfig">
+          <text>"[Refer ECC](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_2refEccConfig">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1eccResp">
+        <inputEntry id="UnaryTests_1eccResp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eccResp">
+          <text>"ReviewECCResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eccResp">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0eccResp">
+          <text>"[Update Respondent's Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_2eccResp">
           <text>true</text>
         </outputEntry>
       </rule>
