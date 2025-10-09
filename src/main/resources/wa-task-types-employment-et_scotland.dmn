@@ -328,6 +328,17 @@
           <text>"Review Specific Access Request (Legal Ops)"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0refEmp">
+        <inputEntry id="UnaryTests_1refEmp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0refEmp">
+          <text>"ReferEmployersContractClaim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1refEmp">
+          <text>"Refer Employer's Contract Claim"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

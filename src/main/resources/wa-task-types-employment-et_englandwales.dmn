@@ -149,7 +149,7 @@
           <text>"ReviewECCResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1k1j2ce">
-          <text>"Review ECC Reply"</text>
+          <text>"Reply to Employer's Contract Claim Received"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0aenrnf">
@@ -249,6 +249,17 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1oug081">
           <text>"Expired Bf Action"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0refEmp">
+        <inputEntry id="UnaryTests_1refEmp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0refEmp">
+          <text>"ReferEmployersContractClaim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1refEmp">
+          <text>"Refer Employer's Contract Claim"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1gnw3c1">

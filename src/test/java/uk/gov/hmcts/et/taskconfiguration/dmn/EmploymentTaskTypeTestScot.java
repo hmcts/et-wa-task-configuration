@@ -99,7 +99,9 @@ public class EmploymentTaskTypeTestScot extends DmnDecisionTableBaseUnitTest {
                            "taskTypeName","Review Specific Access Request (Judiciary)"),
 
                     Map.of("taskTypeId", "reviewSpecificAccessRequestLegalOps",
-                           "taskTypeName","Review Specific Access Request (Legal Ops)")
+                           "taskTypeName","Review Specific Access Request (Legal Ops)"),
+
+                    Map.of("taskTypeId", "ReferEmployersContractClaim","taskTypeName","Refer Employer's Contract Claim")
                 )
             )
         );
@@ -120,6 +122,6 @@ public class EmploymentTaskTypeTestScot extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(29));
+        assertThat(logic.getRules().size(), is(30));
     }
 }

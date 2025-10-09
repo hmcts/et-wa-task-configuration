@@ -152,7 +152,8 @@ else null</text>
 "ReviewRule21Referral",
 "SendEt3Notification",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"ReferEmployersContractClaim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -583,6 +584,23 @@ else "Review Referral Response"</text>
           <text>"[Expired Bf Action](/cases/case-details/${[CASE_REFERENCE]}/trigger/broughtForward/broughtForward1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1d0kmni">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_ce302f31">
+        <inputEntry id="UnaryTests_3edd0bf1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_203b648c">
+          <text>"ReferEmployersContractClaim"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_2c5a9a9c">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_97dcbeda">
+          <text>"[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_7de4201c">
           <text>true</text>
         </outputEntry>
       </rule>
