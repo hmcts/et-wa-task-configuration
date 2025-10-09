@@ -40,9 +40,9 @@ public final class InitiationUtility {
     public static final String REFERRAL_REPLY_OTHER_SUBJECT =
             HelperService.createReferrals("Other", "", "Admin", "Yes", "Judge", "", "Random Subject");
     public static final String DRAFT_AND_SIGN_JUDGEMENT =
-            "\"draftAndSignJudgement\":{\"isJudgement\":\"Yes\"}";
+            "\"draftAndSignJudgement\":{\"isJudgement\":\"true\"}";
     public static final String DRAFT_AND_SIGN_JUDGEMENT_ORDER =
-            "\"draftAndSignJudgement\":{\"isJudgement\":\"No\"}";
+            "\"draftAndSignJudgement\":{\"isJudgement\":\"false\"}";
 
     public static final String ET3_FORM_NOT_RECEIVED =
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":false,\"responseReceivedCount\":null}}]";

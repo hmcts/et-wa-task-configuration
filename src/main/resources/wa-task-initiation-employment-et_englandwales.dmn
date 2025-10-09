@@ -161,8 +161,8 @@ else null</text>
           <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.draftAndSignJudgement!=null
-and additionalData.Data.draftAndSignJudgement.isJudgement="Yes")
-  then true
+and additionalData.Data.draftAndSignJudgement.isJudgement!=null)
+  then additionalData.Data.draftAndSignJudgement.isJudgement
 else false</text>
         </inputExpression>
       </input>
