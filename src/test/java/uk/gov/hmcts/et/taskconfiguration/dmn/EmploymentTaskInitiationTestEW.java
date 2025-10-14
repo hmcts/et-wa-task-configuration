@@ -24,7 +24,6 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMA
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.DRAFT_AND_SIGN_JUDGEMENT;
-import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_CONTRACT_CLAIM_SECTION_7;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_NOT_RECEIVED;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_MORE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_ONCE;
@@ -48,6 +47,9 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_JUDGE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_LEGALOFFICER;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_OTHER_SUBJECT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_NOT_RECEIVED;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_RECEIVED_MORE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_RECEIVED_ONCE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
@@ -331,6 +333,30 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of()
             ),
             Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_NOT_RECEIVED),
+                List.of()
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_RECEIVED_ONCE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_RECEIVED_MORE),
+                List.of()
+            ),
+            Arguments.of(
                 "et3Vetting",
                 "Accepted",
                 HelperService.mapAdditionalData(IS_ET3_RESPONSE_FALSE),
@@ -450,30 +476,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 "initialConsideration",
                 "Accepted",
                 HelperService.mapAdditionalData(LISTAHEARING_PROCEED_NOTLISTED_NONE),
-                List.of(
-                    HelperService.mapExpectedOutput(
-                        "IssueInitialConsiderationDirections",
-                        "Issue Initial Consideration Directions",
-                        "Hearing"
-                    )
-                )
-            ),
-            Arguments.of(
-                "et3Processing",
-                "Accepted",
-                HelperService.mapAdditionalData(ET3_CONTRACT_CLAIM_SECTION_7 + "true}}}]"),
-                List.of(
-                    HelperService.mapExpectedOutput(
-                        "ReferEmployersContractClaim",
-                        "Refer Employer's Contract Claim",
-                        "Processing"
-                    )
-                )
-            ),
-            Arguments.of(
-                "et3Processing",
-                "Accepted",
-                HelperService.mapAdditionalData(ET3_CONTRACT_CLAIM_SECTION_7 + "false}}}]"),
                 List.of(
                     HelperService.mapExpectedOutput(
                         "IssueInitialConsiderationDirections",

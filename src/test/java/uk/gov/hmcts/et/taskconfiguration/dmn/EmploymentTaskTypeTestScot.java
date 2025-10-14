@@ -81,6 +81,8 @@ public class EmploymentTaskTypeTestScot extends DmnDecisionTableBaseUnitTest {
 
                     Map.of("taskTypeId", "Rule21","taskTypeName","Rule 22"),
 
+                    Map.of("taskTypeId", "ReferEmployersContractClaim","taskTypeName","Refer Employer's Contract Claim"),
+
                     Map.of("taskTypeId", "ExpiredBfAction","taskTypeName","Expired Bf Action"),
 
                     Map.of("taskTypeId", "SendEt1Notification","taskTypeName", "Send ET1 Notification"),
@@ -99,9 +101,7 @@ public class EmploymentTaskTypeTestScot extends DmnDecisionTableBaseUnitTest {
                            "taskTypeName","Review Specific Access Request (Judiciary)"),
 
                     Map.of("taskTypeId", "reviewSpecificAccessRequestLegalOps",
-                           "taskTypeName","Review Specific Access Request (Legal Ops)"),
-
-                    Map.of("taskTypeId", "ReferEmployersContractClaim","taskTypeName","Refer Employer's Contract Claim")
+                           "taskTypeName","Review Specific Access Request (Legal Ops)")
                 )
             )
         );

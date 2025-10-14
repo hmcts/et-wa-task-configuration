@@ -582,9 +582,15 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                 + "${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> descUpdateRespondentDetails = List.of(Map.of(
+            "name", "description",
+            "value", "[Update Respondent's Details](/cases/case-details/${[CASE_REFERENCE]}"
+                + "/trigger/amendRespondentDetails/amendRespondentDetails1)",
+            "canReconfigure", true
+        ));
         List<Map<String, Object>> descReferEmployersContractClaim = List.of(Map.of(
             "name", "description",
-            "value", "[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+            "value", "[Refer Employer's Contract Claim](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
                 + "createReferral/createReferral1)",
             "canReconfigure", true
         ));
@@ -613,7 +619,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("Rule21", descET3Processing),
             Arguments.of("ET3Processing", descET3Processing),
-            Arguments.of("ReviewECCResponse", descET3Processing),
+            Arguments.of("ReviewECCResponse", descUpdateRespondentDetails),
 
             Arguments.of("ReviewRule21Referral", descReviewRule21Referral),
 
@@ -774,7 +780,11 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     }
 
     public static Stream<Arguments> priority_ScenarioProvider() {
-
+        List<Map<String, Object>> dueDateIntervalDays0 = List.of(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "0",
+            "canReconfigure", true
+        ));
         List<Map<String, Object>> dueDateIntervalDays1 = List.of(Map.of(
             "name", "dueDateIntervalDays",
             "value", "1",
@@ -878,9 +888,11 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
                          dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
             Arguments.of("ReviewECCResponse", NOT_URGENT,
-                         dueDateIntervalDays1, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+                         dueDateIntervalDays3, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
-
+            Arguments.of("ReferEmployersContractClaim", NOT_URGENT,
+                         dueDateIntervalDays0, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
+            ),
             Arguments.of("Rule21", NOT_URGENT,
                          dueDateIntervalDays2, defaultMajorPriority, defaultMinorPriority, priorityDateOriginRef, null
             ),
@@ -1070,7 +1082,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(63));
+        assertThat(logic.getRules().size(), is(65));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

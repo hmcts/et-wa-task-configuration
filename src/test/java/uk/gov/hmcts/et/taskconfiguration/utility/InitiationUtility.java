@@ -48,6 +48,13 @@ public final class InitiationUtility {
     public static final String ET3_FORM_RECEIVED_MORE =
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"2\"}}]";
 
+    public static final String RESPONDENT_ECC_REPLY_NOT_RECEIVED =
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":,\"respondentEccReplyCounter\":null}}]";
+    public static final String RESPONDENT_ECC_REPLY_RECEIVED_ONCE =
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCounter\":\"1\"}}]";
+    public static final String RESPONDENT_ECC_REPLY_RECEIVED_MORE =
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCounter\":\"2\"}}]";
+
     public static final String IS_ET3_RESPONSE_TRUE =
         "\"respondentCollection\""
             + ":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true,\"et3ContractClaimSection7\":false }}}]";
