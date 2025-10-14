@@ -81,7 +81,8 @@ public class EmploymentTaskTypeTestScot extends DmnDecisionTableBaseUnitTest {
 
                     Map.of("taskTypeId", "Rule21","taskTypeName","Rule 22"),
 
-                    Map.of("taskTypeId", "ReferEmployersContractClaim","taskTypeName","Refer Employer's Contract Claim"),
+                    Map.of("taskTypeId", "ReferEmployersContractClaim",
+                           "taskTypeName","Refer Employer's Contract Claim"),
 
                     Map.of("taskTypeId", "ExpiredBfAction","taskTypeName","Expired Bf Action"),
 
