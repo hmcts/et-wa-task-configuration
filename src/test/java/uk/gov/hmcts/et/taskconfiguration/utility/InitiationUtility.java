@@ -49,11 +49,11 @@ public final class InitiationUtility {
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"2\"}}]";
 
     public static final String RESPONDENT_ECC_REPLY_NOT_RECEIVED =
-        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":,\"respondentEccReplyCounter\":null}}]";
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":,\"respondentEccReplyCount\":null}}]";
     public static final String RESPONDENT_ECC_REPLY_RECEIVED_ONCE =
-        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCounter\":\"1\"}}]";
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"1\"}}]";
     public static final String RESPONDENT_ECC_REPLY_RECEIVED_MORE =
-        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCounter\":\"2\"}}]";
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"2\"}}]";
 
     public static final String IS_ET3_RESPONSE_TRUE =
         "\"respondentCollection\""

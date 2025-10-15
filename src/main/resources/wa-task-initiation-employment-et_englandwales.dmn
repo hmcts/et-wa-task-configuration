@@ -110,7 +110,7 @@ and count(additionalData.Data.respondentCollection)&gt;0)
 then
   if(additionalData.Data.respondentCollection[1].value.respondentEccReply)
   then
-    if(additionalData.Data.respondentCollection[1].value.respondentEccReplyCounter="1")
+    if(additionalData.Data.respondentCollection[1].value.respondentEccReplyCount="1")
     then true
     else false
   else false
