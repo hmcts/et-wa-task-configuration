@@ -49,11 +49,30 @@ public final class InitiationUtility {
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"2\"}}]";
 
     public static final String RESPONDENT_ECC_REPLY_NOT_RECEIVED =
-        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":,\"respondentEccReplyCount\":null}}]";
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":false,\"respondentEccReplyCount\":null}}]";
     public static final String RESPONDENT_ECC_REPLY_RECEIVED_ONCE =
         "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"1\"}}]";
     public static final String RESPONDENT_ECC_REPLY_RECEIVED_MORE =
         "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"2\"}}]";
+    
+    // Multi-respondent test cases for the updated DMN logic that checks all respondents
+    public static final String RESPONDENT_ECC_REPLY_SECOND_RESPONDENT =
+        "\"respondentCollection\":["
+        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"2\"}},"
+        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"1\"}}"
+        + "]";
+    public static final String RESPONDENT_ECC_REPLY_THIRD_RESPONDENT =
+        "\"respondentCollection\":["
+        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"3\"}},"
+        + "{\"value\":{\"respondentEccReply\":false,\"respondentEccReplyCount\":null}},"
+        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"1\"}}"
+        + "]";
+    public static final String RESPONDENT_NO_ECC_REPLY =
+        "\"respondentCollection\":["
+        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"2\"}},"
+        + "{\"value\":{\"respondentEccReply\":false,\"respondentEccReplyCount\":null}},"
+        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"3\"}}"
+        + "]";
 
     public static final String IS_ET3_RESPONSE_TRUE =
         "\"respondentCollection\""

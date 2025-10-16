@@ -108,12 +108,10 @@ and additionalData.Data!=null
 and additionalData.Data.respondentCollection!=null
 and count(additionalData.Data.respondentCollection)&gt;0)
 then
-  if(additionalData.Data.respondentCollection[1].value.respondentEccReply)
-  then
-    if(additionalData.Data.respondentCollection[1].value.respondentEccReplyCount="1")
-    then true
-    else false
-  else false
+  some item in additionalData.Data.respondentCollection satisfies (
+    item.value.respondentEccReply = true
+    and item.value.respondentEccReplyCount = "1"
+  )
 else false</text>
         </inputExpression>
       </input>

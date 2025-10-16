@@ -48,6 +48,9 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_NOT_RECEIVED;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_RECEIVED_MORE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_RECEIVED_ONCE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_SECOND_RESPONDENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_THIRD_RESPONDENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_NO_ECC_REPLY;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
@@ -356,6 +359,37 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "amendRespondentDetails",
                 null,
                 HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_RECEIVED_MORE),
+                List.of()
+            ),
+            // Multi-respondent ECC reply test cases for the updated DMN logic
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_SECOND_RESPONDENT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_THIRD_RESPONDENT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_NO_ECC_REPLY),
                 List.of()
             ),
             Arguments.of(
