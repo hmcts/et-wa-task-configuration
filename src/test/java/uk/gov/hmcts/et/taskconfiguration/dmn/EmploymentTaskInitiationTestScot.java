@@ -45,6 +45,12 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_JUDGE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_LEGALOFFICER;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_OTHER_SUBJECT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_NOT_RECEIVED;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_RECEIVED_MORE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_RECEIVED_ONCE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_SECOND_RESPONDENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_THIRD_RESPONDENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_NO_ECC_REPLY;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
@@ -329,6 +335,61 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 "amendRespondentDetails",
                 null,
                 HelperService.mapAdditionalData(ET3_FORM_RECEIVED_MORE),
+                List.of()
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_NOT_RECEIVED),
+                List.of()
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_RECEIVED_ONCE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_RECEIVED_MORE),
+                List.of()
+            ),
+            // Multi-respondent ECC reply test cases for the updated DMN logic
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_SECOND_RESPONDENT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_THIRD_RESPONDENT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_NO_ECC_REPLY),
                 List.of()
             ),
             Arguments.of(
@@ -692,6 +753,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(45));
+        assertThat(logic.getRules().size(), is(47));
     }
 }
