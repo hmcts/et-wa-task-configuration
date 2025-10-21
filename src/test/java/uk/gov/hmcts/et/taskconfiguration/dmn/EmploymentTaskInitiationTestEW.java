@@ -53,6 +53,14 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPON
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_SECOND_RESPONDENT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_THIRD_RESPONDENT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_NO_ECC_REPLY;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_YES_COUNT_ONE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_NO_COUNT_ONE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_YES_COUNT_TWO;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_EMPTY_STRING;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_NULL;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIPLE_RESPONDENTS_WITH_VALID_ECC_REPLY;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIPLE_RESPONDENTS_NO_VALID_ECC_REPLY;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIPLE_RESPONDENTS_MIXED_COUNT_VALUES;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
@@ -389,6 +397,97 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 null,
                 HelperService.mapAdditionalData(RESPONDENT_NO_ECC_REPLY),
                 List.of()
+            ),
+            // New comprehensive test cases for updated ECC Reply logic
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_YES_COUNT_ONE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_NO_COUNT_ONE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_YES_COUNT_TWO),
+                List.of()
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_EMPTY_STRING),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_NULL),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(MULTIPLE_RESPONDENTS_WITH_VALID_ECC_REPLY),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(MULTIPLE_RESPONDENTS_NO_VALID_ECC_REPLY),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(MULTIPLE_RESPONDENTS_MIXED_COUNT_VALUES),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
             ),
             Arguments.of(
                 "et3Vetting",

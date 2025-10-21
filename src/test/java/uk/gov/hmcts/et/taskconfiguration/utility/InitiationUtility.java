@@ -49,29 +49,64 @@ public final class InitiationUtility {
         "\"respondentCollection\":[{\"value\":{\"responseReceived\":true,\"responseReceivedCount\":\"2\"}}]";
 
     public static final String RESPONDENT_ECC_REPLY_NOT_RECEIVED =
-        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":false,\"respondentEccReplyCount\":null}}]";
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":\"\",\"respondentEccReplyCount\":null}}]";
     public static final String RESPONDENT_ECC_REPLY_RECEIVED_ONCE =
-        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"1\"}}]";
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"1\"}}]";
     public static final String RESPONDENT_ECC_REPLY_RECEIVED_MORE =
-        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"2\"}}]";
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"2\"}}]";
     
-    // Multi-respondent test cases for the updated DMN logic that checks all respondents
+    // Multi-respondent test cases for the updated DMN logic that checks all respondents - updated to use strings
     public static final String RESPONDENT_ECC_REPLY_SECOND_RESPONDENT =
         "\"respondentCollection\":["
-        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"2\"}},"
-        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"1\"}}"
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"2\"}},"
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"1\"}}"
         + "]";
     public static final String RESPONDENT_ECC_REPLY_THIRD_RESPONDENT =
         "\"respondentCollection\":["
-        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"3\"}},"
-        + "{\"value\":{\"respondentEccReply\":false,\"respondentEccReplyCount\":null}},"
-        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"1\"}}"
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"3\"}},"
+        + "{\"value\":{\"respondentEccReply\":\"\",\"respondentEccReplyCount\":null}},"
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"1\"}}"
         + "]";
     public static final String RESPONDENT_NO_ECC_REPLY =
         "\"respondentCollection\":["
-        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"2\"}},"
-        + "{\"value\":{\"respondentEccReply\":false,\"respondentEccReplyCount\":null}},"
-        + "{\"value\":{\"respondentEccReply\":true,\"respondentEccReplyCount\":\"3\"}}"
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"2\"}},"
+        + "{\"value\":{\"respondentEccReply\":\"\",\"respondentEccReplyCount\":null}},"
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"3\"}}"
+        + "]";
+
+    // Updated ECC Reply test constants with string values ("Yes"/"No") as expected by the DMN logic
+    public static final String RESPONDENT_ECC_REPLY_YES_COUNT_ONE =
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"1\"}}]";
+    
+    public static final String RESPONDENT_ECC_REPLY_NO_COUNT_ONE =
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":\"No\",\"respondentEccReplyCount\":\"1\"}}]";
+    
+    public static final String RESPONDENT_ECC_REPLY_YES_COUNT_TWO =
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"2\"}}]";
+    
+    public static final String RESPONDENT_ECC_REPLY_EMPTY_STRING =
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":\"\",\"respondentEccReplyCount\":\"1\"}}]";
+    
+    public static final String RESPONDENT_ECC_REPLY_NULL =
+        "\"respondentCollection\":[{\"value\":{\"respondentEccReply\":null,\"respondentEccReplyCount\":\"1\"}}]";
+    
+    public static final String MULTIPLE_RESPONDENTS_WITH_VALID_ECC_REPLY =
+        "\"respondentCollection\":["
+        + "{\"value\":{\"respondentEccReply\":\"No\",\"respondentEccReplyCount\":\"2\"}},"
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"1\"}}"
+        + "]";
+    
+    public static final String MULTIPLE_RESPONDENTS_NO_VALID_ECC_REPLY =
+        "\"respondentCollection\":["
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"2\"}},"
+        + "{\"value\":{\"respondentEccReply\":\"No\",\"respondentEccReplyCount\":\"3\"}},"
+        + "{\"value\":{\"respondentEccReply\":\"\",\"respondentEccReplyCount\":\"1\"}}"
+        + "]";
+    
+    public static final String MULTIPLE_RESPONDENTS_MIXED_COUNT_VALUES =
+        "\"respondentCollection\":["
+        + "{\"value\":{\"respondentEccReply\":\"Yes\",\"respondentEccReplyCount\":\"1\"}},"
+        + "{\"value\":{\"respondentEccReply\":\"No\",\"respondentEccReplyCount\":\"1\"}}"
         + "]";
 
     public static final String IS_ET3_RESPONSE_TRUE =

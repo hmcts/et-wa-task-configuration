@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.39.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.40.0">
   <decision id="wa-task-initiation-employment-et_englandwales" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_04wvk1b">
       <requiredDecision href="#Decision_1exmu8q" />
@@ -103,14 +103,15 @@ else null</text>
       </input>
       <input id="InputClause_0ezn9nq" label="Is ECC Reply Received" biodi:width="192">
         <inputExpression id="LiteralExpression_07dvuz0" typeRef="boolean">
-          <text>if(additionalData!=null
-and additionalData.Data!=null
-and additionalData.Data.respondentCollection!=null
-and count(additionalData.Data.respondentCollection)&gt;0)
+          <text>if (
+  additionalData != null
+  and additionalData.Data != null
+  and additionalData.Data.respondentCollection != null
+  and count(additionalData.Data.respondentCollection) &gt; 0
+)
 then
   some item in additionalData.Data.respondentCollection satisfies (
-    item.value.respondentEccReply = true
-    and item.value.respondentEccReplyCount = "1"
+    item.value.respondentEccReplyCount = "1"
   )
 else false</text>
         </inputExpression>
@@ -1177,68 +1178,6 @@ else null</text>
           <text>"Processing"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_12x9jmc">
-        <inputEntry id="UnaryTests_0np6utd">
-          <text>"amendRespondentDetails"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1miobne">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1mrubvm">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0cmrsr3">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1yk5t4e">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_15efn68">
-          <text>true</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1mb7rw3">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1o329wn">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_04cniul">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_e91f4459">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1xd9wmp">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0mjnfp1">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0y9swja">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_051p464">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0hlmblt">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_10t4zj9">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0pijgqn">
-          <text>"ET3Processing"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1a9di3h">
-          <text>"ET3 Processing"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1vnmu92">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1ldxyi6">
-          <text>"Processing"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1t9uxxd">
         <inputEntry id="UnaryTests_0ja9969">
           <text>"amendRespondentDetails"</text>
@@ -1298,6 +1237,68 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_095bcvf">
+          <text>"Processing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12x9jmc">
+        <inputEntry id="UnaryTests_0np6utd">
+          <text>"amendRespondentDetails"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1miobne">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mrubvm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cmrsr3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yk5t4e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15efn68">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mb7rw3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o329wn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04cniul">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_e91f4459">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xd9wmp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mjnfp1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y9swja">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_051p464">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hlmblt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10t4zj9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pijgqn">
+          <text>"ET3Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a9di3h">
+          <text>"ET3 Processing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vnmu92">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ldxyi6">
           <text>"Processing"</text>
         </outputEntry>
       </rule>
