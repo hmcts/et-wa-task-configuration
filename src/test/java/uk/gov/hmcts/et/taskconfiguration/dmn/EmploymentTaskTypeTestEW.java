@@ -62,7 +62,7 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
                     Map.of("taskTypeId", "ListServeClaim", "taskTypeName", "List/ Serve Claim"),
 
                     Map.of("taskTypeId", "ReviewECCResponse", "taskTypeName",
-                           "Reply to Employer's Contract Claim Received"),
+                           "Reply to Employer's Contract Claim received"),
 
                     Map.of("taskTypeId", "ReviewReferralAdmin", "taskTypeName", "Review Referral - Admin"),
 

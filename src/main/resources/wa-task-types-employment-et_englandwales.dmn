@@ -149,7 +149,7 @@
           <text>"ReviewECCResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1k1j2ce">
-          <text>"Reply to Employer's Contract Claim Received"</text>
+          <text>"Reply to Employer's Contract Claim received"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0aenrnf">

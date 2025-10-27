@@ -810,7 +810,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewECCResponse",
-                        "Review ECC Reply",
+                        "Reply to Employer's Contract Claim received",
                         "Vetting"
                     )
                 )
