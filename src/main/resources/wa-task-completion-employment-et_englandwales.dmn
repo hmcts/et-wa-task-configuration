@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-completion-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-completion-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.39.0">
   <decision id="wa-task-completion-employment-et_englandwales" name="ET Task completion DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_01re27m" hitPolicy="COLLECT">
       <input id="eventId" label="Event ID" biodi:width="355">
@@ -222,12 +222,23 @@
       </rule>
       <rule id="DecisionRule_0u0gc5h">
         <inputEntry id="UnaryTests_18kkbzn">
-          <text>"createReferral"</text>
+          <text>"amendRespondentDetails"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15tj8vx">
           <text>"ReviewECCResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1i7ohgk">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nzflni">
+        <inputEntry id="UnaryTests_1keafq1">
+          <text>"createReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fv5i14">
+          <text>"ReferEmployersContractClaim"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15pfhig">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

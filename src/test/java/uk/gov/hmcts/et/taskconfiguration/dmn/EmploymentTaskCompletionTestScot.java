@@ -206,7 +206,7 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                         "completionMode", "Auto"
                     ),
                     Map.of(
-                        "taskType", "ReviewECCResponse",
+                        "taskType", "ReferEmployersContractClaim",
                         "completionMode", "Auto"
                     ),
                     Map.of(
@@ -239,6 +239,10 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "amendRespondentDetails",
                 asList(
+                    Map.of(
+                        "taskType", "ReviewECCResponse",
+                        "completionMode", "Auto"
+                    ),
                     Map.of(
                         "taskType", "AmendRespondentDetails",
                         "completionMode", "Auto"

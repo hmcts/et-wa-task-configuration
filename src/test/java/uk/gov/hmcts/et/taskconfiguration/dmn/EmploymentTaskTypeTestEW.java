@@ -61,7 +61,8 @@ class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
 
                     Map.of("taskTypeId", "ListServeClaim", "taskTypeName", "List/ Serve Claim"),
 
-                    Map.of("taskTypeId", "ReviewECCResponse", "taskTypeName", "Review ECC Reply"),
+                    Map.of("taskTypeId", "ReviewECCResponse", "taskTypeName",
+                           "Reply to Employer's Contract Claim received"),
 
                     Map.of("taskTypeId", "ReviewReferralAdmin", "taskTypeName", "Review Referral - Admin"),
 
@@ -83,6 +84,9 @@ class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
                     Map.of("taskTypeId", "Rule21","taskTypeName","Rule 22"),
 
                     Map.of("taskTypeId", "ExpiredBfAction","taskTypeName","Expired Bf Action"),
+
+                    Map.of("taskTypeId", "ReferEmployersContractClaim","taskTypeName",
+                           "Refer Employer's Contract Claim"),
 
                     Map.of("taskTypeId", "SendEt1Notification","taskTypeName", "Send ET1 Notification"),
 
