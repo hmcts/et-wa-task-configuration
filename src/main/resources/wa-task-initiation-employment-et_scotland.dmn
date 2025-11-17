@@ -197,6 +197,16 @@ else null</text>
           <text>LATEST_NOTIFICATION_RESPONSE_IS_ECC_FROM_CLAIMANT</text>
         </inputExpression>
       </input>
+      <input id="InputClause_0833q0e" label="Is Judgment Or Order">
+        <inputExpression id="LiteralExpression_130ucvr" typeRef="boolean">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.draftAndSignJudgement!=null
+and additionalData.Data.draftAndSignJudgement.isJudgement!=null)
+  then additionalData.Data.draftAndSignJudgement.isJudgement
+else false</text>
+        </inputExpression>
+      </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" biodi:width="333" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" biodi:width="315" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" biodi:width="150" />
@@ -251,6 +261,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0a1p3xk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dkh41c">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1inzx22">
@@ -318,6 +331,9 @@ else null</text>
         <inputEntry id="UnaryTests_03jjj9s">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_13ovbjb">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0hbunlz">
           <text>"Et1Vetting"</text>
         </outputEntry>
@@ -381,6 +397,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0a2qc1x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tb3jia">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1p21nx8">
@@ -448,6 +467,9 @@ else null</text>
         <inputEntry id="UnaryTests_1ihgj16">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1p7ufxu">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_19aayz9">
           <text>"IssuePostHearingDirection"</text>
         </outputEntry>
@@ -511,6 +533,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lhxw01">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yko0de">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1n64ej0">
@@ -578,6 +603,9 @@ else null</text>
         <inputEntry id="UnaryTests_17vsbu6">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0py9i4y">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_02gq0cv">
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
@@ -641,6 +669,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1thtmr6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14rj10f">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xmtp1n">
@@ -708,6 +739,9 @@ else null</text>
         <inputEntry id="UnaryTests_0xohbu5">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_11o9fuk">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_15ccyjs">
           <text>"ReviewReferralResponseAdmin"</text>
         </outputEntry>
@@ -771,6 +805,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_12da2gc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lo2fv3">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0viokea">
@@ -838,6 +875,9 @@ else null</text>
         <inputEntry id="UnaryTests_1s91xu7">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_05h7xz3">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0asscuc">
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
@@ -903,6 +943,9 @@ else null</text>
         <inputEntry id="UnaryTests_14rqy4x">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1a7wbot">
+          <text>true</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_10hhku8">
           <text>"IssueJudgment"</text>
         </outputEntry>
@@ -913,6 +956,74 @@ else null</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vvwix3">
+          <text>"Hearing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kkjvkr">
+        <inputEntry id="UnaryTests_0h3cfxb">
+          <text>"draftAndSignJudgement"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zzf5h2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pl00an">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zfzu35">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kkry9v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18vxzik">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jmecqy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a8djix">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_155wvm9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1icblrv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qgpjve">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ktqxs2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12rsera">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cgwes1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1snw3m1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h4m8fv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m9t5ea">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p2k7ba">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jcp395">
+          <text>"IssueOrder"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i75xk6">
+          <text>"Issue Order"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m9qghb">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16e6pki">
           <text>"Hearing"</text>
         </outputEntry>
       </rule>
@@ -966,6 +1077,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_12pup2i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07x4dzp">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1gzs9ju">
@@ -1033,6 +1147,9 @@ else null</text>
         <inputEntry id="UnaryTests_0h1erc6">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0of3z9b">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0ubx349">
           <text>"SendEt1Notification"</text>
         </outputEntry>
@@ -1096,6 +1213,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ozqyqi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oqzrg1">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ytrqr1">
@@ -1163,6 +1283,9 @@ else null</text>
         <inputEntry id="UnaryTests_17f7sie">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1iviznu">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0mwwyvm">
           <text>"ExpiredBfAction"</text>
         </outputEntry>
@@ -1226,6 +1349,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0su54q2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nfhmb8">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0z6s9xl">
@@ -1293,6 +1419,9 @@ else null</text>
         <inputEntry id="UnaryTests_0je3cmi">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0q3m9ta">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0d45vbx">
           <text>"CompleteInitialConsideration"</text>
         </outputEntry>
@@ -1356,6 +1485,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1dp1ir3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0enuwfs">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_17rfvzp">
@@ -1423,6 +1555,9 @@ else null</text>
         <inputEntry id="UnaryTests_1j5gms2">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0pnruwg">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_006cvh5">
           <text>"ReviewRule21Referral"</text>
         </outputEntry>
@@ -1486,6 +1621,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0xfqk9c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vxq92l">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1fuv81y">
@@ -1553,6 +1691,9 @@ else null</text>
         <inputEntry id="UnaryTests_0b2s131">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1jc049s">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1l1w4gm">
           <text>"SendEt3Notification"</text>
         </outputEntry>
@@ -1616,6 +1757,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1519610e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z8t3ba">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_a065797a">
@@ -1683,6 +1827,9 @@ else null</text>
         <inputEntry id="UnaryTests_0pv2xpv">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_17renwc">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1mbz2ov">
           <text>"IssueInitialConsiderationDirections"</text>
         </outputEntry>
@@ -1746,6 +1893,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0anwo4p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q9ic4b">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_04t27c3">
@@ -1813,6 +1963,9 @@ else null</text>
         <inputEntry id="UnaryTests_0tfhwot">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_026wc7o">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_17tkp20">
           <text>"IssueInitialConsiderationDirections"</text>
         </outputEntry>
@@ -1878,11 +2031,14 @@ else null</text>
         <inputEntry id="UnaryTests_1ojbxn8">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_13z99mr">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1ir1grh">
           <text>"DraftAndSignJudgment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zn1b9y">
-          <text>"Draft And Sign Judgment"</text>
+          <text>"Draft And Sign Judgment/Order"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gdbet3">
           <text></text>
@@ -1951,6 +2107,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1k52azz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0trqfar">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_18a0xvf">
@@ -2036,6 +2195,9 @@ else null</text>
         <inputEntry id="UnaryTests_0jgmx13">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0xp1udc">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1o0hceo">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
@@ -2109,6 +2271,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0exjxyd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nxmvkc">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1rzxzd9">
@@ -2194,6 +2359,9 @@ else null</text>
         <inputEntry id="UnaryTests_1e5j5mq">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0ijqepb">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1ir7dto">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
@@ -2257,6 +2425,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ontw1g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04ro0qn">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_15tl4dh">
@@ -2324,6 +2495,9 @@ else null</text>
         <inputEntry id="UnaryTests_1td145z">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1ovwaqt">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0iwj30e">
           <text>"AmendRespondentDetails"</text>
         </outputEntry>
@@ -2387,6 +2561,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1xh79rx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m495zn">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_07u0vk8">
@@ -2454,6 +2631,9 @@ else null</text>
         <inputEntry id="UnaryTests_0owz76m">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1lr1vk6">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1l73b7e">
           <text>"AmendClaimantDetails"</text>
         </outputEntry>
@@ -2517,6 +2697,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vtyho1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1en5al4">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0q2t52j">
@@ -2584,6 +2767,9 @@ else null</text>
         <inputEntry id="UnaryTests_0xe3tsf">
           <text>true</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_04ddz42">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_02w7yuj">
           <text>"ReviewECCResponse"</text>
         </outputEntry>
@@ -2647,6 +2833,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1xvyv2f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0suxm3z">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0kct9fw">
@@ -2724,6 +2913,9 @@ else null</text>
         <inputEntry id="UnaryTests_1io8a20">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_05kr5cb">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_06gloz0">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
@@ -2789,6 +2981,9 @@ else null</text>
         <inputEntry id="UnaryTests_1p79qmd">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0p4rh4b">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1ajppay">
           <text>"AmendClaimantDetails"</text>
         </outputEntry>
@@ -2852,6 +3047,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_15tumof">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dytgj6">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10kbih6">
@@ -2937,6 +3135,9 @@ else null</text>
         <inputEntry id="UnaryTests_04m2069">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_10svgz7">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1gyf5d1">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
@@ -3000,6 +3201,9 @@ else null</text>
           <text>"Change personal details"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0jrv3wy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01ouy1n">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_186xi55">
@@ -3067,6 +3271,9 @@ else null</text>
         <inputEntry id="UnaryTests_1g8xyeh">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1rfqajo">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_13xjolu">
           <text>"ET3Processing"</text>
         </outputEntry>
@@ -3130,6 +3337,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_120o83o">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_020mze9">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1gi7j9l">
@@ -3205,6 +3415,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1n1e43j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16j83sy">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_11rct7v">
@@ -3290,6 +3503,9 @@ else null</text>
         <inputEntry id="UnaryTests_1ni91e2">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_079rj7d">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_11r5ys3">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
@@ -3353,6 +3569,9 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_143v52p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jxrsvd">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1fo4s87">

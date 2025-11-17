@@ -443,6 +443,7 @@ else "r1"</text>
 "ListAHearing",
 "ReviewECCResponse",
 "ExpiredBfAction",
+"IssueOrder",
 "ReferEmployersContractClaim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
@@ -491,6 +492,7 @@ else "r1"</text>
 "ListAHearing",
 "ReviewECCResponse",
 "ExpiredBfAction",
+"IssueOrder",
 "ReferEmployersContractClaim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
@@ -539,6 +541,7 @@ else "r1"</text>
 "ListAHearing",
 "ReviewECCResponse",
 "ExpiredBfAction",
+"IssueOrder",
 "ReferEmployersContractClaim"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">

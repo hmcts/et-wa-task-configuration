@@ -309,6 +309,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0p1njyg">
+        <inputEntry id="UnaryTests_0thzgr8">
+          <text>"sendNotification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02xsnyp">
+          <text>"IssueOrder"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cfz230">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0rmnuh1">
         <description>Left empty so event can be triggered without a task</description>
         <inputEntry id="UnaryTests_0iocquq">
@@ -331,7 +342,8 @@
 "tseAdmin",
 "tseAdmReply", 
 "tseAdminCloseAnApplication", 
-"broughtForward"</text>
+"broughtForward",
+"sendNotification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_067qoh4">
           <text></text>

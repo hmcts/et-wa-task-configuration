@@ -61,7 +61,7 @@
           <text>"DraftAndSignJudgment"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ei3f22">
-          <text>"Draft And Sign Judgment"</text>
+          <text>"Draft And Sign Judgment/Order"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1e5tdx2">
@@ -337,6 +337,17 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0l6uit5">
           <text>"Review Specific Access Request (Legal Ops)"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18pgjol">
+        <inputEntry id="UnaryTests_0f35rrk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_065iln1">
+          <text>"IssueOrder"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1psl1k6">
+          <text>"Issue Order"</text>
         </outputEntry>
       </rule>
     </decisionTable>

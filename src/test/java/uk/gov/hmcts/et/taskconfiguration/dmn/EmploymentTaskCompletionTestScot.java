@@ -24,7 +24,7 @@ import static uk.gov.hmcts.et.taskconfiguration.DmnDecisionTable.WA_TASK_COMPLET
 class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         CURRENT_DMN_DECISION_TABLE = WA_TASK_COMPLETION_ET_SCOTLAND;
     }
 
@@ -296,6 +296,16 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
                     ),
                     emptyMap()
                 )
+            ),
+            Arguments.of(
+                "sendNotification",
+                asList(
+                    Map.of(
+                        "taskType", "IssueOrder",
+                        "completionMode", "Auto"
+                    ),
+                    emptyMap()
+                )
             )
         );
     }
@@ -314,6 +324,6 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(27));
+        assertThat(logic.getRules().size(), is(28));
     }
 }
