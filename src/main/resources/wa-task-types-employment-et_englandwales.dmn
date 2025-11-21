@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-task-types-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0"
+             xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-task-types-definition-et_englandwales" name="DRD"
+             namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
   <decision id="wa-task-types-employment-et_englandwales" name="ET Task Types DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_17knzal" hitPolicy="COLLECT">
       <input id="Input_1">
@@ -7,8 +11,8 @@
           <text></text>
         </inputExpression>
       </input>
-      <output id="Output_1" name="taskTypeId" typeRef="string" biodi:width="362" />
-      <output id="OutputClause_0aeuwfu" name="taskTypeName" typeRef="string" biodi:width="452" />
+      <output id="Output_1" name="taskTypeId" typeRef="string" biodi:width="362"/>
+      <output id="OutputClause_0aeuwfu" name="taskTypeName" typeRef="string" biodi:width="452"/>
       <rule id="DecisionRule_1h596w0">
         <inputEntry id="UnaryTests_0fpzi87">
           <text></text>
@@ -171,7 +175,7 @@
           <text>"ReviewReferralJudiciary"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_11ww7x3">
-          <text>"Review Referral - Judicial" </text>
+          <text>"Review Referral - Judicial"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1sfjkmg">
@@ -350,12 +354,23 @@
           <text>"Issue Order"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1k0rowp">
+        <inputEntry id="UnaryTests_1f4yqyp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r5b4c5">
+          <text>"SubmitRespondentPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zmd4yd">
+          <text>"Submit Respondent Pse Response"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0j0r28f">
       <dmndi:DMNShape id="DMNShape_0524hsr" dmnElementRef="wa-task-types-employment-et_englandwales">
-        <dc:Bounds height="80" width="180" x="150" y="80" />
+        <dc:Bounds height="80" width="180" x="150" y="80"/>
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
