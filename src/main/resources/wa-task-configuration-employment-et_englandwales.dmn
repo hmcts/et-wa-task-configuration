@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
-  <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0"
+             xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:camunda="http://camunda.org/schema/1.0/dmn"
+             id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn"
+             exporter="Camunda Modeler" exporterVersion="5.33.1">
+  <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN"
+            camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0cm80l7">
-      <requiredDecision href="#Decision_1lqqy4i" />
+      <requiredDecision href="#Decision_1lqqy4i"/>
     </informationRequirement>
     <informationRequirement id="InformationRequirement_008s8pe">
-      <requiredDecision href="#Decision_0yeq6ix" />
+      <requiredDecision href="#Decision_0yeq6ix"/>
     </informationRequirement>
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -16,17 +22,20 @@
       <input id="InputClause_00c59gm" label="Task type" biodi:width="499" camunda:inputVariable="taskType">
         <inputExpression id="LiteralExpression_1ngi22k" typeRef="string">
           <text>if(taskAttributes != null and taskAttributes.taskType != null)
-then taskAttributes.taskType
-else if(taskType != null)
-then taskType
-else null</text>
+            then taskAttributes.taskType
+            else if(taskType != null)
+            then taskType
+            else null
+          </text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="346" />
-      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="629" />
-      <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="346"/>
+      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="629"/>
+      <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean"/>
       <rule id="DecisionRule_19opwhc">
-        <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
+        <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case
+          name displayed on task lists
+        </description>
         <inputEntry id="UnaryTests_11xjbt2">
           <text></text>
         </inputEntry>
@@ -37,9 +46,11 @@ else null</text>
           <text>"caseName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
-          <text>(if(caseData.ethosCaseReference != null) then caseData.ethosCaseReference + " - " else "") + (if (caseData.claimant != null) then caseData.claimant else "Unknown")
-+ " v " +
-(if (caseData.respondent != null) then caseData.respondent else "Unknown")</text>
+          <text>(if(caseData.ethosCaseReference != null) then caseData.ethosCaseReference + " - " else "") + (if
+            (caseData.claimant != null) then caseData.claimant else "Unknown")
+            + " v " +
+            (if (caseData.respondent != null) then caseData.respondent else "Unknown")
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
           <text>true</text>
@@ -56,7 +67,9 @@ else null</text>
           <text>"region"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_06wi6cv">
-          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null) then caseData.caseManagementLocation.region else "1"</text>
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null) then
+            caseData.caseManagementLocation.region else "1"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ngriuw">
           <text>true</text>
@@ -73,7 +86,9 @@ else null</text>
           <text>"location"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kvxbku">
-          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null) then caseData.caseManagementLocation.baseLocation else "21153"</text>
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null)
+            then caseData.caseManagementLocation.baseLocation else "21153"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19bsupg">
           <text>true</text>
@@ -90,7 +105,9 @@ else null</text>
           <text>"locationName"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19z5b7j">
-          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null and caseData.managingOffice != null) then caseData.managingOffice else "London Central"</text>
+          <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null and
+            caseData.managingOffice != null) then caseData.managingOffice else "London Central"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05hj3ii">
           <text>true</text>
@@ -108,7 +125,9 @@ else null</text>
           <text>"caseManagementCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18w70uv">
-          <text>if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.selectedLabel !=null) then caseData.caseManagementCategory.selectedLabel else "Employment"</text>
+          <text>if (caseData.caseManagementCategory !=null and caseData.caseManagementCategory.selectedLabel !=null)
+            then caseData.caseManagementCategory.selectedLabel else "Employment"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nzr8nj">
           <text>false</text>
@@ -133,27 +152,30 @@ else null</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0mnaaav">
-        <description>Name of the type of work - this is based on the filter. All Judgment tasks will be decision making work.</description>
+        <description>Name of the type of work - this is based on the filter. All Judgment tasks will be decision making
+          work.
+        </description>
         <inputEntry id="UnaryTests_1dq6c8y">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0rams4n">
           <text>"Et1Vetting",
-"ReviewReferralAdmin",
-"ReviewReferralLegalOps",
-"SendEt1Notification",
-"ListServeClaim",
-"Rule21",
-"ET3Processing",
-"ReviewReferralResponseLegalOps",
-"ReviewReferralResponseAdmin",
-"IssueInitialConsiderationDirections",
-"ListAHearing",
-"ReviewRule21Referral",
-"SendEt3Notification",
-"ReviewECCResponse",
-"ExpiredBfAction",
-"ReferEmployersContractClaim"</text>
+            "ReviewReferralAdmin",
+            "ReviewReferralLegalOps",
+            "SendEt1Notification",
+            "ListServeClaim",
+            "Rule21",
+            "ET3Processing",
+            "ReviewReferralResponseLegalOps",
+            "ReviewReferralResponseAdmin",
+            "IssueInitialConsiderationDirections",
+            "ListAHearing",
+            "ReviewRule21Referral",
+            "SendEt3Notification",
+            "ReviewECCResponse",
+            "ExpiredBfAction",
+            "ReferEmployersContractClaim"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -172,9 +194,10 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_00rjbux">
           <text>"ReviewReferralJudiciary",
-"ReviewReferralResponseJudiciary",
-"DraftAndSignJudgment",
-"CompleteInitialConsideration"</text>
+            "ReviewReferralResponseJudiciary",
+            "DraftAndSignJudgment",
+            "CompleteInitialConsideration"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0fxjivg">
           <text>"workType"</text>
@@ -192,8 +215,9 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fttakc">
           <text>"IssuePostHearingDirection",
-"IssueJudgment",
-"IssueOrder"</text>
+            "IssueJudgment",
+            "IssueOrder"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1vbbzn1">
           <text>"workType"</text>
@@ -211,10 +235,11 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1hszd50">
           <text>"ContactTribunalWithAnApplication",
-"AmendClaimantDetails",
-"AmendRespondentDetails",
-"WithdrawAllOrPartOfCase",
-"SubmitRespondentPseResponse"</text>
+            "AmendClaimantDetails",
+            "AmendRespondentDetails",
+            "WithdrawAllOrPartOfCase",
+            "SubmitRespondentPseResponse"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zn5l70">
           <text>"workType"</text>
@@ -232,9 +257,10 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mqcb20">
           <text>"reviewSpecificAccessRequestJudiciary",
-"reviewSpecificAccessRequestLegalOps",
-"reviewSpecificAccessRequestAdmin",
-"reviewSpecificAccessRequestCTSC"</text>
+            "reviewSpecificAccessRequestLegalOps",
+            "reviewSpecificAccessRequestAdmin",
+            "reviewSpecificAccessRequestCTSC"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1wblnqm">
           <text>"workType"</text>
@@ -252,10 +278,11 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0jg7vpi">
           <text>"ReviewReferralJudiciary",
-"reviewSpecificAccessRequestJudiciary",
-"ReviewReferralResponseJudiciary",
-"CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+            "reviewSpecificAccessRequestJudiciary",
+            "ReviewReferralResponseJudiciary",
+            "CompleteInitialConsideration",
+            "DraftAndSignJudgment"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0lnmg1j">
           <text>"roleCategory"</text>
@@ -273,9 +300,10 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0vmsbqm">
           <text>"ReviewReferralLegalOps",
-"reviewSpecificAccessRequestLegalOps",
-"ReviewRule21Referral",
-"ReviewReferralResponseLegalOps"</text>
+            "reviewSpecificAccessRequestLegalOps",
+            "ReviewRule21Referral",
+            "ReviewReferralResponseLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uxpxfb">
           <text>"roleCategory"</text>
@@ -293,27 +321,28 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1faq2jo">
           <text>"Et1Vetting",
-"ReviewReferralAdmin",
-"ReviewReferralResponseAdmin",
-"SendEt1Notification",
-"ListServeClaim",
-"reviewSpecificAccessRequestAdmin",
-"Rule21",
-"ET3Processing",
-"IssueInitialConsiderationDirections",
-"ListAHearing",
-"IssuePostHearingDirection",
-"IssueJudgment",
-"ContactTribunalWithAnApplication",
-"AmendClaimantDetails",
-"AmendRespondentDetails",
-"WithdrawAllOrPartOfCase",
-"SendEt3Notification",
-"ReviewECCResponse",
-"ExpiredBfAction",
-"ReferEmployersContractClaim",
-"IssueOrder",
-"SubmitRespondentPseResponse"</text>
+            "ReviewReferralAdmin",
+            "ReviewReferralResponseAdmin",
+            "SendEt1Notification",
+            "ListServeClaim",
+            "reviewSpecificAccessRequestAdmin",
+            "Rule21",
+            "ET3Processing",
+            "IssueInitialConsiderationDirections",
+            "ListAHearing",
+            "IssuePostHearingDirection",
+            "IssueJudgment",
+            "ContactTribunalWithAnApplication",
+            "AmendClaimantDetails",
+            "AmendRespondentDetails",
+            "WithdrawAllOrPartOfCase",
+            "SendEt3Notification",
+            "ReviewECCResponse",
+            "ExpiredBfAction",
+            "ReferEmployersContractClaim",
+            "IssueOrder",
+            "SubmitRespondentPseResponse"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -348,17 +377,19 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_19mj5q6">
           <text>"reviewSpecificAccessRequestJudiciary",
-"reviewSpecificAccessRequestLegalOps",
-"reviewSpecificAccessRequestAdmin",
-"reviewSpecificAccessRequestCTSC"</text>
+            "reviewSpecificAccessRequestLegalOps",
+            "reviewSpecificAccessRequestAdmin",
+            "reviewSpecificAccessRequestCTSC"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0fhhbni">
           <text>"additionalProperties_roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1i6sunx">
           <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null)
-then taskAttributes.roleAssignmentId
-else null</text>
+            then taskAttributes.roleAssignmentId
+            else null
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cxkqq3">
           <text>true</text>
@@ -387,14 +418,17 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_07rgo5f">
           <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+            "ReviewReferralJudiciary",
+            "ReviewReferralLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0c6p65o">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1b7smpa">
-          <text>"[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
+          <text>"[Reply to the
+            Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nnd54t">
           <text>true</text>
@@ -406,19 +440,21 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1j2zkeu">
           <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+            "ReviewReferralJudiciary",
+            "ReviewReferralLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xjif0l">
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00rkvd5">
           <text>if (LATEST_REVIEW_REFERRAL_TASK_TITLE != null) then
-  LATEST_REVIEW_REFERRAL_TASK_TITLE
-else if (taskAttributes != null and taskAttributes.name != null) then
-  taskAttributes.name
-else
-  "Review Referral"</text>
+            LATEST_REVIEW_REFERRAL_TASK_TITLE
+            else if (taskAttributes != null and taskAttributes.name != null) then
+            taskAttributes.name
+            else
+            "Review Referral"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cjhtei">
           <text>false</text>
@@ -430,8 +466,9 @@ else
         </inputEntry>
         <inputEntry id="UnaryTests_1pkftvr">
           <text>"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+            "ReviewReferralResponseJudiciary",
+            "ReviewReferralResponseLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_12krrh0">
           <text>"description"</text>
@@ -439,7 +476,10 @@ else
         <outputEntry id="LiteralExpression_1vtkg3d">
           <text>"**Review the Referral Response**
 
-You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"</text>
+            You can also [Reply to the
+            Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Close the
+            Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/closeReferral/closeReferral1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1q4z2i4">
           <text>true</text>
@@ -451,19 +491,21 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
         </inputEntry>
         <inputEntry id="UnaryTests_1bih8qs">
           <text>"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+            "ReviewReferralResponseJudiciary",
+            "ReviewReferralResponseLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0gq3i1k">
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1j6rfz0">
           <text>if (LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE != null) then
-  LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE
-else if (taskAttributes != null and taskAttributes.name != null) then
-  taskAttributes.name
-else
-  "Review Referral Response"</text>
+            LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE
+            else if (taskAttributes != null and taskAttributes.name != null) then
+            taskAttributes.name
+            else
+            "Review Referral Response"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0g8aepj">
           <text>false</text>
@@ -480,7 +522,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14eiv65">
-          <text>"[Upload Document For Serving](/cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocumentForServing/uploadDocumentForServing1)"</text>
+          <text>"[Upload Document For
+            Serving](/cases/case-details/${[CASE_REFERENCE]}/trigger/uploadDocumentForServing/uploadDocumentForServing1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nwha68">
           <text>true</text>
@@ -492,14 +536,17 @@ else
         </inputEntry>
         <inputEntry id="UnaryTests_0gstj6a">
           <text>"SendEt1Notification",
-"IssuePostHearingDirection",
-"IssueInitialConsiderationDirections"</text>
+            "IssuePostHearingDirection",
+            "IssueInitialConsiderationDirections"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0kitfsk">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0492sao">
-          <text>"[Issue Directions](/cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"</text>
+          <text>"[Issue
+            Directions](/cases/case-details/${[CASE_REFERENCE]}/trigger/generateCorrespondence/generateCorrespondence1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_059enb4">
           <text>true</text>
@@ -516,7 +563,8 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gqaqfz">
-          <text>"[List Hearing](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendHearing/addAmendHearing1)"</text>
+          <text>"[List Hearing](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendHearing/addAmendHearing1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sb04tj">
           <text>true</text>
@@ -533,7 +581,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kgtdlv">
-          <text>"[Initial Consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1)"</text>
+          <text>"[Initial
+            Consideration](/cases/case-details/${[CASE_REFERENCE]}/trigger/initialConsideration/initialConsideration1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pgzvgx">
           <text>true</text>
@@ -550,7 +600,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gpq6ty">
-          <text>"[Issue ET3 Notification](/cases/case-details/${[CASE_REFERENCE]}/trigger/et3Notification/et3Notification1)"</text>
+          <text>"[Issue ET3
+            Notification](/cases/case-details/${[CASE_REFERENCE]}/trigger/et3Notification/et3Notification1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0pc3b2q">
           <text>true</text>
@@ -563,7 +615,8 @@ else
         </inputEntry>
         <inputEntry id="UnaryTests_1fiqg3g">
           <text>"Rule21",
-"ET3Processing"</text>
+            "ET3Processing"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ky7l6o">
           <text>"description"</text>
@@ -586,7 +639,8 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17wcw3e">
-          <text>"[Expired Bf Action](/cases/case-details/${[CASE_REFERENCE]}/trigger/broughtForward/broughtForward1)"</text>
+          <text>"[Expired Bf Action](/cases/case-details/${[CASE_REFERENCE]}/trigger/broughtForward/broughtForward1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1baj884">
           <text>true</text>
@@ -620,7 +674,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1refEccConfig">
-          <text>"[Refer Employer's Contract Claim](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+          <text>"[Refer Employer's Contract
+            Claim](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_2refEccConfig">
           <text>true</text>
@@ -637,7 +693,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0eccResp">
-          <text>"[Update Respondent's Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"</text>
+          <text>"[Update Respondent's
+            Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_2eccResp">
           <text>true</text>
@@ -654,7 +712,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rz80bi">
-          <text>"[Draft and Sign Judgment/Order](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
+          <text>"[Draft and Sign
+            Judgment/Order](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r68eci">
           <text>true</text>
@@ -671,7 +731,11 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0trcq8d">
-          <text>"**Review the Application**. You can also [Record a decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1), [Respond to an application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/tseAdmReply1) or [Close application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/tseAdminCloseAnApplication1)"</text>
+          <text>"**Review the Application**. You can also [Record a
+            decision](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmin/tseAdmin1), [Respond to an
+            application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdmReply/tseAdmReply1) or [Close
+            application](/cases/case-details/${[CASE_REFERENCE]}/trigger/tseAdminCloseAnApplication/tseAdminCloseAnApplication1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
           <text>true</text>
@@ -688,7 +752,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08350ay">
-          <text>"**Review the Application**. You can also update [Claimant Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)"</text>
+          <text>"**Review the Application**. You can also update [Claimant
+            Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendClaimantDetails/amendClaimantDetails1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_09jtcl9">
           <text>true</text>
@@ -705,7 +771,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ikgtpj">
-          <text>"**Review the Application**. You can also update [Respondent Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"</text>
+          <text>"**Review the Application**. You can also update [Respondent
+            Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14ot4ko">
           <text>true</text>
@@ -722,7 +790,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0eqe9nn">
-          <text>"**Review the Application**. You can also [Send a new referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+          <text>"**Review the Application**. You can also [Send a new
+            referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0h2ibr6">
           <text>true</text>
@@ -739,7 +809,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04xihwk">
-          <text>"[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and [Issue Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
+          <text>"[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and [Issue
+            Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17bw4fs">
           <text>true</text>
@@ -756,7 +828,9 @@ else
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0vq8gcr">
-          <text>"[View Order](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and [Issue Order](/cases/case-details/${[CASE_REFERENCE]}/trigger/sendNotification/sendNotification1)"</text>
+          <text>"[View Order](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and [Issue
+            Order](/cases/case-details/${[CASE_REFERENCE]}/trigger/sendNotification/sendNotification1)"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08wbxso">
           <text>true</text>
@@ -768,19 +842,21 @@ else
         </inputEntry>
         <inputEntry id="UnaryTests_1q0wlk5">
           <text>"reviewSpecificAccessRequestJudiciary",
-"reviewSpecificAccessRequestLegalOps",
-"reviewSpecificAccessRequestAdmin",
-"reviewSpecificAccessRequestCTSC"</text>
+            "reviewSpecificAccessRequestLegalOps",
+            "reviewSpecificAccessRequestAdmin",
+            "reviewSpecificAccessRequestCTSC"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1jw7ylv">
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_014gurf">
           <text>if (taskAttributes != null and taskAttributes.taskId != null
-and taskAttributes.roleAssignmentId != null)
-then "[Review Access Request](/role-access/" + taskAttributes.taskId + "/assignment/"
-+ taskAttributes.roleAssignmentId + "/specific-access)"
-else ""</text>
+            and taskAttributes.roleAssignmentId != null)
+            then "[Review Access Request](/role-access/" + taskAttributes.taskId + "/assignment/"
+            + taskAttributes.roleAssignmentId + "/specific-access)"
+            else ""
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_153t7so">
           <text>true</text>
@@ -792,26 +868,27 @@ else ""</text>
         </inputEntry>
         <inputEntry id="UnaryTests_02rmjxe">
           <text>"Et1Vetting",
-"Rule21",
-"ET3Processing",
-"IssueInitialConsiderationDirections",
-"ListAHearing",
-"ListServeClaim",
-"SendEt1Notification",
-"DraftAndSignJudgment",
-"IssuePostHearingDirection",
-"ReviewRule21Referral",
-"IssueJudgment",
-"CompleteInitialConsideration",
-"SendEt3Notification",
-"AmendClaimantDetails",
-"AmendRespondentDetails",
-"ContactTribunalWithAnApplication",
-"WithdrawAllOrPartOfCase",
-"ReviewECCResponse",
-"ExpiredBfAction",
-"IssueOrder",
-"ReferEmployersContractClaim"</text>
+            "Rule21",
+            "ET3Processing",
+            "IssueInitialConsiderationDirections",
+            "ListAHearing",
+            "ListServeClaim",
+            "SendEt1Notification",
+            "DraftAndSignJudgment",
+            "IssuePostHearingDirection",
+            "ReviewRule21Referral",
+            "IssueJudgment",
+            "CompleteInitialConsideration",
+            "SendEt3Notification",
+            "AmendClaimantDetails",
+            "AmendRespondentDetails",
+            "ContactTribunalWithAnApplication",
+            "WithdrawAllOrPartOfCase",
+            "ReviewECCResponse",
+            "ExpiredBfAction",
+            "IssueOrder",
+            "ReferEmployersContractClaim"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -829,19 +906,22 @@ else ""</text>
         </inputEntry>
         <inputEntry id="UnaryTests_07vjyfi">
           <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+            "ReviewReferralJudiciary",
+            "ReviewReferralLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13nb3yh">
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xy9k8p">
           <text>if (caseData != null
-and caseData.referralCollection != null
-and count(caseData.referralCollection) &gt; 0
-and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.isUrgent = "Yes")
-then 1000
-else 5000</text>
+            and caseData.referralCollection != null
+            and count(caseData.referralCollection) &gt; 0
+            and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) &gt;
+            number(y.value.referralNumber))[1].value.isUrgent = "Yes")
+            then 1000
+            else 5000
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1uusq1d">
           <text>false</text>
@@ -853,19 +933,24 @@ else 5000</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0yo7ns6">
           <text>"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+            "ReviewReferralResponseJudiciary",
+            "ReviewReferralResponseLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uk8k9m">
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0jezlcp">
           <text>if (caseData != null
-and caseData.referralCollection != null
-and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
-and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
-then 1000
-else 5000</text>
+            and caseData.referralCollection != null
+            and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+            and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and
+            time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and
+            time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else
+            "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+            then 1000
+            else 5000
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0lpz9am">
           <text>false</text>
@@ -877,26 +962,28 @@ else 5000</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tyaq8o">
           <text>"Et1Vetting",
-"Rule21",
-"ET3Processing",
-"IssueInitialConsiderationDirections",
-"ListAHearing",
-"DraftAndSignJudgment",
-"IssuePostHearingDirection",
-"SendEt1Notification",
-"ListServeClaim",
-"ReviewRule21Referral",
-"IssueJudgment",
-"CompleteInitialConsideration",
-"SendEt3Notification",
-"AmendClaimantDetails",
-"AmendRespondentDetails",
-"ContactTribunalWithAnApplication",
-"WithdrawAllOrPartOfCase",
-"ReviewECCResponse",
-"ExpiredBfAction",
-"IssueOrder",
-"ReferEmployersContractClaim"</text>
+            "Rule21",
+            "ET3Processing",
+            "IssueInitialConsiderationDirections",
+            "ListAHearing",
+            "DraftAndSignJudgment",
+            "IssuePostHearingDirection",
+            "SendEt1Notification",
+            "ListServeClaim",
+            "ReviewRule21Referral",
+            "IssueJudgment",
+            "CompleteInitialConsideration",
+            "SendEt3Notification",
+            "AmendClaimantDetails",
+            "AmendRespondentDetails",
+            "ContactTribunalWithAnApplication",
+            "WithdrawAllOrPartOfCase",
+            "ReviewECCResponse",
+            "ExpiredBfAction",
+            "IssueOrder",
+            "ReferEmployersContractClaim",
+            "SubmitRespondentPseResponse"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -914,19 +1001,22 @@ else 5000</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vhou0u">
           <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+            "ReviewReferralJudiciary",
+            "ReviewReferralLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_08twl7q">
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0g94d63">
           <text>if (caseData != null
-and caseData.referralCollection != null
-and count(caseData.referralCollection) &gt; 0
-and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.isUrgent = "Yes")
-then 100
-else 500</text>
+            and caseData.referralCollection != null
+            and count(caseData.referralCollection) &gt; 0
+            and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) &gt;
+            number(y.value.referralNumber))[1].value.isUrgent = "Yes")
+            then 100
+            else 500
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ry9gq0">
           <text>false</text>
@@ -938,19 +1028,24 @@ else 500</text>
         </inputEntry>
         <inputEntry id="UnaryTests_12ojc4i">
           <text>"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+            "ReviewReferralResponseJudiciary",
+            "ReviewReferralResponseLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0clz1i9">
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_092v0u4">
           <text>if (caseData!=null
-and caseData.referralCollection != null
-and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
-and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
-then 100
-else 500</text>
+            and caseData.referralCollection != null
+            and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+            and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and
+            time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and
+            time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else
+            "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+            then 100
+            else 500
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1f3xh1h">
           <text>false</text>
@@ -1019,17 +1114,18 @@ else 500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14dirk4">
           <text>if (caseData != null
-and caseData.hearingDetailsCollection != null
-and count(caseData.hearingDetailsCollection) = 1)
-then date and time(caseData.hearingDetailsCollection[1].value.hearingDetailsDate)
-else if caseData.hearingDetailsCollection != null and count(caseData.hearingDetailsCollection) &gt; 1
-then max(
-flatten(
-  [ for h in caseData.hearingDetailsCollection return
-   date and time(h.value.hearingDetailsDate) ]
-  )
-)
-else now()</text>
+            and caseData.hearingDetailsCollection != null
+            and count(caseData.hearingDetailsCollection) = 1)
+            then date and time(caseData.hearingDetailsCollection[1].value.hearingDetailsDate)
+            else if caseData.hearingDetailsCollection != null and count(caseData.hearingDetailsCollection) &gt; 1
+            then max(
+            flatten(
+            [ for h in caseData.hearingDetailsCollection return
+            date and time(h.value.hearingDetailsDate) ]
+            )
+            )
+            else now()
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0f15zca">
           <text>false</text>
@@ -1047,8 +1143,10 @@ else now()</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1x661vr">
           <text>if month(dueDateOrigin) = 2 then 18
-else if month(dueDateOrigin) = 4 or month(dueDateOrigin) = 6 or month(dueDateOrigin) = 9 or month(dueDateOrigin) = 11 then 19
-else 20</text>
+            else if month(dueDateOrigin) = 4 or month(dueDateOrigin) = 6 or month(dueDateOrigin) = 9 or
+            month(dueDateOrigin) = 11 then 19
+            else 20
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ola6kc">
           <text>false</text>
@@ -1099,7 +1197,9 @@ else 20</text>
           <text>"dueDateNonWorkingCalendar"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1luowkm">
-          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json, https://raw.githubusercontent.com/hmcts/et-wa-task-configuration/master/src/main/resources/privilege-calendar-engwales.json"</text>
+          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json,
+            https://raw.githubusercontent.com/hmcts/et-wa-task-configuration/master/src/main/resources/privilege-calendar-engwales.json"
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1gnav2w">
           <text>true</text>
@@ -1162,19 +1262,22 @@ else 20</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1pk6nbg">
           <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+            "ReviewReferralJudiciary",
+            "ReviewReferralLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06yvz5i">
           <text>"dueDateIntervalDays"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ibou11">
           <text>if (caseData != null
-and caseData.referralCollection != null
-and count(caseData.referralCollection) &gt; 0
-and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber))[1].value.isUrgent = "Yes")
-then 1
-else 2</text>
+            and caseData.referralCollection != null
+            and count(caseData.referralCollection) &gt; 0
+            and sort(caseData.referralCollection, function(x,y) number(x.value.referralNumber) &gt;
+            number(y.value.referralNumber))[1].value.isUrgent = "Yes")
+            then 1
+            else 2
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ctz44f">
           <text>false</text>
@@ -1186,19 +1289,24 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0trmtnk">
           <text>"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps"</text>
+            "ReviewReferralResponseJudiciary",
+            "ReviewReferralResponseLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1d17e4j">
           <text>"dueDateIntervalDays"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1j1w3oe">
           <text>if (caseData!=null
-and caseData.referralCollection != null
-and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
-and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
-then 1
-else 2</text>
+            and caseData.referralCollection != null
+            and count(caseData.referralCollection[count(value.referralReplyCollection)&gt;0])&gt;0
+            and sort(flatten(caseData.referralCollection.value.referralReplyCollection), function(x,y) date and
+            time(if(x.value.replyDateTime!=null)then x.value.replyDateTime else "2023-01-01T00:00:00.000") &gt; date and
+            time(if(y.value.replyDateTime!=null)then y.value.replyDateTime else
+            "2023-01-01T00:00:00.000"))[1].value.isUrgentReply = "Yes")
+            then 1
+            else 2
+          </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10bfxc4">
           <text>false</text>
@@ -1227,11 +1335,12 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_01m98in">
           <text>"ListServeClaim",
-"SendEt1Notification",
-"SendEt3Notification",
-"AmendClaimantDetails",
-"AmendRespondentDetails",
-"WithdrawAllOrPartOfCase"</text>
+            "SendEt1Notification",
+            "SendEt3Notification",
+            "AmendClaimantDetails",
+            "AmendRespondentDetails",
+            "WithdrawAllOrPartOfCase"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10rjqai">
           <text>"dueDateIntervalDays"</text>
@@ -1249,10 +1358,11 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_10e0xlu">
           <text>"Rule21",
-"ReviewRule21Referral",
-"CompleteInitialConsideration",
-"ContactTribunalWithAnApplication",
-"ExpiredBfAction"</text>
+            "ReviewRule21Referral",
+            "CompleteInitialConsideration",
+            "ContactTribunalWithAnApplication",
+            "ExpiredBfAction"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1w0lhdh">
           <text>"dueDateIntervalDays"</text>
@@ -1270,7 +1380,8 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jh8ro3">
           <text>"ET3Processing",
-"ReviewECCResponse"</text>
+            "ReviewECCResponse"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tloef8">
           <text>"dueDateIntervalDays"</text>
@@ -1288,10 +1399,11 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0jwglsj">
           <text>"Et1Vetting",
-"IssueInitialConsiderationDirections",
-"IssuePostHearingDirection",
-"IssueJudgment",
-"IssueOrder"</text>
+            "IssueInitialConsiderationDirections",
+            "IssuePostHearingDirection",
+            "IssueJudgment",
+            "IssueOrder"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0igzsz3">
           <text>"dueDateIntervalDays"</text>
@@ -1326,29 +1438,30 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ox5ilk">
           <text>"Et1Vetting",
-"Rule21",
-"ET3Processing",
-"IssueInitialConsiderationDirections",
-"ListAHearing",
-"DraftAndSignJudgment",
-"IssuePostHearingDirection",
-"SendEt1Notification",
-"ListServeClaim",
-"ReviewRule21Referral",
-"IssueJudgment",
-"CompleteInitialConsideration",
-"SendEt3Notification",
-"AmendClaimantDetails",
-"AmendRespondentDetails",
-"ContactTribunalWithAnApplication",
-"WithdrawAllOrPartOfCase",
-"ReviewReferralResponseAdmin",
-"ReviewReferralResponseJudiciary",
-"ReviewReferralResponseLegalOps",
-"ReviewECCResponse",
-"ExpiredBfAction",
-"IssueOrder",
-"ReferEmployersContractClaim"</text>
+            "Rule21",
+            "ET3Processing",
+            "IssueInitialConsiderationDirections",
+            "ListAHearing",
+            "DraftAndSignJudgment",
+            "IssuePostHearingDirection",
+            "SendEt1Notification",
+            "ListServeClaim",
+            "ReviewRule21Referral",
+            "IssueJudgment",
+            "CompleteInitialConsideration",
+            "SendEt3Notification",
+            "AmendClaimantDetails",
+            "AmendRespondentDetails",
+            "ContactTribunalWithAnApplication",
+            "WithdrawAllOrPartOfCase",
+            "ReviewReferralResponseAdmin",
+            "ReviewReferralResponseJudiciary",
+            "ReviewReferralResponseLegalOps",
+            "ReviewECCResponse",
+            "ExpiredBfAction",
+            "IssueOrder",
+            "ReferEmployersContractClaim"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>
@@ -1366,8 +1479,9 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1px3uao">
           <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+            "ReviewReferralJudiciary",
+            "ReviewReferralLegalOps"
+          </text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tqigei">
           <text>"priorityDateOriginEarliest"</text>
@@ -1382,89 +1496,95 @@ else 2</text>
     </decisionTable>
   </decision>
   <decision id="Decision_1lqqy4i" name="LATEST_REVIEW_REFERRAL_TASK_TITLE">
-    <variable id="InformationItem_022cce2" name="LATEST_REVIEW_REFERRAL_TASK_TITLE" typeRef="string" />
+    <variable id="InformationItem_022cce2" name="LATEST_REVIEW_REFERRAL_TASK_TITLE" typeRef="string"/>
     <informationRequirement id="InformationRequirement_1ffhygb">
-      <requiredDecision href="#Decision_0r6u2fs" />
+      <requiredDecision href="#Decision_0r6u2fs"/>
     </informationRequirement>
     <literalExpression id="LiteralExpression_1tgg8vn">
       <text>if(reviewReferralSerialNumberAndSubject!=null)
-then "Review Referral #" + reviewReferralSerialNumberAndSubject
-else null</text>
+        then "Review Referral #" + reviewReferralSerialNumberAndSubject
+        else null
+      </text>
     </literalExpression>
   </decision>
   <decision id="Decision_0r6u2fs" name="reviewReferralSerialNumberAndSubject">
-    <variable id="InformationItem_08cqq5l" name="reviewReferralSerialNumberAndSubject" typeRef="string" />
+    <variable id="InformationItem_08cqq5l" name="reviewReferralSerialNumberAndSubject" typeRef="string"/>
     <literalExpression id="LiteralExpression_0rdmec2">
       <text>{
-  "__prefix" : "__processCategory__reviewReferralSerialNumberAndSubject_",
-  "__attribute_entries" : get entries(taskAttributes),
-  "__matching_keys" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then substring(__item.key, string length(__prefix) + 1) else null,
-  "__filtered_keys" : __matching_keys[item != null],
-  "__nonempty_keys" : append(__filtered_keys, null),
-  "__nullable_review_referral_serial_number_and_subject" : __nonempty_keys[1]
-}.__nullable_review_referral_serial_number_and_subject</text>
+        "__prefix" : "__processCategory__reviewReferralSerialNumberAndSubject_",
+        "__attribute_entries" : get entries(taskAttributes),
+        "__matching_keys" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then
+        substring(__item.key, string length(__prefix) + 1) else null,
+        "__filtered_keys" : __matching_keys[item != null],
+        "__nonempty_keys" : append(__filtered_keys, null),
+        "__nullable_review_referral_serial_number_and_subject" : __nonempty_keys[1]
+        }.__nullable_review_referral_serial_number_and_subject
+      </text>
     </literalExpression>
   </decision>
   <decision id="Decision_0yeq6ix" name="LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE">
-    <variable id="InformationItem_0l9kmvs" name="LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE" />
+    <variable id="InformationItem_0l9kmvs" name="LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE"/>
     <informationRequirement id="InformationRequirement_1fiqgk1">
-      <requiredDecision href="#Decision_1ahvbr3" />
+      <requiredDecision href="#Decision_1ahvbr3"/>
     </informationRequirement>
     <literalExpression id="LiteralExpression_1atmmr3">
       <text>if(referralReviewResponseSerialNumberAndSubject!=null)
-then "Review Referral Response #" + referralReviewResponseSerialNumberAndSubject
-else null</text>
+        then "Review Referral Response #" + referralReviewResponseSerialNumberAndSubject
+        else null
+      </text>
     </literalExpression>
   </decision>
   <decision id="Decision_1ahvbr3" name="referralReviewResponseSerialNumberAndSubject">
-    <variable id="InformationItem_1uly8ms" name="referralReviewResponseSerialNumberAndSubject" typeRef="string" />
+    <variable id="InformationItem_1uly8ms" name="referralReviewResponseSerialNumberAndSubject" typeRef="string"/>
     <literalExpression id="LiteralExpression_0u95cjc">
       <text>{
-  "__prefix" : "__processCategory__reviewReferralResponseSerialNumberAndSubject_",
-  "__attribute_entries" : get entries(taskAttributes),
-  "__matching_keys" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then substring(__item.key, string length(__prefix) + 1) else null,
-  "__filtered_keys" : __matching_keys[item != null],
-  "__nonempty_keys" : append(__filtered_keys, null),
-  "__nullable_review_referral_response_serial_number_and_subject" : __nonempty_keys[1]
-}.__nullable_review_referral_response_serial_number_and_subject</text>
+        "__prefix" : "__processCategory__reviewReferralResponseSerialNumberAndSubject_",
+        "__attribute_entries" : get entries(taskAttributes),
+        "__matching_keys" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then
+        substring(__item.key, string length(__prefix) + 1) else null,
+        "__filtered_keys" : __matching_keys[item != null],
+        "__nonempty_keys" : append(__filtered_keys, null),
+        "__nullable_review_referral_response_serial_number_and_subject" : __nonempty_keys[1]
+        }.__nullable_review_referral_response_serial_number_and_subject
+      </text>
     </literalExpression>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
       <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-employment-et_englandwales">
-        <dc:Bounds height="80" width="180" x="320" y="80" />
+        <dc:Bounds height="80" width="180" x="320" y="80"/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_03alrgh" dmnElementRef="InformationRequirement_0cm80l7">
-        <di:waypoint x="250" y="250" />
-        <di:waypoint x="380" y="180" />
-        <di:waypoint x="380" y="160" />
+        <di:waypoint x="250" y="250"/>
+        <di:waypoint x="380" y="180"/>
+        <di:waypoint x="380" y="160"/>
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_09948x4" dmnElementRef="Decision_1lqqy4i">
-        <dc:Bounds height="80" width="180" x="160" y="250" />
+        <dc:Bounds height="80" width="180" x="160" y="250"/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0d20xrr" dmnElementRef="InformationRequirement_1ffhygb">
-        <di:waypoint x="250" y="380" />
-        <di:waypoint x="250" y="350" />
-        <di:waypoint x="250" y="330" />
+        <di:waypoint x="250" y="380"/>
+        <di:waypoint x="250" y="350"/>
+        <di:waypoint x="250" y="330"/>
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0087a4u" dmnElementRef="Decision_0r6u2fs">
-        <dc:Bounds height="80" width="180" x="160" y="380" />
+        <dc:Bounds height="80" width="180" x="160" y="380"/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0drs605" dmnElementRef="InformationRequirement_008s8pe">
-        <di:waypoint x="570" y="250" />
-        <di:waypoint x="440" y="180" />
-        <di:waypoint x="440" y="160" />
+        <di:waypoint x="570" y="250"/>
+        <di:waypoint x="440" y="180"/>
+        <di:waypoint x="440" y="160"/>
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_187j52r" dmnElementRef="Decision_0yeq6ix">
-        <dc:Bounds height="80" width="180" x="480" y="250" />
+        <dc:Bounds height="80" width="180" x="480" y="250"/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1s6gfdy" dmnElementRef="InformationRequirement_1fiqgk1">
-        <di:waypoint x="570" y="390" />
-        <di:waypoint x="570" y="350" />
-        <di:waypoint x="570" y="330" />
+        <di:waypoint x="570" y="390"/>
+        <di:waypoint x="570" y="350"/>
+        <di:waypoint x="570" y="330"/>
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1whdgdw" dmnElementRef="Decision_1ahvbr3">
-        <dc:Bounds height="80" width="180" x="480" y="390" />
+        <dc:Bounds height="80" width="180" x="480" y="390"/>
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
