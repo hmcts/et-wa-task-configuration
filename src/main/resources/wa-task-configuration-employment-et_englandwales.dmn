@@ -213,7 +213,8 @@ else null</text>
           <text>"ContactTribunalWithAnApplication",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
-"WithdrawAllOrPartOfCase"</text>
+"WithdrawAllOrPartOfCase",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zn5l70">
           <text>"workType"</text>
@@ -311,7 +312,8 @@ else null</text>
 "ReviewECCResponse",
 "ExpiredBfAction",
 "ReferEmployersContractClaim",
-"IssueOrder"</text>
+"IssueOrder",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -894,7 +896,8 @@ else 5000</text>
 "ReviewECCResponse",
 "ExpiredBfAction",
 "IssueOrder",
-"ReferEmployersContractClaim"</text>
+"ReferEmployersContractClaim",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
