@@ -3418,6 +3418,71 @@ else false</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0ctp5c7">
+        <inputEntry id="UnaryTests_0detnvn">
+          <text>"SUBMIT_RESPONDENT_PSE_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qw0vlj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tfmx2h">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_086xmp4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sduz3b">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0883yfj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k6o3sv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fu4165">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rdx7ty">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10q99fj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1456fq5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yh8oo4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16oqbfo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1it8j27">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0erymbu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15k7nnr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00ianh2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qsrpz7">
+          <text>"SubmitRespondentPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06zezkj">
+          <text>"Submit Respondent Pse Response"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e003lz">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00hc56u">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_1exmu8q" name="LATEST_APPLICATION_TASK_NAME" camunda:historyTimeToLive="P30D">
