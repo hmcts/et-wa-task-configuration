@@ -1271,7 +1271,8 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jh8ro3">
           <text>"ET3Processing",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tloef8">
           <text>"dueDateIntervalDays"</text>
@@ -1368,7 +1369,8 @@ else 2</text>
         <inputEntry id="UnaryTests_1px3uao">
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+"ReviewReferralLegalOps",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tqigei">
           <text>"priorityDateOriginEarliest"</text>
