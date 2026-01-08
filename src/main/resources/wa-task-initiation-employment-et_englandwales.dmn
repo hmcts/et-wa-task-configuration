@@ -3480,7 +3480,7 @@ else false</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00hc56u">
-          <text></text>
+          <text>"Application"</text>
         </outputEntry>
       </rule>
     </decisionTable>
