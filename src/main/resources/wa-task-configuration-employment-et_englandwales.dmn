@@ -1403,23 +1403,6 @@ else 5001</text>
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0lmzh4w">
-        <inputEntry id="UnaryTests_18vq8ci">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1ogpivr">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1iynzim">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0xo6e6l">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0qmu50j">
-          <text></text>
-        </outputEntry>
-      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_1lqqy4i" name="LATEST_REVIEW_REFERRAL_TASK_TITLE">
