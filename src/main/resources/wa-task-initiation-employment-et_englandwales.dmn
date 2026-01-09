@@ -3420,7 +3420,7 @@ else false</text>
       </rule>
       <rule id="DecisionRule_0ctp5c7">
         <inputEntry id="UnaryTests_0detnvn">
-          <text>"SUBMIT_RESPONDENT_PSE_RESPONSE"</text>
+          <text>"ADD_RESPONDENT_PSE_RESPONSE"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qw0vlj">
           <text></text>
@@ -3480,6 +3480,71 @@ else false</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00hc56u">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lgcxsh">
+        <inputEntry id="UnaryTests_1layhri">
+          <text>"SUBMIT_RESPONDENT_PSE_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09z7vm3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07t9zlt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dp3tag">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03nfc85">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13h65y4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12e2j7f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dxcegk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r483tu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_022lfn5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1snvkpl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xfkumn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bwyuoe">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14liak7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09gn26p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jjgcjo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0snr2nh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nmmcau">
+          <text>"SubmitRespondentPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0by9rf1">
+          <text>"Review notification response"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ckw6ru">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1q1elk5">
           <text>"Application"</text>
         </outputEntry>
       </rule>
