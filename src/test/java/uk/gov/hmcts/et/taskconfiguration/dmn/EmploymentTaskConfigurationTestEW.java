@@ -1013,7 +1013,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
         List<Map<String, Object>> resultList =
             dmnDecisionTableResult.getResultList().stream().toList();
-        assertEquals(23, resultList.size());
+        assertEquals(24, resultList.size());
 
         assertEquals(Map.of(
             "name", "calculatedDates",
@@ -1092,7 +1092,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
 
-        assertThat(logic.getRules().size(), is(67));
+        assertThat(logic.getRules().size(), is(68));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
