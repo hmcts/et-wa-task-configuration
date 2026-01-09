@@ -1393,10 +1393,31 @@ else 2</text>
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c60m3w">
-          <text>5000</text>
+          <text>if caseData.nextListedDate != null then
+if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 1000
+else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
+else 5001
+else 5001</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1axg0c4">
           <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lmzh4w">
+        <inputEntry id="UnaryTests_18vq8ci">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ogpivr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1iynzim">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xo6e6l">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qmu50j">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
