@@ -1394,7 +1394,7 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c60m3w">
           <text>if caseData.nextListedDate != null then
-if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 1000
+if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 2001
 else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
 else 5001
 else 5001</text>
