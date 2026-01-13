@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.40.0">
   <decision id="wa-task-configuration-employment-et_scotland" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_181rjsg">
       <requiredDecision href="#Decision_07yhq0k" />
@@ -312,7 +312,8 @@ else null</text>
 "ReviewECCResponse",
 "ExpiredBfAction",
 "IssueOrder",
-"ReferEmployersContractClaim"</text>
+"ReferEmployersContractClaim",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -894,7 +895,8 @@ else 5000</text>
 "ReviewECCResponse",
 "ExpiredBfAction",
 "IssueOrder",
-"ReferEmployersContractClaim"</text>
+"ReferEmployersContractClaim",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -1267,7 +1269,8 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jh8ro3">
           <text>"ET3Processing",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tloef8">
           <text>"dueDateIntervalDays"</text>
@@ -1364,7 +1367,8 @@ else 2</text>
         <inputEntry id="UnaryTests_0zvrfef">
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+"ReviewReferralLegalOps",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0336zf2">
           <text>"priorityDateOriginEarliest"</text>
@@ -1373,6 +1377,27 @@ else 2</text>
           <text>"dueDate, nextHearingDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cmb6lz">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18mp30q">
+        <inputEntry id="UnaryTests_1ls8d6t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_041l94k">
+          <text>"SubmitRespondentPseResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10vregq">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jykomy">
+          <text>if caseData.nextListedDate != null then
+if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 2001
+else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
+else 5001
+else 5001</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kf83r7">
           <text>false</text>
         </outputEntry>
       </rule>
