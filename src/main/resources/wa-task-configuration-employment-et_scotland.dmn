@@ -1409,7 +1409,7 @@ else 5001</text>
           <text>"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1wnmjlj">
-          <text>"SubmitRespondentPseResponse"</text>
+          <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13e15ai">
           <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
