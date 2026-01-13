@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-completion-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.39.0">  <decision id="wa-task-completion-employment-et_englandwales" name="ET Task completion DMN" camunda:historyTimeToLive="P30D">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-completion-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.40.0">
+  <decision id="wa-task-completion-employment-et_englandwales" name="ET Task completion DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_01re27m" hitPolicy="COLLECT">
       <input id="eventId" label="Event ID" biodi:width="355">
         <inputExpression id="LiteralExpression_1ngg489" typeRef="string">
@@ -353,7 +354,7 @@
 "tseAdmReply",
 "tseAdminCloseAnApplication",
 "broughtForward",
-"respondNotification"
+"respondNotification",
 "sendNotification"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_067qoh4">
