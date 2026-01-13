@@ -1401,6 +1401,23 @@ else 5001</text>
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1l32gg7">
+        <inputEntry id="UnaryTests_1fvakco">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qlhbtz">
+          <text>"SubmitRespondentPseResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wnmjlj">
+          <text>"SubmitRespondentPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13e15ai">
+          <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08u4x66">
+          <text>true</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_07yhq0k" name="LATEST_REVIEW_REFERRAL_TASK_TITLE">
