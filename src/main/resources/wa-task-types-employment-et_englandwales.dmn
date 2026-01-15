@@ -350,6 +350,17 @@
           <text>"Issue Order"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_02lfan9">
+        <inputEntry id="UnaryTests_1o5cojo">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y4hdt1">
+          <text>"SubmitRespondentPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ndtapj">
+          <text>"Review notification response"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

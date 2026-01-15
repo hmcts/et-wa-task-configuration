@@ -3587,6 +3587,142 @@ else false</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_19qextm">
+        <inputEntry id="UnaryTests_0ofuoxc">
+          <text>"ADD_RESPONDENT_PSE_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xwp5oz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_125cko8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o5dgqa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xqlodw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09wruhr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00f0ml8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09qdz1l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01z4ezp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_045by7s">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y281c4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0soxxub">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vfs0rm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vbeo80">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a43eir">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uq0o1o">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1if8gij">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vezv17">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o84e11">
+          <text>"SubmitRespondentPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0le69jo">
+          <text>"Review notification response"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tfni9m">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yov46y">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xgkh49">
+        <inputEntry id="UnaryTests_10eux68">
+          <text>"SUBMIT_RESPONDENT_PSE_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0idvp5v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xa5k6d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t3374h">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jlmvxa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t6yt6q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tntfa8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gmr2xy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_105ey3w">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y1kkxw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0whfsjc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11016z3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0308vjt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00lbmov">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1woha7p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ic4cge">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hs67we">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07lanrs">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00fb4hr">
+          <text>"SubmitRespondentPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fmray0">
+          <text>"Review notification response"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08s0wxm">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_005s6zk">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_0mhlyhp" name="LATEST_APPLICATION_TASK_NAME">
