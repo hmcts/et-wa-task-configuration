@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
-  <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">  <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0cm80l7">
       <requiredDecision href="#Decision_1lqqy4i" />
     </informationRequirement>
@@ -213,7 +212,8 @@ else null</text>
           <text>"ContactTribunalWithAnApplication",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
-"WithdrawAllOrPartOfCase"</text>
+"WithdrawAllOrPartOfCase",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zn5l70">
           <text>"workType"</text>
@@ -311,7 +311,8 @@ else null</text>
 "ReviewECCResponse",
 "ExpiredBfAction",
 "ReferEmployersContractClaim",
-"IssueOrder"</text>
+"IssueOrder",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -894,7 +895,8 @@ else 5000</text>
 "ReviewECCResponse",
 "ExpiredBfAction",
 "IssueOrder",
-"ReferEmployersContractClaim"</text>
+"ReferEmployersContractClaim",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -1268,7 +1270,8 @@ else 2</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jh8ro3">
           <text>"ET3Processing",
-"ReviewECCResponse"</text>
+"ReviewECCResponse",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tloef8">
           <text>"dueDateIntervalDays"</text>
@@ -1365,7 +1368,8 @@ else 2</text>
         <inputEntry id="UnaryTests_1px3uao">
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+"ReviewReferralLegalOps",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tqigei">
           <text>"priorityDateOriginEarliest"</text>
@@ -1375,6 +1379,44 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14f6prs">
           <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wx8y0h">
+        <inputEntry id="UnaryTests_0peoeco">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12wmvba">
+          <text>"SubmitRespondentPseResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oh42oc">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c60m3w">
+          <text>if caseData.nextListedDate != null then
+if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 2001
+else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
+else 5001
+else 5001</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1axg0c4">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p81ity">
+        <inputEntry id="UnaryTests_0il4ru4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m3pfzk">
+          <text>"SubmitRespondentPseResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09ew5sb">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08az7f0">
+          <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14opuv2">
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
