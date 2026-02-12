@@ -228,7 +228,7 @@ def versions = [
   camunda         : '7.23.0',
   pitest          : '1.17.0',
   sonarPitest     : '0.5',
-  tomcat          : '11.0.11'
+  tomcat          : '11.0.14'
 ]
 
 ext.libraries = [
@@ -254,7 +254,7 @@ dependencies {
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: versions.reformLogging
   implementation group: 'com.github.hmcts.java-logging', name: 'logging-appinsights', version: versions.reformLogging
 
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.25.1'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.25.3'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.25.1'
 
   implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcat

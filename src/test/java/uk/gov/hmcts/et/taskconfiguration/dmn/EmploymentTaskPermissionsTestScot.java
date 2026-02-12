@@ -374,6 +374,17 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     leadershipJudge,
                     approverCTSC
                 )
+            ),
+
+            Arguments.of(
+                "ReferEmployersContractClaim",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin
+                )
             )
         );
     }

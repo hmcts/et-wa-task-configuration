@@ -7,7 +7,7 @@ def product = "et"
 def component = "task-configuration"
 def s2sServiceName = "wa_camunda_pipeline_upload"
 def tenantId = "employment"
-def branchesToSync = ['demo', 'perftest']
+def branchesToSync = ['demo', 'perftest', 'ithc']
 
 withCamundaOnlyPipeline(type, product, component, s2sServiceName, tenantId) {
 
