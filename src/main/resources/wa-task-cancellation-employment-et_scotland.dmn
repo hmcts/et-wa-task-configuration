@@ -298,6 +298,29 @@
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_08j9at2">
+        <inputEntry id="UnaryTests_1rlcyhr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06bb75d">
+          <text>"assignCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00fhgjv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uu1au5">
+          <text>"Reconfigure"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w2sqz4">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bck6b3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l88top">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
