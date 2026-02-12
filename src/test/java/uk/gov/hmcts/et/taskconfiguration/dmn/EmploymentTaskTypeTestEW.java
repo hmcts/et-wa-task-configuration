@@ -19,10 +19,10 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
+class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_TYPE_ET_EW;
     }
 
@@ -43,7 +43,7 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
                            "taskTypeName","Contact Tribunal With An Application"),
 
                     Map.of("taskTypeId", "DraftAndSignJudgment", "taskTypeName",
-                           "Draft And Sign Judgment"),
+                           "Draft And Sign Judgment/Order"),
 
                     Map.of("taskTypeId", "Et1Vetting", "taskTypeName", "ET1 Vetting"),
 
@@ -61,7 +61,8 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
 
                     Map.of("taskTypeId", "ListServeClaim", "taskTypeName", "List/ Serve Claim"),
 
-                    Map.of("taskTypeId", "ReviewECCResponse", "taskTypeName", "Review ECC Response"),
+                    Map.of("taskTypeId", "ReviewECCResponse", "taskTypeName",
+                           "Reply to Employer's Contract Claim received"),
 
                     Map.of("taskTypeId", "ReviewReferralAdmin", "taskTypeName", "Review Referral - Admin"),
 
@@ -84,6 +85,9 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
 
                     Map.of("taskTypeId", "ExpiredBfAction","taskTypeName","Expired Bf Action"),
 
+                    Map.of("taskTypeId", "ReferEmployersContractClaim","taskTypeName",
+                           "Refer Employer's Contract Claim"),
+
                     Map.of("taskTypeId", "SendEt1Notification","taskTypeName", "Send ET1 Notification"),
 
                     Map.of("taskTypeId", "SendEt3Notification", "taskTypeName","Send ET3 Notification"),
@@ -100,7 +104,12 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
                            "taskTypeName","Review Specific Access Request (Judiciary)"),
 
                     Map.of("taskTypeId", "reviewSpecificAccessRequestLegalOps",
-                           "taskTypeName","Review Specific Access Request (Legal Ops)")
+                           "taskTypeName","Review Specific Access Request (Legal Ops)"),
+
+                    Map.of("taskTypeId", "IssueOrder", "taskTypeName","Issue Order"),
+
+                    Map.of("taskTypeId", "SubmitRespondentPseResponse",
+                           "taskTypeName","Review notification response")
                 )
             )
         );
@@ -121,6 +130,6 @@ public class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(29));
+        assertThat(logic.getRules().size(), is(32));
     }
 }

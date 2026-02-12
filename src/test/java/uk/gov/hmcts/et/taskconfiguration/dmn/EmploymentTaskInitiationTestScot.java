@@ -24,6 +24,7 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMA
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_RESPONDING_TO_RESPONDENT_PERSONALDETAILS;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.DRAFT_AND_SIGN_JUDGEMENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.DRAFT_AND_SIGN_JUDGEMENT_ORDER;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_NOT_RECEIVED;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_MORE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_ONCE;
@@ -33,6 +34,9 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAH
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_FINAL;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_NONE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_NOTLISTED_PRELIM;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIPLE_RESPONDENTS_MIXED_COUNT_VALUES;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIPLE_RESPONDENTS_NO_VALID_ECC_REPLY;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIPLE_RESPONDENTS_WITH_VALID_ECC_REPLY;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.NOTIFICATIONS_LIST;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN_HEARING;
@@ -45,6 +49,17 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERR
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_JUDGE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_LEGALOFFICER;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_REPLY_OTHER_SUBJECT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_EMPTY_STRING;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_NOT_RECEIVED;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_NO_COUNT_ONE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_NULL;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_RECEIVED_MORE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_RECEIVED_ONCE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_SECOND_RESPONDENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_THIRD_RESPONDENT;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_YES_COUNT_ONE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_ECC_REPLY_YES_COUNT_TWO;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_NO_ECC_REPLY;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_AMEND;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_CONTACT;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.RESPONDENT_RESPONDING_TO_CLAIMANT_PERSONALDETAILS;
@@ -255,6 +270,18 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "draftAndSignJudgement",
+                null,
+                HelperService.mapAdditionalData(DRAFT_AND_SIGN_JUDGEMENT_ORDER),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "IssueOrder",
+                        "Issue Order",
+                        "Hearing"
+                    )
+                )
+            ),
+            Arguments.of(
                 "preAcceptanceCase",
                 "Accepted",
                 null,
@@ -330,6 +357,152 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 null,
                 HelperService.mapAdditionalData(ET3_FORM_RECEIVED_MORE),
                 List.of()
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_NOT_RECEIVED),
+                List.of()
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_RECEIVED_ONCE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_RECEIVED_MORE),
+                List.of()
+            ),
+            // Multi-respondent ECC reply test cases for the updated DMN logic
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_SECOND_RESPONDENT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_THIRD_RESPONDENT),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_NO_ECC_REPLY),
+                List.of()
+            ),
+            // New comprehensive test cases for updated ECC Reply logic
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_YES_COUNT_ONE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_NO_COUNT_ONE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_YES_COUNT_TWO),
+                List.of()
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_EMPTY_STRING),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(RESPONDENT_ECC_REPLY_NULL),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(MULTIPLE_RESPONDENTS_WITH_VALID_ECC_REPLY),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(MULTIPLE_RESPONDENTS_NO_VALID_ECC_REPLY),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
+            ),
+            Arguments.of(
+                "amendRespondentDetails",
+                null,
+                HelperService.mapAdditionalData(MULTIPLE_RESPONDENTS_MIXED_COUNT_VALUES),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    )
+                )
             ),
             Arguments.of(
                 "et3Vetting",
@@ -454,7 +627,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "DraftAndSignJudgment",
-                        "Draft And Sign Judgment",
+                        "Draft And Sign Judgment/Order",
                         "Judgment"
                     )
                 )
@@ -628,7 +801,7 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "ReviewECCResponse",
-                        "Review ECC Response",
+                        "Reply to Employer's Contract Claim received",
                         "Vetting"
                     )
                 )
@@ -692,6 +865,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(45));
+        assertThat(logic.getRules().size(), is(50));
     }
 }

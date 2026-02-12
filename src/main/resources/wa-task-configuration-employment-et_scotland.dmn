@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.40.0">
   <decision id="wa-task-configuration-employment-et_scotland" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_181rjsg">
       <requiredDecision href="#Decision_07yhq0k" />
@@ -152,7 +152,8 @@ else null</text>
 "ReviewRule21Referral",
 "SendEt3Notification",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"ReferEmployersContractClaim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cosxhn">
           <text>"workType"</text>
@@ -191,7 +192,8 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fttakc">
           <text>"IssuePostHearingDirection",
-"IssueJudgment"</text>
+"IssueJudgment",
+"IssueOrder"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1vbbzn1">
           <text>"workType"</text>
@@ -211,7 +213,8 @@ else null</text>
           <text>"ContactTribunalWithAnApplication",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
-"WithdrawAllOrPartOfCase"</text>
+"WithdrawAllOrPartOfCase",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zn5l70">
           <text>"workType"</text>
@@ -308,7 +311,10 @@ else null</text>
 "WithdrawAllOrPartOfCase",
 "SendEt3Notification",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"IssueOrder",
+"ReferEmployersContractClaim",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -585,6 +591,40 @@ else "Review Referral Response"</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_ce302f31">
+        <inputEntry id="UnaryTests_3edd0bf1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_203b648c">
+          <text>"ReferEmployersContractClaim"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_2c5a9a9c">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_97dcbeda">
+          <text>"[Refer Employer's Contract Claim](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_7de4201c">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xyyttq">
+        <inputEntry id="UnaryTests_00uxbs1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06zhwag">
+          <text>"ReviewECCResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pe72g5">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ps3wzg">
+          <text>"[Update Respondent's Details](/cases/case-details/${[CASE_REFERENCE]}/trigger/amendRespondentDetails/amendRespondentDetails1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pgb7mb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0las4xs">
         <inputEntry id="UnaryTests_11zzeh6">
           <text></text>
@@ -613,7 +653,7 @@ else "Review Referral Response"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0trcq8d">
-          <text>"[Draft and Sign Judgement](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
+          <text>"[Draft and Sign Judgment/Order](/cases/case-details/${[CASE_REFERENCE]}/trigger/draftAndSignJudgement/draftAndSignJudgement1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0celo90">
           <text>true</text>
@@ -699,26 +739,26 @@ else "Review Referral Response"</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04s7gmq">
-          <text>"[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgements) and [Issue Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
+          <text>"[View Judgment](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and [Issue Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/addAmendJudgment/addAmendJudgment1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_13no40g">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_133wj0y">
-        <inputEntry id="UnaryTests_1ostr77">
+      <rule id="DecisionRule_1gk6rkm">
+        <inputEntry id="UnaryTests_0apz2kt">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0hk8wbv">
-          <text>"ReviewECCResponse"</text>
+        <inputEntry id="UnaryTests_020zllp">
+          <text>"IssueOrder"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0nblfmk">
+        <outputEntry id="LiteralExpression_1a6hrl3">
           <text>"description"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_099xr56">
-          <text>"[Create Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/createReferral/createReferral1)"</text>
+        <outputEntry id="LiteralExpression_1ijlepd">
+          <text>"[View Order](/cases/case-details/${[CASE_REFERENCE]}#Judgments) and [Issue Order](/cases/case-details/${[CASE_REFERENCE]}/trigger/sendNotification/sendNotification1)"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0ox7ido">
+        <outputEntry id="LiteralExpression_00qlafg">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -769,7 +809,9 @@ else ""</text>
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"IssueOrder",
+"ReferEmployersContractClaim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ep1vyf">
           <text>"majorPriority"</text>
@@ -852,7 +894,10 @@ else 5000</text>
 "ContactTribunalWithAnApplication",
 "WithdrawAllOrPartOfCase",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"IssueOrder",
+"ReferEmployersContractClaim",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -974,7 +1019,7 @@ else 500</text>
           <text>"dueDateOrigin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sgjcqj">
-          <text>if (caseData != null 
+          <text>if (caseData != null
 and caseData.hearingDetailsCollection != null
 and count(caseData.hearingDetailsCollection) = 1)
 then date and time(caseData.hearingDetailsCollection[1].value.hearingDetailsDate)
@@ -1160,6 +1205,23 @@ else 2</text>
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1kex3vl">
+        <inputEntry id="UnaryTests_1jlpp3k">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zu4i2c">
+          <text>"ReferEmployersContractClaim"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ee6s9p">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ulh1n0">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11fqaj7">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_181hurj">
         <inputEntry id="UnaryTests_19pos7f">
           <text></text>
@@ -1170,8 +1232,7 @@ else 2</text>
 "SendEt3Notification",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
-"WithdrawAllOrPartOfCase",
-"ReviewECCResponse"</text>
+"WithdrawAllOrPartOfCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10rjqai">
           <text>"dueDateIntervalDays"</text>
@@ -1208,7 +1269,9 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jh8ro3">
-          <text>"ET3Processing"</text>
+          <text>"ET3Processing",
+"ReviewECCResponse",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tloef8">
           <text>"dueDateIntervalDays"</text>
@@ -1228,7 +1291,8 @@ else 2</text>
           <text>"Et1Vetting",
 "IssueInitialConsiderationDirections",
 "IssuePostHearingDirection",
-"IssueJudgment"</text>
+"IssueJudgment",
+"IssueOrder"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0igzsz3">
           <text>"dueDateIntervalDays"</text>
@@ -1283,7 +1347,9 @@ else 2</text>
 "ReviewReferralResponseJudiciary",
 "ReviewReferralResponseLegalOps",
 "ReviewECCResponse",
-"ExpiredBfAction"</text>
+"ExpiredBfAction",
+"IssueOrder",
+"ReferEmployersContractClaim"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uy7dph">
           <text>"priorityDateOriginRef"</text>
@@ -1302,7 +1368,8 @@ else 2</text>
         <inputEntry id="UnaryTests_0zvrfef">
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+"ReviewReferralLegalOps",
+"SubmitRespondentPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0336zf2">
           <text>"priorityDateOriginEarliest"</text>
@@ -1312,6 +1379,44 @@ else 2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cmb6lz">
           <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18mp30q">
+        <inputEntry id="UnaryTests_1ls8d6t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_041l94k">
+          <text>"SubmitRespondentPseResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10vregq">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jykomy">
+          <text>if caseData.nextListedDate != null then
+if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 2001
+else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
+else 5001
+else 5001</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kf83r7">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l32gg7">
+        <inputEntry id="UnaryTests_1fvakco">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qlhbtz">
+          <text>"SubmitRespondentPseResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wnmjlj">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13e15ai">
+          <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08u4x66">
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
