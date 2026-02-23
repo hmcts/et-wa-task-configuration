@@ -244,7 +244,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
 
     public static Stream<Arguments> cmlAndCmc_ScenarioProvider() {
         return Stream.of(
-            Arguments.of("", "", "", "", "1", "21153", "London Central", "Employment"),
+            Arguments.of("", "", "", "", "1", "369230", "London Central", "Employment"),
             Arguments.of("3", "36313", "Leeds", "Test", "3", "36313", "Leeds", "Test")
         );
     }
@@ -1099,7 +1099,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> rules = new ArrayList<>();
         HelperService.getExpectedValueWithReconfigure(rules, "caseName", "George Jetson v Unknown", true);
         HelperService.getExpectedValueWithReconfigure(rules, "region", "1", true);
-        HelperService.getExpectedValueWithReconfigure(rules, "location", "21153", true);
+        HelperService.getExpectedValueWithReconfigure(rules, "location", "369230", true);
         HelperService.getExpectedValueWithReconfigure(rules, "locationName", "London Central", true);
         HelperService.getExpectedValueWithReconfigure(rules, "caseManagementCategory", "Employment", false);
         HelperService.getExpectedValueWithReconfigure(rules, "nextHearingDate", "", true);
