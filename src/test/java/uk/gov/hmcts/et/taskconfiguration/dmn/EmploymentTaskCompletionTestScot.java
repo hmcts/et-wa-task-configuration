@@ -12,8 +12,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.util.List;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
