@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import java.util.HashMap;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
@@ -89,31 +90,13 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "closeReferral",
                 asList(
-                    Map.of(
-                        "taskType", "ReviewReferralAdmin",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseAdmin",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralJudiciary",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralLegalOps",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseJudiciary",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseLegalOps",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    emptyMap(),
+                    referralCompletionMap("ReviewReferralAdmin"),
+                    referralCompletionMap("ReviewReferralResponseAdmin"),
+                    referralCompletionMap("ReviewReferralJudiciary"),
+                    referralCompletionMap("ReviewReferralLegalOps"),
+                    referralCompletionMap("ReviewReferralResponseJudiciary"),
+                    referralCompletionMap("ReviewReferralResponseLegalOps")
                 )
             ),
             Arguments.of(
@@ -325,5 +308,19 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getRules().size(), is(35));
+    }
+
+    /**
+     * Creates a completion result map for closeReferral rules.
+     * processCategories is null when no referral data is present in the test input
+     * (the FEEL expression in the DMN evaluates to null without additionalData).
+     * Map.of() cannot hold null values, so we use HashMap explicitly.
+     */
+    private static Map<String, Object> referralCompletionMap(String taskType) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("taskType", taskType);
+        map.put("completionMode", "Auto");
+        map.put("processCategories", null);
+        return map;
     }
 }
