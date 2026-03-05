@@ -562,15 +562,6 @@
       </rule>
     </decisionTable>
   </decision>
-  <!--
-    CLOSED_REFERRAL_SERIAL_NUMBER / CLOSED_REFERRAL_SUBJECT
-    These sub-decisions identify the specific referral being closed so that the
-    closeReferral completion rules only auto-complete tasks tagged for THAT referral.
-
-    They filter referralCollection for entries whose referralStatus = "Closed",
-    then take the highest-numbered match — i.e. the referral most recently closed.
-    Adjust the referralStatus value below if the ET case model uses a different string.
-  -->
   <decision id="Decision_closedReferralSerialNumber" name="CLOSED_REFERRAL_SERIAL_NUMBER"
             camunda:historyTimeToLive="P30D">
     <variable id="InformationItem_closedRefSerial" name="CLOSED_REFERRAL_SERIAL_NUMBER" typeRef="string"/>
