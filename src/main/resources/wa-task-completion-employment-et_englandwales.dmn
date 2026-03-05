@@ -7,9 +7,9 @@
           <text>eventId</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="389"/>
-      <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string"/>
-      <output id="OutputClause_processCategories" label="Process Categories" name="processCategories" typeRef="string"/>
+      <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="389" />
+      <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" />
+      <output id="OutputClause_processCategories" label="Process Categories" name="processCategories" typeRef="string" />
       <rule id="DecisionRule_12eenty">
         <inputEntry id="UnaryTests_17cg7de">
           <text>"preAcceptanceCase"</text>
@@ -55,8 +55,7 @@
       <rule id="DecisionRule_1n1hrr1">
         <inputEntry id="UnaryTests_0d3nkez">
           <text>"preAcceptanceCase",
-            "replyToReferral"
-          </text>
+"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0m9i08l">
           <text>"ReviewReferralJudiciary"</text>
@@ -71,8 +70,7 @@
       <rule id="DecisionRule_0rgoz1c">
         <inputEntry id="UnaryTests_0wfbt17">
           <text>"preAcceptanceCase",
-            "replyToReferral"
-          </text>
+"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0nsl2oy">
           <text>"ReviewReferralLegalOps"</text>
@@ -87,8 +85,7 @@
       <rule id="DecisionRule_0xysxnl">
         <inputEntry id="UnaryTests_12rci1m">
           <text>"preAcceptanceCase",
-            "replyToReferral"
-          </text>
+"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0du4aig">
           <text>"ReviewReferralResponseJudiciary"</text>
@@ -103,8 +100,7 @@
       <rule id="DecisionRule_12zrnvl">
         <inputEntry id="UnaryTests_185czjm">
           <text>"preAcceptanceCase",
-            "replyToReferral"
-          </text>
+"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_076usvw">
           <text>"ReviewReferralResponseLegalOps"</text>
@@ -451,8 +447,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_closeRef_ReviewAdmin">
-        <description>closeReferral: complete only the ReviewReferralAdmin task for the specific referral being closed
-        </description>
+        <description>        </description>
         <inputEntry id="UnaryTests_closeRef_reviewAdmin">
           <text>"closeReferral"</text>
         </inputEntry>
@@ -468,9 +463,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_closeRef_ReviewRespAdmin">
-        <description>closeReferral: complete only the ReviewReferralResponseAdmin task for the specific referral being
-          closed
-        </description>
+        <description></description>
         <inputEntry id="UnaryTests_closeRef_reviewRespAdmin">
           <text>"closeReferral"</text>
         </inputEntry>
@@ -487,9 +480,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_closeRef_ReviewJudiciary">
-        <description>closeReferral: complete only the ReviewReferralJudiciary task for the specific referral being
-          closed
-        </description>
+        <description></description>
         <inputEntry id="UnaryTests_closeRef_reviewJudiciary">
           <text>"closeReferral"</text>
         </inputEntry>
@@ -505,9 +496,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_closeRef_ReviewLegalOps">
-        <description>closeReferral: complete only the ReviewReferralLegalOps task for the specific referral being
-          closed
-        </description>
+        <description></description>
         <inputEntry id="UnaryTests_closeRef_reviewLegalOps">
           <text>"closeReferral"</text>
         </inputEntry>
@@ -523,9 +512,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_closeRef_ReviewRespJudiciary">
-        <description>closeReferral: complete only the ReviewReferralResponseJudiciary task for the specific referral
-          being closed
-        </description>
+        <description></description>
         <inputEntry id="UnaryTests_closeRef_reviewRespJudiciary">
           <text>"closeReferral"</text>
         </inputEntry>
@@ -542,9 +529,7 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_closeRef_ReviewRespLegalOps">
-        <description>closeReferral: complete only the ReviewReferralResponseLegalOps task for the specific referral
-          being closed
-        </description>
+        <description></description>
         <inputEntry id="UnaryTests_closeRef_reviewRespLegalOps">
           <text>"closeReferral"</text>
         </inputEntry>
@@ -562,9 +547,8 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_closedReferralSerialNumber" name="CLOSED_REFERRAL_SERIAL_NUMBER"
-            camunda:historyTimeToLive="P30D">
-    <variable id="InformationItem_closedRefSerial" name="CLOSED_REFERRAL_SERIAL_NUMBER" typeRef="string"/>
+  <decision id="Decision_closedReferralSerialNumber" name="CLOSED_REFERRAL_SERIAL_NUMBER" camunda:historyTimeToLive="P30D">
+    <variable id="InformationItem_closedRefSerial" name="CLOSED_REFERRAL_SERIAL_NUMBER" typeRef="string" />
     <literalExpression id="LiteralExpression_closedRefSerial">
       <text>if(additionalData!=null
         and additionalData.Data!=null
@@ -586,7 +570,7 @@
     </literalExpression>
   </decision>
   <decision id="Decision_closedReferralSubject" name="CLOSED_REFERRAL_SUBJECT" camunda:historyTimeToLive="P30D">
-    <variable id="InformationItem_closedRefSubject" name="CLOSED_REFERRAL_SUBJECT" typeRef="string"/>
+    <variable id="InformationItem_closedRefSubject" name="CLOSED_REFERRAL_SUBJECT" typeRef="string" />
     <literalExpression id="LiteralExpression_closedRefSubject">
       <text>if(additionalData!=null
         and additionalData.Data!=null
@@ -620,7 +604,7 @@
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
       <dmndi:DMNShape dmnElementRef="wa-task-completion-employment-et_englandwales">
-        <dc:Bounds height="80" width="180" x="160" y="80"/>
+        <dc:Bounds height="80" width="180" x="160" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
