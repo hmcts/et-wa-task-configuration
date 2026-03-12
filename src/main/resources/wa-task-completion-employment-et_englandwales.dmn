@@ -9,6 +9,7 @@
       </input>
       <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="389" />
       <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" />
+      <output id="OutputClause_processCategories" label="Process Categories" name="processCategories" typeRef="string" />
       <rule id="DecisionRule_12eenty">
         <inputEntry id="UnaryTests_17cg7de">
           <text>"preAcceptanceCase"</text>
@@ -19,11 +20,13 @@
         <outputEntry id="LiteralExpression_0ap1s9l">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0001">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1jameda">
         <inputEntry id="UnaryTests_0q8217i">
-          <text>"replyToReferral",
-"closeReferral"</text>
+          <text>"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ku023r">
           <text>"ReviewReferralAdmin"</text>
@@ -31,11 +34,13 @@
         <outputEntry id="LiteralExpression_15g3yjk">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0002">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_05insq9">
         <inputEntry id="UnaryTests_0mdh83n">
-          <text>"replyToReferral",
-"closeReferral"</text>
+          <text>"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0gpygso">
           <text>"ReviewReferralResponseAdmin"</text>
@@ -43,12 +48,14 @@
         <outputEntry id="LiteralExpression_1iy3i7f">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0003">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1n1hrr1">
         <inputEntry id="UnaryTests_0d3nkez">
           <text>"preAcceptanceCase",
-"replyToReferral",
-"closeReferral"</text>
+"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0m9i08l">
           <text>"ReviewReferralJudiciary"</text>
@@ -56,12 +63,14 @@
         <outputEntry id="LiteralExpression_0vrbgdt">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0004">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0rgoz1c">
         <inputEntry id="UnaryTests_0wfbt17">
           <text>"preAcceptanceCase",
-"replyToReferral",
-"closeReferral"</text>
+"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0nsl2oy">
           <text>"ReviewReferralLegalOps"</text>
@@ -69,12 +78,14 @@
         <outputEntry id="LiteralExpression_0zn07yk">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0005">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0xysxnl">
         <inputEntry id="UnaryTests_12rci1m">
           <text>"preAcceptanceCase",
-"replyToReferral",
-"closeReferral"</text>
+"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0du4aig">
           <text>"ReviewReferralResponseJudiciary"</text>
@@ -82,18 +93,23 @@
         <outputEntry id="LiteralExpression_1idsnct">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0006">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_12zrnvl">
         <inputEntry id="UnaryTests_185czjm">
           <text>"preAcceptanceCase",
-"replyToReferral",
-"closeReferral"</text>
+"replyToReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_076usvw">
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_121a35m">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0007">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1e7c3we">
@@ -106,6 +122,9 @@
         <outputEntry id="LiteralExpression_12qcwv6">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0008">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_098q0pb">
         <inputEntry id="UnaryTests_15bidkx">
@@ -116,6 +135,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0vbhm39">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0009">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0tsg2dv">
@@ -128,6 +150,9 @@
         <outputEntry id="LiteralExpression_1vnufnp">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0010">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0o1t3oy">
         <inputEntry id="UnaryTests_0i0mhhb">
@@ -138,6 +163,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0u58y0q">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0011">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1cpmht8">
@@ -151,6 +179,9 @@
         <outputEntry id="LiteralExpression_1o4tf5m">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0012">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_17wj6dr">
         <inputEntry id="UnaryTests_1d95t1o">
@@ -161,6 +192,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0at1lsz">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0013">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0dw8qxi">
@@ -173,6 +207,9 @@
         <outputEntry id="LiteralExpression_16kqmlf">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0014">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_17mys57">
         <inputEntry id="UnaryTests_10m37oi">
@@ -183,6 +220,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0jz9ueb">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0015">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0m15s4f">
@@ -195,6 +235,9 @@
         <outputEntry id="LiteralExpression_07hil2z">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0016">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_12huova">
         <inputEntry id="UnaryTests_1061un4">
@@ -205,6 +248,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1s25vmw">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0017">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0u1o0z1">
@@ -219,6 +265,9 @@
         <outputEntry id="LiteralExpression_0hyc3y5">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0018">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0u0gc5h">
         <inputEntry id="UnaryTests_18kkbzn">
@@ -229,6 +278,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1i7ohgk">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0019">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1nzflni">
@@ -241,6 +293,9 @@
         <outputEntry id="LiteralExpression_15pfhig">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0020">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1ufk5zq">
         <inputEntry id="UnaryTests_1orgb5e">
@@ -251,6 +306,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1vjviwy">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0021">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0842grb">
@@ -263,6 +321,9 @@
         <outputEntry id="LiteralExpression_0uomgjm">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0022">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0aeopm1">
         <inputEntry id="UnaryTests_1yu55q7">
@@ -274,6 +335,9 @@
         <outputEntry id="LiteralExpression_1bkn3yk">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0023">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0w6li7w">
         <inputEntry id="UnaryTests_10o0695">
@@ -284,6 +348,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1rabwo6">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0024">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0hnkgbm">
@@ -297,6 +364,9 @@
         <outputEntry id="LiteralExpression_19ls3bl">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0025">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_08xf7ct">
         <inputEntry id="UnaryTests_046btu6">
@@ -307,6 +377,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1xgou2v">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0026">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0p1njyg">
@@ -319,6 +392,9 @@
         <outputEntry id="LiteralExpression_1cfz230">
           <text>"Auto"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0027">
+          <text></text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0er888n">
         <inputEntry id="UnaryTests_0sqlbr5">
@@ -329,6 +405,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_17001jl">
           <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0028">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0rmnuh1">
@@ -363,8 +442,164 @@
         <outputEntry id="LiteralExpression_11ndvk8">
           <text></text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_pc_empty_0029">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_closeRef_ReviewAdmin">
+        <description>        </description>
+        <inputEntry id="UnaryTests_closeRef_reviewAdmin">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewAdmin_taskType">
+          <text>"ReviewReferralAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewAdmin_mode">
+          <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewAdmin_pc">
+          <text>"reviewReferralSerialNumberAndSubject_"+CLOSED_REFERRAL_SERIAL_NUMBER+" - "+CLOSED_REFERRAL_SUBJECT
+          </text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_closeRef_ReviewRespAdmin">
+        <description></description>
+        <inputEntry id="UnaryTests_closeRef_reviewRespAdmin">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespAdmin_taskType">
+          <text>"ReviewReferralResponseAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespAdmin_mode">
+          <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespAdmin_pc">
+          <text>"reviewReferralResponseSerialNumberAndSubject_"+CLOSED_REFERRAL_SERIAL_NUMBER+" -
+            "+CLOSED_REFERRAL_SUBJECT
+          </text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_closeRef_ReviewJudiciary">
+        <description></description>
+        <inputEntry id="UnaryTests_closeRef_reviewJudiciary">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewJudiciary_taskType">
+          <text>"ReviewReferralJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewJudiciary_mode">
+          <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewJudiciary_pc">
+          <text>"reviewReferralSerialNumberAndSubject_"+CLOSED_REFERRAL_SERIAL_NUMBER+" - "+CLOSED_REFERRAL_SUBJECT
+          </text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_closeRef_ReviewLegalOps">
+        <description></description>
+        <inputEntry id="UnaryTests_closeRef_reviewLegalOps">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewLegalOps_taskType">
+          <text>"ReviewReferralLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewLegalOps_mode">
+          <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewLegalOps_pc">
+          <text>"reviewReferralSerialNumberAndSubject_"+CLOSED_REFERRAL_SERIAL_NUMBER+" - "+CLOSED_REFERRAL_SUBJECT
+          </text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_closeRef_ReviewRespJudiciary">
+        <description></description>
+        <inputEntry id="UnaryTests_closeRef_reviewRespJudiciary">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespJudiciary_taskType">
+          <text>"ReviewReferralResponseJudiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespJudiciary_mode">
+          <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespJudiciary_pc">
+          <text>"reviewReferralResponseSerialNumberAndSubject_"+CLOSED_REFERRAL_SERIAL_NUMBER+" -
+            "+CLOSED_REFERRAL_SUBJECT
+          </text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_closeRef_ReviewRespLegalOps">
+        <description></description>
+        <inputEntry id="UnaryTests_closeRef_reviewRespLegalOps">
+          <text>"closeReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespLegalOps_taskType">
+          <text>"ReviewReferralResponseLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespLegalOps_mode">
+          <text>"Auto"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_closeRef_reviewRespLegalOps_pc">
+          <text>"reviewReferralResponseSerialNumberAndSubject_"+CLOSED_REFERRAL_SERIAL_NUMBER+" -
+            "+CLOSED_REFERRAL_SUBJECT
+          </text>
+        </outputEntry>
       </rule>
     </decisionTable>
+  </decision>
+  <decision id="Decision_closedReferralSerialNumber" name="CLOSED_REFERRAL_SERIAL_NUMBER" camunda:historyTimeToLive="P30D">
+    <variable id="InformationItem_closedRefSerial" name="CLOSED_REFERRAL_SERIAL_NUMBER" typeRef="string" />
+    <literalExpression id="LiteralExpression_closedRefSerial">
+      <text>if(additionalData!=null
+        and additionalData.Data!=null
+        and additionalData.Data.referralCollection!=null
+        and count(additionalData.Data.referralCollection[value.referralStatus = "Closed"]) &gt; 0
+        and sort(
+        additionalData.Data.referralCollection[value.referralStatus = "Closed"],
+        function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)
+        )[1].value.referralNumber != null)
+        then sort(
+        additionalData.Data.referralCollection[value.referralStatus = "Closed"],
+        function(x,y)
+        number(x.value.referralNumber)
+        &gt;
+        number(y.value.referralNumber)
+        )[1].value.referralNumber
+        else ""
+      </text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_closedReferralSubject" name="CLOSED_REFERRAL_SUBJECT" camunda:historyTimeToLive="P30D">
+    <variable id="InformationItem_closedRefSubject" name="CLOSED_REFERRAL_SUBJECT" typeRef="string" />
+    <literalExpression id="LiteralExpression_closedRefSubject">
+      <text>if(additionalData!=null
+        and additionalData.Data!=null
+        and additionalData.Data.referralCollection!=null
+        and count(additionalData.Data.referralCollection[value.referralStatus = "Closed"]) &gt; 0)
+        then (
+        if(sort(
+        additionalData.Data.referralCollection[value.referralStatus = "Closed"],
+        function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)
+        )[1].value.referralSubject = "Other")
+        then (
+        if(sort(
+        additionalData.Data.referralCollection[value.referralStatus = "Closed"],
+        function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)
+        )[1].value.referralSubjectSpecify != null)
+        then sort(
+        additionalData.Data.referralCollection[value.referralStatus = "Closed"],
+        function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)
+        )[1].value.referralSubjectSpecify
+        else "Other"
+        )
+        else sort(
+        additionalData.Data.referralCollection[value.referralStatus = "Closed"],
+        function(x,y) number(x.value.referralNumber) &gt; number(y.value.referralNumber)
+        )[1].value.referralSubject
+        )
+        else ""
+      </text>
+    </literalExpression>
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
