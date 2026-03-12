@@ -133,7 +133,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
                         "Review Referral",
-                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 2"
+                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 222"
                     )
                 )
             ),
@@ -179,7 +179,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciary",
                         "Review Referral",
-                        "reviewReferralSerialNumberAndSubject_2 - ET1"
+                        "reviewReferralSerialNumberAndSubject_2 - ET1 - EJ"
                     )
                 )
             ),
@@ -191,7 +191,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciary",
                         "Review Referral",
-                        "reviewReferralSerialNumberAndSubject_2 - Rule 21"
+                        "reviewReferralSerialNumberAndSubject_2 - Rule 21 - EJ"
                     )
                 )
             ),
@@ -203,7 +203,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralLegalOps",
                         "Review Referral",
-                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 2"
+                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 22 - LO"
                     )
                 )
             ),
@@ -227,7 +227,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
                         "Review Referral Response",
-                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1"
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1 - EJ"
                     )
                 )
             ),
@@ -239,7 +239,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
                         "Review Referral Response",
-                        "reviewReferralResponseSerialNumberAndSubject_1 - Random Subject"
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Random Subject - EJ"
                     )
                 )
             ),
@@ -251,7 +251,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
                         "Review Referral Response",
-                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1"
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1 - LO"
                     )
                 )
             ),
