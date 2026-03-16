@@ -133,7 +133,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralAdmin",
                         "Review Referral",
-                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 222"
+                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 2"
                     )
                 )
             ),
@@ -179,7 +179,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciary",
                         "Review Referral",
-                        "reviewReferralSerialNumberAndSubject_2 - ET1 - EJ"
+                        "reviewReferralSerialNumberAndSubject_2 - ET1"
                     )
                 )
             ),
@@ -191,7 +191,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralJudiciary",
                         "Review Referral",
-                        "reviewReferralSerialNumberAndSubject_2 - Rule 21 - EJ"
+                        "reviewReferralSerialNumberAndSubject_2 - Rule 21"
                     )
                 )
             ),
@@ -203,7 +203,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralLegalOps",
                         "Review Referral",
-                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 22 - LO"
+                        "reviewReferralSerialNumberAndSubject_2 - Referral Subject 2"
                     )
                 )
             ),
@@ -227,7 +227,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
                         "Review Referral Response",
-                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1 - EJ"
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1"
                     )
                 )
             ),
@@ -239,7 +239,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseJudiciary",
                         "Review Referral Response",
-                        "reviewReferralResponseSerialNumberAndSubject_1 - Random Subject - EJ"
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Random Subject"
                     )
                 )
             ),
@@ -251,7 +251,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "ReviewReferralResponseLegalOps",
                         "Review Referral Response",
-                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1 - LO"
+                        "reviewReferralResponseSerialNumberAndSubject_1 - Referral Subject 1"
                     )
                 )
             ),
@@ -903,7 +903,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
         inputVariables.putAll(map);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
         assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
     }
 
@@ -911,6 +910,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(50));
+        assertThat(logic.getRules().size(), is(51));
     }
 }

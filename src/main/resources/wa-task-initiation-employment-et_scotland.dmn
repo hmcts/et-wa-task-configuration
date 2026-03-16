@@ -891,6 +891,74 @@ else false</text>
           <text>"reviewReferralResponseSerialNumberAndSubject_"+CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER+" - "+CURRENT_REFERRAL_RESPONSE_SUBJECT</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0rr20nj">
+        <inputEntry id="UnaryTests_00f9k2q">
+          <text>"updateReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nowza3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s8ivke">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_169rb69">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yfe241">
+          <text>"Legal officer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yvhrx0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08c9tc2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j2xseg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19tg8mg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u708il">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ibgv0r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15c88ad">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17cgjnt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qo347r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gi1jtn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11b2eep">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u2stu1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vno01i">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02ljb70">
+          <text>"ReviewReferralLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1an3dan">
+          <text>"Update Referral"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i34ewp">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1asbsjr">
+          <text>"reviewReferralSerialNumberAndSubject_"+CURRENT_REFERRAL_SERIAL_NUMBER+" - "+CURRENT_REFERRAL_SUBJECT</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0o71iym">
         <inputEntry id="UnaryTests_0adha2q">
           <text>"draftAndSignJudgement"</text>
