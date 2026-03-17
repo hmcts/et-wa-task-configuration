@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -89,31 +90,13 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "closeReferral",
                 asList(
-                    Map.of(
-                        "taskType", "ReviewReferralAdmin",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseAdmin",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralJudiciary",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralLegalOps",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseJudiciary",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseLegalOps",
-                        "completionMode", "Auto"
-                    ),
-                    emptyMap()
+                    emptyMap(),
+                    referralCompletionMap("ReviewReferralAdmin"),
+                    referralCompletionMap("ReviewReferralResponseAdmin"),
+                    referralCompletionMap("ReviewReferralJudiciary"),
+                    referralCompletionMap("ReviewReferralLegalOps"),
+                    referralCompletionMap("ReviewReferralResponseJudiciary"),
+                    referralCompletionMap("ReviewReferralResponseLegalOps")
                 )
             ),
             Arguments.of(
@@ -324,6 +307,20 @@ class EmploymentTaskCompletionTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(29));
+        assertThat(logic.getRules().size(), is(35));
+    }
+
+    /**
+     * Creates a completion result map for closeReferral rules.
+     * processCategories is null when no referral data is present in the test input
+     * (the FEEL expression in the DMN evaluates to null without additionalData).
+     * Map.of() cannot hold null values, so we use HashMap explicitly.
+     */
+    private static Map<String, Object> referralCompletionMap(String taskType) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("taskType", taskType);
+        map.put("completionMode", "Auto");
+        map.put("processCategories", null);
+        return map;
     }
 }
