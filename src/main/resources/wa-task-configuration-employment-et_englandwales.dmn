@@ -214,7 +214,8 @@ else null</text>
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zn5l70">
           <text>"workType"</text>
@@ -313,7 +314,8 @@ else null</text>
 "ExpiredBfAction",
 "ReferEmployersContractClaim",
 "IssueOrder",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -897,7 +899,8 @@ else 5000</text>
 "ExpiredBfAction",
 "IssueOrder",
 "ReferEmployersContractClaim",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -1272,7 +1275,8 @@ else 2</text>
         <inputEntry id="UnaryTests_1jh8ro3">
           <text>"ET3Processing",
 "ReviewECCResponse",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tloef8">
           <text>"dueDateIntervalDays"</text>
@@ -1370,7 +1374,8 @@ else 2</text>
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tqigei">
           <text>"priorityDateOriginEarliest"</text>
@@ -1403,6 +1408,27 @@ else 5001</text>
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_claimant_pse_major_priority">
+        <inputEntry id="UnaryTests_claimant_pse_major_priority_casedata">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_claimant_pse_major_priority_tasktype">
+          <text>"SubmitClaimantPseResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_major_priority_name">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_major_priority_value">
+          <text>if caseData.nextListedDate != null then
+if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 2001
+else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
+else 5001
+else 5001</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_major_priority_reconf">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1p81ity">
         <inputEntry id="UnaryTests_0il4ru4">
           <text></text>
@@ -1417,6 +1443,23 @@ else 5001</text>
           <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14opuv2">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_claimant_pse_description">
+        <inputEntry id="UnaryTests_claimant_pse_description_casedata">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_claimant_pse_description_tasktype">
+          <text>"SubmitClaimantPseResponse"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_description_name">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_description_value">
+          <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_description_reconf">
           <text>true</text>
         </outputEntry>
       </rule>
