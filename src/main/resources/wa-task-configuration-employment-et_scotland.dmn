@@ -1418,7 +1418,7 @@ else 5001</text>
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_claimant_pse_major_priority_sc_val">
-          <text>if caseData.nextListedDate != null then
+          <text>if caseData != null and caseData.nextListedDate != null then
 if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 2001
 else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
 else 5001
