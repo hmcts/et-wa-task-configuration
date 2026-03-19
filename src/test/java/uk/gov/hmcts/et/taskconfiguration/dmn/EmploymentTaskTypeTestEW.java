@@ -109,6 +109,9 @@ class EmploymentTaskTypeTestEW extends DmnDecisionTableBaseUnitTest {
                     Map.of("taskTypeId", "IssueOrder", "taskTypeName","Issue Order"),
 
                     Map.of("taskTypeId", "SubmitRespondentPseResponse",
+                           "taskTypeName","Review notification response"),
+
+                    Map.of("taskTypeId", "SubmitClaimantPseResponse",
                            "taskTypeName","Review notification response")
                 )
             )
