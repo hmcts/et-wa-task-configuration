@@ -3655,6 +3655,74 @@ else false</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_add_claimant_pse_scotland">
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_01">
+          <text>"ADD_CLAIMANT_PSE_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_02">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_03">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_04">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_05">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_06">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_07">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_08">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_09">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_10">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_11">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_12">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_13">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_15">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_16">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_17">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_18">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_add_claimant_pse_sc_01">
+          <text>"SubmitClaimantPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_add_claimant_pse_sc_02">
+          <text>"Review notification response"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_add_claimant_pse_sc_03">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_add_claimant_pse_sc_04">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0xgkh49">
         <inputEntry id="UnaryTests_10eux68">
           <text>"SUBMIT_RESPONDENT_PSE_RESPONSE"</text>

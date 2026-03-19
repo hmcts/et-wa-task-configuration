@@ -445,7 +445,8 @@ else "r1"</text>
 "ExpiredBfAction",
 "IssueOrder",
 "ReferEmployersContractClaim",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
           <text></text>
@@ -495,7 +496,8 @@ else "r1"</text>
 "ExpiredBfAction",
 "IssueOrder",
 "ReferEmployersContractClaim",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
           <text></text>
@@ -545,7 +547,8 @@ else "r1"</text>
 "ExpiredBfAction",
 "IssueOrder",
 "ReferEmployersContractClaim",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
           <text></text>

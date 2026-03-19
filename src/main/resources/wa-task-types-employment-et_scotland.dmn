@@ -361,6 +361,17 @@
           <text>"Review notification response"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_claimant_pse_type_sc">
+        <inputEntry id="UnaryTests_claimant_pse_type_sc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_type_sc_id">
+          <text>"SubmitClaimantPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_type_sc_name">
+          <text>"Review notification response"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
