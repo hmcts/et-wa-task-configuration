@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.40.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0cm80l7">
       <requiredDecision href="#Decision_1lqqy4i" />
@@ -1392,7 +1392,8 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_12wmvba">
-          <text>"SubmitRespondentPseResponse"</text>
+          <text>"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1oh42oc">
           <text>"majorPriority"</text>
@@ -1408,33 +1409,13 @@ else 5001</text>
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_claimant_pse_major_priority">
-        <inputEntry id="UnaryTests_claimant_pse_major_priority_casedata">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_claimant_pse_major_priority_tasktype">
-          <text>"SubmitClaimantPseResponse"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_major_priority_name">
-          <text>"majorPriority"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_major_priority_value">
-          <text>if caseData != null and caseData.nextListedDate != null then
-if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 2001
-else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
-else 5001
-else 5001</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_major_priority_reconf">
-          <text>false</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1p81ity">
         <inputEntry id="UnaryTests_0il4ru4">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1m3pfzk">
-          <text>"SubmitRespondentPseResponse"</text>
+          <text>"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_09ew5sb">
           <text>"description"</text>
@@ -1443,23 +1424,6 @@ else 5001</text>
           <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14opuv2">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_claimant_pse_description">
-        <inputEntry id="UnaryTests_claimant_pse_description_casedata">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_claimant_pse_description_tasktype">
-          <text>"SubmitClaimantPseResponse"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_description_name">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_description_value">
-          <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_description_reconf">
           <text>true</text>
         </outputEntry>
       </rule>

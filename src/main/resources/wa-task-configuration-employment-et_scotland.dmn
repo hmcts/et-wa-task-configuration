@@ -1391,7 +1391,8 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_041l94k">
-          <text>"SubmitRespondentPseResponse"</text>
+          <text>"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10vregq">
           <text>"majorPriority"</text>
@@ -1407,33 +1408,13 @@ else 5001</text>
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_claimant_pse_major_priority_sc">
-        <inputEntry id="UnaryTests_claimant_pse_major_priority_sc_cd">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_claimant_pse_major_priority_sc_tt">
-          <text>"SubmitClaimantPseResponse"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_major_priority_sc_name">
-          <text>"majorPriority"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_major_priority_sc_val">
-          <text>if caseData != null and caseData.nextListedDate != null then
-if (date(caseData.nextListedDate) - today()) &lt;= duration("P10D") then 2001
-else if (date(caseData.nextListedDate) - today()) &lt;= duration("P30D") then 5000
-else 5001
-else 5001</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_major_priority_sc_rc">
-          <text>false</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1l32gg7">
         <inputEntry id="UnaryTests_1fvakco">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qlhbtz">
-          <text>"SubmitRespondentPseResponse"</text>
+          <text>"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1wnmjlj">
           <text>"description"</text>
@@ -1442,23 +1423,6 @@ else 5001</text>
           <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08u4x66">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_claimant_pse_description_sc">
-        <inputEntry id="UnaryTests_claimant_pse_description_sc_cd">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_claimant_pse_description_sc_tt">
-          <text>"SubmitClaimantPseResponse"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_description_sc_name">
-          <text>"description"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_description_sc_val">
-          <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_claimant_pse_description_sc_rc">
           <text>true</text>
         </outputEntry>
       </rule>
