@@ -8,7 +8,7 @@
         </inputExpression>
       </input>
       <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="389" />
-      <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" />
+      <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" biodi:width="220" />
       <rule id="DecisionRule_12eenty">
         <inputEntry id="UnaryTests_17cg7de">
           <text>"preAcceptanceCase"</text>
@@ -61,13 +61,23 @@
         <inputEntry id="UnaryTests_0wfbt17">
           <text>"preAcceptanceCase",
 "replyToReferral",
-"closeReferral",
-"UpdateReferralLegalOps"</text>
+"closeReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0nsl2oy">
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zn07yk">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h3vmrd">
+        <inputEntry id="UnaryTests_0eagjg0">
+          <text>"updateReferral"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gehsw9">
+          <text>"ReviewReferralLegalOps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dw1o36">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

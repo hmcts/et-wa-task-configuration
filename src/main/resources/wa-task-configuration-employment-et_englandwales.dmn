@@ -144,7 +144,6 @@ else null</text>
           <text>"Et1Vetting",
 "ReviewReferralAdmin",
 "ReviewReferralLegalOps",
-"UpdateReferralLegalOps", 
 "SendEt1Notification",
 "ListServeClaim",
 "Rule21",
@@ -277,7 +276,6 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0vmsbqm">
           <text>"ReviewReferralLegalOps",
-"UpdateReferralLegalOps", 
 "reviewSpecificAccessRequestLegalOps",
 "ReviewRule21Referral",
 "ReviewReferralResponseLegalOps"</text>
@@ -409,8 +407,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ova01h">
-          <text>"ReviewReferralLegalOps",
-"UpdateReferralLegalOps"</text>
+          <text>"ReviewReferralLegalOps"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ca97cn">
           <text>"description"</text>
@@ -486,28 +483,6 @@ else
   "LO - Review Referral"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1wztf5o">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_08w6w9y">
-        <inputEntry id="UnaryTests_0kccaqr">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0aoj2mz">
-          <text>"UpdateReferralLegalOps"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1na0baj">
-          <text>"title"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0f3zay5">
-          <text>if (UPDATE_REVIEW_REFERRAL_TASK_TITLE != null) then
- "LO - " + UPDATE_REVIEW_REFERRAL_TASK_TITLE
-else if (taskAttributes != null and taskAttributes.name != null) then
-  taskAttributes.name
-else
-  "LO - Update Referral"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0l0mahk">
           <text>false</text>
         </outputEntry>
       </rule>
