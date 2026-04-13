@@ -53,17 +53,17 @@ then sort(additionalData.Data.referralCollection, function(x,y) number(x.value.r
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_09nugtb" label="Update Directed To" biodi:width="192" camunda:inputVariable="directionTo">
+      <input id="InputClause_09nugtb" label="Update Directed To" biodi:width="263" camunda:inputVariable="updateReferCaseTo">
         <inputExpression id="LiteralExpression_0pb37xa" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.referralCollection!=null
 and count(additionalData.Data.referralCollection[count(value.updateReferralCollection)&gt;0])&gt;0)
-then sort(flatten(additionalData.Data.referralCollection[value.updateReferralCollection!=null].value.updateReferralCollection), function(x,y) date and time(if(x.value.updateReferralDate!=null)then x.value.updateReferralDate else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.updateReferralDate!=null)then y.value.updateReferralDate else "2023-01-01T00:00:00.000")).value.directionTo[1]
+then sort(flatten(additionalData.Data.referralCollection[value.updateReferralCollection!=null].value.updateReferralCollection), function(x,y) date and time(if(x.value.updateReferralDateTime!=null)then x.value.updateReferralDateTime else "2023-01-01T00:00:00.000") &gt; date and time(if(y.value.updateReferralDateTime!=null)then y.value.updateReferralDateTime else "2023-01-01T00:00:00.000")).value.updateReferCaseTo[1]
 else null</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1gia5s6" label="Direction To" biodi:width="150" camunda:inputVariable="directionTo">
+      <input id="InputClause_1gia5s6" label="Direction To" biodi:width="168" camunda:inputVariable="directionTo">
         <inputExpression id="LiteralExpression_1tb9c3z" typeRef="string">
           <text>if(additionalData!=null
 and additionalData.Data!=null
@@ -894,7 +894,7 @@ else false</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0hfvu7p">
-          <text>"Legal officer"</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lsdy71">
           <text></text>
@@ -945,7 +945,7 @@ else false</text>
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1m5b5lk">
-          <text>"Review Updated Referral"</text>
+          <text>"Review Referral"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gh0ep3">
           <text></text>

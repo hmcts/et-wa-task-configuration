@@ -61,23 +61,13 @@
         <inputEntry id="UnaryTests_0wfbt17">
           <text>"preAcceptanceCase",
 "replyToReferral",
-"closeReferral"</text>
+"closeReferral",
+"updateReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0nsl2oy">
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zn07yk">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0h3vmrd">
-        <inputEntry id="UnaryTests_0eagjg0">
-          <text>"updateReferral"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1gehsw9">
-          <text>"ReviewReferralLegalOps"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0dw1o36">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
@@ -348,6 +338,7 @@
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral",
+"updateReferral"
 "uploadDocumentForServing",
 "generateCorrespondence",
 "addAmendHearing",
