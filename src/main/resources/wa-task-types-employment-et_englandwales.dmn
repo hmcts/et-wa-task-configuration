@@ -185,17 +185,6 @@
           <text>"Review Referral - Legal Ops"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_04ldnlu">
-        <inputEntry id="UnaryTests_03pfkt5">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0jt0edf">
-          <text>"ReviewUpdatedReferralLegalOps"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_148kx08">
-          <text>"Update Referral - Legal Ops"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0tgwoxx">
         <inputEntry id="UnaryTests_04m0bw3">
           <text></text>

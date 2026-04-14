@@ -338,7 +338,7 @@
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral",
-"updateReferral"
+"updateReferral",
 "uploadDocumentForServing",
 "generateCorrespondence",
 "addAmendHearing",
