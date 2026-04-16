@@ -61,23 +61,13 @@
         <inputEntry id="UnaryTests_0wfbt17">
           <text>"preAcceptanceCase",
 "replyToReferral",
-"closeReferral"</text>
+"closeReferral",
+"updateReferral"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0nsl2oy">
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zn07yk">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_09y119u">
-        <inputEntry id="UnaryTests_1fhkpup">
-          <text>"updateReferral"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1xtmccg">
-          <text>"ReviewReferralLegalOps"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_05jubo6">
           <text>"Auto"</text>
         </outputEntry>
       </rule>

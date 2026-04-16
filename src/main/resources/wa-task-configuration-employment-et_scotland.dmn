@@ -23,7 +23,7 @@ else null</text>
         </inputExpression>
       </input>
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="260" />
-      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="598" />
+      <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="645" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" biodi:width="231" />
       <rule id="DecisionRule_19opwhc">
         <description>1v1 scenario - Concatenates Claimant's forename name with that of respondent to create the case name displayed on task lists</description>
@@ -411,7 +411,7 @@ else null</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0hnzq6z">
-          <text>"[Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1) or [Update the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/updateReferral/updateReferral1)"</text>
+          <text>"[Update the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/updateReferral/updateReferral1) or [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tl7yc5">
           <text>true</text>

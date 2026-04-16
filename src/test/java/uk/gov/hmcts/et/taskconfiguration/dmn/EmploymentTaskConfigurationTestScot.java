@@ -483,9 +483,9 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "name", "description",
             "value",
             """
-            [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/\
-            replyToReferral1) or [Update the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/\
-            updateReferral/updateReferral1)""",
+            [Update the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/updateReferral/updateReferral1)\
+             or [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/\
+            replyToReferral/replyToReferral1)""",
             "canReconfigure", true
         ));
 
