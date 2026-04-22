@@ -357,7 +357,8 @@
 "tseAdminCloseAnApplication",
 "broughtForward",
 "respondNotification",
-"sendNotification"</text>
+"sendNotification",
+"caseTransferECM"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0bwibe1">
           <text></text>
