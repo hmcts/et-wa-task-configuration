@@ -422,9 +422,7 @@ else null</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1nwethb">
-          <text>"ReviewReferralAdmin"
-
-</text>
+          <text>"ReviewReferralAdmin"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_19w9fbz">
           <text>"title"</text>

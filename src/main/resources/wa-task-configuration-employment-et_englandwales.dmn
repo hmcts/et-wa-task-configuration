@@ -443,13 +443,13 @@ else
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0erui4r">
-          <text>"ReviewReferralJudiciary"
-</text>
+          <text>"ReviewReferralJudiciary"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1j6ilra">
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0if1pfu">
+
           <text>if (LATEST_REVIEW_REFERRAL_TASK_TITLE != null) then
  "EJ - " + LATEST_REVIEW_REFERRAL_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
@@ -509,8 +509,7 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1bih8qs">
-          <text>"ReviewReferralResponseAdmin"
-</text>
+          <text>"ReviewReferralResponseAdmin"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0gq3i1k">
           <text>"title"</text>
