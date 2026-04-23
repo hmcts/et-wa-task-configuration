@@ -3714,7 +3714,7 @@ else false</text>
           <text>"SubmitClaimantPseResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_add_claimant_pse_sc_02">
-          <text>"Review notification response"</text>
+          <text>"Review notification " + CURRENT_NOTIFICATION_NUMBER + " response"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_add_claimant_pse_sc_03">
           <text></text>
