@@ -478,6 +478,17 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             "value", "[ET1 Vetting](/cases/case-details/${[CASE_REFERENCE]}/trigger/et1Vetting/et1Vetting1)",
             "canReconfigure", true
         ));
+
+        List<Map<String, Object>> descReplyOrUpdateReferral = List.of(Map.of(
+            "name", "description",
+            "value",
+            """
+            [Update the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/updateReferral/updateReferral1)\
+             or [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/\
+            replyToReferral/replyToReferral1)""",
+            "canReconfigure", true
+        ));
+
         List<Map<String, Object>> descReferralReply = List.of(Map.of(
             "name", "description",
             "value",
@@ -614,7 +625,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
 
             Arguments.of("ReviewReferralAdmin", descReferralReply),
             Arguments.of("ReviewReferralJudiciary", descReferralReply),
-            Arguments.of("ReviewReferralLegalOps", descReferralReply),
+            Arguments.of("ReviewReferralLegalOps", descReplyOrUpdateReferral),
+
             Arguments.of("ReviewReferralResponseAdmin", descReferralResponse),
             Arguments.of("ReviewReferralResponseJudiciary", descReferralResponse),
             Arguments.of("ReviewReferralResponseLegalOps", descReferralResponse),
@@ -1098,8 +1110,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-
-        assertThat(logic.getRules().size(), is(72));
+        assertThat(logic.getRules().size(), is(73));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
