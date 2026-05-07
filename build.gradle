@@ -293,6 +293,18 @@ dependencies {
 
 mainClassName = 'uk.gov.hmcts.et.taskconfiguration.Application'
 
+sourceSets {
+  integrationTest {
+    compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+    runtimeClasspath += output + compileClasspath
+  }
+}
+
+configurations {
+  integrationTestImplementation.extendsFrom testImplementation
+  integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
 test {
   useJUnitPlatform()
 }
