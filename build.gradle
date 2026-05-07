@@ -221,24 +221,13 @@ repositories {
 }
 
 def versions = [
-  junit           : '5.7.2',
-  junitPlatform   : '1.7.2',
+  junit           : '5.9.0',
   reformLogging   : '5.1.9',
   springDoc       : '3.0.3',
   camunda         : '7.23.0',
   pitest          : '1.17.0',
   sonarPitest     : '0.5',
   tomcat          : '11.0.21'
-]
-
-ext.libraries = [
-  junit5: [
-    "org.junit.jupiter:junit-jupiter-api:${versions.junit}",
-    "org.junit.jupiter:junit-jupiter-engine:${versions.junit}",
-    "org.junit.jupiter:junit-jupiter-params:${versions.junit}",
-    "org.junit.platform:junit-platform-commons:${versions.junitPlatform}",
-    "org.junit.platform:junit-platform-engine:${versions.junitPlatform}"
-  ]
 ]
 
 ext['snakeyaml.version'] = '2.0'
@@ -279,11 +268,14 @@ dependencies {
 
   testImplementation group: 'org.codehaus.sonar-plugins', name: 'sonar-pitest-plugin', version: versions.sonarPitest
 
-  testImplementation libraries.junit5
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
     exclude group: 'junit', module: 'junit'
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
+
+  testImplementation platform("org.junit:junit-bom:${versions.junit}")
+  testImplementation 'org.junit.jupiter:junit-jupiter'
+  testImplementation "org.junit.jupiter:junit-jupiter-params"
 
   testImplementation group: 'org.camunda.bpm.dmn', name: 'camunda-engine-dmn', version: "${versions.camunda}"
   testImplementation group: 'org.camunda.bpm.assert', name: 'camunda-bpm-assert', version: '15.0.0'
@@ -299,6 +291,10 @@ dependencies {
 }
 
 mainClassName = 'uk.gov.hmcts.et.taskconfiguration.Application'
+
+test {
+  useJUnitPlatform()
+}
 
 bootJar {
   getArchiveFileName().set(provider {
