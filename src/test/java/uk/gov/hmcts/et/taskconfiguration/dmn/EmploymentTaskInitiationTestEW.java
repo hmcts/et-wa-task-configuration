@@ -903,7 +903,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
         inputVariables.putAll(map);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
         assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
     }
 

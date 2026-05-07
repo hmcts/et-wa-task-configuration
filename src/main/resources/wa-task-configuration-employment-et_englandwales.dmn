@@ -13,7 +13,7 @@
           <text></text>
         </inputExpression>
       </input>
-      <input id="InputClause_00c59gm" label="Task type" biodi:width="499" camunda:inputVariable="taskType">
+      <input id="InputClause_00c59gm" label="Task type" biodi:width="357" camunda:inputVariable="taskType">
         <inputExpression id="LiteralExpression_1ngi22k" typeRef="string">
           <text>if(taskAttributes != null and taskAttributes.taskType != null)
 then taskAttributes.taskType
@@ -22,7 +22,7 @@ then taskType
 else null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="346" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="325" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="629" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
@@ -389,8 +389,7 @@ else null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_07rgo5f">
           <text>"ReviewReferralAdmin",
-"ReviewReferralJudiciary",
-"ReviewReferralLegalOps"</text>
+"ReviewReferralJudiciary"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0c6p65o">
           <text>"description"</text>
@@ -402,21 +401,36 @@ else null</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1mwo54l">
+        <inputEntry id="UnaryTests_0wqyvuf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ova01h">
+          <text>"ReviewReferralLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ca97cn">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rykzjr">
+          <text>"[Update the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/updateReferral/updateReferral1) or [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/trigger/replyToReferral/replyToReferral1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xdbzrm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_003n981">
         <inputEntry id="UnaryTests_1slb4fy">
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1j2zkeu">
-          <text>"ReviewReferralAdmin"
-
-</text>
+          <text>"ReviewReferralAdmin"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xjif0l">
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_00rkvd5">
           <text>if (LATEST_REVIEW_REFERRAL_TASK_TITLE != null) then
-  LATEST_REVIEW_REFERRAL_TASK_TITLE
+ LATEST_REVIEW_REFERRAL_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
   taskAttributes.name
 else
@@ -426,17 +440,18 @@ else
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_11flidk">
-        <inputEntry id="UnaryTests_02ma2gi">
+      <rule id="DecisionRule_1y8f3i3">
+        <inputEntry id="UnaryTests_1rjfowq">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1tqvika">
+        <inputEntry id="UnaryTests_0erui4r">
           <text>"ReviewReferralJudiciary"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0r1mpke">
+        <outputEntry id="LiteralExpression_1j6ilra">
           <text>"title"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_14l7kv2">
+        <outputEntry id="LiteralExpression_0if1pfu">
+
           <text>if (LATEST_REVIEW_REFERRAL_TASK_TITLE != null) then
  "EJ - " + LATEST_REVIEW_REFERRAL_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
@@ -444,21 +459,21 @@ else if (taskAttributes != null and taskAttributes.name != null) then
 else
   "EJ - Review Referral"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_021qm62">
+        <outputEntry id="LiteralExpression_1b8nnz9">
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0kp9bd5">
-        <inputEntry id="UnaryTests_12rg8dd">
+      <rule id="DecisionRule_195q9vs">
+        <inputEntry id="UnaryTests_038jqsd">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0rpk42w">
+        <inputEntry id="UnaryTests_1tx3z5x">
           <text>"ReviewReferralLegalOps"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1q01mlg">
+        <outputEntry id="LiteralExpression_18zsr5e">
           <text>"title"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0curhfk">
+        <outputEntry id="LiteralExpression_16o86g4">
           <text>if (LATEST_REVIEW_REFERRAL_TASK_TITLE != null) then
  "LO - " + LATEST_REVIEW_REFERRAL_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
@@ -466,7 +481,7 @@ else if (taskAttributes != null and taskAttributes.name != null) then
 else
   "LO - Review Referral"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_014dwoe">
+        <outputEntry id="LiteralExpression_1wztf5o">
           <text>false</text>
         </outputEntry>
       </rule>
@@ -503,7 +518,7 @@ You can also [Reply to the Referral](/cases/case-details/${[CASE_REFERENCE]}/tri
         </outputEntry>
         <outputEntry id="LiteralExpression_1j6rfz0">
           <text>if (LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE != null) then
-  LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE
+ LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
   taskAttributes.name
 else
@@ -513,17 +528,17 @@ else
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1mb79nk">
-        <inputEntry id="UnaryTests_12gln2c">
+      <rule id="DecisionRule_1pskxdg">
+        <inputEntry id="UnaryTests_1rmtxn6">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1kedips">
+        <inputEntry id="UnaryTests_0bdlrto">
           <text>"ReviewReferralResponseJudiciary"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0lmtdgx">
+        <outputEntry id="LiteralExpression_1i9op1p">
           <text>"title"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0tuszzj">
+        <outputEntry id="LiteralExpression_115iaqz">
           <text>if (LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE != null) then
  "EJ - " + LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
@@ -531,21 +546,21 @@ else if (taskAttributes != null and taskAttributes.name != null) then
 else
   "EJ - Review Referral Response"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_05bqi6p">
+        <outputEntry id="LiteralExpression_1sxkmsb">
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0ql6vxr">
-        <inputEntry id="UnaryTests_0qeior3">
+      <rule id="DecisionRule_08jtm87">
+        <inputEntry id="UnaryTests_0oom3y4">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1a8msw3">
+        <inputEntry id="UnaryTests_0vm4ms1">
           <text>"ReviewReferralResponseLegalOps"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0s8h6bu">
+        <outputEntry id="LiteralExpression_180h2cn">
           <text>"title"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1o4lxr7">
+        <outputEntry id="LiteralExpression_078q89s">
           <text>if (LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE != null) then
  "LO - " + LATEST_REVIEW_REFERRAL_RESPONSE_TASK_TITLE
 else if (taskAttributes != null and taskAttributes.name != null) then
@@ -553,7 +568,7 @@ else if (taskAttributes != null and taskAttributes.name != null) then
 else
   "LO - Review Referral Response"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_18x2q9x">
+        <outputEntry id="LiteralExpression_191rj58">
           <text>false</text>
         </outputEntry>
       </rule>
@@ -1577,28 +1592,28 @@ else null</text>
         <dc:Bounds height="80" width="180" x="160" y="250" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0d20xrr" dmnElementRef="InformationRequirement_1ffhygb">
-        <di:waypoint x="250" y="380" />
+        <di:waypoint x="340" y="440" />
         <di:waypoint x="250" y="350" />
         <di:waypoint x="250" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0087a4u" dmnElementRef="Decision_0r6u2fs">
-        <dc:Bounds height="80" width="180" x="160" y="380" />
+        <dc:Bounds height="80" width="180" x="250" y="440" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0drs605" dmnElementRef="InformationRequirement_008s8pe">
-        <di:waypoint x="570" y="250" />
+        <di:waypoint x="710" y="230" />
         <di:waypoint x="440" y="180" />
         <di:waypoint x="440" y="160" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_187j52r" dmnElementRef="Decision_0yeq6ix">
-        <dc:Bounds height="80" width="180" x="480" y="250" />
+        <dc:Bounds height="80" width="180" x="620" y="230" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1s6gfdy" dmnElementRef="InformationRequirement_1fiqgk1">
-        <di:waypoint x="570" y="390" />
-        <di:waypoint x="570" y="350" />
-        <di:waypoint x="570" y="330" />
+        <di:waypoint x="710" y="350" />
+        <di:waypoint x="710" y="330" />
+        <di:waypoint x="710" y="310" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1whdgdw" dmnElementRef="Decision_1ahvbr3">
-        <dc:Bounds height="80" width="180" x="480" y="390" />
+        <dc:Bounds height="80" width="180" x="620" y="350" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
