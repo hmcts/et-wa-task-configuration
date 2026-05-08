@@ -4180,24 +4180,27 @@ else
     <literalExpression id="LiteralExpression_09kylt3">
       <text>if(additionalData != null
   and additionalData.Data != null
-  and additionalData.Data.sendNotificationCollection != null                                                                                                                  and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount) &gt; 0]) &gt; 0)
-then "Review notification " + sort(
-  additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount) &gt; 0],                                                                            function(x, y)
-    date and time(                                        
-      sort(x.value.respondCollection,                    
-          function(a, b)                                    
-            date and time(if(a.value.dateTime != null) then a.value.dateTime else "2023-01-01T00:00:00.000") &gt;
-            date and time(if(b.value.dateTime != null) then b.value.dateTime else "2023-01-01T00:00:00.000")            
-        )[1].value.dateTime           
-      ) &gt;                     
-      date and time(
-        sort(y.value.respondCollection,                     
-          function(a, b)
-            date and time(if(a.value.dateTime != null) then a.value.dateTime else "2023-01-01T00:00:00.000") &gt;
-            date and time(if(b.value.dateTime != null) then b.value.dateTime else "2023-01-01T00:00:00.000")              
-        )[1].value.dateTime
-      )                                                                                                                                                                    
-  )[1].value.number + " response"
+  and additionalData.Data.sendNotificationCollection != null
+  and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount) &gt; 0]) &gt; 0)
+then "Review notification " + string(
+  sort(
+    for i in 1..count(additionalData.Data.sendNotificationCollection)
+    return {
+      position: i,
+      latestDateTime: if(additionalData.Data.sendNotificationCollection[i].value.respondCollection != null
+                        and count(additionalData.Data.sendNotificationCollection[i].value.respondCollection) &gt; 0)
+                      then sort(
+                        additionalData.Data.sendNotificationCollection[i].value.respondCollection,
+                        function(a, b)
+                          date and time(if(a.value.dateTime != null) then a.value.dateTime else "2023-01-01T00:00:00.000") &gt;
+                          date and time(if(b.value.dateTime != null) then b.value.dateTime else "2023-01-01T00:00:00.000")
+                      )[1].value.dateTime
+                      else "2023-01-01T00:00:00.000"
+    },
+    function(x, y)
+      date and time(x.latestDateTime) &gt; date and time(y.latestDateTime)
+  )[1].position
+) + " response"
 else ""</text>
     </literalExpression>
   </decision>
