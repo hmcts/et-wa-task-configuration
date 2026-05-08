@@ -3847,74 +3847,6 @@ else false</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0add_claimant_pse">
-        <inputEntry id="UnaryTests_0add_claimant_pse_01">
-          <text>"UPDATE_NOTIFICATION_RESPONSE"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_02">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_03">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_04">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_05">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_06">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_07">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_08">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_09">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_10">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_11">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_12">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_13">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_14">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_15">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_16">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_17">
-          <text>false</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0add_claimant_pse_18">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0add_claimant_pse_01">
-          <text>"SubmitClaimantPseResponse"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0add_claimant_pse_02">
-          <text>CURRENT_NOTIFICATION_NAME</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0add_claimant_pse_03">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0add_claimant_pse_04">
-          <text>"Application"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1lgcxsh">
         <inputEntry id="UnaryTests_1layhri">
           <text>"SUBMIT_RESPONDENT_PSE_RESPONSE"</text>
@@ -3980,6 +3912,74 @@ else false</text>
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1q1elk5">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0add_claimant_pse">
+        <inputEntry id="UnaryTests_0add_claimant_pse_01">
+          <text>"UPDATE_NOTIFICATION_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_02">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_03">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_04">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_05">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_06">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_07">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_08">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_09">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_10">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_11">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_12">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_13">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_15">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_16">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_17">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0add_claimant_pse_18">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0add_claimant_pse_01">
+          <text>"SubmitClaimantPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0add_claimant_pse_02">
+          <text>CURRENT_NOTIFICATION_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0add_claimant_pse_03">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0add_claimant_pse_04">
           <text>"Application"</text>
         </outputEntry>
       </rule>
@@ -4180,13 +4180,24 @@ else
     <literalExpression id="LiteralExpression_09kylt3">
       <text>if(additionalData != null
   and additionalData.Data != null
-  and additionalData.Data.sendNotificationCollection != null
-  and count(additionalData.Data.sendNotificationCollection) &gt; 0)
-  then "Review notification " + sort(
-    additionalData.Data.sendNotificationCollection,
-    function(x, y)
-      number(x.value.number) &gt; number(y.value.number)
-    )[1].value.number + " response"
+  and additionalData.Data.sendNotificationCollection != null                                                                                                                  and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount) &gt; 0]) &gt; 0)
+then "Review notification " + sort(
+  additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount) &gt; 0],                                                                            function(x, y)
+    date and time(                                        
+      sort(x.value.respondCollection,                    
+          function(a, b)                                    
+            date and time(if(a.value.dateTime != null) then a.value.dateTime else "2023-01-01T00:00:00.000") &gt;
+            date and time(if(b.value.dateTime != null) then b.value.dateTime else "2023-01-01T00:00:00.000")            
+        )[1].value.dateTime           
+      ) &gt;                     
+      date and time(
+        sort(y.value.respondCollection,                     
+          function(a, b)
+            date and time(if(a.value.dateTime != null) then a.value.dateTime else "2023-01-01T00:00:00.000") &gt;
+            date and time(if(b.value.dateTime != null) then b.value.dateTime else "2023-01-01T00:00:00.000")              
+        )[1].value.dateTime
+      )                                                                                                                                                                    
+  )[1].value.number + " response"
 else ""</text>
     </literalExpression>
   </decision>
