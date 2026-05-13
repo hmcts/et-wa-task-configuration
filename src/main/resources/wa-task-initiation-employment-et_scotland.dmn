@@ -4170,6 +4170,77 @@ else false</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_stored_pse_scotland">
+        <inputEntry id="UnaryTests_stored_pse_sc_01">
+          <text>"SUBMIT_STORED_PSE_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_02">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_03">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_04">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_05">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_06">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_07">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_08">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_09">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_10">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_11">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_12">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_13">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_15">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_16">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_17">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_18">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_19">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_stored_pse_sc_01">
+          <text>"SubmitClaimantPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_stored_pse_sc_02">
+          <text>CURRENT_NOTIFICATION_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_stored_pse_sc_03">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_stored_pse_sc_04">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_0mhlyhp" name="LATEST_APPLICATION_TASK_NAME">
