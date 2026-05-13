@@ -214,12 +214,6 @@ dependencyManagement {
   }
 }
 
-repositories {
-  mavenLocal()
-  maven { url 'https://jitpack.io' }
-  mavenCentral()
-}
-
 def versions = [
   junit           : '5.9.0',
   reformLogging   : '5.1.9',
