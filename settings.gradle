@@ -1,0 +1,14 @@
+rootProject.name = 'et-wa-task-configuration'
+
+dependencyResolutionManagement {
+  repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+
+  repositories {
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+      url 'https://jitpack.io'
+    }
+  }
+}

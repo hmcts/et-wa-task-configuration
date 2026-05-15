@@ -119,25 +119,4 @@
     <packageUrl regex="true">^pkg:maven/org\.apache\.commons/commons-lang3@.*$</packageUrl>
     <cve>CVE-2025-48924</cve>
   </suppress>
-  <suppress>
-    <notes>CVE-2026-34477, CVE-2026-34478, CVE-2026-34479, CVE-2026-34480, CVE-2026-34481,
-      CVE-2026-40972, CVE-2026-40973, CVE-2026-40975, CVE-2026-40977,
-      CVE-2026-22733, CVE-2026-22735, CVE-2026-22737, CVE-2026-22740, CVE-2026-22741, CVE-2026-22745
-    </notes>
-    <cve>CVE-2026-34477</cve>
-    <cve>CVE-2026-34478</cve>
-    <cve>CVE-2026-34479</cve>
-    <cve>CVE-2026-34480</cve>
-    <cve>CVE-2026-34481</cve>
-    <cve>CVE-2026-40972</cve>
-    <cve>CVE-2026-40973</cve>
-    <cve>CVE-2026-40975</cve>
-    <cve>CVE-2026-40977</cve>
-    <cve>CVE-2026-22733</cve>
-    <cve>CVE-2026-22735</cve>
-    <cve>CVE-2026-22737</cve>
-    <cve>CVE-2026-22740</cve>
-    <cve>CVE-2026-22741</cve>
-    <cve>CVE-2026-22745</cve>
-  </suppress>
 </suppressions>
