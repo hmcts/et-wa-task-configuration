@@ -332,6 +332,17 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_claimant_pse_completion_sc">
+        <inputEntry id="UnaryTests_claimant_pse_completion_sc">
+          <text>"respondNotification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_completion_sc_tt">
+          <text>"SubmitClaimantPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_claimant_pse_completion_sc_mo">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0torhiv">
         <description>Left empty so event can be triggered without a task</description>
         <inputEntry id="UnaryTests_1oec0ex">

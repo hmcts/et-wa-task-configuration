@@ -214,7 +214,8 @@ else null</text>
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zn5l70">
           <text>"workType"</text>
@@ -314,7 +315,8 @@ else null</text>
 "ExpiredBfAction",
 "IssueOrder",
 "ReferEmployersContractClaim",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_158s3ny">
           <text>"roleCategory"</text>
@@ -994,7 +996,8 @@ else 5000</text>
 "ExpiredBfAction",
 "IssueOrder",
 "ReferEmployersContractClaim",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1liv7yr">
           <text>"minorPriority"</text>
@@ -1368,7 +1371,8 @@ else 2</text>
         <inputEntry id="UnaryTests_1jh8ro3">
           <text>"ET3Processing",
 "ReviewECCResponse",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tloef8">
           <text>"dueDateIntervalDays"</text>
@@ -1466,7 +1470,8 @@ else 2</text>
           <text>"ReviewReferralAdmin",
 "ReviewReferralJudiciary",
 "ReviewReferralLegalOps",
-"SubmitRespondentPseResponse"</text>
+"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0336zf2">
           <text>"priorityDateOriginEarliest"</text>
@@ -1483,7 +1488,8 @@ else 2</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_041l94k">
-          <text>"SubmitRespondentPseResponse"</text>
+          <text>"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10vregq">
           <text>"majorPriority"</text>
@@ -1504,7 +1510,8 @@ else 5001</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qlhbtz">
-          <text>"SubmitRespondentPseResponse"</text>
+          <text>"SubmitRespondentPseResponse",
+"SubmitClaimantPseResponse"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1wnmjlj">
           <text>"description"</text>
