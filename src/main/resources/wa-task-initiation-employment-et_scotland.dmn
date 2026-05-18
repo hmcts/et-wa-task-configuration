@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-initiation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.40.0">
   <decision id="wa-task-initiation-employment-et_scotland" name="ET Task initiation DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_15zhznm">
       <requiredDecision href="#Decision_0mhlyhp" />
@@ -21,6 +21,9 @@
     </informationRequirement>
     <informationRequirement id="InformationRequirement_1qr9baa">
       <requiredDecision href="#Decision_13xjrb4" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_05jvg03">
+      <requiredDecision href="#Decision_1ju3q23" />
     </informationRequirement>
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" biodi:width="267" camunda:inputVariable="eventId">
@@ -4096,6 +4099,148 @@ else false</text>
           <text>"Application"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_add_claimant_pse_scotland">
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_01">
+          <text>"UPDATE_NOTIFICATION_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_02">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_03">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_04">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_05">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_06">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_07">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_08">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_09">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_10">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_11">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_12">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_13">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_15">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_16">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_17">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_18">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_add_claimant_pse_sc_19">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_add_claimant_pse_sc_01">
+          <text>"SubmitClaimantPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_add_claimant_pse_sc_02">
+          <text>CURRENT_NOTIFICATION_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_add_claimant_pse_sc_03">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_add_claimant_pse_sc_04">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_stored_pse_scotland">
+        <inputEntry id="UnaryTests_stored_pse_sc_01">
+          <text>"SUBMIT_STORED_PSE_RESPONSE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_02">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_03">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_04">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_05">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_06">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_07">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_08">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_09">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_10">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_11">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_12">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_13">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_15">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_16">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_17">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_18">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_stored_pse_sc_19">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_stored_pse_sc_01">
+          <text>"SubmitClaimantPseResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_stored_pse_sc_02">
+          <text>CURRENT_NOTIFICATION_NAME</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_stored_pse_sc_03">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_stored_pse_sc_04">
+          <text>"Application"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_0mhlyhp" name="LATEST_APPLICATION_TASK_NAME">
@@ -4283,98 +4428,132 @@ else
   ""</text>
     </literalExpression>
   </decision>
+  <decision id="Decision_1ju3q23" name="CURRENT_NOTIFICATION_NAME">
+    <variable id="InformationItem_09yl1ar" name="CURRENT_NOTIFICATION_NAME" typeRef="string" />
+    <literalExpression id="LiteralExpression_0zr0vet">
+      <text>if(additionalData != null
+  and additionalData.Data != null
+  and additionalData.Data.sendNotificationCollection != null                                                                                                                  and count(additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount) &gt; 0]) &gt; 0)
+then "Review notification " + sort(
+  additionalData.Data.sendNotificationCollection[number(value.sendNotificationResponsesCount) &gt; 0],                                                                            function(x, y)
+    date and time(                                        
+      sort(x.value.respondCollection,                    
+          function(a, b)                                    
+            date and time(if(a.value.dateTime != null) then a.value.dateTime else "2023-01-01T00:00:00.000") &gt;
+            date and time(if(b.value.dateTime != null) then b.value.dateTime else "2023-01-01T00:00:00.000")            
+        )[1].value.dateTime           
+      ) &gt;                     
+      date and time(
+        sort(y.value.respondCollection,                     
+          function(a, b)
+            date and time(if(a.value.dateTime != null) then a.value.dateTime else "2023-01-01T00:00:00.000") &gt;
+            date and time(if(b.value.dateTime != null) then b.value.dateTime else "2023-01-01T00:00:00.000")              
+        )[1].value.dateTime
+      )                                                                                                                                                                    
+  )[1].value.number + " response"
+else ""</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_0b2rkcb">
       <dmndi:DMNShape id="DMNShape_0wc7glt" dmnElementRef="wa-task-initiation-employment-et_scotland">
-        <dc:Bounds height="80" width="180" x="790" y="80" />
+        <dc:Bounds height="80" width="180" x="790" y="250" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1vutpf4" dmnElementRef="InformationRequirement_15zhznm">
-        <di:waypoint x="420" y="120" />
-        <di:waypoint x="770" y="120" />
-        <di:waypoint x="790" y="120" />
+        <di:waypoint x="420" y="290" />
+        <di:waypoint x="770" y="290" />
+        <di:waypoint x="790" y="290" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1lvtmn8" dmnElementRef="Decision_0mhlyhp">
-        <dc:Bounds height="80" width="180" x="240" y="80" />
+        <dc:Bounds height="80" width="180" x="240" y="250" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_03e5ujv" dmnElementRef="InformationRequirement_1h7r97o">
-        <di:waypoint x="250" y="210" />
-        <di:waypoint x="330" y="180" />
-        <di:waypoint x="330" y="160" />
+        <di:waypoint x="250" y="380" />
+        <di:waypoint x="330" y="350" />
+        <di:waypoint x="330" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1a5mxet" dmnElementRef="Decision_1yxg1fw">
-        <dc:Bounds height="80" width="180" x="160" y="210" />
+        <dc:Bounds height="80" width="180" x="160" y="380" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0ih47e5" dmnElementRef="InformationRequirement_0xfl3fm">
-        <di:waypoint x="470" y="210" />
-        <di:waypoint x="820" y="180" />
-        <di:waypoint x="820" y="160" />
+        <di:waypoint x="470" y="380" />
+        <di:waypoint x="820" y="350" />
+        <di:waypoint x="820" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="DMNEdge_0db1ev9" dmnElementRef="InformationRequirement_1qqzkui">
-        <di:waypoint x="250" y="350" />
-        <di:waypoint x="470" y="310" />
-        <di:waypoint x="470" y="290" />
+        <di:waypoint x="250" y="520" />
+        <di:waypoint x="470" y="480" />
+        <di:waypoint x="470" y="460" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1a1bbfa" dmnElementRef="Decision_10dijkm">
-        <dc:Bounds height="80" width="180" x="160" y="350" />
+        <dc:Bounds height="80" width="180" x="160" y="520" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_0wt1ey1" dmnElementRef="Decision_1uzjxz3">
-        <dc:Bounds height="80" width="180" x="380" y="210" />
+        <dc:Bounds height="80" width="180" x="380" y="380" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_0uvhdb0" dmnElementRef="InformationRequirement_0hh008c">
-        <di:waypoint x="1570" y="130" />
-        <di:waypoint x="990" y="120" />
-        <di:waypoint x="970" y="120" />
+        <di:waypoint x="1570" y="300" />
+        <di:waypoint x="990" y="290" />
+        <di:waypoint x="970" y="290" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_06xf9xh" dmnElementRef="Decision_14sdj4h">
-        <dc:Bounds height="80" width="180" x="1570" y="90" />
+        <dc:Bounds height="80" width="180" x="1570" y="260" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1wp8kd8" dmnElementRef="InformationRequirement_10u30og">
-        <di:waypoint x="1630" y="230" />
-        <di:waypoint x="1630" y="190" />
-        <di:waypoint x="1630" y="170" />
+        <di:waypoint x="1630" y="400" />
+        <di:waypoint x="1630" y="360" />
+        <di:waypoint x="1630" y="340" />
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="DMNEdge_1oxmfpk" dmnElementRef="InformationRequirement_1q6giso">
-        <di:waypoint x="1850" y="230" />
-        <di:waypoint x="1690" y="190" />
-        <di:waypoint x="1690" y="170" />
+        <di:waypoint x="1850" y="400" />
+        <di:waypoint x="1690" y="360" />
+        <di:waypoint x="1690" y="340" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_13pqlrp" dmnElementRef="Decision_0jt8p9l">
-        <dc:Bounds height="80" width="180" x="1540" y="230" />
+        <dc:Bounds height="80" width="180" x="1540" y="400" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_1mfucxv" dmnElementRef="Decision_06g5z3o">
-        <dc:Bounds height="80" width="180" x="1760" y="230" />
+        <dc:Bounds height="80" width="180" x="1760" y="400" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_132ldaf" dmnElementRef="InformationRequirement_1czrydl">
-        <di:waypoint x="810" y="430" />
-        <di:waypoint x="880" y="180" />
-        <di:waypoint x="880" y="160" />
+        <di:waypoint x="810" y="600" />
+        <di:waypoint x="880" y="350" />
+        <di:waypoint x="880" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1utws27" dmnElementRef="Decision_1komswz">
-        <dc:Bounds height="80" width="180" x="720" y="430" />
+        <dc:Bounds height="80" width="180" x="720" y="600" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1mid0q4" dmnElementRef="InformationRequirement_0fn2uby">
-        <di:waypoint x="710" y="300" />
-        <di:waypoint x="850" y="180" />
-        <di:waypoint x="850" y="160" />
+        <di:waypoint x="710" y="470" />
+        <di:waypoint x="850" y="350" />
+        <di:waypoint x="850" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_0ui9uym" dmnElementRef="Decision_01k2es5">
-        <dc:Bounds height="80" width="180" x="620" y="300" />
+        <dc:Bounds height="80" width="180" x="620" y="470" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_07jzhgy" dmnElementRef="InformationRequirement_1b90n5m">
-        <di:waypoint x="1080" y="240" />
-        <di:waypoint x="940" y="180" />
-        <di:waypoint x="940" y="160" />
+        <di:waypoint x="1080" y="410" />
+        <di:waypoint x="940" y="350" />
+        <di:waypoint x="940" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_05y3moe" dmnElementRef="Decision_0ivu6kl">
-        <dc:Bounds height="80" width="180" x="990" y="240" />
+        <dc:Bounds height="80" width="180" x="990" y="410" />
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_18b4eni" dmnElementRef="InformationRequirement_1qr9baa">
-        <di:waypoint x="1010" y="390" />
-        <di:waypoint x="910" y="180" />
-        <di:waypoint x="910" y="160" />
+        <di:waypoint x="1010" y="560" />
+        <di:waypoint x="910" y="350" />
+        <di:waypoint x="910" y="330" />
       </dmndi:DMNEdge>
       <dmndi:DMNShape id="DMNShape_1rs6daf" dmnElementRef="Decision_13xjrb4">
-        <dc:Bounds height="80" width="180" x="920" y="390" />
+        <dc:Bounds height="80" width="180" x="920" y="560" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1ea7k5i" dmnElementRef="InformationRequirement_05jvg03">
+        <di:waypoint x="880" y="160" />
+        <di:waypoint x="880" y="230" />
+        <di:waypoint x="880" y="250" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1s8q1z8" dmnElementRef="Decision_1ju3q23">
+        <dc:Bounds height="80" width="180" x="790" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
