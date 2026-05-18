@@ -140,4 +140,31 @@
     <cve>CVE-2026-22741</cve>
     <cve>CVE-2026-22745</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[Suppressing EOL Spring Boot CVE until migration window opens]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.boot/.*@2\.7\.18$</packageUrl>
+    <cve>CVE-2026-40974</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[Suppressing Tomcat 11.0.21 embedded core CVEs]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat-embed-core@11\.0\.21$</packageUrl>
+    <cve>CVE-2026-41293</cve>
+    <cve>CVE-2026-43512</cve>
+    <cve>CVE-2026-43515</cve>
+    <cve>CVE-2026-41284</cve>
+    <cve>CVE-2026-43513</cve>
+    <cve>CVE-2026-42498</cve>
+    <cve>CVE-2026-43514</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[Suppressing Tomcat 11.0.21 embedded websocket CVEs]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat-embed-websocket@11\.0\.21$</packageUrl>
+    <cve>CVE-2026-41293</cve>
+    <cve>CVE-2026-43512</cve>
+    <cve>CVE-2026-43515</cve>
+    <cve>CVE-2026-41284</cve>
+    <cve>CVE-2026-43513</cve>
+    <cve>CVE-2026-42498</cve>
+    <cve>CVE-2026-43514</cve>
+  </suppress>
 </suppressions>
