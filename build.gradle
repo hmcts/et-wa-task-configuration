@@ -214,23 +214,11 @@ repositories {
 }
 
 def versions = [
-  junit           : '5.7.2',
-  junitPlatform   : '1.7.2',
   reformLogging   : '5.1.7',
   springDoc       : '2.8.17',
   camunda         : '7.23.0',
   pitest          : '1.17.0',
   sonarPitest     : '0.5'
-]
-
-ext.libraries = [
-  junit5: [
-    "org.junit.jupiter:junit-jupiter-api:${versions.junit}",
-    "org.junit.jupiter:junit-jupiter-engine:${versions.junit}",
-    "org.junit.jupiter:junit-jupiter-params:${versions.junit}",
-    "org.junit.platform:junit-platform-commons:${versions.junitPlatform}",
-    "org.junit.platform:junit-platform-engine:${versions.junitPlatform}"
-  ]
 ]
 
 dependencies {
@@ -267,7 +255,7 @@ dependencies {
 
   testImplementation group: 'org.codehaus.sonar-plugins', name: 'sonar-pitest-plugin', version: versions.sonarPitest
 
-  testImplementation libraries.junit5
+  testImplementation group: 'org.apiguardian', name: 'apiguardian-api'
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
     exclude group: 'junit', module: 'junit'
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
