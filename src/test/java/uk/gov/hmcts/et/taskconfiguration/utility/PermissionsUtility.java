@@ -67,7 +67,7 @@ public final class PermissionsUtility {
         "name", "allocated-tribunal-caseworker",
         "value", "Read, Own, Manage, Claim, Unclaim, UnclaimAssign, CompleteOwn",
         "roleCategory", "LEGAL_OPERATIONS",
-        "autoAssignable", false
+        "autoAssignable", true
     );
     public static final Map<String, Serializable> seniorTribunalCaseworker = Map.of(
         "assignmentPriority", 4,
