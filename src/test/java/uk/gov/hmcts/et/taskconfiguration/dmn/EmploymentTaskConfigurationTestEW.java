@@ -1099,6 +1099,73 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         }
     }
 
+    @ParameterizedTest
+    @MethodSource("title_default_ScenarioProvider")
+    void when_taskType_and_no_existing_title_then_return_default_title(
+            String taskType, String expectedTitle) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult.getResultList().stream()
+                .filter(r -> r.containsValue("title"))
+                .toList();
+
+        assertEquals(expectedTitle, resultList.getFirst().get("value"));
+        assertEquals(true, resultList.getFirst().get("canReconfigure"));
+    }
+
+    public static Stream<Arguments> title_default_ScenarioProvider() {
+        return Stream.of(
+            Arguments.of("ReviewReferralLegalOps", "LO - Review Referral"),
+            Arguments.of("ReviewReferralJudiciary", "EJ - Review Referral"),
+            Arguments.of("ReviewReferralResponseLegalOps", "LO - Review Referral Response"),
+            Arguments.of("ReviewReferralResponseJudiciary", "EJ - Review Referral Response")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("title_reconfigure_ScenarioProvider")
+    void when_taskType_and_existing_title_then_preserve_or_prefix_title(
+            String taskType, String existingTitle, String expectedTitle) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType, "title", existingTitle));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult.getResultList().stream()
+                .filter(r -> r.containsValue("title"))
+                .toList();
+
+        assertEquals(expectedTitle, resultList.getFirst().get("value"));
+    }
+
+    public static Stream<Arguments> title_reconfigure_ScenarioProvider() {
+        return Stream.of(
+            // Title already has correct prefix — preserved as-is
+            Arguments.of("ReviewReferralLegalOps", "LO - Review Referral #1 - Orders",
+                "LO - Review Referral #1 - Orders"),
+            Arguments.of("ReviewReferralJudiciary", "EJ - Review Referral #1 - Orders",
+                "EJ - Review Referral #1 - Orders"),
+            Arguments.of("ReviewReferralResponseLegalOps", "LO - Review Referral Response #1 - Orders",
+                "LO - Review Referral Response #1 - Orders"),
+            Arguments.of("ReviewReferralResponseJudiciary", "EJ - Review Referral Response #1 - Orders",
+                "EJ - Review Referral Response #1 - Orders"),
+            // Title exists but lacks prefix — prefix is prepended
+            Arguments.of("ReviewReferralLegalOps", "Review Referral #1 - Orders", "LO - Review Referral #1 - Orders"),
+            Arguments.of("ReviewReferralJudiciary", "Review Referral #1 - Orders", "EJ - Review Referral #1 - Orders"),
+            Arguments.of("ReviewReferralResponseLegalOps", "Review Referral Response #1 - Orders",
+                "LO - Review Referral Response #1 - Orders"),
+            Arguments.of("ReviewReferralResponseJudiciary", "Review Referral Response #1 - Orders",
+                "EJ - Review Referral Response #1 - Orders")
+        );
+    }
+
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
