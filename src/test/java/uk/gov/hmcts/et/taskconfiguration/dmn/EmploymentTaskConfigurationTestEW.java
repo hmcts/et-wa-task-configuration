@@ -1148,15 +1148,21 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> title_reconfigure_ScenarioProvider() {
         return Stream.of(
             // Title already has correct prefix — preserved as-is
-            Arguments.of("ReviewReferralLegalOps", "LO - Review Referral #1 - Orders", "LO - Review Referral #1 - Orders"),
-            Arguments.of("ReviewReferralJudiciary", "EJ - Review Referral #1 - Orders", "EJ - Review Referral #1 - Orders"),
-            Arguments.of("ReviewReferralResponseLegalOps", "LO - Review Referral Response #1 - Orders", "LO - Review Referral Response #1 - Orders"),
-            Arguments.of("ReviewReferralResponseJudiciary", "EJ - Review Referral Response #1 - Orders", "EJ - Review Referral Response #1 - Orders"),
+            Arguments.of("ReviewReferralLegalOps", "LO - Review Referral #1 - Orders",
+                "LO - Review Referral #1 - Orders"),
+            Arguments.of("ReviewReferralJudiciary", "EJ - Review Referral #1 - Orders",
+                "EJ - Review Referral #1 - Orders"),
+            Arguments.of("ReviewReferralResponseLegalOps", "LO - Review Referral Response #1 - Orders",
+                "LO - Review Referral Response #1 - Orders"),
+            Arguments.of("ReviewReferralResponseJudiciary", "EJ - Review Referral Response #1 - Orders",
+                "EJ - Review Referral Response #1 - Orders"),
             // Title exists but lacks prefix — prefix is prepended
             Arguments.of("ReviewReferralLegalOps", "Review Referral #1 - Orders", "LO - Review Referral #1 - Orders"),
             Arguments.of("ReviewReferralJudiciary", "Review Referral #1 - Orders", "EJ - Review Referral #1 - Orders"),
-            Arguments.of("ReviewReferralResponseLegalOps", "Review Referral Response #1 - Orders", "LO - Review Referral Response #1 - Orders"),
-            Arguments.of("ReviewReferralResponseJudiciary", "Review Referral Response #1 - Orders", "EJ - Review Referral Response #1 - Orders")
+            Arguments.of("ReviewReferralResponseLegalOps", "Review Referral Response #1 - Orders",
+                "LO - Review Referral Response #1 - Orders"),
+            Arguments.of("ReviewReferralResponseJudiciary", "Review Referral Response #1 - Orders",
+                "EJ - Review Referral Response #1 - Orders")
         );
     }
 
