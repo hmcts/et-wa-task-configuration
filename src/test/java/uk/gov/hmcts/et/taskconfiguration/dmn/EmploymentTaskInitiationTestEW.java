@@ -40,6 +40,8 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIP
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIPLE_RESPONDENTS_NO_VALID_ECC_REPLY;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.MULTIPLE_RESPONDENTS_WITH_VALID_ECC_REPLY;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.NOTIFICATIONS_LIST;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.NOTIFICATIONS_NON_ECC_WITH_DATETIME;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.NOTIFICATIONS_WITH_NULL_DATETIME_RESPONSE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN_HEARING;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.REFERRAL_ADMIN_JUDGMENT;
@@ -896,6 +898,46 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "SubmitClaimantPseResponse",
                         "",
+                        "Application"
+                    )
+                )
+            ),
+            // CURRENT_NOTIFICATION_NAME: notification at position 2 has a Respondent response
+            // with a valid dateTime — expects the position embedded in the task name.
+            Arguments.of(
+                "UPDATE_NOTIFICATION_RESPONSE",
+                null,
+                HelperService.mapAdditionalData(NOTIFICATIONS_NON_ECC_WITH_DATETIME),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "SubmitClaimantPseResponse",
+                        "Review notification 2 response",
+                        "Application"
+                    )
+                )
+            ),
+            Arguments.of(
+                "SUBMIT_STORED_PSE_RESPONSE",
+                null,
+                HelperService.mapAdditionalData(NOTIFICATIONS_NON_ECC_WITH_DATETIME),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "SubmitClaimantPseResponse",
+                        "Review notification 2 response",
+                        "Application"
+                    )
+                )
+            ),
+            // CURRENT_NOTIFICATION_NAME: response exists but dateTime is null —
+            // fallback sort still resolves the position correctly.
+            Arguments.of(
+                "SUBMIT_STORED_PSE_RESPONSE",
+                null,
+                HelperService.mapAdditionalData(NOTIFICATIONS_WITH_NULL_DATETIME_RESPONSE),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "SubmitClaimantPseResponse",
+                        "Review notification 1 response",
                         "Application"
                     )
                 )
