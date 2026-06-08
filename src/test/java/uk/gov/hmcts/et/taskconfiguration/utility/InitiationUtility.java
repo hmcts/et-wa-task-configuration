@@ -198,6 +198,36 @@ public final class InitiationUtility {
     public static final String CLAIMANT_WITHDRAW_ALL_OR_PART_OF_CASE =
         HelperService.createApplications("Withdraw all/part of claim", "Claimant");
 
+    // Two notifications: position 1 has no response, position 2 has a Respondent non-ECC response
+    // with a camelCase "dateTime" field so the DMN sort can use it properly.
+    public static final String NOTIFICATIONS_NON_ECC_WITH_DATETIME =
+        HelperService.createNotifications(
+            Arrays.asList(
+                createNotification("1", "0", ""),
+                createNotification(
+                    "2",
+                    "1",
+                    ",\"respondCollection\": [{\"value\": {\"from\": \"Respondent\","
+                        + "\"dateTime\": \"2025-06-01T10:00:00.000\",\"isECC\": \"No\"}}]"
+                )
+            )
+        );
+
+    // One notification at position 1 with a response whose dateTime is null.
+    // Verifies the null-datetime fallback path in CURRENT_NOTIFICATION_NAME still
+    // returns a valid position ("Review notification 1 response").
+    public static final String NOTIFICATIONS_WITH_NULL_DATETIME_RESPONSE =
+        HelperService.createNotifications(
+            List.of(
+                createNotification(
+                    "1",
+                    "1",
+                    ",\"respondCollection\": [{\"value\": {\"from\": \"Respondent\","
+                        + "\"dateTime\": null,\"isECC\": \"No\"}}]"
+                )
+            )
+        );
+
     public static final String NOTIFICATION_1 =
         createNotification("1", "0", "");
     public static final String NOTIFICATION_2 =
