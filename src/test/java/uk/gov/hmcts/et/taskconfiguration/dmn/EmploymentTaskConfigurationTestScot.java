@@ -1134,6 +1134,45 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         );
     }
 
+    @Test
+    void when_submitClaimantPseResponse_and_no_name_then_return_default_notification_title() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "SubmitClaimantPseResponse"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> titleResults =
+            dmnDecisionTableResult.getResultList().stream()
+                .filter(r -> r.containsValue("title"))
+                .toList();
+
+        assertEquals(1, titleResults.size());
+        assertEquals("Review notification response", titleResults.getFirst().get("value"));
+        assertEquals(true, titleResults.getFirst().get("canReconfigure"));
+    }
+
+    @Test
+    void when_submitClaimantPseResponse_and_name_set_then_preserve_name_as_title() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue(
+            "taskAttributes",
+            Map.of("taskType", "SubmitClaimantPseResponse", "name", "Review notification 3 response")
+        );
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> titleResults =
+            dmnDecisionTableResult.getResultList().stream()
+                .filter(r -> r.containsValue("title"))
+                .toList();
+
+        assertEquals(1, titleResults.size());
+        assertEquals("Review notification 3 response", titleResults.getFirst().get("value"));
+        assertEquals(true, titleResults.getFirst().get("canReconfigure"));
+    }
+
     @ParameterizedTest
     @MethodSource("title_reconfigure_ScenarioProvider")
     void when_taskType_and_existing_title_then_preserve_or_prefix_title(
@@ -1177,7 +1216,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(73));
+        assertThat(logic.getRules().size(), is(74));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
