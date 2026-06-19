@@ -942,8 +942,6 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     )
                 )
             ),
-            // CURRENT_NOTIFICATION_NAME: respondent PSE response tasks embed the notification
-            // number in the task name, the same as SubmitClaimantPseResponse.
             Arguments.of(
                 "ADD_RESPONDENT_PSE_RESPONSE",
                 null,
