@@ -941,6 +941,32 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                         "Application"
                     )
                 )
+            ),
+            // CURRENT_NOTIFICATION_NAME: respondent PSE response tasks embed the notification
+            // number in the task name, the same as SubmitClaimantPseResponse.
+            Arguments.of(
+                "ADD_RESPONDENT_PSE_RESPONSE",
+                null,
+                HelperService.mapAdditionalData(NOTIFICATIONS_NON_ECC_WITH_DATETIME),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "SubmitRespondentPseResponse",
+                        "Review notification 2 response",
+                        "Application"
+                    )
+                )
+            ),
+            Arguments.of(
+                "SUBMIT_RESPONDENT_PSE_RESPONSE",
+                null,
+                HelperService.mapAdditionalData(NOTIFICATIONS_NON_ECC_WITH_DATETIME),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "SubmitRespondentPseResponse",
+                        "Review notification 2 response",
+                        "Application"
+                    )
+                )
             )
         );
     }
