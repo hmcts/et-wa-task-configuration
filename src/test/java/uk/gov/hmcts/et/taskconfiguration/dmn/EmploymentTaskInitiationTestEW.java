@@ -897,7 +897,7 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                 List.of(
                     HelperService.mapExpectedOutput(
                         "SubmitClaimantPseResponse",
-                        "",
+                        "Review notification response",
                         "Application"
                     )
                 )
