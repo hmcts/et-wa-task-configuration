@@ -4272,7 +4272,7 @@ then (for r in [sort(
          then "Review notification " + string(r.position) + " response"
          else "Review notification response"
 )[1]
-else ""</text>
+else "Review notification response"</text>
     </literalExpression>
   </decision>
   <dmndi:DMNDI>
