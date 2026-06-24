@@ -1535,25 +1535,6 @@ else 5001</text>
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_submit_claimant_pse_title_sc">
-        <inputEntry id="UnaryTests_submit_claimant_pse_title_sc_01">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_submit_claimant_pse_title_sc_02">
-          <text>"SubmitClaimantPseResponse"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_submit_claimant_pse_title_sc_01">
-          <text>"title"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_submit_claimant_pse_title_sc_02">
-          <text>if (taskAttributes != null and taskAttributes.name != null and taskAttributes.name != "")
-then taskAttributes.name
-else "Review notification response"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_submit_claimant_pse_title_sc_03">
-          <text>true</text>
-        </outputEntry>
-      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_07yhq0k" name="LATEST_REVIEW_REFERRAL_TASK_TITLE">
