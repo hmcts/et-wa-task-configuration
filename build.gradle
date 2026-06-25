@@ -245,7 +245,7 @@ dependencies {
   }
   implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.20.0'
 
-  implementation 'org.camunda.bpm:camunda-external-task-client:7.23.0'
+  implementation 'org.camunda.bpm:camunda-external-task-client:7.24.0'
 
   annotationProcessor 'org.projectlombok:lombok'
   compileOnly 'org.projectlombok:lombok'
