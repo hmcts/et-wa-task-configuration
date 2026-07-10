@@ -1001,7 +1001,7 @@ then 1000
 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_06xwvqf">
-          <text></text>
+          <text>false</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0j1v09c">
