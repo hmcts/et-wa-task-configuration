@@ -1199,4 +1199,27 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         HelperService.getExpectedValueWithReconfigure(rules, "dueDateMustBeWorkingDay", "Yes", true);
         return rules;
     }
+
+    @Test
+    void when_ic_is_urgent_then_return_priority() {
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("etICIsUrgent", "Yes");
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "IssueInitialConsiderationDirections"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> majorPriorityResultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter(r -> r.containsValue("majorPriority"))
+                .toList();
+
+        assertEquals("majorPriority", majorPriorityResultList.getFirst().get("name"));
+        assertEquals("1000", majorPriorityResultList.getFirst().get("value"));
+        assertEquals(false, majorPriorityResultList.getFirst().get("canReconfigure"));
+    }
 }
