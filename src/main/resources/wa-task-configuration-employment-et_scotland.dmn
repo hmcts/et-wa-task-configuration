@@ -911,7 +911,6 @@ else ""</text>
 "DraftAndSignJudgment",
 "IssuePostHearingDirection",
 "ReviewRule21Referral",
-"IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
 "AmendClaimantDetails",
@@ -998,6 +997,27 @@ then 1000
 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_048wemw">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bushq3">
+        <inputEntry id="UnaryTests_18rljwp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z4gqo6">
+          <text>"IssueJudgment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ycktgr">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01itzrm">
+          <text>if (caseData != null
+and caseData.draftAndSignJudgement != null
+and caseData.draftAndSignJudgement.isUrgent = "Yes")
+then 1000
+else 5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17uuteo">
           <text>false</text>
         </outputEntry>
       </rule>
