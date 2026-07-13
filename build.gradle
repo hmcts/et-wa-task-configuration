@@ -100,7 +100,7 @@ task tests {
 
 checkstyle {
   maxWarnings = 0
-  toolVersion = '11.1.0'
+  toolVersion = '13.8.0'
   getConfigDirectory().set(new File(rootDir, 'config/checkstyle'))
 }
 
@@ -216,7 +216,7 @@ repositories {
 def versions = [
   reformLogging   : '5.1.7',
   springDoc       : '2.8.17',
-  camunda         : '7.23.0',
+  camunda         : '7.24.0',
   pitest          : '1.17.0',
   sonarPitest     : '0.5'
 ]
