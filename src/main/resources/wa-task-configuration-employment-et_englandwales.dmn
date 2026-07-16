@@ -1572,7 +1572,7 @@ else 5001</text>
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08az7f0">
-          <text>"[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
+          <text>"[Review the notification response](/cases/case-details/${[CASE_REFERENCE]}#Notifications) and [Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/respondNotification/respondNotification1)"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14opuv2">
           <text>true</text>

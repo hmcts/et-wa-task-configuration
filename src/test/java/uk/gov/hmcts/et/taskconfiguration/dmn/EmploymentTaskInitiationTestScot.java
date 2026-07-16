@@ -942,6 +942,30 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Application"
                     )
                 )
+            ),
+            Arguments.of(
+                "ADD_RESPONDENT_PSE_RESPONSE",
+                null,
+                HelperService.mapAdditionalData(NOTIFICATIONS_NON_ECC_WITH_DATETIME),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "SubmitRespondentPseResponse",
+                        "Review notification 2 response",
+                        "Application"
+                    )
+                )
+            ),
+            Arguments.of(
+                "SUBMIT_RESPONDENT_PSE_RESPONSE",
+                null,
+                HelperService.mapAdditionalData(NOTIFICATIONS_NON_ECC_WITH_DATETIME),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "SubmitRespondentPseResponse",
+                        "Review notification 2 response",
+                        "Application"
+                    )
+                )
             )
         );
     }

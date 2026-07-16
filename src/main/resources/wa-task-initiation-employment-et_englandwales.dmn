@@ -3836,7 +3836,7 @@ else false</text>
           <text>"SubmitRespondentPseResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_06zezkj">
-          <text>"Review notification response"</text>
+          <text>CURRENT_NOTIFICATION_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0e003lz">
           <text></text>
@@ -3904,7 +3904,7 @@ else false</text>
           <text>"SubmitRespondentPseResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0by9rf1">
-          <text>"Review notification response"</text>
+          <text>CURRENT_NOTIFICATION_NAME</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ckw6ru">
           <text></text>
