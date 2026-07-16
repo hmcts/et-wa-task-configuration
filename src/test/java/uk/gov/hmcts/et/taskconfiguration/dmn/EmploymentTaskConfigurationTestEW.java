@@ -614,6 +614,13 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
                 + "createReferral/createReferral1)",
             "canReconfigure", true
         ));
+        List<Map<String, Object>> submitPseResponse = List.of(Map.of(
+            "name", "description",
+            "value", "[Review the notification response](/cases/case-details/${[CASE_REFERENCE]}#Notifications)"
+                + " and [Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+                + "respondNotification/respondNotification1)",
+            "canReconfigure", true
+        ));
 
         return Stream.of(
             Arguments.of("Et1Vetting", descET1Vetting),
@@ -658,7 +665,10 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of("reviewSpecificAccessRequestJudiciary", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestLegalOps", reviewAccessRequest),
-            Arguments.of("reviewSpecificAccessRequestCTSC", reviewAccessRequest)
+            Arguments.of("reviewSpecificAccessRequestCTSC", reviewAccessRequest),
+
+            Arguments.of("SubmitRespondentPseResponse", submitPseResponse),
+            Arguments.of("SubmitClaimantPseResponse", submitPseResponse)
         );
     }
 

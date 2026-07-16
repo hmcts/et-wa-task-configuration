@@ -615,7 +615,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         ));
         List<Map<String, Object>> submitRespondentPseResponse = List.of(Map.of(
             "name", "description",
-            "value", "[Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
+            "value", "[Review the notification response](/cases/case-details/${[CASE_REFERENCE]}#Notifications)"
+                + " and [Respond to the notification response](/cases/case-details/${[CASE_REFERENCE]}/trigger/"
                 + "respondNotification/respondNotification1)",
             "canReconfigure", true
         ));
@@ -665,7 +666,8 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
             Arguments.of("reviewSpecificAccessRequestAdmin", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestLegalOps", reviewAccessRequest),
             Arguments.of("reviewSpecificAccessRequestCTSC", reviewAccessRequest),
-            Arguments.of("SubmitRespondentPseResponse", submitRespondentPseResponse)
+            Arguments.of("SubmitRespondentPseResponse", submitRespondentPseResponse),
+            Arguments.of("SubmitClaimantPseResponse", submitRespondentPseResponse)
         );
     }
 
