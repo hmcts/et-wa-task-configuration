@@ -119,6 +119,24 @@ public final class InitiationUtility {
         "\"respondentCollection\""
             +  ":[{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":false ,\"et3ContractClaimSection7\":true}}}]";
 
+    public static final String ET3_RESPONSE_SECOND_RESPONDENT_NO_ECC =
+        "\"respondentCollection\":["
+            + "{\"value\":{\"et3Vetting\":null}},"
+            + "{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true,\"et3ContractClaimSection7\":false}}}"
+            + "]";
+
+    public static final String ET3_RESPONSE_SECOND_RESPONDENT_WITH_ECC =
+        "\"respondentCollection\":["
+            + "{\"value\":{\"et3Vetting\":null}},"
+            + "{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true,\"et3ContractClaimSection7\":true}}}"
+            + "]";
+
+    public static final String ET3_RESPONSE_MIXED_ECC =
+        "\"respondentCollection\":["
+            + "{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true,\"et3ContractClaimSection7\":false}}},"
+            + "{\"value\":{\"et3Vetting\":{\"et3IsThereAnEt3Response\":true,\"et3ContractClaimSection7\":true}}}"
+            + "]";
+
     public static final String LISTAHEARING_PROCEED_LISTED = "\"etICCanProceed\":true,"
         + "\"etICHearingAlreadyListed\":true,"
         + "\"etICHearingNotListedListUpdated\":["
@@ -158,14 +176,6 @@ public final class InitiationUtility {
         + "\"Seek comments on the video hearing\","
         + "\"UDL hearing\"]";
 
-    public static final String ET3_CONTRACT_CLAIM_SECTION_7 = "\"respondentCollection\":[{\"value\":{\"et3Vetting\":"
-        + "{\"et3ContractClaimSection7\":";
-
-
-    public static final String STRIKE_OUT_CLAIM =
-        "\"etInitialConsiderationRule27\": {"
-            + "\"etICRule27ClaimToBe\": \"Dismissed in full\""
-            + "}";
 
     public static final String SUBMISSION_REASON_CLAIMANT_AMEND =
         HelperService.createApplications("Amend my claim", "");

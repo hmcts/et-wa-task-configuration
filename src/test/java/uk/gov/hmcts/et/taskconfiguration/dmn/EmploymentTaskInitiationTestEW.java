@@ -28,6 +28,9 @@ import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.DRAFT_
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_NOT_RECEIVED;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_MORE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_FORM_RECEIVED_ONCE;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_RESPONSE_MIXED_ECC;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_RESPONSE_SECOND_RESPONDENT_NO_ECC;
+import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.ET3_RESPONSE_SECOND_RESPONDENT_WITH_ECC;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_ET3_RESPONSE_FALSE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.IS_ET3_RESPONSE_TRUE;
 import static uk.gov.hmcts.et.taskconfiguration.utility.InitiationUtility.LISTAHEARING_PROCEED_LISTED;
@@ -529,6 +532,50 @@ class EmploymentTaskInitiationTestEW extends DmnDecisionTableBaseUnitTest {
                     HelperService.mapExpectedOutput(
                         "SendEt3Notification",
                         "Send ET3 Notification",
+                        "Processing"
+                    )
+                )
+            ),
+            // Second respondent has ET3, no ECC -> IC task must still be created
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                HelperService.mapAdditionalData(ET3_RESPONSE_SECOND_RESPONDENT_NO_ECC),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "CompleteInitialConsideration",
+                        "Complete Initial Consideration",
+                        "Processing"
+                    ),
+                    HelperService.mapExpectedOutput(
+                        "SendEt3Notification",
+                        "Send ET3 Notification",
+                        "Processing"
+                    )
+                )
+            ),
+            // Second respondent has ET3 with ECC -> no IC task, refer ECC instead
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                HelperService.mapAdditionalData(ET3_RESPONSE_SECOND_RESPONDENT_WITH_ECC),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReferEmployersContractClaim",
+                        "Refer Employer's Contract Claim",
+                        "Processing"
+                    )
+                )
+            ),
+            // Mix of respondent answers for ECC -> IC task must NOT be created
+            Arguments.of(
+                "et3Vetting",
+                "Accepted",
+                HelperService.mapAdditionalData(ET3_RESPONSE_MIXED_ECC),
+                List.of(
+                    HelperService.mapExpectedOutput(
+                        "ReferEmployersContractClaim",
+                        "Refer Employer's Contract Claim",
                         "Processing"
                     )
                 )

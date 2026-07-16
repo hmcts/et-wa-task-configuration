@@ -97,10 +97,9 @@ else false</text>
           <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.respondentCollection!=null
-and count(additionalData.Data.respondentCollection) &gt; 0
-and additionalData.Data.respondentCollection[1].value.et3Vetting!=null)
-then additionalData.Data.respondentCollection[1].value.et3Vetting.et3IsThereAnEt3Response
-else null</text>
+and count(additionalData.Data.respondentCollection) &gt; 0)
+then some item in additionalData.Data.respondentCollection satisfies (item.value.et3Vetting != null and item.value.et3Vetting.et3IsThereAnEt3Response = true)
+else false</text>
         </inputExpression>
       </input>
       <input id="InputClause_0la0ez2" label="Is ECC" biodi:width="192">
@@ -108,10 +107,9 @@ else null</text>
           <text>if(additionalData!=null
 and additionalData.Data!=null
 and additionalData.Data.respondentCollection!=null
-and count(additionalData.Data.respondentCollection) &gt; 0
-and additionalData.Data.respondentCollection[1].value.et3Vetting!=null)
-then additionalData.Data.respondentCollection[1].value.et3Vetting.et3ContractClaimSection7
-else null</text>
+and count(additionalData.Data.respondentCollection) &gt; 0)
+then some item in additionalData.Data.respondentCollection satisfies (item.value.et3Vetting != null and item.value.et3Vetting.et3ContractClaimSection7 = true)
+else false</text>
         </inputExpression>
       </input>
       <input id="InputClause_0ezn9nq" label="Is ECC Reply Received" biodi:width="192">
