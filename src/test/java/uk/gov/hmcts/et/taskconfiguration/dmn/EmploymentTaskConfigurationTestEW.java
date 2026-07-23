@@ -1180,7 +1180,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(74));
+        assertThat(logic.getRules().size(), is(75));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
@@ -1215,6 +1215,29 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("caseData", caseData);
         inputVariables.putValue("taskAttributes", Map.of("taskType", "IssueJudgment"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> majorPriorityResultList =
+            dmnDecisionTableResult
+                .getResultList()
+                .stream()
+                .filter(r -> r.containsValue("majorPriority"))
+                .toList();
+
+        assertEquals("majorPriority", majorPriorityResultList.getFirst().get("name"));
+        assertEquals("1000", majorPriorityResultList.getFirst().get("value"));
+        assertEquals(false, majorPriorityResultList.getFirst().get("canReconfigure"));
+    }
+
+    @Test
+    void when_ic_is_urgent_then_return_priority() {
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("etICIsUrgent", "Yes");
+
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "IssueInitialConsiderationDirections"));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
