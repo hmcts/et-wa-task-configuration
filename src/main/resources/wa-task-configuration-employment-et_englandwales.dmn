@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.48.0">
   <decision id="wa-task-configuration-employment-et_englandwales" name="ET Task configuration DMN" camunda:historyTimeToLive="P30D">
     <informationRequirement id="InformationRequirement_0cm80l7">
       <requiredDecision href="#Decision_1lqqy4i" />
@@ -908,7 +908,6 @@ else ""</text>
           <text>"Et1Vetting",
 "Rule21",
 "ET3Processing",
-"IssueInitialConsiderationDirections",
 "ListAHearing",
 "ListServeClaim",
 "SendEt1Notification",
@@ -1001,6 +1000,26 @@ then 1000
 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1x8rv2l">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0agm4fs">
+        <inputEntry id="UnaryTests_1ke1wtc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_012vbnt">
+          <text>"IssueInitialConsiderationDirections"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09bhorr">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o0joxt">
+          <text>if (caseData != null
+and caseData.etICIsUrgent = "Yes")
+then 1000
+else 5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_063p4d9">
           <text>false</text>
         </outputEntry>
       </rule>
