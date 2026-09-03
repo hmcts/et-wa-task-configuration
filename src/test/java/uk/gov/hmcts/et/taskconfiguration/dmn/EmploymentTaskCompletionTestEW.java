@@ -59,60 +59,25 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 "replyToReferral",
                 asList(
-                    Map.of(
-                        "taskType", "ReviewReferralAdmin",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseAdmin",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralJudiciary",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralLegalOps",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseJudiciary",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseLegalOps",
-                        "completionMode", "Auto"
-                    ),
+                    // Referral tasks are no longer completed wholesale by this event. They are
+                    // closed per referral by et-ccd-callbacks, which knows which referral was
+                    // acted on. See ReferralTaskCompletionService.
+                    emptyMap()
+                )
+            ),
+            Arguments.of(
+                "updateReferral",
+                asList(
+                    // Completed per referral by et-ccd-callbacks, not by this DMN.
                     emptyMap()
                 )
             ),
             Arguments.of(
                 "closeReferral",
                 asList(
-                    Map.of(
-                        "taskType", "ReviewReferralAdmin",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseAdmin",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralJudiciary",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralLegalOps",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseJudiciary",
-                        "completionMode", "Auto"
-                    ),
-                    Map.of(
-                        "taskType", "ReviewReferralResponseLegalOps",
-                        "completionMode", "Auto"
-                    ),
+                    // Referral tasks are no longer completed wholesale by this event. They are
+                    // closed per referral by et-ccd-callbacks, which knows which referral was
+                    // acted on. See ReferralTaskCompletionService.
                     emptyMap()
                 )
             ),
@@ -334,6 +299,6 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(30));
+        assertThat(logic.getRules().size(), is(28));
     }
 }

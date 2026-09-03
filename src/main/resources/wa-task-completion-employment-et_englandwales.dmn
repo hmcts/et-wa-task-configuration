@@ -20,35 +20,9 @@
           <text>"Auto"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1jameda">
-        <inputEntry id="UnaryTests_0q8217i">
-          <text>"replyToReferral",
-"closeReferral"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1ku023r">
-          <text>"ReviewReferralAdmin"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_15g3yjk">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_05insq9">
-        <inputEntry id="UnaryTests_0mdh83n">
-          <text>"replyToReferral",
-"closeReferral"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0gpygso">
-          <text>"ReviewReferralResponseAdmin"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1iy3i7f">
-          <text>"Auto"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1n1hrr1">
         <inputEntry id="UnaryTests_0d3nkez">
-          <text>"preAcceptanceCase",
-"replyToReferral",
-"closeReferral"</text>
+          <text>"preAcceptanceCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0m9i08l">
           <text>"ReviewReferralJudiciary"</text>
@@ -59,10 +33,7 @@
       </rule>
       <rule id="DecisionRule_0rgoz1c">
         <inputEntry id="UnaryTests_0wfbt17">
-          <text>"preAcceptanceCase",
-"replyToReferral",
-"closeReferral",
-"updateReferral"</text>
+          <text>"preAcceptanceCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0nsl2oy">
           <text>"ReviewReferralLegalOps"</text>
@@ -73,9 +44,7 @@
       </rule>
       <rule id="DecisionRule_0xysxnl">
         <inputEntry id="UnaryTests_12rci1m">
-          <text>"preAcceptanceCase",
-"replyToReferral",
-"closeReferral"</text>
+          <text>"preAcceptanceCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0du4aig">
           <text>"ReviewReferralResponseJudiciary"</text>
@@ -86,9 +55,7 @@
       </rule>
       <rule id="DecisionRule_12zrnvl">
         <inputEntry id="UnaryTests_185czjm">
-          <text>"preAcceptanceCase",
-"replyToReferral",
-"closeReferral"</text>
+          <text>"preAcceptanceCase"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_076usvw">
           <text>"ReviewReferralResponseLegalOps"</text>
