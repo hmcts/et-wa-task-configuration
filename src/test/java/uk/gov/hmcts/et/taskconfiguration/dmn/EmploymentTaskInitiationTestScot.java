@@ -983,6 +983,131 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
                         "Application"
                     )
                 )
+            ),
+            Arguments.of(
+                "UPDATE_CASE_SUBMITTED",
+                null,
+                null,
+                List.of()
+            ),
+            Arguments.of(
+                "UPDATE_ET3_FORM",
+                null,
+                null,
+                List.of()
+            ),
+            Arguments.of(
+                "requestSupport",
+                null,
+                null,
+                List.of()
+            ),
+            Arguments.of(
+                "createFlag",
+                null,
+                arrangeSupportData("I need help with forms"),
+                List.of(arrangeSupportTask())
+            ),
+            Arguments.of(
+                "manageFlags",
+                null,
+                arrangeSupportData("I need help with forms"),
+                List.of(arrangeSupportTask())
+            )
+        );
+    }
+
+    private static Map<String, Object> arrangeSupportTask() {
+        return HelperService.mapExpectedOutput(
+            "ArrangeSupport",
+            "Arrange Support - I need help with forms",
+            "Support"
+        );
+    }
+
+    private static Map<String, Object> arrangeSupportData(String taskName) {
+        return Map.of(
+            "additionalData", Map.of(
+                "Data", Map.of(
+                    "supportTaskState", Map.of("arrangeSupportTaskName", taskName)
+                )
+            )
+        );
+    }
+
+    static Stream<Arguments> reviewSupportTaskRequiredScenarioProvider() {
+        return Stream.of("SUBMIT_CASE_DRAFT", "UPDATE_CASE_SUBMITTED", "SUBMIT_ET3_FORM", "UPDATE_ET3_FORM",
+                "requestSupport", "createFlag")
+            .flatMap(eventId -> Stream.of(
+                Arguments.of(eventId, "adminTaskRequired",
+                    "ReviewSupportRequestAdmin", "Admin - Review Support Request"),
+                Arguments.of(eventId, "legalOfficerTaskRequired",
+                    "ReviewSupportRequestLegalOfficer", "LO - Review Support Request"),
+                Arguments.of(eventId, "judgeTaskRequired",
+                    "ReviewSupportRequestJudge", "EJ - Review Support Request")
+            ));
+    }
+
+    @ParameterizedTest
+    @MethodSource("reviewSupportTaskRequiredScenarioProvider")
+    void required_indicator_creates_the_matching_review_task(String eventId,
+                                                              String requiredField,
+                                                              String taskId,
+                                                              String taskName) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", eventId);
+        inputVariables.putValue("postEventState", "SUBMIT_CASE_DRAFT".equals(eventId) ? "Submitted" : null);
+        inputVariables.putAll(taskRequiredData(requiredField, "Yes"));
+
+        Stream.Builder<Map<String, Object>> expected = Stream.builder();
+        if ("SUBMIT_CASE_DRAFT".equals(eventId)) {
+            expected.add(HelperService.mapExpectedOutput("Et1Vetting", "Et1 Vetting", "Vetting"));
+        }
+        expected.add(HelperService.mapExpectedOutput(taskId, taskName, "Support"));
+        assertThat(evaluateDmnTable(inputVariables).getResultList(), is(expected.build().toList()));
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrangeSupportEventProvider")
+    void active_flag_creates_arrange_support_task(String eventId) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", eventId);
+        inputVariables.putValue("postEventState", null);
+        inputVariables.putAll(arrangeSupportData("I need help with forms"));
+
+        assertThat(evaluateDmnTable(inputVariables).getResultList(), is(List.of(arrangeSupportTask())));
+    }
+
+    static Stream<String> arrangeSupportEventProvider() {
+        return Stream.of("createFlag", "manageFlags");
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrangeSupportEventProvider")
+    void event_without_newly_active_flag_does_not_create_arrange_support_task(String eventId) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", eventId);
+        inputVariables.putValue("postEventState", null);
+
+        assertThat(evaluateDmnTable(inputVariables).getResultList(), is(List.of()));
+    }
+
+    @Test
+    void created_but_not_required_indicator_does_not_create_another_review_task() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", "UPDATE_CASE_SUBMITTED");
+        inputVariables.putValue("postEventState", null);
+        inputVariables.putAll(taskRequiredData("adminTaskCreated", "Yes"));
+
+        assertThat(evaluateDmnTable(inputVariables).getResultList(), is(List.of()));
+    }
+
+    private static Map<String, Object> taskRequiredData(String field, String value) {
+        return Map.of(
+            "additionalData", Map.of(
+                "Data", Map.of(
+                    "supportTaskState", Map.of(field, value)
+                )
             )
         );
     }
@@ -1007,6 +1132,6 @@ class EmploymentTaskInitiationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(55));
+        assertThat(logic.getRules().size(), is(75));
     }
 }

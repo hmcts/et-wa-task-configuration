@@ -7,11 +7,50 @@
           <text>eventId</text>
         </inputExpression>
       </input>
+      <input id="Input_support_admin_completion_scot" label="Admin Support Task No Longer Required">
+        <inputExpression id="InputExpression_support_admin_completion_scot" typeRef="boolean">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.supportTaskState!=null
+and additionalData.Data.supportTaskState.adminTaskRequired!=null)
+then additionalData.Data.supportTaskState.adminTaskRequired="No"
+else false</text>
+        </inputExpression>
+      </input>
+      <input id="Input_support_legalofficer_completion_scot" label="Legal Officer Support Task No Longer Required">
+        <inputExpression id="InputExpression_support_legalofficer_completion_scot" typeRef="boolean">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.supportTaskState!=null
+and additionalData.Data.supportTaskState.legalOfficerTaskRequired!=null)
+then additionalData.Data.supportTaskState.legalOfficerTaskRequired="No"
+else false</text>
+        </inputExpression>
+      </input>
+      <input id="Input_support_judge_completion_scot" label="Judge Support Task No Longer Required">
+        <inputExpression id="InputExpression_support_judge_completion_scot" typeRef="boolean">
+          <text>if(additionalData!=null
+and additionalData.Data!=null
+and additionalData.Data.supportTaskState!=null
+and additionalData.Data.supportTaskState.judgeTaskRequired!=null)
+then additionalData.Data.supportTaskState.judgeTaskRequired="No"
+else false</text>
+        </inputExpression>
+      </input>
       <output id="Output_1" label="Task Type" name="taskType" typeRef="string" biodi:width="353" />
       <output id="OutputClause_1mldd9e" label="Completion Mode" name="completionMode" typeRef="string" />
       <rule id="DecisionRule_12eenty">
         <inputEntry id="UnaryTests_17cg7de">
           <text>"preAcceptanceCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_1">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1lk4wxe">
           <text>"Et1Vetting"</text>
@@ -25,6 +64,15 @@
           <text>"replyToReferral",
 "closeReferral"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_2">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1ku023r">
           <text>"ReviewReferralAdmin"</text>
         </outputEntry>
@@ -36,6 +84,15 @@
         <inputEntry id="UnaryTests_0mdh83n">
           <text>"replyToReferral",
 "closeReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_3">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0gpygso">
           <text>"ReviewReferralResponseAdmin"</text>
@@ -49,6 +106,15 @@
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_4">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0m9i08l">
           <text>"ReviewReferralJudiciary"</text>
@@ -64,6 +130,15 @@
 "closeReferral",
 "updateReferral"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_5">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0nsl2oy">
           <text>"ReviewReferralLegalOps"</text>
         </outputEntry>
@@ -76,6 +151,15 @@
           <text>"preAcceptanceCase",
 "replyToReferral",
 "closeReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_6">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0du4aig">
           <text>"ReviewReferralResponseJudiciary"</text>
@@ -90,6 +174,15 @@
 "replyToReferral",
 "closeReferral"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_7">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_076usvw">
           <text>"ReviewReferralResponseLegalOps"</text>
         </outputEntry>
@@ -100,6 +193,15 @@
       <rule id="DecisionRule_1e7c3we">
         <inputEntry id="UnaryTests_1u4doqe">
           <text>"uploadDocumentForServing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_8">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1yvpnta">
           <text>"ListServeClaim"</text>
@@ -112,6 +214,15 @@
         <inputEntry id="UnaryTests_15bidkx">
           <text>"generateCorrespondence"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_9">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0h0we02">
           <text>"SendEt1Notification"</text>
         </outputEntry>
@@ -123,6 +234,15 @@
         <inputEntry id="UnaryTests_1rp99c7">
           <text>"generateCorrespondence"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_10">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_10">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_10">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0e69sj5">
           <text>"IssuePostHearingDirection"</text>
         </outputEntry>
@@ -133,6 +253,15 @@
       <rule id="DecisionRule_0o1t3oy">
         <inputEntry id="UnaryTests_0i0mhhb">
           <text>"generateCorrespondence"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_11">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_11">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_11">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_12lsf0x">
           <text>"IssueInitialConsiderationDirections"</text>
@@ -146,6 +275,15 @@
           <text>"addAmendHearing",
 "issueInitialConsiderationDirectionsWA"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_12">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_12">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_12">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0spvbsg">
           <text>"ListAHearing"</text>
         </outputEntry>
@@ -156,6 +294,15 @@
       <rule id="DecisionRule_17wj6dr">
         <inputEntry id="UnaryTests_1d95t1o">
           <text>"initialConsideration"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_13">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_13">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_13">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_16ob96j">
           <text>"CompleteInitialConsideration"</text>
@@ -168,6 +315,15 @@
         <inputEntry id="UnaryTests_0dsgzdi">
           <text>"et3Notification"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_14">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0g9uw3d">
           <text>"SendEt3Notification"</text>
         </outputEntry>
@@ -178,6 +334,15 @@
       <rule id="DecisionRule_1iinhaz">
         <inputEntry id="UnaryTests_1vu76wq">
           <text>"et3Vetting"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_15">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_15">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_15">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0u9k5fc">
           <text>"Rule21"</text>
@@ -190,6 +355,15 @@
         <inputEntry id="UnaryTests_12rgcau">
           <text>"et3Vetting"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_16">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_16">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_16">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1x2aji9">
           <text>"ET3Processing"</text>
         </outputEntry>
@@ -200,6 +374,15 @@
       <rule id="DecisionRule_12huova">
         <inputEntry id="UnaryTests_1061un4">
           <text>"createReferral"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_17">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_17">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_17">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xln4uh">
           <text>"ReviewRule21Referral"</text>
@@ -214,6 +397,15 @@
 "tseAdmReply",
 "tseAdminCloseAnApplication"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_18">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_18">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_18">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_19nqhth">
           <text>"ContactTribunalWithAnApplication"</text>
         </outputEntry>
@@ -224,6 +416,15 @@
       <rule id="DecisionRule_0ath6gh">
         <inputEntry id="UnaryTests_08ygr9q">
           <text>"amendRespondentDetails"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_19">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_19">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_19">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1u35rgz">
           <text>"ReviewECCResponse"</text>
@@ -236,6 +437,15 @@
         <inputEntry id="UnaryTests_1wogcy1">
           <text>"createReferral"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_20">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_20">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_20">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1rrlwaw">
           <text>"ReferEmployersContractClaim"</text>
         </outputEntry>
@@ -246,6 +456,15 @@
       <rule id="DecisionRule_1ufk5zq">
         <inputEntry id="UnaryTests_1orgb5e">
           <text>"draftAndSignJudgement"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_21">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_21">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_21">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xiq9w4">
           <text>"DraftAndSignJudgment"</text>
@@ -258,6 +477,15 @@
         <inputEntry id="UnaryTests_0dc2iyv">
           <text>"amendClaimantDetails"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_22">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_22">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_22">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1n9c9z0">
           <text>"AmendClaimantDetails"</text>
         </outputEntry>
@@ -269,6 +497,15 @@
         <inputEntry id="UnaryTests_0tyi067">
           <text>"amendRespondentDetails"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_23">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_23">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_23">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1sniomx">
           <text>"AmendRespondentDetails"</text>
         </outputEntry>
@@ -279,6 +516,15 @@
       <rule id="DecisionRule_0w6li7w">
         <inputEntry id="UnaryTests_10o0695">
           <text>"addAmendJudgment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_24">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_24">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_24">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0mysecs">
           <text>"IssueJudgment"</text>
@@ -292,6 +538,15 @@
           <text>"disposeCase",
 "createReferral"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_25">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_25">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_25">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_00u0nnr">
           <text>"WithdrawAllOrPartOfCase"</text>
         </outputEntry>
@@ -302,6 +557,15 @@
       <rule id="DecisionRule_1nhl9qv">
         <inputEntry id="UnaryTests_0es41gl">
           <text>"broughtForward"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_26">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_26">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_26">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_124tnh3">
           <text>"ExpiredBfAction"</text>
@@ -314,6 +578,15 @@
         <inputEntry id="UnaryTests_1d95epp">
           <text>"sendNotification"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_27">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_27">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_27">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0jk0x59">
           <text>"IssueOrder"</text>
         </outputEntry>
@@ -324,6 +597,15 @@
       <rule id="DecisionRule_1f4bwa8">
         <inputEntry id="UnaryTests_17w4flv">
           <text>"respondNotification"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_28">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_28">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_28">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_06e4pts">
           <text>"SubmitRespondentPseResponse"</text>
@@ -336,10 +618,79 @@
         <inputEntry id="UnaryTests_claimant_pse_completion_sc">
           <text>"respondNotification"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_29">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_29">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_29">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_claimant_pse_completion_sc_tt">
           <text>"SubmitClaimantPseResponse"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_claimant_pse_completion_sc_mo">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_support_admin_completion_scot">
+        <inputEntry id="UnaryTests_support_admin_completion_scot">
+          <text>"manageFlags", "manageSupport"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_30">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_30">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_30">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_support_admin_completion_scot_tt">
+          <text>"ReviewSupportRequestAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_support_admin_completion_scot_mode">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_support_legalofficer_completion_scot">
+        <inputEntry id="UnaryTests_support_legalofficer_completion_scot">
+          <text>"manageFlags", "manageSupport"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_31">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_31">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_31">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_support_legalofficer_completion_scot_tt">
+          <text>"ReviewSupportRequestLegalOfficer"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_support_legalofficer_completion_scot_mode">
+          <text>"Auto"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_support_judge_completion_scot">
+        <inputEntry id="UnaryTests_support_judge_completion_scot">
+          <text>"manageFlags", "manageSupport"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_32">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_32">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_32">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_support_judge_completion_scot_tt">
+          <text>"ReviewSupportRequestJudge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_support_judge_completion_scot_mode">
           <text>"Auto"</text>
         </outputEntry>
       </rule>
@@ -369,7 +720,18 @@
 "broughtForward",
 "respondNotification",
 "sendNotification",
-"caseTransferECM"</text>
+"caseTransferECM",
+"manageFlags",
+"manageSupport"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_admin_scot_34">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_legalofficer_scot_34">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_review_support_judge_scot_34">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0bwibe1">
           <text></text>
