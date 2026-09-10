@@ -1137,6 +1137,73 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     }
 
     @ParameterizedTest
+    @MethodSource("supportTaskTitleScenarioProvider")
+    void when_support_task_then_return_support_title(String taskType, String expectedTitle) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", "ArrangeSupport".equals(taskType)
+            ? Map.of("taskType", taskType, "name", expectedTitle)
+            : Map.of("taskType", taskType));
+
+        DmnDecisionTableResult result = evaluateDmnTable(inputVariables);
+
+        Map<String, Object> title = result.getResultList().stream()
+            .filter(row -> row.containsValue("title"))
+            .findFirst()
+            .orElseThrow();
+        assertEquals(expectedTitle, title.get("value"));
+        assertEquals(false, title.get("canReconfigure"));
+    }
+
+    static Stream<Arguments> supportTaskTitleScenarioProvider() {
+        return Stream.of(
+            Arguments.of("ReviewSupportRequestAdmin", "Admin - Review Support Request"),
+            Arguments.of("ReviewSupportRequestLegalOfficer", "LO - Review Support Request"),
+            Arguments.of("ReviewSupportRequestJudge", "EJ - Review Support Request"),
+            Arguments.of("ArrangeSupport", "Arrange Support - Reasonable adjustment")
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "ReviewSupportRequestAdmin",
+        "ReviewSupportRequestLegalOfficer",
+        "ReviewSupportRequestJudge"
+    })
+    void review_support_task_description_links_to_manage_flags(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        DmnDecisionTableResult result = evaluateDmnTable(inputVariables);
+
+        Map<String, Object> description = result.getResultList().stream()
+            .filter(row -> row.containsValue("description"))
+            .findFirst()
+            .orElseThrow();
+        assertEquals("[Review Support Request](/cases/case-details/${[CASE_REFERENCE]}"
+                         + "/trigger/manageFlags/manageFlags1)", description.get("value"));
+        assertEquals(false, description.get("canReconfigure"));
+    }
+
+    @Test
+    void arrange_support_task_description_links_to_case_flags_tab() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "ArrangeSupport"));
+
+        DmnDecisionTableResult result = evaluateDmnTable(inputVariables);
+
+        Map<String, Object> description = result.getResultList().stream()
+            .filter(row -> row.containsValue("description"))
+            .findFirst()
+            .orElseThrow();
+        assertEquals("[Check Case Flags and arrange support](/cases/case-details/${[CASE_REFERENCE]}#caseFlags)",
+                     description.get("value"));
+        assertEquals(false, description.get("canReconfigure"));
+    }
+
+    @ParameterizedTest
     @MethodSource("title_reconfigure_ScenarioProvider")
     void when_taskType_and_existing_title_then_preserve_or_prefix_title(
             String taskType, String existingTitle, String expectedTitle) {
@@ -1179,7 +1246,7 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(75));
+        assertThat(logic.getRules().size(), is(84));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 
 import java.util.List;
@@ -330,10 +331,55 @@ class EmploymentTaskCompletionTestEW extends DmnDecisionTableBaseUnitTest {
         assertThat(dmnDecisionTableResult.getResultList(), is(expectation));
     }
 
+    static Stream<Arguments> reviewSupportTaskCompletionProvider() {
+        return Stream.of("manageFlags", "manageSupport")
+            .flatMap(eventId -> Stream.of(
+                Arguments.of(eventId, "adminTaskRequired", "ReviewSupportRequestAdmin"),
+                Arguments.of(eventId, "legalOfficerTaskRequired",
+                    "ReviewSupportRequestLegalOfficer"),
+                Arguments.of(eventId, "judgeTaskRequired", "ReviewSupportRequestJudge")
+            ));
+    }
+
+    @ParameterizedTest
+    @MethodSource("reviewSupportTaskCompletionProvider")
+    void managed_flags_complete_the_matching_review_support_task(String eventId,
+                                                                  String requiredField,
+                                                                  String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", eventId);
+        inputVariables.putValue("additionalData", Map.of("Data", Map.of(
+            "supportTaskState", Map.of(requiredField, "No"))));
+
+        assertThat(evaluateDmnTable(inputVariables).getResultList(), is(asList(
+            Map.of("taskType", taskType, "completionMode", "Auto"),
+            emptyMap()
+        )));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"manageFlags", "manageSupport"})
+    void managed_flags_can_complete_all_review_support_tasks(String eventId) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", eventId);
+        inputVariables.putValue("additionalData", Map.of("Data", Map.of(
+            "supportTaskState", Map.of(
+                "adminTaskRequired", "No",
+                "legalOfficerTaskRequired", "No",
+                "judgeTaskRequired", "No"))));
+
+        assertThat(evaluateDmnTable(inputVariables).getResultList(), is(asList(
+            Map.of("taskType", "ReviewSupportRequestAdmin", "completionMode", "Auto"),
+            Map.of("taskType", "ReviewSupportRequestLegalOfficer", "completionMode", "Auto"),
+            Map.of("taskType", "ReviewSupportRequestJudge", "completionMode", "Auto"),
+            emptyMap()
+        )));
+    }
+
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(30));
+        assertThat(logic.getRules().size(), is(33));
     }
 }
