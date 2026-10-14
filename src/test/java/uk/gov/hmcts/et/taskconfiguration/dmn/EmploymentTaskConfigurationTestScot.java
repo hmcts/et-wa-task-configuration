@@ -1175,11 +1175,64 @@ class EmploymentTaskConfigurationTestScot extends DmnDecisionTableBaseUnitTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("referralNumber_ScenarioProvider")
+    void when_referralTaskType_then_return_referralNumber_additional_property(
+            String taskType, String processCategoryKey, String expectedReferralNumber) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of(
+            "taskType", taskType,
+            processCategoryKey, true));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult.getResultList().stream()
+                .filter(r -> r.containsValue("additionalProperties_referralNumber"))
+                .toList();
+
+        assertEquals(expectedReferralNumber, resultList.getFirst().get("value"));
+        assertEquals(false, resultList.getFirst().get("canReconfigure"));
+    }
+
+    public static Stream<Arguments> referralNumber_ScenarioProvider() {
+        String review = "__processCategory__reviewReferralSerialNumberAndSubject_";
+        String response = "__processCategory__reviewReferralResponseSerialNumberAndSubject_";
+        return Stream.of(
+            Arguments.of("ReviewReferralAdmin", review + "32 - Orders", "32"),
+            Arguments.of("ReviewReferralJudiciary", review + "5 - Hearings", "5"),
+            Arguments.of("ReviewReferralLegalOps", review + "1 - Orders", "1"),
+            Arguments.of("ReviewReferralResponseAdmin", response + "32 - Orders", "32"),
+            Arguments.of("ReviewReferralResponseJudiciary", response + "5 - Hearings", "5"),
+            Arguments.of("ReviewReferralResponseLegalOps", response + "1 - Orders", "1"),
+            // Subject itself contains " - " - only the number is taken
+            Arguments.of("ReviewReferralAdmin", review + "7 - Other - please specify", "7")
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"ReviewReferralAdmin", "ReviewReferralResponseAdmin"})
+    void when_referralTaskType_and_no_serial_number_then_return_empty_referralNumber(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> resultList =
+            dmnDecisionTableResult.getResultList().stream()
+                .filter(r -> r.containsValue("additionalProperties_referralNumber"))
+                .toList();
+
+        assertEquals("", resultList.getFirst().get("value"));
+    }
+
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(75));
+        assertThat(logic.getRules().size(), is(77));
     }
 
     private List<Map<String, Object>> getExpectedValues() {
