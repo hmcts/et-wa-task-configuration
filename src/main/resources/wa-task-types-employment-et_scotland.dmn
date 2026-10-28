@@ -372,6 +372,17 @@
           <text>"Review notification response"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_day7_type">
+        <inputEntry id="UnaryTests_day7_type_0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_day7_type_0">
+          <text>"IssueDay7Notification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_type_1">
+          <text>"Issue day 7 notification"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
