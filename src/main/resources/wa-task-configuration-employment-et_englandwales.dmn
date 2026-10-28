@@ -151,6 +151,7 @@ else null</text>
 "ListAHearing",
 "ReviewRule21Referral",
 "SendEt3Notification",
+"IssueDay7Notification",
 "ReviewECCResponse",
 "ExpiredBfAction",
 "ReferEmployersContractClaim"</text>
@@ -310,6 +311,7 @@ else null</text>
 "AmendRespondentDetails",
 "WithdrawAllOrPartOfCase",
 "SendEt3Notification",
+"IssueDay7Notification",
 "ReviewECCResponse",
 "ExpiredBfAction",
 "ReferEmployersContractClaim",
@@ -916,6 +918,7 @@ else ""</text>
 "ReviewRule21Referral",
 "CompleteInitialConsideration",
 "SendEt3Notification",
+"IssueDay7Notification",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
@@ -1041,6 +1044,7 @@ else 5000</text>
 "IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
+"IssueDay7Notification",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
@@ -1149,7 +1153,7 @@ else 500</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0vu6bym">
-          <text></text>
+          <text>not("IssueDay7Notification")</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0nmpsln">
           <text>"dueDateOrigin"</text>
@@ -1281,7 +1285,7 @@ else 20</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_133dqw8">
-          <text></text>
+          <text>not("IssueDay7Notification")</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1bjqbre">
           <text>"dueDateSkipNonWorkingDays"</text>
@@ -1298,7 +1302,7 @@ else 20</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ibvt4r">
-          <text></text>
+          <text>not("IssueDay7Notification")</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_03fcwgl">
           <text>"dueDateMustBeWorkingDay"</text>
@@ -1494,6 +1498,7 @@ else 2</text>
 "IssueJudgment",
 "CompleteInitialConsideration",
 "SendEt3Notification",
+"IssueDay7Notification",
 "AmendClaimantDetails",
 "AmendRespondentDetails",
 "ContactTribunalWithAnApplication",
@@ -1575,6 +1580,106 @@ else 5001</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14opuv2">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_day7_description">
+        <inputEntry id="UnaryTests_day7_description_0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_day7_description_1">
+          <text>"IssueDay7Notification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_day7_description_0">
+          <text>"description"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_description_1">
+          <text>"[Send day 7 notification](/cases/case-details/EMPLOYMENT/ET_EnglandWales/${[CASE_REFERENCE]}/trigger/sendNotification/sendNotification1)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_description_2">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_day7_dueDateOrigin">
+        <inputEntry id="UnaryTests_day7_dueDateOrigin_0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_day7_dueDateOrigin_1">
+          <text>"IssueDay7Notification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateOrigin_0">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateOrigin_1">
+          <text>if caseData != null
+and caseData.sendNotificationCollection != null
+and count(caseData.sendNotificationCollection) &gt; 0
+then {
+  latest: sort(caseData.sendNotificationCollection,
+    function(x,y) number(x.value.number) &gt; number(y.value.number))[1].value,
+  origin: if latest.date != null and latest.date != ""
+    then {
+      parts: split(latest.date, " "),
+      month: index of(["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"], parts[2])[1],
+      sentDate: date(number(parts[3]), month, number(parts[1]))
+    }.sentDate
+    else today()
+}.origin
+else today()</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateOrigin_2">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_day7_dueDateIntervalDays">
+        <inputEntry id="UnaryTests_day7_dueDateIntervalDays_0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_day7_dueDateIntervalDays_1">
+          <text>"IssueDay7Notification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateIntervalDays_0">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateIntervalDays_1">
+          <text>8</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateIntervalDays_2">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_day7_dueDateSkipNonWorkingDays">
+        <inputEntry id="UnaryTests_day7_dueDateSkipNonWorkingDays_0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_day7_dueDateSkipNonWorkingDays_1">
+          <text>"IssueDay7Notification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateSkipNonWorkingDays_0">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateSkipNonWorkingDays_1">
+          <text>"false"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateSkipNonWorkingDays_2">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_day7_dueDateMustBeWorkingDay">
+        <inputEntry id="UnaryTests_day7_dueDateMustBeWorkingDay_0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_day7_dueDateMustBeWorkingDay_1">
+          <text>"IssueDay7Notification"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateMustBeWorkingDay_0">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateMustBeWorkingDay_1">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_day7_dueDateMustBeWorkingDay_2">
+          <text>false</text>
         </outputEntry>
       </rule>
     </decisionTable>
