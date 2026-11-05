@@ -7,6 +7,12 @@
     <informationRequirement id="InformationRequirement_134ckm5">
       <requiredDecision href="#Decision_15im37r" />
     </informationRequirement>
+    <informationRequirement id="InformationRequirement_0refnum01">
+      <requiredDecision href="#Decision_1fo6auw" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0refnum02">
+      <requiredDecision href="#Decision_0qmdbpz" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -1571,6 +1577,52 @@ else 5001</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08u4x66">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0refnum01">
+        <description>Stamps the referral serial number onto the task so downstream services can identify which referral this task belongs to. Derived from taskAttributes (per-task), not caseData, so it stays stable for the life of the task.</description>
+        <inputEntry id="UnaryTests_0refnum01">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0refnum02">
+          <text>"ReviewReferralAdmin",
+"ReviewReferralJudiciary",
+"ReviewReferralLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0refnum01">
+          <text>"additionalProperties_referralNumber"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0refnum02">
+          <text>if (reviewReferralSerialNumberAndSubject != null) then
+  substring before(reviewReferralSerialNumberAndSubject, " - ")
+else
+  ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0refnum03">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0refnum02">
+        <description>Stamps the referral serial number onto referral response tasks. CURRENT_REFERRAL_RESPONSE_SERIAL_NUMBER resolves to the parent referral's number, so this matches the key used for the review tasks above.</description>
+        <inputEntry id="UnaryTests_0refnum03">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0refnum04">
+          <text>"ReviewReferralResponseAdmin",
+"ReviewReferralResponseJudiciary",
+"ReviewReferralResponseLegalOps"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0refnum04">
+          <text>"additionalProperties_referralNumber"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0refnum05">
+          <text>if (referralReviewResponseSerialNumberAndSubject != null) then
+  substring before(referralReviewResponseSerialNumberAndSubject, " - ")
+else
+  ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0refnum06">
+          <text>false</text>
         </outputEntry>
       </rule>
     </decisionTable>
