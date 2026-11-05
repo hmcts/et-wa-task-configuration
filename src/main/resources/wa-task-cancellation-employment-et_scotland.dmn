@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-cancellation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.33.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-cancellation-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.50.1">
   <decision id="wa-task-cancellation-employment-et_scotland" name="ET Task cancellation DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
@@ -157,6 +157,31 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1mr0kny">
           <text>"Amendments"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sa870z">
+        <inputEntry id="UnaryTests_0t9q8uc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ijwxx5">
+          <text>"disposeCase",
+"rollbackMigrateCase",
+"caseTransferECM"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_167sxis">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wgvlaa">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dxpk3a">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04ku4p6">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pgvlta">
+          <text>"ArrangeSupport"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0ilueqf">
@@ -320,6 +345,39 @@
         <outputEntry id="LiteralExpression_0l88top">
           <text></text>
         </outputEntry>
+      </rule>
+      <rule id="DecisionRule_close_admin_support_scot">
+        <inputEntry id="UnaryTests_close_admin_from_state_scot"><text></text></inputEntry>
+        <inputEntry id="UnaryTests_close_admin_event_scot">
+          <text>"closeAdminReviewSupportTask", "disposeCase", "rollbackMigrateCase", "caseTransferECM"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_close_admin_state_scot"><text></text></inputEntry>
+        <outputEntry id="LiteralExpression_close_admin_action_scot"><text>"Cancel"</text></outputEntry>
+        <outputEntry id="LiteralExpression_close_admin_warning_code_scot"><text></text></outputEntry>
+        <outputEntry id="LiteralExpression_close_admin_warning_text_scot"><text></text></outputEntry>
+        <outputEntry id="LiteralExpression_close_admin_category_scot"><text>"ReviewSupportAdmin"</text></outputEntry>
+      </rule>
+      <rule id="DecisionRule_close_lo_support_scot">
+        <inputEntry id="UnaryTests_close_lo_from_state_scot"><text></text></inputEntry>
+        <inputEntry id="UnaryTests_close_lo_event_scot">
+          <text>"closeLOReviewSupportTask", "disposeCase", "rollbackMigrateCase", "caseTransferECM"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_close_lo_state_scot"><text></text></inputEntry>
+        <outputEntry id="LiteralExpression_close_lo_action_scot"><text>"Cancel"</text></outputEntry>
+        <outputEntry id="LiteralExpression_close_lo_warning_code_scot"><text></text></outputEntry>
+        <outputEntry id="LiteralExpression_close_lo_warning_text_scot"><text></text></outputEntry>
+        <outputEntry id="LiteralExpression_close_lo_category_scot"><text>"ReviewSupportLegalOfficer"</text></outputEntry>
+      </rule>
+      <rule id="DecisionRule_close_judge_support_scot">
+        <inputEntry id="UnaryTests_close_judge_from_state_scot"><text></text></inputEntry>
+        <inputEntry id="UnaryTests_close_judge_event_scot">
+          <text>"closeJudgeReviewSupportTask", "disposeCase", "rollbackMigrateCase", "caseTransferECM"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_close_judge_state_scot"><text></text></inputEntry>
+        <outputEntry id="LiteralExpression_close_judge_action_scot"><text>"Cancel"</text></outputEntry>
+        <outputEntry id="LiteralExpression_close_judge_warning_code_scot"><text></text></outputEntry>
+        <outputEntry id="LiteralExpression_close_judge_warning_text_scot"><text></text></outputEntry>
+        <outputEntry id="LiteralExpression_close_judge_category_scot"><text>"ReviewSupportJudge"</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>

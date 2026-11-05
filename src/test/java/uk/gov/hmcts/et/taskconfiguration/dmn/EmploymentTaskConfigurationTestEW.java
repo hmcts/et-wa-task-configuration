@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.hmcts.et.taskconfiguration.DmnDecisionTableBaseUnitTest;
 import uk.gov.hmcts.et.taskconfiguration.utility.HelperService;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -1138,6 +1139,159 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     }
 
     @ParameterizedTest
+    @MethodSource("supportTaskTitleScenarioProvider")
+    void when_support_task_then_return_support_title(String taskType, String expectedTitle) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", "ArrangeSupport".equals(taskType)
+            ? Map.of("taskType", taskType, "name", expectedTitle)
+            : Map.of("taskType", taskType));
+
+        DmnDecisionTableResult result = evaluateDmnTable(inputVariables);
+
+        Map<String, Object> title = result.getResultList().stream()
+            .filter(row -> row.containsValue("title"))
+            .findFirst()
+            .orElseThrow();
+        assertEquals(expectedTitle, title.get("value"));
+        assertEquals(false, title.get("canReconfigure"));
+    }
+
+    static Stream<Arguments> supportTaskTitleScenarioProvider() {
+        return Stream.of(
+            Arguments.of("ReviewSupportRequestAdmin", "Admin - Review Support Request"),
+            Arguments.of("ReviewSupportRequestLegalOfficer", "LO - Review Support Request"),
+            Arguments.of("ReviewSupportRequestJudge", "EJ - Review Support Request"),
+            Arguments.of("ArrangeSupport", "Arrange Support - Reasonable adjustment")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("supportTaskConfigurationScenarioProvider")
+    void support_task_without_next_hearing_has_default_configuration(String taskType, String expectedRoleCategory) {
+        assertSupportTaskConfiguration(taskType, expectedRoleCategory, getDefaultCaseData(), "10", "5001", "500");
+    }
+
+    @ParameterizedTest
+    @MethodSource("supportTaskConfigurationScenarioProvider")
+    void support_task_with_hearing_within_three_days_has_urgent_configuration(
+        String taskType,
+        String expectedRoleCategory
+    ) {
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("nextListedDate", LocalDate.now().plusDays(2).toString());
+
+        assertSupportTaskConfiguration(taskType, expectedRoleCategory, caseData, "1", "1000", "100");
+    }
+
+    @ParameterizedTest
+    @MethodSource("supportTaskConfigurationScenarioProvider")
+    void support_task_with_hearing_within_thirty_days_has_one_day_due_date(
+        String taskType,
+        String expectedRoleCategory
+    ) {
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("nextListedDate", LocalDate.now().plusDays(7).toString());
+
+        assertSupportTaskConfiguration(taskType, expectedRoleCategory, caseData, "1", "5001", "500");
+    }
+
+    @ParameterizedTest
+    @MethodSource("supportTaskConfigurationScenarioProvider")
+    void support_task_with_hearing_after_thirty_days_has_default_configuration(
+        String taskType,
+        String expectedRoleCategory
+    ) {
+        Map<String, Object> caseData = getDefaultCaseData();
+        caseData.put("nextListedDate", LocalDate.now().plusDays(31).toString());
+
+        assertSupportTaskConfiguration(taskType, expectedRoleCategory, caseData, "10", "5001", "500");
+    }
+
+    static Stream<Arguments> supportTaskConfigurationScenarioProvider() {
+        return Stream.of(
+            Arguments.of("ReviewSupportRequestAdmin", "ADMIN"),
+            Arguments.of("ReviewSupportRequestLegalOfficer", "LEGAL_OPERATIONS"),
+            Arguments.of("ReviewSupportRequestJudge", "JUDICIAL"),
+            Arguments.of("ArrangeSupport", "ADMIN")
+        );
+    }
+
+    private void assertSupportTaskConfiguration(
+        String taskType,
+        String expectedRoleCategory,
+        Map<String, Object> caseData,
+        String expectedDueDate,
+        String expectedMajorPriority,
+        String expectedMinorPriority
+    ) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        List<Map<String, Object>> result = evaluateDmnTable(inputVariables).getResultList();
+
+        assertSupportTaskAttribute(result, "dueDateIntervalDays", expectedDueDate);
+        assertSupportTaskAttribute(result, "majorPriority", expectedMajorPriority);
+        assertSupportTaskAttribute(result, "minorPriority", expectedMinorPriority);
+        assertSupportTaskAttribute(result, "workType", "applications");
+        assertSupportTaskAttribute(result, "roleCategory", expectedRoleCategory);
+    }
+
+    private void assertSupportTaskAttribute(List<Map<String, Object>> result, String attribute, String expectedValue) {
+        Map<String, Object> output = result.stream()
+            .filter(row -> row.containsValue(attribute))
+            .findFirst()
+            .orElseThrow();
+
+        assertEquals(expectedValue, output.get("value"));
+        assertEquals(true, output.get("canReconfigure"));
+    }
+
+    @ParameterizedTest
+    @MethodSource("reviewSupportTaskDescriptionProvider")
+    void review_support_task_description_links_to_category_event(String taskType, String eventId) {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        DmnDecisionTableResult result = evaluateDmnTable(inputVariables);
+
+        Map<String, Object> description = result.getResultList().stream()
+            .filter(row -> row.containsValue("description"))
+            .findFirst()
+            .orElseThrow();
+        assertEquals("[Review RA Request](/cases/case-details/${[CASE_REFERENCE]}"
+                         + "/trigger/" + eventId + "/" + eventId + "1)", description.get("value"));
+        assertEquals(false, description.get("canReconfigure"));
+    }
+
+    static Stream<Arguments> reviewSupportTaskDescriptionProvider() {
+        return Stream.of(
+            Arguments.of("ReviewSupportRequestAdmin", "reviewAdminSupportRequest"),
+            Arguments.of("ReviewSupportRequestLegalOfficer", "reviewLOSupportRequest"),
+            Arguments.of("ReviewSupportRequestJudge", "reviewJudgeSupportRequest")
+        );
+    }
+
+    @Test
+    void arrange_support_task_description_links_to_case_flags_tab() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", getDefaultCaseData());
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "ArrangeSupport"));
+
+        DmnDecisionTableResult result = evaluateDmnTable(inputVariables);
+
+        Map<String, Object> description = result.getResultList().stream()
+            .filter(row -> row.containsValue("description"))
+            .findFirst()
+            .orElseThrow();
+        assertEquals("[Check Case Flags Tab and Arrange Support](/cases/case-details/${[CASE_REFERENCE]}#caseFlags)",
+                     description.get("value"));
+        assertEquals(false, description.get("canReconfigure"));
+    }
+
+    @ParameterizedTest
     @MethodSource("title_reconfigure_ScenarioProvider")
     void when_taskType_and_existing_title_then_preserve_or_prefix_title(
             String taskType, String existingTitle, String expectedTitle) {
@@ -1180,7 +1334,7 @@ class EmploymentTaskConfigurationTestEW extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(75));
+        assertThat(logic.getRules().size(), is(86));
     }
 
     private List<Map<String, Object>> getExpectedValues() {

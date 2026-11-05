@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition-et_scotland" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.50.1">
   <decision id="wa-task-permissions-employment-et_scotland" name="ET Task permissions DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_12crj6e" label="Task Type" biodi:width="441" camunda:inputVariable="taskType">
@@ -90,7 +90,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ReviewSupportRequestJudge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ppwdd3">
           <text></text>
@@ -126,7 +127,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ReviewSupportRequestJudge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mwebfi">
           <text></text>
@@ -192,7 +194,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ReviewSupportRequestJudge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_180b4cq">
           <text></text>
@@ -228,7 +231,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ReviewSupportRequestJudge"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_04hh8eh">
           <text></text>
@@ -294,7 +298,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ReviewSupportRequestLegalOfficer"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_04f9yju">
           <text></text>
@@ -329,7 +334,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ReviewSupportRequestLegalOfficer"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fewwqo">
           <text></text>
@@ -365,7 +371,8 @@ else "r1"</text>
 "ReviewReferralJudiciary",
 "ReviewReferralResponseJudiciary",
 "CompleteInitialConsideration",
-"DraftAndSignJudgment"</text>
+"DraftAndSignJudgment",
+"ReviewSupportRequestLegalOfficer"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0e431c0">
           <text></text>
@@ -446,7 +453,9 @@ else "r1"</text>
 "IssueOrder",
 "ReferEmployersContractClaim",
 "SubmitRespondentPseResponse",
-"SubmitClaimantPseResponse"</text>
+"SubmitClaimantPseResponse",
+"ReviewSupportRequestAdmin",
+"ArrangeSupport"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_18831um">
           <text></text>
@@ -497,7 +506,9 @@ else "r1"</text>
 "IssueOrder",
 "ReferEmployersContractClaim",
 "SubmitRespondentPseResponse",
-"SubmitClaimantPseResponse"</text>
+"SubmitClaimantPseResponse",
+"ReviewSupportRequestAdmin",
+"ArrangeSupport"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_14c24r4">
           <text></text>
@@ -548,7 +559,9 @@ else "r1"</text>
 "IssueOrder",
 "ReferEmployersContractClaim",
 "SubmitRespondentPseResponse",
-"SubmitClaimantPseResponse"</text>
+"SubmitClaimantPseResponse",
+"ReviewSupportRequestAdmin",
+"ArrangeSupport"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_197zxgr">
           <text></text>
