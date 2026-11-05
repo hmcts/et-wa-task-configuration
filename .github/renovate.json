@@ -5,5 +5,10 @@
   ],
   "labels": [
     "dependencies"
-  ]
+  ],
+  "schedule": ["after 7am and before 9am every weekday"],
+  "updateNotScheduled": false,
+  "prConcurrentLimit": 3,
+  "branchConcurrentLimit": 3,
+  "automergeSchedule": ["before 12pm every weekday"]
 }
