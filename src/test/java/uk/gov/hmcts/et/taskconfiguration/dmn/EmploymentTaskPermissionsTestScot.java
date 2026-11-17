@@ -385,6 +385,47 @@ class EmploymentTaskPermissionsTestScot extends DmnDecisionTableBaseUnitTest {
                     hearingCentreTeamLeader,
                     hearingCentreAdmin
                 )
+            ),
+            Arguments.of(
+                "ReviewSupportRequestJudge",
+                List.of(
+                    taskSupervisor,
+                    leadJudge,
+                    hearingJudge,
+                    leadershipJudge,
+                    judge,
+                    feepaidjudge
+                )
+            ),
+            Arguments.of(
+                "ReviewSupportRequestLegalOfficer",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedTribunalCaseworker,
+                    seniorTribunalCaseworker,
+                    tribunalCaseworker
+                )
+            ),
+            Arguments.of(
+                "ReviewSupportRequestAdmin",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin
+                )
+            ),
+            Arguments.of(
+                "ArrangeSupport",
+                List.of(
+                    taskSupervisor,
+                    leadershipJudge,
+                    allocatedAdminCaseworker,
+                    hearingCentreTeamLeader,
+                    hearingCentreAdmin
+                )
             )
         );
     }

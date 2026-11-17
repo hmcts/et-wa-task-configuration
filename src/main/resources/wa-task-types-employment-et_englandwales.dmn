@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-task-types-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-task-types-definition-et_englandwales" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.50.1">
   <decision id="wa-task-types-employment-et_englandwales" name="ET Task Types DMN" camunda:historyTimeToLive="P30D">
     <decisionTable id="DecisionTable_17knzal" hitPolicy="COLLECT">
       <input id="Input_1">
@@ -370,6 +370,50 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_claimant_pse_type_name">
           <text>"Review notification response"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ot019d">
+        <inputEntry id="UnaryTests_1w60utf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dg9vhw">
+          <text>"ReviewSupportRequestAdmin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jghnvx">
+          <text>"Review Support Request Admin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cwoi2d">
+        <inputEntry id="UnaryTests_0a7t1m7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gy7xei">
+          <text>"ReviewSupportRequestLegalOfficer"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1csxxll">
+          <text>"Review Support Request LegalOfficer"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_122dz5s">
+        <inputEntry id="UnaryTests_1v9ux2k">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07hiuky">
+          <text>"ReviewSupportRequestJudge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v2v96j">
+          <text>"Review Support Request Judge"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pqt9lb">
+        <inputEntry id="UnaryTests_1ore79u">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m37so9">
+          <text>"ArrangeSupport"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fumkkv">
+          <text>"Arrange Support"</text>
         </outputEntry>
       </rule>
     </decisionTable>
