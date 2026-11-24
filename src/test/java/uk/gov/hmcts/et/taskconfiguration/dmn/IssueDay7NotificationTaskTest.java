@@ -106,9 +106,10 @@ class IssueDay7NotificationTaskTest {
 
     @ParameterizedTest
     @MethodSource("deadlineScenarios")
-    void configuresAdminTaskDueEightCalendarDaysAfterNotification(String region, String sentDate,
-                                                                 LocalDate expectedOrigin,
-                                                                 LocalDate expectedDueDate) throws IOException {
+    void configuresAdminTaskWithEightCalendarDayIntervalAndWorkingDayDeadline(String region, String sentDate,
+                                                                            LocalDate expectedOrigin,
+                                                                            LocalDate expectedBaseDueDate)
+        throws IOException {
         Map<String, Object> latest = notification("10", List.of(GROUP_CLAIMS), CONSIDERING_CLAIMS);
         latest.put("date", sentDate);
         Map<String, Object> old = notification("2", List.of("Hearing"), null);
@@ -137,10 +138,28 @@ class IssueDay7NotificationTaskTest {
         assertProperty(properties, "dueDateOrigin", expectedOrigin.toString(), false);
         assertProperty(properties, "dueDateIntervalDays", "8", false);
         assertProperty(properties, "dueDateSkipNonWorkingDays", "false", false);
-        assertProperty(properties, "dueDateMustBeWorkingDay", "No", false);
-        assertEquals(expectedDueDate, LocalDate.parse(properties.get("dueDateOrigin").get("value").toString())
+        assertProperty(properties, "dueDateMustBeWorkingDay", "Yes", true);
+        assertEquals(expectedBaseDueDate, LocalDate.parse(properties.get("dueDateOrigin").get("value").toString())
             .plusDays(Long.parseLong(properties.get("dueDateIntervalDays").get("value").toString())));
         assertTrue(properties.get("dueDateTime").get("value").toString().startsWith("16:00"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"englandwales", "scotland"})
+    void usesSameWorkingDayRulesAndCalendarsAsOtherTasks(String region) throws IOException {
+        Set<String> sharedProperties = Set.of(
+            "dueDateMustBeWorkingDay", "dueDateNonWorkingDaysOfWeek", "dueDateNonWorkingCalendar");
+        List<Map<String, Object>> properties = evaluate(region, "configuration", Map.of(
+            "taskAttributes", Map.of("taskType", TASK_TYPE)));
+        List<Map<String, Object>> expected = evaluate(region, "configuration", Map.of(
+            "taskAttributes", Map.of("taskType", "SendEt3Notification"))).stream()
+            .filter(row -> sharedProperties.contains(row.get("name")))
+            .toList();
+
+        assertEquals(3, expected.size());
+        assertEquals(expected, properties.stream()
+            .filter(row -> sharedProperties.contains(row.get("name")))
+            .toList());
     }
 
     @ParameterizedTest

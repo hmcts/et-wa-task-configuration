@@ -1299,7 +1299,7 @@ else 20</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ibvt4r">
-          <text>not("IssueDay7Notification")</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_03fcwgl">
           <text>"dueDateMustBeWorkingDay"</text>
@@ -1658,23 +1658,6 @@ else today()</text>
           <text>"false"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_day7_dueDateSkipNonWorkingDays_2">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_day7_dueDateMustBeWorkingDay">
-        <inputEntry id="UnaryTests_day7_dueDateMustBeWorkingDay_0">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_day7_dueDateMustBeWorkingDay_1">
-          <text>"IssueDay7Notification"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_day7_dueDateMustBeWorkingDay_0">
-          <text>"dueDateMustBeWorkingDay"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_day7_dueDateMustBeWorkingDay_1">
-          <text>"No"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_day7_dueDateMustBeWorkingDay_2">
           <text>false</text>
         </outputEntry>
       </rule>
